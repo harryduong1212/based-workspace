@@ -1,6 +1,6 @@
 # based-workspace
 
-**A portable AI-powered development workspace** — pre-configured with 1 000+ skills, 45 workflows, MCP servers, and local infrastructure (PostgreSQL + n8n) so every project you open gets the same AI super-powers out of the box.
+**A portable AI-powered development workspace** — providing an archive of 1 000+ skills, 45 workflows, MCP servers, and local infrastructure (PostgreSQL + n8n) so every project you open gets the customized AI super-powers you need.
 
 Works on **Windows 11 · macOS · Linux**.
 
@@ -216,13 +216,16 @@ based-workspace/
 │   ├── rules/                    ←   Behavioural rules (always active)
 │   │   ├── terminal-environment.md
 │   │   └── workspace-boundaries.md
-│   ├── skills/                   ←   1 000+ domain skills
+│   ├── skills/                   ←   Active domain skills tailored for your project
 │   │   └── <skill-name>/SKILL.md
-│   ├── workflows/                ←   45 slash-command workflows
+│   ├── workflows/                ←   Active slash-command workflows
 │   │   └── <workflow>.md
 │   ├── RULES.md                  ←   Catalogue of all rules
 │   ├── SKILLS.md                 ←   Catalogue of all skills
 │   └── WORKFLOWS.md              ←   Catalogue of all workflows
+│
+├── archieved_skills/             ← 🗃️ Library of 1000+ available skills
+├── archieved_workflows/          ← 🗃️ Library of 45 available workflows
 │
 ├── .vscode/
 │   └── mcp.json                  ← 🔌 MCP server config
@@ -331,27 +334,38 @@ This workspace provides `scripts/grep-mcp.js` and `scripts/postgres-mcp.js`. The
 
 ## Skills, Workflows & Rules
 
+To keep your AI assistant focused and performant, this workspace does not load all available capabilities by default. This repository provides an extensive archive.
+**You must look at the skills and workflows available, select the suitable ones for your specific project, and move them to `.agents/skills/` or `.agents/workflows/`.**
+
 ### Skills (1 000+)
 
-Pre-installed domain expertise the AI can leverage. Browse them:
+Pre-installed domain expertise the AI can leverage. Browse the complete archive:
 
 **PowerShell:**
 ```powershell
-Get-ChildItem -Path ".agents\skills" -Directory | Measure-Object                                # Count
-Get-ChildItem -Path ".agents\skills" -Directory | Where-Object { $_.Name -like "*react*" }      # Search
+Get-ChildItem -Path "archieved_skills" -Directory | Measure-Object                                # Count
+Get-ChildItem -Path "archieved_skills" -Directory | Where-Object { $_.Name -like "*react*" }      # Search
 ```
 
 **Bash / Zsh:**
 ```bash
-ls -d .agents/skills/*/ | wc -l          # Count
-ls -d .agents/skills/*react*/            # Search
+ls -d archieved_skills/*/ | wc -l          # Count
+ls -d archieved_skills/*react*/            # Search
 ```
+
+**How to activate a skill:**
+Find a skill you need in `archieved_skills/` and copy or move its folder to `.agents/skills/`.
 
 See [`.agents/SKILLS.md`](.agents/SKILLS.md) for the full categorised catalogue.
 
 ### Workflows (45)
 
-Slash-command automations — type in chat to trigger:
+Slash-command automations — type in chat to trigger.
+
+**How to activate a workflow:**
+Find a workflow you need in `archieved_workflows/` and copy or move its `.md` file to `.agents/workflows/`.
+
+Once activated, you can trigger them:
 
 ```
 /new-project     — Scaffold any project
