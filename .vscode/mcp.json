@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    },
+    "grep_app": {
+      "command": "node",
+      "args": [
+        "scripts/grep-mcp.js"
+      ]
+    },
+    "postgres-memory": {
+      "command": "node",
+      "args": [
+        "scripts/postgres-mcp.js"
+      ]
+    }
+  }
+}

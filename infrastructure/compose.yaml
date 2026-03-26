@@ -1,0 +1,44 @@
+services:
+  based-workspace-postgres:
+    image: pgvector/pgvector:pg16
+    container_name: based-workspace-postgres
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - based-workspace-postgres-data:/var/lib/postgresql/data
+    networks:
+      - based-workspace-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  based-workspace-n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: based-workspace-n8n
+    restart: unless-stopped
+    depends_on:
+      based-workspace-postgres:
+        condition: service_healthy
+    environment:
+      N8N_HOST: localhost
+      NODE_ENV: production
+    ports:
+      - "5678:5678"
+    volumes:
+      - based-workspace-n8n-data:/home/node/.n8n
+    networks:
+      - based-workspace-net
+
+volumes:
+  based-workspace-postgres-data:
+  based-workspace-n8n-data:
+
+networks:
+  based-workspace-net:
+    driver: bridge
+    name: based-workspace-net

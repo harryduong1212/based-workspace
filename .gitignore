@@ -1,0 +1,36 @@
+node_modules/
+dist/
+infrastructure/pgdata/
+.n8n/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.idea/
+*.suo
+*.user
+
+# Logs
+*.log
+logs/
+
+# Java & Spring Boot Build
+target/
+.mvn/
+.gradle/
+build/
+*.jar
+*.war
+*.class
+
+# Node.js & Frontend (MCP tools)
+dist/
+.npm/

@@ -1,0 +1,28 @@
+# Infrastructure & Volumes
+infrastructure/pgdata/
+.n8n/
+
+# Security
+.env
+*.pem
+*.key
+
+# Java & Spring Boot Build
+target/
+.mvn/
+.gradle/
+build/
+*.jar
+*.war
+*.class
+
+# Node.js & Frontend (MCP tools)
+node_modules/
+dist/
+.npm/
+
+# IDE & OS
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
