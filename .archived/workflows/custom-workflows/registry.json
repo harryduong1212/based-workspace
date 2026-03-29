@@ -1,0 +1,126 @@
+{
+  "category_id": "custom-workflows",
+  "category_name": "🎯 Custom Workflows",
+  "workflows": [
+    {
+      "id": "custom-feature-kickoff",
+      "description": "🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep",
+      "path": "custom-feature-kickoff/WORKFLOW.md",
+      "triggers": [
+        "custom-feature-kickoff"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "approve",
+        "initialization",
+        "foundation",
+        "prep",
+        "action",
+        "feature",
+        "output",
+        "trigger"
+      ]
+    },
+    {
+      "id": "custom-generate-api-spec",
+      "description": "🔌 Generates standardized API contracts based on the SRS and DB Schema",
+      "path": "custom-generate-api-spec/WORKFLOW.md",
+      "triggers": [
+        "custom-generate-api-spec"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "api",
+        "generation",
+        "openapi",
+        "action",
+        "specification",
+        "endpoint",
+        "identification",
+        "contract"
+      ]
+    },
+    {
+      "id": "custom-generate-db-schema",
+      "description": "🗄️ Transforms SRS into a finalized database schema and ERD",
+      "path": "custom-generate-db-schema/WORKFLOW.md",
+      "triggers": [
+        "custom-generate-db-schema"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "schema",
+        "generation",
+        "erd",
+        "sql",
+        "mermaid",
+        "action",
+        "database",
+        "entity"
+      ]
+    },
+    {
+      "id": "custom-generate-feature-spec",
+      "description": "📋 Coordination to transform a raw idea into a standardized SRS",
+      "path": "custom-generate-feature-spec/WORKFLOW.md",
+      "triggers": [
+        "custom-generate-feature-spec"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "executed",
+        "feature",
+        "loop",
+        "srs",
+        "spec",
+        "action",
+        "orchestrator",
+        "validation"
+      ]
+    },
+    {
+      "id": "custom-generate-sequence-diagram",
+      "description": "🔀 Maps the interaction flow between users, system, and services",
+      "path": "custom-generate-sequence-diagram/WORKFLOW.md",
+      "triggers": [
+        "custom-generate-sequence-diagram"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "mermaid",
+        "generation",
+        "sequence",
+        "diagram",
+        "flow",
+        "action",
+        "actor",
+        "component"
+      ]
+    },
+    {
+      "id": "git-commit-group-changes",
+      "description": "📦 Automatically groups and commits changes by logical feature",
+      "path": "git-commit-group-changes/WORKFLOW.md",
+      "triggers": [
+        "git-commit-group-changes"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "group",
+        "commit",
+        "changes",
+        "scope",
+        "logical",
+        "reference",
+        "formatting",
+        "pom"
+      ]
+    }
+  ]
+}

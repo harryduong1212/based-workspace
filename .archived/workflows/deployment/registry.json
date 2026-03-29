@@ -1,0 +1,106 @@
+{
+  "category_id": "deployment",
+  "category_name": "🚀 Deployment",
+  "workflows": [
+    {
+      "id": "ci-cd",
+      "description": "Set up CI/CD pipelines",
+      "path": "ci-cd/WORKFLOW.md",
+      "triggers": [
+        "ci-cd"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "pipeline",
+        "github",
+        "gitlab",
+        "test",
+        "steps",
+        "detect",
+        "verify",
+        "guardrails"
+      ]
+    },
+    {
+      "id": "deploy",
+      "description": "Deploy to any platform (detects or configures)",
+      "path": "deploy/WORKFLOW.md",
+      "triggers": [
+        "deploy"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "vercel",
+        "deploy",
+        "platform",
+        "railway",
+        "detect",
+        "deployment",
+        "configure",
+        "verify"
+      ]
+    },
+    {
+      "id": "docker",
+      "description": "Containerize application",
+      "path": "docker/WORKFLOW.md",
+      "triggers": [
+        "docker"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "docker",
+        "application",
+        "requirements",
+        "dockerfile",
+        "test",
+        "guardrails",
+        "steps",
+        "understand"
+      ]
+    },
+    {
+      "id": "railway-deploy",
+      "description": "Deploy to Railway",
+      "path": "railway-deploy/WORKFLOW.md",
+      "triggers": [
+        "railway-deploy"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "railway",
+        "configure",
+        "add",
+        "database",
+        "logs",
+        "deploy",
+        "issues",
+        "github"
+      ]
+    },
+    {
+      "id": "vercel-deploy",
+      "description": "Deploy to Vercel",
+      "path": "vercel-deploy/WORKFLOW.md",
+      "triggers": [
+        "vercel-deploy"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "vercel",
+        "deploy",
+        "deployment",
+        "steps",
+        "guidelines",
+        "cli",
+        "login",
+        "bash"
+      ]
+    }
+  ]
+}

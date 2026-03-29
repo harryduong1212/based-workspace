@@ -1,0 +1,106 @@
+{
+  "category_id": "testing-quality",
+  "category_name": "🧪 Testing & Quality",
+  "workflows": [
+    {
+      "id": "code-review",
+      "description": "Comprehensive code review",
+      "path": "code-review/WORKFLOW.md",
+      "triggers": [
+        "code-review"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "review",
+        "linting",
+        "validation",
+        "severity",
+        "security",
+        "logic",
+        "authentication",
+        "guardrails"
+      ]
+    },
+    {
+      "id": "e2e-test",
+      "description": "End-to-end browser tests",
+      "path": "e2e-test/WORKFLOW.md",
+      "triggers": [
+        "e2e-test"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "test",
+        "playwright",
+        "cypress",
+        "e2e",
+        "detect",
+        "guardrails",
+        "steps",
+        "understand"
+      ]
+    },
+    {
+      "id": "playwright-test",
+      "description": "Browser automation tests with Playwright",
+      "path": "playwright-test/WORKFLOW.md",
+      "triggers": [
+        "playwright-test"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "playwright",
+        "test",
+        "css",
+        "selectors",
+        "tests",
+        "fill",
+        "submit",
+        "screenshot"
+      ]
+    },
+    {
+      "id": "test-coverage",
+      "description": "Improve test coverage for files",
+      "path": "test-coverage/WORKFLOW.md",
+      "triggers": [
+        "test-coverage"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "coverage",
+        "test",
+        "prioritize",
+        "understand",
+        "write",
+        "tests",
+        "guardrails",
+        "steps"
+      ]
+    },
+    {
+      "id": "unit-test",
+      "description": "Generate unit tests (detects testing framework)",
+      "path": "unit-test/WORKFLOW.md",
+      "triggers": [
+        "unit-test"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "test",
+        "mocking",
+        "testing",
+        "vitest",
+        "jest",
+        "unit",
+        "mocha",
+        "tests"
+      ]
+    }
+  ]
+}

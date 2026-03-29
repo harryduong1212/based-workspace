@@ -1,0 +1,66 @@
+{
+  "category_id": "debugging",
+  "category_name": "🐛 Debugging",
+  "workflows": [
+    {
+      "id": "debug-error",
+      "description": "Analyze errors and suggest fixes",
+      "path": "debug-error/WORKFLOW.md",
+      "triggers": [
+        "debug-error"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "error",
+        "debug",
+        "causes",
+        "suggest",
+        "look",
+        "fixes",
+        "fix",
+        "guardrails"
+      ]
+    },
+    {
+      "id": "debug-log",
+      "description": "Add strategic logging/debugging",
+      "path": "debug-log/WORKFLOW.md",
+      "triggers": [
+        "debug-log"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "logging",
+        "log",
+        "debug",
+        "logs",
+        "guardrails",
+        "steps",
+        "understand",
+        "issue"
+      ]
+    },
+    {
+      "id": "performance",
+      "description": "Profile and optimize slow code",
+      "path": "performance/WORKFLOW.md",
+      "triggers": [
+        "performance"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "performance",
+        "profile",
+        "optimize",
+        "verify",
+        "guardrails",
+        "steps",
+        "understand",
+        "issue"
+      ]
+    }
+  ]
+}

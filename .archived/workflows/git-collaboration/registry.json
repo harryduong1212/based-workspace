@@ -1,0 +1,86 @@
+{
+  "category_id": "git-collaboration",
+  "category_name": "🔀 Git & Collaboration",
+  "workflows": [
+    {
+      "id": "git-commit",
+      "description": "Generate conventional commits from staged changes",
+      "path": "git-commit/WORKFLOW.md",
+      "triggers": [
+        "git-commit"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "commit",
+        "git",
+        "add",
+        "staged",
+        "changes",
+        "determine",
+        "identify",
+        "scope"
+      ]
+    },
+    {
+      "id": "git-conflict",
+      "description": "Help resolve merge conflicts",
+      "path": "git-conflict/WORKFLOW.md",
+      "triggers": [
+        "git-conflict"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "resolution",
+        "conflict",
+        "conflicts",
+        "git",
+        "understand",
+        "merge",
+        "identify",
+        "guardrails"
+      ]
+    },
+    {
+      "id": "git-pr",
+      "description": "Create comprehensive PR descriptions",
+      "path": "git-pr/WORKFLOW.md",
+      "triggers": [
+        "git-pr"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "changes",
+        "git",
+        "analyze",
+        "content",
+        "guardrails",
+        "steps",
+        "understand",
+        "context"
+      ]
+    },
+    {
+      "id": "git-rebase",
+      "description": "Interactive rebase assistance",
+      "path": "git-rebase/WORKFLOW.md",
+      "triggers": [
+        "git-rebase"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "rebase",
+        "git",
+        "resolve",
+        "understand",
+        "conflicts",
+        "squash",
+        "guardrails",
+        "steps"
+      ]
+    }
+  ]
+}

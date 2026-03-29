@@ -1,0 +1,62 @@
+{
+  "category_id": "miscellaneous",
+  "category_name": "📦 Miscellaneous",
+  "workflows": [
+    {
+      "id": "WORKFLOW",
+      "description": "Perform comprehensive accessibility audit",
+      "path": "WORKFLOW/WORKFLOW.md",
+      "triggers": [
+        "accessibility-audit"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "test",
+        "mocking",
+        "testing",
+        "vitest",
+        "jest",
+        "mocha",
+        "unit",
+        "tests"
+      ]
+    },
+    {
+      "id": "library",
+      "description": "",
+      "path": "library/WORKFLOW.md",
+      "triggers": [],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "typescript",
+        "library",
+        "api",
+        "linting",
+        "guardrails",
+        "steps",
+        "understand",
+        "requirements"
+      ]
+    },
+    {
+      "id": "nextjs-app",
+      "description": "",
+      "path": "nextjs-app/WORKFLOW.md",
+      "triggers": [],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "tailwind",
+        "typescript",
+        "css",
+        "next",
+        "src",
+        "install",
+        "page",
+        "application"
+      ]
+    }
+  ]
+}

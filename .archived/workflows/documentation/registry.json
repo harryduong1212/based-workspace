@@ -1,0 +1,46 @@
+{
+  "category_id": "documentation",
+  "category_name": "📚 Documentation",
+  "workflows": [
+    {
+      "id": "api-docs",
+      "description": "Generate API documentation (OpenAPI, JSDoc)",
+      "path": "api-docs/WORKFLOW.md",
+      "triggers": [
+        "api-docs"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "api",
+        "docs",
+        "authentication",
+        "document",
+        "endpoints",
+        "guardrails",
+        "steps",
+        "analyze"
+      ]
+    },
+    {
+      "id": "architecture",
+      "description": "Create architecture diagrams (Mermaid, C4)",
+      "path": "architecture/WORKFLOW.md",
+      "triggers": [
+        "architecture"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "architecture",
+        "diagram",
+        "guardrails",
+        "steps",
+        "understand",
+        "scope",
+        "analyze",
+        "choose"
+      ]
+    }
+  ]
+}

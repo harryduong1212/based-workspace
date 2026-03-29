@@ -1,0 +1,26 @@
+{
+  "category_id": "accessibility",
+  "category_name": "♿ Accessibility",
+  "workflows": [
+    {
+      "id": "accessibility-audit",
+      "description": "Perform comprehensive accessibility audit",
+      "path": "accessibility-audit/WORKFLOW.md",
+      "triggers": [
+        "accessibility-audit"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "aria",
+        "html",
+        "wcag",
+        "audit",
+        "linting",
+        "accessibility",
+        "verify",
+        "reference"
+      ]
+    }
+  ]
+}

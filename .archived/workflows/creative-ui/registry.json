@@ -1,0 +1,86 @@
+{
+  "category_id": "creative-ui",
+  "category_name": "🎨 Creative & UI",
+  "workflows": [
+    {
+      "id": "dashboard-ui",
+      "description": "Create admin dashboards (any stack)",
+      "path": "dashboard-ui/WORKFLOW.md",
+      "triggers": [
+        "dashboard-ui"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "dashboard",
+        "layout",
+        "structure",
+        "pagination",
+        "react",
+        "vue",
+        "angular",
+        "css"
+      ]
+    },
+    {
+      "id": "design-system",
+      "description": "Create and analyze design tokens",
+      "path": "design-system/WORKFLOW.md",
+      "triggers": [
+        "design-system"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "analyze",
+        "existing",
+        "tokens",
+        "components",
+        "guardrails",
+        "steps",
+        "understand",
+        "scope"
+      ]
+    },
+    {
+      "id": "email-template",
+      "description": "Design responsive emails",
+      "path": "email-template/WORKFLOW.md",
+      "triggers": [
+        "email-template"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "email",
+        "css",
+        "html",
+        "arial",
+        "template",
+        "test",
+        "client",
+        "outlook"
+      ]
+    },
+    {
+      "id": "landing-page",
+      "description": "Build landing pages (any stack)",
+      "path": "landing-page/WORKFLOW.md",
+      "triggers": [
+        "landing-page"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "html",
+        "css",
+        "page",
+        "react",
+        "vue",
+        "landing",
+        "stack",
+        "structure"
+      ]
+    }
+  ]
+}

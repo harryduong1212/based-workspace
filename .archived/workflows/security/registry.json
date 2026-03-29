@@ -1,0 +1,66 @@
+{
+  "category_id": "security",
+  "category_name": "🔒 Security",
+  "workflows": [
+    {
+      "id": "auth-implementation",
+      "description": "Implement authentication patterns",
+      "path": "auth-implementation/WORKFLOW.md",
+      "triggers": [
+        "auth-implementation"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "auth",
+        "oauth",
+        "jwt",
+        "secure",
+        "session",
+        "guardrails",
+        "steps",
+        "understand"
+      ]
+    },
+    {
+      "id": "dependency-check",
+      "description": "Check for vulnerable dependencies",
+      "path": "dependency-check/WORKFLOW.md",
+      "triggers": [
+        "dependency-check"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "fixes",
+        "python",
+        "yarn",
+        "dependency",
+        "package",
+        "bun",
+        "audit",
+        "prioritize"
+      ]
+    },
+    {
+      "id": "security-audit",
+      "description": "Scan for vulnerabilities and secrets",
+      "path": "security-audit/WORKFLOW.md",
+      "triggers": [
+        "security-audit"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "validation",
+        "authentication",
+        "review",
+        "authorization",
+        "sql",
+        "security",
+        "audit",
+        "exposed"
+      ]
+    }
+  ]
+}

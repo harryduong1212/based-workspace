@@ -1,0 +1,86 @@
+{
+  "category_id": "ai-llm",
+  "category_name": "🤖 AI & LLM",
+  "workflows": [
+    {
+      "id": "ai-agent",
+      "description": "Create AI agents with tools",
+      "path": "ai-agent/WORKFLOW.md",
+      "triggers": [
+        "ai-agent"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "agent",
+        "add",
+        "safety",
+        "define",
+        "guardrails",
+        "steps",
+        "understand",
+        "requirements"
+      ]
+    },
+    {
+      "id": "prompt-engineering",
+      "description": "Design and optimize LLM prompts",
+      "path": "prompt-engineering/WORKFLOW.md",
+      "triggers": [
+        "prompt-engineering"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "prompt",
+        "test",
+        "engineering",
+        "guardrails",
+        "steps",
+        "understand",
+        "task",
+        "structure"
+      ]
+    },
+    {
+      "id": "rag-pipeline",
+      "description": "Build retrieval-augmented generation",
+      "path": "rag-pipeline/WORKFLOW.md",
+      "triggers": [
+        "rag-pipeline"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "retrieval",
+        "rag",
+        "pipeline",
+        "vector",
+        "components",
+        "verify",
+        "guardrails",
+        "steps"
+      ]
+    },
+    {
+      "id": "workflow-creator",
+      "description": "Create new antigravity workflows",
+      "path": "workflow-creator/WORKFLOW.md",
+      "triggers": [
+        "workflow-creator"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "steps",
+        "guardrails",
+        "analyze",
+        "core",
+        "principles",
+        "reference",
+        "don",
+        "creator"
+      ]
+    }
+  ]
+}

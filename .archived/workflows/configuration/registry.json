@@ -1,0 +1,26 @@
+{
+  "category_id": "configuration",
+  "category_name": "⚙️ Configuration",
+  "workflows": [
+    {
+      "id": "env-config",
+      "description": "Manage environment variables securely",
+      "path": "env-config/WORKFLOW.md",
+      "triggers": [
+        "env-config"
+      ],
+      "required_skills": [],
+      "entry_point": null,
+      "tags": [
+        "env",
+        "config",
+        "validate",
+        "variables",
+        "secrets",
+        "app",
+        "database",
+        "external"
+      ]
+    }
+  ]
+}
