@@ -1657,6 +1657,51 @@ Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*
 
 ---
 
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1335
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
 > **Total Installed Skills:** 1337
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 

@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 import json
+import argparse
 from datetime import datetime
 from pathlib import Path
 
@@ -10,46 +11,63 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 WORKFLOWS_DIR = ROOT_DIR / ".archived" / "workflows"
 STAGING_DIR = ROOT_DIR / ".archived" / "workflows_reorganized"
 WORKFLOWS_MD = ROOT_DIR / "WORKFLOWS.md"
+ROOT_REGISTRY_JSON = WORKFLOWS_DIR / "registry.json"
 
 def slugify(text):
     text = re.sub(r'[^\w\s-]', '', text).strip().lower()
     return re.sub(r'[-\s]+', '-', text)
 
+def get_desc(folder_path):
+    md_path = Path(folder_path) / "WORKFLOW.md"
+    if md_path.exists():
+        try:
+            content = md_path.read_text(encoding="utf-8")
+            desc_match = re.search(r"^description:\s*(.+)$", content, re.MULTILINE)
+            if desc_match:
+                return desc_match.group(1).strip().strip("'\"")
+        except:
+            pass
+    return Path(folder_path).name.replace("-", " ").title()
+
+def score_workflow(workflow_name, desc, category):
+    text = f"{workflow_name.lower().replace('-', ' ')} {desc.lower()}"
+    words = set(re.findall(r'\b\w+\b', text))
+    
+    score = 0
+    cat_id = category.get("category_id", "")
+    
+    for tag in category.get("domain_tags", []):
+        tag_lower = tag.lower()
+        if tag_lower in text: score += 5
+        if tag_lower in words: score += 3
+            
+    cat_words = set(re.findall(r'\b\w+\b', category.get("category_name", "").lower()))
+    for cw in cat_words:
+        if len(cw) > 3 and cw in words: score += 2
+            
+    if cat_id in text or cat_id.replace("-", " ") in text: score += 4
+        
+    return score
+
 def get_workflows_mapping():
     if not WORKFLOWS_MD.exists():
         return {}
-    
     full_content = WORKFLOWS_MD.read_text(encoding="utf-8")
-    
     mapping = {} 
-    # Use split instead of findall for robustness, with multiline support
     sections = re.split(r'^### (.*)$', full_content, flags=re.MULTILINE)
-    
     for i in range(1, len(sections), 2):
         cat_name = sections[i].strip()
         body = sections[i+1]
-        
-        # Regex to find links, capturing the workflow_id from the path
-        # [Name](.archived/workflows/category/workflow_id/WORKFLOW.md)
-        # OR [Name](.archived/workflows/filename.md)
-        # We look for the part right before WORKFLOW.md OR the filename itself
-        # Slashes can be / or \\ in markdown links depending on who wrote them
         links = re.findall(r'\[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(.*?)\)', body)
-        
         if links:
             ids = []
             for name, relative_path in links:
-                # relative_path might be "category/id/WORKFLOW.md" or "filename.md"
                 path_parts = relative_path.strip("/\\").replace("\\", "/").split("/")
-                if path_parts[-1] == "WORKFLOW.md":
-                    # The ID is the folder name just above WORKFLOW.md
-                    if len(path_parts) >= 2:
-                        ids.append(path_parts[-2] + ".md")
+                if path_parts[-1] == "WORKFLOW.md" and len(path_parts) >= 2:
+                    ids.append(path_parts[-2] + ".md")
                 else:
-                    # It's a flat filename
                     ids.append(path_parts[-1])
             mapping[cat_name] = ids
-            
     return mapping
 
 def generate_category_registry(cat_slug, cat_name, file_list, staging_path, original_content):
@@ -58,15 +76,11 @@ def generate_category_registry(cat_slug, cat_name, file_list, staging_path, orig
         "category_name": cat_name,
         "workflows": []
     }
-    
     for filename in sorted(file_list):
         workflow_id = filename.replace(".md", "")
-        # Robust search for description and slash command
         esc_id = re.escape(workflow_id)
-        # Handle both forward and backward slashes in content search
         row_pattern = rf'\| \[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(?:.*?){esc_id}(?:[/\\]WORKFLOW\.md|\.md)\) \| ([^|]+) \| ([^|]*?) \| ([^|]*?)? \|'
         match = re.search(row_pattern, original_content)
-        
         description = ""
         triggers = []
         if match:
@@ -75,30 +89,200 @@ def generate_category_registry(cat_slug, cat_name, file_list, staging_path, orig
             triggers = [slash.replace("/", "").replace("`", "")]
             description = desc
         
+        # Read the file for required skills matching
+        wf_path = Path(staging_path) / workflow_id / "WORKFLOW.md"
+        req_skills = []
+        if wf_path.exists():
+            content = wf_path.read_text(encoding="utf-8")
+            # We assume root skills registry exists
+            skills_dir = ROOT_DIR / ".archived" / "skills"
+            if (skills_dir / "registry.json").exists():
+                 try:
+                     s_reg = json.loads((skills_dir / "registry.json").read_text(encoding="utf-8"))
+                     known_skills = []
+                     for c in s_reg.get("categories", []):
+                         c_path = skills_dir / c["category_id"] / "registry.json"
+                         if c_path.exists():
+                             cr = json.loads(c_path.read_text(encoding="utf-8"))
+                             known_skills.extend([s["id"] for s in cr.get("skills", [])])
+                     
+                     found_skills = set()
+                     for s_id in known_skills:
+                         if re.search(r'(?i)@' + re.escape(s_id) + r'(?![a-zA-Z0-9_\-])', content):
+                             found_skills.add(s_id)
+                     req_skills = sorted(list(found_skills))
+                 except: pass
+
         registry["workflows"].append({
             "id": workflow_id,
             "description": description,
-            "path": f"{workflow_id}/WORKFLOW.md",  # Local path
-            "triggers": triggers,
-            "required_skills": [],
-            "entry_point": None
+            "path": f"{workflow_id}/WORKFLOW.md",
+            "triggers": triggers if triggers else [workflow_id],
+            "required_skills": req_skills,
+            "entry_point": None,
+            "tags": []
         })
-    
     registry_file = Path(staging_path) / "registry.json"
     registry_file.write_text(json.dumps(registry, indent=2, ensure_ascii=False), encoding="utf-8")
 
-def reorganize():
+def rebuild_workflows_md():
+    if not ROOT_REGISTRY_JSON.exists():
+        print("Root registry missing, cannot rebuild WORKFLOWS.md")
+        return
+
+    registry_data = json.loads(ROOT_REGISTRY_JSON.read_text(encoding="utf-8"))
+    categories = registry_data.get("categories", [])
+    
+    total_workflows = 0
+    new_sections = []
+    
+    for cat in sorted(categories, key=lambda x: x.get("category_name", "")):
+        cat_id = cat["category_id"]
+        cat_name = cat["category_name"]
+        
+        cat_registry_path = WORKFLOWS_DIR / cat_id / "registry.json"
+        if not cat_registry_path.exists(): continue
+        
+        try:
+            cat_reg = json.loads(cat_registry_path.read_text(encoding="utf-8"))
+        except: continue
+        
+        workflows = cat_reg.get("workflows", [])
+        if not workflows: continue
+        
+        total_workflows += len(workflows)
+        
+        section = f"\n### {cat_name}\n<details>\n\n"
+        section += "| Workflow | Command | Status | Description |\n|---|---|---|---|\n"
+        
+        for wf in sorted(workflows, key=lambda x: x.get("id", "")):
+            w_id = wf.get("id", "")
+            desc = wf.get("description", "")
+            trigger = wf.get("triggers", [w_id])[0] if wf.get("triggers") else w_id
+            cmd = f"/{trigger}"
+            status = "🚧 Custom" if w_id.startswith("custom-") else "✅ Ready"
+            link = f".archived/workflows/{cat_id}/{w_id}/WORKFLOW.md"
+            section += f"| [{w_id}]({link}) | {cmd} | {status} | {desc} |\n"
+            
+        section += "\n</details>\n"
+        new_sections.append(section)
+
+    full_text = WORKFLOWS_MD.read_text(encoding="utf-8")
+    header_end_idx = full_text.find("## 📂 Available Workflows")
+    
+    if header_end_idx != -1:
+        # Rebuild the dynamic header with the count
+        lines_before = full_text[:header_end_idx].splitlines()
+        header = "\n".join(lines_before) + f"\n## 📂 Available Workflows ({total_workflows})\n"
+        
+        footer = """
+---
+
+## 🤝 Contributing
+
+To add a new workflow:
+1. Develop it in `/tmp/my-workflow/WORKFLOW.md`
+2. Run `python scripts/reorganize_workflows_safe.py --target /tmp/my-workflow` to auto-categorize.
+
+---
+
+> **Repo:** [github.com/harikrishna8121999/antigravity-workflows](https://github.com/harikrishna8121999/antigravity-workflows)
+"""
+        WORKFLOWS_MD.write_text(header + "".join(new_sections) + footer, encoding="utf-8")
+        print(f"Updated WORKFLOWS.md with {total_workflows} strictly sourced workflows.")
+    else:
+        print("Error: Could not find ## 📂 Available Workflows marker in WORKFLOWS.md")
+
+def process_target(target_path):
+    target = Path(target_path)
+    if not target.exists() or not target.is_dir() or not (target / "WORKFLOW.md").exists():
+        print(f"Error: Target {target_path} is not a valid workflow folder (must contain WORKFLOW.md).")
+        return
+
+    name = target.name
+    desc = get_desc(target)
+
+    # Need root registry for NLP scoring
+    if not ROOT_REGISTRY_JSON.exists():
+        print("Root workflows registry missing! Run build_workflow_registries.py first.")
+        return
+        
+    registry_data = json.loads(ROOT_REGISTRY_JSON.read_text(encoding="utf-8"))
+    categories = registry_data.get("categories", [])
+    
+    best_score = -1
+    best_cat = None
+    for cat in categories:
+        score = score_workflow(name, desc, cat)
+        if score > best_score:
+            best_score = score
+            best_cat = cat["category_id"]
+            
+    target_cat = best_cat if best_score > 0 and best_cat else "miscellaneous"
+    
+    dest_path = WORKFLOWS_DIR / target_cat / name
+    
+    if dest_path.exists():
+        print(f"Update: Workflow {name} already exists in {target_cat}. Replacing it.")
+        shutil.rmtree(dest_path)
+        
+    shutil.move(str(target), str(dest_path))
+    print(f"Moved new workflow '{name}' to '{target_cat}'.")
+    
+    cat_registry_path = WORKFLOWS_DIR / target_cat / "registry.json"
+    if cat_registry_path.exists():
+        cat_reg = json.loads(cat_registry_path.read_text(encoding="utf-8"))
+        
+        # Remove old entry if updating
+        cat_reg["workflows"] = [w for w in cat_reg.get("workflows", []) if w.get("id") != name]
+        
+        # Find explicit skills if any
+        content = (dest_path / "WORKFLOW.md").read_text(encoding="utf-8")
+        skills_dir = ROOT_DIR / ".archived" / "skills"
+        req_skills = []
+        if (skills_dir / "registry.json").exists():
+             try:
+                 s_reg = json.loads((skills_dir / "registry.json").read_text(encoding="utf-8"))
+                 known_skills = []
+                 for c in s_reg.get("categories", []):
+                     c_path = skills_dir / c["category_id"] / "registry.json"
+                     if c_path.exists():
+                         cr = json.loads(c_path.read_text(encoding="utf-8"))
+                         known_skills.extend([s["id"] for s in cr.get("skills", [])])
+                 
+                 found_skills = set()
+                 for s_id in known_skills:
+                     if re.search(r'(?i)@' + re.escape(s_id) + r'(?![a-zA-Z0-9_\-])', content):
+                         found_skills.add(s_id)
+                 req_skills = sorted(list(found_skills))
+             except: pass
+             
+        cat_reg["workflows"].append({
+            "id": name,
+            "description": desc,
+            "path": f"{name}/WORKFLOW.md",
+            "triggers": [name],
+            "required_skills": req_skills,
+            "entry_point": None,
+            "tags": []
+        })
+        cat_reg["workflows"] = sorted(cat_reg["workflows"], key=lambda x: x.get("id", ""))
+        cat_registry_path.write_text(json.dumps(cat_reg, indent=2, ensure_ascii=False), encoding="utf-8")
+        
+    rebuild_workflows_md()
+    print("Targeted ingestion complete.")
+
+def reorganize_full():
     mapping = get_workflows_mapping()
     
-    # 1. Prepare clean staging area
     if STAGING_DIR.exists():
         shutil.rmtree(STAGING_DIR)
     STAGING_DIR.mkdir(parents=True)
     
-    # 2. Index all actual physical files
     all_files = {} 
     for r, d, files in os.walk(WORKFLOWS_DIR):
         root = Path(r)
+        if root.name == ".git": continue
         for f in files:
             if f.endswith(".md") and " copy" not in f:
                 if f == "WORKFLOW.md":
@@ -110,7 +294,6 @@ def reorganize():
     original_content = WORKFLOWS_MD.read_text(encoding="utf-8")
     moved_filenames = set()
     
-    # 3. Process categories and generate sharded registries
     for cat_name, file_list in mapping.items():
         cat_slug = slugify(cat_name)
         cat_staging_path = STAGING_DIR / cat_slug
@@ -126,11 +309,9 @@ def reorganize():
                 moved_filenames.add(filename)
                 valid_files_in_cat.append(filename)
         
-        # Generate Registry for this category
         if valid_files_in_cat:
             generate_category_registry(cat_slug, cat_name, valid_files_in_cat, cat_staging_path, original_content)
                 
-    # 4. Handle miscellaneous
     misc_path = STAGING_DIR / "miscellaneous"
     misc_files = []
     for filename, full_path in all_files.items():
@@ -145,116 +326,39 @@ def reorganize():
     if misc_files:
         generate_category_registry("miscellaneous", "📦 Miscellaneous", misc_files, misc_path, original_content)
 
-    # 5. Reconstruct WORKFLOWS.md content
-    total_workflows = sum(len(v) for v in mapping.values())
-    
-    header_part = f"""# Antigravity Workflows 🚀
-
-**Stack-agnostic, question-driven workflows for the Antigravity IDE.**
-
-> Sourced from [antigravity-workflows](https://github.com/harikrishna8121999/antigravity-workflows)
-
----
-
-## ⚡ Quick Start
-
-Trigger any workflow by typing its slash command in the chat:
-
-| Feature | Commands |
-|---|---|
-| **Project Setup** | `/new-project`, `/new-component`, `/new-api` |
-| **Git Automation** | `/git-commit`, `/git-pr`, `/git-conflict` |
-| **Testing** | `/unit-test`, `/e2e-test`, `/playwright-test` |
-| **Deployment** | `/deploy`, `/docker`, `/railway-deploy` |
-
----
-
-## 🛠️ Companion Tools
-
-Need to extend the workspace? Use these specialized creators:
-
-| Tool | Command | Description |
-|---|---|---|
-| **Workflow Creator** | `/workflow-creator` | Build new multi-step developer workflows |
-| **Skill Creator** | `/skill-creator` | Create specialized expert knowledge modules |
-
----
-
-## 🏗️ Philosophy
-
-| Principle | Description |
-|---|---|
-| **Stack-Agnostic** | Works with React, Vue, Angular, Django, or any stack |
-| **Question-Driven** | Asks clarifying questions for better results |
-| **Progressive Disclosure** | Loads minimal context first, expands on demand |
-| **Single Responsibility** | Each workflow does ONE thing well |
-| **Composable** | Combine workflows for complex tasks |
-
----
-
-## 📂 Available Workflows ({total_workflows})
-"""
-    
-    new_sections = []
-    for cat_name in sorted(mapping.keys()):
-        file_list = mapping[cat_name]
-        cat_slug = slugify(cat_name)
-        
-        section = f"\n### {cat_name}\n"
-        section += f"<details>\n\n"
-        section += "| Workflow | Command | Status | Description |\n"
-        section += "|---|---|---|---|\n"
-        
-        for filename in sorted(file_list):
-            workflow_id = filename.replace(".md", "")
-            esc_id = re.escape(workflow_id)
-            # Match current paths correctly
-            row_pattern = rf'\| \[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(?:.*?){esc_id}(?:[/\\]WORKFLOW\.md|\.md)\) \| ([^|]+) \| ([^|]*?) \| ([^|]*?)? \|'
-            match = re.search(row_pattern, original_content)
-            
-            if match:
-                display_name = match.group(1).strip()
-                slash = match.group(2).strip()
-                desc = match.group(4).strip() if match.group(4) else match.group(3).strip()
-                status = "✅ Ready" if not filename.startswith("custom-") else "🚧 Custom"
-                # Standardize links to use forward slashes for Markdown/Web compatibility
-                section += f"| [{display_name}](.archived/workflows/{cat_slug}/{workflow_id}/WORKFLOW.md) | {slash} | {status} | {desc} |\n"
-        
-        section += "\n</details>\n"
-        new_sections.append(section)
-        
-    footer = f"""
----
-
-## 🤝 Contributing
-
-To add a new workflow:
-1. Stage your file in `.archived/workflows/` (root).
-2. Register it in the `WORKFLOWS.md` tables.
-3. Run the reorganization script: `python scripts/reorganize_workflows_safe.py`.
-
----
-
-> **Repo:** [github.com/harikrishna8121999/antigravity-workflows](https://github.com/harikrishna8121999/antigravity-workflows)
-"""
-
-    WORKFLOWS_MD.write_text(header_part.strip() + "\n" + "".join(new_sections) + footer, encoding="utf-8")
-        
-    total_wf_files = 0
-    for r, d, files in os.walk(STAGING_DIR):
-        if "WORKFLOW.md" in files: total_wf_files += 1
+    total_wf_files = sum(1 for _, _, files in os.walk(STAGING_DIR) if "WORKFLOW.md" in files)
 
     if total_wf_files == 0:
         print("Error: Staging directory contains no workflows. Aborting swap.")
         return
 
+    # To preserve registry structures generated by build_workflow_registries.py, copy over any registry files
+    # not overridden by generation.
+    for r, d, files in os.walk(WORKFLOWS_DIR):
+        if "registry.json" in files:
+            rel = Path(r).relative_to(WORKFLOWS_DIR)
+            st_path = STAGING_DIR / rel / "registry.json"
+            if not st_path.exists() and (STAGING_DIR / rel).exists():
+                shutil.copy2(Path(r) / "registry.json", st_path)
+    
+    if (WORKFLOWS_DIR / "registry.json").exists():
+        shutil.copy2(WORKFLOWS_DIR / "registry.json", STAGING_DIR / "registry.json")
+
     final_backup = WORKFLOWS_DIR.parent / (WORKFLOWS_DIR.name + "_old_before_reorg")
     if final_backup.exists(): shutil.rmtree(final_backup)
     
-    # Perform atomic-ish swap
     os.rename(WORKFLOWS_DIR, final_backup)
     os.rename(STAGING_DIR, WORKFLOWS_DIR)
+    
     print(f"Reorganization success! {total_wf_files} workflows safely synchronized.")
+    rebuild_workflows_md()
 
 if __name__ == "__main__":
-    reorganize()
+    parser = argparse.ArgumentParser(description="Reorganize workflows safely.")
+    parser.add_argument("--target", type=str, help="Path to a single workflow folder inside /tmp/ to ingest without sweeping.")
+    args = parser.parse_args()
+    
+    if args.target:
+        process_target(args.target)
+    else:
+        reorganize_full()

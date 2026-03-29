@@ -24,9 +24,11 @@
     },
     {
       "id": "library",
-      "description": "",
+      "description": "✅ Ready",
       "path": "library/WORKFLOW.md",
-      "triggers": [],
+      "triggers": [
+        "library"
+      ],
       "required_skills": [],
       "entry_point": null,
       "tags": [
@@ -42,9 +44,11 @@
     },
     {
       "id": "nextjs-app",
-      "description": "",
+      "description": "✅ Ready",
       "path": "nextjs-app/WORKFLOW.md",
-      "triggers": [],
+      "triggers": [
+        "nextjs-app"
+      ],
       "required_skills": [],
       "entry_point": null,
       "tags": [

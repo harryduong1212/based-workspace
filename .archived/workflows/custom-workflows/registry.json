@@ -29,7 +29,9 @@
       "triggers": [
         "custom-generate-api-spec"
       ],
-      "required_skills": [],
+      "required_skills": [
+        "backend-architect"
+      ],
       "entry_point": null,
       "tags": [
         "api",
@@ -49,7 +51,9 @@
       "triggers": [
         "custom-generate-db-schema"
       ],
-      "required_skills": [],
+      "required_skills": [
+        "database-architect"
+      ],
       "entry_point": null,
       "tags": [
         "schema",
@@ -69,7 +73,11 @@
       "triggers": [
         "custom-generate-feature-spec"
       ],
-      "required_skills": [],
+      "required_skills": [
+        "custom-senior-it-ba-specialist",
+        "senior-product-manager",
+        "ui-ux-designer"
+      ],
       "entry_point": null,
       "tags": [
         "executed",
@@ -89,7 +97,9 @@
       "triggers": [
         "custom-generate-sequence-diagram"
       ],
-      "required_skills": [],
+      "required_skills": [
+        "senior-architect"
+      ],
       "entry_point": null,
       "tags": [
         "mermaid",
