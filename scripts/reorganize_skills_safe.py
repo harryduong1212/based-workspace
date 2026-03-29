@@ -3,12 +3,13 @@ import re
 import shutil
 import json
 from datetime import datetime
+from pathlib import Path
 
 # Configuration
-ROOT_DIR = r"h:\WORKSPACE\Personal\Vibe\based-workspace"
-SKILLS_MD = os.path.join(ROOT_DIR, "SKILLS.md")
-SKILLS_DIR = os.path.join(ROOT_DIR, ".archived", "skills")
-NEW_SKILLS_DIR = os.path.join(ROOT_DIR, ".archived", "skills_reorganized")
+ROOT_DIR = Path(__file__).resolve().parent.parent
+SKILLS_MD = ROOT_DIR / "SKILLS.md"
+SKILLS_DIR = ROOT_DIR / ".archived" / "skills"
+NEW_SKILLS_DIR = ROOT_DIR / ".archived" / "skills_reorganized"
 
 def slugify(text):
     text = re.sub(r"[\U00010000-\U0010ffff]", "", text) # Remove emojis
@@ -16,17 +17,16 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text).strip("-")
 
 def get_desc(folder_path):
-    md_path = os.path.join(folder_path, "SKILL.md")
-    if os.path.exists(md_path):
+    md_path = Path(folder_path) / "SKILL.md"
+    if md_path.exists():
         try:
-            with open(md_path, "r", encoding="utf-8") as f:
-                content = f.read()
+            content = md_path.read_text(encoding="utf-8")
             desc_match = re.search(r"^description:\s*(.+)$", content, re.MULTILINE)
             if desc_match:
                 return desc_match.group(1).strip().strip("'\"")
         except:
             pass
-    return os.path.basename(folder_path).replace("-", " ").title()
+    return Path(folder_path).name.replace("-", " ").title()
 
 def generate_category_registry(cat_slug, cat_name, skills, staging_path):
     registry = {
@@ -53,18 +53,15 @@ def generate_category_registry(cat_slug, cat_name, skills, staging_path):
             "tags": []  # To be filled by generate_deep_tags.py
         })
         
-    registry_file = os.path.join(staging_path, "registry.json")
-    with open(registry_file, "w", encoding="utf-8") as f:
-        json.dump(registry, f, indent=2, ensure_ascii=False)
+    registry_file = Path(staging_path) / "registry.json"
+    registry_file.write_text(json.dumps(registry, indent=2, ensure_ascii=False), encoding="utf-8")
 
 def reorganize():
-    if not os.path.exists(SKILLS_DIR):
-        print("Error: Skills directory not found.")
+    if not SKILLS_DIR.exists():
+        print(f"Error: Skills directory not found at {SKILLS_DIR}")
         return
 
-    with open(SKILLS_MD, "r", encoding="utf-8") as f:
-        full_text = f.read()
-    
+    full_text = SKILLS_MD.read_text(encoding="utf-8")
     lines = full_text.splitlines()
 
     categories = {}
@@ -95,20 +92,18 @@ def reorganize():
 
     # 2. Index all actual physical folders
     all_skill_folders = {} 
-    for item in os.listdir(SKILLS_DIR):
-        item_path = os.path.join(SKILLS_DIR, item)
-        if not os.path.isdir(item_path) or item in [".git", "node_modules"]:
+    for item in SKILLS_DIR.iterdir():
+        if not item.is_dir() or item.name in [".git", "node_modules"]:
             continue
         
         # Check if it's already a category folder (slug)
-        is_slug = any(item == cat["slug"] for cat in categories.values())
+        is_slug = any(item.name == cat["slug"] for cat in categories.values())
         if is_slug:
-            for sub in os.listdir(item_path):
-                sub_path = os.path.join(item_path, sub)
-                if os.path.isdir(sub_path):
-                    all_skill_folders[sub] = sub_path
+            for sub in item.iterdir():
+                if sub.is_dir():
+                    all_skill_folders[sub.name] = sub
         else:
-            all_skill_folders[item] = item_path
+            all_skill_folders[item.name] = item
 
     # 3. Categorize undocumented skills
     explicit_map = {
@@ -126,19 +121,19 @@ def reorganize():
             categories[target_cat]["skills"].append({"name": name, "desc": desc})
 
     # 4. Build Staging Directory
-    if os.path.exists(NEW_SKILLS_DIR): shutil.rmtree(NEW_SKILLS_DIR)
-    os.makedirs(NEW_SKILLS_DIR)
+    if NEW_SKILLS_DIR.exists(): shutil.rmtree(NEW_SKILLS_DIR)
+    NEW_SKILLS_DIR.mkdir(parents=True)
 
     total_count = 0
     for cat_name in cat_order:
         data = categories[cat_name]
-        cat_staging_path = os.path.join(NEW_SKILLS_DIR, data["slug"])
-        os.makedirs(cat_staging_path, exist_ok=True)
+        cat_staging_path = NEW_SKILLS_DIR / data["slug"]
+        cat_staging_path.mkdir(parents=True, exist_ok=True)
         
         for skill in data["skills"]:
             name = skill["name"]
             if name in all_skill_folders:
-                shutil.copytree(all_skill_folders[name], os.path.join(cat_staging_path, name), dirs_exist_ok=True)
+                shutil.copytree(all_skill_folders[name], cat_staging_path / name, dirs_exist_ok=True)
                 total_count += 1
                 skill["new_path"] = f".archived/skills/{data['slug']}/{name}/SKILL.md"
 
@@ -147,9 +142,9 @@ def reorganize():
             generate_category_registry(data["slug"], cat_name, data["skills"], cat_staging_path)
 
     # 5. Copy root files
-    for item in os.listdir(SKILLS_DIR):
-        if os.path.isfile(os.path.join(SKILLS_DIR, item)):
-            shutil.copy2(os.path.join(SKILLS_DIR, item), os.path.join(NEW_SKILLS_DIR, item))
+    for item in SKILLS_DIR.iterdir():
+        if item.is_file():
+            shutil.copy2(item, NEW_SKILLS_DIR / item.name)
 
     # 6. Safety Check
     if total_count == 0:
@@ -178,13 +173,17 @@ def reorganize():
     
     if start_match and end_match:
         header = full_text[:start_match.end()]
-        footer_start = end_match.start()
         
         finding_skills = f"""## Finding Skills
 
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 
-**PowerShell:**
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
 ```powershell
 Get-ChildItem -Path ".archived\\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
 ```
@@ -193,21 +192,17 @@ Get-ChildItem -Path ".archived\\skills" -Recurse -Depth 1 -Directory -Exclude ".
 
 > **Total Installed Skills:** {total_count}
 """
-        # We replace the whole block from end of start_match to end of file (or footer)
-        # But we need to preserve whatever was after Finding Skills?
-        # Actually the script previously used split(end_marker)[1]
-        
         parts = full_text.split(end_match.group(0))
         post_footer = parts[1] if len(parts) > 1 else ""
         
-        with open(SKILLS_MD, "w", encoding="utf-8") as f:
-            f.write(header + "".join(new_md_lines) + finding_skills + post_footer)
+        SKILLS_MD.write_text(header + "".join(new_md_lines) + finding_skills + post_footer, encoding="utf-8")
     else:
         print("Error: Could not find markers in SKILLS.md")
 
     # 8. Final Swap
-    backup_path = SKILLS_DIR + "_safe_backup_reorg"
-    if os.path.exists(backup_path): shutil.rmtree(backup_path)
+    backup_path = SKILLS_DIR.parent / (SKILLS_DIR.name + "_safe_backup_reorg")
+    if backup_path.exists(): shutil.rmtree(backup_path)
+    
     os.rename(SKILLS_DIR, backup_path)
     os.rename(NEW_SKILLS_DIR, SKILLS_DIR)
     

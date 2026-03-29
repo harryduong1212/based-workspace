@@ -25,7 +25,7 @@ let buffer = '';
 // Intercept and sanitize the stdout stream
 child.stdout.on('data', (data) => {
     buffer += data.toString();
-    let lines = buffer.split('\n');
+    let lines = buffer.split(/\r?\n/);
 
     // Keep the last partial segment in the buffer until the line completes
     buffer = lines.pop();
