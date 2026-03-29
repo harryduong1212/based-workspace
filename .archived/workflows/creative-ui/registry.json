@@ -5,7 +5,7 @@
     {
       "id": "dashboard-ui",
       "description": "Create admin dashboards (any stack)",
-      "path": "dashboard-ui/WORKFLOW.md",
+      "path": "dashboard-ui.md",
       "triggers": [
         "dashboard-ui"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "design-system",
       "description": "Create and analyze design tokens",
-      "path": "design-system/WORKFLOW.md",
+      "path": "design-system.md",
       "triggers": [
         "design-system"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "email-template",
       "description": "Design responsive emails",
-      "path": "email-template/WORKFLOW.md",
+      "path": "email-template.md",
       "triggers": [
         "email-template"
       ],
@@ -65,7 +65,7 @@
     {
       "id": "landing-page",
       "description": "Build landing pages (any stack)",
-      "path": "landing-page/WORKFLOW.md",
+      "path": "landing-page.md",
       "triggers": [
         "landing-page"
       ],

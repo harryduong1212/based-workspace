@@ -5,7 +5,7 @@
     {
       "id": "cli-tool",
       "description": "Build command-line applications",
-      "path": "cli-tool/WORKFLOW.md",
+      "path": "cli-tool.md",
       "triggers": [
         "cli-tool"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "migrate",
       "description": "Technology migrations (JS→TS, framework upgrades)",
-      "path": "migrate/WORKFLOW.md",
+      "path": "migrate.md",
       "triggers": [
         "migrate"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "new-api",
       "description": "Create API endpoints (any backend)",
-      "path": "new-api/WORKFLOW.md",
+      "path": "new-api.md",
       "triggers": [
         "new-api"
       ],
@@ -65,7 +65,7 @@
     {
       "id": "new-component",
       "description": "Create reusable UI components (any framework)",
-      "path": "new-component/WORKFLOW.md",
+      "path": "new-component.md",
       "triggers": [
         "new-component"
       ],
@@ -85,7 +85,7 @@
     {
       "id": "new-feature",
       "description": "Full feature implementation from design to deployment",
-      "path": "new-feature/WORKFLOW.md",
+      "path": "new-feature.md",
       "triggers": [
         "new-feature"
       ],
@@ -105,7 +105,7 @@
     {
       "id": "new-project",
       "description": "Scaffold any project (detects or asks for stack)",
-      "path": "new-project/WORKFLOW.md",
+      "path": "new-project.md",
       "triggers": [
         "new-project"
       ],
@@ -125,7 +125,7 @@
     {
       "id": "refactor",
       "description": "Improve code quality, extract, reduce duplication",
-      "path": "refactor/WORKFLOW.md",
+      "path": "refactor.md",
       "triggers": [
         "refactor"
       ],

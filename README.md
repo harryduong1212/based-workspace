@@ -4,14 +4,12 @@
 
 Works on **Windows 11 · macOS · Linux**.
 
----
-
 ### 🆕 What's New? (March 2026)
 
 - **Registry Sharding**: Both the massive 1,300+ skill index and the 50+ workflow registry are now sharded by category for lightning-fast loading and zero merge conflicts.
 - **Deep Tag Extraction**: Assets (Skills & Workflows) are now automatically tagged with technologies (`fastapi`, `tailwind`) and protocols (`grpc`, `oauth`) extracted directly from their instruction files.
 - **Root-Level Indexing**: `SKILLS.md`, `WORKFLOWS.md`, and `RULES.md` are now conveniently located in the repository root for easier browsing.
-- **Smart Cleanup**: Maintenance scripts (`reorganize_*.py`) now automatically prune orphaned registry entries, keeping your library 100% clean.
+- **Safe Reorganization**: Maintenance scripts (`reorganize_*.py`) now automatically maintain folder hierarchies and prune orphaned registry entries, keeping your library 100% clean.
 - **MCP Security**: New `MCP_GUIDE.md` and secure wrapper scripts ensure your database passwords never touch a JSON config.
 
 ---
@@ -132,6 +130,30 @@ The AI assistant will automatically pick up:
 > [!TIP]
 > If you don't use `grep_app`, you can disable it by adding an underscore to its name in `.vscode/mcp.json` (e.g., `"_grep_app"`). This prevents startup errors while keeping the configuration for future use.
 
+### 6. Manage Your Workspace Context
+
+Use the `workspace_manager.py` script to dynamically load the specific skills and workflows you need for your current task. 
+
+**Load a developer profile:**
+```bash
+python scripts/workspace_manager.py --profile java-backend-dev
+```
+
+**Load multiple profiles at once:**
+```bash
+python scripts/workspace_manager.py --profile "n8n-orchestrator,technical-project-manager"
+```
+
+**Add specific skills or workflows on the fly:**
+```bash
+python scripts/workspace_manager.py --skills "postgresql-optimization" --workflows "custom-feature-kickoff"
+```
+
+**Clear your active context (removes everything except preserved skills):**
+```bash
+python scripts/workspace_manager.py --clear
+```
+
 ---
 
 ## Using with Your Projects
@@ -248,6 +270,8 @@ based-workspace/
 │
 ├── scripts/
 │   ├── setup_env.py              ← 🛠️ Env initialization script
+│   ├── workspace_manager.py      ← 🕹️ Active context controller (Profiles & Assets)
+│   ├── profiles.json             ← 📋 Predefined role-based profile definitions
 │   ├── reorganize_skills_safe.py ← 🔄 Skill reorganization & registry sync
 │   ├── reorganize_workflows_safe.py ← 🔄 Workflow reorganization & registry sync
 │   ├── generate_deep_tags.py     ← 🧠 Deep Tag Extraction for Registered Assets

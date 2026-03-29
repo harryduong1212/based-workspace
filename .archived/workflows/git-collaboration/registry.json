@@ -5,7 +5,7 @@
     {
       "id": "git-commit",
       "description": "Generate conventional commits from staged changes",
-      "path": "git-commit/WORKFLOW.md",
+      "path": "git-commit.md",
       "triggers": [
         "git-commit"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "git-conflict",
       "description": "Help resolve merge conflicts",
-      "path": "git-conflict/WORKFLOW.md",
+      "path": "git-conflict.md",
       "triggers": [
         "git-conflict"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "git-pr",
       "description": "Create comprehensive PR descriptions",
-      "path": "git-pr/WORKFLOW.md",
+      "path": "git-pr.md",
       "triggers": [
         "git-pr"
       ],
@@ -65,7 +65,7 @@
     {
       "id": "git-rebase",
       "description": "Interactive rebase assistance",
-      "path": "git-rebase/WORKFLOW.md",
+      "path": "git-rebase.md",
       "triggers": [
         "git-rebase"
       ],

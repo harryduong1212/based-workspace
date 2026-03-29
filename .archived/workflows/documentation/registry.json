@@ -5,7 +5,7 @@
     {
       "id": "api-docs",
       "description": "Generate API documentation (OpenAPI, JSDoc)",
-      "path": "api-docs/WORKFLOW.md",
+      "path": "api-docs.md",
       "triggers": [
         "api-docs"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "architecture",
       "description": "Create architecture diagrams (Mermaid, C4)",
-      "path": "architecture/WORKFLOW.md",
+      "path": "architecture.md",
       "triggers": [
         "architecture"
       ],

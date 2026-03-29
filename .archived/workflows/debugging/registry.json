@@ -5,7 +5,7 @@
     {
       "id": "debug-error",
       "description": "Analyze errors and suggest fixes",
-      "path": "debug-error/WORKFLOW.md",
+      "path": "debug-error.md",
       "triggers": [
         "debug-error"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "debug-log",
       "description": "Add strategic logging/debugging",
-      "path": "debug-log/WORKFLOW.md",
+      "path": "debug-log.md",
       "triggers": [
         "debug-log"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "performance",
       "description": "Profile and optimize slow code",
-      "path": "performance/WORKFLOW.md",
+      "path": "performance.md",
       "triggers": [
         "performance"
       ],

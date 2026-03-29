@@ -5,7 +5,7 @@
     {
       "id": "ai-agent",
       "description": "Create AI agents with tools",
-      "path": "ai-agent/WORKFLOW.md",
+      "path": "ai-agent.md",
       "triggers": [
         "ai-agent"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "prompt-engineering",
       "description": "Design and optimize LLM prompts",
-      "path": "prompt-engineering/WORKFLOW.md",
+      "path": "prompt-engineering.md",
       "triggers": [
         "prompt-engineering"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "rag-pipeline",
       "description": "Build retrieval-augmented generation",
-      "path": "rag-pipeline/WORKFLOW.md",
+      "path": "rag-pipeline.md",
       "triggers": [
         "rag-pipeline"
       ],
@@ -65,7 +65,7 @@
     {
       "id": "workflow-creator",
       "description": "Create new antigravity workflows",
-      "path": "workflow-creator/WORKFLOW.md",
+      "path": "workflow-creator.md",
       "triggers": [
         "workflow-creator"
       ],

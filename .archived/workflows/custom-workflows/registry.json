@@ -5,7 +5,7 @@
     {
       "id": "custom-feature-kickoff",
       "description": "🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep",
-      "path": "custom-feature-kickoff/WORKFLOW.md",
+      "path": "custom-feature-kickoff.md",
       "triggers": [
         "custom-feature-kickoff"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "custom-generate-api-spec",
       "description": "🔌 Generates standardized API contracts based on the SRS and DB Schema",
-      "path": "custom-generate-api-spec/WORKFLOW.md",
+      "path": "custom-generate-api-spec.md",
       "triggers": [
         "custom-generate-api-spec"
       ],
@@ -47,7 +47,7 @@
     {
       "id": "custom-generate-db-schema",
       "description": "🗄️ Transforms SRS into a finalized database schema and ERD",
-      "path": "custom-generate-db-schema/WORKFLOW.md",
+      "path": "custom-generate-db-schema.md",
       "triggers": [
         "custom-generate-db-schema"
       ],
@@ -69,7 +69,7 @@
     {
       "id": "custom-generate-feature-spec",
       "description": "📋 Coordination to transform a raw idea into a standardized SRS",
-      "path": "custom-generate-feature-spec/WORKFLOW.md",
+      "path": "custom-generate-feature-spec.md",
       "triggers": [
         "custom-generate-feature-spec"
       ],
@@ -93,7 +93,7 @@
     {
       "id": "custom-generate-sequence-diagram",
       "description": "🔀 Maps the interaction flow between users, system, and services",
-      "path": "custom-generate-sequence-diagram/WORKFLOW.md",
+      "path": "custom-generate-sequence-diagram.md",
       "triggers": [
         "custom-generate-sequence-diagram"
       ],
@@ -115,7 +115,7 @@
     {
       "id": "git-commit-group-changes",
       "description": "📦 Automatically groups and commits changes by logical feature",
-      "path": "git-commit-group-changes/WORKFLOW.md",
+      "path": "git-commit-group-changes.md",
       "triggers": [
         "git-commit-group-changes"
       ],

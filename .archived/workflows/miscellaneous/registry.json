@@ -3,29 +3,9 @@
   "category_name": "📦 Miscellaneous",
   "workflows": [
     {
-      "id": "WORKFLOW",
-      "description": "Perform comprehensive accessibility audit",
-      "path": "WORKFLOW/WORKFLOW.md",
-      "triggers": [
-        "accessibility-audit"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "test",
-        "mocking",
-        "testing",
-        "vitest",
-        "jest",
-        "mocha",
-        "unit",
-        "tests"
-      ]
-    },
-    {
       "id": "library",
       "description": "✅ Ready",
-      "path": "library/WORKFLOW.md",
+      "path": "library.md",
       "triggers": [
         "library"
       ],
@@ -45,7 +25,7 @@
     {
       "id": "nextjs-app",
       "description": "✅ Ready",
-      "path": "nextjs-app/WORKFLOW.md",
+      "path": "nextjs-app.md",
       "triggers": [
         "nextjs-app"
       ],

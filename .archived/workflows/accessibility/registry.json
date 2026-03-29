@@ -5,7 +5,7 @@
     {
       "id": "accessibility-audit",
       "description": "Perform comprehensive accessibility audit",
-      "path": "accessibility-audit/WORKFLOW.md",
+      "path": "accessibility-audit.md",
       "triggers": [
         "accessibility-audit"
       ],

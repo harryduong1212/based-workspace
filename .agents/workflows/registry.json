@@ -1,0 +1,120 @@
+{
+  "category_id": "active-workspace-workflows",
+  "category_name": "Active Workspace Workflows",
+  "workflows": [
+    {
+      "id": "env-config",
+      "description": "Manage environment variables securely",
+      "path": "configuration-env-config.md",
+      "root_category_id": "configuration",
+      "triggers": [
+        "env-config"
+      ],
+      "tags": [
+        "env",
+        "config",
+        "validate",
+        "variables",
+        "secrets",
+        "app",
+        "database",
+        "external"
+      ]
+    },
+    {
+      "id": "git-commit",
+      "description": "Generate conventional commits from staged changes",
+      "path": "git-collaboration-git-commit.md",
+      "root_category_id": "git-collaboration",
+      "triggers": [
+        "git-commit"
+      ],
+      "tags": [
+        "commit",
+        "git",
+        "add",
+        "staged",
+        "changes",
+        "determine",
+        "identify",
+        "scope"
+      ]
+    },
+    {
+      "id": "git-commit-group-changes",
+      "description": "\ud83d\udce6 Automatically groups and commits changes by logical feature",
+      "path": "custom-workflows-git-commit-group-changes.md",
+      "root_category_id": "custom-workflows",
+      "triggers": [
+        "git-commit-group-changes"
+      ],
+      "tags": [
+        "group",
+        "commit",
+        "changes",
+        "scope",
+        "logical",
+        "reference",
+        "formatting",
+        "pom"
+      ]
+    },
+    {
+      "id": "git-conflict",
+      "description": "Help resolve merge conflicts",
+      "path": "git-collaboration-git-conflict.md",
+      "root_category_id": "git-collaboration",
+      "triggers": [
+        "git-conflict"
+      ],
+      "tags": [
+        "resolution",
+        "conflict",
+        "conflicts",
+        "git",
+        "understand",
+        "merge",
+        "identify",
+        "guardrails"
+      ]
+    },
+    {
+      "id": "git-pr",
+      "description": "Create comprehensive PR descriptions",
+      "path": "git-collaboration-git-pr.md",
+      "root_category_id": "git-collaboration",
+      "triggers": [
+        "git-pr"
+      ],
+      "tags": [
+        "changes",
+        "git",
+        "analyze",
+        "content",
+        "guardrails",
+        "steps",
+        "understand",
+        "context"
+      ]
+    },
+    {
+      "id": "git-rebase",
+      "description": "Interactive rebase assistance",
+      "path": "git-collaboration-git-rebase.md",
+      "root_category_id": "git-collaboration",
+      "triggers": [
+        "git-rebase"
+      ],
+      "tags": [
+        "rebase",
+        "git",
+        "resolve",
+        "understand",
+        "conflicts",
+        "squash",
+        "guardrails",
+        "steps"
+      ]
+    }
+  ]
+}

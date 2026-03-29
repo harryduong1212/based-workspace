@@ -17,9 +17,9 @@ def slugify(text):
     text = re.sub(r'[^\w\s-]', '', text).strip().lower()
     return re.sub(r'[-\s]+', '-', text)
 
-def get_desc(folder_path):
-    md_path = Path(folder_path) / "WORKFLOW.md"
-    if md_path.exists():
+def get_desc(file_path):
+    md_path = Path(file_path)
+    if md_path.exists() and md_path.is_file():
         try:
             content = md_path.read_text(encoding="utf-8")
             desc_match = re.search(r"^description:\s*(.+)$", content, re.MULTILINE)
@@ -27,7 +27,7 @@ def get_desc(folder_path):
                 return desc_match.group(1).strip().strip("'\"")
         except:
             pass
-    return Path(folder_path).name.replace("-", " ").title()
+    return Path(file_path).stem.replace("-", " ").title()
 
 def score_workflow(workflow_name, desc, category):
     text = f"{workflow_name.lower().replace('-', ' ')} {desc.lower()}"
@@ -63,10 +63,13 @@ def get_workflows_mapping():
             ids = []
             for name, relative_path in links:
                 path_parts = relative_path.strip("/\\").replace("\\", "/").split("/")
-                if path_parts[-1] == "WORKFLOW.md" and len(path_parts) >= 2:
-                    ids.append(path_parts[-2] + ".md")
+                if path_parts[-1].endswith(".md"):
+                    if path_parts[-1] == "WORKFLOW.md" and len(path_parts) >= 2:
+                        ids.append(path_parts[-2] + ".md")
+                    else:
+                        ids.append(path_parts[-1])
                 else:
-                    ids.append(path_parts[-1])
+                    ids.append(path_parts[-1] + ".md")
             mapping[cat_name] = ids
     return mapping
 
@@ -90,9 +93,9 @@ def generate_category_registry(cat_slug, cat_name, file_list, staging_path, orig
             description = desc
         
         # Read the file for required skills matching
-        wf_path = Path(staging_path) / workflow_id / "WORKFLOW.md"
+        wf_path = Path(staging_path) / filename
         req_skills = []
-        if wf_path.exists():
+        if wf_path.exists() and wf_path.is_file():
             content = wf_path.read_text(encoding="utf-8")
             # We assume root skills registry exists
             skills_dir = ROOT_DIR / ".archived" / "skills"
@@ -116,7 +119,7 @@ def generate_category_registry(cat_slug, cat_name, file_list, staging_path, orig
         registry["workflows"].append({
             "id": workflow_id,
             "description": description,
-            "path": f"{workflow_id}/WORKFLOW.md",
+            "path": filename,
             "triggers": triggers if triggers else [workflow_id],
             "required_skills": req_skills,
             "entry_point": None,
@@ -161,7 +164,7 @@ def rebuild_workflows_md():
             trigger = wf.get("triggers", [w_id])[0] if wf.get("triggers") else w_id
             cmd = f"/{trigger}"
             status = "🚧 Custom" if w_id.startswith("custom-") else "✅ Ready"
-            link = f".archived/workflows/{cat_id}/{w_id}/WORKFLOW.md"
+            link = f".archived/workflows/{cat_id}/{w_id}.md"
             section += f"| [{w_id}]({link}) | {cmd} | {status} | {desc} |\n"
             
         section += "\n</details>\n"
@@ -181,8 +184,8 @@ def rebuild_workflows_md():
 ## 🤝 Contributing
 
 To add a new workflow:
-1. Develop it in `/tmp/my-workflow/WORKFLOW.md`
-2. Run `python scripts/reorganize_workflows_safe.py --target /tmp/my-workflow` to auto-categorize.
+1. Develop it in `/tmp/my-workflow.md`
+2. Run `python scripts/reorganize_workflows_safe.py --target /tmp/my-workflow.md` to auto-categorize.
 
 ---
 
@@ -195,11 +198,11 @@ To add a new workflow:
 
 def process_target(target_path):
     target = Path(target_path)
-    if not target.exists() or not target.is_dir() or not (target / "WORKFLOW.md").exists():
-        print(f"Error: Target {target_path} is not a valid workflow folder (must contain WORKFLOW.md).")
+    if not target.exists() or not target.is_file() or target.suffix != ".md":
+        print(f"Error: Target {target_path} is not a valid workflow file (must end in .md).")
         return
 
-    name = target.name
+    name = target.stem
     desc = get_desc(target)
 
     # Need root registry for NLP scoring
@@ -220,13 +223,13 @@ def process_target(target_path):
             
     target_cat = best_cat if best_score > 0 and best_cat else "miscellaneous"
     
-    dest_path = WORKFLOWS_DIR / target_cat / name
+    dest_path = WORKFLOWS_DIR / target_cat / (name + ".md")
     
     if dest_path.exists():
         print(f"Update: Workflow {name} already exists in {target_cat}. Replacing it.")
-        shutil.rmtree(dest_path)
+        dest_path.unlink()
         
-    shutil.move(str(target), str(dest_path))
+    shutil.copy2(str(target), str(dest_path))
     print(f"Moved new workflow '{name}' to '{target_cat}'.")
     
     cat_registry_path = WORKFLOWS_DIR / target_cat / "registry.json"
@@ -237,7 +240,7 @@ def process_target(target_path):
         cat_reg["workflows"] = [w for w in cat_reg.get("workflows", []) if w.get("id") != name]
         
         # Find explicit skills if any
-        content = (dest_path / "WORKFLOW.md").read_text(encoding="utf-8")
+        content = dest_path.read_text(encoding="utf-8")
         skills_dir = ROOT_DIR / ".archived" / "skills"
         req_skills = []
         if (skills_dir / "registry.json").exists():
@@ -260,7 +263,7 @@ def process_target(target_path):
         cat_reg["workflows"].append({
             "id": name,
             "description": desc,
-            "path": f"{name}/WORKFLOW.md",
+            "path": f"{name}.md",
             "triggers": [name],
             "required_skills": req_skills,
             "entry_point": None,
@@ -303,9 +306,7 @@ def reorganize_full():
         for filename in file_list:
             if filename in all_files:
                 workflow_id = filename.replace(".md", "")
-                wf_folder = cat_staging_path / workflow_id
-                wf_folder.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(all_files[filename], wf_folder / "WORKFLOW.md")
+                shutil.copy2(all_files[filename], cat_staging_path / filename)
                 moved_filenames.add(filename)
                 valid_files_in_cat.append(filename)
         
@@ -318,15 +319,13 @@ def reorganize_full():
         if filename not in moved_filenames:
             if not misc_path.exists(): misc_path.mkdir(parents=True)
             workflow_id = filename.replace(".md", "")
-            wf_folder = misc_path / workflow_id
-            wf_folder.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(full_path, wf_folder / "WORKFLOW.md")
+            shutil.copy2(full_path, misc_path / filename)
             misc_files.append(filename)
     
     if misc_files:
         generate_category_registry("miscellaneous", "📦 Miscellaneous", misc_files, misc_path, original_content)
 
-    total_wf_files = sum(1 for _, _, files in os.walk(STAGING_DIR) if "WORKFLOW.md" in files)
+    total_wf_files = sum(1 for _, _, files in os.walk(STAGING_DIR) for f in files if f.endswith(".md"))
 
     if total_wf_files == 0:
         print("Error: Staging directory contains no workflows. Aborting swap.")

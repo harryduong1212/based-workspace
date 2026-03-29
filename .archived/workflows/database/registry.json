@@ -5,7 +5,7 @@
     {
       "id": "db-migrate",
       "description": "Create and run migrations",
-      "path": "db-migrate/WORKFLOW.md",
+      "path": "db-migrate.md",
       "triggers": [
         "db-migrate"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "db-schema",
       "description": "🗄️ Transforms SRS into a finalized database schema and ERD",
-      "path": "db-schema/WORKFLOW.md",
+      "path": "db-schema.md",
       "triggers": [
         "custom-generate-db-schema"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "db-seed",
       "description": "Generate seed/test data",
-      "path": "db-seed/WORKFLOW.md",
+      "path": "db-seed.md",
       "triggers": [
         "db-seed"
       ],

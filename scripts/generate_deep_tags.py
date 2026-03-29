@@ -39,7 +39,8 @@ TYPE_CONFIG = {
     "workflows": {
         "root": ASSETS_ROOT_WORKFLOWS,
         "key": "workflows",
-        "file": "WORKFLOW.md",
+        "file": ".md",
+        "is_flat": True,
         "label": "Workflow"
     }
 }
@@ -275,12 +276,16 @@ def process_category(category_dir: Path, config: dict, dry_run: bool = False) ->
 
     asset_key = config["key"]
     asset_file = config["file"]
+    is_flat = config.get("is_flat", False)
     assets = registry.get(asset_key, [])
     stats["total"] = len(assets)
 
     for i, asset in enumerate(assets):
         asset_id = asset["id"]
-        asset_md_path = category_dir / asset_id / asset_file
+        if is_flat:
+            asset_md_path = category_dir / f"{asset_id}{asset_file}"
+        else:
+            asset_md_path = category_dir / asset_id / asset_file
 
         progress = f"  [{i+1:3d}/{len(assets)}]"
 

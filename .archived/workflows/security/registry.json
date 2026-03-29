@@ -5,7 +5,7 @@
     {
       "id": "auth-implementation",
       "description": "Implement authentication patterns",
-      "path": "auth-implementation/WORKFLOW.md",
+      "path": "auth-implementation.md",
       "triggers": [
         "auth-implementation"
       ],
@@ -25,7 +25,7 @@
     {
       "id": "dependency-check",
       "description": "Check for vulnerable dependencies",
-      "path": "dependency-check/WORKFLOW.md",
+      "path": "dependency-check.md",
       "triggers": [
         "dependency-check"
       ],
@@ -45,7 +45,7 @@
     {
       "id": "security-audit",
       "description": "Scan for vulnerabilities and secrets",
-      "path": "security-audit/WORKFLOW.md",
+      "path": "security-audit.md",
       "triggers": [
         "security-audit"
       ],

@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "description": "Role-based profiles mapping to skill and workflow ID arrays for the workspace context manager.",
+  "profiles": {
+    "java-backend-dev": {
+      "description": "Java backend developer — Spring Boot 3, APIs, PostgreSQL, and security hardening.",
+      "skills": [
+        "java-pro",
+        "api-endpoint-builder",
+        "postgresql-optimization",
+        "spring-boot-3-security"
+      ],
+      "workflows": [
+        "new-api",
+        "db-schema",
+        "db-migrate"
+      ]
+    },
+    "n8n-orchestrator": {
+      "description": "n8n workflow designer — architecture patterns, JavaScript nodes, and API integration.",
+      "skills": [
+        "n8n-workflow-patterns",
+        "n8n-code-javascript",
+        "api-patterns"
+      ],
+      "workflows": [
+        "workflow-creator",
+        "debug-log"
+      ]
+    },
+    "technical-project-manager": {
+      "description": "Technical PM — business analysis, C4 architecture diagramming, and debriefs.",
+      "skills": [
+        "custom-senior-it-ba-specialist",
+        "c4-context",
+        "custom-debrief"
+      ],
+      "workflows": [
+        "custom-feature-kickoff",
+        "custom-generate-feature-spec",
+        "custom-generate-sequence-diagram"
+      ]
+    }
+  }
+}
