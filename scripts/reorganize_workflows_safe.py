@@ -75,43 +75,94 @@ def reorganize():
     with open(WORKFLOWS_MD, "r", encoding="utf-8") as f:
         original_content = f.read()
         
-    header_end_marker = "## Available Workflows"
-    parts = original_content.split(header_end_marker)
-    header_part = parts[0] + "## Available Workflows (45)\n"
+    total_workflows = sum(len(v) for v in mapping.values())
+    
+    header_part = f"""# Antigravity Workflows 🚀
+
+**Stack-agnostic, question-driven workflows for the Antigravity IDE.**
+
+> Sourced from [antigravity-workflows](https://github.com/harikrishna8121999/antigravity-workflows)
+
+---
+
+## ⚡ Quick Start
+
+Trigger any workflow by typing its slash command in the chat:
+
+| Feature | Commands |
+|---|---|
+| **Project Setup** | `/new-project`, `/new-component`, `/new-api` |
+| **Git Automation** | `/git-commit`, `/git-pr`, `/git-conflict` |
+| **Testing** | `/unit-test`, `/e2e-test`, `/playwright-test` |
+| **Deployment** | `/deploy`, `/docker`, `/railway-deploy` |
+
+---
+
+## 🛠️ Companion Tools
+
+Need to extend the workspace? Use these specialized creators:
+
+| Tool | Command | Description |
+|---|---|---|
+| **Workflow Creator** | `/workflow-creator` | Build new multi-step developer workflows |
+| **Skill Creator** | `/skill-creator` | Create specialized expert knowledge modules |
+
+---
+
+## 🏗️ Philosophy
+
+| Principle | Description |
+|---|---|
+| **Stack-Agnostic** | Works with React, Vue, Angular, Django, or any stack |
+| **Question-Driven** | Asks clarifying questions for better results |
+| **Progressive Disclosure** | Loads minimal context first, expands on demand |
+| **Single Responsibility** | Each workflow does ONE thing well |
+| **Composable** | Combine workflows for complex tasks |
+
+---
+
+## 📂 Available Workflows ({total_workflows})
+"""
     
     new_sections = []
-    for cat_name, file_list in mapping.items():
+    # Sort categories to ensure a stable output
+    for cat_name in sorted(mapping.keys()):
+        file_list = mapping[cat_name]
         cat_slug = slugify(cat_name)
         
         section = f"\n### {cat_name}\n"
-        section += f"<details>\n<summary><b>{cat_name} (Click to expand)</b></summary>\n\n"
-        section += "| Workflow | Slash Command | Description |\n"
-        section += "|---|---|---|\n"
+        section += f"<details>\n\n"
+        section += "| Workflow | Command | Status | Description |\n"
+        section += "|---|---|---|---|\n"
         
-        for filename in file_list:
+        # Sort files within category
+        for filename in sorted(file_list):
             row_pattern = rf'\| \[([^\]]+)\]\(\.archived/(?:archived_)?workflows/(?:[^/]+/)?{re.escape(filename)}\) \| ([^|]+) \| ([^|]+) \|'
             match = re.search(row_pattern, original_content)
             if match:
                 display_name = match.group(1)
                 slash = match.group(2).strip()
                 desc = match.group(3).strip()
-                section += f"| [{display_name}](.archived/workflows/{cat_slug}/{filename}) | {slash} | {desc} |\n"
+                # Status heuristic: core workflows are "Ready", others "Beta"
+                status = "✅ Ready" if not filename.startswith("custom-") else "🚧 Custom"
+                section += f"| [{display_name}](.archived/workflows/{cat_slug}/{filename}) | `{slash}` | {status} | {desc} |\n"
         
         section += "\n</details>\n"
         new_sections.append(section)
         
     footer = """
-## Adding New Workflows
+---
 
-Use the built-in workflow creator:
+## 🤝 Contributing
 
-```
-/workflow-creator
-```
+To add a new workflow:
+1. Stage your file in `.archived/workflows/` (root).
+2. Register it in the `WORKFLOWS.md` tables.
+3. Run the reorganization script: `python scripts/reorganize_workflows_safe.py`.
 
 ---
 
-> **Source:** [github.com/harikrishna8121999/antigravity-workflows](https://github.com/harikrishna8121999/antigravity-workflows)
+> **Repo:** [github.com/harikrishna8121999/antigravity-workflows](https://github.com/harikrishna8121999/antigravity-workflows)
 """
 
     with open(WORKFLOWS_MD, "w", encoding="utf-8") as f:
