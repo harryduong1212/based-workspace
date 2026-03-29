@@ -7,12 +7,14 @@
       "description": "Email infrastructure for AI agents. Create accounts, send/receive emails, manage webhooks, and check karma balance via the AgentMail API.",
       "path": "agentmail/SKILL.md",
       "tags": [
-        "agentmail",
+        "authorization",
+        "karma",
         "email",
-        "infrastructure",
-        "agents",
-        "create",
-        "accounts"
+        "send",
+        "agentmail",
+        "typescript",
+        "read",
+        "bearer"
       ]
     },
     {
@@ -20,12 +22,14 @@
       "description": "Generate comprehensive, developer-friendly API documentation from code, including endpoints, parameters, examples, and best practices",
       "path": "api-documentation-generator/SKILL.md",
       "tags": [
-        "api",
+        "authentication",
         "documentation",
-        "generator",
-        "generate",
-        "developer",
-        "friendly"
+        "api",
+        "authorization",
+        "rest",
+        "graphql",
+        "validation",
+        "error"
       ]
     },
     {
@@ -33,12 +37,14 @@
       "description": "Provide comprehensive techniques for testing REST, SOAP, and GraphQL APIs during bug bounty hunting and penetration testing engagements. Covers vulnerability discovery, authentication bypass, IDOR exploitation, and API-specific attack vectors.",
       "path": "api-fuzzing-bug-bounty/SKILL.md",
       "tags": [
+        "graphql",
         "api",
+        "json",
         "fuzzing",
-        "bug",
-        "bounty",
-        "provide",
-        "techniques"
+        "http",
+        "test",
+        "idor",
+        "testing"
       ]
     },
     {
@@ -46,12 +52,14 @@
       "description": "API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.",
       "path": "api-patterns/SKILL.md",
       "tags": [
+        "rest",
         "api",
+        "graphql",
+        "rate-limiting",
         "patterns",
-        "principles",
-        "decision",
-        "making",
-        "rest"
+        "documentation",
+        "script",
+        "response"
       ]
     },
     {
@@ -60,11 +68,13 @@
       "path": "api-testing-observability-api-mock/SKILL.md",
       "tags": [
         "api",
-        "testing",
-        "observability",
-        "mock",
-        "you",
-        "mocking"
+        "mocking",
+        "resources",
+        "framework",
+        "safety",
+        "context",
+        "requirements",
+        "instructions"
       ]
     },
     {
@@ -73,11 +83,13 @@
       "path": "apify-actor-development/SKILL.md",
       "tags": [
         "apify",
+        "javascript",
+        "python",
+        "logging",
         "actor",
-        "important",
-        "before",
-        "you",
-        "begin"
+        "mcp",
+        "json",
+        "typescript"
       ]
     },
     {
@@ -86,11 +98,13 @@
       "path": "apify-audience-analysis/SKILL.md",
       "tags": [
         "apify",
+        "actor",
+        "json",
         "audience",
         "analysis",
-        "understand",
-        "demographics",
-        "preferences"
+        "ask",
+        "instagram",
+        "clockworks"
       ]
     },
     {
@@ -98,12 +112,14 @@
       "description": "Scrape reviews, ratings, and brand mentions from multiple platforms using Apify Actors.",
       "path": "apify-brand-reputation-monitoring/SKILL.md",
       "tags": [
-        "apify",
-        "brand",
-        "reputation",
         "monitoring",
-        "scrape",
-        "reviews"
+        "apify",
+        "actor",
+        "json",
+        "brand",
+        "ask",
+        "instagram",
+        "compass"
       ]
     },
     {
@@ -113,10 +129,12 @@
       "tags": [
         "apify",
         "competitor",
-        "intelligence",
-        "analyze",
-        "strategies",
-        "content"
+        "benchmarking",
+        "actor",
+        "json",
+        "monitoring",
+        "compass",
+        "ask"
       ]
     },
     {
@@ -125,11 +143,13 @@
       "path": "apify-content-analytics/SKILL.md",
       "tags": [
         "apify",
+        "actor",
+        "json",
         "content",
         "analytics",
-        "track",
-        "engagement",
-        "metrics"
+        "ask",
+        "fetch",
+        "identify"
       ]
     },
     {
@@ -137,12 +157,14 @@
       "description": "Extract product data, prices, reviews, and seller information from any e-commerce platform using Apify's E-commerce Scraping Tool.",
       "path": "apify-ecommerce/SKILL.md",
       "tags": [
-        "apify",
-        "ecommerce",
-        "extract",
+        "www",
+        "workflow",
+        "scraping",
+        "options",
         "product",
-        "data",
-        "prices"
+        "input",
+        "keyword",
+        "search"
       ]
     },
     {
@@ -151,11 +173,13 @@
       "path": "apify-influencer-discovery/SKILL.md",
       "tags": [
         "apify",
-        "influencer",
+        "actor",
+        "json",
         "discovery",
-        "find",
-        "evaluate",
-        "influencers"
+        "ask",
+        "clockworks",
+        "influencer",
+        "fetch"
       ]
     },
     {
@@ -164,11 +188,13 @@
       "path": "apify-lead-generation/SKILL.md",
       "tags": [
         "apify",
+        "actor",
+        "json",
+        "clockworks",
         "lead",
-        "generation",
-        "scrape",
-        "leads",
-        "multiple"
+        "ask",
+        "tiktok",
+        "fetch"
       ]
     },
     {
@@ -178,10 +204,12 @@
       "tags": [
         "apify",
         "market",
+        "actor",
+        "json",
         "research",
-        "analyze",
-        "conditions",
-        "geographic"
+        "ask",
+        "compass",
+        "fetch"
       ]
     },
     {
@@ -190,11 +218,13 @@
       "path": "apify-trend-analysis/SKILL.md",
       "tags": [
         "apify",
+        "actor",
+        "json",
+        "clockworks",
         "trend",
+        "ask",
         "analysis",
-        "discover",
-        "track",
-        "emerging"
+        "fetch"
       ]
     },
     {
@@ -203,11 +233,13 @@
       "path": "apify-ultimate-scraper/SKILL.md",
       "tags": [
         "apify",
-        "ultimate",
-        "scraper",
-        "driven",
-        "data",
-        "extraction"
+        "clockworks",
+        "actor",
+        "actors",
+        "compass",
+        "streamers",
+        "json",
+        "google"
       ]
     },
     {
@@ -215,12 +247,14 @@
       "description": "Deploy web apps with backend APIs, database, and file storage. Use when the user asks to deploy or publish a website or web app and wants a public URL. Uses HTTP API via curl.",
       "path": "appdeploy/SKILL.md",
       "tags": [
+        "app_id",
+        "pagination",
+        "version",
+        "parameters",
+        "returns",
         "appdeploy",
-        "deploy",
-        "web",
-        "apps",
-        "backend",
-        "apis"
+        "target",
+        "deploying"
       ]
     },
     {
@@ -228,12 +262,14 @@
       "description": "Scalable API design, microservices, distributed systems",
       "path": "backend-architect/SKILL.md",
       "tags": [
-        "backend",
-        "architect",
-        "scalable",
+        "caching",
+        "observability",
         "api",
-        "microservices",
-        "distributed"
+        "authentication",
+        "graphql",
+        "validation",
+        "logging",
+        "authorization"
       ]
     },
     {
@@ -241,12 +277,14 @@
       "description": "Routes, controllers, services, Prisma",
       "path": "backend-dev-guidelines/SKILL.md",
       "tags": [
+        "validation",
+        "prisma",
+        "express",
+        "sentry",
         "backend",
-        "dev",
-        "guidelines",
-        "routes",
-        "controllers",
-        "services"
+        "bfri",
+        "observability",
+        "monitoring"
       ]
     },
     {
@@ -254,12 +292,14 @@
       "description": "X-ray any AI model's behavioral patterns — refusal boundaries, hallucination tendencies, reasoning style, formatting defaults. No API key needed.",
       "path": "bdistill-behavioral-xray/SKILL.md",
       "tags": [
-        "bdistill",
+        "claude",
+        "mcp",
+        "probe",
         "behavioral",
-        "xray",
-        "ray",
-        "model",
-        "patterns"
+        "html",
+        "dimensions",
+        "x-ray",
+        "overview"
       ]
     },
     {
@@ -267,12 +307,14 @@
       "description": "Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed.",
       "path": "bdistill-knowledge-extraction/SKILL.md",
       "tags": [
-        "bdistill",
-        "knowledge",
+        "ollama",
         "extraction",
+        "knowledge",
+        "claude",
+        "install",
         "extract",
-        "structured",
-        "domain"
+        "output",
+        "search"
       ]
     },
     {
@@ -280,12 +322,14 @@
       "description": "BullMQ expert for Redis-backed job queues, background processing, and reliable async execution in Node.js/TypeScript applications. Use when: bullmq, bull queue, redis queue, background job, job queue.",
       "path": "bullmq-specialist/SKILL.md",
       "tags": [
-        "bullmq",
-        "specialist",
-        "redis",
-        "backed",
+        "queue",
         "job",
-        "queues"
+        "bullmq",
+        "jobs",
+        "patterns",
+        "capabilities",
+        "basic",
+        "setup"
       ]
     },
     {
@@ -293,12 +337,14 @@
       "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.",
       "path": "cc-skill-backend-patterns/SKILL.md",
       "tags": [
-        "skill",
-        "backend",
+        "pattern",
+        "json",
+        "authorization",
         "patterns",
-        "api",
-        "database",
-        "optimization"
+        "promise",
+        "error",
+        "caching",
+        "logging"
       ]
     },
     {
@@ -306,12 +352,14 @@
       "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints.",
       "path": "cc-skill-security-review/SKILL.md",
       "tags": [
-        "skill",
+        "verification",
         "security",
-        "review",
-        "ensures",
-        "all",
-        "code"
+        "authorization",
+        "steps",
+        "validation",
+        "sql",
+        "rate-limiting",
+        "authentication"
       ]
     },
     {
@@ -320,11 +368,13 @@
       "path": "claude-monitor/SKILL.md",
       "tags": [
         "claude",
+        "ram",
+        "cpu",
         "monitor",
-        "performance",
-        "code",
-        "sistema",
-        "local"
+        "api",
+        "opcional",
+        "processos",
+        "disco"
       ]
     },
     {
@@ -333,9 +383,13 @@
       "path": "cloudflare-workers-expert/SKILL.md",
       "tags": [
         "cloudflare",
+        "response",
         "workers",
-        "durable",
-        "objects"
+        "wrangler",
+        "env",
+        "edge",
+        "fetch",
+        "node"
       ]
     },
     {
@@ -344,11 +398,13 @@
       "path": "convex/SKILL.md",
       "tags": [
         "convex",
-        "reactive",
-        "backend",
-        "real",
-        "time",
-        "subscriptions"
+        "react",
+        "angular",
+        "http",
+        "auth",
+        "clerk",
+        "authentication",
+        "embedding"
       ]
     },
     {
@@ -356,12 +412,14 @@
       "description": "Give agents persistent structural memory of a codebase — navigate dependencies, track public APIs, and understand why connections exist without re-reading the whole repo.",
       "path": "data-structure-protocol/SKILL.md",
       "tags": [
-        "data",
-        "structure",
-        "protocol",
-        "give",
-        "agents",
-        "persistent"
+        "dsp",
+        "output",
+        "create-function",
+        "create-shared",
+        "add-import",
+        "python",
+        "create-object",
+        "move-entity"
       ]
     },
     {
@@ -369,12 +427,14 @@
       "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding devcontainer support to a project, setting up isolated development environments, or configuring sandboxed Claude Code workspaces.",
       "path": "devcontainer-setup/SKILL.md",
       "tags": [
-        "devcontainer",
-        "setup",
-        "creates",
-        "devcontainers",
+        "python",
+        "cargo",
+        "rust",
+        "projects",
+        "typescript",
+        "customizations",
         "claude",
-        "code"
+        "devcontainer"
       ]
     },
     {
@@ -382,12 +442,14 @@
       "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability.",
       "path": "devops-troubleshooter/SKILL.md",
       "tags": [
-        "devops",
-        "troubleshooter",
-        "specializing",
-        "rapid",
-        "incident",
-        "response"
+        "observability",
+        "monitoring",
+        "kubernetes",
+        "dns",
+        "tracing",
+        "aws",
+        "azure",
+        "debugging"
       ]
     },
     {
@@ -395,7 +457,12 @@
       "description": "django-access-review",
       "path": "django-access-review/SKILL.md",
       "tags": [
+        "authorization",
         "django",
+        "phase",
+        "find",
+        "investigation",
+        "custom",
         "access",
         "review"
       ]
@@ -405,12 +472,14 @@
       "description": "Django performance code review. Use when asked to \"review Django performance\", \"find N+1 queries\", \"optimize Django\", \"check queryset performance\", \"database performance\", \"Django ORM issues\", or audit Django code for performance problems.",
       "path": "django-perf-review/SKILL.md",
       "tags": [
+        "rule",
+        "validation",
+        "solution",
+        "problem",
+        "loops",
         "django",
-        "perf",
-        "review",
-        "performance",
-        "code",
-        "asked"
+        "index",
+        "query"
       ]
     },
     {
@@ -419,10 +488,13 @@
       "path": "django-pro/SKILL.md",
       "tags": [
         "django",
-        "pro",
-        "drf",
+        "authentication",
         "celery",
-        "channels"
+        "redis",
+        "caching",
+        "postgresql",
+        "database",
+        "orm"
       ]
     },
     {
@@ -430,12 +502,14 @@
       "description": "C#, ASP.NET Core, Entity Framework, Dapper",
       "path": "dotnet-architect/SKILL.md",
       "tags": [
-        "dotnet",
-        "architect",
-        "asp",
+        "caching",
         "net",
+        "redis",
         "core",
-        "entity"
+        "patterns",
+        "authentication",
+        "asp",
+        "architecture"
       ]
     },
     {
@@ -443,12 +517,14 @@
       "description": "ASP.NET Core 8+, EF Core, auth, background jobs",
       "path": "dotnet-backend/SKILL.md",
       "tags": [
-        "dotnet",
-        "backend",
-        "asp",
+        "jwt",
         "net",
+        "authentication",
+        "authorization",
         "core",
-        "auth"
+        "validation",
+        "api",
+        "email"
       ]
     },
     {
@@ -457,11 +533,13 @@
       "path": "drizzle-orm-expert/SKILL.md",
       "tags": [
         "drizzle",
-        "orm",
-        "type",
-        "safe",
-        "database",
-        "layers"
+        "sql",
+        "mysql",
+        "schema",
+        "api",
+        "inference",
+        "migration",
+        "prisma"
       ]
     },
     {
@@ -470,11 +548,13 @@
       "path": "emblemai-crypto-wallet/SKILL.md",
       "tags": [
         "emblemai",
+        "balance",
         "crypto",
         "wallet",
-        "across",
-        "blockchains",
-        "via"
+        "api",
+        "authentication",
+        "setup",
+        "supported"
       ]
     },
     {
@@ -482,12 +562,14 @@
       "description": "Semantic search, similar content discovery, and structured research using Exa API. Use when you need semantic/embeddings-based search, finding similar content, or searching by category (company, people, research papers, etc.).",
       "path": "exa-search/SKILL.md",
       "tags": [
+        "github",
+        "exa-search",
+        "overview",
+        "installation",
+        "troubleshooting",
+        "related",
         "exa",
-        "search",
-        "semantic",
-        "similar",
-        "content",
-        "discovery"
+        "api"
       ]
     },
     {
@@ -495,8 +577,10 @@
       "description": "Platform APIs for model management, pricing, and usage tracking",
       "path": "fal-platform/SKILL.md",
       "tags": [
-        "fal",
         "platform",
+        "fal",
+        "overview",
+        "instructions",
         "apis",
         "model",
         "pricing",
@@ -509,11 +593,13 @@
       "path": "fastapi-pro/SKILL.md",
       "tags": [
         "fastapi",
-        "pro",
-        "async",
-        "apis",
-        "sqlalchemy",
-        "pydantic"
+        "pydantic",
+        "authentication",
+        "redis",
+        "caching",
+        "api",
+        "python",
+        "sqlalchemy"
       ]
     },
     {
@@ -522,11 +608,13 @@
       "path": "fastapi-router-py/SKILL.md",
       "tags": [
         "fastapi",
+        "authentication",
+        "http",
         "router",
-        "create",
-        "routers",
-        "following",
-        "established"
+        "auth",
+        "authenticated",
+        "models",
+        "status"
       ]
     },
     {
@@ -534,12 +622,14 @@
       "description": "Practical async patterns using TaskEither - clean pipelines instead of try/catch hell, with real API examples",
       "path": "fp-async/SKILL.md",
       "tags": [
-        "async",
-        "practical",
-        "patterns",
+        "error",
         "taskeither",
-        "clean",
-        "pipelines"
+        "operations",
+        "parallel",
+        "prisma",
+        "http",
+        "recovery",
+        "sequential"
       ]
     },
     {
@@ -547,12 +637,14 @@
       "description": "Functional programming patterns for Node.js/Deno backend development using fp-ts, ReaderTaskEither, and functional dependency injection",
       "path": "fp-backend/SKILL.md",
       "tags": [
-        "backend",
-        "functional",
-        "programming",
-        "patterns",
-        "node",
-        "deno"
+        "rte",
+        "readertaskeither",
+        "validation",
+        "prisma",
+        "error",
+        "taskeither",
+        "hono",
+        "patterns"
       ]
     },
     {
@@ -562,10 +654,12 @@
       "tags": [
         "gemini",
         "api",
-        "dev",
-        "provides",
-        "access",
-        "google"
+        "python",
+        "typescript",
+        "javascript",
+        "embeddings",
+        "models",
+        "sdks"
       ]
     },
     {
@@ -574,11 +668,13 @@
       "path": "gemini-api-integration/SKILL.md",
       "tags": [
         "gemini",
+        "streaming",
+        "python",
         "api",
-        "integration",
-        "integrating",
-        "google",
-        "projects"
+        "javascript",
+        "gemini-1",
+        "text",
+        "integration"
       ]
     },
     {
@@ -586,9 +682,14 @@
       "description": "GraphQL at scale, N+1 prevention",
       "path": "graphql/SKILL.md",
       "tags": [
+        "authorization",
         "graphql",
-        "scale",
-        "prevention"
+        "dataloader",
+        "schema",
+        "caching",
+        "query",
+        "depth",
+        "patterns"
       ]
     },
     {
@@ -597,11 +698,13 @@
       "path": "graphql-architect/SKILL.md",
       "tags": [
         "graphql",
-        "architect",
-        "federation",
         "caching",
-        "real",
-        "time"
+        "validation",
+        "authorization",
+        "monitoring",
+        "schema",
+        "modern",
+        "optimization"
       ]
     },
     {
@@ -610,11 +713,13 @@
       "path": "hono/SKILL.md",
       "tags": [
         "hono",
-        "ultra",
-        "fast",
-        "apis",
-        "workers",
-        "deno"
+        "cloudflare",
+        "jwt",
+        "response",
+        "middleware",
+        "bun",
+        "routing",
+        "streaming"
       ]
     },
     {
@@ -622,12 +727,14 @@
       "description": "Use this skill for Hugging Face Dataset Viewer API workflows that fetch subset/split metadata, paginate rows, search text, apply filters, download parquet URLs, and read size or statistics.",
       "path": "hugging-face-dataset-viewer/SKILL.md",
       "tags": [
-        "hugging",
-        "face",
+        "sql",
         "dataset",
         "viewer",
-        "skill",
-        "api"
+        "parquet",
+        "json",
+        "datasets",
+        "pagination",
+        "hugging"
       ]
     },
     {
@@ -635,12 +742,14 @@
       "description": "Add and manage evaluation results in Hugging Face model cards. Supports extracting eval tables from README content, importing scores from Artificial Analysis API, and running custom model evaluations with vLLM/lighteval. Works with the model-index metadata format.",
       "path": "hugging-face-evaluation/SKILL.md",
       "tags": [
-        "hugging",
-        "face",
-        "evaluation",
-        "add",
-        "manage",
-        "results"
+        "llama",
+        "inference",
+        "vllm",
+        "yaml",
+        "prs",
+        "python",
+        "model",
+        "huggingface"
       ]
     },
     {
@@ -648,12 +757,14 @@
       "description": "Integracao completa com Instagram via Graph API. Publicacao, analytics, comentarios, DMs, hashtags, agendamento, templates e gestao de contas Business/Creator.",
       "path": "instagram/SKILL.md",
       "tags": [
-        "instagram",
-        "integracao",
-        "completa",
-        "com",
-        "via",
-        "graph"
+        "posts",
+        "oauth",
+        "para",
+        "listar",
+        "uma",
+        "post",
+        "references",
+        "instagram"
       ]
     },
     {
@@ -662,11 +773,13 @@
       "path": "json-canvas/SKILL.md",
       "tags": [
         "json",
+        "nodes",
         "canvas",
-        "create",
-        "edit",
-        "files",
-        "nodes"
+        "fromnode",
+        "tonode",
+        "text",
+        "validation",
+        "link"
       ]
     },
     {
@@ -674,12 +787,14 @@
       "description": "Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.",
       "path": "junta-leiloeiros/SKILL.md",
       "tags": [
-        "junta",
+        "sqlite",
+        "javascript",
+        "rest",
         "leiloeiros",
-        "coleta",
-        "consulta",
+        "python",
+        "scraper",
         "dados",
-        "oficiais"
+        "estados"
       ]
     },
     {
@@ -687,7 +802,14 @@
       "description": "Production Laravel 10/11+",
       "path": "laravel-expert/SKILL.md",
       "tags": [
-        "laravel"
+        "laravel",
+        "validation",
+        "authentication",
+        "avoid",
+        "api",
+        "refactoring",
+        "routing",
+        "caching"
       ]
     },
     {
@@ -696,11 +818,13 @@
       "path": "laravel-security-audit/SKILL.md",
       "tags": [
         "laravel",
+        "authorization",
+        "validation",
         "security",
         "audit",
-        "auditor",
-        "applications",
-        "analyzes"
+        "authentication",
+        "model",
+        "api"
       ]
     },
     {
@@ -708,12 +832,14 @@
       "description": "Microsoft 365 Agents SDK for TypeScript/Node.js.",
       "path": "m365-agents-ts/SKILL.md",
       "tags": [
-        "m365",
+        "streaming",
+        "agentapplication",
+        "copilot",
+        "studio",
         "agents",
-        "microsoft",
-        "365",
-        "sdk",
-        "typescript"
+        "typescript",
+        "azure",
+        "microsoft"
       ]
     },
     {
@@ -721,12 +847,14 @@
       "description": "Install and configure the Manifest observability plugin for your agents. Use when setting up telemetry, configuring API keys, or troubleshooting the plugin.",
       "path": "manifest/SKILL.md",
       "tags": [
-        "manifest",
-        "install",
-        "configure",
         "observability",
+        "manifest",
+        "mnfst_",
+        "api",
+        "setup",
+        "gateway",
         "plugin",
-        "agents"
+        "stop"
       ]
     },
     {
@@ -734,12 +862,14 @@
       "description": "Master Minecraft server plugin development with Bukkit, Spigot, and Paper APIs.",
       "path": "minecraft-bukkit-pro/SKILL.md",
       "tags": [
-        "minecraft",
+        "api",
+        "performance",
         "bukkit",
-        "pro",
-        "master",
-        "server",
-        "plugin"
+        "internal",
+        "integration",
+        "documentation",
+        "paper",
+        "instructions"
       ]
     },
     {
@@ -747,12 +877,14 @@
       "description": "Validate n8n expression syntax and fix common errors. Use when writing n8n expressions, using {{}} syntax, accessing $json/$node variables, troubleshooting expression errors, or working with webhook data in workflows.",
       "path": "n8n-expression-syntax/SKILL.md",
       "tags": [
-        "n8n",
+        "http",
+        "webhook",
+        "node",
         "expression",
-        "syntax",
-        "validate",
-        "fix",
-        "common"
+        "request",
+        "variables",
+        "nodes",
+        "access"
       ]
     },
     {
@@ -761,11 +893,10 @@
       "path": "n8n-global-deploy/SKILL.md",
       "tags": [
         "n8n",
-        "global",
         "deploy",
-        "validates",
+        "global",
         "json",
-        "output"
+        "always"
       ]
     },
     {
@@ -773,10 +904,14 @@
       "description": "NestJS DI, guards, interceptors, pipes",
       "path": "nestjs-expert/SKILL.md",
       "tags": [
-        "nestjs",
-        "guards",
-        "interceptors",
-        "pipes"
+        "authentication",
+        "jwt",
+        "typeorm",
+        "validation",
+        "github",
+        "module",
+        "database",
+        "nest"
       ]
     },
     {
@@ -784,12 +919,14 @@
       "description": "Scalable Node.js backends",
       "path": "nodejs-backend-patterns/SKILL.md",
       "tags": [
-        "nodejs",
+        "resources",
+        "node",
         "backend",
         "patterns",
-        "scalable",
-        "node",
-        "backends"
+        "instructions",
+        "rest",
+        "graphql",
+        "sql"
       ]
     },
     {
@@ -797,12 +934,14 @@
       "description": "Framework selection, async, security",
       "path": "nodejs-best-practices/SKILL.md",
       "tags": [
-        "nodejs",
-        "best",
-        "practices",
+        "validation",
+        "principles",
         "selection",
-        "async",
-        "security"
+        "typescript",
+        "express",
+        "error",
+        "security",
+        "node"
       ]
     },
     {
@@ -810,12 +949,14 @@
       "description": "Expert on Odoo's external JSON-RPC and XML-RPC APIs. Covers authentication, model calls, record CRUD, and real-world integration examples in Python, JavaScript, and curl.",
       "path": "odoo-rpc-api/SKILL.md",
       "tags": [
+        "python",
+        "api",
+        "json",
         "odoo",
         "rpc",
-        "api",
-        "external",
-        "json",
-        "xml"
+        "authenticate",
+        "xml",
+        "read"
       ]
     },
     {
@@ -823,12 +964,14 @@
       "description": "Connect Odoo with Shopify: sync products, inventory, orders, and customers using the Shopify API and Odoo's external API or connector modules.",
       "path": "odoo-shopify-integration/SKILL.md",
       "tags": [
-        "odoo",
         "shopify",
+        "odoo",
+        "order",
+        "python",
+        "flask",
+        "sale",
         "integration",
-        "connect",
-        "sync",
-        "products"
+        "push"
       ]
     },
     {
@@ -836,12 +979,14 @@
       "description": "Sync Odoo with WooCommerce: products, inventory, orders, and customers via WooCommerce REST API and Odoo external API.",
       "path": "odoo-woocommerce-bridge/SKILL.md",
       "tags": [
-        "odoo",
         "woocommerce",
-        "bridge",
-        "sync",
-        "products",
-        "inventory"
+        "odoo",
+        "python",
+        "sale",
+        "product",
+        "orders",
+        "client",
+        "stock"
       ]
     },
     {
@@ -849,12 +994,14 @@
       "description": "Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs, or ensuring API contract compliance.",
       "path": "openapi-spec-generation/SKILL.md",
       "tags": [
+        "resources",
         "openapi",
         "spec",
         "generation",
-        "generate",
-        "maintain",
-        "specifications"
+        "api",
+        "instructions",
+        "generating",
+        "restful"
       ]
     },
     {
@@ -863,11 +1010,13 @@
       "path": "performance-optimizer/SKILL.md",
       "tags": [
         "performance",
-        "optimizer",
-        "identifies",
-        "fixes",
-        "bottlenecks",
-        "code"
+        "optimization",
+        "problem",
+        "optimize",
+        "database",
+        "measure",
+        "memory",
+        "pagination"
       ]
     },
     {
@@ -877,9 +1026,12 @@
       "tags": [
         "prisma",
         "schema",
-        "migrations",
         "query",
-        "optimization"
+        "migration",
+        "connection",
+        "migrations",
+        "patterns",
+        "logging"
       ]
     },
     {
@@ -887,12 +1039,14 @@
       "description": "Direct REST API access to PubMed. Advanced Boolean/MeSH queries, E-utilities API, batch processing, citation management. For Python workflows, prefer biopython (Bio.Entrez). Use this for direct HTTP/REST work or custom API implementations.",
       "path": "pubmed-database/SKILL.md",
       "tags": [
-        "pubmed",
-        "database",
-        "direct",
-        "rest",
+        "search",
         "api",
-        "access"
+        "citation",
+        "workflow",
+        "pubmed",
+        "mesh",
+        "xml",
+        "monitoring"
       ]
     },
     {
@@ -901,11 +1055,13 @@
       "path": "pydantic-models-py/SKILL.md",
       "tags": [
         "pydantic",
+        "update",
         "models",
-        "create",
-        "following",
-        "multi",
-        "model"
+        "fields",
+        "database",
+        "src",
+        "quick",
+        "pattern"
       ]
     },
     {
@@ -914,11 +1070,13 @@
       "path": "python-development-python-scaffold/SKILL.md",
       "tags": [
         "python",
-        "scaffold",
-        "you",
-        "project",
-        "specializing",
-        "scaffolding"
+        "django",
+        "fastapi",
+        "scaffolding",
+        "generate",
+        "structure",
+        "initialize",
+        "library"
       ]
     },
     {
@@ -926,12 +1084,14 @@
       "description": "Python FastAPI backend development with async patterns, SQLAlchemy, Pydantic, authentication, and production API patterns.",
       "path": "python-fastapi-development/SKILL.md",
       "tags": [
-        "python",
         "fastapi",
-        "backend",
-        "async",
-        "patterns",
-        "sqlalchemy"
+        "python",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
+        "api"
       ]
     },
     {
@@ -939,12 +1099,14 @@
       "description": "Comprehensive security auditing workflow covering web application testing, API security, penetration testing, vulnerability scanning, and security hardening.",
       "path": "security-audit/SKILL.md",
       "tags": [
+        "authentication",
         "security",
-        "audit",
-        "auditing",
-        "workflow",
-        "covering",
-        "web"
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "owasp",
+        "copy-paste"
       ]
     },
     {
@@ -952,12 +1114,14 @@
       "description": "Web search, content extraction, crawling, and research capabilities using Tavily API. Use when you need to search the web for current information, extracting content from URLs, or crawling websites.",
       "path": "tavily-web/SKILL.md",
       "tags": [
-        "tavily",
-        "web",
-        "search",
-        "content",
-        "extraction",
-        "crawling"
+        "github",
+        "crawling",
+        "tavily-web",
+        "overview",
+        "installation",
+        "troubleshooting",
+        "related",
+        "tavily"
       ]
     },
     {
@@ -965,12 +1129,14 @@
       "description": "Integracao completa com Telegram Bot API. Setup com BotFather, mensagens, webhooks, inline keyboards, grupos, canais. Boilerplates Node.js e Python.",
       "path": "telegram/SKILL.md",
       "tags": [
-        "telegram",
-        "integracao",
-        "completa",
-        "com",
+        "python",
+        "typescript",
+        "http",
+        "mensagem",
+        "html",
+        "flask",
         "bot",
-        "api"
+        "telegram"
       ]
     },
     {
@@ -978,12 +1144,14 @@
       "description": "End-to-end type-safe APIs with tRPC",
       "path": "trpc-fullstack/SKILL.md",
       "tags": [
-        "trpc",
-        "fullstack",
-        "end",
-        "type",
-        "safe",
-        "apis"
+        "react",
+        "router",
+        "http",
+        "context",
+        "approuter",
+        "typescript",
+        "request",
+        "app"
       ]
     },
     {
@@ -991,12 +1159,14 @@
       "description": "Direct REST API access to UniProt. Protein searches, FASTA retrieval, ID mapping, Swiss-Prot/TrEMBL. For Python workflows with multiple databases, prefer bioservices (unified interface to 40+ services). Use this for direct HTTP/REST work or UniProt-specific control.",
       "path": "uniprot-database/SKILL.md",
       "tags": [
+        "search",
+        "python",
+        "streaming",
+        "pagination",
         "uniprot",
-        "database",
-        "direct",
         "rest",
-        "api",
-        "access"
+        "retrieval",
+        "protein"
       ]
     },
     {
@@ -1004,12 +1174,14 @@
       "description": "Web scraping inteligente multi-estrategia. Extrai dados estruturados de paginas web (tabelas, listas, precos). Paginacao, monitoramento e export CSV/JSON.",
       "path": "web-scraper/SKILL.md",
       "tags": [
-        "web",
-        "scraper",
-        "scraping",
-        "inteligente",
-        "multi",
-        "estrategia"
+        "json",
+        "mode",
+        "strategy",
+        "pagination",
+        "normalization",
+        "phase",
+        "webfetch",
+        "extract"
       ]
     },
     {
@@ -1018,11 +1190,13 @@
       "path": "wordpress/SKILL.md",
       "tags": [
         "wordpress",
-        "complete",
-        "workflow",
-        "covering",
-        "theme",
-        "plugin"
+        "actions",
+        "phase",
+        "invoke",
+        "prompts",
+        "api",
+        "copy-paste",
+        "rest"
       ]
     },
     {
@@ -1031,11 +1205,13 @@
       "path": "wordpress-plugin-development/SKILL.md",
       "tags": [
         "wordpress",
+        "php",
+        "rest",
+        "phase",
+        "invoke",
         "plugin",
-        "workflow",
-        "covering",
-        "hooks",
-        "admin"
+        "actions",
+        "prompts"
       ]
     }
   ]

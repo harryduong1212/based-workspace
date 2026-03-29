@@ -7,12 +7,14 @@
       "description": "KPI frameworks, predictive models",
       "path": "business-analyst/SKILL.md",
       "tags": [
+        "analytics",
         "business",
-        "analyst",
-        "kpi",
-        "frameworks",
-        "predictive",
-        "models"
+        "analysis",
+        "financial",
+        "customer",
+        "alerting",
+        "monitoring",
+        "kpi"
       ]
     },
     {
@@ -20,11 +22,14 @@
       "description": "Conversion-focused marketing copy",
       "path": "copywriting/SKILL.md",
       "tags": [
+        "phase",
+        "copy",
+        "page",
+        "principles",
         "copywriting",
-        "conversion",
-        "focused",
-        "marketing",
-        "copy"
+        "brief",
+        "summary",
+        "core"
       ]
     },
     {
@@ -32,12 +37,14 @@
       "description": "Idea → paying customers in weeks",
       "path": "micro-saas-launcher/SKILL.md",
       "tags": [
-        "micro",
+        "validation",
+        "pricing",
+        "mvp",
+        "stripe",
+        "supabase",
         "saas",
-        "launcher",
-        "idea",
-        "paying",
-        "customers"
+        "micro-saas",
+        "strategy"
       ]
     },
     {
@@ -46,9 +53,13 @@
       "path": "pricing-strategy/SKILL.md",
       "tags": [
         "pricing",
+        "price",
+        "validation",
         "strategy",
-        "packaging",
-        "monetization"
+        "research",
+        "metrics",
+        "free",
+        "trial"
       ]
     },
     {
@@ -56,10 +67,14 @@
       "description": "SaaS MVP roadmap",
       "path": "saas-mvp-launcher/SKILL.md",
       "tags": [
+        "stripe",
+        "authentication",
+        "clerk",
         "saas",
-        "mvp",
-        "launcher",
-        "roadmap"
+        "validation",
+        "vercel",
+        "string",
+        "database"
       ]
     },
     {
@@ -67,12 +82,14 @@
       "description": "Cold emails, proposals, pricing pages",
       "path": "sales-automator/SKILL.md",
       "tags": [
+        "focus",
+        "instructions",
+        "areas",
+        "output",
         "sales",
         "automator",
-        "cold",
-        "emails",
-        "proposals",
-        "pricing"
+        "resources",
+        "follow"
       ]
     },
     {
@@ -80,11 +97,14 @@
       "description": "PM agent with 30+ frameworks",
       "path": "senior-product-manager/SKILL.md",
       "tags": [
-        "senior",
         "product",
+        "decision",
+        "senior",
         "manager",
-        "agent",
-        "frameworks"
+        "quality",
+        "inputs",
+        "state",
+        "goals"
       ]
     },
     {
@@ -92,12 +112,14 @@
       "description": "Market sizing, financial modeling",
       "path": "startup-analyst/SKILL.md",
       "tags": [
-        "startup",
-        "analyst",
-        "market",
-        "sizing",
+        "validation",
         "financial",
-        "modeling"
+        "competitive",
+        "market",
+        "analysis",
+        "planning",
+        "startup",
+        "team"
       ]
     },
     {
@@ -105,12 +127,14 @@
       "description": "Automate WhatsApp Business tasks via Rube MCP (Composio): send messages, manage templates, upload media, and handle contacts. Always search tools first for current schemas.",
       "path": "whatsapp-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "send",
         "whatsapp",
-        "automation",
-        "automate",
         "business",
-        "tasks",
-        "via"
+        "template",
+        "messages",
+        "media",
+        "pitfalls"
       ]
     }
   ]

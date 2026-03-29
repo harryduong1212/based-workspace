@@ -7,12 +7,14 @@
       "description": "Automate Brevo (formerly Sendinblue) email marketing operations through Composio's Brevo toolkit via Rube MCP.",
       "path": "brevo-automation/SKILL.md",
       "tags": [
+        "mcp",
         "brevo",
-        "automation",
-        "automate",
-        "formerly",
-        "sendinblue",
-        "email"
+        "pagination",
+        "sender",
+        "email",
+        "html",
+        "htmlcontent",
+        "htmlurl"
       ]
     },
     {
@@ -21,11 +23,13 @@
       "path": "content-strategy/SKILL.md",
       "tags": [
         "content",
-        "strategy",
+        "stage",
+        "searchable",
+        "shareable",
         "topic",
-        "clusters",
-        "editorial",
-        "roadmap"
+        "research",
+        "pillars",
+        "customer"
       ]
     },
     {
@@ -35,10 +39,12 @@
       "tags": [
         "email",
         "sequence",
-        "you",
-        "marketing",
-        "automation",
-        "goal"
+        "day",
+        "emails",
+        "trigger",
+        "goal",
+        "cta",
+        "format"
       ]
     },
     {
@@ -46,12 +52,14 @@
       "description": "Growth hacking, SEO, ASO, viral loops",
       "path": "growth-engine/SKILL.md",
       "tags": [
-        "growth",
-        "engine",
-        "hacking",
+        "auri",
+        "claude",
+        "para",
+        "viral",
+        "alexa",
         "seo",
-        "aso",
-        "viral"
+        "meta",
+        "crescimento"
       ]
     },
     {
@@ -59,10 +67,14 @@
       "description": "SaaS marketing strategies",
       "path": "marketing-ideas/SKILL.md",
       "tags": [
+        "scoring",
         "marketing",
-        "ideas",
-        "saas",
-        "strategies"
+        "mfs",
+        "idea",
+        "feasibility",
+        "score",
+        "seo",
+        "rules"
       ]
     },
     {
@@ -71,11 +83,13 @@
       "path": "seo/SKILL.md",
       "tags": [
         "seo",
-        "full",
-        "audit",
-        "technical",
-        "page",
-        "schema"
+        "references",
+        "reference",
+        "detection",
+        "quality",
+        "analysis",
+        "quick",
+        "health"
       ]
     },
     {
@@ -84,10 +98,13 @@
       "path": "seo-audit/SKILL.md",
       "tags": [
         "seo",
+        "health",
         "audit",
-        "crawlability",
-        "indexation",
-        "rankings"
+        "category",
+        "scoring",
+        "index",
+        "score",
+        "content"
       ]
     },
     {
@@ -95,9 +112,14 @@
       "description": ">",
       "path": "seo-competitor-pages/SKILL.md",
       "tags": [
-        "seo",
+        "comparison",
+        "pages",
+        "product",
+        "schema",
+        "feature",
         "competitor",
-        "pages"
+        "alternatives",
+        "page"
       ]
     },
     {
@@ -105,10 +127,14 @@
       "description": "Content quality and E-E-A-T analysis",
       "path": "seo-content/SKILL.md",
       "tags": [
-        "seo",
         "content",
+        "geo",
+        "google",
         "quality",
-        "analysis"
+        "e-e-a-t",
+        "analysis",
+        "citation",
+        "sept"
       ]
     },
     {
@@ -116,12 +142,14 @@
       "description": "Investigate sudden drops in organic traffic or rankings and run a structured forensic SEO incident response with triage, root-cause analysis and recovery plan.",
       "path": "seo-forensic-incident-response/SKILL.md",
       "tags": [
+        "incident",
+        "indexing",
         "seo",
         "forensic",
-        "incident",
-        "response",
-        "investigate",
-        "sudden"
+        "impact",
+        "gsc",
+        "validation",
+        "content"
       ]
     },
     {
@@ -129,12 +157,14 @@
       "description": "AI Overviews, ChatGPT, Perplexity optimization",
       "path": "seo-geo/SKILL.md",
       "tags": [
-        "seo",
+        "openai",
+        "rendering",
         "geo",
-        "overviews",
+        "brand",
+        "optimization",
         "chatgpt",
         "perplexity",
-        "optimization"
+        "reddit"
       ]
     },
     {
@@ -142,8 +172,14 @@
       "description": ">",
       "path": "seo-hreflang/SKILL.md",
       "tags": [
-        "seo",
-        "hreflang"
+        "html",
+        "validation",
+        "http",
+        "hreflang",
+        "https",
+        "xml",
+        "method",
+        "tags"
       ]
     },
     {
@@ -151,8 +187,14 @@
       "description": ">",
       "path": "seo-images/SKILL.md",
       "tags": [
-        "seo",
-        "images"
+        "images",
+        "lazy-loading",
+        "css",
+        "format",
+        "lcp",
+        "image",
+        "jpeg",
+        "cdn"
       ]
     },
     {
@@ -160,8 +202,14 @@
       "description": ">",
       "path": "seo-page/SKILL.md",
       "tags": [
+        "html",
+        "page",
+        "schema",
         "seo",
-        "page"
+        "json",
+        "authentication",
+        "content",
+        "technical"
       ]
     },
     {
@@ -169,8 +217,14 @@
       "description": ">",
       "path": "seo-plan/SKILL.md",
       "tags": [
+        "phase",
         "seo",
-        "plan"
+        "content",
+        "weeks",
+        "foundation",
+        "assets",
+        "generic",
+        "competitive"
       ]
     },
     {
@@ -178,11 +232,14 @@
       "description": "Schema.org structured data",
       "path": "seo-schema/SKILL.md",
       "tags": [
-        "seo",
+        "json",
+        "validation",
         "schema",
-        "org",
-        "structured",
-        "data"
+        "recommend",
+        "url",
+        "generation",
+        "deprecated",
+        "organization"
       ]
     },
     {
@@ -190,8 +247,14 @@
       "description": ">",
       "path": "seo-sitemap/SKILL.md",
       "tags": [
-        "seo",
-        "sitemap"
+        "sitemap",
+        "urls",
+        "xml",
+        "validation",
+        "http",
+        "analysis",
+        "generation",
+        "mode"
       ]
     },
     {
@@ -199,12 +262,14 @@
       "description": "Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization.",
       "path": "seo-structure-architect/SKILL.md",
       "tags": [
-        "seo",
-        "structure",
-        "architect",
-        "analyzes",
-        "optimizes",
-        "content"
+        "schema",
+        "focus",
+        "header",
+        "markup",
+        "instructions",
+        "areas",
+        "tag",
+        "siloing"
       ]
     },
     {
@@ -212,12 +277,14 @@
       "description": "Crawlability, Core Web Vitals, robots.txt",
       "path": "seo-technical/SKILL.md",
       "tags": [
+        "javascript",
+        "indexing",
+        "html",
+        "rendering",
         "seo",
-        "technical",
-        "crawlability",
-        "core",
-        "web",
-        "vitals"
+        "google",
+        "openai",
+        "priority"
       ]
     }
   ]

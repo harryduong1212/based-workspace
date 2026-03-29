@@ -7,12 +7,14 @@
       "description": "Smart contracts, DeFi, NFTs, DAOs",
       "path": "blockchain-developer/SKILL.md",
       "tags": [
+        "ethereum",
         "blockchain",
-        "developer",
-        "smart",
-        "contracts",
-        "defi",
-        "nfts"
+        "solana",
+        "react",
+        "monitoring",
+        "nft",
+        "security",
+        "defi"
       ]
     },
     {
@@ -21,11 +23,13 @@
       "path": "nft-standards/SKILL.md",
       "tags": [
         "nft",
+        "metadata",
         "standards",
+        "standard",
         "erc",
-        "721",
-        "1155",
-        "best"
+        "token",
+        "ipfs",
+        "resources"
       ]
     },
     {
@@ -34,10 +38,13 @@
       "path": "solidity-security/SKILL.md",
       "tags": [
         "solidity",
+        "resources",
         "security",
-        "smart",
-        "contract",
-        "patterns"
+        "instructions",
+        "master",
+        "writing",
+        "auditing",
+        "defi"
       ]
     },
     {
@@ -45,11 +52,14 @@
       "description": "Hardhat, Foundry testing strategies",
       "path": "web3-testing/SKILL.md",
       "tags": [
-        "web3",
         "testing",
         "hardhat",
         "foundry",
-        "strategies"
+        "test",
+        "fuzzing",
+        "token",
+        "contract",
+        "patterns"
       ]
     }
   ]

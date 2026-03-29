@@ -7,12 +7,14 @@
       "description": "2D game development principles. Sprites, tilemaps, physics, camera.",
       "path": "2d-games/SKILL.md",
       "tags": [
-        "games",
-        "game",
+        "physics",
+        "camera",
+        "sprite",
+        "considerations",
+        "collision",
+        "animation",
         "principles",
-        "sprites",
-        "tilemaps",
-        "physics"
+        "layers"
       ]
     },
     {
@@ -20,12 +22,14 @@
       "description": "3D game development principles. Rendering, shaders, physics, cameras.",
       "path": "3d-games/SKILL.md",
       "tags": [
-        "games",
-        "game",
         "principles",
+        "camera",
         "rendering",
-        "shaders",
-        "physics"
+        "lod",
+        "shader",
+        "collision",
+        "performance",
+        "detail"
       ]
     },
     {
@@ -33,12 +37,14 @@
       "description": "Use when you need to address review or issue comments on an open GitHub Pull Request using the gh CLI.",
       "path": "address-github-comments/SKILL.md",
       "tags": [
-        "address",
         "github",
         "comments",
-        "you",
-        "need",
-        "review"
+        "address",
+        "overview",
+        "prerequisites",
+        "workflow",
+        "inspect",
+        "categorize"
       ]
     },
     {
@@ -46,12 +52,14 @@
       "description": "Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal.",
       "path": "advogado-criminal/SKILL.md",
       "tags": [
-        "advogado",
-        "criminal",
-        "criminalista",
-        "especializado",
-        "maria",
-        "penha"
+        "art",
+        "cpp",
+        "lei",
+        "violencia",
+        "etapa",
+        "publica",
+        "domestica",
+        "maria"
       ]
     },
     {
@@ -59,12 +67,14 @@
       "description": "Advogado especialista em todas as areas do Direito brasileiro: familia, criminal, trabalhista, tributario, consumidor, imobiliario, empresarial, civil e constitucional.",
       "path": "advogado-especialista/SKILL.md",
       "tags": [
-        "advogado",
-        "especialista",
-        "todas",
-        "areas",
-        "direito",
-        "brasileiro"
+        "art",
+        "lei",
+        "cpc",
+        "etapa",
+        "bens",
+        "stj",
+        "clt",
+        "direito"
       ]
     },
     {
@@ -72,12 +82,14 @@
       "description": "Systematic improvement of existing agents through performance analysis, prompt engineering, and continuous iteration.",
       "path": "agent-orchestration-improve-agent/SKILL.md",
       "tags": [
+        "monitoring",
+        "performance",
+        "phase",
+        "validation",
         "agent",
-        "orchestration",
-        "improve",
-        "systematic",
-        "improvement",
-        "existing"
+        "metrics",
+        "formatting",
+        "baseline"
       ]
     },
     {
@@ -85,12 +97,14 @@
       "description": "Optimize multi-agent systems with coordinated profiling, workload distribution, and cost-aware orchestration. Use when improving agent performance, throughput, or reliability.",
       "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
       "tags": [
+        "profiling",
+        "optimization",
+        "performance",
+        "monitoring",
         "agent",
-        "orchestration",
-        "multi",
-        "optimize",
-        "coordinated",
-        "profiling"
+        "cost",
+        "context",
+        "multi-agent"
       ]
     },
     {
@@ -98,12 +112,14 @@
       "description": "Optimize content for AI search and LLM citations across AI Overviews, ChatGPT, Perplexity, Claude, Gemini, and similar systems. Use when improving AI visibility, answer engine optimization, or citation readiness.",
       "path": "ai-seo/SKILL.md",
       "tags": [
-        "seo",
-        "optimize",
         "content",
-        "search",
-        "llm",
-        "citations"
+        "monitoring",
+        "seo",
+        "visibility",
+        "gemini",
+        "google",
+        "chatgpt",
+        "claude"
       ]
     },
     {
@@ -111,12 +127,14 @@
       "description": "Algorithmic philosophies are computational aesthetic movements that are then expressed through code. Output .md files (philosophy), .html files (interactive viewer), and .js files (generative algorithms).",
       "path": "algorithmic-art/SKILL.md",
       "tags": [
+        "html",
+        "anthropic",
         "algorithmic",
-        "art",
-        "philosophies",
-        "computational",
-        "aesthetic",
-        "movements"
+        "philosophy",
+        "critical",
+        "seed",
+        "artifact",
+        "creation"
       ]
     },
     {
@@ -124,12 +142,14 @@
       "description": "Analytics de produto — PostHog, Mixpanel, eventos, funnels, cohorts, retencao, north star metric, OKRs e dashboards de produto.",
       "path": "analytics-product/SKILL.md",
       "tags": [
-        "analytics",
-        "product",
-        "produto",
+        "auri",
+        "com",
         "posthog",
-        "mixpanel",
-        "eventos"
+        "north",
+        "star",
+        "python",
+        "retencao",
+        "funil"
       ]
     },
     {
@@ -137,12 +157,14 @@
       "description": "Forensic root cause analyzer for Antigravity sessions. Classifies scope deltas, rework patterns, root causes, hotspots, and auto-improves prompts/health.",
       "path": "analyze-project/SKILL.md",
       "tags": [
-        "analyze",
-        "project",
-        "forensic",
         "root",
+        "analysis",
         "cause",
-        "analyzer"
+        "validation",
+        "session",
+        "scope",
+        "change",
+        "severity"
       ]
     },
     {
@@ -152,10 +174,12 @@
       "tags": [
         "app",
         "store",
+        "output",
         "changelog",
-        "generate",
-        "user",
-        "facing"
+        "scripts",
+        "collect",
+        "overview",
+        "workflow"
       ]
     },
     {
@@ -163,12 +187,14 @@
       "description": "Automate Basecamp project management, to-dos, messages, people, and to-do list organization via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "basecamp-automation/SKILL.md",
       "tags": [
+        "bucket_id",
+        "html",
+        "mcp",
         "basecamp",
-        "automation",
-        "automate",
-        "project",
-        "dos",
-        "messages"
+        "todolist_id",
+        "project_id",
+        "ids",
+        "content"
       ]
     },
     {
@@ -177,11 +203,13 @@
       "path": "bash-pro/SKILL.md",
       "tags": [
         "bash",
-        "pro",
-        "master",
-        "defensive",
-        "scripting",
-        "automation"
+        "logging",
+        "github",
+        "security",
+        "echo",
+        "formatting",
+        "parsing",
+        "modern"
       ]
     },
     {
@@ -189,12 +217,14 @@
       "description": "Comprehensive patterns and techniques for analyzing compiled binaries, understanding assembly code, and reconstructing program logic.",
       "path": "binary-analysis-patterns/SKILL.md",
       "tags": [
-        "binary",
-        "analysis",
         "patterns",
-        "techniques",
-        "analyzing",
-        "compiled"
+        "analysis",
+        "function",
+        "calling",
+        "recovery",
+        "ghidra",
+        "structure",
+        "functions"
       ]
     },
     {
@@ -203,11 +233,13 @@
       "path": "blueprint/SKILL.md",
       "tags": [
         "blueprint",
-        "turn",
-        "one",
-        "line",
-        "objective",
-        "step"
+        "plan",
+        "github",
+        "construction",
+        "generator",
+        "overview",
+        "database",
+        "plugin"
       ]
     },
     {
@@ -215,12 +247,14 @@
       "description": "Generate comprehensive C4 architecture documentation for an existing repository/codebase using a bottom-up analysis approach.",
       "path": "c4-architecture-c4-architecture/SKILL.md",
       "tags": [
-        "generate",
         "documentation",
-        "existing",
-        "repository",
-        "codebase",
-        "bottom"
+        "component",
+        "context",
+        "phase",
+        "analyze",
+        "api",
+        "components",
+        "container"
       ]
     },
     {
@@ -228,12 +262,14 @@
       "description": "Expert C4 Code-level documentation specialist. Analyzes code directories to create comprehensive C4 code-level documentation including function signatures, arguments, dependencies, and code structure.",
       "path": "c4-code/SKILL.md",
       "tags": [
-        "code",
-        "level",
-        "documentation",
-        "specialist",
-        "analyzes",
-        "directories"
+        "dependencies",
+        "classdiagram",
+        "functions",
+        "procedural",
+        "classes",
+        "modules",
+        "functional",
+        "diagram"
       ]
     },
     {
@@ -241,12 +277,14 @@
       "description": "Automate changelog generation from commits, PRs, and releases following Keep a Changelog format. Use when setting up release workflows, generating release notes, or standardizing commit conventions.",
       "path": "changelog-automation/SKILL.md",
       "tags": [
+        "resources",
         "changelog",
         "automation",
-        "automate",
-        "generation",
-        "commits",
-        "prs"
+        "instructions",
+        "safety",
+        "commit",
+        "patterns",
+        "setting"
       ]
     },
     {
@@ -254,12 +292,14 @@
       "description": "Reduce voluntary and involuntary churn with cancel flows, save offers, dunning, win-back tactics, and retention strategy. Use when users are cancelling, failed payments are rising, or subscription retention needs improvement.",
       "path": "churn-prevention/SKILL.md",
       "tags": [
+        "cancel",
         "churn",
-        "prevention",
-        "reduce",
-        "voluntary",
-        "involuntary",
-        "cancel"
+        "stripe",
+        "dunning",
+        "flow",
+        "save",
+        "offer",
+        "retry"
       ]
     },
     {
@@ -267,12 +307,14 @@
       "description": "Manage citations systematically throughout the research and writing process.",
       "path": "citation-management/SKILL.md",
       "tags": [
+        "validation",
+        "bibtex",
+        "search",
+        "formatting",
+        "doi",
         "citation",
-        "manage",
-        "citations",
-        "systematically",
-        "throughout",
-        "research"
+        "dois",
+        "validate"
       ]
     },
     {
@@ -281,11 +323,13 @@
       "path": "claude-code-expert/SKILL.md",
       "tags": [
         "claude",
-        "code",
-        "especialista",
-        "profundo",
-        "cli",
-        "anthropic"
+        "mcp",
+        "json",
+        "bash",
+        "hooks",
+        "fase",
+        "hook",
+        "ver"
       ]
     },
     {
@@ -296,9 +340,11 @@
         "claude",
         "speed",
         "reader",
-        "read",
-        "responses",
-        "600"
+        "overview",
+        "instructions",
+        "wpm",
+        "rsvp",
+        "orp"
       ]
     },
     {
@@ -306,12 +352,14 @@
       "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
       "path": "code-refactoring-tech-debt/SKILL.md",
       "tags": [
-        "code",
         "refactoring",
-        "tech",
         "debt",
-        "you",
-        "technical"
+        "phase",
+        "validation",
+        "metrics",
+        "roi",
+        "plan",
+        "quantify"
       ]
     },
     {
@@ -319,12 +367,14 @@
       "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
       "path": "code-review-ai-ai-review/SKILL.md",
       "tags": [
-        "code",
         "review",
-        "you",
-        "powered",
-        "specialist",
-        "combining"
+        "claude",
+        "github",
+        "authentication",
+        "sql",
+        "security",
+        "json",
+        "performance"
       ]
     },
     {
@@ -332,12 +382,14 @@
       "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to \"simplify code\", \"clean up code\", \"refactor for clarity\", \"improve readability\", or review recently modified code for elegance. Focuses on project-specific best practices.",
       "path": "code-simplifier/SKILL.md",
       "tags": [
-        "code",
+        "clear",
+        "refinement",
         "simplifier",
-        "simplifies",
-        "refines",
+        "standards",
         "clarity",
-        "consistency"
+        "nested",
+        "overly",
+        "compact"
       ]
     },
     {
@@ -345,12 +397,14 @@
       "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
       "path": "codebase-cleanup-tech-debt/SKILL.md",
       "tags": [
-        "codebase",
-        "cleanup",
-        "tech",
+        "refactoring",
         "debt",
-        "you",
-        "technical"
+        "phase",
+        "validation",
+        "metrics",
+        "roi",
+        "plan",
+        "quantify"
       ]
     },
     {
@@ -358,12 +412,14 @@
       "description": "Professional code review with auto CHANGELOG generation, integrated with Codex AI. Use when you want professional code review before commits, you need automatic CHANGELOG generation, or reviewing large-scale refactoring.",
       "path": "codex-review/SKILL.md",
       "tags": [
-        "codex",
-        "review",
-        "professional",
-        "code",
-        "auto",
-        "changelog"
+        "github",
+        "codex-review",
+        "overview",
+        "installation",
+        "troubleshooting",
+        "related",
+        "changelog",
+        "codex"
       ]
     },
     {
@@ -371,11 +427,14 @@
       "description": "Conventional commits with issue refs",
       "path": "commit/SKILL.md",
       "tags": [
+        "claude",
         "commit",
-        "conventional",
-        "commits",
-        "issue",
-        "refs"
+        "sentry",
+        "fixes",
+        "format",
+        "references",
+        "validation",
+        "create-branch"
       ]
     },
     {
@@ -383,12 +442,13 @@
       "description": "Comprehensive frameworks for analyzing competition, identifying differentiation opportunities, and developing winning market positioning strategies.",
       "path": "competitive-landscape/SKILL.md",
       "tags": [
+        "resources",
         "competitive",
         "landscape",
-        "frameworks",
-        "analyzing",
-        "competition",
-        "identifying"
+        "analysis",
+        "instructions",
+        "needing",
+        "clarify"
       ]
     },
     {
@@ -397,8 +457,13 @@
       "path": "comprehensive-review-full-review/SKILL.md",
       "tags": [
         "review",
-        "full",
-        "working"
+        "phase",
+        "quality",
+        "analysis",
+        "priority",
+        "task",
+        "refactoring",
+        "performance"
       ]
     },
     {
@@ -406,8 +471,14 @@
       "description": ">",
       "path": "comprehensive-review-pr-enhance/SKILL.md",
       "tags": [
+        "resources",
         "review",
-        "enhance"
+        "checklist",
+        "changes",
+        "rollback",
+        "pull",
+        "request",
+        "enhancement"
       ]
     },
     {
@@ -415,12 +486,14 @@
       "description": "Git-aware undo by logical work unit (track, phase, or task)",
       "path": "conductor-revert/SKILL.md",
       "tags": [
-        "conductor",
         "revert",
-        "git",
-        "aware",
-        "undo",
-        "logical"
+        "track",
+        "task",
+        "plan",
+        "reverting",
+        "execution",
+        "updates",
+        "already"
       ]
     },
     {
@@ -428,12 +501,14 @@
       "description": "Configure a Rails project to work with Conductor (parallel coding agents)",
       "path": "conductor-setup/SKILL.md",
       "tags": [
-        "conductor",
-        "setup",
-        "configure",
+        "redis",
         "rails",
-        "project",
-        "work"
+        "config",
+        "script",
+        "env",
+        "conductor",
+        "symlink",
+        "root"
       ]
     },
     {
@@ -441,11 +516,13 @@
       "description": "Display project status, active tracks, and next actions",
       "path": "conductor-status/SKILL.md",
       "tags": [
+        "phase",
         "conductor",
+        "task",
         "status",
-        "display",
-        "project",
-        "active",
+        "track",
+        "progress",
+        "rendering",
         "tracks"
       ]
     },
@@ -454,12 +531,14 @@
       "description": "Validates Conductor project artifacts for completeness,",
       "path": "conductor-validator/SKILL.md",
       "tags": [
+        "track",
         "conductor",
-        "validator",
-        "validates",
-        "project",
-        "artifacts",
-        "completeness"
+        "task",
+        "directory",
+        "exists",
+        "find",
+        "instructions",
+        "pattern"
       ]
     },
     {
@@ -467,12 +546,14 @@
       "description": "Guardiao de contexto que preserva dados criticos antes da compactacao automatica. Snapshots, verificacao de integridade e zero perda de informacao.",
       "path": "context-guardian/SKILL.md",
       "tags": [
-        "context",
-        "guardian",
-        "guardiao",
-        "contexto",
+        "claude",
+        "fase",
         "que",
-        "preserva"
+        "nao",
+        "context",
+        "memory",
+        "ativacao",
+        "sql"
       ]
     },
     {
@@ -480,12 +561,14 @@
       "description": "You are an expert copy editor specializing in marketing and conversion copy. Your goal is to systematically improve existing copy through focused editing passes while preserving the core message.",
       "path": "copy-editing/SKILL.md",
       "tags": [
+        "sweep",
+        "problem",
         "copy",
+        "checks",
         "editing",
-        "you",
-        "editor",
-        "specializing",
-        "marketing"
+        "clarity",
+        "voice",
+        "tone"
       ]
     },
     {
@@ -493,10 +576,14 @@
       "description": "Branch naming conventions",
       "path": "create-branch/SKILL.md",
       "tags": [
-        "create",
         "branch",
-        "naming",
-        "conventions"
+        "priscila",
+        "feat",
+        "ref",
+        "chore",
+        "username",
+        "prefix",
+        "determine"
       ]
     },
     {
@@ -504,10 +591,9 @@
       "description": "Pull request writing",
       "path": "create-pr/SKILL.md",
       "tags": [
-        "create",
-        "pull",
-        "request",
-        "writing"
+        "create-pr",
+        "alias",
+        "pr"
       ]
     },
     {
@@ -515,12 +601,14 @@
       "description": "CISO operacional enterprise para gestao total de credenciais e segredos.",
       "path": "cred-omega/SKILL.md",
       "tags": [
-        "cred",
-        "omega",
-        "ciso",
-        "operacional",
-        "enterprise",
-        "para"
+        "openai",
+        "aws",
+        "stripe",
+        "github",
+        "docker",
+        "jwt",
+        "gcp",
+        "fase"
       ]
     },
     {
@@ -528,12 +616,14 @@
       "description": "You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing.",
       "path": "data-engineering-data-pipeline/SKILL.md",
       "tags": [
-        "data",
-        "engineering",
+        "monitoring",
+        "validation",
+        "streaming",
+        "architecture",
+        "airflow",
         "pipeline",
-        "you",
-        "specializing",
-        "scalable"
+        "observability",
+        "batch"
       ]
     },
     {
@@ -541,12 +631,14 @@
       "description": "Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports.",
       "path": "deep-research/SKILL.md",
       "tags": [
-        "deep",
         "research",
-        "run",
-        "autonomous",
-        "tasks",
-        "plan"
+        "gemini",
+        "output",
+        "python",
+        "deep",
+        "time",
+        "stream",
+        "continue"
       ]
     },
     {
@@ -554,12 +646,14 @@
       "description": "Production deployment principles and decision-making. Safe deployment workflows, rollback strategies, and verification. Teaches thinking, not scripts.",
       "path": "deployment-procedures/SKILL.md",
       "tags": [
-        "deployment",
-        "procedures",
+        "rollback",
         "principles",
-        "decision",
-        "making",
-        "safe"
+        "deployment",
+        "monitoring",
+        "platform",
+        "procedures",
+        "vercel",
+        "netlify"
       ]
     },
     {
@@ -567,12 +661,14 @@
       "description": "Unified Diary System: A context-preserving automated logger for multi-project development.",
       "path": "diary/SKILL.md",
       "tags": [
+        "global",
         "diary",
-        "unified",
-        "system",
-        "context",
-        "preserving",
-        "logger"
+        "execution",
+        "action",
+        "script",
+        "progress",
+        "local",
+        "writing"
       ]
     },
     {
@@ -581,11 +677,13 @@
       "path": "elon-musk/SKILL.md",
       "tags": [
         "elon",
+        "como",
+        "tesla",
+        "padroes",
+        "spacex",
         "musk",
-        "agente",
-        "que",
-        "simula",
-        "com"
+        "sobre",
+        "nao"
       ]
     },
     {
@@ -593,12 +691,14 @@
       "description": "Codified expertise for electricity and gas procurement, tariff optimisation, demand charge management, renewable PPA evaluation, and multi-facility energy cost management.",
       "path": "energy-procurement/SKILL.md",
       "tags": [
-        "energy",
+        "mwh",
+        "ppa",
         "procurement",
-        "codified",
-        "expertise",
-        "electricity",
-        "gas"
+        "energy",
+        "demand",
+        "recs",
+        "within",
+        "market"
       ]
     },
     {
@@ -606,12 +706,14 @@
       "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging,",
       "path": "error-diagnostics-error-trace/SKILL.md",
       "tags": [
+        "monitoring",
+        "logging",
         "error",
-        "diagnostics",
-        "trace",
-        "you",
+        "resources",
+        "alerting",
         "tracking",
-        "observability"
+        "context",
+        "requirements"
       ]
     },
     {
@@ -619,12 +721,14 @@
       "description": "This skill enables makepad-skills to self-improve continuously during development.",
       "path": "evolution/SKILL.md",
       "tags": [
+        "validation",
         "evolution",
-        "skill",
-        "enables",
+        "rust",
+        "claude",
         "makepad",
-        "skills",
-        "self"
+        "detection",
+        "version",
+        "cargo"
       ]
     },
     {
@@ -632,12 +736,14 @@
       "description": "6. Reduces Clutter: Identifies old files you probably don't need anymore",
       "path": "file-organizer/SKILL.md",
       "tags": [
-        "file",
+        "archive",
+        "naming",
+        "organization",
+        "find",
         "organizer",
-        "reduces",
-        "clutter",
-        "identifies",
-        "old"
+        "current",
+        "documents",
+        "folder"
       ]
     },
     {
@@ -645,12 +751,14 @@
       "description": "Bug finding in branch changes",
       "path": "find-bugs/SKILL.md",
       "tags": [
-        "find",
+        "phase",
+        "authentication",
+        "authorization",
         "bugs",
-        "bug",
-        "finding",
-        "branch",
-        "changes"
+        "find",
+        "security",
+        "list",
+        "complete"
       ]
     },
     {
@@ -658,12 +766,14 @@
       "description": "Stop throwing everywhere - handle errors as values using Either and TaskEither for cleaner, more predictable code",
       "path": "fp-errors/SKILL.md",
       "tags": [
+        "error",
+        "taskeither",
+        "validation",
         "errors",
-        "stop",
-        "throwing",
-        "everywhere",
-        "handle",
-        "values"
+        "operations",
+        "promise",
+        "json",
+        "chain"
       ]
     },
     {
@@ -671,12 +781,14 @@
       "description": "Handle errors as values using fp-ts Either and TaskEither for cleaner, more predictable TypeScript code. Use when implementing error handling patterns with fp-ts.",
       "path": "fp-ts-errors/SKILL.md",
       "tags": [
-        "errors",
-        "handle",
-        "values",
-        "either",
+        "error",
         "taskeither",
-        "cleaner"
+        "validation",
+        "errors",
+        "operations",
+        "promise",
+        "json",
+        "chain"
       ]
     },
     {
@@ -685,11 +797,13 @@
       "path": "framework-migration-code-migrate/SKILL.md",
       "tags": [
         "migration",
-        "code",
-        "migrate",
-        "you",
-        "specializing",
-        "transitioning"
+        "resources",
+        "assistant",
+        "context",
+        "requirements",
+        "instructions",
+        "output",
+        "format"
       ]
     },
     {
@@ -697,12 +811,14 @@
       "description": "Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through ex",
       "path": "framework-migration-legacy-modernize/SKILL.md",
       "tags": [
-        "migration",
+        "monitoring",
         "legacy",
-        "modernize",
-        "orchestrate",
-        "system",
-        "modernization"
+        "phase",
+        "validation",
+        "test",
+        "task",
+        "prompt",
+        "expected"
       ]
     },
     {
@@ -710,11 +826,13 @@
       "description": "Game art principles. Visual style selection, asset pipeline, animation workflow.",
       "path": "game-art/SKILL.md",
       "tags": [
-        "game",
-        "art",
         "principles",
-        "visual",
+        "art",
+        "pipeline",
+        "decisions",
+        "game",
         "style",
+        "resolution",
         "selection"
       ]
     },
@@ -723,12 +841,14 @@
       "description": "Agente que simula Geoffrey Hinton — Godfather of Deep Learning, Prêmio Turing 2018, criador do backpropagation e das Deep Belief Networks.",
       "path": "geoffrey-hinton/SKILL.md",
       "tags": [
-        "geoffrey",
+        "sobre",
         "hinton",
-        "agente",
+        "nao",
+        "por",
         "que",
-        "simula",
-        "godfather"
+        "routing",
+        "networks",
+        "mais"
       ]
     },
     {
@@ -736,12 +856,14 @@
       "description": "Fetch unread GitHub notifications for open PRs where review is requested from a specified team or opened by a team member. Use when asked to \"find PRs I need to review\", \"show my review requests\", \"what needs my review\", \"fetch GitHub review requests\", or \"check team review queue\".",
       "path": "gh-review-requests/SKILL.md",
       "tags": [
+        "github",
+        "streaming",
+        "script",
         "review",
         "requests",
-        "fetch",
-        "unread",
-        "github",
-        "notifications"
+        "team",
+        "review_requested",
+        "streaming-platform"
       ]
     },
     {
@@ -749,12 +871,14 @@
       "description": "Clean history, collaboration, recovery",
       "path": "git-advanced-workflows/SKILL.md",
       "tags": [
+        "commit",
+        "rebase",
+        "branch",
         "git",
-        "advanced",
-        "workflows",
-        "clean",
-        "history",
-        "collaboration"
+        "commits",
+        "changes",
+        "workflow",
+        "head"
       ]
     },
     {
@@ -762,12 +886,14 @@
       "description": "Husky, lint-staged, commitlint",
       "path": "git-hooks-automation/SKILL.md",
       "tags": [
-        "git",
         "hooks",
-        "automation",
         "husky",
-        "lint",
-        "staged"
+        "linting",
+        "python",
+        "add",
+        "hook",
+        "pre-commit",
+        "install"
       ]
     },
     {
@@ -775,12 +901,14 @@
       "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You",
       "path": "git-pr-workflows-onboard/SKILL.md",
       "tags": [
-        "git",
-        "workflows",
-        "onboard",
-        "you",
+        "day",
+        "team",
         "onboarding",
-        "specialist"
+        "monitoring",
+        "week",
+        "setup",
+        "buddy",
+        "documentation"
       ]
     },
     {
@@ -788,12 +916,14 @@
       "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
       "path": "git-pr-workflows-pr-enhance/SKILL.md",
       "tags": [
-        "git",
-        "workflows",
-        "enhance",
-        "you",
-        "optimization",
-        "specializing"
+        "resources",
+        "context",
+        "pull",
+        "request",
+        "enhancement",
+        "prs",
+        "requirements",
+        "instructions"
       ]
     },
     {
@@ -801,12 +931,14 @@
       "description": "Stage, commit, push workflow",
       "path": "git-pushing/SKILL.md",
       "tags": [
+        "workflow",
         "git",
+        "push",
+        "claude",
         "pushing",
         "stage",
-        "commit",
-        "push",
-        "workflow"
+        "automatically",
+        "explicitly"
       ]
     },
     {
@@ -815,10 +947,13 @@
       "path": "github/SKILL.md",
       "tags": [
         "github",
-        "cli",
-        "issues",
-        "prs",
-        "actions"
+        "json",
+        "api",
+        "output",
+        "pull",
+        "requests",
+        "debugging",
+        "failure"
       ]
     },
     {
@@ -826,12 +961,14 @@
       "description": "Transform messy input (error logs, voice notes, screenshots) into clean, actionable GitHub issues.",
       "path": "github-issue-creator/SKILL.md",
       "tags": [
+        "behavior",
         "github",
-        "issue",
-        "creator",
-        "transform",
-        "messy",
-        "input"
+        "summary",
+        "environment",
+        "reproduction",
+        "steps",
+        "expected",
+        "actual"
       ]
     },
     {
@@ -840,11 +977,13 @@
       "path": "github-workflow-automation/SKILL.md",
       "tags": [
         "github",
-        "workflow",
+        "review",
+        "workflows",
+        "yml",
+        "validation",
         "automation",
-        "patterns",
-        "automating",
-        "workflows"
+        "issue",
+        "stale"
       ]
     },
     {
@@ -853,11 +992,13 @@
       "path": "gitlab-automation/SKILL.md",
       "tags": [
         "gitlab",
-        "automation",
-        "automate",
-        "project",
-        "issues",
-        "merge"
+        "search",
+        "mcp",
+        "pagination",
+        "list",
+        "scope",
+        "labels",
+        "state"
       ]
     },
     {
@@ -865,12 +1006,14 @@
       "description": "Automate Google Analytics tasks via Rube MCP (Composio): run reports, list accounts/properties, funnels, pivots, key events. Always search tools first for current schemas.",
       "path": "google-analytics-automation/SKILL.md",
       "tags": [
-        "google",
-        "analytics",
-        "automation",
-        "automate",
-        "tasks",
-        "via"
+        "pagination",
+        "mcp",
+        "property",
+        "reports",
+        "dimensions",
+        "google_analytics_list_properties",
+        "metrics",
+        "funnel"
       ]
     },
     {
@@ -878,12 +1021,14 @@
       "description": "Professional, ethical HR partner for hiring, onboarding/offboarding, PTO and leave, performance, compliant policies, and employee relations.",
       "path": "hr-pro/SKILL.md",
       "tags": [
-        "pro",
-        "professional",
-        "ethical",
-        "partner",
+        "claude",
+        "pto",
+        "pip",
+        "legal",
+        "performance",
         "hiring",
-        "onboarding"
+        "onboarding",
+        "employee"
       ]
     },
     {
@@ -891,12 +1036,14 @@
       "description": "The hf CLI provides direct terminal access to the Hugging Face Hub for downloading, uploading, and managing repositories, cache, and compute resources.",
       "path": "hugging-face-cli/SKILL.md",
       "tags": [
+        "authentication",
+        "download",
+        "list",
+        "delete",
+        "cache",
+        "model",
         "hugging",
-        "face",
-        "cli",
-        "provides",
-        "direct",
-        "terminal"
+        "face"
       ]
     },
     {
@@ -904,12 +1051,14 @@
       "description": "Production-ready templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.",
       "path": "incident-runbook-templates/SKILL.md",
       "tags": [
-        "incident",
         "runbook",
+        "incident",
+        "service",
+        "rollback",
+        "verify",
+        "database",
         "templates",
-        "response",
-        "runbooks",
-        "covering"
+        "initial"
       ]
     },
     {
@@ -917,12 +1066,14 @@
       "description": "Codified expertise for demand forecasting, safety stock optimisation, replenishment planning, and promotional lift estimation at multi-location retailers.",
       "path": "inventory-demand-planning/SKILL.md",
       "tags": [
-        "inventory",
         "demand",
+        "decision",
         "planning",
-        "codified",
-        "expertise",
-        "forecasting"
+        "promotional",
+        "escalation",
+        "forecast",
+        "safety",
+        "stock"
       ]
     },
     {
@@ -930,12 +1081,14 @@
       "description": "Interact with GitHub issues - create, list, and view issues.",
       "path": "issues/SKILL.md",
       "tags": [
-        "issues",
-        "interact",
+        "issue",
         "github",
-        "create",
+        "issues",
+        "view",
+        "selected",
+        "behavior",
         "list",
-        "view"
+        "askuserquestion"
       ]
     },
     {
@@ -943,11 +1096,14 @@
       "description": "Fix CI failures until green",
       "path": "iterate-pr/SKILL.md",
       "tags": [
-        "iterate",
-        "fix",
-        "failures",
-        "until",
-        "green"
+        "scripts",
+        "claude",
+        "feedback",
+        "json",
+        "high",
+        "medium",
+        "low",
+        "graphql"
       ]
     },
     {
@@ -955,12 +1111,14 @@
       "description": "This skill should be used when the user asks to convert an academic paper in LaTeX from one format (e.g., Springer, IPOL) to another format (e.g., MDPI, IEEE, Nature). It automates extraction, injection, fixing formatting, and compiling.",
       "path": "latex-paper-conversion/SKILL.md",
       "tags": [
+        "python",
         "latex",
         "paper",
+        "mdpi",
+        "pdflatex",
         "conversion",
-        "skill",
-        "should",
-        "used"
+        "script",
+        "compilation"
       ]
     },
     {
@@ -968,12 +1126,14 @@
       "description": "Draft privacy policies, terms of service, disclaimers, and legal notices. Creates GDPR-compliant texts, cookie policies, and data processing agreements.",
       "path": "legal-advisor/SKILL.md",
       "tags": [
+        "focus",
+        "regulations",
+        "instructions",
+        "areas",
+        "output",
         "legal",
         "advisor",
-        "draft",
-        "privacy",
-        "policies",
-        "terms"
+        "resources"
       ]
     },
     {
@@ -981,12 +1141,14 @@
       "description": "Analise juridica de leiloes: nulidades, bem de familia, alienacao fiduciaria, CPC arts 829-903, Lei 9514/97, onus reais, embargos e jurisprudencia.",
       "path": "leiloeiro-juridico/SKILL.md",
       "tags": [
-        "leiloeiro",
-        "juridico",
-        "analise",
-        "juridica",
-        "leiloes",
-        "nulidades"
+        "art",
+        "cpc",
+        "lei",
+        "para",
+        "stj",
+        "reurb",
+        "penhora",
+        "verificar"
       ]
     },
     {
@@ -994,12 +1156,14 @@
       "description": "Manage Linear issues, projects, and teams",
       "path": "linear-claude-skill/SKILL.md",
       "tags": [
+        "mcp",
+        "update",
         "linear",
         "claude",
-        "skill",
-        "manage",
-        "issues",
-        "projects"
+        "phase",
+        "issue",
+        "status",
+        "issues"
       ]
     },
     {
@@ -1008,11 +1172,13 @@
       "path": "linkedin-automation/SKILL.md",
       "tags": [
         "linkedin",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "mcp",
+        "urn",
+        "post",
+        "oauth",
+        "pitfalls",
+        "rube",
+        "comment"
       ]
     },
     {
@@ -1020,12 +1186,14 @@
       "description": "Use when automating LinkedIn via CLI: fetch profiles, search people/companies, send messages, manage connections, create posts, and Sales Navigator.",
       "path": "linkedin-cli/SKILL.md",
       "tags": [
+        "comma",
+        "search",
         "linkedin",
-        "cli",
-        "automating",
-        "via",
         "fetch",
-        "profiles"
+        "company",
+        "post",
+        "react",
+        "filter"
       ]
     },
     {
@@ -1034,11 +1202,13 @@
       "path": "lint-and-validate/SKILL.md",
       "tags": [
         "lint",
+        "python",
+        "scripts",
+        "typescript",
         "validate",
-        "mandatory",
-        "run",
-        "appropriate",
-        "validation"
+        "procedures",
+        "ecosystem",
+        "node"
       ]
     },
     {
@@ -1046,12 +1216,14 @@
       "description": "You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.",
       "path": "llm-application-dev-langchain-agent/SKILL.md",
       "tags": [
-        "llm",
-        "application",
-        "dev",
+        "langgraph",
+        "rag",
+        "claude",
         "langchain",
-        "agent",
-        "you"
+        "embeddings",
+        "vector",
+        "fastapi",
+        "caching"
       ]
     },
     {
@@ -1059,12 +1231,14 @@
       "description": "You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimizati",
       "path": "llm-application-dev-prompt-optimize/SKILL.md",
       "tags": [
-        "llm",
-        "application",
-        "dev",
+        "resources",
         "prompt",
-        "optimize",
-        "you"
+        "optimization",
+        "context",
+        "requirements",
+        "instructions",
+        "llm",
+        "application"
       ]
     },
     {
@@ -1072,12 +1246,14 @@
       "description": "Codified expertise for handling freight exceptions, shipment delays, damages, losses, and carrier disputes. Informed by logistics professionals with 15+ years operational experience.",
       "path": "logistics-exception-management/SKILL.md",
       "tags": [
-        "logistics",
+        "carrier",
         "exception",
-        "codified",
-        "expertise",
-        "handling",
-        "freight"
+        "escalation",
+        "claims",
+        "patterns",
+        "customer",
+        "ltl",
+        "damage"
       ]
     },
     {
@@ -1085,12 +1261,14 @@
       "description": "Comprehensive market sizing methodologies for calculating Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM) for startup opportunities.",
       "path": "market-sizing-analysis/SKILL.md",
       "tags": [
+        "tam",
         "market",
-        "sizing",
+        "sam",
+        "calculate",
+        "som",
+        "methodology",
         "analysis",
-        "methodologies",
-        "calculating",
-        "total"
+        "validation"
       ]
     },
     {
@@ -1098,12 +1276,14 @@
       "description": "Apply behavioral science and mental models to marketing decisions, prioritized using a psychological leverage and feasibility scoring system.",
       "path": "marketing-psychology/SKILL.md",
       "tags": [
-        "marketing",
+        "models",
+        "plfs",
         "psychology",
-        "apply",
-        "behavioral",
-        "science",
-        "mental"
+        "model",
+        "mental",
+        "leverage",
+        "score",
+        "ethical"
       ]
     },
     {
@@ -1111,12 +1291,14 @@
       "description": "Connect to MAXIA AI-to-AI marketplace on Solana. Discover, buy, sell AI services. Earn USDC. 13 MCP tools, A2A protocol, DeFi yields, sentiment analysis, rug detection.",
       "path": "maxia/SKILL.md",
       "tags": [
-        "maxia",
-        "connect",
-        "marketplace",
         "solana",
-        "discover",
-        "buy"
+        "mcp",
+        "api",
+        "maxia",
+        "marketplace",
+        "free",
+        "endpoints",
+        "service"
       ]
     },
     {
@@ -1124,12 +1306,14 @@
       "description": "Cross-language patterns for memory-safe programming including RAII, ownership, smart pointers, and resource management.",
       "path": "memory-safety-patterns/SKILL.md",
       "tags": [
+        "resources",
         "memory",
         "safety",
         "patterns",
+        "instructions",
+        "raii",
         "cross",
-        "language",
-        "safe"
+        "writing"
       ]
     },
     {
@@ -1138,10 +1322,12 @@
       "path": "mixpanel-automation/SKILL.md",
       "tags": [
         "mixpanel",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
+        "mcp",
+        "pagination",
+        "event",
+        "jql",
+        "javascript",
+        "pitfalls",
         "rube"
       ]
     },
@@ -1150,12 +1336,14 @@
       "description": "Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.",
       "path": "ml-pipeline-workflow/SKILL.md",
       "tags": [
+        "validation",
         "pipeline",
-        "workflow",
-        "complete",
-        "end",
-        "mlops",
-        "orchestration"
+        "training",
+        "mlflow",
+        "monitoring",
+        "assets",
+        "deployment",
+        "workflow"
       ]
     },
     {
@@ -1163,12 +1351,14 @@
       "description": "Estrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio SaaS.",
       "path": "monetization/SKILL.md",
       "tags": [
-        "monetization",
-        "estrategia",
-        "implementacao",
-        "monetizacao",
-        "para",
-        "produtos"
+        "stripe",
+        "revenue",
+        "subscription",
+        "customer",
+        "pricing",
+        "saas",
+        "churn",
+        "para"
       ]
     },
     {
@@ -1176,11 +1366,14 @@
       "description": "Multiplayer game development principles. Architecture, networking, synchronization.",
       "path": "multiplayer/SKILL.md",
       "tags": [
-        "multiplayer",
-        "game",
+        "server",
         "principles",
-        "networking",
-        "synchronization"
+        "multiplayer",
+        "architecture",
+        "state",
+        "game",
+        "input",
+        "lag"
       ]
     },
     {
@@ -1188,10 +1381,14 @@
       "description": "Create a new Rails project",
       "path": "new-rails-project/SKILL.md",
       "tags": [
-        "new",
         "rails",
-        "project",
-        "create"
+        "react",
+        "redis",
+        "css",
+        "caching",
+        "guidance",
+        "mocha",
+        "background"
       ]
     },
     {
@@ -1199,12 +1396,14 @@
       "description": "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da",
       "path": "observability-monitoring-monitor-setup/SKILL.md",
       "tags": [
-        "observability",
         "monitoring",
-        "monitor",
+        "observability",
+        "resources",
         "setup",
-        "you",
-        "specializing"
+        "context",
+        "requirements",
+        "instructions",
+        "output"
       ]
     },
     {
@@ -1212,12 +1411,14 @@
       "description": "Step-by-step Odoo version upgrade advisor: pre-upgrade checklist, community vs enterprise upgrade path, OCA module compatibility, and post-upgrade validation.",
       "path": "odoo-upgrade-advisor/SKILL.md",
       "tags": [
-        "odoo",
         "upgrade",
-        "advisor",
-        "step",
-        "version",
-        "pre"
+        "odoo",
+        "validation",
+        "openupgrade",
+        "checklist",
+        "oca",
+        "migration",
+        "review"
       ]
     },
     {
@@ -1225,12 +1426,14 @@
       "description": "Office productivity workflow covering document creation, spreadsheet automation, presentation generation, and integration with LibreOffice and Microsoft Office formats.",
       "path": "office-productivity/SKILL.md",
       "tags": [
-        "office",
-        "productivity",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
         "workflow",
-        "covering",
-        "document",
-        "spreadsheet"
+        "office",
+        "document"
       ]
     },
     {
@@ -1240,10 +1443,12 @@
       "tags": [
         "paywall",
         "upgrade",
-        "cro",
-        "you",
-        "app",
-        "paywalls"
+        "experiments",
+        "trial",
+        "show",
+        "feature",
+        "frequency",
+        "pro"
       ]
     },
     {
@@ -1251,12 +1456,14 @@
       "description": "PC and console game development principles. Engine selection, platform features, optimization strategies.",
       "path": "pc-games/SKILL.md",
       "tags": [
-        "games",
+        "unity",
+        "godot",
+        "unreal",
+        "profiling",
+        "engine",
         "console",
         "game",
-        "principles",
-        "engine",
-        "selection"
+        "platform"
       ]
     },
     {
@@ -1264,12 +1471,14 @@
       "description": "Performance profiling principles. Measurement, analysis, and optimization techniques.",
       "path": "performance-profiling/SKILL.md",
       "tags": [
-        "performance",
         "profiling",
-        "principles",
-        "measurement",
         "analysis",
-        "optimization"
+        "performance",
+        "runtime",
+        "tab",
+        "scripts",
+        "measure",
+        "bundle"
       ]
     },
     {
@@ -1278,11 +1487,13 @@
       "path": "posix-shell-pro/SKILL.md",
       "tags": [
         "posix",
+        "validation",
+        "parsing",
         "shell",
-        "pro",
-        "strict",
-        "scripting",
-        "maximum"
+        "testing",
+        "echo",
+        "local",
+        "portable"
       ]
     },
     {
@@ -1290,12 +1501,14 @@
       "description": "Automate PostHog tasks via Rube MCP (Composio): events, feature flags, projects, user profiles, annotations. Always search tools first for current schemas.",
       "path": "posthog-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "posthog",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "limit",
+        "feature",
+        "offset",
+        "events",
+        "authentication"
       ]
     },
     {
@@ -1303,12 +1516,14 @@
       "description": "Essential tools and frameworks for modern product management, from discovery to delivery.",
       "path": "product-manager-toolkit/SKILL.md",
       "tags": [
-        "product",
-        "manager",
-        "toolkit",
-        "essential",
-        "tools",
-        "frameworks"
+        "json",
+        "prioritization",
+        "feature",
+        "interview",
+        "prd",
+        "analysis",
+        "customer",
+        "process"
       ]
     },
     {
@@ -1317,11 +1532,13 @@
       "path": "product-marketing-context/SKILL.md",
       "tags": [
         "product",
-        "marketing",
+        "points",
         "context",
-        "create",
-        "update",
-        "reusable"
+        "target",
+        "marketing",
+        "personas",
+        "customer",
+        "brand"
       ]
     },
     {
@@ -1329,12 +1546,14 @@
       "description": "Codified expertise for production scheduling, job sequencing, line balancing, changeover optimisation, and bottleneck resolution in discrete and batch manufacturing.",
       "path": "production-scheduling/SKILL.md",
       "tags": [
+        "wip",
+        "escalation",
+        "routing",
         "scheduling",
-        "codified",
-        "expertise",
-        "job",
-        "sequencing",
-        "line"
+        "mrp",
+        "changeover",
+        "disruption",
+        "oee"
       ]
     },
     {
@@ -1342,8 +1561,14 @@
       "description": ">",
       "path": "professional-proofreader/SKILL.md",
       "tags": [
+        "mode",
         "professional",
-        "proofreader"
+        "proofreader",
+        "inline",
+        "text",
+        "processing",
+        "grammar",
+        "spelling"
       ]
     },
     {
@@ -1351,12 +1576,14 @@
       "description": "You're a caching specialist who has reduced LLM costs by 90% through strategic caching. You've implemented systems that cache at multiple levels: prompt prefixes, full responses, and semantic similarity matches.",
       "path": "prompt-caching/SKILL.md",
       "tags": [
-        "prompt",
         "caching",
-        "you",
-        "specialist",
-        "who",
-        "has"
+        "prompt",
+        "cache",
+        "anthropic",
+        "patterns",
+        "high",
+        "capabilities",
+        "response"
       ]
     },
     {
@@ -1365,11 +1592,13 @@
       "path": "recallmax/SKILL.md",
       "tags": [
         "recallmax",
-        "free",
-        "god",
-        "tier",
-        "long",
-        "context"
+        "context",
+        "memory",
+        "overview",
+        "install",
+        "injection",
+        "adaptive",
+        "summarization"
       ]
     },
     {
@@ -1377,12 +1606,14 @@
       "description": "Red team tactics principles based on MITRE ATT&CK. Attack phases, detection evasion, reporting.",
       "path": "red-team-tactics/SKILL.md",
       "tags": [
-        "red",
-        "team",
-        "tactics",
         "principles",
-        "based",
-        "mitre"
+        "attack",
+        "targets",
+        "movement",
+        "active",
+        "access",
+        "red",
+        "initial"
       ]
     },
     {
@@ -1391,11 +1622,13 @@
       "path": "remotion/SKILL.md",
       "tags": [
         "remotion",
-        "generate",
-        "walkthrough",
-        "videos",
+        "mcp",
         "stitch",
-        "projects"
+        "retrieval",
+        "screenslide",
+        "video",
+        "screen",
+        "pattern"
       ]
     },
     {
@@ -1403,11 +1636,13 @@
       "description": "Automate Render tasks via Rube MCP (Composio): services, deployments, projects. Always search tools first for current schemas.",
       "path": "render-automation/SKILL.md",
       "tags": [
+        "pagination",
+        "mcp",
         "render",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
+        "cursor",
+        "serviceid",
+        "service",
+        "monitor",
         "rube"
       ]
     },
@@ -1416,12 +1651,14 @@
       "description": "Complete toolkit for senior fullstack with modern tools and best practices.",
       "path": "senior-fullstack/SKILL.md",
       "tags": [
-        "senior",
+        "references",
+        "quality",
+        "scaffolder",
+        "script",
         "fullstack",
-        "complete",
-        "toolkit",
-        "modern",
-        "tools"
+        "analyzer",
+        "capabilities",
+        "tech"
       ]
     },
     {
@@ -1429,12 +1666,14 @@
       "description": "Automate Sentry tasks via Rube MCP (Composio): manage issues/events, configure alerts, track releases, monitor projects and teams. Always search tools first for current schemas.",
       "path": "sentry-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "sentry",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "monitoring",
+        "list",
+        "organization",
+        "issues",
+        "pitfalls"
       ]
     },
     {
@@ -1442,12 +1681,14 @@
       "description": "Analyzes multiple provided pages to identify keyword overlap and potential cannibalization issues. Suggests differentiation strategies. Use PROACTIVELY when reviewing similar content.",
       "path": "seo-cannibalization-detector/SKILL.md",
       "tags": [
-        "seo",
         "cannibalization",
-        "detector",
-        "analyzes",
-        "multiple",
-        "provided"
+        "focus",
+        "prevention",
+        "strategy",
+        "keyword",
+        "instructions",
+        "areas",
+        "output"
       ]
     },
     {
@@ -1455,12 +1696,14 @@
       "description": "Creates comprehensive content outlines and topic clusters for SEO.",
       "path": "seo-content-planner/SKILL.md",
       "tags": [
-        "seo",
         "content",
-        "planner",
-        "creates",
-        "outlines",
-        "topic"
+        "topic",
+        "focus",
+        "main",
+        "instructions",
+        "areas",
+        "planning",
+        "framework"
       ]
     },
     {
@@ -1468,12 +1711,14 @@
       "description": "Identifies outdated elements in provided content and suggests updates to maintain freshness. Finds statistics, dates, and examples that need updating. Use PROACTIVELY for older content.",
       "path": "seo-content-refresher/SKILL.md",
       "tags": [
-        "seo",
         "content",
-        "refresher",
-        "identifies",
-        "outdated",
-        "elements"
+        "refresh",
+        "priority",
+        "freshness",
+        "focus",
+        "update",
+        "instructions",
+        "areas"
       ]
     },
     {
@@ -1482,11 +1727,13 @@
       "path": "seo-fundamentals/SKILL.md",
       "tags": [
         "seo",
-        "fundamentals",
-        "core",
+        "content",
         "principles",
-        "including",
-        "web"
+        "signals",
+        "quality",
+        "page",
+        "indexing",
+        "evaluation"
       ]
     },
     {
@@ -1495,11 +1742,13 @@
       "path": "seo-image-gen/SKILL.md",
       "tags": [
         "seo",
+        "mcp",
+        "references",
         "image",
-        "gen",
-        "generate",
-        "focused",
-        "images"
+        "imageobject",
+        "generation",
+        "reference",
+        "model"
       ]
     },
     {
@@ -1507,12 +1756,14 @@
       "description": "Analyzes keyword usage in provided content, calculates density, suggests semantic variations and LSI keywords based on the topic. Prevents over-optimization. Use PROACTIVELY for content optimization.",
       "path": "seo-keyword-strategist/SKILL.md",
       "tags": [
-        "seo",
         "keyword",
-        "strategist",
-        "analyzes",
-        "usage",
-        "provided"
+        "entity",
+        "focus",
+        "density",
+        "analysis",
+        "lsi",
+        "instructions",
+        "areas"
       ]
     },
     {
@@ -1520,12 +1771,14 @@
       "description": "Creates optimized meta titles, descriptions, and URL suggestions based on character limits and best practices. Generates compelling, keyword-rich metadata. Use PROACTIVELY for new content.",
       "path": "seo-meta-optimizer/SKILL.md",
       "tags": [
-        "seo",
         "meta",
-        "optimizer",
-        "creates",
-        "optimized",
-        "titles"
+        "focus",
+        "optimization",
+        "instructions",
+        "areas",
+        "rules",
+        "output",
+        "title"
       ]
     },
     {
@@ -1533,12 +1786,14 @@
       "description": "Formats content to be eligible for featured snippets and SERP features. Creates snippet-optimized content blocks based on best practices. Use PROACTIVELY for question-based content.",
       "path": "seo-snippet-hunter/SKILL.md",
       "tags": [
-        "seo",
         "snippet",
-        "hunter",
-        "formats",
-        "content",
-        "eligible"
+        "formatting",
+        "question",
+        "focus",
+        "optimization",
+        "faq",
+        "format",
+        "instructions"
       ]
     },
     {
@@ -1546,12 +1801,14 @@
       "description": "Server management principles and decision-making. Process management, monitoring strategy, and scaling decisions. Teaches thinking, not commands.",
       "path": "server-management/SKILL.md",
       "tags": [
-        "server",
         "principles",
-        "decision",
-        "making",
+        "monitoring",
+        "log",
+        "strategy",
         "process",
-        "monitoring"
+        "health",
+        "server",
+        "selection"
       ]
     },
     {
@@ -1559,12 +1816,14 @@
       "description": "To create new CLI skills following Anthropic's official best practices with zero manual configuration. This skill automates brainstorming, template application, validation, and installation processes while maintaining progressive disclosure patterns and writing style standards.",
       "path": "skill-creator/SKILL.md",
       "tags": [
-        "skill",
-        "creator",
-        "create",
-        "new",
-        "cli",
-        "skills"
+        "validation",
+        "phase",
+        "yaml",
+        "claude",
+        "github",
+        "progress",
+        "anthropic",
+        "python"
       ]
     },
     {
@@ -1572,12 +1831,14 @@
       "description": "Iteratively improve a Claude Code skill using the skill-reviewer agent until it meets quality standards. Use when improving a skill with multiple quality issues, iterating on a new skill until it meets standards, or automated fix-review cycles instead of manual editing.",
       "path": "skill-improver/SKILL.md",
       "tags": [
-        "skill",
-        "improver",
-        "iteratively",
-        "improve",
         "claude",
-        "code"
+        "issues",
+        "fix",
+        "minor",
+        "issue",
+        "critical",
+        "major",
+        "evaluate"
       ]
     },
     {
@@ -1585,12 +1846,14 @@
       "description": "Analyze Rails apps and provide upgrade assessments",
       "path": "skill-rails-upgrade/SKILL.md",
       "tags": [
-        "skill",
         "rails",
         "upgrade",
-        "analyze",
-        "apps",
-        "provide"
+        "javascript",
+        "config",
+        "update",
+        "local",
+        "changes",
+        "version"
       ]
     },
     {
@@ -1598,12 +1861,14 @@
       "description": "-Automatically convert documentation websites, GitHub repositories, and PDFs into Claude AI skills in minutes.",
       "path": "skill-seekers/SKILL.md",
       "tags": [
-        "skill",
         "seekers",
+        "github",
+        "claude",
+        "overview",
+        "instructions",
         "automatically",
-        "convert",
-        "documentation",
-        "websites"
+        "pdfs",
+        "convert"
       ]
     },
     {
@@ -1611,12 +1876,14 @@
       "description": "Analyze skin health data, identify skin problem patterns, assess skin health status. Supports correlation analysis with nutrition, chronic diseases, and medication data.",
       "path": "skin-health-analyzer/SKILL.md",
       "tags": [
+        "nsaids",
         "skin",
         "health",
         "analyzer",
-        "analyze",
-        "data",
-        "identify"
+        "omega",
+        "stevens",
+        "pcos",
+        "spf"
       ]
     },
     {
@@ -1624,12 +1891,14 @@
       "description": "A toolkit providing utilities and knowledge for creating animated GIFs optimized for Slack.",
       "path": "slack-gif-creator/SKILL.md",
       "tags": [
+        "core",
         "slack",
+        "pil",
+        "optimization",
+        "easing",
+        "graphics",
         "gif",
-        "creator",
-        "toolkit",
-        "providing",
-        "utilities"
+        "drawing"
       ]
     },
     {
@@ -1637,12 +1906,14 @@
       "description": "Take a list of projects and their related documentation, and organize them into the SRED format for submission.",
       "path": "sred-project-organizer/SKILL.md",
       "tags": [
+        "github",
         "sred",
-        "project",
-        "organizer",
-        "take",
-        "list",
-        "projects"
+        "notion",
+        "summary",
+        "linear",
+        "uncertainty",
+        "sredable",
+        "mcp"
       ]
     },
     {
@@ -1650,12 +1921,14 @@
       "description": "Go back through the previous year of work and create a Notion doc that groups relevant links into projects that can then be documented as SRED projects.",
       "path": "sred-work-summary/SKILL.md",
       "tags": [
-        "sred",
-        "work",
+        "github",
+        "notion",
+        "mcp",
         "summary",
-        "back",
-        "previous",
-        "year"
+        "linear",
+        "prs",
+        "find",
+        "sred"
       ]
     },
     {
@@ -1663,12 +1936,14 @@
       "description": "Generate comprehensive investor-ready business case document with",
       "path": "startup-business-analyst-business-case/SKILL.md",
       "tags": [
-        "startup",
         "business",
-        "analyst",
-        "case",
-        "generate",
-        "investor"
+        "pages",
+        "claude",
+        "market",
+        "year",
+        "product",
+        "team",
+        "competitive"
       ]
     },
     {
@@ -1676,12 +1951,14 @@
       "description": "Create detailed 3-5 year financial model with revenue, costs, cash",
       "path": "startup-business-analyst-financial-projections/SKILL.md",
       "tags": [
-        "startup",
-        "business",
-        "analyst",
+        "model",
+        "claude",
         "financial",
-        "projections",
-        "create"
+        "year",
+        "revenue",
+        "cash",
+        "cost",
+        "headcount"
       ]
     },
     {
@@ -1689,12 +1966,14 @@
       "description": "Generate comprehensive market opportunity analysis with TAM/SAM/SOM",
       "path": "startup-business-analyst-market-opportunity/SKILL.md",
       "tags": [
-        "startup",
-        "business",
-        "analyst",
+        "validation",
         "market",
-        "opportunity",
-        "generate"
+        "claude",
+        "sam",
+        "som",
+        "tam",
+        "analysis",
+        "gather"
       ]
     },
     {
@@ -1702,12 +1981,14 @@
       "description": "Protocolo de Inteligência Pré-Tarefa — ativa TODOS os agentes relevantes do ecossistema ANTES de executar qualquer tarefa solicitada pelo usuário.",
       "path": "task-intelligence/SKILL.md",
       "tags": [
-        "task",
-        "intelligence",
-        "protocolo",
-        "inteligência",
-        "pré",
-        "tarefa"
+        "fase",
+        "problemas",
+        "briefing",
+        "tarefa",
+        "stripe",
+        "completo",
+        "yaml",
+        "agentes"
       ]
     },
     {
@@ -1715,12 +1996,14 @@
       "description": "You are a GitHub issue resolution expert specializing in systematic bug investigation, feature implementation, and collaborative development workflows. Your expertise spans issue triage, root cause an",
       "path": "team-collaboration-issue/SKILL.md",
       "tags": [
-        "team",
-        "collaboration",
-        "issue",
-        "you",
         "github",
-        "resolution"
+        "resources",
+        "issue",
+        "resolution",
+        "context",
+        "requirements",
+        "instructions",
+        "team"
       ]
     },
     {
@@ -1728,12 +2011,14 @@
       "description": "You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remote team coordination patterns.",
       "path": "team-collaboration-standup-notes/SKILL.md",
       "tags": [
-        "team",
-        "collaboration",
+        "resources",
         "standup",
         "notes",
-        "you",
-        "communication"
+        "generator",
+        "context",
+        "requirements",
+        "instructions",
+        "mcp"
       ]
     },
     {
@@ -1742,11 +2027,13 @@
       "path": "terraform-skill/SKILL.md",
       "tags": [
         "terraform",
-        "skill",
-        "infrastructure",
-        "code",
-        "best",
-        "practices"
+        "validation",
+        "module",
+        "opentofu",
+        "claude",
+        "security",
+        "version",
+        "structure"
       ]
     },
     {
@@ -1754,12 +2041,14 @@
       "description": "Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing GLTF animations, creating procedural motion, or blending animations.",
       "path": "threejs-animation/SKILL.md",
       "tags": [
-        "threejs",
         "animation",
-        "three",
-        "keyframe",
-        "skeletal",
-        "morph"
+        "spring",
+        "math",
+        "interpolation",
+        "animationclip",
+        "morph",
+        "blending",
+        "bone"
       ]
     },
     {
@@ -1767,12 +2056,14 @@
       "description": "Three.js asset loading - GLTF, textures, images, models, async patterns. Use when loading 3D models, textures, HDR environments, or managing loading progress.",
       "path": "threejs-loaders/SKILL.md",
       "tags": [
-        "threejs",
-        "loaders",
-        "three",
-        "asset",
         "loading",
-        "gltf"
+        "gltf",
+        "gltfloader",
+        "url",
+        "promise",
+        "textureloader",
+        "cache",
+        "texture"
       ]
     },
     {
@@ -1780,12 +2071,14 @@
       "description": "Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, creating custom shaders, or optimizing material performance.",
       "path": "threejs-materials/SKILL.md",
       "tags": [
-        "threejs",
-        "materials",
-        "three",
+        "material",
         "pbr",
-        "basic",
-        "phong"
+        "rendering",
+        "meshbasicmaterial",
+        "materials",
+        "meshstandardmaterial",
+        "meshphysicalmaterial",
+        "custom"
       ]
     },
     {
@@ -1793,12 +2086,14 @@
       "description": "Three.js post-processing - EffectComposer, bloom, DOF, screen effects. Use when adding visual effects, color grading, blur, glow, or creating custom screen-space shaders.",
       "path": "threejs-postprocessing/SKILL.md",
       "tags": [
-        "threejs",
-        "postprocessing",
-        "three",
-        "post",
-        "processing",
-        "effectcomposer"
+        "shaderpass",
+        "effectcomposer",
+        "render",
+        "unrealbloompass",
+        "renderpass",
+        "bloom",
+        "ssaopass",
+        "effects"
       ]
     },
     {
@@ -1806,12 +2101,14 @@
       "description": "Automate TikTok tasks via Rube MCP (Composio): upload/publish videos, post photos, manage content, and view user profiles/stats. Always search tools first for current schemas.",
       "path": "tiktok-automation/SKILL.md",
       "tags": [
+        "mcp",
         "tiktok",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "pagination",
+        "video",
+        "publish",
+        "upload",
+        "photo",
+        "pitfalls"
       ]
     },
     {
@@ -1819,12 +2116,14 @@
       "description": "Automate Todoist task management, projects, sections, filtering, and bulk operations via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "todoist-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
+        "project_id",
         "todoist",
-        "automation",
-        "automate",
-        "task",
-        "projects",
-        "sections"
+        "http",
+        "filter",
+        "content",
+        "todoist_get_all_projects"
       ]
     },
     {
@@ -1832,12 +2131,14 @@
       "description": "Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples.",
       "path": "tutorial-engineer/SKILL.md",
       "tags": [
+        "refactoring",
         "tutorial",
-        "engineer",
-        "creates",
-        "step",
-        "tutorials",
-        "educational"
+        "quick",
+        "time",
+        "add",
+        "scaffolding",
+        "exercise",
+        "rule"
       ]
     },
     {
@@ -1845,12 +2146,14 @@
       "description": "Use when performing code review, writing or refactoring code, or discussing architecture; complements clean-code and does not replace project linter/formatter.",
       "path": "uncle-bob-craft/SKILL.md",
       "tags": [
+        "refactoring",
+        "clean",
+        "formatting",
         "uncle",
         "bob",
-        "craft",
-        "performing",
-        "code",
-        "review"
+        "review",
+        "solid",
+        "dependency"
       ]
     },
     {
@@ -1859,9 +2162,11 @@
       "path": "unity-ecs-patterns/SKILL.md",
       "tags": [
         "unity",
+        "resources",
         "ecs",
         "patterns",
-        "data",
+        "instructions",
+        "burst",
         "oriented",
         "technology"
       ]
@@ -1873,10 +2178,12 @@
       "tags": [
         "unsplash",
         "integration",
-        "skill",
-        "searching",
-        "fetching",
-        "high"
+        "context",
+        "execution",
+        "workflow",
+        "strict",
+        "rules",
+        "api"
       ]
     },
     {
@@ -1884,12 +2191,14 @@
       "description": "Git worktrees create isolated workspaces sharing the same repository, allowing work on multiple branches simultaneously without switching.",
       "path": "using-git-worktrees/SKILL.md",
       "tags": [
-        "git",
+        "claude",
         "worktrees",
-        "create",
-        "isolated",
-        "workspaces",
-        "sharing"
+        "directory",
+        "worktree",
+        "location",
+        "cargo",
+        "report",
+        "git"
       ]
     },
     {
@@ -1897,12 +2206,14 @@
       "description": "Secure environment variable management ensuring secrets are never exposed in Claude sessions, terminals, logs, or git commits",
       "path": "varlock-claude-skill/SKILL.md",
       "tags": [
-        "varlock",
         "claude",
-        "skill",
+        "varlock",
+        "overview",
+        "instructions",
         "secure",
         "environment",
-        "variable"
+        "variable",
+        "secrets"
       ]
     },
     {
@@ -1910,12 +2221,14 @@
       "description": "Automate Vercel tasks via Rube MCP (Composio): manage deployments, domains, DNS, env vars, projects, and teams. Always search tools first for current schemas.",
       "path": "vercel-automation/SKILL.md",
       "tags": [
+        "dns",
         "vercel",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "mcp",
+        "list",
+        "pagination",
+        "pitfalls",
+        "rube",
+        "deployments"
       ]
     },
     {
@@ -1924,11 +2237,13 @@
       "path": "vercel-deployment/SKILL.md",
       "tags": [
         "vercel",
-        "deployment",
-        "knowledge",
         "deploying",
-        "next",
-        "deploy"
+        "deployment",
+        "environment",
+        "edge",
+        "serverless",
+        "preview",
+        "patterns"
       ]
     },
     {
@@ -1937,11 +2252,13 @@
       "path": "verification-before-completion/SKILL.md",
       "tags": [
         "verification",
-        "before",
         "completion",
-        "claiming",
-        "work",
-        "complete"
+        "linter",
+        "red",
+        "agent",
+        "failures",
+        "verify",
+        "tests"
       ]
     },
     {
@@ -1951,10 +2268,12 @@
       "tags": [
         "vexor",
         "cli",
-        "semantic",
-        "file",
-        "discovery",
-        "via"
+        "javascript",
+        "validation",
+        "find",
+        "search",
+        "config",
+        "exclude"
       ]
     },
     {
@@ -1962,12 +2281,14 @@
       "description": "Web browser game development principles. Framework selection, WebGPU, optimization, PWA.",
       "path": "web-games/SKILL.md",
       "tags": [
-        "web",
-        "games",
         "browser",
-        "game",
-        "principles",
-        "selection"
+        "rendering",
+        "web",
+        "strategy",
+        "audio",
+        "decision",
+        "requirements",
+        "phaser"
       ]
     },
     {
@@ -1975,12 +2296,14 @@
       "description": "Integrate multiple digital health data sources, connect to [WellAlly.tech](https://www.wellally.tech/) knowledge base, providing data import and knowledge reference for personal health management systems.",
       "path": "wellally-tech/SKILL.md",
       "tags": [
-        "wellally",
-        "tech",
-        "integrate",
-        "multiple",
-        "digital",
-        "health"
+        "import",
+        "health",
+        "monitoring",
+        "knowledge",
+        "base",
+        "validation",
+        "json",
+        "wellally"
       ]
     },
     {
@@ -1990,10 +2313,12 @@
       "tags": [
         "wordpress",
         "woocommerce",
-        "store",
-        "workflow",
-        "covering",
-        "setup"
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
+        "workflow"
       ]
     },
     {
@@ -2001,12 +2326,14 @@
       "description": "Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol.",
       "path": "workflow-patterns/SKILL.md",
       "tags": [
+        "resources",
         "workflow",
         "patterns",
-        "skill",
-        "implementing",
-        "tasks",
-        "according"
+        "instructions",
+        "tdd",
+        "conductor",
+        "completing",
+        "understanding"
       ]
     },
     {
@@ -2014,12 +2341,14 @@
       "description": "Automate Wrike project management via Rube MCP (Composio): create tasks/folders, manage projects, assign work, and track progress. Always search tools first for current schemas.",
       "path": "wrike-automation/SKILL.md",
       "tags": [
+        "mcp",
         "wrike",
-        "automation",
-        "automate",
-        "project",
-        "via",
-        "rube"
+        "ids",
+        "task",
+        "pitfalls",
+        "rube",
+        "tasks",
+        "list"
       ]
     },
     {
@@ -2027,12 +2356,14 @@
       "description": "Use when creating, updating, or improving agent skills.",
       "path": "writing-skills/SKILL.md",
       "tags": [
+        "readme",
+        "quick",
+        "references",
+        "tier",
         "writing",
-        "skills",
-        "creating",
-        "updating",
-        "improving",
-        "agent"
+        "technique",
+        "metadata",
+        "decision"
       ]
     },
     {
@@ -2040,12 +2371,14 @@
       "description": "Agente que simula Yann LeCun — inventor das Convolutional Neural Networks, Chief AI Scientist da Meta, Prêmio Turing 2018.",
       "path": "yann-lecun/SKILL.md",
       "tags": [
-        "yann",
         "lecun",
-        "agente",
+        "llms",
+        "jepa",
+        "llama",
         "que",
-        "simula",
-        "inventor"
+        "sobre",
+        "como",
+        "pytorch"
       ]
     },
     {
@@ -2053,12 +2386,14 @@
       "description": "Sub-skill técnica de Yann LeCun. Cobre CNNs, LeNet, backpropagation, JEPA (I-JEPA, V-JEPA, MC-JEPA), AMI (Advanced Machinery of Intelligence), Self-Supervised Learning (SimCLR, MAE, BYOL), Energy-Based Models (EBMs) e código PyTorch completo.",
       "path": "yann-lecun-tecnico/SKILL.md",
       "tags": [
-        "yann",
+        "pytorch",
+        "jepa",
         "lecun",
-        "tecnico",
-        "sub",
-        "skill",
-        "técnica"
+        "ami",
+        "learning",
+        "models",
+        "encoders",
+        "objetivo"
       ]
     },
     {
@@ -2066,12 +2401,14 @@
       "description": "Extract transcripts from YouTube videos and generate comprehensive, detailed summaries using intelligent analysis frameworks",
       "path": "youtube-summarizer/SKILL.md",
       "tags": [
+        "url",
+        "python",
         "youtube",
-        "summarizer",
-        "extract",
-        "transcripts",
-        "videos",
-        "generate"
+        "transcript",
+        "video",
+        "summary",
+        "formatting",
+        "progress"
       ]
     },
     {
@@ -2080,11 +2417,13 @@
       "path": "zustand-store-ts/SKILL.md",
       "tags": [
         "zustand",
+        "react",
         "store",
-        "create",
-        "stores",
-        "following",
-        "established"
+        "typescript",
+        "src",
+        "state",
+        "actions",
+        "quick"
       ]
     }
   ]

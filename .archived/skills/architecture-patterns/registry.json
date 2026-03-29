@@ -8,10 +8,13 @@
       "path": "api-design-principles/SKILL.md",
       "tags": [
         "api",
-        "principles",
         "rest",
         "graphql",
-        "trpc"
+        "resources",
+        "principles",
+        "apis",
+        "refactoring",
+        "migrating"
       ]
     },
     {
@@ -19,12 +22,14 @@
       "description": "Master software architect specializing in modern architecture",
       "path": "architect-review/SKILL.md",
       "tags": [
-        "architect",
-        "review",
-        "master",
-        "software",
-        "specializing",
-        "modern"
+        "architecture",
+        "monitoring",
+        "observability",
+        "modern",
+        "distributed",
+        "rest",
+        "patterns",
+        "caching"
       ]
     },
     {
@@ -32,10 +37,14 @@
       "description": "Requirements, trade-offs, ADRs",
       "path": "architecture/SKILL.md",
       "tags": [
-        "requirements",
-        "trade",
-        "offs",
-        "adrs"
+        "validation",
+        "architecture",
+        "decision",
+        "framework",
+        "selective",
+        "reading",
+        "rule",
+        "related"
       ]
     },
     {
@@ -43,10 +52,14 @@
       "description": "Clean, Hexagonal, DDD",
       "path": "architecture-patterns/SKILL.md",
       "tags": [
+        "resources",
+        "architecture",
         "patterns",
-        "clean",
-        "hexagonal",
-        "ddd"
+        "refactoring",
+        "migrating",
+        "instructions",
+        "related",
+        "validation"
       ]
     },
     {
@@ -55,11 +68,13 @@
       "path": "c4-component/SKILL.md",
       "tags": [
         "component",
-        "level",
-        "documentation",
-        "specialist",
-        "synthesizes",
-        "code"
+        "components",
+        "overview",
+        "external",
+        "diagram",
+        "container",
+        "elements",
+        "interfaces"
       ]
     },
     {
@@ -67,11 +82,14 @@
       "description": "Uncle Bob's Clean Code principles",
       "path": "clean-code/SKILL.md",
       "tags": [
+        "names",
+        "don",
         "clean",
-        "code",
-        "uncle",
-        "bob",
-        "principles"
+        "formatting",
+        "functions",
+        "comments",
+        "classes",
+        "objects"
       ]
     },
     {
@@ -79,11 +97,14 @@
       "description": "Command Query Responsibility Segregation",
       "path": "cqrs-implementation/SKILL.md",
       "tags": [
+        "resources",
         "cqrs",
-        "command",
+        "instructions",
         "query",
+        "command",
         "responsibility",
-        "segregation"
+        "segregation",
+        "separating"
       ]
     },
     {
@@ -91,12 +112,14 @@
       "description": "Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns.",
       "path": "ddd-context-mapping/SKILL.md",
       "tags": [
-        "ddd",
         "context",
+        "ddd",
         "mapping",
-        "map",
-        "relationships",
-        "between"
+        "instructions",
+        "output",
+        "limitations",
+        "requirements",
+        "references"
       ]
     },
     {
@@ -106,10 +129,12 @@
       "tags": [
         "ddd",
         "strategic",
+        "instructions",
+        "limitations",
+        "artifacts",
+        "references",
         "bounded",
-        "contexts",
-        "ubiquitous",
-        "language"
+        "defining"
       ]
     },
     {
@@ -120,9 +145,11 @@
         "ddd",
         "tactical",
         "patterns",
-        "entities",
-        "value",
-        "objects"
+        "refactoring",
+        "instructions",
+        "limitations",
+        "order",
+        "references"
       ]
     },
     {
@@ -130,12 +157,14 @@
       "description": "Templates and patterns for creating legally sound employment documentation including contracts, offer letters, and HR policies.",
       "path": "employment-contract-templates/SKILL.md",
       "tags": [
+        "resources",
+        "templates",
         "employment",
         "contract",
-        "templates",
-        "patterns",
-        "creating",
-        "legally"
+        "instructions",
+        "safety",
+        "drafting",
+        "writing"
       ]
     },
     {
@@ -143,12 +172,14 @@
       "description": "Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes.",
       "path": "error-detective/SKILL.md",
       "tags": [
+        "focus",
+        "monitoring",
+        "instructions",
+        "areas",
+        "output",
         "error",
-        "detective",
-        "search",
-        "logs",
-        "codebases",
-        "patterns"
+        "parsing",
+        "log"
       ]
     },
     {
@@ -159,8 +190,11 @@
         "event",
         "sourcing",
         "architect",
-        "cqrs",
-        "driven"
+        "capabilities",
+        "instructions",
+        "safety",
+        "related",
+        "tracing"
       ]
     },
     {
@@ -168,12 +202,14 @@
       "description": "Everyday data transformations using functional patterns - arrays, objects, grouping, aggregation, and null-safe access",
       "path": "fp-data-transforms/SKILL.md",
       "tags": [
-        "data",
-        "transforms",
-        "everyday",
-        "transformations",
         "functional",
-        "patterns"
+        "imperative",
+        "record",
+        "normalization",
+        "option",
+        "api",
+        "array",
+        "order"
       ]
     },
     {
@@ -181,12 +217,14 @@
       "description": "Internationalization and localization patterns. Detecting hardcoded strings, managing translations, locale files, RTL support.",
       "path": "i18n-localization/SKILL.md",
       "tags": [
+        "python",
+        "rtl",
         "i18n",
         "localization",
-        "internationalization",
-        "patterns",
-        "detecting",
-        "hardcoded"
+        "react",
+        "script",
+        "core",
+        "concepts"
       ]
     },
     {
@@ -195,10 +233,12 @@
       "path": "lightning-channel-factories/SKILL.md",
       "tags": [
         "lightning",
-        "channel",
-        "factories",
-        "technical",
-        "reference",
+        "sqlite",
+        "superscalar",
+        "instructions",
+        "purpose",
+        "topics",
+        "references",
         "network"
       ]
     },
@@ -207,12 +247,14 @@
       "description": "Create Mermaid diagrams for flowcharts, sequences, ERDs, and architectures. Masters syntax for all diagram types and styling.",
       "path": "mermaid-expert/SKILL.md",
       "tags": [
-        "mermaid",
-        "create",
-        "diagrams",
-        "flowcharts",
-        "sequences",
-        "erds"
+        "rendering",
+        "diagram",
+        "instructions",
+        "focus",
+        "areas",
+        "expertise",
+        "output",
+        "mermaid"
       ]
     },
     {
@@ -222,10 +264,12 @@
       "tags": [
         "microservices",
         "patterns",
-        "service",
-        "boundaries",
-        "communication",
-        "resilience"
+        "resources",
+        "instructions",
+        "observability",
+        "master",
+        "decomposing",
+        "identify"
       ]
     },
     {
@@ -233,11 +277,14 @@
       "description": "Nx, Turborepo, Bazel, Lerna",
       "path": "monorepo-architect/SKILL.md",
       "tags": [
+        "caching",
         "monorepo",
         "architect",
-        "turborepo",
-        "bazel",
-        "lerna"
+        "migrating",
+        "instructions",
+        "capabilities",
+        "workflow",
+        "resources"
       ]
     },
     {
@@ -245,12 +292,14 @@
       "description": "PowerShell Windows patterns. Critical pitfalls, operator syntax, error handling.",
       "path": "powershell-windows/SKILL.md",
       "tags": [
-        "powershell",
-        "windows",
-        "patterns",
+        "json",
         "critical",
-        "pitfalls",
-        "operator"
+        "patterns",
+        "operations",
+        "windows",
+        "powershell",
+        "unicode",
+        "rules"
       ]
     },
     {
@@ -258,8 +307,14 @@
       "description": "|",
       "path": "robius-app-architecture/SKILL.md",
       "tags": [
+        "app",
+        "pattern",
+        "runtime",
+        "architecture",
         "robius",
-        "app"
+        "tokio",
+        "request",
+        "sequence"
       ]
     },
     {
@@ -267,9 +322,14 @@
       "description": "|",
       "path": "robius-widget-patterns/SKILL.md",
       "tags": [
-        "robius",
+        "pattern",
         "widget",
-        "patterns"
+        "view",
+        "patterns",
+        "rust",
+        "dynamic",
+        "reference",
+        "avatar"
       ]
     },
     {
@@ -278,11 +338,13 @@
       "path": "saga-orchestration/SKILL.md",
       "tags": [
         "saga",
+        "dict",
+        "template",
+        "don",
+        "execution",
+        "sagastep",
         "orchestration",
-        "distributed",
-        "transactions",
-        "long",
-        "running"
+        "event"
       ]
     },
     {
@@ -290,10 +352,14 @@
       "description": "Quality-focused architecture guide",
       "path": "software-architecture/SKILL.md",
       "tags": [
+        "architecture",
+        "avoid",
         "software",
-        "quality",
-        "focused",
-        "guide"
+        "principles",
+        "utils",
+        "helpers",
+        "keep",
+        "style"
       ]
     }
   ]

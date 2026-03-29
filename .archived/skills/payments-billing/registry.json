@@ -7,11 +7,14 @@
       "description": "Recurring billing, invoicing, dunning",
       "path": "billing-automation/SKILL.md",
       "tags": [
+        "resources",
         "billing",
         "automation",
-        "recurring",
-        "invoicing",
-        "dunning"
+        "instructions",
+        "safety",
+        "master",
+        "saas",
+        "automating"
       ]
     },
     {
@@ -19,12 +22,14 @@
       "description": "Stripe, PayPal, PCI compliance",
       "path": "payment-integration/SKILL.md",
       "tags": [
-        "payment",
-        "integration",
         "stripe",
         "paypal",
+        "validation",
+        "webhook",
+        "security",
         "pci",
-        "compliance"
+        "owasp",
+        "payment"
       ]
     },
     {
@@ -33,11 +38,13 @@
       "path": "paypal-integration/SKILL.md",
       "tags": [
         "paypal",
-        "integration",
-        "checkout",
+        "authorization",
         "ipn",
-        "recurring",
-        "billing"
+        "express",
+        "payment",
+        "integration",
+        "subscription",
+        "test"
       ]
     },
     {
@@ -46,10 +53,13 @@
       "path": "stripe-integration/SKILL.md",
       "tags": [
         "stripe",
-        "integration",
-        "checkout",
-        "subscriptions",
-        "webhooks"
+        "customer",
+        "payment",
+        "pattern",
+        "webhook",
+        "subscription",
+        "test",
+        "session"
       ]
     }
   ]

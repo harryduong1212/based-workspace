@@ -8,9 +8,13 @@
       "path": "astropy/SKILL.md",
       "tags": [
         "astropy",
-        "astronomy",
-        "research",
-        "python"
+        "references",
+        "fits",
+        "time",
+        "coordinate",
+        "table",
+        "units",
+        "wcs"
       ]
     },
     {
@@ -18,10 +22,14 @@
       "description": "Biological computation tools",
       "path": "biopython/SKILL.md",
       "tags": [
-        "biopython",
-        "biological",
-        "computation",
-        "tools"
+        "bio",
+        "blast",
+        "parsing",
+        "entrez",
+        "issue",
+        "python",
+        "find",
+        "sequence"
       ]
     },
     {
@@ -29,9 +37,14 @@
       "description": "Python visualization",
       "path": "matplotlib/SKILL.md",
       "tags": [
+        "plot",
+        "references",
         "matplotlib",
-        "python",
-        "visualization"
+        "method",
+        "figure",
+        "interface",
+        "dpi",
+        "vector"
       ]
     },
     {
@@ -39,10 +52,14 @@
       "description": "Complex network analysis",
       "path": "networkx/SKILL.md",
       "tags": [
+        "graph",
+        "references",
         "networkx",
-        "complex",
-        "network",
-        "analysis"
+        "json",
+        "pandas",
+        "layout",
+        "centrality",
+        "reference"
       ]
     },
     {
@@ -50,9 +67,14 @@
       "description": "Interactive visualizations",
       "path": "plotly/SKILL.md",
       "tags": [
+        "express",
         "plotly",
-        "interactive",
-        "visualizations"
+        "plot",
+        "chart",
+        "time",
+        "scatter",
+        "box",
+        "series"
       ]
     },
     {
@@ -60,9 +82,14 @@
       "description": "Quantum computing framework",
       "path": "qiskit/SKILL.md",
       "tags": [
-        "qiskit",
+        "references",
         "quantum",
-        "computing"
+        "qiskit",
+        "hardware",
+        "workflow",
+        "execution",
+        "pattern",
+        "circuit"
       ]
     },
     {
@@ -70,12 +97,14 @@
       "description": "Single-cell RNA-seq analysis",
       "path": "scanpy/SKILL.md",
       "tags": [
-        "scanpy",
-        "single",
+        "normalization",
+        "genes",
         "cell",
-        "rna",
-        "seq",
-        "analysis"
+        "gene",
+        "visualize",
+        "inference",
+        "marker",
+        "save"
       ]
     },
     {
@@ -83,9 +112,14 @@
       "description": "Symbolic mathematics",
       "path": "sympy/SKILL.md",
       "tags": [
-        "sympy",
+        "python",
+        "solve",
+        "numpy",
+        "define",
         "symbolic",
-        "mathematics"
+        "references",
+        "equation",
+        "convert"
       ]
     }
   ]

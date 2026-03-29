@@ -7,9 +7,14 @@
       "description": "Bevy ECS in Rust",
       "path": "bevy-ecs-expert/SKILL.md",
       "tags": [
-        "bevy",
+        "component",
+        "query",
         "ecs",
-        "rust"
+        "without",
+        "bevy",
+        "reflect",
+        "res",
+        "components"
       ]
     },
     {
@@ -17,9 +22,14 @@
       "description": "Game dev orchestrator",
       "path": "game-development/SKILL.md",
       "tags": [
+        "game-development",
+        "selection",
+        "routing",
         "game",
-        "dev",
-        "orchestrator"
+        "rendering",
+        "input",
+        "principles",
+        "pattern"
       ]
     },
     {
@@ -29,7 +39,12 @@
       "tags": [
         "godot",
         "gdscript",
-        "patterns"
+        "resources",
+        "patterns",
+        "instructions",
+        "optimizing",
+        "learning",
+        "clarify"
       ]
     },
     {
@@ -38,10 +53,13 @@
       "path": "unity-developer/SKILL.md",
       "tags": [
         "unity",
-        "developer",
-        "lts",
-        "urp",
-        "hdrp"
+        "rendering",
+        "advanced",
+        "streaming",
+        "game",
+        "optimization",
+        "audio",
+        "asset"
       ]
     },
     {
@@ -51,8 +69,12 @@
       "tags": [
         "unreal",
         "engine",
-        "cpp",
-        "pro"
+        "prefix",
+        "uobject",
+        "uproperty",
+        "beginplay",
+        "tick",
+        "postinitializecomponents"
       ]
     }
   ]

@@ -7,12 +7,14 @@
       "description": "Advanced JavaScript animation library skill for creating complex, high-performance web animations.",
       "path": "animejs-animation/SKILL.md",
       "tags": [
-        "animejs",
+        "css",
         "animation",
-        "advanced",
-        "javascript",
-        "library",
-        "skill"
+        "anime",
+        "spring",
+        "context",
+        "execution",
+        "workflow",
+        "strict"
       ]
     },
     {
@@ -21,11 +23,13 @@
       "path": "bun-development/SKILL.md",
       "tags": [
         "bun",
-        "fast",
-        "modern",
-        "javascript",
+        "json",
+        "package",
+        "http",
+        "elysia",
         "typescript",
-        "runtime"
+        "node",
+        "bundle"
       ]
     },
     {
@@ -33,9 +37,14 @@
       "description": "C with proper memory management",
       "path": "c-pro/SKILL.md",
       "tags": [
+        "instructions",
+        "focus",
+        "areas",
+        "output",
         "pro",
-        "proper",
-        "memory"
+        "resources",
+        "memory",
+        "needing"
       ]
     },
     {
@@ -44,11 +53,13 @@
       "path": "cpp-pro/SKILL.md",
       "tags": [
         "cpp",
+        "instructions",
+        "focus",
+        "areas",
+        "output",
         "pro",
-        "modern",
-        "raii",
-        "smart",
-        "pointers"
+        "resources",
+        "modern"
       ]
     },
     {
@@ -56,11 +67,14 @@
       "description": "Modern C# with records, pattern matching",
       "path": "csharp-pro/SKILL.md",
       "tags": [
+        "net",
         "csharp",
-        "pro",
-        "modern",
-        "records",
-        "matching"
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "xml",
+        "mocking"
       ]
     },
     {
@@ -69,11 +83,13 @@
       "path": "elixir-pro/SKILL.md",
       "tags": [
         "elixir",
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "observability",
         "pro",
-        "otp",
-        "supervision",
-        "trees",
-        "phoenix"
+        "resources"
       ]
     },
     {
@@ -81,10 +97,14 @@
       "description": "Go 1.21+ with modern concurrency",
       "path": "golang-pro/SKILL.md",
       "tags": [
-        "golang",
-        "pro",
         "modern",
-        "concurrency"
+        "profiling",
+        "database",
+        "sql",
+        "observability",
+        "redis",
+        "kubernetes",
+        "rate-limiting"
       ]
     },
     {
@@ -93,9 +113,13 @@
       "path": "haskell-pro/SKILL.md",
       "tags": [
         "haskell",
-        "pro",
-        "advanced",
-        "type"
+        "parsing",
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "json",
+        "profiling"
       ]
     },
     {
@@ -103,12 +127,14 @@
       "description": "Java 21+, virtual threads, Spring Boot 3",
       "path": "java-pro/SKILL.md",
       "tags": [
-        "java",
-        "pro",
-        "virtual",
-        "threads",
         "spring",
-        "boot"
+        "java",
+        "monitoring",
+        "validation",
+        "jvm",
+        "modern",
+        "performance",
+        "security"
       ]
     },
     {
@@ -117,9 +143,13 @@
       "path": "julia-pro/SKILL.md",
       "tags": [
         "julia",
-        "pro",
-        "multiple",
-        "dispatch"
+        "inference",
+        "python",
+        "modern",
+        "package",
+        "github",
+        "http",
+        "formatting"
       ]
     },
     {
@@ -128,8 +158,13 @@
       "path": "kotlin-coroutines-expert/SKILL.md",
       "tags": [
         "kotlin",
+        "flow",
         "coroutines",
-        "flow"
+        "coroutinescope",
+        "exception",
+        "structured",
+        "concurrency",
+        "coroutineexceptionhandler"
       ]
     },
     {
@@ -138,11 +173,13 @@
       "path": "mtls-configuration/SKILL.md",
       "tags": [
         "mtls",
-        "configuration",
-        "configure",
-        "mutual",
+        "istio",
         "tls",
-        "zero"
+        "certificate",
+        "template",
+        "linkerd",
+        "spire",
+        "strict"
       ]
     },
     {
@@ -151,10 +188,13 @@
       "path": "php-pro/SKILL.md",
       "tags": [
         "php",
-        "pro",
-        "modern",
-        "generators",
-        "iterators"
+        "focus",
+        "instructions",
+        "areas",
+        "output",
+        "profiling",
+        "inference",
+        "validation"
       ]
     },
     {
@@ -163,11 +203,13 @@
       "path": "popup-cro/SKILL.md",
       "tags": [
         "popup",
-        "cro",
-        "create",
-        "optimize",
-        "popups",
-        "modals"
+        "intent",
+        "rules",
+        "exit",
+        "copy",
+        "frequency",
+        "targeting",
+        "strategy"
       ]
     },
     {
@@ -175,11 +217,13 @@
       "description": "Python development principles and decision-making. Framework selection, async patterns, type hints, project structure. Teaches thinking, not copying.",
       "path": "python-patterns/SKILL.md",
       "tags": [
+        "fastapi",
+        "django",
+        "pydantic",
+        "async",
         "python",
-        "patterns",
         "principles",
-        "decision",
-        "making",
+        "validation",
         "selection"
       ]
     },
@@ -189,10 +233,13 @@
       "path": "python-pro/SKILL.md",
       "tags": [
         "python",
-        "pro",
-        "ruff",
-        "pydantic",
-        "fastapi"
+        "fastapi",
+        "validation",
+        "django",
+        "modern",
+        "performance",
+        "profiling",
+        "authentication"
       ]
     },
     {
@@ -201,10 +248,13 @@
       "path": "ruby-pro/SKILL.md",
       "tags": [
         "ruby",
-        "pro",
-        "metaprogramming",
         "rails",
-        "gems"
+        "refactoring",
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "profiling"
       ]
     },
     {
@@ -213,11 +263,13 @@
       "path": "rust-pro/SKILL.md",
       "tags": [
         "rust",
-        "pro",
-        "async",
-        "advanced",
-        "type",
-        "system"
+        "modern",
+        "memory",
+        "programming",
+        "traits",
+        "ffi",
+        "http",
+        "cargo"
       ]
     },
     {
@@ -226,10 +278,13 @@
       "path": "scala-pro/SKILL.md",
       "tags": [
         "scala",
-        "pro",
+        "profiling",
+        "excellence",
         "pekko",
-        "spark",
-        "zio"
+        "rest",
+        "http",
+        "mastery",
+        "patterns"
       ]
     },
     {
@@ -237,12 +292,14 @@
       "description": "Seaborn is a Python visualization library for creating publication-quality statistical graphics. Use this skill for dataset-oriented plotting, multivariate analysis, automatic statistical estimation, and complex multi-panel figures with minimal code.",
       "path": "seaborn/SKILL.md",
       "tags": [
+        "plot",
+        "functions",
+        "plots",
+        "palettes",
+        "issue",
         "seaborn",
-        "python",
-        "visualization",
-        "library",
-        "creating",
-        "publication"
+        "relationships",
+        "faceting"
       ]
     },
     {
@@ -251,11 +308,13 @@
       "path": "sql-pro/SKILL.md",
       "tags": [
         "sql",
-        "pro",
+        "database",
+        "monitoring",
+        "modern",
+        "advanced",
+        "optimization",
         "cloud",
-        "native",
-        "oltp",
-        "olap"
+        "query"
       ]
     },
     {
@@ -263,12 +322,14 @@
       "description": "Statsmodels is Python's premier library for statistical modeling, providing tools for estimation, inference, and diagnostics across a wide range of statistical methods.",
       "path": "statsmodels/SKILL.md",
       "tags": [
-        "statsmodels",
-        "python",
-        "premier",
-        "library",
-        "statistical",
-        "modeling"
+        "model",
+        "models",
+        "inference",
+        "references",
+        "poisson",
+        "regression",
+        "linear",
+        "ols"
       ]
     }
   ]

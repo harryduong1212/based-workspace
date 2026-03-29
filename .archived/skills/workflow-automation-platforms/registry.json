@@ -7,12 +7,14 @@
       "description": "Automate ActiveCampaign tasks via Rube MCP (Composio): manage contacts, tags, list subscriptions, automation enrollment, and tasks. Always search tools first for current schemas.",
       "path": "activecampaign-automation/SKILL.md",
       "tags": [
+        "contact",
+        "mcp",
         "activecampaign",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "email",
+        "contact_id",
+        "add",
+        "tags",
+        "active_campaign_find_contact"
       ]
     },
     {
@@ -21,11 +23,13 @@
       "path": "amplitude-automation/SKILL.md",
       "tags": [
         "amplitude",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "mcp",
+        "user_id",
+        "device_id",
+        "identify",
+        "pitfalls",
+        "rube",
+        "event"
       ]
     },
     {
@@ -33,12 +37,14 @@
       "description": "Automate BambooHR tasks via Rube MCP (Composio): employees, time-off, benefits, dependents, employee updates. Always search tools first for current schemas.",
       "path": "bamboohr-automation/SKILL.md",
       "tags": [
+        "mcp",
         "bamboohr",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "employee",
+        "list",
+        "pitfalls",
+        "employeeid",
+        "rube",
+        "update"
       ]
     },
     {
@@ -47,11 +53,13 @@
       "path": "bitbucket-automation/SKILL.md",
       "tags": [
         "bitbucket",
-        "automation",
-        "automate",
-        "repositories",
-        "pull",
-        "requests"
+        "workspace",
+        "repo_slug",
+        "mcp",
+        "pagination",
+        "pull_request_id",
+        "list",
+        "state"
       ]
     },
     {
@@ -59,12 +67,14 @@
       "description": "Automate Cal.com tasks via Rube MCP (Composio): manage bookings, check availability, configure webhooks, and handle teams. Always search tools first for current schemas.",
       "path": "cal-com-automation/SKILL.md",
       "tags": [
+        "mcp",
         "cal",
-        "com",
-        "automation",
-        "automate",
-        "tasks",
-        "via"
+        "webhook",
+        "pitfalls",
+        "team",
+        "rube",
+        "booking",
+        "timezone"
       ]
     },
     {
@@ -72,12 +82,14 @@
       "description": "Automate Calendly scheduling, event management, invitee tracking, availability checks, and organization administration via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "calendly-automation/SKILL.md",
       "tags": [
+        "uuid",
+        "pagination",
+        "mcp",
         "calendly",
-        "automation",
-        "automate",
-        "scheduling",
-        "event",
-        "invitee"
+        "uri",
+        "calendly_get_current_user",
+        "organization",
+        "status"
       ]
     },
     {
@@ -85,12 +97,14 @@
       "description": "Automate Close CRM tasks via Rube MCP (Composio): create leads, manage calls/SMS, handle tasks, and track notes. Always search tools first for current schemas.",
       "path": "close-automation/SKILL.md",
       "tags": [
+        "mcp",
         "close",
-        "automation",
-        "automate",
-        "crm",
-        "tasks",
-        "via"
+        "sms",
+        "lead",
+        "pitfalls",
+        "custom",
+        "rube",
+        "contact"
       ]
     },
     {
@@ -98,12 +112,14 @@
       "description": "Automate Confluence page creation, content search, space management, labels, and hierarchy navigation via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "confluence-automation/SKILL.md",
       "tags": [
+        "pagination",
         "confluence",
-        "automation",
-        "automate",
-        "page",
+        "limit",
+        "mcp",
+        "body",
         "content",
-        "search"
+        "version",
+        "space"
       ]
     },
     {
@@ -111,12 +127,14 @@
       "description": "Automate ConvertKit (Kit) tasks via Rube MCP (Composio): manage subscribers, tags, broadcasts, and broadcast stats. Always search tools first for current schemas.",
       "path": "convertkit-automation/SKILL.md",
       "tags": [
-        "convertkit",
-        "automation",
-        "automate",
+        "pagination",
+        "mcp",
+        "subscriber",
         "kit",
-        "tasks",
-        "via"
+        "list",
+        "broadcast",
+        "pitfalls",
+        "rube"
       ]
     },
     {
@@ -124,12 +142,14 @@
       "description": "Automate DocuSign tasks via Rube MCP (Composio): templates, envelopes, signatures, document management. Always search tools first for current schemas.",
       "path": "docusign-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "signing",
+        "envelope",
         "docusign",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "status",
+        "templates",
+        "template",
+        "pitfalls"
       ]
     },
     {
@@ -138,11 +158,13 @@
       "path": "dropbox-automation/SKILL.md",
       "tags": [
         "dropbox",
-        "automation",
-        "automate",
-        "file",
-        "sharing",
-        "search"
+        "mcp",
+        "pagination",
+        "url",
+        "settings",
+        "dropbox_get_metadata",
+        "options",
+        "dropbox_read_file"
       ]
     },
     {
@@ -150,12 +172,14 @@
       "description": "Automate Freshdesk helpdesk operations including tickets, contacts, companies, notes, and replies via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "freshdesk-automation/SKILL.md",
       "tags": [
+        "page",
+        "mcp",
+        "pagination",
+        "html",
         "freshdesk",
-        "automation",
-        "automate",
-        "helpdesk",
-        "operations",
-        "including"
+        "email",
+        "ticket_id",
+        "search"
       ]
     },
     {
@@ -163,12 +187,14 @@
       "description": "Automate Freshservice ITSM tasks via Rube MCP (Composio): create/update tickets, bulk operations, service requests, and outbound emails. Always search tools first for current schemas.",
       "path": "freshservice-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "ticket",
         "freshservice",
-        "automation",
-        "automate",
-        "itsm",
-        "tasks",
-        "via"
+        "email",
+        "status",
+        "html",
+        "tickets",
+        "reference"
       ]
     },
     {
@@ -176,11 +202,13 @@
       "description": "Automate HelpDesk tasks via Rube MCP (Composio): list tickets, manage views, use canned responses, and configure custom fields. Always search tools first for current schemas.",
       "path": "helpdesk-automation/SKILL.md",
       "tags": [
+        "pagination",
+        "mcp",
         "helpdesk",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
+        "ticket",
+        "list",
+        "next",
+        "prev",
         "rube"
       ]
     },
@@ -190,9 +218,13 @@
       "path": "inngest/SKILL.md",
       "tags": [
         "inngest",
-        "durable",
-        "background",
-        "processing"
+        "patterns",
+        "workflow",
+        "functions",
+        "steps",
+        "event",
+        "integration",
+        "capabilities"
       ]
     },
     {
@@ -200,12 +232,14 @@
       "description": "Automate Instagram tasks via Rube MCP (Composio): create posts, carousels, manage media, get insights, and publishing limits. Always search tools first for current schemas.",
       "path": "instagram-automation/SKILL.md",
       "tags": [
+        "mcp",
         "instagram",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "media",
+        "publishing",
+        "post",
+        "pitfalls",
+        "rube",
+        "urls"
       ]
     },
     {
@@ -213,12 +247,14 @@
       "description": "Automate Intercom tasks via Rube MCP (Composio): conversations, contacts, companies, segments, admins. Always search tools first for current schemas.",
       "path": "intercom-automation/SKILL.md",
       "tags": [
+        "pagination",
+        "mcp",
+        "html",
         "intercom",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "search",
+        "admin",
+        "pitfalls",
+        "list"
       ]
     },
     {
@@ -226,11 +262,13 @@
       "description": "Automate Klaviyo tasks via Rube MCP (Composio): manage email/SMS campaigns, inspect campaign messages, track tags, and monitor send jobs. Always search tools first for current schemas.",
       "path": "klaviyo-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "campaign",
+        "pagination",
         "klaviyo",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
+        "filter",
+        "pitfalls",
+        "ids",
         "rube"
       ]
     },
@@ -239,12 +277,14 @@
       "description": "Automate Make (Integromat) tasks via Rube MCP (Composio): operations, enums, language and timezone lookups. Always search tools first for current schemas.",
       "path": "make-automation/SKILL.md",
       "tags": [
-        "make",
-        "automation",
-        "automate",
-        "integromat",
-        "tasks",
-        "via"
+        "mcp",
+        "operations",
+        "authentication",
+        "list",
+        "monitoring",
+        "rube",
+        "workflows",
+        "available"
       ]
     },
     {
@@ -252,8 +292,14 @@
       "description": "|",
       "path": "makepad-animation/SKILL.md",
       "tags": [
-        "makepad",
-        "animation"
+        "animation",
+        "rust",
+        "forward",
+        "state",
+        "easing",
+        "snap",
+        "documentation",
+        "patterns"
       ]
     },
     {
@@ -261,8 +307,14 @@
       "description": "|",
       "path": "makepad-basics/SKILL.md",
       "tags": [
+        "app",
         "makepad",
-        "basics"
+        "documentation",
+        "cargo",
+        "setup",
+        "rendering",
+        "widgetref",
+        "appmain"
       ]
     },
     {
@@ -270,8 +322,14 @@
       "description": "|",
       "path": "makepad-deployment/SKILL.md",
       "tags": [
+        "install",
+        "cargo",
+        "github",
+        "packaging",
+        "provisioning",
         "makepad",
-        "deployment"
+        "resources",
+        "android"
       ]
     },
     {
@@ -279,8 +337,14 @@
       "description": "|",
       "path": "makepad-dsl/SKILL.md",
       "tags": [
-        "makepad",
-        "dsl"
+        "rust",
+        "dsl",
+        "override",
+        "object",
+        "inheritance",
+        "documentation",
+        "widget",
+        "named"
       ]
     },
     {
@@ -288,9 +352,14 @@
       "description": "|",
       "path": "makepad-event-action/SKILL.md",
       "tags": [
-        "makepad",
         "event",
-        "action"
+        "action",
+        "actions",
+        "hit",
+        "documentation",
+        "enum",
+        "timer",
+        "widget"
       ]
     },
     {
@@ -298,8 +367,14 @@
       "description": "|",
       "path": "makepad-font/SKILL.md",
       "tags": [
+        "text",
+        "font",
+        "fonts",
+        "settings",
+        "documentation",
         "makepad",
-        "font"
+        "dsl",
+        "rendering"
       ]
     },
     {
@@ -307,8 +382,14 @@
       "description": "|",
       "path": "makepad-layout/SKILL.md",
       "tags": [
-        "makepad",
-        "layout"
+        "fill",
+        "layout",
+        "fit",
+        "align",
+        "documentation",
+        "view",
+        "flow",
+        "makepad"
       ]
     },
     {
@@ -316,8 +397,14 @@
       "description": "|",
       "path": "makepad-platform/SKILL.md",
       "tags": [
+        "platform",
+        "ostype",
+        "documentation",
+        "windows",
+        "web",
         "makepad",
-        "platform"
+        "linux",
+        "android"
       ]
     },
     {
@@ -325,8 +412,14 @@
       "description": "|",
       "path": "makepad-shaders/SKILL.md",
       "tags": [
+        "shader",
+        "documentation",
+        "patterns",
         "makepad",
-        "shaders"
+        "shaders",
+        "circle",
+        "built-in",
+        "functions"
       ]
     },
     {
@@ -334,8 +427,14 @@
       "description": "|",
       "path": "makepad-splash/SKILL.md",
       "tags": [
+        "splash",
+        "http",
+        "rust",
         "makepad",
-        "splash"
+        "documentation",
+        "async",
+        "syntax",
+        "operations"
       ]
     },
     {
@@ -343,12 +442,14 @@
       "description": "Version: makepad-widgets (dev branch) | Last Updated: 2026-01-19 > > Check for updates: https://crates.io/crates/makepad-widgets",
       "path": "makepad-widgets/SKILL.md",
       "tags": [
-        "makepad",
+        "view",
         "widgets",
-        "version",
-        "dev",
-        "branch",
-        "last"
+        "button",
+        "label",
+        "image",
+        "html",
+        "text",
+        "textinput"
       ]
     },
     {
@@ -356,12 +457,14 @@
       "description": "Automate Microsoft Teams tasks via Rube MCP (Composio): send messages, manage channels, create meetings, handle chats, and search messages. Always search tools first for current schemas.",
       "path": "microsoft-teams-automation/SKILL.md",
       "tags": [
-        "microsoft",
+        "mcp",
         "teams",
-        "automation",
-        "automate",
-        "tasks",
-        "via"
+        "microsoft",
+        "messages",
+        "list",
+        "channel",
+        "pagination",
+        "send"
       ]
     },
     {
@@ -369,12 +472,14 @@
       "description": "Automate Miro tasks via Rube MCP (Composio): boards, items, sticky notes, frames, sharing, connectors. Always search tools first for current schemas.",
       "path": "miro-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "miro",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "boards",
+        "board",
+        "board_id",
+        "items",
+        "pitfalls"
       ]
     },
     {
@@ -382,12 +487,14 @@
       "description": "Automate Monday.com work management including boards, items, columns, groups, subitems, and updates via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "monday-automation/SKILL.md",
       "tags": [
+        "graphql",
+        "board_id",
+        "json",
+        "mcp",
         "monday",
-        "automation",
-        "automate",
-        "com",
-        "work",
-        "including"
+        "column",
+        "pagination",
+        "monday_list_columns"
       ]
     },
     {
@@ -395,10 +502,14 @@
       "description": "JavaScript in n8n Code nodes",
       "path": "n8n-code-javascript/SKILL.md",
       "tags": [
-        "n8n",
-        "code",
         "javascript",
-        "nodes"
+        "return",
+        "item",
+        "http",
+        "validation",
+        "pattern",
+        "webhook",
+        "json"
       ]
     },
     {
@@ -406,10 +517,14 @@
       "description": "Python in n8n Code nodes",
       "path": "n8n-code-python/SKILL.md",
       "tags": [
-        "n8n",
-        "code",
         "python",
-        "nodes"
+        "javascript",
+        "http",
+        "wrong",
+        "return",
+        "access",
+        "list",
+        "correct"
       ]
     },
     {
@@ -417,9 +532,14 @@
       "description": "n8n workflow architecture patterns",
       "path": "n8n-workflow-patterns/SKILL.md",
       "tags": [
-        "n8n",
+        "http",
+        "validation",
+        "pattern",
+        "postgres",
+        "webhook",
         "workflow",
-        "patterns"
+        "phase",
+        "authentication"
       ]
     },
     {
@@ -427,12 +547,14 @@
       "description": "Automate OneDrive file management, search, uploads, downloads, sharing, permissions, and folder operations via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "one-drive-automation/SKILL.md",
       "tags": [
-        "one",
-        "drive",
-        "automation",
-        "automate",
+        "item_id",
+        "mcp",
+        "pagination",
         "onedrive",
-        "file"
+        "one_drive_onedrive_find_folder",
+        "folder",
+        "http",
+        "one_drive_get_item"
       ]
     },
     {
@@ -440,12 +562,14 @@
       "description": "Automate Outlook tasks via Rube MCP (Composio): emails, calendar, contacts, folders, attachments. Always search tools first for current schemas.",
       "path": "outlook-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "outlook",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "list",
+        "filter",
+        "search",
+        "pitfalls",
+        "query"
       ]
     },
     {
@@ -453,12 +577,14 @@
       "description": "Automate Outlook Calendar tasks via Rube MCP (Composio): create events, manage attendees, find meeting times, and handle invitations. Always search tools first for current schemas.",
       "path": "outlook-calendar-automation/SKILL.md",
       "tags": [
-        "outlook",
+        "mcp",
         "calendar",
-        "automation",
-        "automate",
-        "tasks",
-        "via"
+        "events",
+        "outlook",
+        "meeting",
+        "pitfalls",
+        "filter",
+        "timezone"
       ]
     },
     {
@@ -466,11 +592,13 @@
       "description": "Automate PagerDuty tasks via Rube MCP (Composio): manage incidents, services, schedules, escalation policies, and on-call rotations. Always search tools first for current schemas.",
       "path": "pagerduty-automation/SKILL.md",
       "tags": [
+        "mcp",
         "pagerduty",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
+        "pagination",
+        "incident",
+        "service",
+        "pitfalls",
+        "list",
         "rube"
       ]
     },
@@ -479,12 +607,14 @@
       "description": "Automate Pipedrive CRM operations including deals, contacts, organizations, activities, notes, and pipeline management via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "pipedrive-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "pipedrive",
-        "automation",
-        "automate",
-        "crm",
-        "operations",
-        "including"
+        "pipedrive_search_persons",
+        "org_id",
+        "html",
+        "person_id",
+        "response"
       ]
     },
     {
@@ -492,12 +622,14 @@
       "description": "Automate Postmark email delivery tasks via Rube MCP (Composio): send templated emails, manage templates, monitor delivery stats and bounces. Always search tools first for current schemas.",
       "path": "postmark-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "postmark",
-        "automation",
-        "automate",
-        "email",
-        "delivery",
-        "tasks"
+        "templateid",
+        "templatemodel",
+        "pitfalls",
+        "rube",
+        "authentication"
       ]
     },
     {
@@ -505,12 +637,14 @@
       "description": "Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content. Always search tools first for current schemas.",
       "path": "reddit-automation/SKILL.md",
       "tags": [
+        "mcp",
         "reddit",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "subreddit",
+        "pagination",
+        "pitfalls",
+        "rube",
+        "search",
+        "posts"
       ]
     },
     {
@@ -518,12 +652,14 @@
       "description": "Automate Segment tasks via Rube MCP (Composio): track events, identify users, manage groups, page views, aliases, batch operations. Always search tools first for current schemas.",
       "path": "segment-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "anonymousid",
+        "userid",
         "segment",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "batch",
+        "track",
+        "alias",
+        "pitfalls"
       ]
     },
     {
@@ -531,12 +667,14 @@
       "description": "Automate Square tasks via Rube MCP (Composio): payments, orders, invoices, locations. Always search tools first for current schemas.",
       "path": "square-automation/SKILL.md",
       "tags": [
+        "pagination",
+        "mcp",
         "square",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "cursor",
+        "list",
+        "ids",
+        "rube",
+        "search"
       ]
     },
     {
@@ -544,12 +682,14 @@
       "description": "Automate Telegram tasks via Rube MCP (Composio): send messages, manage chats, share photos/documents, and handle bot commands. Always search tools first for current schemas.",
       "path": "telegram-automation/SKILL.md",
       "tags": [
+        "mcp",
         "telegram",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "formatting",
+        "send",
+        "messages",
+        "html",
+        "pitfalls",
+        "chat_id"
       ]
     },
     {
@@ -557,11 +697,14 @@
       "description": "Temporal workflow orchestration",
       "path": "temporal-python-pro/SKILL.md",
       "tags": [
-        "temporal",
         "python",
-        "pro",
+        "validation",
         "workflow",
-        "orchestration"
+        "patterns",
+        "testing",
+        "monitoring",
+        "activity",
+        "temporal"
       ]
     },
     {
@@ -569,10 +712,14 @@
       "description": "Background jobs with Trigger.dev",
       "path": "trigger-dev/SKILL.md",
       "tags": [
+        "task",
         "trigger",
+        "openai",
+        "integration",
+        "logging",
         "dev",
-        "background",
-        "jobs"
+        "patterns",
+        "tasks"
       ]
     },
     {
@@ -580,12 +727,14 @@
       "description": "Automate Twitter/X tasks via Rube MCP (Composio): posts, search, users, bookmarks, lists, media. Always search tools first for current schemas.",
       "path": "twitter-automation/SKILL.md",
       "tags": [
+        "mcp",
         "twitter",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "pagination",
+        "posts",
+        "search",
+        "pitfalls",
+        "twitter_user_lookup_me",
+        "ids"
       ]
     },
     {
@@ -593,12 +742,14 @@
       "description": "Automate Webflow CMS collections, site publishing, page management, asset uploads, and ecommerce orders via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "webflow-automation/SKILL.md",
       "tags": [
+        "site_id",
+        "mcp",
+        "pagination",
         "webflow",
-        "automation",
-        "automate",
+        "collection_id",
         "cms",
-        "collections",
-        "site"
+        "webflow_list_webflow_sites",
+        "oauth"
       ]
     },
     {
@@ -607,7 +758,13 @@
       "path": "workflow-automation/SKILL.md",
       "tags": [
         "workflow",
-        "automation"
+        "pattern",
+        "issue",
+        "observability",
+        "automation",
+        "patterns",
+        "durable",
+        "execution"
       ]
     },
     {
@@ -616,10 +773,13 @@
       "path": "zapier-make-patterns/SKILL.md",
       "tags": [
         "zapier",
-        "make",
+        "pattern",
         "patterns",
-        "code",
-        "automations"
+        "issue",
+        "capabilities",
+        "basic",
+        "sequential",
+        "conditional"
       ]
     },
     {
@@ -627,12 +787,14 @@
       "description": "Automate Zoho CRM tasks via Rube MCP (Composio): create/update records, search contacts, manage leads, and convert leads. Always search tools first for current schemas.",
       "path": "zoho-crm-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "module",
         "zoho",
+        "records",
         "crm",
-        "automation",
-        "automate",
-        "tasks",
-        "via"
+        "search",
+        "pagination",
+        "leads"
       ]
     }
   ]

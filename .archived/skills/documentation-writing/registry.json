@@ -8,11 +8,13 @@
       "path": "agents-md/SKILL.md",
       "tags": [
         "agents",
-        "skill",
-        "should",
-        "used",
-        "user",
-        "asks"
+        "package",
+        "manager",
+        "commands",
+        "commit",
+        "attribution",
+        "file-scoped",
+        "writing"
       ]
     },
     {
@@ -20,12 +22,14 @@
       "description": "OpenAPI specs, developer guides",
       "path": "api-documentation/SKILL.md",
       "tags": [
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
         "api",
         "documentation",
-        "openapi",
-        "specs",
-        "developer",
-        "guides"
+        "workflow"
       ]
     },
     {
@@ -33,12 +37,14 @@
       "description": "OpenAPI 3.1, interactive docs, SDKs",
       "path": "api-documenter/SKILL.md",
       "tags": [
+        "validation",
+        "authentication",
         "api",
-        "documenter",
-        "openapi",
-        "interactive",
-        "docs",
-        "sdks"
+        "documentation",
+        "developer",
+        "sdk",
+        "integration",
+        "openapi"
       ]
     },
     {
@@ -46,11 +52,14 @@
       "description": "ADRs for technical decisions",
       "path": "architecture-decision-records/SKILL.md",
       "tags": [
+        "postgresql",
+        "adr",
+        "mongodb",
         "decision",
-        "records",
-        "adrs",
-        "technical",
-        "decisions"
+        "template",
+        "json",
+        "mysql",
+        "typescript"
       ]
     },
     {
@@ -58,11 +67,13 @@
       "description": "Transform audio recordings into professional Markdown documentation with intelligent summaries using LLM integration",
       "path": "audio-transcriber/SKILL.md",
       "tags": [
+        "transcription",
+        "output",
+        "processing",
         "audio",
-        "transcriber",
-        "transform",
-        "recordings",
-        "professional",
+        "duration",
+        "claude",
+        "whisper",
         "markdown"
       ]
     },
@@ -73,9 +84,12 @@
       "tags": [
         "beautiful",
         "prose",
-        "forceful",
-        "without",
-        "tics"
+        "claude",
+        "filler",
+        "contains",
+        "sentence",
+        "prefer",
+        "activation"
       ]
     },
     {
@@ -83,11 +97,14 @@
       "description": "Sentry blog writing standards",
       "path": "blog-writing-guide/SKILL.md",
       "tags": [
-        "blog",
-        "writing",
-        "guide",
         "sentry",
-        "standards"
+        "blog",
+        "never",
+        "writing",
+        "opening",
+        "technical",
+        "title",
+        "post"
       ]
     },
     {
@@ -95,12 +112,14 @@
       "description": "Automate Coda tasks via Rube MCP (Composio): manage docs, pages, tables, rows, formulas, permissions, and publishing. Always search tools first for current schemas.",
       "path": "coda-automation/SKILL.md",
       "tags": [
+        "mcp",
         "coda",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "ids",
+        "docid",
+        "document",
+        "url",
+        "pagination",
+        "list"
       ]
     },
     {
@@ -108,12 +127,14 @@
       "description": "Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR outreach, personalized opening lines, subject lines, CTAs, and multi-touch follow-up sequences.",
       "path": "cold-email/SKILL.md",
       "tags": [
+        "writing",
         "cold",
+        "ask",
         "email",
+        "subject",
         "write",
-        "b2b",
-        "emails",
-        "follow"
+        "personalization",
+        "problem"
       ]
     },
     {
@@ -122,11 +143,13 @@
       "path": "content-creator/SKILL.md",
       "tags": [
         "content",
-        "creator",
+        "references",
+        "metrics",
+        "seo",
         "brand",
         "voice",
-        "analysis",
-        "seo"
+        "creation",
+        "social"
       ]
     },
     {
@@ -134,12 +157,14 @@
       "description": "Scrapes content based on a preset URL list, filters high-quality technical information, and generates daily Markdown reports.",
       "path": "daily-news-report/SKILL.md",
       "tags": [
-        "daily",
-        "news",
+        "phase",
+        "scraping",
+        "agent",
+        "monitoring",
         "report",
-        "scrapes",
-        "content",
-        "based"
+        "subagent",
+        "json",
+        "worker"
       ]
     },
     {
@@ -148,11 +173,13 @@
       "path": "defuddle/SKILL.md",
       "tags": [
         "defuddle",
-        "extract",
-        "clean",
-        "markdown",
-        "content",
-        "web"
+        "html",
+        "usage",
+        "output",
+        "json",
+        "formats",
+        "prefer",
+        "url"
       ]
     },
     {
@@ -168,11 +195,14 @@
       "description": "Technical documentation from codebases",
       "path": "docs-architect/SKILL.md",
       "tags": [
-        "docs",
-        "architect",
-        "technical",
+        "output",
         "documentation",
-        "codebases"
+        "format",
+        "core",
+        "characteristics",
+        "authentication",
+        "instructions",
+        "competencies"
       ]
     },
     {
@@ -181,9 +211,13 @@
       "path": "documentation/SKILL.md",
       "tags": [
         "documentation",
-        "api",
-        "docs",
-        "readme"
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
+        "workflow",
+        "api"
       ]
     },
     {
@@ -191,12 +225,14 @@
       "description": "Automate Google Sheets operations (read, write, format, filter, manage spreadsheets) via Rube MCP (Composio). Read/write data, manage tabs, apply formatting, and search rows programmatically.",
       "path": "googlesheets-automation/SKILL.md",
       "tags": [
-        "googlesheets",
-        "automation",
-        "automate",
-        "google",
-        "sheets",
-        "operations"
+        "formatting",
+        "mcp",
+        "spreadsheet_id",
+        "spreadsheetid",
+        "rows",
+        "range",
+        "filter",
+        "google"
       ]
     },
     {
@@ -204,12 +240,14 @@
       "description": "Write internal communications such as status reports, leadership updates, 3P updates, newsletters, FAQs, incident reports, and project updates using repeatable internal formats.",
       "path": "internal-comms/SKILL.md",
       "tags": [
+        "keywords",
+        "formatting",
         "internal",
-        "comms",
-        "write",
-        "communications",
-        "such",
-        "status"
+        "progress",
+        "plans",
+        "problems",
+        "company",
+        "comms"
       ]
     },
     {
@@ -217,12 +255,14 @@
       "description": "To write internal communications, use this skill for:",
       "path": "internal-comms-anthropic/SKILL.md",
       "tags": [
+        "keywords",
+        "formatting",
         "internal",
-        "comms",
         "anthropic",
-        "write",
-        "communications",
-        "skill"
+        "progress",
+        "plans",
+        "problems",
+        "company"
       ]
     },
     {
@@ -230,12 +270,14 @@
       "description": "To write internal communications, use this skill for:",
       "path": "internal-comms-community/SKILL.md",
       "tags": [
+        "keywords",
+        "formatting",
         "internal",
-        "comms",
-        "community",
-        "write",
-        "communications",
-        "skill"
+        "progress",
+        "plans",
+        "problems",
+        "company",
+        "comms"
       ]
     },
     {
@@ -243,12 +285,14 @@
       "description": "Research a topic from the last 30 days on Reddit + X + Web, become an expert, and write copy-paste-ready prompts for the user's target tool.",
       "path": "last30days/SKILL.md",
       "tags": [
-        "last30days",
+        "claude",
         "research",
+        "json",
         "topic",
-        "last",
-        "days",
-        "reddit"
+        "reddit",
+        "api",
+        "websearch",
+        "critical"
       ]
     },
     {
@@ -258,10 +302,12 @@
       "tags": [
         "obsidian",
         "markdown",
-        "create",
-        "edit",
-        "flavored",
-        "wikilinks"
+        "tags",
+        "callouts",
+        "properties",
+        "embeds",
+        "formatting",
+        "embed"
       ]
     },
     {
@@ -269,12 +315,14 @@
       "description": "Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques.",
       "path": "odoo-orm-expert/SKILL.md",
       "tags": [
-        "odoo",
         "orm",
-        "master",
-        "patterns",
+        "odoo",
+        "sql",
+        "python",
+        "date",
+        "query",
         "search",
-        "browse"
+        "domain"
       ]
     },
     {
@@ -282,12 +330,14 @@
       "description": "Work like Manus: Use persistent markdown files as your \\\"working memory on disk.\\",
       "path": "planning-with-files/SKILL.md",
       "tags": [
-        "planning",
-        "files",
-        "work",
-        "like",
-        "manus",
-        "persistent"
+        "read",
+        "task_plan",
+        "findings",
+        "progress",
+        "scripts",
+        "errors",
+        "pattern",
+        "planning"
       ]
     },
     {
@@ -295,12 +345,14 @@
       "description": "Create pull requests following Sentry's engineering practices.",
       "path": "pr-writer/SKILL.md",
       "tags": [
-        "writer",
-        "create",
-        "pull",
-        "requests",
-        "following",
-        "sentry"
+        "branch",
+        "github",
+        "update",
+        "validation",
+        "base",
+        "sentry",
+        "changes",
+        "references"
       ]
     },
     {
@@ -308,10 +360,14 @@
       "description": "Absurdly thorough README files",
       "path": "readme/SKILL.md",
       "tags": [
+        "rails",
+        "postgresql",
+        "vite",
+        "react",
+        "ruby",
+        "docker",
         "readme",
-        "absurdly",
-        "thorough",
-        "files"
+        "tests"
       ]
     },
     {
@@ -320,11 +376,13 @@
       "path": "sales-enablement/SKILL.md",
       "tags": [
         "sales",
-        "enablement",
-        "create",
-        "collateral",
-        "such",
-        "decks"
+        "structure",
+        "principles",
+        "persona",
+        "roi",
+        "deck",
+        "objection",
+        "buyer"
       ]
     },
     {
@@ -332,12 +390,14 @@
       "description": "Deep research with verified citations",
       "path": "scientific-writing/SKILL.md",
       "tags": [
-        "scientific",
+        "formatting",
+        "references",
         "writing",
-        "deep",
-        "research",
-        "verified",
-        "citations"
+        "scientific",
+        "assets",
+        "prisma",
+        "scientific_report",
+        "professional"
       ]
     },
     {
@@ -345,12 +405,14 @@
       "description": "Writes SEO-optimized content based on provided keywords and topic briefs. Creates engaging, comprehensive content following best practices. Use PROACTIVELY for content creation tasks.",
       "path": "seo-content-writer/SKILL.md",
       "tags": [
-        "seo",
         "content",
-        "writer",
-        "writes",
-        "optimized",
-        "based"
+        "focus",
+        "instructions",
+        "areas",
+        "creation",
+        "framework",
+        "output",
+        "seo"
       ]
     },
     {
@@ -358,12 +420,14 @@
       "description": "Create and improve agent skills following the Agent Skills specification. Use when asked to create, write, or update skills.",
       "path": "skill-writer/SKILL.md",
       "tags": [
-        "skill",
-        "writer",
-        "create",
-        "improve",
-        "agent",
-        "skills"
+        "references",
+        "validation",
+        "read",
+        "iteration",
+        "outcomes",
+        "update",
+        "iterate",
+        "writer"
       ]
     },
     {
@@ -371,10 +435,14 @@
       "description": "Wiki catalogues from codebases",
       "path": "wiki-architect/SKILL.md",
       "tags": [
+        "json",
+        "python",
         "wiki",
+        "onboarding",
         "architect",
-        "catalogues",
-        "codebases"
+        "language",
+        "architecture",
+        "procedure"
       ]
     },
     {
@@ -384,10 +452,12 @@
       "tags": [
         "wiki",
         "changelog",
+        "refactoring",
+        "procedure",
+        "constraints",
         "generate",
-        "structured",
-        "changelogs",
-        "git"
+        "examine",
+        "group"
       ]
     },
     {
@@ -395,12 +465,14 @@
       "description": "You are a senior documentation engineer that generates comprehensive technical documentation pages with evidence-based depth.",
       "path": "wiki-page-writer/SKILL.md",
       "tags": [
-        "wiki",
         "page",
+        "requirements",
+        "vitepress",
+        "mermaid",
+        "wiki",
         "writer",
-        "you",
-        "senior",
-        "documentation"
+        "mandatory",
+        "diagrams"
       ]
     },
     {
@@ -410,10 +482,12 @@
       "tags": [
         "wiki",
         "researcher",
-        "you",
-        "software",
-        "engineer",
-        "analyst"
+        "evidence",
+        "inference",
+        "core",
+        "invariants",
+        "depth",
+        "breadth"
       ]
     }
   ]

@@ -7,10 +7,14 @@
       "description": "Airtable via Composio",
       "path": "airtable-automation/SKILL.md",
       "tags": [
+        "mcp",
         "airtable",
-        "automation",
-        "via",
-        "composio"
+        "pagination",
+        "fields",
+        "rube",
+        "records",
+        "pitfalls",
+        "offset"
       ]
     },
     {
@@ -18,10 +22,14 @@
       "description": "Asana via Composio",
       "path": "asana-automation/SKILL.md",
       "tags": [
+        "mcp",
         "asana",
-        "automation",
-        "via",
-        "composio"
+        "gid",
+        "list",
+        "workspace",
+        "pagination",
+        "rube",
+        "pitfalls"
       ]
     },
     {
@@ -29,10 +37,14 @@
       "description": "ClickUp via Composio",
       "path": "clickup-automation/SKILL.md",
       "tags": [
+        "mcp",
         "clickup",
-        "automation",
-        "via",
-        "composio"
+        "list",
+        "team_id",
+        "list_id",
+        "task_id",
+        "assignee",
+        "tasks"
       ]
     },
     {
@@ -40,10 +52,14 @@
       "description": "Discord via Composio",
       "path": "discord-automation/SKILL.md",
       "tags": [
+        "mcp",
         "discord",
-        "automation",
-        "via",
-        "composio"
+        "send",
+        "pagination",
+        "messages",
+        "pitfalls",
+        "rube",
+        "discordbot"
       ]
     },
     {
@@ -52,9 +68,13 @@
       "path": "github-automation/SKILL.md",
       "tags": [
         "github",
-        "automation",
-        "via",
-        "composio"
+        "repo",
+        "owner",
+        "mcp",
+        "pagination",
+        "list",
+        "per_page",
+        "search"
       ]
     },
     {
@@ -63,9 +83,13 @@
       "path": "gmail-automation/SKILL.md",
       "tags": [
         "gmail",
-        "automation",
-        "standalone",
-        "oauth"
+        "send",
+        "emails",
+        "html",
+        "draft",
+        "unread",
+        "label",
+        "search"
       ]
     },
     {
@@ -73,10 +97,14 @@
       "description": "Google Calendar with OAuth",
       "path": "google-calendar-automation/SKILL.md",
       "tags": [
-        "google",
+        "event",
         "calendar",
-        "automation",
-        "oauth"
+        "list",
+        "update",
+        "time",
+        "events",
+        "find",
+        "google"
       ]
     },
     {
@@ -84,10 +112,14 @@
       "description": "Google Drive with OAuth",
       "path": "google-drive-automation/SKILL.md",
       "tags": [
-        "google",
+        "search",
+        "folder",
         "drive",
-        "automation",
-        "oauth"
+        "google",
+        "upload",
+        "list",
+        "download",
+        "move"
       ]
     },
     {
@@ -95,10 +127,14 @@
       "description": "Google Sheets with OAuth",
       "path": "google-sheets-automation/SKILL.md",
       "tags": [
+        "json",
+        "formatting",
+        "spreadsheet",
+        "range",
+        "update",
         "google",
         "sheets",
-        "automation",
-        "oauth"
+        "text"
       ]
     },
     {
@@ -106,11 +142,14 @@
       "description": "HubSpot CRM via Composio",
       "path": "hubspot-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
+        "properties",
         "hubspot",
-        "automation",
-        "crm",
-        "via",
-        "composio"
+        "search",
+        "batch",
+        "pipeline",
+        "pitfalls"
       ]
     },
     {
@@ -118,10 +157,14 @@
       "description": "Jira via Composio",
       "path": "jira-automation/SKILL.md",
       "tags": [
+        "mcp",
         "jira",
-        "automation",
-        "via",
-        "composio"
+        "jql",
+        "pagination",
+        "list",
+        "pitfalls",
+        "rube",
+        "search"
       ]
     },
     {
@@ -129,10 +172,14 @@
       "description": "Linear via Composio",
       "path": "linear-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "graphql",
         "linear",
-        "automation",
-        "via",
-        "composio"
+        "pagination",
+        "pitfalls",
+        "rube",
+        "list",
+        "team"
       ]
     },
     {
@@ -140,10 +187,14 @@
       "description": "Notion via Composio",
       "path": "notion-automation/SKILL.md",
       "tags": [
+        "mcp",
         "notion",
-        "automation",
-        "via",
-        "composio"
+        "pagination",
+        "query",
+        "database",
+        "pitfalls",
+        "rube",
+        "page"
       ]
     },
     {
@@ -151,10 +202,14 @@
       "description": "Salesforce via Composio",
       "path": "salesforce-automation/SKILL.md",
       "tags": [
+        "mcp",
         "salesforce",
-        "automation",
-        "via",
-        "composio"
+        "pagination",
+        "soql",
+        "lastname",
+        "search",
+        "account",
+        "pitfalls"
       ]
     },
     {
@@ -162,10 +217,14 @@
       "description": "Shopify via Composio",
       "path": "shopify-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
+        "graphql",
         "shopify",
-        "automation",
-        "via",
-        "composio"
+        "pitfalls",
+        "list",
+        "rube",
+        "inventory"
       ]
     },
     {
@@ -173,10 +232,14 @@
       "description": "Slack via Composio",
       "path": "slack-automation/SKILL.md",
       "tags": [
+        "channel",
+        "mcp",
+        "pagination",
         "slack",
-        "automation",
-        "via",
-        "composio"
+        "messages",
+        "slack_find_channels",
+        "query",
+        "response"
       ]
     },
     {
@@ -185,9 +248,13 @@
       "path": "stripe-automation/SKILL.md",
       "tags": [
         "stripe",
-        "automation",
-        "via",
-        "composio"
+        "mcp",
+        "customer",
+        "list",
+        "amount",
+        "pitfalls",
+        "search",
+        "rube"
       ]
     },
     {
@@ -195,10 +262,14 @@
       "description": "Trello via Composio",
       "path": "trello-automation/SKILL.md",
       "tags": [
+        "mcp",
         "trello",
-        "automation",
-        "via",
-        "composio"
+        "cards",
+        "search",
+        "add",
+        "pitfalls",
+        "card",
+        "lists"
       ]
     },
     {
@@ -206,10 +277,14 @@
       "description": "Zendesk via Composio",
       "path": "zendesk-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "zendesk",
-        "automation",
-        "via",
-        "composio"
+        "list",
+        "tickets",
+        "search",
+        "ticket",
+        "update"
       ]
     },
     {
@@ -217,10 +292,14 @@
       "description": "Zoom via Composio",
       "path": "zoom-automation/SKILL.md",
       "tags": [
+        "pagination",
+        "mcp",
         "zoom",
-        "automation",
-        "via",
-        "composio"
+        "userid",
+        "meetingid",
+        "meeting",
+        "next_page_token",
+        "list"
       ]
     }
   ]

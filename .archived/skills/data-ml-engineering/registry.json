@@ -7,12 +7,14 @@
       "description": "Automate Box operations including file upload/download, content search, folder management, collaboration, metadata queries, and sign requests through Composio's Box toolkit.",
       "path": "box-automation/SKILL.md",
       "tags": [
+        "pagination",
         "box",
-        "automation",
-        "automate",
-        "operations",
-        "including",
-        "file"
+        "mcp",
+        "file_id",
+        "folder_id",
+        "query",
+        "limit",
+        "marker"
       ]
     },
     {
@@ -20,12 +22,14 @@
       "description": "Analyze cryptographic code to detect operations that leak secret data through execution timing variations.",
       "path": "constant-time-analysis/SKILL.md",
       "tags": [
-        "constant",
-        "time",
-        "analysis",
+        "java",
+        "kotlin",
+        "swift",
         "analyze",
-        "cryptographic",
-        "code"
+        "rust",
+        "php",
+        "python",
+        "ruby"
       ]
     },
     {
@@ -34,11 +38,13 @@
       "path": "content-marketer/SKILL.md",
       "tags": [
         "content",
-        "marketer",
-        "elite",
+        "seo",
         "marketing",
-        "strategist",
-        "specializing"
+        "optimization",
+        "strategy",
+        "social",
+        "email",
+        "product"
       ]
     },
     {
@@ -46,12 +52,14 @@
       "description": "Data pipelines, Spark, dbt, Airflow",
       "path": "data-engineer/SKILL.md",
       "tags": [
-        "data",
-        "engineer",
-        "pipelines",
-        "spark",
-        "dbt",
-        "airflow"
+        "azure",
+        "aws",
+        "streaming",
+        "monitoring",
+        "sql",
+        "stack",
+        "alerting",
+        "cloud"
       ]
     },
     {
@@ -59,12 +67,14 @@
       "description": "Advanced analytics, predictive modeling",
       "path": "data-scientist/SKILL.md",
       "tags": [
-        "data",
-        "scientist",
-        "advanced",
         "analytics",
-        "predictive",
-        "modeling"
+        "monitoring",
+        "validation",
+        "inference",
+        "model",
+        "analysis",
+        "statistical",
+        "aws"
       ]
     },
     {
@@ -72,12 +82,14 @@
       "description": "Transform raw data into compelling narratives that drive decisions and inspire action.",
       "path": "data-storytelling/SKILL.md",
       "tags": [
-        "data",
-        "storytelling",
-        "transform",
-        "raw",
-        "compelling",
-        "narratives"
+        "story",
+        "analysis",
+        "slide",
+        "framework",
+        "technique",
+        "template",
+        "context",
+        "insight"
       ]
     },
     {
@@ -85,11 +97,13 @@
       "description": "Automate Datadog tasks via Rube MCP (Composio): query metrics, search logs, manage monitors/dashboards, create events and downtimes. Always search tools first for current schemas.",
       "path": "datadog-automation/SKILL.md",
       "tags": [
+        "mcp",
         "datadog",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
+        "query",
+        "pagination",
+        "list",
+        "monitor",
+        "pitfalls",
         "rube"
       ]
     },
@@ -98,12 +112,14 @@
       "description": "dbt model organization, testing",
       "path": "dbt-transformation-patterns/SKILL.md",
       "tags": [
+        "resources",
         "dbt",
-        "transformation",
         "patterns",
-        "model",
-        "organization",
-        "testing"
+        "transformation",
+        "instructions",
+        "sql",
+        "organizing",
+        "setting"
       ]
     },
     {
@@ -111,12 +127,14 @@
       "description": "A user may ask you to create, edit, or analyze the contents of a .docx file. A .docx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks.",
       "path": "docx-official/SKILL.md",
       "tags": [
-        "docx",
-        "official",
-        "user",
-        "may",
-        "ask",
-        "you"
+        "xml",
+        "document",
+        "word",
+        "workflow",
+        "editing",
+        "tracked",
+        "read",
+        "python"
       ]
     },
     {
@@ -124,12 +142,14 @@
       "description": "分析一段时间内健康数据的趋势和模式。关联药物、症状、生命体征、化验结果和其他健康指标的变化。识别令人担忧的趋势、改善情况，并提供数据驱动的洞察。当用户询问健康趋势、模式、随时间的变化或\"我的健康状况有什么变化？\"时使用。支持多维度分析（体重/BMI、症状、药物依从性、化验结果、情绪睡眠），相关性分析，变化检测，以及交互式HTML可视化报告（ECharts图表）。",
       "path": "health-trend-analyzer/SKILL.md",
       "tags": [
+        "bmi",
+        "glob",
+        "javascript",
+        "json",
         "health",
         "trend",
         "analyzer",
-        "分析一段时间内健康数据的趋势和模式",
-        "关联药物",
-        "生命体征"
+        "date"
       ]
     },
     {
@@ -137,12 +157,14 @@
       "description": "Automate Mailchimp email marketing including campaigns, audiences, subscribers, segments, and analytics via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "mailchimp-automation/SKILL.md",
       "tags": [
-        "mailchimp",
-        "automation",
-        "automate",
-        "email",
-        "marketing",
-        "including"
+        "html",
+        "pagination",
+        "campaign_id",
+        "list_id",
+        "mcp",
+        "count",
+        "status",
+        "offset"
       ]
     },
     {
@@ -150,11 +172,14 @@
       "description": "PyTorch 2.x, TensorFlow, model serving",
       "path": "ml-engineer/SKILL.md",
       "tags": [
-        "engineer",
-        "pytorch",
+        "monitoring",
         "tensorflow",
+        "validation",
+        "inference",
         "model",
-        "serving"
+        "pytorch",
+        "aws",
+        "caching"
       ]
     },
     {
@@ -162,11 +187,14 @@
       "description": "ML pipelines, MLflow, Kubeflow",
       "path": "mlops-engineer/SKILL.md",
       "tags": [
+        "monitoring",
+        "azure",
+        "aws",
+        "kubernetes",
+        "inference",
         "mlops",
-        "engineer",
-        "pipelines",
-        "mlflow",
-        "kubeflow"
+        "observability",
+        "model"
       ]
     },
     {
@@ -175,10 +203,13 @@
       "path": "polars/SKILL.md",
       "tags": [
         "polars",
-        "fast",
-        "dataframes",
-        "100gb",
-        "datasets"
+        "columns",
+        "select",
+        "add",
+        "pandas",
+        "references",
+        "operations",
+        "multiple"
       ]
     },
     {
@@ -186,12 +217,14 @@
       "description": "A user may ask you to create, edit, or analyze the contents of a .pptx file. A .pptx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks.",
       "path": "pptx-official/SKILL.md",
       "tags": [
-        "pptx",
-        "official",
-        "user",
-        "may",
-        "ask",
-        "you"
+        "xml",
+        "json",
+        "html",
+        "formatting",
+        "validation",
+        "powerpoint",
+        "ppt",
+        "workflow"
       ]
     },
     {
@@ -199,11 +232,14 @@
       "description": "Classification, regression, ML pipelines",
       "path": "scikit-learn/SKILL.md",
       "tags": [
-        "scikit",
-        "learn",
+        "validation",
+        "pipeline",
+        "references",
+        "preprocessing",
         "classification",
-        "regression",
-        "pipelines"
+        "model",
+        "pipelines",
+        "learning"
       ]
     },
     {
@@ -211,12 +247,14 @@
       "description": "Client-side tracking with Analytics.js. Include track, identify, page, and group calls. Anonymous ID persists until identify merges with user.",
       "path": "segment-cdp/SKILL.md",
       "tags": [
+        "tracking",
+        "issue",
         "segment",
         "cdp",
-        "client",
-        "side",
-        "tracking",
-        "analytics"
+        "patterns",
+        "analytics",
+        "identify",
+        "browser"
       ]
     },
     {
@@ -224,12 +262,14 @@
       "description": "Automate SendGrid email delivery workflows including marketing campaigns (Single Sends), contact and list management, sender identity setup, and email analytics through Composio's SendGrid toolkit.",
       "path": "sendgrid-automation/SKILL.md",
       "tags": [
+        "mcp",
         "sendgrid",
-        "automation",
-        "automate",
-        "email",
-        "delivery",
-        "workflows"
+        "sendgrid_retrieve_all_lists",
+        "marketing",
+        "pagination",
+        "api",
+        "sendgrid_add_or_update_a_contact",
+        "list"
       ]
     },
     {
@@ -238,9 +278,13 @@
       "path": "spark-optimization/SKILL.md",
       "tags": [
         "spark",
+        "shuffle",
+        "memory",
+        "join",
+        "pattern",
         "optimization",
-        "performance",
-        "tuning"
+        "parquet",
+        "skew"
       ]
     },
     {
@@ -248,12 +292,14 @@
       "description": "Automate YouTube tasks via Rube MCP (Composio): upload videos, manage playlists, search content, get analytics, and handle comments. Always search tools first for current schemas.",
       "path": "youtube-automation/SKILL.md",
       "tags": [
+        "mcp",
+        "pagination",
         "youtube",
-        "automation",
-        "automate",
-        "tasks",
-        "via",
-        "rube"
+        "channel",
+        "video",
+        "ids",
+        "search",
+        "list"
       ]
     }
   ]

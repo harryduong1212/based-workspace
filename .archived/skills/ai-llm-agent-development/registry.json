@@ -7,12 +7,14 @@
       "description": "This skill should be used when the user asks to \"implement LLM-as-judge\", \"compare model outputs\", \"create evaluation rubrics\", \"mitigate evaluation bias\", or mentions direct scoring, pairwise comparison, position bias, evaluation pipelines, or automated quality assessment.",
       "path": "advanced-evaluation/SKILL.md",
       "tags": [
-        "advanced",
         "evaluation",
-        "skill",
-        "should",
-        "used",
-        "user"
+        "response",
+        "pairwise",
+        "direct",
+        "comparison",
+        "scoring",
+        "prompt",
+        "criteria"
       ]
     },
     {
@@ -20,11 +22,14 @@
       "description": "Autonomous DevSecOps & FinOps Guardrails.",
       "path": "aegisops-ai/SKILL.md",
       "tags": [
+        "kubernetes",
+        "terraform",
+        "kernel",
+        "setup",
         "aegisops",
-        "autonomous",
-        "devsecops",
-        "finops",
-        "guardrails"
+        "patch",
+        "k8s",
+        "github"
       ]
     },
     {
@@ -32,12 +37,14 @@
       "description": "Evaluate LLM agents beyond benchmarks",
       "path": "agent-evaluation/SKILL.md",
       "tags": [
-        "agent",
+        "testing",
         "evaluation",
-        "evaluate",
-        "llm",
-        "agents",
-        "beyond"
+        "agent",
+        "test",
+        "patterns",
+        "behavioral",
+        "tests",
+        "capabilities"
       ]
     },
     {
@@ -45,12 +52,14 @@
       "description": "Hybrid persistent memory management for AI agents",
       "path": "agent-memory-mcp/SKILL.md",
       "tags": [
+        "mcp",
+        "authentication",
         "agent",
         "memory",
-        "mcp",
-        "hybrid",
-        "persistent",
-        "agents"
+        "usage",
+        "prerequisites",
+        "setup",
+        "capabilities"
       ]
     },
     {
@@ -58,11 +67,14 @@
       "description": "Memory architectures for intelligent agents",
       "path": "agent-memory-systems/SKILL.md",
       "tags": [
-        "agent",
         "memory",
-        "architectures",
-        "intelligent",
-        "agents"
+        "retrieval",
+        "chunking",
+        "issue",
+        "vector",
+        "store",
+        "pattern",
+        "embedding"
       ]
     },
     {
@@ -70,12 +82,14 @@
       "description": "Meta-skill: scan, match, coordinate multi-skill workflows",
       "path": "agent-orchestrator/SKILL.md",
       "tags": [
-        "agent",
-        "orchestrator",
-        "meta",
-        "skill",
-        "scan",
-        "match"
+        "passo",
+        "status",
+        "json",
+        "claude",
+        "yaml",
+        "match",
+        "orquestracao",
+        "registry"
       ]
     },
     {
@@ -84,11 +98,13 @@
       "path": "agent-tool-builder/SKILL.md",
       "tags": [
         "agent",
-        "tool",
         "builder",
-        "tools",
-        "llm",
-        "interaction"
+        "schema",
+        "patterns",
+        "capabilities",
+        "input",
+        "error",
+        "vague"
       ]
     },
     {
@@ -97,11 +113,13 @@
       "path": "agentfolio/SKILL.md",
       "tags": [
         "agentfolio",
-        "skill",
-        "discovering",
-        "researching",
-        "autonomous",
-        "agents"
+        "capabilities",
+        "workflows",
+        "agent",
+        "landscape",
+        "scan",
+        "competitive",
+        "inspiration"
       ]
     },
     {
@@ -109,12 +127,14 @@
       "description": "Build autonomous agents, multi-agent systems, orchestration",
       "path": "ai-agent-development/SKILL.md",
       "tags": [
+        "actions",
         "agent",
-        "build",
-        "autonomous",
-        "agents",
-        "multi",
-        "orchestration"
+        "phase",
+        "invoke",
+        "prompts",
+        "copy-paste",
+        "workflow",
+        "crewai"
       ]
     },
     {
@@ -122,11 +142,14 @@
       "description": "Design autonomous AI systems with graceful degradation",
       "path": "ai-agents-architect/SKILL.md",
       "tags": [
+        "agent",
+        "react",
         "agents",
         "architect",
-        "autonomous",
-        "graceful",
-        "degradation"
+        "patterns",
+        "memory",
+        "capabilities",
+        "requirements"
       ]
     },
     {
@@ -134,12 +157,14 @@
       "description": "AI驱动的综合健康分析系统，整合多维度健康数据、识别异常模式、预测健康风险、提供个性化建议。支持智能问答和AI健康报告生成。",
       "path": "ai-analyzer/SKILL.md",
       "tags": [
-        "analyzer",
-        "ai驱动的综合健康分析系统",
-        "整合多维度健康数据",
-        "识别异常模式",
-        "预测健康风险",
-        "提供个性化建议"
+        "data-example",
+        "tailwind",
+        "scripts",
+        "bmi",
+        "javascript",
+        "json",
+        "ai",
+        "analyzer"
       ]
     },
     {
@@ -147,12 +172,14 @@
       "description": "Production-ready LLM apps, RAG, intelligent agents",
       "path": "ai-engineer/SKILL.md",
       "tags": [
-        "engineer",
-        "llm",
-        "apps",
         "rag",
-        "intelligent",
-        "agents"
+        "embedding",
+        "caching",
+        "monitoring",
+        "vector",
+        "openai",
+        "claude",
+        "inference"
       ]
     },
     {
@@ -160,12 +187,14 @@
       "description": "6 production AI workflows: prompt eval, RAG, agent security",
       "path": "ai-engineering-toolkit/SKILL.md",
       "tags": [
-        "engineering",
-        "toolkit",
-        "workflows",
+        "rag",
+        "safety",
         "prompt",
-        "eval",
-        "rag"
+        "security",
+        "retrieval",
+        "claude",
+        "sql",
+        "engineering"
       ]
     },
     {
@@ -173,11 +202,14 @@
       "description": "AI/ML workflow: LLM apps, RAG, agent architecture",
       "path": "ai-ml/SKILL.md",
       "tags": [
-        "workflow",
-        "llm",
-        "apps",
         "rag",
-        "agent"
+        "observability",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
+        "workflow"
       ]
     },
     {
@@ -185,11 +217,14 @@
       "description": "Ship LLM features to production at scale",
       "path": "ai-product/SKILL.md",
       "tags": [
-        "product",
-        "ship",
+        "validation",
         "llm",
-        "features",
-        "scale"
+        "output",
+        "streaming",
+        "parsing",
+        "product",
+        "patterns",
+        "context"
       ]
     },
     {
@@ -197,12 +232,14 @@
       "description": "Geracao de imagens humanizadas via Google AI Studio (Gemini). Fotos realistas estilo influencer ou educacional com iluminacao natural e imperfeicoes sutis.",
       "path": "ai-studio-image/SKILL.md",
       "tags": [
+        "passo",
         "studio",
+        "modo",
         "image",
-        "geracao",
+        "instagram",
         "imagens",
         "humanizadas",
-        "via"
+        "api"
       ]
     },
     {
@@ -210,12 +247,14 @@
       "description": "Build AI products people pay for and use daily",
       "path": "ai-wrapper-product/SKILL.md",
       "tags": [
-        "wrapper",
+        "validation",
+        "json",
         "product",
-        "build",
-        "products",
-        "people",
-        "pay"
+        "wrapper",
+        "prompt",
+        "cost",
+        "anthropic",
+        "output"
       ]
     },
     {
@@ -223,12 +262,14 @@
       "description": "Agente que simula Andrej Karpathy — ex-Director of AI da Tesla, co-fundador da OpenAI, fundador da Eureka Labs, e o maior educador de deep learning do mundo.",
       "path": "andrej-karpathy/SKILL.md",
       "tags": [
-        "andrej",
         "karpathy",
-        "agente",
+        "pytorch",
+        "openai",
+        "llms",
         "que",
-        "simula",
-        "director"
+        "tesla",
+        "como",
+        "por"
       ]
     },
     {
@@ -236,11 +277,14 @@
       "description": "Design patterns for autonomous coding agents",
       "path": "autonomous-agent-patterns/SKILL.md",
       "tags": [
-        "autonomous",
+        "mcp",
         "agent",
+        "toolresult",
         "patterns",
-        "coding",
-        "agents"
+        "pattern",
+        "permissionlevel",
+        "context",
+        "browser"
       ]
     },
     {
@@ -248,11 +292,14 @@
       "description": "Autonomous AI patterns with safety and oversight",
       "path": "autonomous-agents/SKILL.md",
       "tags": [
-        "autonomous",
+        "autonomy",
+        "issue",
+        "agent",
+        "react",
+        "pattern",
+        "logging",
         "agents",
-        "patterns",
-        "safety",
-        "oversight"
+        "patterns"
       ]
     },
     {
@@ -261,9 +308,13 @@
       "path": "c4-container/SKILL.md",
       "tags": [
         "container",
-        "level",
-        "documentation",
-        "specialist"
+        "api",
+        "https",
+        "containers",
+        "postgresql",
+        "kubernetes",
+        "rest",
+        "deployment"
       ]
     },
     {
@@ -273,10 +324,12 @@
       "tags": [
         "claude",
         "chrome",
-        "troubleshooting",
-        "diagnose",
-        "fix",
-        "mcp"
+        "native",
+        "mcp",
+        "tmpdir",
+        "host",
+        "app",
+        "socket"
       ]
     },
     {
@@ -284,12 +337,14 @@
       "description": "You are a code education expert specializing in explaining complex code through clear narratives, visual diagrams, and step-by-step breakdowns. Transform difficult concepts into understandable explanations for developers at all levels.",
       "path": "code-documentation-code-explain/SKILL.md",
       "tags": [
-        "code",
-        "documentation",
-        "explain",
-        "you",
-        "education",
-        "specializing"
+        "resources",
+        "explanation",
+        "analysis",
+        "context",
+        "requirements",
+        "instructions",
+        "output",
+        "format"
       ]
     },
     {
@@ -297,12 +352,14 @@
       "description": "Elite code review expert specializing in modern AI-powered code",
       "path": "code-reviewer/SKILL.md",
       "tags": [
-        "code",
-        "reviewer",
-        "elite",
         "review",
-        "specializing",
-        "modern"
+        "owasp",
+        "observability",
+        "analysis",
+        "modern",
+        "authentication",
+        "caching",
+        "monitoring"
       ]
     },
     {
@@ -310,11 +367,14 @@
       "description": "Vision-action loop for computer use agents",
       "path": "computer-use-agents/SKILL.md",
       "tags": [
+        "anthropic",
+        "python",
+        "claude",
         "computer",
-        "agents",
-        "vision",
-        "action",
-        "loop"
+        "security",
+        "environment",
+        "vnc",
+        "install"
       ]
     },
     {
@@ -322,12 +382,14 @@
       "description": "Compress agent conversation history",
       "path": "context-compression/SKILL.md",
       "tags": [
-        "context",
         "compression",
-        "compress",
-        "agent",
-        "conversation",
-        "history"
+        "redis",
+        "context",
+        "session",
+        "evaluation",
+        "strategies",
+        "artifact",
+        "intent"
       ]
     },
     {
@@ -336,11 +398,13 @@
       "path": "context-fundamentals/SKILL.md",
       "tags": [
         "context",
+        "retrieval",
+        "load",
+        "python",
+        "engineering",
         "fundamentals",
-        "complete",
-        "state",
-        "available",
-        "language"
+        "attention",
+        "detailed"
       ]
     },
     {
@@ -348,12 +412,14 @@
       "description": "Dynamic context management, vector DBs, knowledge graphs",
       "path": "context-manager/SKILL.md",
       "tags": [
+        "retrieval",
         "context",
-        "manager",
-        "dynamic",
         "vector",
-        "dbs",
-        "knowledge"
+        "rag",
+        "embedding",
+        "knowledge",
+        "embeddings",
+        "semantic"
       ]
     },
     {
@@ -361,12 +427,14 @@
       "description": "Strategic compression, caching, partitioning",
       "path": "context-optimization/SKILL.md",
       "tags": [
-        "context",
         "optimization",
-        "strategic",
-        "compression",
+        "context",
         "caching",
-        "partitioning"
+        "compaction",
+        "observation",
+        "masking",
+        "partitioning",
+        "techniques"
       ]
     },
     {
@@ -376,10 +444,12 @@
       "tags": [
         "context",
         "window",
-        "optimize",
-        "llm",
-        "windows",
-        "scale"
+        "patterns",
+        "capabilities",
+        "tiered",
+        "strategy",
+        "serial",
+        "position"
       ]
     },
     {
@@ -387,11 +457,14 @@
       "description": "Persistent memory for LLM conversations",
       "path": "conversation-memory/SKILL.md",
       "tags": [
-        "conversation",
         "memory",
-        "persistent",
-        "llm",
-        "conversations"
+        "retrieval",
+        "conversation",
+        "store",
+        "patterns",
+        "remember",
+        "capabilities",
+        "tiered"
       ]
     },
     {
@@ -400,9 +473,13 @@
       "path": "crewai/SKILL.md",
       "tags": [
         "crewai",
-        "collaborative",
+        "yaml",
         "agent",
-        "teams"
+        "crew",
+        "agents",
+        "task",
+        "config",
+        "process"
       ]
     },
     {
@@ -410,12 +487,14 @@
       "description": "Elite AI-powered customer support specialist mastering conversational AI, automated ticketing, sentiment analysis, and omnichannel support experiences.",
       "path": "customer-support/SKILL.md",
       "tags": [
+        "monitoring",
         "customer",
-        "support",
-        "elite",
-        "powered",
-        "specialist",
-        "mastering"
+        "knowledge",
+        "analytics",
+        "crisis",
+        "conversational",
+        "workflow",
+        "team"
       ]
     },
     {
@@ -423,10 +502,14 @@
       "description": "Documentation and capabilities reference for Daily",
       "path": "daily/SKILL.md",
       "tags": [
-        "daily",
-        "documentation",
-        "capabilities",
-        "reference"
+        "openai",
+        "websocket",
+        "gemini",
+        "integration",
+        "pipecat",
+        "azure",
+        "streaming",
+        "react"
       ]
     },
     {
@@ -434,12 +517,14 @@
       "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
       "path": "dispatching-parallel-agents/SKILL.md",
       "tags": [
-        "dispatching",
+        "agent",
+        "fix",
         "parallel",
         "agents",
-        "facing",
+        "dispatch",
+        "dispatching",
         "independent",
-        "tasks"
+        "focused"
       ]
     },
     {
@@ -448,9 +533,13 @@
       "path": "evaluation/SKILL.md",
       "tags": [
         "evaluation",
-        "build",
-        "frameworks",
-        "agent"
+        "test",
+        "agent",
+        "context",
+        "monitoring",
+        "references",
+        "rubric",
+        "engineering"
       ]
     },
     {
@@ -458,9 +547,14 @@
       "description": ">",
       "path": "explain-like-socrates/SKILL.md",
       "tags": [
+        "socrates",
+        "response",
         "explain",
-        "like",
-        "socrates"
+        "reasoning",
+        "analogy",
+        "reflection",
+        "structure",
+        "curiosity"
       ]
     },
     {
@@ -470,8 +564,11 @@
       "tags": [
         "fal",
         "audio",
+        "overview",
+        "instructions",
         "text",
-        "speech",
+        "text-to-speech",
+        "speech-to-text",
         "models"
       ]
     },
@@ -480,8 +577,10 @@
       "description": "Generate images and videos using fal.ai AI models",
       "path": "fal-generate/SKILL.md",
       "tags": [
-        "fal",
         "generate",
+        "fal",
+        "overview",
+        "instructions",
         "images",
         "videos",
         "models"
@@ -492,10 +591,12 @@
       "description": "AI-powered image editing with style transfer and object removal",
       "path": "fal-image-edit/SKILL.md",
       "tags": [
-        "fal",
         "image",
+        "fal",
         "edit",
-        "powered",
+        "overview",
+        "instructions",
+        "ai-powered",
         "editing",
         "style"
       ]
@@ -505,8 +606,10 @@
       "description": "Upscale and enhance image and video resolution using AI",
       "path": "fal-upscale/SKILL.md",
       "tags": [
-        "fal",
         "upscale",
+        "fal",
+        "overview",
+        "instructions",
         "enhance",
         "image",
         "video",
@@ -518,12 +621,14 @@
       "description": "Generate workflow JSON files for chaining AI models",
       "path": "fal-workflow/SKILL.md",
       "tags": [
-        "fal",
         "workflow",
-        "generate",
+        "fal",
         "json",
-        "files",
-        "chaining"
+        "overview",
+        "instructions",
+        "generate",
+        "chaining",
+        "models"
       ]
     },
     {
@@ -532,11 +637,13 @@
       "path": "geo-fundamentals/SKILL.md",
       "tags": [
         "geo",
-        "fundamentals",
-        "generative",
+        "claude",
+        "gemini",
+        "content",
         "engine",
-        "optimization",
-        "search"
+        "rag",
+        "retrieval",
+        "elements"
       ]
     },
     {
@@ -544,12 +651,14 @@
       "description": "Scoped CLAUDE.md memory system that reduces context token spend. Creates directory-level context files, tracks savings via dashboard, and routes agents to the right sub-context.",
       "path": "hierarchical-agent-memory/SKILL.md",
       "tags": [
-        "hierarchical",
-        "agent",
-        "memory",
-        "scoped",
         "claude",
-        "system"
+        "routing",
+        "ham",
+        "context",
+        "agent",
+        "dashboard",
+        "setup",
+        "memory"
       ]
     },
     {
@@ -557,12 +666,14 @@
       "description": "Build background agents in sandboxed environments",
       "path": "hosted-agents/SKILL.md",
       "tags": [
+        "github",
+        "agent",
+        "streaming",
+        "authentication",
         "hosted",
-        "agents",
-        "build",
-        "background",
-        "sandboxed",
-        "environments"
+        "infrastructure",
+        "api",
+        "sandbox"
       ]
     },
     {
@@ -570,12 +681,14 @@
       "description": "Studio de geracao de imagens inteligente — roteamento automatico entre ai-studio-image (fotos humanizadas/influencer) e stability-ai (arte/ ilustracao/edicao). Detecta o tipo de imagem solicitada e escolhe o modelo ideal automaticamente.",
       "path": "image-studio/SKILL.md",
       "tags": [
-        "image",
-        "studio",
         "geracao",
-        "imagens",
-        "inteligente",
-        "roteamento"
+        "foto",
+        "ai-studio-image",
+        "stability-ai",
+        "gemini",
+        "arte",
+        "ilustracao",
+        "upscale"
       ]
     },
     {
@@ -583,9 +696,14 @@
       "description": "LangChain framework for LLM applications",
       "path": "langchain-architecture/SKILL.md",
       "tags": [
+        "retrieval",
         "langchain",
+        "memory",
+        "openai",
         "llm",
-        "applications"
+        "chain",
+        "monitoring",
+        "agent"
       ]
     },
     {
@@ -594,9 +712,13 @@
       "path": "langfuse/SKILL.md",
       "tags": [
         "langfuse",
+        "openai",
+        "langchain",
+        "tracing",
         "llm",
-        "observability",
-        "evaluation"
+        "trace",
+        "serverless",
+        "observability"
       ]
     },
     {
@@ -605,8 +727,13 @@
       "path": "langgraph/SKILL.md",
       "tags": [
         "langgraph",
-        "grade",
-        "agents"
+        "routing",
+        "state",
+        "define",
+        "graph",
+        "nodes",
+        "add",
+        "edges"
       ]
     },
     {
@@ -614,12 +741,14 @@
       "description": "Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados.",
       "path": "leiloeiro-ia/SKILL.md",
       "tags": [
+        "etapa",
+        "perfil",
+        "mercado",
+        "riscos",
+        "lei",
+        "exemplo",
         "leiloeiro",
-        "especialista",
-        "leiloes",
-        "judiciais",
-        "extrajudiciais",
-        "imoveis"
+        "tipo"
       ]
     },
     {
@@ -627,10 +756,14 @@
       "description": "Production patterns for LLM applications",
       "path": "llm-app-patterns/SKILL.md",
       "tags": [
-        "llm",
-        "app",
+        "embedding",
+        "rag",
+        "retrieval",
+        "logging",
+        "prompt",
         "patterns",
-        "applications"
+        "tracing",
+        "llm"
       ]
     },
     {
@@ -638,11 +771,14 @@
       "description": "Evaluation strategies: automated, human, A/B testing",
       "path": "llm-evaluation/SKILL.md",
       "tags": [
-        "llm",
         "evaluation",
-        "strategies",
+        "metrics",
+        "testing",
+        "llm",
+        "benchmarking",
+        "score",
         "human",
-        "testing"
+        "json"
       ]
     },
     {
@@ -650,12 +786,14 @@
       "description": "RAG, embeddings, vector DBs, fine-tuning, evals",
       "path": "llm-ops/SKILL.md",
       "tags": [
-        "llm",
-        "ops",
         "rag",
-        "embeddings",
+        "embedding",
+        "anthropic",
         "vector",
-        "dbs"
+        "llm",
+        "pipeline",
+        "claude",
+        "pinecone"
       ]
     },
     {
@@ -663,12 +801,14 @@
       "description": "Improve prompts: quality, hallucination, token usage",
       "path": "llm-prompt-optimizer/SKILL.md",
       "tags": [
-        "llm",
+        "json",
         "prompt",
+        "pattern",
+        "add",
+        "llm",
+        "problem",
         "optimizer",
-        "improve",
-        "prompts",
-        "quality"
+        "output"
       ]
     },
     {
@@ -676,12 +816,14 @@
       "description": "Reliable JSON/typed objects from LLMs",
       "path": "llm-structured-output/SKILL.md",
       "tags": [
-        "llm",
-        "structured",
-        "output",
-        "reliable",
+        "openai",
+        "validation",
         "json",
-        "typed"
+        "anthropic",
+        "pydantic",
+        "python",
+        "parsing",
+        "structured"
       ]
     },
     {
@@ -689,12 +831,14 @@
       "description": "Local inference with Ollama, llama.cpp, vLLM",
       "path": "local-llm-expert/SKILL.md",
       "tags": [
-        "local",
-        "llm",
-        "inference",
         "ollama",
+        "inference",
         "llama",
-        "cpp"
+        "openai",
+        "mistral",
+        "vram",
+        "knowledge",
+        "deploying"
       ]
     },
     {
@@ -703,11 +847,13 @@
       "path": "mcp-builder/SKILL.md",
       "tags": [
         "mcp",
-        "builder",
-        "create",
-        "servers",
-        "llm",
-        "tool"
+        "typescript",
+        "python",
+        "phase",
+        "documentation",
+        "load",
+        "evaluation",
+        "pagination"
       ]
     },
     {
@@ -716,10 +862,13 @@
       "path": "mcp-builder-ms/SKILL.md",
       "tags": [
         "mcp",
-        "builder",
-        "servers",
-        "fastmcp",
-        "sdk"
+        "azure",
+        "typescript",
+        "python",
+        "microsoft",
+        "foundry",
+        "phase",
+        "documentation"
       ]
     },
     {
@@ -727,12 +876,14 @@
       "description": "Short/long-term and graph-based memory architectures",
       "path": "memory-systems/SKILL.md",
       "tags": [
+        "retrieval",
         "memory",
-        "short",
-        "long",
-        "term",
-        "graph",
-        "based"
+        "vector",
+        "rag",
+        "embedding",
+        "temporal",
+        "entity",
+        "layer"
       ]
     },
     {
@@ -740,12 +891,14 @@
       "description": "Conselho de especialistas — consulta multiplos agentes do ecossistema em paralelo para analise multi-perspectiva de qualquer topico. Ativa personas, especialistas e agentes tecnicos simultaneamente, cada um pela sua otica unica, e consolida em sintese decisoria final.",
       "path": "multi-advisor/SKILL.md",
       "tags": [
-        "multi",
-        "advisor",
-        "conselho",
-        "especialistas",
-        "consulta",
-        "multiplos"
+        "board",
+        "persona",
+        "exemplo",
+        "principal",
+        "cada",
+        "angulo",
+        "produto",
+        "decisao"
       ]
     },
     {
@@ -753,12 +906,14 @@
       "description": "Supervisor, swarm, handoff agent patterns",
       "path": "multi-agent-patterns/SKILL.md",
       "tags": [
+        "langgraph",
         "multi",
-        "agent",
         "patterns",
-        "supervisor",
-        "swarm",
-        "handoff"
+        "agent",
+        "autogen",
+        "crewai",
+        "context",
+        "coordination"
       ]
     },
     {
@@ -766,12 +921,14 @@
       "description": "AI-powered PPT generation with document analysis and styled images",
       "path": "nanobanana-ppt-skills/SKILL.md",
       "tags": [
-        "nanobanana",
         "ppt",
-        "skills",
-        "powered",
+        "nanobanana",
+        "overview",
+        "instructions",
+        "ai-powered",
         "generation",
-        "document"
+        "document",
+        "analysis"
       ]
     },
     {
@@ -779,12 +936,14 @@
       "description": "Expert in Odoo QWeb templating for PDF reports, email templates, and website pages. Covers t-if, t-foreach, t-field, and report actions.",
       "path": "odoo-qweb-templates/SKILL.md",
       "tags": [
-        "odoo",
         "qweb",
-        "templates",
-        "templating",
+        "rendering",
+        "python",
+        "html",
+        "odoo",
         "pdf",
-        "reports"
+        "t-esc",
+        "templates"
       ]
     },
     {
@@ -793,11 +952,13 @@
       "path": "plaid-fintech/SKILL.md",
       "tags": [
         "plaid",
-        "fintech",
-        "create",
-        "linktoken",
+        "issue",
         "link",
-        "exchange"
+        "item",
+        "fintech",
+        "patterns",
+        "transactions",
+        "access"
       ]
     },
     {
@@ -805,12 +966,14 @@
       "description": "Optimize prompts with frameworks (RTF, RISEN, CoT)",
       "path": "prompt-engineer/SKILL.md",
       "tags": [
-        "prompt",
-        "engineer",
-        "optimize",
-        "prompts",
-        "frameworks",
-        "rtf"
+        "chain",
+        "thought",
+        "python",
+        "rodes",
+        "analyze",
+        "clear",
+        "role",
+        "select"
       ]
     },
     {
@@ -819,11 +982,13 @@
       "path": "prompt-engineering/SKILL.md",
       "tags": [
         "prompt",
-        "engineering",
+        "python",
         "patterns",
-        "best",
-        "practices",
-        "optimization"
+        "authentication",
+        "template",
+        "add",
+        "engineering",
+        "instruction"
       ]
     },
     {
@@ -832,11 +997,13 @@
       "path": "prompt-engineering-patterns/SKILL.md",
       "tags": [
         "prompt",
-        "engineering",
+        "sql",
         "patterns",
-        "advanced",
-        "techniques",
-        "llm"
+        "validation",
+        "engineering",
+        "optimization",
+        "learning",
+        "template"
       ]
     },
     {
@@ -844,11 +1011,14 @@
       "description": "Type-safe AI agents with PydanticAI",
       "path": "pydantic-ai/SKILL.md",
       "tags": [
+        "agent",
         "pydantic",
-        "type",
-        "safe",
-        "agents",
-        "pydanticai"
+        "python",
+        "openai",
+        "basemodel",
+        "fastapi",
+        "validation",
+        "llm"
       ]
     },
     {
@@ -856,12 +1026,14 @@
       "description": "Chunking, embeddings, retrieval optimization",
       "path": "rag-engineer/SKILL.md",
       "tags": [
-        "rag",
-        "engineer",
-        "chunking",
-        "embeddings",
         "retrieval",
-        "optimization"
+        "embedding",
+        "rag",
+        "chunking",
+        "vector",
+        "engineer",
+        "semantic",
+        "hybrid"
       ]
     },
     {
@@ -871,10 +1043,12 @@
       "tags": [
         "rag",
         "embedding",
-        "selection",
-        "vector",
-        "setup",
-        "chunking"
+        "retrieval",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "vector"
       ]
     },
     {
@@ -882,12 +1056,14 @@
       "description": "Seek and analyze video content using Memories.ai Large Visual Memory Model for persistent video intelligence",
       "path": "seek-and-analyze-video/SKILL.md",
       "tags": [
-        "seek",
-        "analyze",
         "video",
-        "content",
-        "memories",
-        "large"
+        "analyze",
+        "seek",
+        "social",
+        "intent",
+        "reference",
+        "workflow",
+        "media"
       ]
     },
     {
@@ -895,12 +1071,14 @@
       "description": "Validate Claude Code skills against the agentskills specification. Catches structural, semantic, and naming issues before users do.",
       "path": "skill-check/SKILL.md",
       "tags": [
-        "skill",
-        "check",
+        "skillcheck",
+        "checks",
+        "score",
+        "free",
         "validate",
-        "claude",
-        "code",
-        "skills"
+        "suggestions",
+        "overview",
+        "parse"
       ]
     },
     {
@@ -909,11 +1087,13 @@
       "path": "stability-ai/SKILL.md",
       "tags": [
         "stability",
-        "geracao",
-        "imagens",
-        "via",
-        "sd3",
-        "ultra"
+        "references",
+        "rapido",
+        "com",
+        "estilos",
+        "listar",
+        "remover",
+        "apagar"
       ]
     },
     {
@@ -921,12 +1101,14 @@
       "description": "Use when executing implementation plans with independent tasks in the current session",
       "path": "subagent-driven-development/SKILL.md",
       "tags": [
+        "dispatch",
+        "implementer",
+        "spec",
+        "task",
         "subagent",
-        "driven",
-        "executing",
-        "plans",
-        "independent",
-        "tasks"
+        "todowrite",
+        "mark",
+        "workflow"
       ]
     },
     {
@@ -934,12 +1116,14 @@
       "description": "FREE — Intelligent tool-call reliability wrapper. Monitors, retries, fixes, and learns from tool failures. Auto-recovers from truncated JSON, timeouts, rate limits, and mid-chain failures.",
       "path": "tool-use-guardian/SKILL.md",
       "tags": [
-        "tool",
         "guardian",
-        "free",
-        "intelligent",
-        "call",
-        "reliability"
+        "validation",
+        "failure",
+        "overview",
+        "install",
+        "classification",
+        "chain",
+        "protection"
       ]
     },
     {
@@ -947,12 +1131,14 @@
       "description": "Vercel AI SDK: generateText, useChat, tool calling",
       "path": "vercel-ai-sdk-expert/SKILL.md",
       "tags": [
+        "streaming",
         "vercel",
         "sdk",
-        "generatetext",
+        "json",
+        "generation",
         "usechat",
-        "tool",
-        "calling"
+        "core",
+        "api"
       ]
     },
     {
@@ -961,9 +1147,13 @@
       "path": "voice-agents/SKILL.md",
       "tags": [
         "voice",
+        "issue",
+        "detection",
+        "architecture",
         "agents",
-        "latency",
-        "optimization"
+        "patterns",
+        "pipeline",
+        "latency"
       ]
     },
     {
@@ -971,10 +1161,14 @@
       "description": "Real-time voice applications",
       "path": "voice-ai-development/SKILL.md",
       "tags": [
+        "openai",
+        "streaming",
         "voice",
-        "real",
-        "time",
-        "applications"
+        "elevenlabs",
+        "vapi",
+        "tts",
+        "deepgram",
+        "flask"
       ]
     },
     {
@@ -982,12 +1176,14 @@
       "description": "Async voice pipelines with TTS and interrupt handling",
       "path": "voice-ai-engine-development/SKILL.md",
       "tags": [
-        "voice",
-        "engine",
-        "async",
-        "pipelines",
-        "tts",
-        "interrupt"
+        "streaming",
+        "websocket",
+        "audio",
+        "rate-limiting",
+        "azure",
+        "pattern",
+        "interrupts",
+        "test"
       ]
     },
     {
@@ -995,12 +1191,14 @@
       "description": "Agente que simula Warren Buffett — o maior investidor do seculo XX e XXI, CEO da Berkshire Hathaway, discipulo de Benjamin Graham e socio intelectual de Charlie Munger.",
       "path": "warren-buffett/SKILL.md",
       "tags": [
-        "warren",
         "buffett",
-        "agente",
+        "berkshire",
+        "munger",
+        "sobre",
+        "graham",
+        "warren",
         "que",
-        "simula",
-        "maior"
+        "express"
       ]
     },
     {
@@ -1008,12 +1206,14 @@
       "description": "Sub-skill de debates e posições de Yann LeCun. Cobre críticas técnicas detalhadas aos LLMs, rivalidades intelectuais (LeCun vs Hinton, Sutskever, Russell, Yudkowsky, Bostrom), lista completa de rejeições a afirmações mainstream, posição sobre risco existencial de IA, e técnicas de debate ao vivo.",
       "path": "yann-lecun-debate/SKILL.md",
       "tags": [
-        "yann",
         "lecun",
-        "debate",
-        "sub",
-        "skill",
-        "debates"
+        "llms",
+        "agi",
+        "como",
+        "hinton",
+        "sobre",
+        "world",
+        "que"
       ]
     }
   ]

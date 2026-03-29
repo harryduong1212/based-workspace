@@ -7,12 +7,14 @@
       "description": "ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads.",
       "path": "cc-skill-clickhouse-io/SKILL.md",
       "tags": [
-        "skill",
-        "clickhouse",
-        "database",
         "patterns",
-        "query",
-        "optimization"
+        "select",
+        "monitoring",
+        "clickhouse",
+        "order",
+        "analysis",
+        "table",
+        "insert"
       ]
     },
     {
@@ -20,12 +22,14 @@
       "description": "Use when a coding task must be completed against explicit acceptance criteria with minimal user re-intervention across implementation, review feedback, deployment, and runtime verification.",
       "path": "closed-loop-delivery/SKILL.md",
       "tags": [
-        "closed",
-        "loop",
+        "gate",
+        "dod",
+        "dev",
         "delivery",
-        "coding",
-        "task",
-        "must"
+        "stop",
+        "issue",
+        "polling",
+        "overview"
       ]
     },
     {
@@ -33,12 +37,14 @@
       "description": "Transform code reviews from gatekeeping to knowledge sharing through constructive feedback, systematic analysis, and collaborative improvement.",
       "path": "code-review-excellence/SKILL.md",
       "tags": [
-        "code",
+        "resources",
         "review",
         "excellence",
+        "instructions",
+        "output",
+        "format",
         "transform",
-        "reviews",
-        "gatekeeping"
+        "reviewing"
       ]
     },
     {
@@ -46,11 +52,14 @@
       "description": "SQL, NoSQL, design, migrations, optimization",
       "path": "database/SKILL.md",
       "tags": [
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "postgresql",
         "database",
-        "sql",
-        "nosql",
-        "migrations",
-        "optimization"
+        "copy-paste",
+        "sql"
       ]
     },
     {
@@ -58,12 +67,14 @@
       "description": "Cloud databases, automation, reliability",
       "path": "database-admin/SKILL.md",
       "tags": [
+        "monitoring",
         "database",
-        "admin",
-        "cloud",
-        "databases",
-        "automation",
-        "reliability"
+        "azure",
+        "kubernetes",
+        "postgresql",
+        "mysql",
+        "sql",
+        "alerting"
       ]
     },
     {
@@ -71,12 +82,14 @@
       "description": "Data layer design, technology selection",
       "path": "database-architect/SKILL.md",
       "tags": [
-        "database",
-        "architect",
-        "data",
-        "layer",
-        "technology",
-        "selection"
+        "caching",
+        "indexing",
+        "normalization",
+        "sql",
+        "monitoring",
+        "postgresql",
+        "mongodb",
+        "dynamodb"
       ]
     },
     {
@@ -84,11 +97,14 @@
       "description": "Schema design, indexing, ORM selection",
       "path": "database-design/SKILL.md",
       "tags": [
-        "database",
-        "schema",
+        "postgresql",
         "indexing",
-        "orm",
-        "selection"
+        "sqlite",
+        "database",
+        "normalization",
+        "selective",
+        "reading",
+        "rule"
       ]
     },
     {
@@ -96,12 +112,14 @@
       "description": "Schema migrations, zero-downtime",
       "path": "database-migration/SKILL.md",
       "tags": [
-        "database",
-        "migration",
-        "schema",
+        "sequelize",
         "migrations",
-        "zero",
-        "downtime"
+        "typeorm",
+        "prisma",
+        "mysql",
+        "migration",
+        "rollback",
+        "postgresql"
       ]
     },
     {
@@ -109,12 +127,14 @@
       "description": "Migration monitoring, CDC, and observability infrastructure",
       "path": "database-migrations-migration-observability/SKILL.md",
       "tags": [
-        "database",
-        "migrations",
-        "migration",
-        "observability",
         "monitoring",
-        "cdc"
+        "observability",
+        "alerting",
+        "mongodb",
+        "migration",
+        "integration",
+        "migrations",
+        "counter"
       ]
     },
     {
@@ -122,12 +142,14 @@
       "description": "SQL database migrations with zero-downtime strategies for PostgreSQL, MySQL, and SQL Server. Focus on data integrity and rollback plans.",
       "path": "database-migrations-sql-migrations/SKILL.md",
       "tags": [
-        "database",
-        "migrations",
         "sql",
-        "zero",
-        "downtime",
-        "strategies"
+        "validation",
+        "database",
+        "migration",
+        "strategy",
+        "monitoring",
+        "overview",
+        "context"
       ]
     },
     {
@@ -135,12 +157,14 @@
       "description": "Performance tuning, query optimization",
       "path": "database-optimizer/SKILL.md",
       "tags": [
+        "caching",
+        "indexing",
+        "monitoring",
+        "sql",
         "database",
-        "optimizer",
-        "performance",
-        "tuning",
-        "query",
-        "optimization"
+        "benchmarking",
+        "azure",
+        "query"
       ]
     },
     {
@@ -148,12 +172,14 @@
       "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.",
       "path": "dx-optimizer/SKILL.md",
       "tags": [
-        "optimizer",
-        "developer",
-        "experience",
-        "specialist",
-        "improves",
-        "tooling"
+        "setup",
+        "workflows",
+        "instructions",
+        "optimization",
+        "areas",
+        "environment",
+        "tooling",
+        "enhancement"
       ]
     },
     {
@@ -162,8 +188,13 @@
       "path": "food-database-query/SKILL.md",
       "tags": [
         "food",
-        "database",
-        "query"
+        "query",
+        "rda",
+        "comparison",
+        "nutrition",
+        "recommendation",
+        "auto",
+        "calculation"
       ]
     },
     {
@@ -171,12 +202,14 @@
       "description": "GDB debugging assistant for AI agents - analyze core dumps, debug live processes, investigate crashes and deadlocks with source code correlation",
       "path": "gdb-cli/SKILL.md",
       "tags": [
+        "session",
+        "python",
         "gdb",
-        "cli",
         "debugging",
-        "assistant",
-        "agents",
-        "analyze"
+        "pattern",
+        "github",
+        "threads",
+        "crash"
       ]
     },
     {
@@ -184,12 +217,14 @@
       "description": "Create and manage datasets on Hugging Face Hub. Supports initializing repos, defining configs/system prompts, streaming row updates, and SQL-based dataset querying/transformation. Designed to work alongside HF MCP server for comprehensive dataset workflows.",
       "path": "hugging-face-datasets/SKILL.md",
       "tags": [
-        "hugging",
-        "face",
-        "datasets",
-        "create",
-        "manage",
-        "hub"
+        "sql",
+        "dataset",
+        "mcp",
+        "query",
+        "validation",
+        "transform",
+        "select",
+        "export"
       ]
     },
     {
@@ -197,12 +232,14 @@
       "description": "Manages schema migrations and vector initialization for the based-workspace-postgres container.",
       "path": "local-db-migration/SKILL.md",
       "tags": [
-        "local",
+        "vector",
         "migration",
-        "manages",
-        "schema",
-        "migrations",
-        "vector"
+        "local",
+        "sql",
+        "ai_memory",
+        "postgres-memory",
+        "core",
+        "responsibilities"
       ]
     },
     {
@@ -210,11 +247,14 @@
       "description": "Prisma + Neon connection pooling",
       "path": "neon-postgres/SKILL.md",
       "tags": [
+        "prisma",
         "neon",
         "postgres",
-        "prisma",
+        "drizzle",
+        "issue",
         "connection",
-        "pooling"
+        "http",
+        "pgbouncer"
       ]
     },
     {
@@ -222,12 +262,14 @@
       "description": "Cassandra, DynamoDB, query-first modeling",
       "path": "nosql-expert/SKILL.md",
       "tags": [
-        "nosql",
-        "cassandra",
         "dynamodb",
-        "query",
-        "first",
-        "modeling"
+        "cassandra",
+        "sql",
+        "patterns",
+        "nosql",
+        "partition",
+        "access",
+        "aws"
       ]
     },
     {
@@ -235,12 +277,14 @@
       "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian.",
       "path": "obsidian-bases/SKILL.md",
       "tags": [
-        "obsidian",
-        "bases",
-        "create",
-        "edit",
-        "base",
-        "files"
+        "yaml",
+        "duration",
+        "view",
+        "properties",
+        "formulas",
+        "correct",
+        "wrong",
+        "formula"
       ]
     },
     {
@@ -249,10 +293,13 @@
       "path": "postgres-best-practices/SKILL.md",
       "tags": [
         "postgres",
-        "best",
-        "practices",
+        "sql",
         "supabase",
-        "optimization"
+        "security",
+        "rule",
+        "priority",
+        "monitoring",
+        "query"
       ]
     },
     {
@@ -260,10 +307,14 @@
       "description": "PostgreSQL schema best practices",
       "path": "postgresql/SKILL.md",
       "tags": [
+        "gin",
         "postgresql",
-        "schema",
-        "best",
-        "practices"
+        "null",
+        "jsonb",
+        "table",
+        "text",
+        "index",
+        "numeric"
       ]
     },
     {
@@ -272,10 +323,13 @@
       "path": "postgresql-optimization/SKILL.md",
       "tags": [
         "postgresql",
-        "optimization",
-        "query",
-        "tuning",
-        "indexing"
+        "monitoring",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "indexing",
+        "copy-paste"
       ]
     },
     {
@@ -283,12 +337,14 @@
       "description": "Estimate AI-assisted and hybrid human+agent development work with research-backed PERT statistics and calibration feedback loops",
       "path": "progressive-estimation/SKILL.md",
       "tags": [
-        "progressive",
         "estimation",
+        "progressive",
+        "github",
         "estimate",
-        "assisted",
-        "hybrid",
-        "human"
+        "formatting",
+        "overview",
+        "pitfalls",
+        "related"
       ]
     },
     {
@@ -296,12 +352,14 @@
       "description": "This skill should be used when the user asks for patterns, best practices, creation, or fixing of Sankhya dashboards using HTML, JSP, Java, and SQL.",
       "path": "sankhya-dashboard-html-jsp-custom-best-pratices/SKILL.md",
       "tags": [
-        "sankhya",
-        "dashboard",
-        "html",
+        "sql",
         "jsp",
-        "custom",
-        "best"
+        "java",
+        "css",
+        "sankhya",
+        "html",
+        "cab",
+        "select"
       ]
     },
     {
@@ -309,12 +367,14 @@
       "description": "Comprehensive Snowflake development assistant covering SQL best practices, data pipeline design (Dynamic Tables, Streams, Tasks, Snowpipe), Cortex AI functions, Cortex Agents, Snowpark Python, dbt integration, performance tuning, and security hardening.",
       "path": "snowflake-development/SKILL.md",
       "tags": [
-        "snowflake",
-        "assistant",
-        "covering",
         "sql",
-        "best",
-        "practices"
+        "snowflake",
+        "python",
+        "cortex",
+        "error",
+        "select",
+        "dynamic",
+        "json"
       ]
     },
     {
@@ -323,11 +383,13 @@
       "path": "sql-optimization-patterns/SKILL.md",
       "tags": [
         "sql",
+        "resources",
         "optimization",
         "patterns",
-        "slow",
-        "query",
-        "fast"
+        "instructions",
+        "indexing",
+        "transform",
+        "debugging"
       ]
     },
     {
@@ -336,11 +398,13 @@
       "path": "sql-pro/SKILL.md",
       "tags": [
         "sql",
-        "pro",
+        "database",
+        "monitoring",
+        "modern",
+        "advanced",
+        "optimization",
         "cloud",
-        "native",
-        "oltp",
-        "olap"
+        "query"
       ]
     },
     {
@@ -348,12 +412,14 @@
       "description": "Provide systematic methodologies for automated SQL injection detection and exploitation using SQLMap.",
       "path": "sqlmap-database-pentesting/SKILL.md",
       "tags": [
-        "sqlmap",
+        "sql",
+        "http",
+        "target",
         "database",
-        "pentesting",
-        "provide",
-        "systematic",
-        "methodologies"
+        "url",
+        "list",
+        "columns",
+        "dump"
       ]
     },
     {
@@ -362,11 +428,13 @@
       "path": "supabase-automation/SKILL.md",
       "tags": [
         "supabase",
-        "automation",
-        "automate",
-        "database",
-        "queries",
-        "table"
+        "sql",
+        "ref",
+        "mcp",
+        "pagination",
+        "slug",
+        "postgresql",
+        "supabase_list_all_projects"
       ]
     },
     {
@@ -375,11 +443,13 @@
       "path": "using-neon/SKILL.md",
       "tags": [
         "neon",
-        "serverless",
+        "references",
         "postgres",
-        "platform",
-        "separates",
-        "compute"
+        "authentication",
+        "api",
+        "cli",
+        "http",
+        "websocket"
       ]
     },
     {
@@ -387,12 +457,14 @@
       "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar",
       "path": "vector-database-engineer/SKILL.md",
       "tags": [
+        "embedding",
         "vector",
+        "retrieval",
+        "rag",
         "database",
         "engineer",
-        "databases",
-        "embedding",
-        "strategies"
+        "chunking",
+        "instructions"
       ]
     },
     {
@@ -400,12 +472,14 @@
       "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.",
       "path": "vibers-code-review/SKILL.md",
       "tags": [
+        "github",
+        "add",
         "vibers",
-        "code",
+        "claude",
         "review",
-        "human",
-        "workflow",
-        "generated"
+        "commit",
+        "action",
+        "marsiandeployer"
       ]
     },
     {
@@ -414,11 +488,13 @@
       "path": "videodb-skills/SKILL.md",
       "tags": [
         "videodb",
-        "skills",
+        "install",
+        "setup",
+        "sdk",
         "upload",
-        "stream",
-        "search",
-        "edit"
+        "purpose",
+        "capabilities",
+        "repository"
       ]
     }
   ]
