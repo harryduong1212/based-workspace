@@ -10,7 +10,9 @@ Usage:
     python scripts/generate_deep_tags.py --category ai-llm-agent-development  # Single category
 """
 
+import io
 import json
+import os
 import re
 import sys
 import time
@@ -247,7 +249,7 @@ def process_category(category_dir: Path, dry_run: bool = False) -> dict:
     stats = {"category": category_dir.name, "total": 0, "tagged": 0, "missing": 0, "errors": 0}
 
     if not registry_file.exists():
-        print(f"  ⚠ No registry.json in {category_dir.name}, skipping.")
+        print(f"  [WARN] No registry.json in {category_dir.name}, skipping.")
         return stats
 
     with open(registry_file, "r", encoding="utf-8") as f:
@@ -263,7 +265,7 @@ def process_category(category_dir: Path, dry_run: bool = False) -> dict:
         progress = f"  [{i+1:3d}/{len(skills)}]"
 
         if not skill_md_path.exists():
-            print(f"{progress} ⚠ MISSING: {skill_id}/SKILL.md")
+            print(f"{progress} [MISS] {skill_id}/SKILL.md")
             stats["missing"] += 1
             continue
 
@@ -274,20 +276,25 @@ def process_category(category_dir: Path, dry_run: bool = False) -> dict:
             stats["tagged"] += 1
             tag_str = ", ".join(tags[:5])
             ellipsis = "..." if len(tags) > 5 else ""
-            print(f"{progress} ✓ {skill_id:<45s} → [{tag_str}{ellipsis}]")
+            print(f"{progress} [OK]   {skill_id:<45s} -> [{tag_str}{ellipsis}]")
         except Exception as e:
-            print(f"{progress} ✗ ERROR {skill_id}: {e}")
+            print(f"{progress} [ERR]  {skill_id}: {e}")
             stats["errors"] += 1
 
     if not dry_run:
         with open(registry_file, "w", encoding="utf-8") as f:
             json.dump(registry, f, indent=2, ensure_ascii=False)
-        print(f"  💾 Wrote {registry_file}")
+        print(f"  [SAVE] Wrote {registry_file}")
 
     return stats
 
 
 def main():
+    # Force UTF-8 output on Windows to avoid charmap errors
+    if sys.platform == "win32":
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
     parser = ArgumentParser(description="Deep Tag Extraction for Skills Registry")
     parser.add_argument("--dry-run", action="store_true", help="Preview without writing JSON files")
     parser.add_argument("--category", type=str, default=None, help="Process only a specific category folder")
@@ -324,7 +331,7 @@ def main():
     print(f"Found {total_categories} categories to process.\n")
 
     for idx, cat_dir in enumerate(categories):
-        print(f"━━━ [{idx+1}/{total_categories}] {cat_dir.name} ━━━")
+        print(f"--- [{idx+1}/{total_categories}] {cat_dir.name} ---")
         stats = process_category(cat_dir, dry_run=args.dry_run)
         all_stats.append(stats)
         print()
@@ -348,7 +355,7 @@ def main():
     print("=" * 72)
 
     if args.dry_run:
-        print("\n  ℹ DRY RUN complete. No files were modified.")
+        print("\n  [INFO] DRY RUN complete. No files were modified.")
         print("  Re-run without --dry-run to apply changes.\n")
 
 
