@@ -1,10 +1,10 @@
 import os
 import re
 import shutil
+import json
+from datetime import datetime
 
-# This script is a safe, idempotent version of the skill reoganization logic.
-# It includes pre-swap verification to ensure no data is lost during the directory swap.
-
+# Configuration
 ROOT_DIR = r"h:\WORKSPACE\Personal\Vibe\based-workspace"
 SKILLS_MD = os.path.join(ROOT_DIR, "SKILLS.md")
 SKILLS_DIR = os.path.join(ROOT_DIR, ".archived", "skills")
@@ -28,13 +28,56 @@ def get_desc(folder_path):
             pass
     return os.path.basename(folder_path).replace("-", " ").title()
 
+def generate_registry_json(categories, total_count):
+    registry = {
+        "version": "1.0.0",
+        "type": "skill_registry",
+        "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "categories": []
+    }
+    
+    for cat_header, data in categories.items():
+        if not data["skills"]: continue
+        
+        category = {
+            "category_id": data["slug"],
+            "category_name": cat_header,
+            "skills": []
+        }
+        
+        for skill in sorted(data["skills"], key=lambda x: x["name"]):
+            if "new_path" not in skill: continue
+            
+            desc = skill["desc"]
+            triggers = []
+            if "Triggers:" in desc:
+                triggers = [t.strip().strip("'\"") for t in desc.split("Triggers:")[1].split(",")]
+            elif "Use when" in desc:
+                triggers = [w.strip(",") for w in desc.split() if len(w) > 4][:5]
+                
+            category["skills"].append({
+                "id": skill["name"],
+                "description": desc,
+                "path": skill["new_path"],
+                "triggers": triggers,
+                "dependencies": []
+            })
+            
+        if category["skills"]:
+            registry["categories"].append(category)
+        
+    with open(os.path.join(NEW_SKILLS_DIR, "registry.json"), "w", encoding="utf-8") as f:
+        json.dump(registry, f, indent=2)
+
 def reorganize():
     if not os.path.exists(SKILLS_DIR):
         print("Error: Skills directory not found.")
         return
 
     with open(SKILLS_MD, "r", encoding="utf-8") as f:
-        lines = f.readlines()
+        full_text = f.read()
+    
+    lines = full_text.splitlines()
 
     categories = {}
     current_cat = None
@@ -63,16 +106,15 @@ def reorganize():
     documented_skills = {s["name"] for cat in categories.values() for s in cat["skills"]}
 
     # 2. Index all actual physical folders
-    # We need to look both in root and in existing category subfolders (idempotency)
-    all_skill_folders = {} # name -> current_full_path
+    all_skill_folders = {} 
     for item in os.listdir(SKILLS_DIR):
         item_path = os.path.join(SKILLS_DIR, item)
         if not os.path.isdir(item_path) or item in [".git", "node_modules"]:
             continue
         
-        # Is this a category folder from a previous run?
-        is_cat_folder = any(item == cat["slug"] for cat in categories.values())
-        if is_cat_folder:
+        # Check if it's already a category folder (slug)
+        is_slug = any(item == cat["slug"] for cat in categories.values())
+        if is_slug:
             for sub in os.listdir(item_path):
                 sub_path = os.path.join(item_path, sub)
                 if os.path.isdir(sub_path):
@@ -80,36 +122,19 @@ def reorganize():
         else:
             all_skill_folders[item] = item_path
 
-    # 3. Categorize undocumented skills (Heuristics)
+    # 3. Categorize undocumented skills
     explicit_map = {
         "custom-debrief": "📚 Documentation & Writing",
         "custom-video-analyst": "🛠️ Workflow & Automation Platforms",
         "senior-architect": "🏗️ Architecture & Patterns",
-        "custom-senior-architect": "🏗️ Architecture & Patterns",
-        "senior-it-ba-specialist": "💰 Business, Product & Marketing",
-        "custom-senior-it-ba-specialist": "💰 Business, Product & Marketing",
+        "skill-creator": "🤖 AI, LLM & Agent Development",
     }
 
     for name, path in all_skill_folders.items():
         if name not in documented_skills:
             desc = get_desc(path)
             target_cat = "📦 Miscellaneous / Other"
-            
-            if name in explicit_map:
-                target_cat = explicit_map[name]
-            else:
-                n, d = name.lower(), desc.lower()
-                if "azure" in n or "azure" in d: target_cat = "☁️ Azure SDKs"
-                elif any(w in n or w in d for w in ["aws", "cloud", "docker", "kubernetes"]): target_cat = "☁️ Cloud, DevOps & Infrastructure"
-                elif any(w in n or w in d for w in ["react", "frontend", "nextjs", "css", "tailwind", "ui"]): target_cat = "🌐 Frontend Development"
-                elif any(w in n or w in d for w in ["backend", "api", "node", "django"]): target_cat = "⚙️ Backend Development"
-                elif any(w in n or w in d for w in ["sql", "postgres", "db", "database"]): target_cat = "🗄️ Database"
-                elif any(w in n or w in d for w in ["security", "auth", "audit"]): target_cat = "🔒 Security & Penetration Testing"
-                elif any(w in n or w in d for w in ["test", "qa", "debug"]): target_cat = "🧪 Testing & Quality"
-                elif any(w in n or w in d for w in ["python", "java", "rust", "cpp"]): target_cat = "🔧 Programming Languages"
-                elif any(w in n or w in d for w in ["docs", "readme", "write"]): target_cat = "📚 Documentation & Writing"
-                elif any(w in n or w in d for w in ["ai", "llm", "agent", "prompt", "mcp"]): target_cat = "🤖 AI, LLM & Agent Development"
-            
+            if name in explicit_map: target_cat = explicit_map[name]
             categories[target_cat]["skills"].append({"name": name, "desc": desc})
 
     # 4. Build Staging Directory
@@ -129,45 +154,44 @@ def reorganize():
                 total_count += 1
                 skill["new_path"] = f".archived/skills/{data['slug']}/{name}/SKILL.md"
 
-    # 5. Copy root files (.gitignore, README.md, etc)
-    for item in os.listdir(SKILLS_DIR):
-        item_path = os.path.join(SKILLS_DIR, item)
-        if os.path.isfile(item_path):
-            shutil.copy2(item_path, os.path.join(NEW_SKILLS_DIR, item))
+    # Generate Registry JSON
+    generate_registry_json(categories, total_count)
 
-    # 6. Safety Check: Verify staging isn't empty
-    staging_folders = [d for d in os.listdir(NEW_SKILLS_DIR) if os.path.isdir(os.path.join(NEW_SKILLS_DIR, d))]
-    if len(staging_folders) == 0:
-        print("Error: Staging directory is empty. Aborting swap.")
+    # 5. Copy root files
+    for item in os.listdir(SKILLS_DIR):
+        if os.path.isfile(os.path.join(SKILLS_DIR, item)):
+            shutil.copy2(os.path.join(SKILLS_DIR, item), os.path.join(NEW_SKILLS_DIR, item))
+
+    # 6. Safety Check
+    if total_count == 0:
+        print("Error: No skills found. Aborting swap.")
         return
 
     # 7. Update SKILLS.md
     new_md_lines = []
     for cat_name in cat_order:
         data = categories[cat_name]
-        if not data["skills"]: continue
+        moved_skills = [s for s in data["skills"] if "new_path" in s]
+        if not moved_skills: continue
         
         new_md_lines.append(f"### {cat_name}\n\n")
         new_md_lines.append("<details>\n")
         new_md_lines.append(f"<summary><b>{cat_name} (Click to expand)</b></summary>\n\n")
         new_md_lines.append("| Skill | Description |\n")
         new_md_lines.append("|---|---|\n")
-        
-        for s in sorted(data["skills"], key=lambda x: x["name"]):
+        for s in sorted(moved_skills, key=lambda x: x["name"]):
             new_md_lines.append(f"| [{s['name']}]({s['new_path']}) | {s['desc']} |\n")
         new_md_lines.append("\n</details>\n\n")
 
-    with open(SKILLS_MD, "r", encoding="utf-8") as f:
-        full_text = f.read()
-
-    start_marker = "## Skills by Category\n\n"
-    end_marker = "## Finding Skills\n"
-    parts = full_text.split(start_marker)
-    header = parts[0] + start_marker
-    footer_part = parts[1].split(end_marker)[1]
+    # Flexible Markers
+    start_match = re.search(r"## .*Skills by Category\n+", full_text)
+    end_match = re.search(r"## Finding Skills\n+", full_text)
     
-    # Rebuild Finding Skills with dynamic count
-    finding_skills = f"""## Finding Skills
+    if start_match and end_match:
+        header = full_text[:start_match.end()]
+        footer_start = end_match.start()
+        
+        finding_skills = f"""## Finding Skills
 
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 
@@ -180,9 +204,17 @@ Get-ChildItem -Path ".archived\\skills" -Recurse -Depth 1 -Directory -Exclude ".
 
 > **Total Installed Skills:** {total_count}
 """
-
-    with open(SKILLS_MD, "w", encoding="utf-8") as f:
-        f.write(header + "".join(new_md_lines) + finding_skills + footer_part)
+        # We replace the whole block from end of start_match to end of file (or footer)
+        # But we need to preserve whatever was after Finding Skills?
+        # Actually the script previously used split(end_marker)[1]
+        
+        parts = full_text.split(end_match.group(0))
+        post_footer = parts[1] if len(parts) > 1 else ""
+        
+        with open(SKILLS_MD, "w", encoding="utf-8") as f:
+            f.write(header + "".join(new_md_lines) + finding_skills + post_footer)
+    else:
+        print("Error: Could not find markers in SKILLS.md")
 
     # 8. Final Swap
     backup_path = SKILLS_DIR + "_safe_backup_reorg"
@@ -190,7 +222,7 @@ Get-ChildItem -Path ".archived\\skills" -Recurse -Depth 1 -Directory -Exclude ".
     os.rename(SKILLS_DIR, backup_path)
     os.rename(NEW_SKILLS_DIR, SKILLS_DIR)
     
-    print(f"Success! {total_count} skills reorganized safely into .archived/skills")
+    print(f"Success! {total_count} skills reorganized safely.")
 
 if __name__ == "__main__":
     reorganize()

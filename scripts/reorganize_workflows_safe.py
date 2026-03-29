@@ -1,9 +1,8 @@
 import os
 import re
 import shutil
-
-# Safe, Idempotent Workshop/Workflow Reorganization script.
-# Fixed to handle already-categorized subfolders.
+import json
+from datetime import datetime
 
 # Configuration
 ROOT_DIR = r"h:\WORKSPACE\Personal\Vibe\based-workspace"
@@ -22,16 +21,84 @@ def get_workflows_mapping():
         full_content = f.read()
     
     mapping = {} 
-    sections = re.split(r'\n### (.*)\n', full_content)
+    # Use split instead of findall for robustness, with multiline support
+    sections = re.split(r'^### (.*)$', full_content, flags=re.MULTILINE)
     
     for i in range(1, len(sections), 2):
         cat_name = sections[i].strip()
         body = sections[i+1]
-        # Match filenames in various link formats
-        links = re.findall(r'\[([^\]]+)\]\(\.archived/(?:archived_)?workflows/(?:[^/]+/)?([^\)]+\.md)\)', body)
+        
+        # Regex to find links, capturing the workflow_id from the path
+        # [Name](.archived/workflows/category/workflow_id/WORKFLOW.md)
+        # OR [Name](.archived/workflows/filename.md)
+        # We look for the part right before WORKFLOW.md OR the filename itself
+        links = re.findall(r'\[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(.*?)\)', body)
+        
         if links:
-            mapping[cat_name] = [l[1] for l in links]
+            ids = []
+            for name, relative_path in links:
+                # relative_path might be "category/id/WORKFLOW.md" or "filename.md"
+                path_parts = relative_path.strip("/").split("/")
+                if path_parts[-1] == "WORKFLOW.md":
+                    # The ID is the folder name just above WORKFLOW.md
+                    if len(path_parts) >= 2:
+                        ids.append(path_parts[-2] + ".md")
+                else:
+                    # It's a flat filename
+                    ids.append(path_parts[-1])
+            mapping[cat_name] = ids
+            
     return mapping
+
+def generate_registry_json(mapping, original_content):
+    registry = {
+        "version": "1.0.0",
+        "type": "workflow_registry",
+        "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "categories": []
+    }
+    
+    for cat_name in sorted(mapping.keys()):
+        cat_slug = slugify(cat_name)
+        category = {
+            "category_id": cat_slug,
+            "category_name": cat_name,
+            "workflows": []
+        }
+        
+        for filename in sorted(mapping[cat_name]):
+            workflow_id = filename.replace(".md", "")
+            # Robust search for description and slash command
+            # Escape workflow_id for regex
+            esc_id = re.escape(workflow_id)
+            # Match | [Name](path/to/esc_id/...) | /slash | Status | Desc |
+            row_pattern = rf'\| \[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(?:.*?){esc_id}(?:/WORKFLOW\.md|\.md)\) \| ([^|]+) \| ([^|]*?) \| ([^|]*?)? \|'
+            match = re.search(row_pattern, original_content)
+            
+            description = ""
+            triggers = []
+            if match:
+                # If there are 4 columns (new format) or 3 (old format)
+                # We need to be careful. The format I'm generating has 4 columns.
+                slash = match.group(2).strip()
+                desc = match.group(4).strip() if match.group(4) else match.group(3).strip()
+                triggers = [slash.replace("/", "").replace("`", "")]
+                description = desc
+            
+            category["workflows"].append({
+                "id": workflow_id,
+                "description": description,
+                "path": f".archived/workflows/{cat_slug}/{workflow_id}/WORKFLOW.md",
+                "triggers": triggers,
+                "required_skills": [],
+                "entry_point": None
+            })
+        
+        if category["workflows"]:
+            registry["categories"].append(category)
+            
+    with open(os.path.join(STAGING_DIR, "registry.json"), "w", encoding="utf-8") as f:
+        json.dump(registry, f, indent=2)
 
 def reorganize():
     mapping = get_workflows_mapping()
@@ -41,13 +108,16 @@ def reorganize():
         shutil.rmtree(STAGING_DIR)
     os.makedirs(STAGING_DIR)
     
-    # 2. Index all actual physical files (including those already in subfolders)
-    all_files = {} # filename -> current_full_path
+    # 2. Index all actual physical files
+    all_files = {} 
     for root, dirs, files in os.walk(WORKFLOWS_DIR):
         for f in files:
             if f.endswith(".md") and " copy" not in f:
-                # If there are duplicates, the first one found wins or we just overwrite
-                all_files[f] = os.path.join(root, f)
+                if f == "WORKFLOW.md":
+                    wf_id = os.path.basename(root)
+                    all_files[wf_id + ".md"] = os.path.join(root, f)
+                else:
+                    all_files[f] = os.path.join(root, f)
     
     moved_filenames = set()
     
@@ -59,21 +129,27 @@ def reorganize():
         
         for filename in file_list:
             if filename in all_files:
-                shutil.copy2(all_files[filename], os.path.join(cat_staging_path, filename))
+                workflow_id = filename.replace(".md", "")
+                wf_folder = os.path.join(cat_staging_path, workflow_id)
+                os.makedirs(wf_folder, exist_ok=True)
+                shutil.copy2(all_files[filename], os.path.join(wf_folder, "WORKFLOW.md"))
                 moved_filenames.add(filename)
-            else:
-                print(f"Warning: {filename} not found on disk.")
                 
     # 4. Handle miscellaneous
     misc_path = os.path.join(STAGING_DIR, "miscellaneous")
     for filename, full_path in all_files.items():
         if filename not in moved_filenames:
             if not os.path.exists(misc_path): os.makedirs(misc_path)
-            shutil.copy2(full_path, os.path.join(misc_path, filename))
+            workflow_id = filename.replace(".md", "")
+            wf_folder = os.path.join(misc_path, workflow_id)
+            os.makedirs(wf_folder, exist_ok=True)
+            shutil.copy2(full_path, os.path.join(wf_folder, "WORKFLOW.md"))
 
     # 5. Reconstruct WORKFLOWS.md content
     with open(WORKFLOWS_MD, "r", encoding="utf-8") as f:
         original_content = f.read()
+    
+    generate_registry_json(mapping, original_content)
         
     total_workflows = sum(len(v) for v in mapping.values())
     
@@ -125,7 +201,6 @@ Need to extend the workspace? Use these specialized creators:
 """
     
     new_sections = []
-    # Sort categories to ensure a stable output
     for cat_name in sorted(mapping.keys()):
         file_list = mapping[cat_name]
         cat_slug = slugify(cat_name)
@@ -135,22 +210,23 @@ Need to extend the workspace? Use these specialized creators:
         section += "| Workflow | Command | Status | Description |\n"
         section += "|---|---|---|---|\n"
         
-        # Sort files within category
         for filename in sorted(file_list):
-            row_pattern = rf'\| \[([^\]]+)\]\(\.archived/(?:archived_)?workflows/(?:[^/]+/)?{re.escape(filename)}\) \| ([^|]+) \| ([^|]+) \|'
+            workflow_id = filename.replace(".md", "")
+            esc_id = re.escape(workflow_id)
+            row_pattern = rf'\| \[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(?:.*?){esc_id}(?:/WORKFLOW\.md|\.md)\) \| ([^|]+) \| ([^|]*?) \| ([^|]*?)? \|'
             match = re.search(row_pattern, original_content)
+            
             if match:
-                display_name = match.group(1)
+                display_name = match.group(1).strip()
                 slash = match.group(2).strip()
-                desc = match.group(3).strip()
-                # Status heuristic: core workflows are "Ready", others "Beta"
+                desc = match.group(4).strip() if match.group(4) else match.group(3).strip()
                 status = "✅ Ready" if not filename.startswith("custom-") else "🚧 Custom"
-                section += f"| [{display_name}](.archived/workflows/{cat_slug}/{filename}) | `{slash}` | {status} | {desc} |\n"
+                section += f"| [{display_name}](.archived/workflows/{cat_slug}/{workflow_id}/WORKFLOW.md) | {slash} | {status} | {desc} |\n"
         
         section += "\n</details>\n"
         new_sections.append(section)
         
-    footer = """
+    footer = f"""
 ---
 
 ## 🤝 Contributing
@@ -166,22 +242,21 @@ To add a new workflow:
 """
 
     with open(WORKFLOWS_MD, "w", encoding="utf-8") as f:
-        f.write(header_part + "".join(new_sections) + footer)
+        f.write(header_part.strip() + "\n" + "".join(new_sections) + footer)
         
-    # 6. Safety Verification
-    files_in_staging = sum([len(files) for r, d, files in os.walk(STAGING_DIR)])
-    if files_in_staging == 0:
-        print("Error: Staging directory is empty. Aborting swap.")
+    total_wf_files = 0
+    for r, d, files in os.walk(STAGING_DIR):
+        if "WORKFLOW.md" in files: total_wf_files += 1
+
+    if total_wf_files == 0:
+        print("Error: Staging directory contains no workflows. Aborting swap.")
         return
 
-    # 7. Final Swap (Safe)
     final_backup = WORKFLOWS_DIR + "_old_before_reorg"
     if os.path.exists(final_backup): shutil.rmtree(final_backup)
-    
     os.rename(WORKFLOWS_DIR, final_backup)
     os.rename(STAGING_DIR, WORKFLOWS_DIR)
-    
-    print(f"Reorganization success! {files_in_staging} files synchronized into .archived/workflows")
+    print(f"Reorganization success! {total_wf_files} workflows safely synchronized.")
 
 if __name__ == "__main__":
     reorganize()
