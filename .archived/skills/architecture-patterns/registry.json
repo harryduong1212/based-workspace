@@ -1,0 +1,300 @@
+{
+  "category_id": "architecture-patterns",
+  "category_name": "🏗️ Architecture & Patterns",
+  "skills": [
+    {
+      "id": "api-design-principles",
+      "description": "REST vs GraphQL vs tRPC",
+      "path": "api-design-principles/SKILL.md",
+      "tags": [
+        "api",
+        "principles",
+        "rest",
+        "graphql",
+        "trpc"
+      ]
+    },
+    {
+      "id": "architect-review",
+      "description": "Master software architect specializing in modern architecture",
+      "path": "architect-review/SKILL.md",
+      "tags": [
+        "architect",
+        "review",
+        "master",
+        "software",
+        "specializing",
+        "modern"
+      ]
+    },
+    {
+      "id": "architecture",
+      "description": "Requirements, trade-offs, ADRs",
+      "path": "architecture/SKILL.md",
+      "tags": [
+        "requirements",
+        "trade",
+        "offs",
+        "adrs"
+      ]
+    },
+    {
+      "id": "architecture-patterns",
+      "description": "Clean, Hexagonal, DDD",
+      "path": "architecture-patterns/SKILL.md",
+      "tags": [
+        "patterns",
+        "clean",
+        "hexagonal",
+        "ddd"
+      ]
+    },
+    {
+      "id": "c4-component",
+      "description": "Expert C4 Component-level documentation specialist. Synthesizes C4 Code-level documentation into Component-level architecture, defining component boundaries, interfaces, and relationships.",
+      "path": "c4-component/SKILL.md",
+      "tags": [
+        "component",
+        "level",
+        "documentation",
+        "specialist",
+        "synthesizes",
+        "code"
+      ]
+    },
+    {
+      "id": "clean-code",
+      "description": "Uncle Bob's Clean Code principles",
+      "path": "clean-code/SKILL.md",
+      "tags": [
+        "clean",
+        "code",
+        "uncle",
+        "bob",
+        "principles"
+      ]
+    },
+    {
+      "id": "cqrs-implementation",
+      "description": "Command Query Responsibility Segregation",
+      "path": "cqrs-implementation/SKILL.md",
+      "tags": [
+        "cqrs",
+        "command",
+        "query",
+        "responsibility",
+        "segregation"
+      ]
+    },
+    {
+      "id": "ddd-context-mapping",
+      "description": "Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns.",
+      "path": "ddd-context-mapping/SKILL.md",
+      "tags": [
+        "ddd",
+        "context",
+        "mapping",
+        "map",
+        "relationships",
+        "between"
+      ]
+    },
+    {
+      "id": "ddd-strategic-design",
+      "description": "Bounded contexts, ubiquitous language",
+      "path": "ddd-strategic-design/SKILL.md",
+      "tags": [
+        "ddd",
+        "strategic",
+        "bounded",
+        "contexts",
+        "ubiquitous",
+        "language"
+      ]
+    },
+    {
+      "id": "ddd-tactical-patterns",
+      "description": "Entities, value objects, aggregates",
+      "path": "ddd-tactical-patterns/SKILL.md",
+      "tags": [
+        "ddd",
+        "tactical",
+        "patterns",
+        "entities",
+        "value",
+        "objects"
+      ]
+    },
+    {
+      "id": "employment-contract-templates",
+      "description": "Templates and patterns for creating legally sound employment documentation including contracts, offer letters, and HR policies.",
+      "path": "employment-contract-templates/SKILL.md",
+      "tags": [
+        "employment",
+        "contract",
+        "templates",
+        "patterns",
+        "creating",
+        "legally"
+      ]
+    },
+    {
+      "id": "error-detective",
+      "description": "Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes.",
+      "path": "error-detective/SKILL.md",
+      "tags": [
+        "error",
+        "detective",
+        "search",
+        "logs",
+        "codebases",
+        "patterns"
+      ]
+    },
+    {
+      "id": "event-sourcing-architect",
+      "description": "Event sourcing, CQRS, event-driven",
+      "path": "event-sourcing-architect/SKILL.md",
+      "tags": [
+        "event",
+        "sourcing",
+        "architect",
+        "cqrs",
+        "driven"
+      ]
+    },
+    {
+      "id": "fp-data-transforms",
+      "description": "Everyday data transformations using functional patterns - arrays, objects, grouping, aggregation, and null-safe access",
+      "path": "fp-data-transforms/SKILL.md",
+      "tags": [
+        "data",
+        "transforms",
+        "everyday",
+        "transformations",
+        "functional",
+        "patterns"
+      ]
+    },
+    {
+      "id": "i18n-localization",
+      "description": "Internationalization and localization patterns. Detecting hardcoded strings, managing translations, locale files, RTL support.",
+      "path": "i18n-localization/SKILL.md",
+      "tags": [
+        "i18n",
+        "localization",
+        "internationalization",
+        "patterns",
+        "detecting",
+        "hardcoded"
+      ]
+    },
+    {
+      "id": "lightning-channel-factories",
+      "description": "Technical reference on Lightning Network channel factories, multi-party channels, LSP architectures, and Bitcoin Layer 2 scaling without soft forks. Covers Decker-Wattenhofer, timeout trees, MuSig2 key aggregation, HTLC/PTLC forwarding, and watchtower breach detection.",
+      "path": "lightning-channel-factories/SKILL.md",
+      "tags": [
+        "lightning",
+        "channel",
+        "factories",
+        "technical",
+        "reference",
+        "network"
+      ]
+    },
+    {
+      "id": "mermaid-expert",
+      "description": "Create Mermaid diagrams for flowcharts, sequences, ERDs, and architectures. Masters syntax for all diagram types and styling.",
+      "path": "mermaid-expert/SKILL.md",
+      "tags": [
+        "mermaid",
+        "create",
+        "diagrams",
+        "flowcharts",
+        "sequences",
+        "erds"
+      ]
+    },
+    {
+      "id": "microservices-patterns",
+      "description": "Service boundaries, communication, resilience",
+      "path": "microservices-patterns/SKILL.md",
+      "tags": [
+        "microservices",
+        "patterns",
+        "service",
+        "boundaries",
+        "communication",
+        "resilience"
+      ]
+    },
+    {
+      "id": "monorepo-architect",
+      "description": "Nx, Turborepo, Bazel, Lerna",
+      "path": "monorepo-architect/SKILL.md",
+      "tags": [
+        "monorepo",
+        "architect",
+        "turborepo",
+        "bazel",
+        "lerna"
+      ]
+    },
+    {
+      "id": "powershell-windows",
+      "description": "PowerShell Windows patterns. Critical pitfalls, operator syntax, error handling.",
+      "path": "powershell-windows/SKILL.md",
+      "tags": [
+        "powershell",
+        "windows",
+        "patterns",
+        "critical",
+        "pitfalls",
+        "operator"
+      ]
+    },
+    {
+      "id": "robius-app-architecture",
+      "description": "|",
+      "path": "robius-app-architecture/SKILL.md",
+      "tags": [
+        "robius",
+        "app"
+      ]
+    },
+    {
+      "id": "robius-widget-patterns",
+      "description": "|",
+      "path": "robius-widget-patterns/SKILL.md",
+      "tags": [
+        "robius",
+        "widget",
+        "patterns"
+      ]
+    },
+    {
+      "id": "saga-orchestration",
+      "description": "Distributed transactions, long-running processes",
+      "path": "saga-orchestration/SKILL.md",
+      "tags": [
+        "saga",
+        "orchestration",
+        "distributed",
+        "transactions",
+        "long",
+        "running"
+      ]
+    },
+    {
+      "id": "software-architecture",
+      "description": "Quality-focused architecture guide",
+      "path": "software-architecture/SKILL.md",
+      "tags": [
+        "software",
+        "quality",
+        "focused",
+        "guide"
+      ]
+    }
+  ]
+}

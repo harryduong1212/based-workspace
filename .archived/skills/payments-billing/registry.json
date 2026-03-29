@@ -1,0 +1,56 @@
+{
+  "category_id": "payments-billing",
+  "category_name": "💳 Payments & Billing",
+  "skills": [
+    {
+      "id": "billing-automation",
+      "description": "Recurring billing, invoicing, dunning",
+      "path": "billing-automation/SKILL.md",
+      "tags": [
+        "billing",
+        "automation",
+        "recurring",
+        "invoicing",
+        "dunning"
+      ]
+    },
+    {
+      "id": "payment-integration",
+      "description": "Stripe, PayPal, PCI compliance",
+      "path": "payment-integration/SKILL.md",
+      "tags": [
+        "payment",
+        "integration",
+        "stripe",
+        "paypal",
+        "pci",
+        "compliance"
+      ]
+    },
+    {
+      "id": "paypal-integration",
+      "description": "PayPal checkout, IPN, recurring billing",
+      "path": "paypal-integration/SKILL.md",
+      "tags": [
+        "paypal",
+        "integration",
+        "checkout",
+        "ipn",
+        "recurring",
+        "billing"
+      ]
+    },
+    {
+      "id": "stripe-integration",
+      "description": "Stripe checkout, subscriptions, webhooks",
+      "path": "stripe-integration/SKILL.md",
+      "tags": [
+        "stripe",
+        "integration",
+        "checkout",
+        "subscriptions",
+        "webhooks"
+      ]
+    }
+  ]
+}

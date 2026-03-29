@@ -1,0 +1,71 @@
+{
+  "category_id": "custom-skills",
+  "category_name": "🎯 Custom Skills",
+  "skills": [
+    {
+      "id": "custom-debrief",
+      "description": "**(Custom)** Post-mortem task breakdowns and mentor insights.",
+      "path": "custom-debrief/SKILL.md",
+      "tags": [
+        "custom",
+        "debrief",
+        "post",
+        "mortem",
+        "task",
+        "breakdowns"
+      ]
+    },
+    {
+      "id": "custom-senior-architect",
+      "description": "**(Custom)** Specialist for end-to-end technical flow mapping and sequence diagrams.",
+      "path": "custom-senior-architect/SKILL.md",
+      "tags": [
+        "custom",
+        "senior",
+        "architect",
+        "specialist",
+        "end",
+        "technical"
+      ]
+    },
+    {
+      "id": "custom-senior-it-ba-specialist",
+      "description": "**(Custom)** Senior IT business analyst for technical requirements and workflow mapping.",
+      "path": "custom-senior-it-ba-specialist/SKILL.md",
+      "tags": [
+        "custom",
+        "senior",
+        "specialist",
+        "business",
+        "analyst",
+        "technical"
+      ]
+    },
+    {
+      "id": "custom-video-analyst",
+      "description": "**(Custom)** Expert note-taker for video/transcripts with zero technical loss.",
+      "path": "custom-video-analyst/SKILL.md",
+      "tags": [
+        "custom",
+        "video",
+        "analyst",
+        "note",
+        "taker",
+        "transcripts"
+      ]
+    },
+    {
+      "id": "senior-architect",
+      "description": "**(Custom)** Senior architect toolkit for modern system designs.",
+      "path": "senior-architect/SKILL.md",
+      "tags": [
+        "senior",
+        "architect",
+        "custom",
+        "toolkit",
+        "modern",
+        "system"
+      ]
+    }
+  ]
+}

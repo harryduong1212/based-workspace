@@ -1,0 +1,92 @@
+{
+  "category_id": "scientific-computing",
+  "category_name": "🧬 Scientific Computing",
+  "skills": [
+    {
+      "id": "astropy",
+      "description": "Astronomy research with Python",
+      "path": "astropy/SKILL.md",
+      "tags": [
+        "astropy",
+        "astronomy",
+        "research",
+        "python"
+      ]
+    },
+    {
+      "id": "biopython",
+      "description": "Biological computation tools",
+      "path": "biopython/SKILL.md",
+      "tags": [
+        "biopython",
+        "biological",
+        "computation",
+        "tools"
+      ]
+    },
+    {
+      "id": "matplotlib",
+      "description": "Python visualization",
+      "path": "matplotlib/SKILL.md",
+      "tags": [
+        "matplotlib",
+        "python",
+        "visualization"
+      ]
+    },
+    {
+      "id": "networkx",
+      "description": "Complex network analysis",
+      "path": "networkx/SKILL.md",
+      "tags": [
+        "networkx",
+        "complex",
+        "network",
+        "analysis"
+      ]
+    },
+    {
+      "id": "plotly",
+      "description": "Interactive visualizations",
+      "path": "plotly/SKILL.md",
+      "tags": [
+        "plotly",
+        "interactive",
+        "visualizations"
+      ]
+    },
+    {
+      "id": "qiskit",
+      "description": "Quantum computing framework",
+      "path": "qiskit/SKILL.md",
+      "tags": [
+        "qiskit",
+        "quantum",
+        "computing"
+      ]
+    },
+    {
+      "id": "scanpy",
+      "description": "Single-cell RNA-seq analysis",
+      "path": "scanpy/SKILL.md",
+      "tags": [
+        "scanpy",
+        "single",
+        "cell",
+        "rna",
+        "seq",
+        "analysis"
+      ]
+    },
+    {
+      "id": "sympy",
+      "description": "Symbolic mathematics",
+      "path": "sympy/SKILL.md",
+      "tags": [
+        "sympy",
+        "symbolic",
+        "mathematics"
+      ]
+    }
+  ]
+}

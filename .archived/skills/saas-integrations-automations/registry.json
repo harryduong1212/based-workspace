@@ -1,0 +1,227 @@
+{
+  "category_id": "saas-integrations-automations",
+  "category_name": "🔌 SaaS Integrations & Automations",
+  "skills": [
+    {
+      "id": "airtable-automation",
+      "description": "Airtable via Composio",
+      "path": "airtable-automation/SKILL.md",
+      "tags": [
+        "airtable",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "asana-automation",
+      "description": "Asana via Composio",
+      "path": "asana-automation/SKILL.md",
+      "tags": [
+        "asana",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "clickup-automation",
+      "description": "ClickUp via Composio",
+      "path": "clickup-automation/SKILL.md",
+      "tags": [
+        "clickup",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "discord-automation",
+      "description": "Discord via Composio",
+      "path": "discord-automation/SKILL.md",
+      "tags": [
+        "discord",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "github-automation",
+      "description": "GitHub via Composio",
+      "path": "github-automation/SKILL.md",
+      "tags": [
+        "github",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "gmail-automation",
+      "description": "Gmail with standalone OAuth",
+      "path": "gmail-automation/SKILL.md",
+      "tags": [
+        "gmail",
+        "automation",
+        "standalone",
+        "oauth"
+      ]
+    },
+    {
+      "id": "google-calendar-automation",
+      "description": "Google Calendar with OAuth",
+      "path": "google-calendar-automation/SKILL.md",
+      "tags": [
+        "google",
+        "calendar",
+        "automation",
+        "oauth"
+      ]
+    },
+    {
+      "id": "google-drive-automation",
+      "description": "Google Drive with OAuth",
+      "path": "google-drive-automation/SKILL.md",
+      "tags": [
+        "google",
+        "drive",
+        "automation",
+        "oauth"
+      ]
+    },
+    {
+      "id": "google-sheets-automation",
+      "description": "Google Sheets with OAuth",
+      "path": "google-sheets-automation/SKILL.md",
+      "tags": [
+        "google",
+        "sheets",
+        "automation",
+        "oauth"
+      ]
+    },
+    {
+      "id": "hubspot-automation",
+      "description": "HubSpot CRM via Composio",
+      "path": "hubspot-automation/SKILL.md",
+      "tags": [
+        "hubspot",
+        "automation",
+        "crm",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "jira-automation",
+      "description": "Jira via Composio",
+      "path": "jira-automation/SKILL.md",
+      "tags": [
+        "jira",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "linear-automation",
+      "description": "Linear via Composio",
+      "path": "linear-automation/SKILL.md",
+      "tags": [
+        "linear",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "notion-automation",
+      "description": "Notion via Composio",
+      "path": "notion-automation/SKILL.md",
+      "tags": [
+        "notion",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "salesforce-automation",
+      "description": "Salesforce via Composio",
+      "path": "salesforce-automation/SKILL.md",
+      "tags": [
+        "salesforce",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "shopify-automation",
+      "description": "Shopify via Composio",
+      "path": "shopify-automation/SKILL.md",
+      "tags": [
+        "shopify",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "slack-automation",
+      "description": "Slack via Composio",
+      "path": "slack-automation/SKILL.md",
+      "tags": [
+        "slack",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "stripe-automation",
+      "description": "Stripe via Composio",
+      "path": "stripe-automation/SKILL.md",
+      "tags": [
+        "stripe",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "trello-automation",
+      "description": "Trello via Composio",
+      "path": "trello-automation/SKILL.md",
+      "tags": [
+        "trello",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "zendesk-automation",
+      "description": "Zendesk via Composio",
+      "path": "zendesk-automation/SKILL.md",
+      "tags": [
+        "zendesk",
+        "automation",
+        "via",
+        "composio"
+      ]
+    },
+    {
+      "id": "zoom-automation",
+      "description": "Zoom via Composio",
+      "path": "zoom-automation/SKILL.md",
+      "tags": [
+        "zoom",
+        "automation",
+        "via",
+        "composio"
+      ]
+    }
+  ]
+}

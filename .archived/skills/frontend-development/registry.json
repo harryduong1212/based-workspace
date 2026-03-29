@@ -1,0 +1,3623 @@
+{
+  "category_id": "frontend-development",
+  "category_name": "🌐 Frontend Development",
+  "skills": [
+    {
+      "id": "00-andruia-consultant",
+      "description": "Arquitecto de Soluciones Principal y Consultor Tecnológico de Andru.ia. Diagnostica y traza la hoja de ruta óptima para proyectos de IA en español.",
+      "path": "00-andruia-consultant/SKILL.md",
+      "tags": [
+        "andruia",
+        "consultant",
+        "arquitecto",
+        "soluciones",
+        "principal",
+        "consultor"
+      ]
+    },
+    {
+      "id": "10-andruia-skill-smith",
+      "description": "Ingeniero de Sistemas de Andru.ia. Diseña, redacta y despliega nuevas habilidades (skills) dentro del repositorio siguiendo el Estándar de Diamante.",
+      "path": "10-andruia-skill-smith/SKILL.md",
+      "tags": [
+        "andruia",
+        "skill",
+        "smith",
+        "ingeniero",
+        "sistemas",
+        "andru"
+      ]
+    },
+    {
+      "id": "20-andruia-niche-intelligence",
+      "description": "Estratega de Inteligencia de Dominio de Andru.ia. Analiza el nicho específico de un proyecto para inyectar conocimientos, regulaciones y estándares únicos del sector. Actívalo tras definir el nicho.",
+      "path": "20-andruia-niche-intelligence/SKILL.md",
+      "tags": [
+        "andruia",
+        "niche",
+        "intelligence",
+        "estratega",
+        "inteligencia",
+        "dominio"
+      ]
+    },
+    {
+      "id": "ab-test-setup",
+      "description": "Structured guide for setting up A/B tests with mandatory gates for hypothesis, metrics, and execution readiness.",
+      "path": "ab-test-setup/SKILL.md",
+      "tags": [
+        "test",
+        "setup",
+        "structured",
+        "guide",
+        "setting",
+        "tests"
+      ]
+    },
+    {
+      "id": "accessibility-compliance-accessibility-audit",
+      "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.",
+      "path": "accessibility-compliance-accessibility-audit/SKILL.md",
+      "tags": [
+        "accessibility",
+        "compliance",
+        "audit",
+        "you",
+        "specializing",
+        "wcag"
+      ]
+    },
+    {
+      "id": "ai-native-cli",
+      "description": "Design spec with 98 rules for building CLI tools that AI agents can safely use. Covers structured JSON output, error handling, input contracts, safety guardrails, exit codes, and agent self-description.",
+      "path": "ai-native-cli/SKILL.md",
+      "tags": [
+        "native",
+        "cli",
+        "spec",
+        "rules",
+        "tools",
+        "agents"
+      ]
+    },
+    {
+      "id": "airflow-dag-patterns",
+      "description": "Build production Apache Airflow DAGs with best practices for operators, sensors, testing, and deployment. Use when creating data pipelines, orchestrating workflows, or scheduling batch jobs.",
+      "path": "airflow-dag-patterns/SKILL.md",
+      "tags": [
+        "airflow",
+        "dag",
+        "patterns",
+        "build",
+        "apache",
+        "dags"
+      ]
+    },
+    {
+      "id": "algolia-search",
+      "description": "Expert patterns for Algolia search implementation, indexing strategies, React InstantSearch, and relevance tuning Use when: adding search to, algolia, instantsearch, search api, search functionality.",
+      "path": "algolia-search/SKILL.md",
+      "tags": [
+        "algolia",
+        "search",
+        "patterns",
+        "indexing",
+        "strategies",
+        "react"
+      ]
+    },
+    {
+      "id": "alpha-vantage",
+      "description": "Access 20+ years of global financial data: equities, options, forex, crypto, commodities, economic indicators, and 50+ technical indicators.",
+      "path": "alpha-vantage/SKILL.md",
+      "tags": [
+        "alpha",
+        "vantage",
+        "access",
+        "years",
+        "global",
+        "financial"
+      ]
+    },
+    {
+      "id": "android_ui_verification",
+      "description": "Automated end-to-end UI testing and verification on an Android Emulator using ADB.",
+      "path": "android_ui_verification/SKILL.md",
+      "tags": [
+        "android_ui_verification",
+        "end",
+        "testing",
+        "verification",
+        "android",
+        "emulator"
+      ]
+    },
+    {
+      "id": "angular",
+      "description": "Angular v20+: Signals, Standalone, Zoneless",
+      "path": "angular/SKILL.md",
+      "tags": [
+        "angular",
+        "v20",
+        "signals",
+        "standalone",
+        "zoneless"
+      ]
+    },
+    {
+      "id": "angular-best-practices",
+      "description": "Angular performance and bundle optimization",
+      "path": "angular-best-practices/SKILL.md",
+      "tags": [
+        "angular",
+        "best",
+        "practices",
+        "performance",
+        "bundle",
+        "optimization"
+      ]
+    },
+    {
+      "id": "angular-migration",
+      "description": "AngularJS to Angular migration",
+      "path": "angular-migration/SKILL.md",
+      "tags": [
+        "angular",
+        "migration",
+        "angularjs"
+      ]
+    },
+    {
+      "id": "angular-state-management",
+      "description": "Signals, NgRx, RxJS state management",
+      "path": "angular-state-management/SKILL.md",
+      "tags": [
+        "angular",
+        "state",
+        "signals",
+        "ngrx",
+        "rxjs"
+      ]
+    },
+    {
+      "id": "angular-ui-patterns",
+      "description": "Loading states, error handling, data display",
+      "path": "angular-ui-patterns/SKILL.md",
+      "tags": [
+        "angular",
+        "patterns",
+        "loading",
+        "states",
+        "error",
+        "handling"
+      ]
+    },
+    {
+      "id": "antigravity-skill-orchestrator",
+      "description": "A meta-skill that understands task requirements, dynamically selects appropriate skills, tracks successful skill combinations using agent-memory-mcp, and prevents skill overuse for simple tasks.",
+      "path": "antigravity-skill-orchestrator/SKILL.md",
+      "tags": [
+        "antigravity",
+        "skill",
+        "orchestrator",
+        "meta",
+        "understands",
+        "task"
+      ]
+    },
+    {
+      "id": "antigravity-workflows",
+      "description": "Orchestrate multiple Antigravity skills through guided workflows for SaaS MVP delivery, security audits, AI agent builds, and browser QA.",
+      "path": "antigravity-workflows/SKILL.md",
+      "tags": [
+        "antigravity",
+        "workflows",
+        "orchestrate",
+        "multiple",
+        "skills",
+        "guided"
+      ]
+    },
+    {
+      "id": "api-endpoint-builder",
+      "description": "Builds production-ready REST API endpoints with validation, error handling, authentication, and documentation. Follows best practices for security and scalability.",
+      "path": "api-endpoint-builder/SKILL.md",
+      "tags": [
+        "api",
+        "endpoint",
+        "builder",
+        "builds",
+        "rest",
+        "endpoints"
+      ]
+    },
+    {
+      "id": "app-builder",
+      "description": "Main application building orchestrator. Creates full-stack applications from natural language requests. Determines project type, selects tech stack, coordinates agents.",
+      "path": "app-builder/SKILL.md",
+      "tags": [
+        "app",
+        "builder",
+        "main",
+        "application",
+        "orchestrator",
+        "creates"
+      ]
+    },
+    {
+      "id": "application-performance-performance-optimization",
+      "description": "Optimize end-to-end application performance with profiling, observability, and backend/frontend tuning. Use when coordinating performance optimization across the stack.",
+      "path": "application-performance-performance-optimization/SKILL.md",
+      "tags": [
+        "application",
+        "performance",
+        "optimization",
+        "optimize",
+        "end",
+        "profiling"
+      ]
+    },
+    {
+      "id": "ask-questions-if-underspecified",
+      "description": "Clarify requirements before implementing. Use when serious doubts arise.",
+      "path": "ask-questions-if-underspecified/SKILL.md",
+      "tags": [
+        "ask",
+        "questions",
+        "underspecified",
+        "clarify",
+        "requirements",
+        "before"
+      ]
+    },
+    {
+      "id": "astro",
+      "description": "Content-focused sites with zero JS by default",
+      "path": "astro/SKILL.md",
+      "tags": [
+        "astro",
+        "content",
+        "focused",
+        "sites",
+        "zero",
+        "default"
+      ]
+    },
+    {
+      "id": "async-python-patterns",
+      "description": "Comprehensive guidance for implementing asynchronous Python applications using asyncio, concurrent programming patterns, and async/await for building high-performance, non-blocking systems.",
+      "path": "async-python-patterns/SKILL.md",
+      "tags": [
+        "async",
+        "python",
+        "patterns",
+        "implementing",
+        "asynchronous",
+        "applications"
+      ]
+    },
+    {
+      "id": "attack-tree-construction",
+      "description": "Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to stakeholders.",
+      "path": "attack-tree-construction/SKILL.md",
+      "tags": [
+        "attack",
+        "tree",
+        "construction",
+        "build",
+        "trees",
+        "visualize"
+      ]
+    },
+    {
+      "id": "audit-context-building",
+      "description": "Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding.",
+      "path": "audit-context-building/SKILL.md",
+      "tags": [
+        "audit",
+        "context",
+        "enables",
+        "ultra",
+        "granular",
+        "line"
+      ]
+    },
+    {
+      "id": "auth-implementation-patterns",
+      "description": "Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices.",
+      "path": "auth-implementation-patterns/SKILL.md",
+      "tags": [
+        "auth",
+        "patterns",
+        "build",
+        "secure",
+        "scalable",
+        "authentication"
+      ]
+    },
+    {
+      "id": "avalonia-layout-zafiro",
+      "description": "Guidelines for modern Avalonia UI layout using Zafiro.Avalonia, emphasizing shared styles, generic components, and avoiding XAML redundancy.",
+      "path": "avalonia-layout-zafiro/SKILL.md",
+      "tags": [
+        "avalonia",
+        "layout",
+        "zafiro",
+        "guidelines",
+        "modern",
+        "emphasizing"
+      ]
+    },
+    {
+      "id": "avalonia-viewmodels-zafiro",
+      "description": "Optimal ViewModel and Wizard creation patterns for Avalonia using Zafiro and ReactiveUI.",
+      "path": "avalonia-viewmodels-zafiro/SKILL.md",
+      "tags": [
+        "avalonia",
+        "viewmodels",
+        "zafiro",
+        "optimal",
+        "viewmodel",
+        "wizard"
+      ]
+    },
+    {
+      "id": "avalonia-zafiro-development",
+      "description": "Mandatory skills, conventions, and behavioral rules for Avalonia UI development using the Zafiro toolkit.",
+      "path": "avalonia-zafiro-development/SKILL.md",
+      "tags": [
+        "avalonia",
+        "zafiro",
+        "mandatory",
+        "skills",
+        "conventions",
+        "behavioral"
+      ]
+    },
+    {
+      "id": "awt-e2e-testing",
+      "description": "AI-powered E2E web testing — eyes and hands for AI coding tools. Declarative YAML scenarios, Playwright execution, visual matching (OpenCV + OCR), platform auto-detection (Flutter/React/Vue), learning DB. Install: npx skills add ksgisang/awt-skill --skill awt -g",
+      "path": "awt-e2e-testing/SKILL.md",
+      "tags": [
+        "awt",
+        "e2e",
+        "testing",
+        "powered",
+        "web",
+        "eyes"
+      ]
+    },
+    {
+      "id": "backend-development-feature-development",
+      "description": "Orchestrate end-to-end backend feature development from requirements to deployment. Use when coordinating multi-phase feature delivery across teams and services.",
+      "path": "backend-development-feature-development/SKILL.md",
+      "tags": [
+        "backend",
+        "feature",
+        "orchestrate",
+        "end",
+        "requirements",
+        "deployment"
+      ]
+    },
+    {
+      "id": "backtesting-frameworks",
+      "description": "Build robust, production-grade backtesting systems that avoid common pitfalls and produce reliable strategy performance estimates.",
+      "path": "backtesting-frameworks/SKILL.md",
+      "tags": [
+        "backtesting",
+        "frameworks",
+        "build",
+        "robust",
+        "grade",
+        "avoid"
+      ]
+    },
+    {
+      "id": "baseline-ui",
+      "description": "Validates animation durations, enforces typography scale, checks component accessibility, and prevents layout anti-patterns in Tailwind CSS projects. Use when building UI components, reviewing CSS utilities, styling React views, or enforcing design consistency.",
+      "path": "baseline-ui/SKILL.md",
+      "tags": [
+        "baseline",
+        "validates",
+        "animation",
+        "durations",
+        "enforces",
+        "typography"
+      ]
+    },
+    {
+      "id": "bash-defensive-patterns",
+      "description": "Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.",
+      "path": "bash-defensive-patterns/SKILL.md",
+      "tags": [
+        "bash",
+        "defensive",
+        "patterns",
+        "master",
+        "programming",
+        "techniques"
+      ]
+    },
+    {
+      "id": "bats-testing-patterns",
+      "description": "Master Bash Automated Testing System (Bats) for comprehensive shell script testing. Use when writing tests for shell scripts, CI/CD pipelines, or requiring test-driven development of shell utilities.",
+      "path": "bats-testing-patterns/SKILL.md",
+      "tags": [
+        "bats",
+        "testing",
+        "patterns",
+        "master",
+        "bash",
+        "system"
+      ]
+    },
+    {
+      "id": "bazel-build-optimization",
+      "description": "Optimize Bazel builds for large-scale monorepos. Use when configuring Bazel, implementing remote execution, or optimizing build performance for enterprise codebases.",
+      "path": "bazel-build-optimization/SKILL.md",
+      "tags": [
+        "bazel",
+        "build",
+        "optimization",
+        "optimize",
+        "builds",
+        "large"
+      ]
+    },
+    {
+      "id": "bdi-mental-states",
+      "description": "This skill should be used when the user asks to \"model agent mental states\", \"implement BDI architecture\", \"create belief-desire-intention models\", \"transform RDF to beliefs\", \"build cognitive agent\", or mentions BDI ontology, mental state modeling, rational agency, or neuro-symbolic AI integration.",
+      "path": "bdi-mental-states/SKILL.md",
+      "tags": [
+        "bdi",
+        "mental",
+        "states",
+        "skill",
+        "should",
+        "used"
+      ]
+    },
+    {
+      "id": "bill-gates",
+      "description": "Agente que simula Bill Gates — cofundador da Microsoft, arquiteto da industria de software comercial, estrategista tecnologico global, investidor sistemico e filantropo baseado em dados.",
+      "path": "bill-gates/SKILL.md",
+      "tags": [
+        "bill",
+        "gates",
+        "agente",
+        "que",
+        "simula",
+        "cofundador"
+      ]
+    },
+    {
+      "id": "brand-guidelines",
+      "description": "Write copy following Sentry brand guidelines. Use when writing UI text, error messages, empty states, onboarding flows, 404 pages, documentation, marketing copy, or any user-facing content. Covers both Plain Speech (default) and Sentry Voice tones.",
+      "path": "brand-guidelines/SKILL.md",
+      "tags": [
+        "brand",
+        "guidelines",
+        "write",
+        "copy",
+        "following",
+        "sentry"
+      ]
+    },
+    {
+      "id": "brand-guidelines-anthropic",
+      "description": "To access Anthropic's official brand identity and style resources, use this skill.",
+      "path": "brand-guidelines-anthropic/SKILL.md",
+      "tags": [
+        "brand",
+        "guidelines",
+        "anthropic",
+        "access",
+        "official",
+        "identity"
+      ]
+    },
+    {
+      "id": "brand-guidelines-community",
+      "description": "To access Anthropic's official brand identity and style resources, use this skill.",
+      "path": "brand-guidelines-community/SKILL.md",
+      "tags": [
+        "brand",
+        "guidelines",
+        "community",
+        "access",
+        "anthropic",
+        "official"
+      ]
+    },
+    {
+      "id": "browser-automation",
+      "description": "You are a browser automation expert who has debugged thousands of flaky tests and built scrapers that run for years without breaking. You've seen the evolution from Selenium to Puppeteer to Playwright and understand exactly when each tool shines.",
+      "path": "browser-automation/SKILL.md",
+      "tags": [
+        "browser",
+        "automation",
+        "you",
+        "who",
+        "has",
+        "debugged"
+      ]
+    },
+    {
+      "id": "browser-extension-builder",
+      "description": "You extend the browser to give users superpowers. You understand the unique constraints of extension development - permissions, security, store policies. You build extensions that people install and actually use daily. You know the difference between a toy and a tool.",
+      "path": "browser-extension-builder/SKILL.md",
+      "tags": [
+        "browser",
+        "extension",
+        "builder",
+        "you",
+        "extend",
+        "give"
+      ]
+    },
+    {
+      "id": "build",
+      "description": "build",
+      "path": "build/SKILL.md",
+      "tags": [
+        "build"
+      ]
+    },
+    {
+      "id": "burp-suite-testing",
+      "description": "Execute comprehensive web application security testing using Burp Suite's integrated toolset, including HTTP traffic interception and modification, request analysis and replay, automated vulnerability scanning, and manual testing workflows.",
+      "path": "burp-suite-testing/SKILL.md",
+      "tags": [
+        "burp",
+        "suite",
+        "testing",
+        "execute",
+        "web",
+        "application"
+      ]
+    },
+    {
+      "id": "burpsuite-project-parser",
+      "description": "Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with regex patterns, extracting security audit findings, dumping proxy history or site map data, or analyzing HTTP traffic captured in a Burp project.",
+      "path": "burpsuite-project-parser/SKILL.md",
+      "tags": [
+        "burpsuite",
+        "project",
+        "parser",
+        "searches",
+        "explores",
+        "burp"
+      ]
+    },
+    {
+      "id": "busybox-on-windows",
+      "description": "How to use a Win32 build of BusyBox to run many of the standard UNIX command line tools on Windows.",
+      "path": "busybox-on-windows/SKILL.md",
+      "tags": [
+        "busybox",
+        "windows",
+        "how",
+        "win32",
+        "build",
+        "run"
+      ]
+    },
+    {
+      "id": "cc-skill-coding-standards",
+      "description": "Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development.",
+      "path": "cc-skill-coding-standards/SKILL.md",
+      "tags": [
+        "skill",
+        "coding",
+        "standards",
+        "universal",
+        "best",
+        "practices"
+      ]
+    },
+    {
+      "id": "cc-skill-frontend-patterns",
+      "description": "Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices.",
+      "path": "cc-skill-frontend-patterns/SKILL.md",
+      "tags": [
+        "skill",
+        "frontend",
+        "patterns",
+        "react",
+        "next",
+        "state"
+      ]
+    },
+    {
+      "id": "cc-skill-project-guidelines-example",
+      "description": "Project Guidelines Skill (Example)",
+      "path": "cc-skill-project-guidelines-example/SKILL.md",
+      "tags": [
+        "skill",
+        "project",
+        "guidelines",
+        "example"
+      ]
+    },
+    {
+      "id": "chat-widget",
+      "description": "Build a real-time support chat system with a floating widget for users and an admin dashboard for support staff. Use when the user wants live chat, customer support chat, real-time messaging, or in-app support.",
+      "path": "chat-widget/SKILL.md",
+      "tags": [
+        "chat",
+        "widget",
+        "build",
+        "real",
+        "time",
+        "support"
+      ]
+    },
+    {
+      "id": "chrome-extension-developer",
+      "description": "Expert in building Chrome Extensions using Manifest V3. Covers background scripts, service workers, content scripts, and cross-context communication.",
+      "path": "chrome-extension-developer/SKILL.md",
+      "tags": [
+        "chrome",
+        "extension",
+        "developer",
+        "extensions",
+        "manifest",
+        "covers"
+      ]
+    },
+    {
+      "id": "cirq",
+      "description": "Cirq is Google Quantum AI's open-source framework for designing, simulating, and running quantum circuits on quantum computers and simulators.",
+      "path": "cirq/SKILL.md",
+      "tags": [
+        "cirq",
+        "google",
+        "quantum",
+        "open",
+        "source",
+        "designing"
+      ]
+    },
+    {
+      "id": "claimable-postgres",
+      "description": "Provision instant temporary Postgres databases via Claimable Postgres by Neon (pg.new). No login or credit card required. Use for quick Postgres environments and throwaway DATABASE_URL for prototyping.",
+      "path": "claimable-postgres/SKILL.md",
+      "tags": [
+        "claimable",
+        "postgres",
+        "provision",
+        "instant",
+        "temporary",
+        "databases"
+      ]
+    },
+    {
+      "id": "claude-ally-health",
+      "description": "A health assistant skill for medical information analysis, symptom tracking, and wellness guidance.",
+      "path": "claude-ally-health/SKILL.md",
+      "tags": [
+        "claude",
+        "ally",
+        "health",
+        "assistant",
+        "skill",
+        "medical"
+      ]
+    },
+    {
+      "id": "claude-api",
+      "description": "Build apps with the Claude API or Anthropic SDK. TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK. DO NOT TRIGGER when: code imports `openai`/other AI SDK, general programming, or ML/data-science tasks.",
+      "path": "claude-api/SKILL.md",
+      "tags": [
+        "claude",
+        "api",
+        "build",
+        "apps",
+        "anthropic",
+        "sdk"
+      ]
+    },
+    {
+      "id": "claude-code-guide",
+      "description": "To provide a comprehensive reference for configuring and using Claude Code (the agentic coding tool) to its full potential. This skill synthesizes best practices, configuration templates, and advanced usage patterns.",
+      "path": "claude-code-guide/SKILL.md",
+      "tags": [
+        "claude",
+        "code",
+        "guide",
+        "provide",
+        "reference",
+        "configuring"
+      ]
+    },
+    {
+      "id": "claude-d3js-skill",
+      "description": "This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js.",
+      "path": "claude-d3js-skill/SKILL.md",
+      "tags": [
+        "claude",
+        "d3js",
+        "skill",
+        "provides",
+        "creating",
+        "sophisticated"
+      ]
+    },
+    {
+      "id": "claude-settings-audit",
+      "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Use when setting up a new project, auditing existing settings, or determining which read-only bash commands to allow. Detects tech stack, build tools, and monorepo structure.",
+      "path": "claude-settings-audit/SKILL.md",
+      "tags": [
+        "claude",
+        "settings",
+        "audit",
+        "analyze",
+        "repository",
+        "generate"
+      ]
+    },
+    {
+      "id": "code-documentation-doc-generate",
+      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "path": "code-documentation-doc-generate/SKILL.md",
+      "tags": [
+        "code",
+        "documentation",
+        "doc",
+        "generate",
+        "you",
+        "specializing"
+      ]
+    },
+    {
+      "id": "comfyui-gateway",
+      "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and image delivery (URL + base64).",
+      "path": "comfyui-gateway/SKILL.md",
+      "tags": [
+        "comfyui",
+        "gateway",
+        "rest",
+        "api",
+        "servers",
+        "workflow"
+      ]
+    },
+    {
+      "id": "competitor-alternatives",
+      "description": "You are an expert in creating competitor comparison and alternative pages. Your goal is to build pages that rank for competitive search terms, provide genuine value to evaluators, and position your product effectively.",
+      "path": "competitor-alternatives/SKILL.md",
+      "tags": [
+        "competitor",
+        "alternatives",
+        "you",
+        "creating",
+        "comparison",
+        "alternative"
+      ]
+    },
+    {
+      "id": "context-agent",
+      "description": "Agente de contexto para continuidade entre sessoes. Salva resumos, decisoes, tarefas pendentes e carrega briefing automatico na sessao seguinte.",
+      "path": "context-agent/SKILL.md",
+      "tags": [
+        "context",
+        "agent",
+        "agente",
+        "contexto",
+        "para",
+        "continuidade"
+      ]
+    },
+    {
+      "id": "context-driven-development",
+      "description": "Guide for implementing and maintaining context as a managed artifact alongside code, enabling consistent AI interactions and team alignment through structured project documentation.",
+      "path": "context-driven-development/SKILL.md",
+      "tags": [
+        "context",
+        "driven",
+        "guide",
+        "implementing",
+        "maintaining",
+        "managed"
+      ]
+    },
+    {
+      "id": "context7-auto-research",
+      "description": "Automatically fetch latest library/framework documentation for Claude Code via Context7 API. Use when you need up-to-date documentation for libraries and frameworks or asking about React, Next.js, Prisma, or any other popular library.",
+      "path": "context7-auto-research/SKILL.md",
+      "tags": [
+        "context7",
+        "auto",
+        "research",
+        "automatically",
+        "fetch",
+        "latest"
+      ]
+    },
+    {
+      "id": "copilot-sdk",
+      "description": "Build applications that programmatically interact with GitHub Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, Python, Go, and .NET.",
+      "path": "copilot-sdk/SKILL.md",
+      "tags": [
+        "copilot",
+        "sdk",
+        "build",
+        "applications",
+        "programmatically",
+        "interact"
+      ]
+    },
+    {
+      "id": "core-components",
+      "description": "Core component library and design system patterns. Use when building UI, using design tokens, or working with the component library.",
+      "path": "core-components/SKILL.md",
+      "tags": [
+        "core",
+        "components",
+        "component",
+        "library",
+        "system",
+        "patterns"
+      ]
+    },
+    {
+      "id": "crypto-bd-agent",
+      "description": "Production-tested patterns for building AI agents that autonomously discover, > evaluate, and acquire token listings for cryptocurrency exchanges.",
+      "path": "crypto-bd-agent/SKILL.md",
+      "tags": [
+        "crypto",
+        "agent",
+        "tested",
+        "patterns",
+        "agents",
+        "autonomously"
+      ]
+    },
+    {
+      "id": "data-engineering-data-driven-feature",
+      "description": "Build features guided by data insights, A/B testing, and continuous measurement using specialized agents for analysis, implementation, and experimentation.",
+      "path": "data-engineering-data-driven-feature/SKILL.md",
+      "tags": [
+        "data",
+        "engineering",
+        "driven",
+        "feature",
+        "build",
+        "features"
+      ]
+    },
+    {
+      "id": "data-quality-frameworks",
+      "description": "Implement data quality validation with Great Expectations, dbt tests, and data contracts. Use when building data quality pipelines, implementing validation rules, or establishing data contracts.",
+      "path": "data-quality-frameworks/SKILL.md",
+      "tags": [
+        "data",
+        "quality",
+        "frameworks",
+        "implement",
+        "validation",
+        "great"
+      ]
+    },
+    {
+      "id": "dbos-golang",
+      "description": "Guide for building reliable, fault-tolerant Go applications with DBOS durable workflows. Use when adding DBOS to existing Go code, creating workflows and steps, or using queues for concurrency control.",
+      "path": "dbos-golang/SKILL.md",
+      "tags": [
+        "dbos",
+        "golang",
+        "guide",
+        "reliable",
+        "fault",
+        "tolerant"
+      ]
+    },
+    {
+      "id": "dbos-python",
+      "description": "Guide for building reliable, fault-tolerant Python applications with DBOS durable workflows. Use when adding DBOS to existing Python code, creating workflows and steps, or using queues for concurrency control.",
+      "path": "dbos-python/SKILL.md",
+      "tags": [
+        "dbos",
+        "python",
+        "guide",
+        "reliable",
+        "fault",
+        "tolerant"
+      ]
+    },
+    {
+      "id": "dbos-typescript",
+      "description": "Guide for building reliable, fault-tolerant TypeScript applications with DBOS durable workflows. Use when adding DBOS to existing TypeScript code, creating workflows and steps, or using queues for concurrency control.",
+      "path": "dbos-typescript/SKILL.md",
+      "tags": [
+        "dbos",
+        "typescript",
+        "guide",
+        "reliable",
+        "fault",
+        "tolerant"
+      ]
+    },
+    {
+      "id": "defi-protocol-templates",
+      "description": "Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols.",
+      "path": "defi-protocol-templates/SKILL.md",
+      "tags": [
+        "defi",
+        "protocol",
+        "templates",
+        "implement",
+        "protocols",
+        "staking"
+      ]
+    },
+    {
+      "id": "development",
+      "description": "Comprehensive web, mobile, and backend development workflow bundling frontend, backend, full-stack, and mobile development skills for end-to-end application delivery.",
+      "path": "development/SKILL.md",
+      "tags": [
+        "web",
+        "mobile",
+        "backend",
+        "workflow",
+        "bundling",
+        "frontend"
+      ]
+    },
+    {
+      "id": "discord-bot-architect",
+      "description": "Specialized skill for building production-ready Discord bots. Covers Discord.js (JavaScript) and Pycord (Python), gateway intents, slash commands, interactive components, rate limiting, and sharding.",
+      "path": "discord-bot-architect/SKILL.md",
+      "tags": [
+        "discord",
+        "bot",
+        "architect",
+        "specialized",
+        "skill",
+        "bots"
+      ]
+    },
+    {
+      "id": "doc-coauthoring",
+      "description": "This skill provides a structured workflow for guiding users through collaborative document creation. Act as an active guide, walking users through three stages: Context Gathering, Refinement & Structure, and Reader Testing.",
+      "path": "doc-coauthoring/SKILL.md",
+      "tags": [
+        "doc",
+        "coauthoring",
+        "skill",
+        "provides",
+        "structured",
+        "workflow"
+      ]
+    },
+    {
+      "id": "documentation-generation-doc-generate",
+      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "path": "documentation-generation-doc-generate/SKILL.md",
+      "tags": [
+        "documentation",
+        "generation",
+        "doc",
+        "generate",
+        "you",
+        "specializing"
+      ]
+    },
+    {
+      "id": "documentation-templates",
+      "description": "Documentation templates and structure guidelines. README, API docs, code comments, and AI-friendly documentation.",
+      "path": "documentation-templates/SKILL.md",
+      "tags": [
+        "documentation",
+        "templates",
+        "structure",
+        "guidelines",
+        "readme",
+        "api"
+      ]
+    },
+    {
+      "id": "dotnet-backend-patterns",
+      "description": "Master C#/.NET patterns for building production-grade APIs, MCP servers, and enterprise backends with modern best practices (2024/2025).",
+      "path": "dotnet-backend-patterns/SKILL.md",
+      "tags": [
+        "dotnet",
+        "backend",
+        "patterns",
+        "master",
+        "net",
+        "grade"
+      ]
+    },
+    {
+      "id": "earllm-build",
+      "description": "Build, maintain, and extend the EarLLM One Android project — a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline.",
+      "path": "earllm-build/SKILL.md",
+      "tags": [
+        "earllm",
+        "build",
+        "maintain",
+        "extend",
+        "one",
+        "android"
+      ]
+    },
+    {
+      "id": "electron-development",
+      "description": "Master Electron desktop app development with secure IPC, contextIsolation, preload scripts, multi-process architecture, electron-builder packaging, code signing, and auto-update.",
+      "path": "electron-development/SKILL.md",
+      "tags": [
+        "electron",
+        "master",
+        "desktop",
+        "app",
+        "secure",
+        "ipc"
+      ]
+    },
+    {
+      "id": "embedding-strategies",
+      "description": "Guide to selecting and optimizing embedding models for vector search applications.",
+      "path": "embedding-strategies/SKILL.md",
+      "tags": [
+        "embedding",
+        "strategies",
+        "guide",
+        "selecting",
+        "optimizing",
+        "models"
+      ]
+    },
+    {
+      "id": "enhance-prompt",
+      "description": "Transforms vague UI ideas into polished, Stitch-optimized prompts. Enhances specificity, adds UI/UX keywords, injects design system context, and structures output for better generation results.",
+      "path": "enhance-prompt/SKILL.md",
+      "tags": [
+        "enhance",
+        "prompt",
+        "transforms",
+        "vague",
+        "ideas",
+        "polished"
+      ]
+    },
+    {
+      "id": "environment-setup-guide",
+      "description": "Guide developers through setting up development environments with proper tools, dependencies, and configurations",
+      "path": "environment-setup-guide/SKILL.md",
+      "tags": [
+        "environment",
+        "setup",
+        "guide",
+        "developers",
+        "setting",
+        "environments"
+      ]
+    },
+    {
+      "id": "error-debugging-error-trace",
+      "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging, and ensure teams can quickly identify and resolve production issues.",
+      "path": "error-debugging-error-trace/SKILL.md",
+      "tags": [
+        "error",
+        "debugging",
+        "trace",
+        "you",
+        "tracking",
+        "observability"
+      ]
+    },
+    {
+      "id": "error-handling-patterns",
+      "description": "Build resilient applications with robust error handling strategies that gracefully handle failures and provide excellent debugging experiences.",
+      "path": "error-handling-patterns/SKILL.md",
+      "tags": [
+        "error",
+        "handling",
+        "patterns",
+        "build",
+        "resilient",
+        "applications"
+      ]
+    },
+    {
+      "id": "event-store-design",
+      "description": "Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.",
+      "path": "event-store-design/SKILL.md",
+      "tags": [
+        "event",
+        "store",
+        "implement",
+        "stores",
+        "sourced",
+        "sourcing"
+      ]
+    },
+    {
+      "id": "expo-cicd-workflows",
+      "description": "Helps understand and write EAS workflow YAML files for Expo projects. Use this skill when the user asks about CI/CD or workflows in an Expo or EAS context, mentions .eas/workflows/, or wants help with EAS build pipelines or deployment automation.",
+      "path": "expo-cicd-workflows/SKILL.md",
+      "tags": [
+        "expo",
+        "cicd",
+        "workflows",
+        "helps",
+        "understand",
+        "write"
+      ]
+    },
+    {
+      "id": "expo-dev-client",
+      "description": "Build and distribute Expo development clients locally or via TestFlight",
+      "path": "expo-dev-client/SKILL.md",
+      "tags": [
+        "expo",
+        "dev",
+        "client",
+        "build",
+        "distribute",
+        "clients"
+      ]
+    },
+    {
+      "id": "expo-tailwind-setup",
+      "description": "Set up Tailwind CSS v4 in Expo with react-native-css and NativeWind v5 for universal styling",
+      "path": "expo-tailwind-setup/SKILL.md",
+      "tags": [
+        "expo",
+        "tailwind",
+        "setup",
+        "set",
+        "css",
+        "react"
+      ]
+    },
+    {
+      "id": "expo-ui-jetpack-compose",
+      "description": "expo-ui-jetpack-compose",
+      "path": "expo-ui-jetpack-compose/SKILL.md",
+      "tags": [
+        "expo",
+        "jetpack",
+        "compose"
+      ]
+    },
+    {
+      "id": "expo-ui-swift-ui",
+      "description": "expo-ui-swift-ui",
+      "path": "expo-ui-swift-ui/SKILL.md",
+      "tags": [
+        "expo",
+        "swift"
+      ]
+    },
+    {
+      "id": "fastapi-templates",
+      "description": "Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.",
+      "path": "fastapi-templates/SKILL.md",
+      "tags": [
+        "fastapi",
+        "templates",
+        "create",
+        "projects",
+        "async",
+        "patterns"
+      ]
+    },
+    {
+      "id": "ffuf-web-fuzzing",
+      "description": "Expert guidance for ffuf web fuzzing during penetration testing, including authenticated fuzzing with raw requests, auto-calibration, and result analysis",
+      "path": "ffuf-web-fuzzing/SKILL.md",
+      "tags": [
+        "ffuf",
+        "web",
+        "fuzzing",
+        "during",
+        "penetration",
+        "testing"
+      ]
+    },
+    {
+      "id": "finishing-a-development-branch",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "path": "finishing-a-development-branch/SKILL.md",
+      "tags": [
+        "finishing",
+        "branch",
+        "complete",
+        "all",
+        "tests",
+        "pass"
+      ]
+    },
+    {
+      "id": "firecrawl-scraper",
+      "description": "Deep web scraping, screenshots, PDF parsing, and website crawling using Firecrawl API. Use when you need deep content extraction from web pages, page interaction is required (clicking, scrolling, etc.), or you want screenshots or PDF parsing.",
+      "path": "firecrawl-scraper/SKILL.md",
+      "tags": [
+        "firecrawl",
+        "scraper",
+        "deep",
+        "web",
+        "scraping",
+        "screenshots"
+      ]
+    },
+    {
+      "id": "fixing-motion-performance",
+      "description": "Audit and fix animation performance issues including layout thrashing, compositor properties, scroll-linked motion, and blur effects. Use when animations stutter, transitions jank, or reviewing CSS/JS animation performance.",
+      "path": "fixing-motion-performance/SKILL.md",
+      "tags": [
+        "fixing",
+        "motion",
+        "performance",
+        "audit",
+        "fix",
+        "animation"
+      ]
+    },
+    {
+      "id": "fp-either-ref",
+      "description": "Quick reference for Either type. Use when user needs error handling, validation, or operations that can fail with typed errors.",
+      "path": "fp-either-ref/SKILL.md",
+      "tags": [
+        "either",
+        "ref",
+        "quick",
+        "reference",
+        "type",
+        "user"
+      ]
+    },
+    {
+      "id": "fp-option-ref",
+      "description": "Quick reference for Option type. Use when user needs to handle nullable values, optional data, or wants to avoid null checks.",
+      "path": "fp-option-ref/SKILL.md",
+      "tags": [
+        "option",
+        "ref",
+        "quick",
+        "reference",
+        "type",
+        "user"
+      ]
+    },
+    {
+      "id": "fp-pipe-ref",
+      "description": "Quick reference for pipe and flow. Use when user needs to chain functions, compose operations, or build data pipelines in fp-ts.",
+      "path": "fp-pipe-ref/SKILL.md",
+      "tags": [
+        "pipe",
+        "ref",
+        "quick",
+        "reference",
+        "flow",
+        "user"
+      ]
+    },
+    {
+      "id": "fp-pragmatic",
+      "description": "A practical, jargon-free guide to functional programming - the 80/20 approach that gets results without the academic overhead",
+      "path": "fp-pragmatic/SKILL.md",
+      "tags": [
+        "pragmatic",
+        "practical",
+        "jargon",
+        "free",
+        "guide",
+        "functional"
+      ]
+    },
+    {
+      "id": "fp-react",
+      "description": "Practical patterns for using fp-ts with React - hooks, state, forms, data fetching. Works with React 18/19, Next.js 14/15.",
+      "path": "fp-react/SKILL.md",
+      "tags": [
+        "react",
+        "practical",
+        "patterns",
+        "hooks",
+        "state",
+        "forms"
+      ]
+    },
+    {
+      "id": "fp-refactor",
+      "description": "Comprehensive guide for refactoring imperative TypeScript code to fp-ts functional patterns",
+      "path": "fp-refactor/SKILL.md",
+      "tags": [
+        "refactor",
+        "guide",
+        "refactoring",
+        "imperative",
+        "typescript",
+        "code"
+      ]
+    },
+    {
+      "id": "fp-taskeither-ref",
+      "description": "Quick reference for TaskEither. Use when user needs async error handling, API calls, or Promise-based operations that can fail.",
+      "path": "fp-taskeither-ref/SKILL.md",
+      "tags": [
+        "taskeither",
+        "ref",
+        "quick",
+        "reference",
+        "user",
+        "needs"
+      ]
+    },
+    {
+      "id": "fp-ts-pragmatic",
+      "description": "A practical, jargon-free guide to fp-ts functional programming - the 80/20 approach that gets results without the academic overhead. Use when writing TypeScript with fp-ts library.",
+      "path": "fp-ts-pragmatic/SKILL.md",
+      "tags": [
+        "pragmatic",
+        "practical",
+        "jargon",
+        "free",
+        "guide",
+        "functional"
+      ]
+    },
+    {
+      "id": "fp-ts-react",
+      "description": "Practical patterns for using fp-ts with React - hooks, state, forms, data fetching. Use when building React apps with functional programming patterns. Works with React 18/19, Next.js 14/15.",
+      "path": "fp-ts-react/SKILL.md",
+      "tags": [
+        "react",
+        "practical",
+        "patterns",
+        "hooks",
+        "state",
+        "forms"
+      ]
+    },
+    {
+      "id": "fp-types-ref",
+      "description": "Quick reference for fp-ts types. Use when user asks which type to use, needs Option/Either/Task decision help, or wants fp-ts imports.",
+      "path": "fp-types-ref/SKILL.md",
+      "tags": [
+        "types",
+        "ref",
+        "quick",
+        "reference",
+        "user",
+        "asks"
+      ]
+    },
+    {
+      "id": "free-tool-strategy",
+      "description": "You are an expert in engineering-as-marketing strategy. Your goal is to help plan and evaluate free tools that generate leads, attract organic traffic, and build brand awareness.",
+      "path": "free-tool-strategy/SKILL.md",
+      "tags": [
+        "free",
+        "tool",
+        "strategy",
+        "you",
+        "engineering",
+        "marketing"
+      ]
+    },
+    {
+      "id": "frontend-design",
+      "description": "Frontend designer-engineer mindset",
+      "path": "frontend-design/SKILL.md",
+      "tags": [
+        "frontend",
+        "designer",
+        "engineer",
+        "mindset"
+      ]
+    },
+    {
+      "id": "frontend-dev-guidelines",
+      "description": "You are a senior frontend engineer operating under strict architectural and performance standards. Use when creating components or pages, adding new features, or fetching or mutating data.",
+      "path": "frontend-dev-guidelines/SKILL.md",
+      "tags": [
+        "frontend",
+        "dev",
+        "guidelines",
+        "you",
+        "senior",
+        "engineer"
+      ]
+    },
+    {
+      "id": "frontend-developer",
+      "description": "React 19, Next.js 15, responsive layouts",
+      "path": "frontend-developer/SKILL.md",
+      "tags": [
+        "frontend",
+        "developer",
+        "react",
+        "next",
+        "responsive",
+        "layouts"
+      ]
+    },
+    {
+      "id": "frontend-mobile-development-component-scaffold",
+      "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s",
+      "path": "frontend-mobile-development-component-scaffold/SKILL.md",
+      "tags": [
+        "frontend",
+        "mobile",
+        "component",
+        "scaffold",
+        "you",
+        "react"
+      ]
+    },
+    {
+      "id": "frontend-mobile-security-xss-scan",
+      "description": "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi",
+      "path": "frontend-mobile-security-xss-scan/SKILL.md",
+      "tags": [
+        "frontend",
+        "mobile",
+        "security",
+        "xss",
+        "scan",
+        "you"
+      ]
+    },
+    {
+      "id": "frontend-ui-dark-ts",
+      "description": "A modern dark-themed React UI system using Tailwind CSS and Framer Motion. Designed for dashboards, admin panels, and data-rich applications with glassmorphism effects and tasteful animations.",
+      "path": "frontend-ui-dark-ts/SKILL.md",
+      "tags": [
+        "frontend",
+        "dark",
+        "modern",
+        "themed",
+        "react",
+        "system"
+      ]
+    },
+    {
+      "id": "gdpr-data-handling",
+      "description": "Practical implementation guide for GDPR-compliant data processing, consent management, and privacy controls.",
+      "path": "gdpr-data-handling/SKILL.md",
+      "tags": [
+        "gdpr",
+        "data",
+        "handling",
+        "practical",
+        "guide",
+        "compliant"
+      ]
+    },
+    {
+      "id": "gitlab-ci-patterns",
+      "description": "Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.",
+      "path": "gitlab-ci-patterns/SKILL.md",
+      "tags": [
+        "gitlab",
+        "patterns",
+        "pipeline",
+        "testing",
+        "deployment"
+      ]
+    },
+    {
+      "id": "go-concurrency-patterns",
+      "description": "Master Go concurrency with goroutines, channels, sync primitives, and context. Use when building concurrent Go applications, implementing worker pools, or debugging race conditions.",
+      "path": "go-concurrency-patterns/SKILL.md",
+      "tags": [
+        "concurrency",
+        "patterns",
+        "master",
+        "goroutines",
+        "channels",
+        "sync"
+      ]
+    },
+    {
+      "id": "go-rod-master",
+      "description": "Comprehensive guide for browser automation and web scraping with go-rod (Chrome DevTools Protocol) including stealth anti-bot-detection patterns.",
+      "path": "go-rod-master/SKILL.md",
+      "tags": [
+        "rod",
+        "master",
+        "guide",
+        "browser",
+        "automation",
+        "web"
+      ]
+    },
+    {
+      "id": "godot-4-migration",
+      "description": "Specialized guide for migrating Godot 3.x projects to Godot 4 (GDScript 2.0), covering syntax changes, Tweens, and exports.",
+      "path": "godot-4-migration/SKILL.md",
+      "tags": [
+        "godot",
+        "migration",
+        "specialized",
+        "guide",
+        "migrating",
+        "projects"
+      ]
+    },
+    {
+      "id": "google-docs-automation",
+      "description": "Lightweight Google Docs integration with standalone OAuth authentication. No MCP server required.",
+      "path": "google-docs-automation/SKILL.md",
+      "tags": [
+        "google",
+        "docs",
+        "automation",
+        "lightweight",
+        "integration",
+        "standalone"
+      ]
+    },
+    {
+      "id": "google-slides-automation",
+      "description": "Lightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access.",
+      "path": "google-slides-automation/SKILL.md",
+      "tags": [
+        "google",
+        "slides",
+        "automation",
+        "lightweight",
+        "integration",
+        "standalone"
+      ]
+    },
+    {
+      "id": "grpc-golang",
+      "description": "Build production-ready gRPC services in Go with mTLS, streaming, and observability. Use when designing Protobuf contracts with Buf or implementing secure service-to-service transport.",
+      "path": "grpc-golang/SKILL.md",
+      "tags": [
+        "grpc",
+        "golang",
+        "build",
+        "services",
+        "mtls",
+        "streaming"
+      ]
+    },
+    {
+      "id": "hig-components-content",
+      "description": "Apple Human Interface Guidelines for content display components.",
+      "path": "hig-components-content/SKILL.md",
+      "tags": [
+        "hig",
+        "components",
+        "content",
+        "apple",
+        "human",
+        "interface"
+      ]
+    },
+    {
+      "id": "hig-components-dialogs",
+      "description": "Apple HIG guidance for presentation components including alerts, action sheets, popovers, sheets, and digit entry views.",
+      "path": "hig-components-dialogs/SKILL.md",
+      "tags": [
+        "hig",
+        "components",
+        "dialogs",
+        "apple",
+        "presentation",
+        "including"
+      ]
+    },
+    {
+      "id": "hig-components-layout",
+      "description": "Apple Human Interface Guidelines for layout and navigation components.",
+      "path": "hig-components-layout/SKILL.md",
+      "tags": [
+        "hig",
+        "components",
+        "layout",
+        "apple",
+        "human",
+        "interface"
+      ]
+    },
+    {
+      "id": "hig-components-search",
+      "description": "Apple HIG guidance for navigation-related components including search fields, page controls, and path controls.",
+      "path": "hig-components-search/SKILL.md",
+      "tags": [
+        "hig",
+        "components",
+        "search",
+        "apple",
+        "navigation",
+        "related"
+      ]
+    },
+    {
+      "id": "hig-components-status",
+      "description": "Apple HIG guidance for status and progress UI components including progress indicators, status bars, and activity rings.",
+      "path": "hig-components-status/SKILL.md",
+      "tags": [
+        "hig",
+        "components",
+        "status",
+        "apple",
+        "progress",
+        "including"
+      ]
+    },
+    {
+      "id": "hig-components-system",
+      "description": "Apple HIG guidance for system experience components: widgets, live activities, notifications, complications, home screen quick actions, top shelf, watch faces, app clips, and app shortcuts.",
+      "path": "hig-components-system/SKILL.md",
+      "tags": [
+        "hig",
+        "components",
+        "system",
+        "apple",
+        "experience",
+        "widgets"
+      ]
+    },
+    {
+      "id": "hig-foundations",
+      "description": "Apple Human Interface Guidelines design foundations.",
+      "path": "hig-foundations/SKILL.md",
+      "tags": [
+        "hig",
+        "foundations",
+        "apple",
+        "human",
+        "interface",
+        "guidelines"
+      ]
+    },
+    {
+      "id": "hig-patterns",
+      "description": "Apple Human Interface Guidelines interaction and UX patterns.",
+      "path": "hig-patterns/SKILL.md",
+      "tags": [
+        "hig",
+        "patterns",
+        "apple",
+        "human",
+        "interface",
+        "guidelines"
+      ]
+    },
+    {
+      "id": "hig-platforms",
+      "description": "Apple Human Interface Guidelines for platform-specific design.",
+      "path": "hig-platforms/SKILL.md",
+      "tags": [
+        "hig",
+        "platforms",
+        "apple",
+        "human",
+        "interface",
+        "guidelines"
+      ]
+    },
+    {
+      "id": "hig-project-context",
+      "description": "Create or update a shared Apple design context document that other HIG skills use to tailor guidance.",
+      "path": "hig-project-context/SKILL.md",
+      "tags": [
+        "hig",
+        "project",
+        "context",
+        "create",
+        "update",
+        "shared"
+      ]
+    },
+    {
+      "id": "hugging-face-tool-builder",
+      "description": "Your purpose is now is to create reusable command line scripts and utilities for using the Hugging Face API, allowing chaining, piping and intermediate processing where helpful. You can access the API directly, as well as use the hf command line tool.",
+      "path": "hugging-face-tool-builder/SKILL.md",
+      "tags": [
+        "hugging",
+        "face",
+        "tool",
+        "builder",
+        "purpose",
+        "now"
+      ]
+    },
+    {
+      "id": "hybrid-search-implementation",
+      "description": "Combine vector and keyword search for improved retrieval. Use when implementing RAG systems, building search engines, or when neither approach alone provides sufficient recall.",
+      "path": "hybrid-search-implementation/SKILL.md",
+      "tags": [
+        "hybrid",
+        "search",
+        "combine",
+        "vector",
+        "keyword",
+        "improved"
+      ]
+    },
+    {
+      "id": "imagen",
+      "description": "AI image generation skill powered by Google Gemini, enabling seamless visual content creation for UI placeholders, documentation, and design assets.",
+      "path": "imagen/SKILL.md",
+      "tags": [
+        "imagen",
+        "image",
+        "generation",
+        "skill",
+        "powered",
+        "google"
+      ]
+    },
+    {
+      "id": "ios-debugger-agent",
+      "description": "Debug the current iOS project on a booted simulator with XcodeBuildMCP.",
+      "path": "ios-debugger-agent/SKILL.md",
+      "tags": [
+        "ios",
+        "debugger",
+        "agent",
+        "debug",
+        "current",
+        "project"
+      ]
+    },
+    {
+      "id": "istio-traffic-management",
+      "description": "Comprehensive guide to Istio traffic management for production service mesh deployments.",
+      "path": "istio-traffic-management/SKILL.md",
+      "tags": [
+        "istio",
+        "traffic",
+        "guide",
+        "service",
+        "mesh",
+        "deployments"
+      ]
+    },
+    {
+      "id": "javascript-mastery",
+      "description": "33+ essential JS concepts",
+      "path": "javascript-mastery/SKILL.md",
+      "tags": [
+        "javascript",
+        "mastery",
+        "essential",
+        "concepts"
+      ]
+    },
+    {
+      "id": "javascript-pro",
+      "description": "ES6+, async patterns, Node.js APIs",
+      "path": "javascript-pro/SKILL.md",
+      "tags": [
+        "javascript",
+        "pro",
+        "es6",
+        "async",
+        "patterns",
+        "node"
+      ]
+    },
+    {
+      "id": "javascript-typescript-typescript-scaffold",
+      "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N",
+      "path": "javascript-typescript-typescript-scaffold/SKILL.md",
+      "tags": [
+        "javascript",
+        "typescript",
+        "scaffold",
+        "you",
+        "project",
+        "specializing"
+      ]
+    },
+    {
+      "id": "jobgpt",
+      "description": "Job search automation, auto apply, resume generation, application tracking, salary intelligence, and recruiter outreach using the JobGPT MCP server.",
+      "path": "jobgpt/SKILL.md",
+      "tags": [
+        "jobgpt",
+        "job",
+        "search",
+        "automation",
+        "auto",
+        "apply"
+      ]
+    },
+    {
+      "id": "kaizen",
+      "description": "Guide for continuous improvement, error proofing, and standardization. Use this skill when the user wants to improve code quality, refactor, or discuss process improvements.",
+      "path": "kaizen/SKILL.md",
+      "tags": [
+        "kaizen",
+        "guide",
+        "continuous",
+        "improvement",
+        "error",
+        "proofing"
+      ]
+    },
+    {
+      "id": "landing-page-generator",
+      "description": "Generates high-converting Next.js/React landing pages with Tailwind CSS. Uses PAS, AIDA, and BAB frameworks for optimized copy/components (Heroes, Features, Pricing). Focuses on Core Web Vitals/SEO.",
+      "path": "landing-page-generator/SKILL.md",
+      "tags": [
+        "landing",
+        "page",
+        "generator",
+        "generates",
+        "high",
+        "converting"
+      ]
+    },
+    {
+      "id": "launch-strategy",
+      "description": "You are an expert in SaaS product launches and feature announcements. Your goal is to help users plan launches that build momentum, capture attention, and convert interest into users.",
+      "path": "launch-strategy/SKILL.md",
+      "tags": [
+        "launch",
+        "strategy",
+        "you",
+        "saas",
+        "product",
+        "launches"
+      ]
+    },
+    {
+      "id": "leiloeiro-avaliacao",
+      "description": "Avaliacao pericial de imoveis em leilao. Valor de mercado, liquidacao forcada, ABNT NBR 14653, metodos comparativo/renda/custo, CUB e margem de seguranca.",
+      "path": "leiloeiro-avaliacao/SKILL.md",
+      "tags": [
+        "leiloeiro",
+        "avaliacao",
+        "pericial",
+        "imoveis",
+        "leilao",
+        "valor"
+      ]
+    },
+    {
+      "id": "leiloeiro-mercado",
+      "description": "Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII.",
+      "path": "leiloeiro-mercado/SKILL.md",
+      "tags": [
+        "leiloeiro",
+        "mercado",
+        "analise",
+        "imobiliario",
+        "para",
+        "leiloes"
+      ]
+    },
+    {
+      "id": "lightning-architecture-review",
+      "description": "Review Bitcoin Lightning Network protocol designs, compare channel factory approaches, and analyze Layer 2 scaling tradeoffs. Covers trust models, on-chain footprint, consensus requirements, HTLC/PTLC compatibility, liveness, and watchtower support.",
+      "path": "lightning-architecture-review/SKILL.md",
+      "tags": [
+        "lightning",
+        "review",
+        "bitcoin",
+        "network",
+        "protocol",
+        "designs"
+      ]
+    },
+    {
+      "id": "lightning-factory-explainer",
+      "description": "Explain Bitcoin Lightning channel factories and the SuperScalar protocol — scalable Lightning onboarding using shared UTXOs, Decker-Wattenhofer trees, timeout-signature trees, MuSig2, and Taproot. No soft fork required.",
+      "path": "lightning-factory-explainer/SKILL.md",
+      "tags": [
+        "lightning",
+        "factory",
+        "explainer",
+        "explain",
+        "bitcoin",
+        "channel"
+      ]
+    },
+    {
+      "id": "linux-shell-scripting",
+      "description": "Provide production-ready shell script templates for common Linux system administration tasks including backups, monitoring, user management, log analysis, and automation. These scripts serve as building blocks for security operations and penetration testing environments.",
+      "path": "linux-shell-scripting/SKILL.md",
+      "tags": [
+        "linux",
+        "shell",
+        "scripting",
+        "provide",
+        "script",
+        "templates"
+      ]
+    },
+    {
+      "id": "m365-agents-dotnet",
+      "description": "Microsoft 365 Agents SDK for .NET. Build multichannel agents for Teams/M365/Copilot Studio with ASP.NET Core hosting, AgentApplication routing, and MSAL-based auth.",
+      "path": "m365-agents-dotnet/SKILL.md",
+      "tags": [
+        "m365",
+        "agents",
+        "dotnet",
+        "microsoft",
+        "365",
+        "sdk"
+      ]
+    },
+    {
+      "id": "m365-agents-py",
+      "description": "Microsoft 365 Agents SDK for Python. Build multichannel agents for Teams/M365/Copilot Studio with aiohttp hosting, AgentApplication routing, streaming responses, and MSAL-based auth.",
+      "path": "m365-agents-py/SKILL.md",
+      "tags": [
+        "m365",
+        "agents",
+        "microsoft",
+        "365",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "macos-menubar-tuist-app",
+      "description": "Build, refactor, or review SwiftUI macOS menubar apps that use Tuist.",
+      "path": "macos-menubar-tuist-app/SKILL.md",
+      "tags": [
+        "macos",
+        "menubar",
+        "tuist",
+        "app",
+        "build",
+        "refactor"
+      ]
+    },
+    {
+      "id": "macos-spm-app-packaging",
+      "description": "Scaffold, build, sign, and package SwiftPM macOS apps without Xcode projects.",
+      "path": "macos-spm-app-packaging/SKILL.md",
+      "tags": [
+        "macos",
+        "spm",
+        "app",
+        "packaging",
+        "scaffold",
+        "build"
+      ]
+    },
+    {
+      "id": "magic-animator",
+      "description": "AI-powered animation tool for creating motion in logos, UI, icons, and social media assets.",
+      "path": "magic-animator/SKILL.md",
+      "tags": [
+        "magic",
+        "animator",
+        "powered",
+        "animation",
+        "tool",
+        "creating"
+      ]
+    },
+    {
+      "id": "makepad-skills",
+      "description": "Makepad UI development skills for Rust apps: setup, patterns, shaders, packaging, and troubleshooting.",
+      "path": "makepad-skills/SKILL.md",
+      "tags": [
+        "makepad",
+        "skills",
+        "rust",
+        "apps",
+        "setup",
+        "patterns"
+      ]
+    },
+    {
+      "id": "matematico-tao",
+      "description": "Matemático ultra-avançado inspirado em Terence Tao. Análise rigorosa de código e arquitetura com teoria matemática profunda: teoria da informação, teoria dos grafos, complexidade computacional, álgebra linear, análise estocástica, teoria das categorias, probabilidade bayesiana e lógica formal.",
+      "path": "matematico-tao/SKILL.md",
+      "tags": [
+        "matematico",
+        "tao",
+        "matemático",
+        "ultra",
+        "avançado",
+        "inspirado"
+      ]
+    },
+    {
+      "id": "memory-forensics",
+      "description": "Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for incident response and malware analysis.",
+      "path": "memory-forensics/SKILL.md",
+      "tags": [
+        "memory",
+        "forensics",
+        "techniques",
+        "acquiring",
+        "analyzing",
+        "extracting"
+      ]
+    },
+    {
+      "id": "modern-javascript-patterns",
+      "description": "ES6+ features and functional patterns",
+      "path": "modern-javascript-patterns/SKILL.md",
+      "tags": [
+        "modern",
+        "javascript",
+        "patterns",
+        "es6",
+        "features",
+        "functional"
+      ]
+    },
+    {
+      "id": "monorepo-management",
+      "description": "Build efficient, scalable monorepos that enable code sharing, consistent tooling, and atomic changes across multiple packages and applications.",
+      "path": "monorepo-management/SKILL.md",
+      "tags": [
+        "monorepo",
+        "build",
+        "efficient",
+        "scalable",
+        "monorepos",
+        "enable"
+      ]
+    },
+    {
+      "id": "moodle-external-api-development",
+      "description": "This skill guides you through creating custom external web service APIs for Moodle LMS, following Moodle's external API framework and coding standards.",
+      "path": "moodle-external-api-development/SKILL.md",
+      "tags": [
+        "moodle",
+        "external",
+        "api",
+        "skill",
+        "guides",
+        "you"
+      ]
+    },
+    {
+      "id": "multi-platform-apps-multi-platform",
+      "description": "Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies.",
+      "path": "multi-platform-apps-multi-platform/SKILL.md",
+      "tags": [
+        "multi",
+        "platform",
+        "apps",
+        "build",
+        "deploy",
+        "same"
+      ]
+    },
+    {
+      "id": "n8n-mcp-tools-expert",
+      "description": "Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns.",
+      "path": "n8n-mcp-tools-expert/SKILL.md",
+      "tags": [
+        "n8n",
+        "mcp",
+        "tools",
+        "guide",
+        "effectively",
+        "searching"
+      ]
+    },
+    {
+      "id": "n8n-node-configuration",
+      "description": "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common configuration patterns by node type.",
+      "path": "n8n-node-configuration/SKILL.md",
+      "tags": [
+        "n8n",
+        "node",
+        "configuration",
+        "operation",
+        "aware",
+        "configuring"
+      ]
+    },
+    {
+      "id": "n8n-validation-expert",
+      "description": "Expert guide for interpreting and fixing n8n validation errors.",
+      "path": "n8n-validation-expert/SKILL.md",
+      "tags": [
+        "n8n",
+        "validation",
+        "guide",
+        "interpreting",
+        "fixing",
+        "errors"
+      ]
+    },
+    {
+      "id": "native-data-fetching",
+      "description": "Use when implementing or debugging ANY network request, API call, or data fetching. Covers fetch API, React Query, SWR, error handling, caching, offline support, and Expo Router data loaders (useLoaderData).",
+      "path": "native-data-fetching/SKILL.md",
+      "tags": [
+        "native",
+        "data",
+        "fetching",
+        "implementing",
+        "debugging",
+        "network"
+      ]
+    },
+    {
+      "id": "nextjs-app-router-patterns",
+      "description": "Next.js 14+ App Router, Server Components",
+      "path": "nextjs-app-router-patterns/SKILL.md",
+      "tags": [
+        "nextjs",
+        "app",
+        "router",
+        "patterns",
+        "next",
+        "server"
+      ]
+    },
+    {
+      "id": "nextjs-best-practices",
+      "description": "Server Components, data fetching, routing",
+      "path": "nextjs-best-practices/SKILL.md",
+      "tags": [
+        "nextjs",
+        "best",
+        "practices",
+        "server",
+        "components",
+        "data"
+      ]
+    },
+    {
+      "id": "nextjs-supabase-auth",
+      "description": "Expert integration of Supabase Auth with Next.js App Router Use when: supabase auth next, authentication next.js, login supabase, auth middleware, protected route.",
+      "path": "nextjs-supabase-auth/SKILL.md",
+      "tags": [
+        "nextjs",
+        "supabase",
+        "auth",
+        "integration",
+        "next",
+        "app"
+      ]
+    },
+    {
+      "id": "notion-template-business",
+      "description": "You know templates are real businesses that can generate serious income. You've seen creators make six figures selling Notion templates. You understand it's not about the template - it's about the problem it solves. You build systems that turn templates into scalable digital products.",
+      "path": "notion-template-business/SKILL.md",
+      "tags": [
+        "notion",
+        "template",
+        "business",
+        "you",
+        "know",
+        "templates"
+      ]
+    },
+    {
+      "id": "nx-workspace-patterns",
+      "description": "Configure and optimize Nx monorepo workspaces. Use when setting up Nx, configuring project boundaries, optimizing build caching, or implementing affected commands.",
+      "path": "nx-workspace-patterns/SKILL.md",
+      "tags": [
+        "workspace",
+        "patterns",
+        "configure",
+        "optimize",
+        "monorepo",
+        "workspaces"
+      ]
+    },
+    {
+      "id": "obsidian-clipper-template-creator",
+      "description": "Guide for creating templates for the Obsidian Web Clipper. Use when you want to create a new clipping template, understand available variables, or format clipped content.",
+      "path": "obsidian-clipper-template-creator/SKILL.md",
+      "tags": [
+        "obsidian",
+        "clipper",
+        "template",
+        "creator",
+        "guide",
+        "creating"
+      ]
+    },
+    {
+      "id": "odoo-accounting-setup",
+      "description": "Expert guide for configuring Odoo Accounting: chart of accounts, journals, fiscal positions, taxes, payment terms, and bank reconciliation.",
+      "path": "odoo-accounting-setup/SKILL.md",
+      "tags": [
+        "odoo",
+        "accounting",
+        "setup",
+        "guide",
+        "configuring",
+        "chart"
+      ]
+    },
+    {
+      "id": "odoo-ecommerce-configurator",
+      "description": "Expert guide for Odoo eCommerce and Website: product catalog, payment providers, shipping methods, SEO, and order-to-fulfillment workflow.",
+      "path": "odoo-ecommerce-configurator/SKILL.md",
+      "tags": [
+        "odoo",
+        "ecommerce",
+        "configurator",
+        "guide",
+        "website",
+        "product"
+      ]
+    },
+    {
+      "id": "odoo-edi-connector",
+      "description": "Guide for implementing EDI (Electronic Data Interchange) with Odoo: X12, EDIFACT document mapping, partner onboarding, and automated order processing.",
+      "path": "odoo-edi-connector/SKILL.md",
+      "tags": [
+        "odoo",
+        "edi",
+        "connector",
+        "guide",
+        "implementing",
+        "electronic"
+      ]
+    },
+    {
+      "id": "odoo-hr-payroll-setup",
+      "description": "Expert guide for Odoo HR and Payroll: salary structures, payslip rules, leave policies, employee contracts, and payroll journal entries.",
+      "path": "odoo-hr-payroll-setup/SKILL.md",
+      "tags": [
+        "odoo",
+        "payroll",
+        "setup",
+        "guide",
+        "salary",
+        "structures"
+      ]
+    },
+    {
+      "id": "odoo-inventory-optimizer",
+      "description": "Expert guide for Odoo Inventory: stock valuation (FIFO/AVCO), reordering rules, putaway strategies, routes, and multi-warehouse configuration.",
+      "path": "odoo-inventory-optimizer/SKILL.md",
+      "tags": [
+        "odoo",
+        "inventory",
+        "optimizer",
+        "guide",
+        "stock",
+        "valuation"
+      ]
+    },
+    {
+      "id": "odoo-manufacturing-advisor",
+      "description": "Expert guide for Odoo Manufacturing: Bills of Materials (BoM), Work Centers, routings, MRP planning, and production order workflows.",
+      "path": "odoo-manufacturing-advisor/SKILL.md",
+      "tags": [
+        "odoo",
+        "manufacturing",
+        "advisor",
+        "guide",
+        "bills",
+        "materials"
+      ]
+    },
+    {
+      "id": "odoo-migration-helper",
+      "description": "Step-by-step guide for migrating Odoo custom modules between versions (v14→v15→v16→v17). Covers API changes, deprecated methods, and view migration.",
+      "path": "odoo-migration-helper/SKILL.md",
+      "tags": [
+        "odoo",
+        "migration",
+        "helper",
+        "step",
+        "guide",
+        "migrating"
+      ]
+    },
+    {
+      "id": "odoo-module-developer",
+      "description": "Expert guide for creating custom Odoo modules. Covers __manifest__.py, model inheritance, ORM patterns, and module structure best practices.",
+      "path": "odoo-module-developer/SKILL.md",
+      "tags": [
+        "odoo",
+        "module",
+        "developer",
+        "guide",
+        "creating",
+        "custom"
+      ]
+    },
+    {
+      "id": "odoo-performance-tuner",
+      "description": "Expert guide for diagnosing and fixing Odoo performance issues: slow queries, worker configuration, memory limits, PostgreSQL tuning, and profiling tools.",
+      "path": "odoo-performance-tuner/SKILL.md",
+      "tags": [
+        "odoo",
+        "performance",
+        "tuner",
+        "guide",
+        "diagnosing",
+        "fixing"
+      ]
+    },
+    {
+      "id": "odoo-project-timesheet",
+      "description": "Expert guide for Odoo Project and Timesheets: task stages, billable time tracking, timesheet approval, budget alerts, and invoicing from timesheets.",
+      "path": "odoo-project-timesheet/SKILL.md",
+      "tags": [
+        "odoo",
+        "project",
+        "timesheet",
+        "guide",
+        "timesheets",
+        "task"
+      ]
+    },
+    {
+      "id": "odoo-purchase-workflow",
+      "description": "Expert guide for Odoo Purchase: RFQ → PO → Receipt → Vendor Bill workflow, purchase agreements, vendor price lists, and 3-way matching.",
+      "path": "odoo-purchase-workflow/SKILL.md",
+      "tags": [
+        "odoo",
+        "purchase",
+        "workflow",
+        "guide",
+        "rfq",
+        "receipt"
+      ]
+    },
+    {
+      "id": "odoo-sales-crm-expert",
+      "description": "Expert guide for Odoo Sales and CRM: pipeline stages, quotation templates, pricelists, sales teams, lead scoring, and forecasting.",
+      "path": "odoo-sales-crm-expert/SKILL.md",
+      "tags": [
+        "odoo",
+        "sales",
+        "crm",
+        "guide",
+        "pipeline",
+        "stages"
+      ]
+    },
+    {
+      "id": "odoo-xml-views-builder",
+      "description": "Expert at building Odoo XML views: Form, List, Kanban, Search, Calendar, and Graph. Generates correct XML for Odoo 14-17 with proper visibility syntax.",
+      "path": "odoo-xml-views-builder/SKILL.md",
+      "tags": [
+        "odoo",
+        "xml",
+        "views",
+        "builder",
+        "form",
+        "list"
+      ]
+    },
+    {
+      "id": "on-call-handoff-patterns",
+      "description": "Effective patterns for on-call shift transitions, ensuring continuity, context transfer, and reliable incident response across shifts.",
+      "path": "on-call-handoff-patterns/SKILL.md",
+      "tags": [
+        "call",
+        "handoff",
+        "patterns",
+        "effective",
+        "shift",
+        "transitions"
+      ]
+    },
+    {
+      "id": "onboarding-cro",
+      "description": "You are an expert in user onboarding and activation. Your goal is to help users reach their \\\"aha moment\\\" as quickly as possible and establish habits that lead to long-term retention.",
+      "path": "onboarding-cro/SKILL.md",
+      "tags": [
+        "onboarding",
+        "cro",
+        "you",
+        "user",
+        "activation",
+        "goal"
+      ]
+    },
+    {
+      "id": "paid-ads",
+      "description": "You are an expert performance marketer with direct access to ad platform accounts. Your goal is to help create, optimize, and scale paid advertising campaigns that drive efficient customer acquisition.",
+      "path": "paid-ads/SKILL.md",
+      "tags": [
+        "paid",
+        "ads",
+        "you",
+        "performance",
+        "marketer",
+        "direct"
+      ]
+    },
+    {
+      "id": "parallel-agents",
+      "description": "Multi-agent orchestration patterns. Use when multiple independent tasks can run with different domain expertise or when comprehensive analysis requires multiple perspectives.",
+      "path": "parallel-agents/SKILL.md",
+      "tags": [
+        "parallel",
+        "agents",
+        "multi",
+        "agent",
+        "orchestration",
+        "patterns"
+      ]
+    },
+    {
+      "id": "pdf-official",
+      "description": "This guide covers essential PDF processing operations using Python libraries and command-line tools. For advanced features, JavaScript libraries, and detailed examples, see reference.md. If you need to fill out a PDF form, read forms.md and follow its instructions.",
+      "path": "pdf-official/SKILL.md",
+      "tags": [
+        "pdf",
+        "official",
+        "guide",
+        "covers",
+        "essential",
+        "processing"
+      ]
+    },
+    {
+      "id": "pentest-commands",
+      "description": "Provide a comprehensive command reference for penetration testing tools including network scanning, exploitation, password cracking, and web application testing. Enable quick command lookup during security assessments.",
+      "path": "pentest-commands/SKILL.md",
+      "tags": [
+        "pentest",
+        "commands",
+        "provide",
+        "command",
+        "reference",
+        "penetration"
+      ]
+    },
+    {
+      "id": "personal-tool-builder",
+      "description": "You believe the best tools come from real problems. You've built dozens of personal tools - some stayed personal, others became products used by thousands. You know that building for yourself means you have perfect product-market fit with at least one user.",
+      "path": "personal-tool-builder/SKILL.md",
+      "tags": [
+        "personal",
+        "tool",
+        "builder",
+        "you",
+        "believe",
+        "best"
+      ]
+    },
+    {
+      "id": "pipecat-friday-agent",
+      "description": "Build a low-latency, Iron Man-inspired tactical voice assistant (F.R.I.D.A.Y.) using Pipecat, Gemini, and OpenAI.",
+      "path": "pipecat-friday-agent/SKILL.md",
+      "tags": [
+        "pipecat",
+        "friday",
+        "agent",
+        "build",
+        "low",
+        "latency"
+      ]
+    },
+    {
+      "id": "postmortem-writing",
+      "description": "Comprehensive guide to writing effective, blameless postmortems that drive organizational learning and prevent incident recurrence.",
+      "path": "postmortem-writing/SKILL.md",
+      "tags": [
+        "postmortem",
+        "writing",
+        "guide",
+        "effective",
+        "blameless",
+        "postmortems"
+      ]
+    },
+    {
+      "id": "privacy-by-design",
+      "description": "Use when building apps that collect user data. Ensures privacy protections are built in from the start—data minimization, consent, encryption.",
+      "path": "privacy-by-design/SKILL.md",
+      "tags": [
+        "privacy",
+        "apps",
+        "collect",
+        "user",
+        "data",
+        "ensures"
+      ]
+    },
+    {
+      "id": "product-inventor",
+      "description": "Product Inventor e Design Alchemist de nivel maximo — combina Product Thinking, Design Systems, UI Engineering, Psicologia Cognitiva, Storytelling e execucao impecavel nivel Jobs/Apple.",
+      "path": "product-inventor/SKILL.md",
+      "tags": [
+        "product",
+        "inventor",
+        "alchemist",
+        "nivel",
+        "maximo",
+        "combina"
+      ]
+    },
+    {
+      "id": "progressive-web-app",
+      "description": "Build Progressive Web Apps (PWAs) with offline support, installability, and caching strategies. Trigger whenever the user mentions PWA, service workers, web app manifests, Workbox, 'add to home screen', or wants their web app to work offline, feel native, or be installable.",
+      "path": "progressive-web-app/SKILL.md",
+      "tags": [
+        "progressive",
+        "web",
+        "app",
+        "build",
+        "apps",
+        "pwas"
+      ]
+    },
+    {
+      "id": "project-development",
+      "description": "This skill covers the principles for identifying tasks suited to LLM processing, designing effective project architectures, and iterating rapidly using agent-assisted development.",
+      "path": "project-development/SKILL.md",
+      "tags": [
+        "project",
+        "skill",
+        "covers",
+        "principles",
+        "identifying",
+        "tasks"
+      ]
+    },
+    {
+      "id": "projection-patterns",
+      "description": "Build read models and projections from event streams. Use when implementing CQRS read sides, building materialized views, or optimizing query performance in event-sourced systems.",
+      "path": "projection-patterns/SKILL.md",
+      "tags": [
+        "projection",
+        "patterns",
+        "build",
+        "read",
+        "models",
+        "projections"
+      ]
+    },
+    {
+      "id": "prometheus-configuration",
+      "description": "Complete guide to Prometheus setup, metric collection, scrape configuration, and recording rules.",
+      "path": "prometheus-configuration/SKILL.md",
+      "tags": [
+        "prometheus",
+        "configuration",
+        "complete",
+        "guide",
+        "setup",
+        "metric"
+      ]
+    },
+    {
+      "id": "python-packaging",
+      "description": "Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.",
+      "path": "python-packaging/SKILL.md",
+      "tags": [
+        "python",
+        "packaging",
+        "guide",
+        "creating",
+        "structuring",
+        "distributing"
+      ]
+    },
+    {
+      "id": "quant-analyst",
+      "description": "Build financial models, backtest trading strategies, and analyze market data. Implements risk metrics, portfolio optimization, and statistical arbitrage.",
+      "path": "quant-analyst/SKILL.md",
+      "tags": [
+        "quant",
+        "analyst",
+        "build",
+        "financial",
+        "models",
+        "backtest"
+      ]
+    },
+    {
+      "id": "radix-ui-design-system",
+      "description": "Build accessible design systems with Radix UI primitives. Headless component customization, theming strategies, and compound component patterns for production-grade UI libraries.",
+      "path": "radix-ui-design-system/SKILL.md",
+      "tags": [
+        "radix",
+        "system",
+        "build",
+        "accessible",
+        "primitives",
+        "headless"
+      ]
+    },
+    {
+      "id": "react-best-practices",
+      "description": "React/Next.js performance optimization",
+      "path": "react-best-practices/SKILL.md",
+      "tags": [
+        "react",
+        "best",
+        "practices",
+        "next",
+        "performance",
+        "optimization"
+      ]
+    },
+    {
+      "id": "react-component-performance",
+      "description": "Diagnose slow React components",
+      "path": "react-component-performance/SKILL.md",
+      "tags": [
+        "react",
+        "component",
+        "performance",
+        "diagnose",
+        "slow",
+        "components"
+      ]
+    },
+    {
+      "id": "react-flow-architect",
+      "description": "Production ReactFlow with hierarchical nav",
+      "path": "react-flow-architect/SKILL.md",
+      "tags": [
+        "react",
+        "flow",
+        "architect",
+        "reactflow",
+        "hierarchical",
+        "nav"
+      ]
+    },
+    {
+      "id": "react-flow-node-ts",
+      "description": "Create React Flow node components following established patterns with proper TypeScript types and store integration.",
+      "path": "react-flow-node-ts/SKILL.md",
+      "tags": [
+        "react",
+        "flow",
+        "node",
+        "create",
+        "components",
+        "following"
+      ]
+    },
+    {
+      "id": "react-modernization",
+      "description": "React upgrades, class→hooks, concurrent features",
+      "path": "react-modernization/SKILL.md",
+      "tags": [
+        "react",
+        "modernization",
+        "upgrades",
+        "class",
+        "hooks",
+        "concurrent"
+      ]
+    },
+    {
+      "id": "react-native-architecture",
+      "description": "React Native with Expo, offline-first",
+      "path": "react-native-architecture/SKILL.md",
+      "tags": [
+        "react",
+        "native",
+        "expo",
+        "offline",
+        "first"
+      ]
+    },
+    {
+      "id": "react-nextjs-development",
+      "description": "React and Next.js 14+ application development with App Router, Server Components, TypeScript, Tailwind CSS, and modern frontend patterns.",
+      "path": "react-nextjs-development/SKILL.md",
+      "tags": [
+        "react",
+        "nextjs",
+        "next",
+        "application",
+        "app",
+        "router"
+      ]
+    },
+    {
+      "id": "react-patterns",
+      "description": "Hooks, composition, performance, TypeScript",
+      "path": "react-patterns/SKILL.md",
+      "tags": [
+        "react",
+        "patterns",
+        "hooks",
+        "composition",
+        "performance",
+        "typescript"
+      ]
+    },
+    {
+      "id": "react-state-management",
+      "description": "Redux Toolkit, Zustand, Jotai, React Query",
+      "path": "react-state-management/SKILL.md",
+      "tags": [
+        "react",
+        "state",
+        "redux",
+        "toolkit",
+        "zustand",
+        "jotai"
+      ]
+    },
+    {
+      "id": "react-ui-patterns",
+      "description": "Loading states, error handling, data fetching",
+      "path": "react-ui-patterns/SKILL.md",
+      "tags": [
+        "react",
+        "patterns",
+        "loading",
+        "states",
+        "error",
+        "handling"
+      ]
+    },
+    {
+      "id": "receiving-code-review",
+      "description": "Code review requires technical evaluation, not emotional performance.",
+      "path": "receiving-code-review/SKILL.md",
+      "tags": [
+        "receiving",
+        "code",
+        "review",
+        "requires",
+        "technical",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "reference-builder",
+      "description": "Creates exhaustive technical references and API documentation. Generates comprehensive parameter listings, configuration guides, and searchable reference materials.",
+      "path": "reference-builder/SKILL.md",
+      "tags": [
+        "reference",
+        "builder",
+        "creates",
+        "exhaustive",
+        "technical",
+        "references"
+      ]
+    },
+    {
+      "id": "remotion-best-practices",
+      "description": "Best practices for Remotion - Video creation in React",
+      "path": "remotion-best-practices/SKILL.md",
+      "tags": [
+        "remotion",
+        "best",
+        "practices",
+        "video",
+        "react"
+      ]
+    },
+    {
+      "id": "requesting-code-review",
+      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "path": "requesting-code-review/SKILL.md",
+      "tags": [
+        "requesting",
+        "code",
+        "review",
+        "completing",
+        "tasks",
+        "implementing"
+      ]
+    },
+    {
+      "id": "risk-metrics-calculation",
+      "description": "Calculate portfolio risk metrics including VaR, CVaR, Sharpe, Sortino, and drawdown analysis. Use when measuring portfolio risk, implementing risk limits, or building risk monitoring systems.",
+      "path": "risk-metrics-calculation/SKILL.md",
+      "tags": [
+        "risk",
+        "metrics",
+        "calculation",
+        "calculate",
+        "portfolio",
+        "including"
+      ]
+    },
+    {
+      "id": "rust-async-patterns",
+      "description": "Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when building async Rust applications, implementing concurrent systems, or debugging async code.",
+      "path": "rust-async-patterns/SKILL.md",
+      "tags": [
+        "rust",
+        "async",
+        "patterns",
+        "master",
+        "programming",
+        "tokio"
+      ]
+    },
+    {
+      "id": "salesforce-development",
+      "description": "Use @wire decorator for reactive data binding with Lightning Data Service or Apex methods. @wire fits LWC's reactive architecture and enables Salesforce performance optimizations.",
+      "path": "salesforce-development/SKILL.md",
+      "tags": [
+        "salesforce",
+        "wire",
+        "decorator",
+        "reactive",
+        "data",
+        "binding"
+      ]
+    },
+    {
+      "id": "sam-altman",
+      "description": "Agente que simula Sam Altman — CEO da OpenAI, ex-presidente da Y Combinator, arquiteto da era AGI.",
+      "path": "sam-altman/SKILL.md",
+      "tags": [
+        "sam",
+        "altman",
+        "agente",
+        "que",
+        "simula",
+        "ceo"
+      ]
+    },
+    {
+      "id": "screen-reader-testing",
+      "description": "Practical guide to testing web applications with screen readers for comprehensive accessibility validation.",
+      "path": "screen-reader-testing/SKILL.md",
+      "tags": [
+        "screen",
+        "reader",
+        "testing",
+        "practical",
+        "guide",
+        "web"
+      ]
+    },
+    {
+      "id": "security-bluebook-builder",
+      "description": "Build a minimal but real security policy for sensitive apps. The output is a single, coherent Blue Book document using MUST/SHOULD/CAN language, with explicit assumptions, scope, and security gates.",
+      "path": "security-bluebook-builder/SKILL.md",
+      "tags": [
+        "security",
+        "bluebook",
+        "builder",
+        "build",
+        "minimal",
+        "but"
+      ]
+    },
+    {
+      "id": "security-compliance-compliance-check",
+      "description": "You are a compliance expert specializing in regulatory requirements for software systems including GDPR, HIPAA, SOC2, PCI-DSS, and other industry standards. Perform comprehensive compliance audits and provide implementation guidance for achieving and maintaining compliance.",
+      "path": "security-compliance-compliance-check/SKILL.md",
+      "tags": [
+        "security",
+        "compliance",
+        "check",
+        "you",
+        "specializing",
+        "regulatory"
+      ]
+    },
+    {
+      "id": "security-requirement-extraction",
+      "description": "Derive security requirements from threat models and business context. Use when translating threats into actionable requirements, creating security user stories, or building security test cases.",
+      "path": "security-requirement-extraction/SKILL.md",
+      "tags": [
+        "security",
+        "requirement",
+        "extraction",
+        "derive",
+        "requirements",
+        "threat"
+      ]
+    },
+    {
+      "id": "semgrep-rule-creator",
+      "description": "Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rules or building custom static analysis detections.",
+      "path": "semgrep-rule-creator/SKILL.md",
+      "tags": [
+        "semgrep",
+        "rule",
+        "creator",
+        "creates",
+        "custom",
+        "rules"
+      ]
+    },
+    {
+      "id": "senior-frontend",
+      "description": "React, Next.js, TypeScript, Tailwind CSS",
+      "path": "senior-frontend/SKILL.md",
+      "tags": [
+        "senior",
+        "frontend",
+        "react",
+        "next",
+        "typescript",
+        "tailwind"
+      ]
+    },
+    {
+      "id": "seo-authority-builder",
+      "description": "Analyzes content for E-E-A-T signals and suggests improvements to",
+      "path": "seo-authority-builder/SKILL.md",
+      "tags": [
+        "seo",
+        "authority",
+        "builder",
+        "analyzes",
+        "content",
+        "signals"
+      ]
+    },
+    {
+      "id": "seo-content-auditor",
+      "description": "Analyzes provided content for quality, E-E-A-T signals, and SEO best practices. Scores content and provides improvement recommendations based on established guidelines.",
+      "path": "seo-content-auditor/SKILL.md",
+      "tags": [
+        "seo",
+        "content",
+        "auditor",
+        "analyzes",
+        "provided",
+        "quality"
+      ]
+    },
+    {
+      "id": "seo-dataforseo",
+      "description": "Use DataForSEO for live SERPs, keyword metrics, backlinks, competitor analysis, on-page checks, and AI visibility data. Trigger when the user needs real SEO data rather than static guidance.",
+      "path": "seo-dataforseo/SKILL.md",
+      "tags": [
+        "seo",
+        "dataforseo",
+        "live",
+        "serps",
+        "keyword",
+        "metrics"
+      ]
+    },
+    {
+      "id": "service-mesh-observability",
+      "description": "Complete guide to observability patterns for Istio, Linkerd, and service mesh deployments.",
+      "path": "service-mesh-observability/SKILL.md",
+      "tags": [
+        "service",
+        "mesh",
+        "observability",
+        "complete",
+        "guide",
+        "patterns"
+      ]
+    },
+    {
+      "id": "shadcn",
+      "description": "shadcn/ui components and design systems",
+      "path": "shadcn/SKILL.md",
+      "tags": [
+        "shadcn",
+        "components"
+      ]
+    },
+    {
+      "id": "shader-programming-glsl",
+      "description": "Expert guide for writing efficient GLSL shaders (Vertex/Fragment) for web and game engines, covering syntax, uniforms, and common effects.",
+      "path": "shader-programming-glsl/SKILL.md",
+      "tags": [
+        "shader",
+        "programming",
+        "glsl",
+        "guide",
+        "writing",
+        "efficient"
+      ]
+    },
+    {
+      "id": "shopify-apps",
+      "description": "Modern Shopify app template with React Router",
+      "path": "shopify-apps/SKILL.md",
+      "tags": [
+        "shopify",
+        "apps",
+        "modern",
+        "app",
+        "template",
+        "react"
+      ]
+    },
+    {
+      "id": "shopify-development",
+      "description": "Build Shopify apps, extensions, themes using GraphQL Admin API, Shopify CLI, Polaris UI, and Liquid.",
+      "path": "shopify-development/SKILL.md",
+      "tags": [
+        "shopify",
+        "build",
+        "apps",
+        "extensions",
+        "themes",
+        "graphql"
+      ]
+    },
+    {
+      "id": "similarity-search-patterns",
+      "description": "Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.",
+      "path": "similarity-search-patterns/SKILL.md",
+      "tags": [
+        "similarity",
+        "search",
+        "patterns",
+        "implement",
+        "efficient",
+        "vector"
+      ]
+    },
+    {
+      "id": "skill-developer",
+      "description": "Comprehensive guide for creating and managing skills in Claude Code with auto-activation system, following Anthropic's official best practices including the 500-line rule and progressive disclosure pattern.",
+      "path": "skill-developer/SKILL.md",
+      "tags": [
+        "skill",
+        "developer",
+        "guide",
+        "creating",
+        "managing",
+        "skills"
+      ]
+    },
+    {
+      "id": "slack-bot-builder",
+      "description": "The Bolt framework is Slack's recommended approach for building apps. It handles authentication, event routing, request verification, and HTTP request processing so you can focus on app logic.",
+      "path": "slack-bot-builder/SKILL.md",
+      "tags": [
+        "slack",
+        "bot",
+        "builder",
+        "bolt",
+        "recommended",
+        "approach"
+      ]
+    },
+    {
+      "id": "social-content",
+      "description": "You are an expert social media strategist with direct access to a scheduling platform that publishes to all major social networks. Your goal is to help create engaging content that builds audience, drives engagement, and supports business goals.",
+      "path": "social-content/SKILL.md",
+      "tags": [
+        "social",
+        "content",
+        "you",
+        "media",
+        "strategist",
+        "direct"
+      ]
+    },
+    {
+      "id": "spline-3d-integration",
+      "description": "Use when adding interactive 3D scenes from Spline.design to web projects, including React embedding and runtime control API.",
+      "path": "spline-3d-integration/SKILL.md",
+      "tags": [
+        "spline",
+        "integration",
+        "adding",
+        "interactive",
+        "scenes",
+        "web"
+      ]
+    },
+    {
+      "id": "startup-financial-modeling",
+      "description": "Build comprehensive 3-5 year financial models with revenue projections, cost structures, cash flow analysis, and scenario planning for early-stage startups.",
+      "path": "startup-financial-modeling/SKILL.md",
+      "tags": [
+        "startup",
+        "financial",
+        "modeling",
+        "build",
+        "year",
+        "models"
+      ]
+    },
+    {
+      "id": "startup-metrics-framework",
+      "description": "Comprehensive guide to tracking, calculating, and optimizing key performance metrics for different startup business models from seed through Series A.",
+      "path": "startup-metrics-framework/SKILL.md",
+      "tags": [
+        "startup",
+        "metrics",
+        "guide",
+        "tracking",
+        "calculating",
+        "optimizing"
+      ]
+    },
+    {
+      "id": "stitch-loop",
+      "description": "Teaches agents to iteratively build websites using Stitch with an autonomous baton-passing loop pattern",
+      "path": "stitch-loop/SKILL.md",
+      "tags": [
+        "stitch",
+        "loop",
+        "teaches",
+        "agents",
+        "iteratively",
+        "build"
+      ]
+    },
+    {
+      "id": "sveltekit",
+      "description": "Full-stack SvelteKit: SSR, SSG, API routes",
+      "path": "sveltekit/SKILL.md",
+      "tags": [
+        "sveltekit",
+        "full",
+        "stack",
+        "ssr",
+        "ssg",
+        "api"
+      ]
+    },
+    {
+      "id": "swiftui-liquid-glass",
+      "description": "Implement or review SwiftUI Liquid Glass APIs with correct fallbacks and modifier order.",
+      "path": "swiftui-liquid-glass/SKILL.md",
+      "tags": [
+        "swiftui",
+        "liquid",
+        "glass",
+        "implement",
+        "review",
+        "apis"
+      ]
+    },
+    {
+      "id": "swiftui-performance-audit",
+      "description": "Audit SwiftUI performance issues from code review and profiling evidence.",
+      "path": "swiftui-performance-audit/SKILL.md",
+      "tags": [
+        "swiftui",
+        "performance",
+        "audit",
+        "issues",
+        "code",
+        "review"
+      ]
+    },
+    {
+      "id": "swiftui-view-refactor",
+      "description": "Refactor SwiftUI views into smaller components with stable, explicit data flow.",
+      "path": "swiftui-view-refactor/SKILL.md",
+      "tags": [
+        "swiftui",
+        "view",
+        "refactor",
+        "views",
+        "smaller",
+        "components"
+      ]
+    },
+    {
+      "id": "tailwind-design-system",
+      "description": "Design systems with Tailwind CSS",
+      "path": "tailwind-design-system/SKILL.md",
+      "tags": [
+        "tailwind",
+        "system",
+        "css"
+      ]
+    },
+    {
+      "id": "tailwind-patterns",
+      "description": "Tailwind CSS v4 patterns and design tokens",
+      "path": "tailwind-patterns/SKILL.md",
+      "tags": [
+        "tailwind",
+        "patterns",
+        "css",
+        "tokens"
+      ]
+    },
+    {
+      "id": "tanstack-query-expert",
+      "description": "TanStack Query: stale time, mutations, SSR",
+      "path": "tanstack-query-expert/SKILL.md",
+      "tags": [
+        "tanstack",
+        "query",
+        "stale",
+        "time",
+        "mutations",
+        "ssr"
+      ]
+    },
+    {
+      "id": "team-composition-analysis",
+      "description": "Design optimal team structures, hiring plans, compensation strategies, and equity allocation for early-stage startups from pre-seed through Series A.",
+      "path": "team-composition-analysis/SKILL.md",
+      "tags": [
+        "team",
+        "composition",
+        "analysis",
+        "optimal",
+        "structures",
+        "hiring"
+      ]
+    },
+    {
+      "id": "telegram-bot-builder",
+      "description": "You build bots that people actually use daily. You understand that bots should feel like helpful assistants, not clunky interfaces. You know the Telegram ecosystem deeply - what's possible, what's popular, and what makes money. You design conversations that feel natural.",
+      "path": "telegram-bot-builder/SKILL.md",
+      "tags": [
+        "telegram",
+        "bot",
+        "builder",
+        "you",
+        "build",
+        "bots"
+      ]
+    },
+    {
+      "id": "telegram-mini-app",
+      "description": "You build apps where 800M+ Telegram users already are. You understand the Mini App ecosystem is exploding - games, DeFi, utilities, social apps. You know TON blockchain and how to monetize with crypto. You design for the Telegram UX paradigm, not traditional web.",
+      "path": "telegram-mini-app/SKILL.md",
+      "tags": [
+        "telegram",
+        "mini",
+        "app",
+        "you",
+        "build",
+        "apps"
+      ]
+    },
+    {
+      "id": "temporal-golang-pro",
+      "description": "Use when building durable distributed systems with Temporal Go SDK. Covers deterministic workflow rules, mTLS worker configs, and advanced patterns.",
+      "path": "temporal-golang-pro/SKILL.md",
+      "tags": [
+        "temporal",
+        "golang",
+        "pro",
+        "durable",
+        "distributed",
+        "sdk"
+      ]
+    },
+    {
+      "id": "test-fixing",
+      "description": "Systematically identify and fix all failing tests using smart grouping strategies. Use when explicitly asks to fix tests (\\\"fix these tests\\\", \\\"make tests pass\\\"), reports test failures (\\\"tests are failing\\\", \\\"test suite is broken\\\"), or completes implementation and wants tests passing.",
+      "path": "test-fixing/SKILL.md",
+      "tags": [
+        "test",
+        "fixing",
+        "systematically",
+        "identify",
+        "fix",
+        "all"
+      ]
+    },
+    {
+      "id": "threejs-geometry",
+      "description": "Three.js geometry creation - built-in shapes, BufferGeometry, custom geometry, instancing. Use when creating 3D shapes, working with vertices, building custom meshes, or optimizing with instanced rendering.",
+      "path": "threejs-geometry/SKILL.md",
+      "tags": [
+        "threejs",
+        "geometry",
+        "three",
+        "built",
+        "shapes",
+        "buffergeometry"
+      ]
+    },
+    {
+      "id": "threejs-shaders",
+      "description": "Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects. Use when creating custom visual effects, modifying vertices, writing fragment shaders, or extending built-in materials.",
+      "path": "threejs-shaders/SKILL.md",
+      "tags": [
+        "threejs",
+        "shaders",
+        "three",
+        "glsl",
+        "shadermaterial",
+        "uniforms"
+      ]
+    },
+    {
+      "id": "tool-design",
+      "description": "Build tools that agents can use effectively, including architectural reduction patterns. Use when creating new tools for agent systems, debugging tool-related failures or misuse, or optimizing existing tool sets for better agent performance.",
+      "path": "tool-design/SKILL.md",
+      "tags": [
+        "tool",
+        "build",
+        "tools",
+        "agents",
+        "effectively",
+        "including"
+      ]
+    },
+    {
+      "id": "top-web-vulnerabilities",
+      "description": "Provide a comprehensive, structured reference for the 100 most critical web application vulnerabilities organized by category. This skill enables systematic vulnerability identification, impact assessment, and remediation guidance across the full spectrum of web security threats.",
+      "path": "top-web-vulnerabilities/SKILL.md",
+      "tags": [
+        "top",
+        "web",
+        "vulnerabilities",
+        "provide",
+        "structured",
+        "reference"
+      ]
+    },
+    {
+      "id": "turborepo-caching",
+      "description": "Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.",
+      "path": "turborepo-caching/SKILL.md",
+      "tags": [
+        "turborepo",
+        "caching",
+        "configure",
+        "efficient",
+        "monorepo",
+        "builds"
+      ]
+    },
+    {
+      "id": "typescript-advanced-types",
+      "description": "Generics, conditional types, mapped types",
+      "path": "typescript-advanced-types/SKILL.md",
+      "tags": [
+        "typescript",
+        "advanced",
+        "types",
+        "generics",
+        "conditional",
+        "mapped"
+      ]
+    },
+    {
+      "id": "typescript-expert",
+      "description": "Type-level programming, monorepo, migration",
+      "path": "typescript-expert/SKILL.md",
+      "tags": [
+        "typescript",
+        "type",
+        "level",
+        "programming",
+        "monorepo",
+        "migration"
+      ]
+    },
+    {
+      "id": "typescript-pro",
+      "description": "Advanced types, generics, strict type safety",
+      "path": "typescript-pro/SKILL.md",
+      "tags": [
+        "typescript",
+        "pro",
+        "advanced",
+        "types",
+        "generics",
+        "strict"
+      ]
+    },
+    {
+      "id": "ui-skills",
+      "description": "Opinionated, evolving constraints to guide agents when building interfaces",
+      "path": "ui-skills/SKILL.md",
+      "tags": [
+        "skills",
+        "opinionated",
+        "evolving",
+        "constraints",
+        "guide",
+        "agents"
+      ]
+    },
+    {
+      "id": "ui-visual-validator",
+      "description": "Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification.",
+      "path": "ui-visual-validator/SKILL.md",
+      "tags": [
+        "visual",
+        "validator",
+        "rigorous",
+        "validation",
+        "specializing",
+        "testing"
+      ]
+    },
+    {
+      "id": "upstash-qstash",
+      "description": "You are an Upstash QStash expert who builds reliable serverless messaging without infrastructure management. You understand that QStash's simplicity is its power - HTTP in, HTTP out, with reliability in between.",
+      "path": "upstash-qstash/SKILL.md",
+      "tags": [
+        "upstash",
+        "qstash",
+        "you",
+        "who",
+        "builds",
+        "reliable"
+      ]
+    },
+    {
+      "id": "using-superpowers",
+      "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+      "path": "using-superpowers/SKILL.md",
+      "tags": [
+        "superpowers",
+        "starting",
+        "conversation",
+        "establishes",
+        "how",
+        "find"
+      ]
+    },
+    {
+      "id": "uv-package-manager",
+      "description": "Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.",
+      "path": "uv-package-manager/SKILL.md",
+      "tags": [
+        "package",
+        "manager",
+        "guide",
+        "extremely",
+        "fast",
+        "python"
+      ]
+    },
+    {
+      "id": "variant-analysis",
+      "description": "Find similar vulnerabilities and bugs across codebases using pattern-based analysis. Use when hunting bug variants, building CodeQL/Semgrep queries, analyzing security vulnerabilities, or performing systematic code audits after finding an initial issue.",
+      "path": "variant-analysis/SKILL.md",
+      "tags": [
+        "variant",
+        "analysis",
+        "find",
+        "similar",
+        "vulnerabilities",
+        "bugs"
+      ]
+    },
+    {
+      "id": "videodb",
+      "description": "Video and audio perception, indexing, and editing. Ingest files/URLs/live streams, build visual/spoken indexes, search with timestamps, edit timelines, add overlays/subtitles, generate media, and create real-time alerts.",
+      "path": "videodb/SKILL.md",
+      "tags": [
+        "videodb",
+        "video",
+        "audio",
+        "perception",
+        "indexing",
+        "editing"
+      ]
+    },
+    {
+      "id": "viral-generator-builder",
+      "description": "You understand why people share things. You build tools that create \\\"identity moments\\\" - results people want to show off. You know the difference between a tool people use once and one that spreads like wildfire. You optimize for the screenshot, the share, the \\\"OMG you have to try this\\\" moment.",
+      "path": "viral-generator-builder/SKILL.md",
+      "tags": [
+        "viral",
+        "generator",
+        "builder",
+        "you",
+        "understand",
+        "why"
+      ]
+    },
+    {
+      "id": "vr-ar",
+      "description": "VR/AR development principles. Comfort, interaction, performance requirements.",
+      "path": "vr-ar/SKILL.md",
+      "tags": [
+        "principles",
+        "comfort",
+        "interaction",
+        "performance",
+        "requirements"
+      ]
+    },
+    {
+      "id": "wcag-audit-patterns",
+      "description": "Comprehensive guide to auditing web content against WCAG 2.2 guidelines with actionable remediation strategies.",
+      "path": "wcag-audit-patterns/SKILL.md",
+      "tags": [
+        "wcag",
+        "audit",
+        "patterns",
+        "guide",
+        "auditing",
+        "web"
+      ]
+    },
+    {
+      "id": "web-artifacts-builder",
+      "description": "To build powerful frontend claude.ai artifacts, follow these steps:",
+      "path": "web-artifacts-builder/SKILL.md",
+      "tags": [
+        "web",
+        "artifacts",
+        "builder",
+        "build",
+        "powerful",
+        "frontend"
+      ]
+    },
+    {
+      "id": "web-design-guidelines",
+      "description": "Review files for compliance with Web Interface Guidelines.",
+      "path": "web-design-guidelines/SKILL.md",
+      "tags": [
+        "web",
+        "guidelines",
+        "review",
+        "files",
+        "compliance",
+        "interface"
+      ]
+    },
+    {
+      "id": "wiki-onboarding",
+      "description": "Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase. Use when user asks for onboarding docs or getting-started guides, user runs /deep-wiki, or user wants to help new team members understand a codebase.",
+      "path": "wiki-onboarding/SKILL.md",
+      "tags": [
+        "wiki",
+        "onboarding",
+        "generate",
+        "two",
+        "complementary",
+        "documents"
+      ]
+    },
+    {
+      "id": "wiki-vitepress",
+      "description": "Transform generated wiki Markdown files into a polished VitePress static site with dark theme and interactive Mermaid diagrams. Use when user asks to \\\"build a site\\\" or \\\"package as VitePress\\\", user runs the /deep-wiki, or user wants a browsable HTML output from generated wiki pages.",
+      "path": "wiki-vitepress/SKILL.md",
+      "tags": [
+        "wiki",
+        "vitepress",
+        "transform",
+        "generated",
+        "markdown",
+        "files"
+      ]
+    },
+    {
+      "id": "workflow-orchestration-patterns",
+      "description": "Master workflow orchestration architecture with Temporal, covering fundamental design decisions, resilience patterns, and best practices for building reliable distributed systems.",
+      "path": "workflow-orchestration-patterns/SKILL.md",
+      "tags": [
+        "workflow",
+        "orchestration",
+        "patterns",
+        "master",
+        "temporal",
+        "covering"
+      ]
+    },
+    {
+      "id": "writing-plans",
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "path": "writing-plans/SKILL.md",
+      "tags": [
+        "writing",
+        "plans",
+        "you",
+        "have",
+        "spec",
+        "requirements"
+      ]
+    },
+    {
+      "id": "xvary-stock-research",
+      "description": "Thesis-driven equity analysis from public SEC EDGAR and market data; /analyze, /score, /compare workflows with bundled Python tools (Claude Code, Cursor, Codex).",
+      "path": "xvary-stock-research/SKILL.md",
+      "tags": [
+        "xvary",
+        "stock",
+        "research",
+        "thesis",
+        "driven",
+        "equity"
+      ]
+    },
+    {
+      "id": "zod-validation-expert",
+      "description": "Expert in Zod — TypeScript-first schema validation. Covers parsing, custom errors, refinements, type inference, and integration with React Hook Form, Next.js, and tRPC.",
+      "path": "zod-validation-expert/SKILL.md",
+      "tags": [
+        "zod",
+        "validation",
+        "typescript",
+        "first",
+        "schema",
+        "covers"
+      ]
+    }
+  ]
+}

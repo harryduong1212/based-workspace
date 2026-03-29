@@ -1,0 +1,59 @@
+{
+  "category_id": "game-development",
+  "category_name": "🎮 Game Development",
+  "skills": [
+    {
+      "id": "bevy-ecs-expert",
+      "description": "Bevy ECS in Rust",
+      "path": "bevy-ecs-expert/SKILL.md",
+      "tags": [
+        "bevy",
+        "ecs",
+        "rust"
+      ]
+    },
+    {
+      "id": "game-development",
+      "description": "Game dev orchestrator",
+      "path": "game-development/SKILL.md",
+      "tags": [
+        "game",
+        "dev",
+        "orchestrator"
+      ]
+    },
+    {
+      "id": "godot-gdscript-patterns",
+      "description": "Godot 4 GDScript patterns",
+      "path": "godot-gdscript-patterns/SKILL.md",
+      "tags": [
+        "godot",
+        "gdscript",
+        "patterns"
+      ]
+    },
+    {
+      "id": "unity-developer",
+      "description": "Unity 6 LTS, URP/HDRP",
+      "path": "unity-developer/SKILL.md",
+      "tags": [
+        "unity",
+        "developer",
+        "lts",
+        "urp",
+        "hdrp"
+      ]
+    },
+    {
+      "id": "unreal-engine-cpp-pro",
+      "description": "Unreal Engine 5 C++",
+      "path": "unreal-engine-cpp-pro/SKILL.md",
+      "tags": [
+        "unreal",
+        "engine",
+        "cpp",
+        "pro"
+      ]
+    }
+  ]
+}

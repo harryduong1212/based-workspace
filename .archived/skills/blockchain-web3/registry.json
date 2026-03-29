@@ -1,0 +1,56 @@
+{
+  "category_id": "blockchain-web3",
+  "category_name": "🌍 Blockchain & Web3",
+  "skills": [
+    {
+      "id": "blockchain-developer",
+      "description": "Smart contracts, DeFi, NFTs, DAOs",
+      "path": "blockchain-developer/SKILL.md",
+      "tags": [
+        "blockchain",
+        "developer",
+        "smart",
+        "contracts",
+        "defi",
+        "nfts"
+      ]
+    },
+    {
+      "id": "nft-standards",
+      "description": "ERC-721, ERC-1155 best practices",
+      "path": "nft-standards/SKILL.md",
+      "tags": [
+        "nft",
+        "standards",
+        "erc",
+        "721",
+        "1155",
+        "best"
+      ]
+    },
+    {
+      "id": "solidity-security",
+      "description": "Smart contract security patterns",
+      "path": "solidity-security/SKILL.md",
+      "tags": [
+        "solidity",
+        "security",
+        "smart",
+        "contract",
+        "patterns"
+      ]
+    },
+    {
+      "id": "web3-testing",
+      "description": "Hardhat, Foundry testing strategies",
+      "path": "web3-testing/SKILL.md",
+      "tags": [
+        "web3",
+        "testing",
+        "hardhat",
+        "foundry",
+        "strategies"
+      ]
+    }
+  ]
+}

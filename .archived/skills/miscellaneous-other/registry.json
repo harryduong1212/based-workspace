@@ -1,0 +1,1101 @@
+{
+  "category_id": "miscellaneous-other",
+  "category_name": "📦 Miscellaneous / Other",
+  "skills": [
+    {
+      "id": "SPDD",
+      "description": "Spdd",
+      "path": "SPDD/SKILL.md",
+      "tags": [
+        "spdd"
+      ]
+    },
+    {
+      "id": "acceptance-orchestrator",
+      "description": "Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention.",
+      "path": "acceptance-orchestrator/SKILL.md",
+      "tags": [
+        "acceptance",
+        "orchestrator",
+        "coding",
+        "task",
+        "should",
+        "driven"
+      ]
+    },
+    {
+      "id": "arm-cortex-expert",
+      "description": "Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD).",
+      "path": "arm-cortex-expert/SKILL.md",
+      "tags": [
+        "arm",
+        "cortex",
+        "senior",
+        "embedded",
+        "software",
+        "engineer"
+      ]
+    },
+    {
+      "id": "blockrun",
+      "description": "BlockRun works with Claude Code and Google Antigravity.",
+      "path": "blockrun/SKILL.md",
+      "tags": [
+        "blockrun",
+        "works",
+        "claude",
+        "code",
+        "google",
+        "antigravity"
+      ]
+    },
+    {
+      "id": "c4-context",
+      "description": "Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies.",
+      "path": "c4-context/SKILL.md",
+      "tags": [
+        "context",
+        "level",
+        "documentation",
+        "specialist",
+        "creates",
+        "high"
+      ]
+    },
+    {
+      "id": "cc-skill-continuous-learning",
+      "description": "Development skill from everything-claude-code",
+      "path": "cc-skill-continuous-learning/SKILL.md",
+      "tags": [
+        "skill",
+        "continuous",
+        "learning",
+        "everything",
+        "claude",
+        "code"
+      ]
+    },
+    {
+      "id": "cc-skill-strategic-compact",
+      "description": "Development skill from everything-claude-code",
+      "path": "cc-skill-strategic-compact/SKILL.md",
+      "tags": [
+        "skill",
+        "strategic",
+        "compact",
+        "everything",
+        "claude",
+        "code"
+      ]
+    },
+    {
+      "id": "clarity-gate",
+      "description": ">",
+      "path": "clarity-gate/SKILL.md",
+      "tags": [
+        "clarity",
+        "gate"
+      ]
+    },
+    {
+      "id": "claude-scientific-skills",
+      "description": "Scientific research and analysis skills",
+      "path": "claude-scientific-skills/SKILL.md",
+      "tags": [
+        "claude",
+        "scientific",
+        "skills",
+        "research",
+        "analysis"
+      ]
+    },
+    {
+      "id": "claude-win11-speckit-update-skill",
+      "description": "Windows 11 system management",
+      "path": "claude-win11-speckit-update-skill/SKILL.md",
+      "tags": [
+        "claude",
+        "win11",
+        "speckit",
+        "update",
+        "skill",
+        "windows"
+      ]
+    },
+    {
+      "id": "code-refactoring-context-restore",
+      "description": "Use when working with code refactoring context restore",
+      "path": "code-refactoring-context-restore/SKILL.md",
+      "tags": [
+        "code",
+        "refactoring",
+        "context",
+        "restore",
+        "working"
+      ]
+    },
+    {
+      "id": "computer-vision-expert",
+      "description": "SOTA Computer Vision Expert (2026). Specialized in YOLO26, Segment Anything 3 (SAM 3), Vision Language Models, and real-time spatial analysis.",
+      "path": "computer-vision-expert/SKILL.md",
+      "tags": [
+        "computer",
+        "vision",
+        "sota",
+        "2026",
+        "specialized",
+        "yolo26"
+      ]
+    },
+    {
+      "id": "concise-planning",
+      "description": "Use when a user asks for a plan for a coding task, to generate a clear, actionable, and atomic checklist.",
+      "path": "concise-planning/SKILL.md",
+      "tags": [
+        "concise",
+        "planning",
+        "user",
+        "asks",
+        "plan",
+        "coding"
+      ]
+    },
+    {
+      "id": "conductor-implement",
+      "description": "Execute tasks from a track's implementation plan following TDD workflow",
+      "path": "conductor-implement/SKILL.md",
+      "tags": [
+        "conductor",
+        "implement",
+        "execute",
+        "tasks",
+        "track",
+        "plan"
+      ]
+    },
+    {
+      "id": "conductor-manage",
+      "description": "Manage track lifecycle: archive, restore, delete, rename, and cleanup",
+      "path": "conductor-manage/SKILL.md",
+      "tags": [
+        "conductor",
+        "manage",
+        "track",
+        "lifecycle",
+        "archive",
+        "restore"
+      ]
+    },
+    {
+      "id": "conductor-new-track",
+      "description": "Create a new track with specification and phased implementation plan",
+      "path": "conductor-new-track/SKILL.md",
+      "tags": [
+        "conductor",
+        "new",
+        "track",
+        "create",
+        "specification",
+        "phased"
+      ]
+    },
+    {
+      "id": "context-management-context-restore",
+      "description": "Use when working with context management context restore",
+      "path": "context-management-context-restore/SKILL.md",
+      "tags": [
+        "context",
+        "restore",
+        "working"
+      ]
+    },
+    {
+      "id": "context-management-context-save",
+      "description": "Use when working with context management context save",
+      "path": "context-management-context-save/SKILL.md",
+      "tags": [
+        "context",
+        "save",
+        "working"
+      ]
+    },
+    {
+      "id": "create-issue-gate",
+      "description": "Use when starting a new implementation task and an issue must be created with strict acceptance criteria gating before execution.",
+      "path": "create-issue-gate/SKILL.md",
+      "tags": [
+        "create",
+        "issue",
+        "gate",
+        "starting",
+        "new",
+        "task"
+      ]
+    },
+    {
+      "id": "customs-trade-compliance",
+      "description": "Codified expertise for customs documentation, tariff classification, duty optimisation, restricted party screening, and regulatory compliance across multiple jurisdictions.",
+      "path": "customs-trade-compliance/SKILL.md",
+      "tags": [
+        "customs",
+        "trade",
+        "compliance",
+        "codified",
+        "expertise",
+        "documentation"
+      ]
+    },
+    {
+      "id": "distributed-tracing",
+      "description": "Implement distributed tracing with Jaeger and Tempo for request flow visibility across microservices.",
+      "path": "distributed-tracing/SKILL.md",
+      "tags": [
+        "distributed",
+        "tracing",
+        "implement",
+        "jaeger",
+        "tempo",
+        "request"
+      ]
+    },
+    {
+      "id": "emergency-card",
+      "description": "生成紧急情况下快速访问的医疗信息摘要卡片。当用户需要旅行、就诊准备、紧急情况或询问\"紧急信息\"、\"医疗卡片\"、\"急救信息\"时使用此技能。提取关键信息（过敏、用药、急症、植入物），支持多格式输出（JSON、文本、二维码），用于急救或快速就医。",
+      "path": "emergency-card/SKILL.md",
+      "tags": [
+        "emergency",
+        "card",
+        "生成紧急情况下快速访问的医疗信息摘要卡片",
+        "当用户需要旅行",
+        "就诊准备",
+        "紧急情况或询问"
+      ]
+    },
+    {
+      "id": "executing-plans",
+      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "path": "executing-plans/SKILL.md",
+      "tags": [
+        "executing",
+        "plans",
+        "you",
+        "have",
+        "written",
+        "plan"
+      ]
+    },
+    {
+      "id": "family-health-analyzer",
+      "description": "分析家族病史、评估遗传风险、识别家庭健康模式、提供个性化预防建议",
+      "path": "family-health-analyzer/SKILL.md",
+      "tags": [
+        "family",
+        "health",
+        "analyzer",
+        "分析家族病史",
+        "评估遗传风险",
+        "识别家庭健康模式"
+      ]
+    },
+    {
+      "id": "favicon",
+      "description": "Generate favicons from a source image",
+      "path": "favicon/SKILL.md",
+      "tags": [
+        "favicon",
+        "generate",
+        "favicons",
+        "source",
+        "image"
+      ]
+    },
+    {
+      "id": "ffuf-claude-skill",
+      "description": "Web fuzzing with ffuf",
+      "path": "ffuf-claude-skill/SKILL.md",
+      "tags": [
+        "ffuf",
+        "claude",
+        "skill",
+        "web",
+        "fuzzing"
+      ]
+    },
+    {
+      "id": "filesystem-context",
+      "description": "Use for file-based context management, dynamic context discovery, and reducing context window bloat. Offload context to files for just-in-time loading.",
+      "path": "filesystem-context/SKILL.md",
+      "tags": [
+        "filesystem",
+        "context",
+        "file",
+        "based",
+        "dynamic",
+        "discovery"
+      ]
+    },
+    {
+      "id": "fitness-analyzer",
+      "description": "分析运动数据、识别运动模式、评估健身进展，并提供个性化训练建议。支持与慢性病数据的关联分析。",
+      "path": "fitness-analyzer/SKILL.md",
+      "tags": [
+        "fitness",
+        "analyzer",
+        "分析运动数据",
+        "识别运动模式",
+        "评估健身进展",
+        "并提供个性化训练建议"
+      ]
+    },
+    {
+      "id": "form-cro",
+      "description": "Optimize any form that is NOT signup or account registration — including lead capture, contact, demo request, application, survey, quote, and checkout forms.",
+      "path": "form-cro/SKILL.md",
+      "tags": [
+        "form",
+        "cro",
+        "optimize",
+        "signup",
+        "account",
+        "registration"
+      ]
+    },
+    {
+      "id": "full-stack-orchestration-full-stack-feature",
+      "description": "Use when working with full stack orchestration full stack feature",
+      "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
+      "tags": [
+        "full",
+        "stack",
+        "orchestration",
+        "feature",
+        "working"
+      ]
+    },
+    {
+      "id": "goal-analyzer",
+      "description": "分析健康目标数据、识别目标模式、评估目标进度,并提供个性化目标管理建议。支持与营养、运动、睡眠等健康数据的关联分析。",
+      "path": "goal-analyzer/SKILL.md",
+      "tags": [
+        "goal",
+        "analyzer",
+        "分析健康目标数据",
+        "识别目标模式",
+        "评估目标进度",
+        "并提供个性化目标管理建议"
+      ]
+    },
+    {
+      "id": "incident-response-incident-response",
+      "description": "Use when working with incident response incident response",
+      "path": "incident-response-incident-response/SKILL.md",
+      "tags": [
+        "incident",
+        "response",
+        "working"
+      ]
+    },
+    {
+      "id": "interview-coach",
+      "description": "Full job search coaching system — JD decoding, resume, storybank, mock interviews, transcript analysis, comp negotiation. 23 commands, persistent state.",
+      "path": "interview-coach/SKILL.md",
+      "tags": [
+        "interview",
+        "coach",
+        "full",
+        "job",
+        "search",
+        "coaching"
+      ]
+    },
+    {
+      "id": "keyword-extractor",
+      "description": ">",
+      "path": "keyword-extractor/SKILL.md",
+      "tags": [
+        "keyword",
+        "extractor"
+      ]
+    },
+    {
+      "id": "legacy-modernizer",
+      "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility.",
+      "path": "legacy-modernizer/SKILL.md",
+      "tags": [
+        "legacy",
+        "modernizer",
+        "refactor",
+        "codebases",
+        "migrate",
+        "outdated"
+      ]
+    },
+    {
+      "id": "lex",
+      "description": "Centralized 'Truth Engine' for cross-jurisdictional legal context (US, EU, CA) and contract scaffolding.",
+      "path": "lex/SKILL.md",
+      "tags": [
+        "lex",
+        "centralized",
+        "truth",
+        "engine",
+        "cross",
+        "jurisdictional"
+      ]
+    },
+    {
+      "id": "libreoffice",
+      "description": "Libreoffice",
+      "path": "libreoffice/SKILL.md",
+      "tags": [
+        "libreoffice"
+      ]
+    },
+    {
+      "id": "linear",
+      "description": "Linear",
+      "path": "linear/SKILL.md",
+      "tags": [
+        "linear"
+      ]
+    },
+    {
+      "id": "mental-health-analyzer",
+      "description": "分析心理健康数据、识别心理模式、评估心理健康状况、提供个性化心理健康建议。支持与睡眠、运动、营养等其他健康数据的关联分析。",
+      "path": "mental-health-analyzer/SKILL.md",
+      "tags": [
+        "mental",
+        "health",
+        "analyzer",
+        "分析心理健康数据",
+        "识别心理模式",
+        "评估心理健康状况"
+      ]
+    },
+    {
+      "id": "molykit",
+      "description": "|",
+      "path": "molykit/SKILL.md",
+      "tags": [
+        "molykit"
+      ]
+    },
+    {
+      "id": "moyu",
+      "description": ">",
+      "path": "moyu/SKILL.md",
+      "tags": [
+        "moyu"
+      ]
+    },
+    {
+      "id": "notebooklm",
+      "description": "Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.",
+      "path": "notebooklm/SKILL.md",
+      "tags": [
+        "notebooklm",
+        "interact",
+        "google",
+        "query",
+        "documentation",
+        "gemini"
+      ]
+    },
+    {
+      "id": "nutrition-analyzer",
+      "description": "分析营养数据、识别营养模式、评估营养状况，并提供个性化营养建议。支持与运动、睡眠、慢性病数据的关联分析。",
+      "path": "nutrition-analyzer/SKILL.md",
+      "tags": [
+        "nutrition",
+        "analyzer",
+        "分析营养数据",
+        "识别营养模式",
+        "评估营养状况",
+        "并提供个性化营养建议"
+      ]
+    },
+    {
+      "id": "occupational-health-analyzer",
+      "description": "分析职业健康数据、识别工作相关健康风险、评估职业健康状况、提供个性化职业健康建议。支持与睡眠、运动、心理健康等其他健康数据的关联分析。",
+      "path": "occupational-health-analyzer/SKILL.md",
+      "tags": [
+        "occupational",
+        "health",
+        "analyzer",
+        "分析职业健康数据",
+        "识别工作相关健康风险",
+        "评估职业健康状况"
+      ]
+    },
+    {
+      "id": "odoo-l10n-compliance",
+      "description": "Country-specific Odoo localization: tax configuration, e-invoicing (CFDI, FatturaPA, SAF-T), fiscal reporting, and country chart of accounts setup.",
+      "path": "odoo-l10n-compliance/SKILL.md",
+      "tags": [
+        "odoo",
+        "l10n",
+        "compliance",
+        "country",
+        "specific",
+        "localization"
+      ]
+    },
+    {
+      "id": "oral-health-analyzer",
+      "description": "分析口腔健康数据、识别口腔问题模式、评估口腔健康状况、提供个性化口腔健康建议。支持与营养、慢性病、用药等其他健康数据的关联分析。",
+      "path": "oral-health-analyzer/SKILL.md",
+      "tags": [
+        "oral",
+        "health",
+        "analyzer",
+        "分析口腔健康数据",
+        "识别口腔问题模式",
+        "评估口腔健康状况"
+      ]
+    },
+    {
+      "id": "orchestrate-batch-refactor",
+      "description": "Plan and execute large refactors with dependency-aware work packets and parallel analysis.",
+      "path": "orchestrate-batch-refactor/SKILL.md",
+      "tags": [
+        "orchestrate",
+        "batch",
+        "refactor",
+        "plan",
+        "execute",
+        "large"
+      ]
+    },
+    {
+      "id": "oss-hunter",
+      "description": "Automatically hunt for high-impact OSS contribution opportunities in trending repositories.",
+      "path": "oss-hunter/SKILL.md",
+      "tags": [
+        "oss",
+        "hunter",
+        "automatically",
+        "hunt",
+        "high",
+        "impact"
+      ]
+    },
+    {
+      "id": "page-cro",
+      "description": "Analyze and optimize individual pages for conversion performance.",
+      "path": "page-cro/SKILL.md",
+      "tags": [
+        "page",
+        "cro",
+        "analyze",
+        "optimize",
+        "individual",
+        "pages"
+      ]
+    },
+    {
+      "id": "performance-engineer",
+      "description": "Expert performance engineer specializing in modern observability,",
+      "path": "performance-engineer/SKILL.md",
+      "tags": [
+        "performance",
+        "engineer",
+        "specializing",
+        "modern",
+        "observability"
+      ]
+    },
+    {
+      "id": "plan-writing",
+      "description": "Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work.",
+      "path": "plan-writing/SKILL.md",
+      "tags": [
+        "plan",
+        "writing",
+        "structured",
+        "task",
+        "planning",
+        "clear"
+      ]
+    },
+    {
+      "id": "quality-nonconformance",
+      "description": "Codified expertise for quality control, non-conformance investigation, root cause analysis, corrective action, and supplier quality management in regulated manufacturing.",
+      "path": "quality-nonconformance/SKILL.md",
+      "tags": [
+        "quality",
+        "nonconformance",
+        "codified",
+        "expertise",
+        "control",
+        "non"
+      ]
+    },
+    {
+      "id": "rehabilitation-analyzer",
+      "description": "分析康复训练数据、识别康复模式、评估康复进展，并提供个性化康复建议",
+      "path": "rehabilitation-analyzer/SKILL.md",
+      "tags": [
+        "rehabilitation",
+        "analyzer",
+        "分析康复训练数据",
+        "识别康复模式",
+        "评估康复进展",
+        "并提供个性化康复建议"
+      ]
+    },
+    {
+      "id": "risk-manager",
+      "description": "Monitor portfolio risk, R-multiples, and position limits. Creates hedging strategies, calculates expectancy, and implements stop-losses.",
+      "path": "risk-manager/SKILL.md",
+      "tags": [
+        "risk",
+        "manager",
+        "monitor",
+        "portfolio",
+        "multiples",
+        "position"
+      ]
+    },
+    {
+      "id": "robius-event-action",
+      "description": "|",
+      "path": "robius-event-action/SKILL.md",
+      "tags": [
+        "robius",
+        "event",
+        "action"
+      ]
+    },
+    {
+      "id": "robius-matrix-integration",
+      "description": "|",
+      "path": "robius-matrix-integration/SKILL.md",
+      "tags": [
+        "robius",
+        "matrix",
+        "integration"
+      ]
+    },
+    {
+      "id": "robius-state-management",
+      "description": "|",
+      "path": "robius-state-management/SKILL.md",
+      "tags": [
+        "robius",
+        "state"
+      ]
+    },
+    {
+      "id": "search-specialist",
+      "description": "Expert web researcher using advanced search techniques and",
+      "path": "search-specialist/SKILL.md",
+      "tags": [
+        "search",
+        "specialist",
+        "web",
+        "researcher",
+        "advanced",
+        "techniques"
+      ]
+    },
+    {
+      "id": "sexual-health-analyzer",
+      "description": "Sexual Health Analyzer",
+      "path": "sexual-health-analyzer/SKILL.md",
+      "tags": [
+        "sexual",
+        "health",
+        "analyzer"
+      ]
+    },
+    {
+      "id": "sharp-edges",
+      "description": "sharp-edges",
+      "path": "sharp-edges/SKILL.md",
+      "tags": [
+        "sharp",
+        "edges"
+      ]
+    },
+    {
+      "id": "shellcheck-configuration",
+      "description": "Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.",
+      "path": "shellcheck-configuration/SKILL.md",
+      "tags": [
+        "shellcheck",
+        "configuration",
+        "master",
+        "static",
+        "analysis",
+        "usage"
+      ]
+    },
+    {
+      "id": "signup-flow-cro",
+      "description": "You are an expert in optimizing signup and registration flows. Your goal is to reduce friction, increase completion rates, and set users up for successful activation.",
+      "path": "signup-flow-cro/SKILL.md",
+      "tags": [
+        "signup",
+        "flow",
+        "cro",
+        "you",
+        "optimizing",
+        "registration"
+      ]
+    },
+    {
+      "id": "simplify-code",
+      "description": "Review a diff for clarity and safe simplifications, then optionally apply low-risk fixes.",
+      "path": "simplify-code/SKILL.md",
+      "tags": [
+        "simplify",
+        "code",
+        "review",
+        "diff",
+        "clarity",
+        "safe"
+      ]
+    },
+    {
+      "id": "skill-installer",
+      "description": "Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao.",
+      "path": "skill-installer/SKILL.md",
+      "tags": [
+        "skill",
+        "installer",
+        "instala",
+        "valida",
+        "registra",
+        "verifica"
+      ]
+    },
+    {
+      "id": "skill-router",
+      "description": "Use when the user is unsure which skill to use or where to start. Interviews the user with targeted questions and recommends the best skill(s) from the installed library for their goal.",
+      "path": "skill-router/SKILL.md",
+      "tags": [
+        "skill",
+        "router",
+        "user",
+        "unsure",
+        "where",
+        "start"
+      ]
+    },
+    {
+      "id": "sleep-analyzer",
+      "description": "分析睡眠数据、识别睡眠模式、评估睡眠质量，并提供个性化睡眠改善建议。支持与其他健康数据的关联分析。",
+      "path": "sleep-analyzer/SKILL.md",
+      "tags": [
+        "sleep",
+        "analyzer",
+        "分析睡眠数据",
+        "识别睡眠模式",
+        "评估睡眠质量",
+        "并提供个性化睡眠改善建议"
+      ]
+    },
+    {
+      "id": "slo-implementation",
+      "description": "Framework for defining and implementing Service Level Indicators (SLIs), Service Level Objectives (SLOs), and error budgets.",
+      "path": "slo-implementation/SKILL.md",
+      "tags": [
+        "slo",
+        "defining",
+        "implementing",
+        "service",
+        "level",
+        "indicators"
+      ]
+    },
+    {
+      "id": "speckit-updater",
+      "description": "SpecKit Safe Update",
+      "path": "speckit-updater/SKILL.md",
+      "tags": [
+        "speckit",
+        "updater",
+        "safe",
+        "update"
+      ]
+    },
+    {
+      "id": "speed",
+      "description": "Launch RSVP speed reader for text",
+      "path": "speed/SKILL.md",
+      "tags": [
+        "speed",
+        "launch",
+        "rsvp",
+        "reader",
+        "text"
+      ]
+    },
+    {
+      "id": "superpowers-lab",
+      "description": "Lab environment for Claude superpowers",
+      "path": "superpowers-lab/SKILL.md",
+      "tags": [
+        "superpowers",
+        "lab",
+        "environment",
+        "claude"
+      ]
+    },
+    {
+      "id": "tcm-constitution-analyzer",
+      "description": "分析中医体质数据、识别体质类型、评估体质特征,并提供个性化养生建议。支持与营养、运动、睡眠等健康数据的关联分析。",
+      "path": "tcm-constitution-analyzer/SKILL.md",
+      "tags": [
+        "tcm",
+        "constitution",
+        "analyzer",
+        "分析中医体质数据",
+        "识别体质类型",
+        "评估体质特征"
+      ]
+    },
+    {
+      "id": "tdd-workflows-tdd-cycle",
+      "description": "Use when working with tdd workflows tdd cycle",
+      "path": "tdd-workflows-tdd-cycle/SKILL.md",
+      "tags": [
+        "tdd",
+        "workflows",
+        "cycle",
+        "working"
+      ]
+    },
+    {
+      "id": "tdd-workflows-tdd-refactor",
+      "description": "Use when working with tdd workflows tdd refactor",
+      "path": "tdd-workflows-tdd-refactor/SKILL.md",
+      "tags": [
+        "tdd",
+        "workflows",
+        "refactor",
+        "working"
+      ]
+    },
+    {
+      "id": "threejs-fundamentals",
+      "description": "Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms.",
+      "path": "threejs-fundamentals/SKILL.md",
+      "tags": [
+        "threejs",
+        "fundamentals",
+        "three",
+        "scene",
+        "setup",
+        "cameras"
+      ]
+    },
+    {
+      "id": "threejs-interaction",
+      "description": "Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click detection, adding camera controls, or creating interactive 3D experiences.",
+      "path": "threejs-interaction/SKILL.md",
+      "tags": [
+        "threejs",
+        "interaction",
+        "three",
+        "raycasting",
+        "controls",
+        "mouse"
+      ]
+    },
+    {
+      "id": "threejs-lighting",
+      "description": "Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.",
+      "path": "threejs-lighting/SKILL.md",
+      "tags": [
+        "threejs",
+        "lighting",
+        "three",
+        "light",
+        "types",
+        "shadows"
+      ]
+    },
+    {
+      "id": "threejs-textures",
+      "description": "Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, cubemaps, HDR environments, or texture optimization.",
+      "path": "threejs-textures/SKILL.md",
+      "tags": [
+        "threejs",
+        "textures",
+        "three",
+        "texture",
+        "types",
+        "mapping"
+      ]
+    },
+    {
+      "id": "track-management",
+      "description": "Use this skill when creating, managing, or working with Conductor tracks - the logical work units for features, bugs, and refactors. Applies to spec.md, plan.md, and track lifecycle operations.",
+      "path": "track-management/SKILL.md",
+      "tags": [
+        "track",
+        "skill",
+        "creating",
+        "managing",
+        "working",
+        "conductor"
+      ]
+    },
+    {
+      "id": "travel-health-analyzer",
+      "description": "分析旅行健康数据、评估目的地健康风险、提供疫苗接种建议、生成多语言紧急医疗信息卡片。支持WHO/CDC数据集成的专业级旅行健康风险评估。",
+      "path": "travel-health-analyzer/SKILL.md",
+      "tags": [
+        "travel",
+        "health",
+        "analyzer",
+        "分析旅行健康数据",
+        "评估目的地健康风险",
+        "提供疫苗接种建议"
+      ]
+    },
+    {
+      "id": "twilio-communications",
+      "description": "Basic pattern for sending SMS messages with Twilio. Handles the fundamentals: phone number formatting, message delivery, and delivery status callbacks.",
+      "path": "twilio-communications/SKILL.md",
+      "tags": [
+        "twilio",
+        "communications",
+        "basic",
+        "sending",
+        "sms",
+        "messages"
+      ]
+    },
+    {
+      "id": "upgrading-expo",
+      "description": "Upgrade Expo SDK versions",
+      "path": "upgrading-expo/SKILL.md",
+      "tags": [
+        "upgrading",
+        "expo",
+        "upgrade",
+        "sdk",
+        "versions"
+      ]
+    },
+    {
+      "id": "varlock",
+      "description": "Secure-by-default environment variable management for Claude Code sessions.",
+      "path": "varlock/SKILL.md",
+      "tags": [
+        "varlock",
+        "secure",
+        "default",
+        "environment",
+        "variable",
+        "claude"
+      ]
+    },
+    {
+      "id": "vector-index-tuning",
+      "description": "Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.",
+      "path": "vector-index-tuning/SKILL.md",
+      "tags": [
+        "vector",
+        "index",
+        "tuning",
+        "optimize",
+        "performance",
+        "latency"
+      ]
+    },
+    {
+      "id": "vexor",
+      "description": "Vector-powered CLI for semantic file search with a Claude/Codex skill",
+      "path": "vexor/SKILL.md",
+      "tags": [
+        "vexor",
+        "vector",
+        "powered",
+        "cli",
+        "semantic",
+        "file"
+      ]
+    },
+    {
+      "id": "web-performance-optimization",
+      "description": "Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance",
+      "path": "web-performance-optimization/SKILL.md",
+      "tags": [
+        "web",
+        "performance",
+        "optimization",
+        "optimize",
+        "website",
+        "application"
+      ]
+    },
+    {
+      "id": "weightloss-analyzer",
+      "description": "分析减肥数据、计算代谢率、追踪能量缺口、管理减肥阶段",
+      "path": "weightloss-analyzer/SKILL.md",
+      "tags": [
+        "weightloss",
+        "analyzer",
+        "分析减肥数据",
+        "计算代谢率",
+        "追踪能量缺口",
+        "管理减肥阶段"
+      ]
+    },
+    {
+      "id": "windows-shell-reliability",
+      "description": "Reliable command execution on Windows: paths, encoding, and common binary pitfalls.",
+      "path": "windows-shell-reliability/SKILL.md",
+      "tags": [
+        "windows",
+        "shell",
+        "reliability",
+        "reliable",
+        "command",
+        "execution"
+      ]
+    },
+    {
+      "id": "x-article-publisher-skill",
+      "description": "Publish articles to X/Twitter",
+      "path": "x-article-publisher-skill/SKILL.md",
+      "tags": [
+        "article",
+        "publisher",
+        "skill",
+        "publish",
+        "articles",
+        "twitter"
+      ]
+    },
+    {
+      "id": "xlsx-official",
+      "description": "Unless otherwise stated by the user or existing template",
+      "path": "xlsx-official/SKILL.md",
+      "tags": [
+        "xlsx",
+        "official",
+        "unless",
+        "otherwise",
+        "stated",
+        "user"
+      ]
+    },
+    {
+      "id": "yann-lecun-filosofia",
+      "description": "Sub-skill filosófica e pedagógica de Yann LeCun.",
+      "path": "yann-lecun-filosofia/SKILL.md",
+      "tags": [
+        "yann",
+        "lecun",
+        "filosofia",
+        "sub",
+        "skill",
+        "filosófica"
+      ]
+    }
+  ]
+}

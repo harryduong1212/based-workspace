@@ -1,0 +1,1672 @@
+{
+  "category_id": "azure-sdks",
+  "category_name": "☁️ Azure SDKs",
+  "skills": [
+    {
+      "id": "agent-framework-azure-ai-py",
+      "description": "Build persistent agents on Azure AI Foundry using the Microsoft Agent Framework Python SDK.",
+      "path": "agent-framework-azure-ai-py/SKILL.md",
+      "tags": [
+        "agent",
+        "azure",
+        "build",
+        "persistent",
+        "agents",
+        "foundry"
+      ]
+    },
+    {
+      "id": "agents-v2-py",
+      "description": "Build container-based Foundry Agents with Azure AI Projects SDK (ImageBasedHostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry.",
+      "path": "agents-v2-py/SKILL.md",
+      "tags": [
+        "agents",
+        "build",
+        "container",
+        "based",
+        "foundry",
+        "azure"
+      ]
+    },
+    {
+      "id": "azd-deployment",
+      "description": "Deploy containerized frontend + backend applications to Azure Container Apps with remote builds, managed identity, and idempotent infrastructure.",
+      "path": "azd-deployment/SKILL.md",
+      "tags": [
+        "azd",
+        "deployment",
+        "deploy",
+        "containerized",
+        "frontend",
+        "backend"
+      ]
+    },
+    {
+      "id": "azure-ai-agents-persistent-dotnet",
+      "description": "Azure AI Agents Persistent SDK for .NET. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools.",
+      "path": "azure-ai-agents-persistent-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "agents",
+        "persistent",
+        "dotnet",
+        "sdk",
+        "net"
+      ]
+    },
+    {
+      "id": "azure-ai-agents-persistent-java",
+      "description": "Azure AI Agents Persistent SDK for Java. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools.",
+      "path": "azure-ai-agents-persistent-java/SKILL.md",
+      "tags": [
+        "azure",
+        "agents",
+        "persistent",
+        "java",
+        "sdk",
+        "low"
+      ]
+    },
+    {
+      "id": "azure-ai-anomalydetector-java",
+      "description": "Build anomaly detection applications with Azure AI Anomaly Detector SDK for Java. Use when implementing univariate/multivariate anomaly detection, time-series analysis, or AI-powered monitoring.",
+      "path": "azure-ai-anomalydetector-java/SKILL.md",
+      "tags": [
+        "azure",
+        "anomalydetector",
+        "java",
+        "build",
+        "anomaly",
+        "detection"
+      ]
+    },
+    {
+      "id": "azure-ai-contentsafety-java",
+      "description": "Build content moderation applications using the Azure AI Content Safety SDK for Java.",
+      "path": "azure-ai-contentsafety-java/SKILL.md",
+      "tags": [
+        "azure",
+        "contentsafety",
+        "java",
+        "build",
+        "content",
+        "moderation"
+      ]
+    },
+    {
+      "id": "azure-ai-contentsafety-py",
+      "description": "Azure AI Content Safety SDK for Python. Use for detecting harmful content in text and images with multi-severity classification.",
+      "path": "azure-ai-contentsafety-py/SKILL.md",
+      "tags": [
+        "azure",
+        "contentsafety",
+        "content",
+        "safety",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-ai-contentsafety-ts",
+      "description": "Analyze text and images for harmful content with customizable blocklists.",
+      "path": "azure-ai-contentsafety-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "contentsafety",
+        "analyze",
+        "text",
+        "images",
+        "harmful"
+      ]
+    },
+    {
+      "id": "azure-ai-contentunderstanding-py",
+      "description": "Azure AI Content Understanding SDK for Python. Use for multimodal content extraction from documents, images, audio, and video.",
+      "path": "azure-ai-contentunderstanding-py/SKILL.md",
+      "tags": [
+        "azure",
+        "contentunderstanding",
+        "content",
+        "understanding",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-ai-document-intelligence-dotnet",
+      "description": "Azure AI Document Intelligence SDK for .NET. Extract text, tables, and structured data from documents using prebuilt and custom models.",
+      "path": "azure-ai-document-intelligence-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "document",
+        "intelligence",
+        "dotnet",
+        "sdk",
+        "net"
+      ]
+    },
+    {
+      "id": "azure-ai-document-intelligence-ts",
+      "description": "Extract text, tables, and structured data from documents using prebuilt and custom models.",
+      "path": "azure-ai-document-intelligence-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "document",
+        "intelligence",
+        "extract",
+        "text",
+        "tables"
+      ]
+    },
+    {
+      "id": "azure-ai-formrecognizer-java",
+      "description": "Build document analysis applications using the Azure AI Document Intelligence SDK for Java.",
+      "path": "azure-ai-formrecognizer-java/SKILL.md",
+      "tags": [
+        "azure",
+        "formrecognizer",
+        "java",
+        "build",
+        "document",
+        "analysis"
+      ]
+    },
+    {
+      "id": "azure-ai-ml-py",
+      "description": "Azure Machine Learning SDK v2 for Python. Use for ML workspaces, jobs, models, datasets, compute, and pipelines.",
+      "path": "azure-ai-ml-py/SKILL.md",
+      "tags": [
+        "azure",
+        "machine",
+        "learning",
+        "sdk",
+        "python",
+        "workspaces"
+      ]
+    },
+    {
+      "id": "azure-ai-openai-dotnet",
+      "description": "Azure OpenAI SDK for .NET",
+      "path": "azure-ai-openai-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "openai",
+        "dotnet",
+        "sdk",
+        "net"
+      ]
+    },
+    {
+      "id": "azure-ai-projects-dotnet",
+      "description": "Azure AI Projects SDK for .NET. High-level client for Azure AI Foundry projects including agents, connections, datasets, deployments, evaluations, and indexes.",
+      "path": "azure-ai-projects-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "projects",
+        "dotnet",
+        "sdk",
+        "net",
+        "high"
+      ]
+    },
+    {
+      "id": "azure-ai-projects-java",
+      "description": "Azure AI Projects SDK for Java. High-level SDK for Azure AI Foundry project management including connections, datasets, indexes, and evaluations.",
+      "path": "azure-ai-projects-java/SKILL.md",
+      "tags": [
+        "azure",
+        "projects",
+        "java",
+        "sdk",
+        "high",
+        "level"
+      ]
+    },
+    {
+      "id": "azure-ai-projects-py",
+      "description": "Azure AI Foundry SDK for Python",
+      "path": "azure-ai-projects-py/SKILL.md",
+      "tags": [
+        "azure",
+        "projects",
+        "foundry",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-ai-projects-ts",
+      "description": "High-level SDK for Azure AI Foundry projects with agents, connections, deployments, and evaluations.",
+      "path": "azure-ai-projects-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "projects",
+        "high",
+        "level",
+        "sdk",
+        "foundry"
+      ]
+    },
+    {
+      "id": "azure-ai-textanalytics-py",
+      "description": "Azure AI Text Analytics SDK for sentiment analysis, entity recognition, key phrases, language detection, PII, and healthcare NLP. Use for natural language processing on text.",
+      "path": "azure-ai-textanalytics-py/SKILL.md",
+      "tags": [
+        "azure",
+        "textanalytics",
+        "text",
+        "analytics",
+        "sdk",
+        "sentiment"
+      ]
+    },
+    {
+      "id": "azure-ai-transcription-py",
+      "description": "Azure AI Transcription SDK for Python. Use for real-time and batch speech-to-text transcription with timestamps and diarization.",
+      "path": "azure-ai-transcription-py/SKILL.md",
+      "tags": [
+        "azure",
+        "transcription",
+        "sdk",
+        "python",
+        "real",
+        "time"
+      ]
+    },
+    {
+      "id": "azure-ai-translation-document-py",
+      "description": "Azure AI Document Translation SDK for batch translation of documents with format preservation. Use for translating Word, PDF, Excel, PowerPoint, and other document formats at scale.",
+      "path": "azure-ai-translation-document-py/SKILL.md",
+      "tags": [
+        "azure",
+        "translation",
+        "document",
+        "sdk",
+        "batch",
+        "documents"
+      ]
+    },
+    {
+      "id": "azure-ai-translation-text-py",
+      "description": "Azure AI Text Translation SDK for real-time text translation, transliteration, language detection, and dictionary lookup. Use for translating text content in applications.",
+      "path": "azure-ai-translation-text-py/SKILL.md",
+      "tags": [
+        "azure",
+        "translation",
+        "text",
+        "sdk",
+        "real",
+        "time"
+      ]
+    },
+    {
+      "id": "azure-ai-translation-ts",
+      "description": "Text and document translation with REST-style clients.",
+      "path": "azure-ai-translation-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "translation",
+        "text",
+        "document",
+        "rest",
+        "style"
+      ]
+    },
+    {
+      "id": "azure-ai-vision-imageanalysis-java",
+      "description": "Build image analysis applications with Azure AI Vision SDK for Java. Use when implementing image captioning, OCR text extraction, object detection, tagging, or smart cropping.",
+      "path": "azure-ai-vision-imageanalysis-java/SKILL.md",
+      "tags": [
+        "azure",
+        "vision",
+        "imageanalysis",
+        "java",
+        "build",
+        "image"
+      ]
+    },
+    {
+      "id": "azure-ai-vision-imageanalysis-py",
+      "description": "Azure AI Vision Image Analysis SDK for captions, tags, objects, OCR, people detection, and smart cropping. Use for computer vision and image understanding tasks.",
+      "path": "azure-ai-vision-imageanalysis-py/SKILL.md",
+      "tags": [
+        "azure",
+        "vision",
+        "imageanalysis",
+        "image",
+        "analysis",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-ai-voicelive-dotnet",
+      "description": "Azure AI Voice Live SDK for .NET. Build real-time voice AI applications with bidirectional WebSocket communication.",
+      "path": "azure-ai-voicelive-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "voicelive",
+        "dotnet",
+        "voice",
+        "live",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-ai-voicelive-java",
+      "description": "Azure AI VoiceLive SDK for Java. Real-time bidirectional voice conversations with AI assistants using WebSocket.",
+      "path": "azure-ai-voicelive-java/SKILL.md",
+      "tags": [
+        "azure",
+        "voicelive",
+        "java",
+        "sdk",
+        "real",
+        "time"
+      ]
+    },
+    {
+      "id": "azure-ai-voicelive-py",
+      "description": "Build real-time voice AI applications with bidirectional WebSocket communication.",
+      "path": "azure-ai-voicelive-py/SKILL.md",
+      "tags": [
+        "azure",
+        "voicelive",
+        "build",
+        "real",
+        "time",
+        "voice"
+      ]
+    },
+    {
+      "id": "azure-ai-voicelive-ts",
+      "description": "Azure AI Voice Live SDK for JavaScript/TypeScript. Build real-time voice AI applications with bidirectional WebSocket communication.",
+      "path": "azure-ai-voicelive-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "voicelive",
+        "voice",
+        "live",
+        "sdk",
+        "javascript"
+      ]
+    },
+    {
+      "id": "azure-appconfiguration-java",
+      "description": "Azure App Configuration SDK for Java. Centralized application configuration management with key-value settings, feature flags, and snapshots.",
+      "path": "azure-appconfiguration-java/SKILL.md",
+      "tags": [
+        "azure",
+        "appconfiguration",
+        "java",
+        "app",
+        "configuration",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-appconfiguration-py",
+      "description": "Azure App Configuration SDK for Python. Use for centralized configuration management, feature flags, and dynamic settings.",
+      "path": "azure-appconfiguration-py/SKILL.md",
+      "tags": [
+        "azure",
+        "appconfiguration",
+        "app",
+        "configuration",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-appconfiguration-ts",
+      "description": "Centralized configuration management with feature flags and dynamic refresh.",
+      "path": "azure-appconfiguration-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "appconfiguration",
+        "centralized",
+        "configuration",
+        "feature",
+        "flags"
+      ]
+    },
+    {
+      "id": "azure-communication-callautomation-java",
+      "description": "Build server-side call automation workflows including IVR systems, call routing, recording, and AI-powered interactions.",
+      "path": "azure-communication-callautomation-java/SKILL.md",
+      "tags": [
+        "azure",
+        "communication",
+        "callautomation",
+        "java",
+        "build",
+        "server"
+      ]
+    },
+    {
+      "id": "azure-communication-callingserver-java",
+      "description": "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.",
+      "path": "azure-communication-callingserver-java/SKILL.md",
+      "tags": [
+        "azure",
+        "communication",
+        "callingserver",
+        "java",
+        "deprecated",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-communication-chat-java",
+      "description": "Build real-time chat applications with thread management, messaging, participants, and read receipts.",
+      "path": "azure-communication-chat-java/SKILL.md",
+      "tags": [
+        "azure",
+        "communication",
+        "chat",
+        "java",
+        "build",
+        "real"
+      ]
+    },
+    {
+      "id": "azure-communication-common-java",
+      "description": "Azure Communication Services common utilities for Java. Use when working with CommunicationTokenCredential, user identifiers, token refresh, or shared authentication across ACS services.",
+      "path": "azure-communication-common-java/SKILL.md",
+      "tags": [
+        "azure",
+        "communication",
+        "common",
+        "java",
+        "services",
+        "utilities"
+      ]
+    },
+    {
+      "id": "azure-communication-sms-java",
+      "description": "Send SMS messages with Azure Communication Services SMS Java SDK. Use when implementing SMS notifications, alerts, OTP delivery, bulk messaging, or delivery reports.",
+      "path": "azure-communication-sms-java/SKILL.md",
+      "tags": [
+        "azure",
+        "communication",
+        "sms",
+        "java",
+        "send",
+        "messages"
+      ]
+    },
+    {
+      "id": "azure-compute-batch-java",
+      "description": "Azure Batch SDK for Java. Run large-scale parallel and HPC batch jobs with pools, jobs, tasks, and compute nodes.",
+      "path": "azure-compute-batch-java/SKILL.md",
+      "tags": [
+        "azure",
+        "compute",
+        "batch",
+        "java",
+        "sdk",
+        "run"
+      ]
+    },
+    {
+      "id": "azure-containerregistry-py",
+      "description": "Azure Container Registry SDK for Python. Use for managing container images, artifacts, and repositories.",
+      "path": "azure-containerregistry-py/SKILL.md",
+      "tags": [
+        "azure",
+        "containerregistry",
+        "container",
+        "registry",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-cosmos-db-py",
+      "description": "Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.",
+      "path": "azure-cosmos-db-py/SKILL.md",
+      "tags": [
+        "azure",
+        "cosmos",
+        "build",
+        "grade",
+        "nosql",
+        "services"
+      ]
+    },
+    {
+      "id": "azure-cosmos-java",
+      "description": "Azure Cosmos DB SDK for Java. NoSQL database operations with global distribution, multi-model support, and reactive patterns.",
+      "path": "azure-cosmos-java/SKILL.md",
+      "tags": [
+        "azure",
+        "cosmos",
+        "java",
+        "sdk",
+        "nosql",
+        "database"
+      ]
+    },
+    {
+      "id": "azure-cosmos-py",
+      "description": "Cosmos DB NoSQL for Python",
+      "path": "azure-cosmos-py/SKILL.md",
+      "tags": [
+        "azure",
+        "cosmos",
+        "nosql",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-cosmos-rust",
+      "description": "Azure Cosmos DB SDK for Rust (NoSQL API). Use for document CRUD, queries, containers, and globally distributed data.",
+      "path": "azure-cosmos-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "cosmos",
+        "rust",
+        "sdk",
+        "nosql",
+        "api"
+      ]
+    },
+    {
+      "id": "azure-cosmos-ts",
+      "description": "Azure Cosmos DB JavaScript/TypeScript SDK (@azure/cosmos) for data plane operations. Use for CRUD operations on documents, queries, bulk operations, and container management.",
+      "path": "azure-cosmos-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "cosmos",
+        "javascript",
+        "typescript",
+        "sdk",
+        "data"
+      ]
+    },
+    {
+      "id": "azure-data-tables-java",
+      "description": "Build table storage applications using the Azure Tables SDK for Java. Works with both Azure Table Storage and Cosmos DB Table API.",
+      "path": "azure-data-tables-java/SKILL.md",
+      "tags": [
+        "azure",
+        "data",
+        "tables",
+        "java",
+        "build",
+        "table"
+      ]
+    },
+    {
+      "id": "azure-data-tables-py",
+      "description": "Azure Tables SDK for Python (Storage and Cosmos DB). Use for NoSQL key-value storage, entity CRUD, and batch operations.",
+      "path": "azure-data-tables-py/SKILL.md",
+      "tags": [
+        "azure",
+        "data",
+        "tables",
+        "sdk",
+        "python",
+        "storage"
+      ]
+    },
+    {
+      "id": "azure-eventgrid-dotnet",
+      "description": "Azure Event Grid SDK for .NET. Client library for publishing and consuming events with Azure Event Grid. Use for event-driven architectures, pub/sub messaging, CloudEvents, and EventGridEvents.",
+      "path": "azure-eventgrid-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "eventgrid",
+        "dotnet",
+        "event",
+        "grid",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-eventgrid-java",
+      "description": "Build event-driven applications with Azure Event Grid SDK for Java. Use when publishing events, implementing pub/sub patterns, or integrating with Azure services via events.",
+      "path": "azure-eventgrid-java/SKILL.md",
+      "tags": [
+        "azure",
+        "eventgrid",
+        "java",
+        "build",
+        "event",
+        "driven"
+      ]
+    },
+    {
+      "id": "azure-eventgrid-py",
+      "description": "Azure Event Grid SDK for Python. Use for publishing events, handling CloudEvents, and event-driven architectures.",
+      "path": "azure-eventgrid-py/SKILL.md",
+      "tags": [
+        "azure",
+        "eventgrid",
+        "event",
+        "grid",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-eventhub-dotnet",
+      "description": "Azure Event Hubs SDK for .NET.",
+      "path": "azure-eventhub-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "eventhub",
+        "dotnet",
+        "event",
+        "hubs",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-eventhub-java",
+      "description": "Build real-time streaming applications with Azure Event Hubs SDK for Java. Use when implementing event streaming, high-throughput data ingestion, or building event-driven architectures.",
+      "path": "azure-eventhub-java/SKILL.md",
+      "tags": [
+        "azure",
+        "eventhub",
+        "java",
+        "build",
+        "real",
+        "time"
+      ]
+    },
+    {
+      "id": "azure-eventhub-py",
+      "description": "Azure Event Hubs streaming",
+      "path": "azure-eventhub-py/SKILL.md",
+      "tags": [
+        "azure",
+        "eventhub",
+        "event",
+        "hubs",
+        "streaming"
+      ]
+    },
+    {
+      "id": "azure-eventhub-rust",
+      "description": "Azure Event Hubs SDK for Rust. Use for sending and receiving events, streaming data ingestion.",
+      "path": "azure-eventhub-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "eventhub",
+        "rust",
+        "event",
+        "hubs",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-eventhub-ts",
+      "description": "High-throughput event streaming and real-time data ingestion.",
+      "path": "azure-eventhub-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "eventhub",
+        "high",
+        "throughput",
+        "event",
+        "streaming"
+      ]
+    },
+    {
+      "id": "azure-functions",
+      "description": "Modern .NET execution model with process isolation",
+      "path": "azure-functions/SKILL.md",
+      "tags": [
+        "azure",
+        "functions",
+        "modern",
+        "net",
+        "execution",
+        "model"
+      ]
+    },
+    {
+      "id": "azure-identity-dotnet",
+      "description": "Azure Identity SDK for .NET. Authentication library for Azure SDK clients using Microsoft Entra ID. Use for DefaultAzureCredential, managed identity, service principals, and developer credentials.",
+      "path": "azure-identity-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "identity",
+        "dotnet",
+        "sdk",
+        "net",
+        "authentication"
+      ]
+    },
+    {
+      "id": "azure-identity-java",
+      "description": "Authenticate Java applications with Azure services using Microsoft Entra ID (Azure AD).",
+      "path": "azure-identity-java/SKILL.md",
+      "tags": [
+        "azure",
+        "identity",
+        "java",
+        "authenticate",
+        "applications",
+        "services"
+      ]
+    },
+    {
+      "id": "azure-identity-py",
+      "description": "Azure Identity authentication",
+      "path": "azure-identity-py/SKILL.md",
+      "tags": [
+        "azure",
+        "identity",
+        "authentication"
+      ]
+    },
+    {
+      "id": "azure-identity-rust",
+      "description": "Azure Identity SDK for Rust authentication. Use for DeveloperToolsCredential, ManagedIdentityCredential, ClientSecretCredential, and token-based authentication.",
+      "path": "azure-identity-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "identity",
+        "rust",
+        "sdk",
+        "authentication",
+        "developertoolscredential"
+      ]
+    },
+    {
+      "id": "azure-identity-ts",
+      "description": "Authenticate to Azure services with various credential types.",
+      "path": "azure-identity-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "identity",
+        "authenticate",
+        "services",
+        "various",
+        "credential"
+      ]
+    },
+    {
+      "id": "azure-keyvault-certificates-rust",
+      "description": "Azure Key Vault Certificates SDK for Rust. Use for creating, importing, and managing certificates.",
+      "path": "azure-keyvault-certificates-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "keyvault",
+        "certificates",
+        "rust",
+        "key",
+        "vault"
+      ]
+    },
+    {
+      "id": "azure-keyvault-keys-rust",
+      "description": "Azure Key Vault Keys SDK for Rust. Use for creating, managing, and using cryptographic keys. Triggers: \"keyvault keys rust\", \"KeyClient rust\", \"create key rust\", \"encrypt rust\", \"sign rust\".",
+      "path": "azure-keyvault-keys-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "keyvault",
+        "keys",
+        "rust",
+        "key",
+        "vault"
+      ]
+    },
+    {
+      "id": "azure-keyvault-keys-ts",
+      "description": "Manage cryptographic keys using Azure Key Vault Keys SDK for JavaScript (@azure/keyvault-keys). Use when creating, encrypting/decrypting, signing, or rotating keys.",
+      "path": "azure-keyvault-keys-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "keyvault",
+        "keys",
+        "manage",
+        "cryptographic",
+        "key"
+      ]
+    },
+    {
+      "id": "azure-keyvault-py",
+      "description": "Azure Key Vault secrets/keys",
+      "path": "azure-keyvault-py/SKILL.md",
+      "tags": [
+        "azure",
+        "keyvault",
+        "key",
+        "vault",
+        "secrets",
+        "keys"
+      ]
+    },
+    {
+      "id": "azure-keyvault-secrets-rust",
+      "description": "Azure Key Vault Secrets SDK for Rust. Use for storing and retrieving secrets, passwords, and API keys. Triggers: \"keyvault secrets rust\", \"SecretClient rust\", \"get secret rust\", \"set secret rust\".",
+      "path": "azure-keyvault-secrets-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "keyvault",
+        "secrets",
+        "rust",
+        "key",
+        "vault"
+      ]
+    },
+    {
+      "id": "azure-keyvault-secrets-ts",
+      "description": "Manage secrets using Azure Key Vault Secrets SDK for JavaScript (@azure/keyvault-secrets). Use when storing and retrieving application secrets or configuration values.",
+      "path": "azure-keyvault-secrets-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "keyvault",
+        "secrets",
+        "manage",
+        "key",
+        "vault"
+      ]
+    },
+    {
+      "id": "azure-maps-search-dotnet",
+      "description": "Azure Maps SDK for .NET. Location-based services including geocoding, routing, rendering, geolocation, and weather. Use for address search, directions, map tiles, IP geolocation, and weather data.",
+      "path": "azure-maps-search-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "maps",
+        "search",
+        "dotnet",
+        "sdk",
+        "net"
+      ]
+    },
+    {
+      "id": "azure-messaging-webpubsub-java",
+      "description": "Build real-time web applications with Azure Web PubSub SDK for Java. Use when implementing WebSocket-based messaging, live updates, chat applications, or server-to-client push notifications.",
+      "path": "azure-messaging-webpubsub-java/SKILL.md",
+      "tags": [
+        "azure",
+        "messaging",
+        "webpubsub",
+        "java",
+        "build",
+        "real"
+      ]
+    },
+    {
+      "id": "azure-messaging-webpubsubservice-py",
+      "description": "Azure Web PubSub Service SDK for Python. Use for real-time messaging, WebSocket connections, and pub/sub patterns.",
+      "path": "azure-messaging-webpubsubservice-py/SKILL.md",
+      "tags": [
+        "azure",
+        "messaging",
+        "webpubsubservice",
+        "web",
+        "pubsub",
+        "service"
+      ]
+    },
+    {
+      "id": "azure-mgmt-apicenter-dotnet",
+      "description": "Azure API Center SDK for .NET. Centralized API inventory management with governance, versioning, and discovery.",
+      "path": "azure-mgmt-apicenter-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "apicenter",
+        "dotnet",
+        "api",
+        "center"
+      ]
+    },
+    {
+      "id": "azure-mgmt-apicenter-py",
+      "description": "Azure API Center Management SDK for Python. Use for managing API inventory, metadata, and governance across your organization.",
+      "path": "azure-mgmt-apicenter-py/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "apicenter",
+        "api",
+        "center",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-mgmt-apimanagement-dotnet",
+      "description": "Azure Resource Manager SDK for API Management in .NET.",
+      "path": "azure-mgmt-apimanagement-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "apimanagement",
+        "dotnet",
+        "resource",
+        "manager"
+      ]
+    },
+    {
+      "id": "azure-mgmt-apimanagement-py",
+      "description": "Azure API Management SDK for Python. Use for managing APIM services, APIs, products, subscriptions, and policies.",
+      "path": "azure-mgmt-apimanagement-py/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "apimanagement",
+        "api",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-mgmt-applicationinsights-dotnet",
+      "description": "Azure Application Insights SDK for .NET. Application performance monitoring and observability resource management.",
+      "path": "azure-mgmt-applicationinsights-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "applicationinsights",
+        "dotnet",
+        "application",
+        "insights"
+      ]
+    },
+    {
+      "id": "azure-mgmt-arizeaiobservabilityeval-dotnet",
+      "description": "Azure Resource Manager SDK for Arize AI Observability and Evaluation (.NET).",
+      "path": "azure-mgmt-arizeaiobservabilityeval-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "arizeaiobservabilityeval",
+        "dotnet",
+        "resource",
+        "manager"
+      ]
+    },
+    {
+      "id": "azure-mgmt-botservice-dotnet",
+      "description": "Azure Resource Manager SDK for Bot Service in .NET. Management plane operations for creating and managing Azure Bot resources, channels (Teams, DirectLine, Slack), and connection settings.",
+      "path": "azure-mgmt-botservice-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "botservice",
+        "dotnet",
+        "resource",
+        "manager"
+      ]
+    },
+    {
+      "id": "azure-mgmt-botservice-py",
+      "description": "Azure Bot Service Management SDK for Python. Use for creating, managing, and configuring Azure Bot Service resources.",
+      "path": "azure-mgmt-botservice-py/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "botservice",
+        "bot",
+        "service",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-mgmt-fabric-dotnet",
+      "description": "Azure Resource Manager SDK for Fabric in .NET.",
+      "path": "azure-mgmt-fabric-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "fabric",
+        "dotnet",
+        "resource",
+        "manager"
+      ]
+    },
+    {
+      "id": "azure-mgmt-fabric-py",
+      "description": "Azure Fabric Management SDK for Python. Use for managing Microsoft Fabric capacities and resources.",
+      "path": "azure-mgmt-fabric-py/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "fabric",
+        "sdk",
+        "python",
+        "managing"
+      ]
+    },
+    {
+      "id": "azure-mgmt-mongodbatlas-dotnet",
+      "description": "Manage MongoDB Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace.",
+      "path": "azure-mgmt-mongodbatlas-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "mongodbatlas",
+        "dotnet",
+        "manage",
+        "mongodb"
+      ]
+    },
+    {
+      "id": "azure-mgmt-weightsandbiases-dotnet",
+      "description": "Azure Weights & Biases SDK for .NET. ML experiment tracking and model management via Azure Marketplace. Use for creating W&B instances, managing SSO, marketplace integration, and ML observability.",
+      "path": "azure-mgmt-weightsandbiases-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "mgmt",
+        "weightsandbiases",
+        "dotnet",
+        "weights",
+        "biases"
+      ]
+    },
+    {
+      "id": "azure-microsoft-playwright-testing-ts",
+      "description": "Run Playwright tests at scale with cloud-hosted browsers and integrated Azure portal reporting.",
+      "path": "azure-microsoft-playwright-testing-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "microsoft",
+        "playwright",
+        "testing",
+        "run",
+        "tests"
+      ]
+    },
+    {
+      "id": "azure-monitor-ingestion-java",
+      "description": "Azure Monitor Ingestion SDK for Java. Send custom logs to Azure Monitor via Data Collection Rules (DCR) and Data Collection Endpoints (DCE).",
+      "path": "azure-monitor-ingestion-java/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "ingestion",
+        "java",
+        "sdk",
+        "send"
+      ]
+    },
+    {
+      "id": "azure-monitor-ingestion-py",
+      "description": "Azure Monitor Ingestion SDK for Python. Use for sending custom logs to Log Analytics workspace via Logs Ingestion API.",
+      "path": "azure-monitor-ingestion-py/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "ingestion",
+        "sdk",
+        "python",
+        "sending"
+      ]
+    },
+    {
+      "id": "azure-monitor-opentelemetry-exporter-java",
+      "description": "Azure Monitor OpenTelemetry Exporter for Java. Export OpenTelemetry traces, metrics, and logs to Azure Monitor/Application Insights.",
+      "path": "azure-monitor-opentelemetry-exporter-java/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "opentelemetry",
+        "exporter",
+        "java",
+        "export"
+      ]
+    },
+    {
+      "id": "azure-monitor-opentelemetry-exporter-py",
+      "description": "Azure Monitor OpenTelemetry Exporter for Python. Use for low-level OpenTelemetry export to Application Insights.",
+      "path": "azure-monitor-opentelemetry-exporter-py/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "opentelemetry",
+        "exporter",
+        "python",
+        "low"
+      ]
+    },
+    {
+      "id": "azure-monitor-opentelemetry-py",
+      "description": "Azure Monitor OpenTelemetry Distro for Python. Use for one-line Application Insights setup with auto-instrumentation.",
+      "path": "azure-monitor-opentelemetry-py/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "opentelemetry",
+        "distro",
+        "python",
+        "one"
+      ]
+    },
+    {
+      "id": "azure-monitor-opentelemetry-ts",
+      "description": "Auto-instrument Node.js applications with distributed tracing, metrics, and logs.",
+      "path": "azure-monitor-opentelemetry-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "opentelemetry",
+        "auto",
+        "instrument",
+        "node"
+      ]
+    },
+    {
+      "id": "azure-monitor-query-java",
+      "description": "Azure Monitor Query SDK for Java. Execute Kusto queries against Log Analytics workspaces and query metrics from Azure resources.",
+      "path": "azure-monitor-query-java/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "query",
+        "java",
+        "sdk",
+        "execute"
+      ]
+    },
+    {
+      "id": "azure-monitor-query-py",
+      "description": "Azure Monitor Query SDK for Python. Use for querying Log Analytics workspaces and Azure Monitor metrics.",
+      "path": "azure-monitor-query-py/SKILL.md",
+      "tags": [
+        "azure",
+        "monitor",
+        "query",
+        "sdk",
+        "python",
+        "querying"
+      ]
+    },
+    {
+      "id": "azure-postgres-ts",
+      "description": "Connect to Azure Database for PostgreSQL Flexible Server from Node.js/TypeScript using the pg (node-postgres) package.",
+      "path": "azure-postgres-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "postgres",
+        "connect",
+        "database",
+        "postgresql",
+        "flexible"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-cosmosdb-dotnet",
+      "description": "Azure Resource Manager SDK for Cosmos DB in .NET.",
+      "path": "azure-resource-manager-cosmosdb-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "cosmosdb",
+        "dotnet",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-durabletask-dotnet",
+      "description": "Azure Resource Manager SDK for Durable Task Scheduler in .NET.",
+      "path": "azure-resource-manager-durabletask-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "durabletask",
+        "dotnet",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-mysql-dotnet",
+      "description": "Azure MySQL Flexible Server SDK for .NET. Database management for MySQL Flexible Server deployments.",
+      "path": "azure-resource-manager-mysql-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "mysql",
+        "dotnet",
+        "flexible"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-playwright-dotnet",
+      "description": "Azure Resource Manager SDK for Microsoft Playwright Testing in .NET.",
+      "path": "azure-resource-manager-playwright-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "playwright",
+        "dotnet",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-postgresql-dotnet",
+      "description": "Azure PostgreSQL Flexible Server SDK for .NET. Database management for PostgreSQL Flexible Server deployments.",
+      "path": "azure-resource-manager-postgresql-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "postgresql",
+        "dotnet",
+        "flexible"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-redis-dotnet",
+      "description": "Azure Resource Manager SDK for Redis in .NET.",
+      "path": "azure-resource-manager-redis-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "redis",
+        "dotnet",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-sql-dotnet",
+      "description": "Azure Resource Manager SDK for Azure SQL in .NET.",
+      "path": "azure-resource-manager-sql-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "resource",
+        "manager",
+        "sql",
+        "dotnet",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-search-documents-dotnet",
+      "description": "Azure AI Search SDK for .NET (Azure.Search.Documents). Use for building search applications with full-text, vector, semantic, and hybrid search.",
+      "path": "azure-search-documents-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "search",
+        "documents",
+        "dotnet",
+        "sdk",
+        "net"
+      ]
+    },
+    {
+      "id": "azure-search-documents-py",
+      "description": "Azure AI Search (vector, hybrid, semantic)",
+      "path": "azure-search-documents-py/SKILL.md",
+      "tags": [
+        "azure",
+        "search",
+        "documents",
+        "vector",
+        "hybrid",
+        "semantic"
+      ]
+    },
+    {
+      "id": "azure-search-documents-ts",
+      "description": "Build search applications with vector, hybrid, and semantic search capabilities.",
+      "path": "azure-search-documents-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "search",
+        "documents",
+        "build",
+        "applications",
+        "vector"
+      ]
+    },
+    {
+      "id": "azure-security-keyvault-keys-dotnet",
+      "description": "Azure Key Vault Keys SDK for .NET. Client library for managing cryptographic keys in Azure Key Vault and Managed HSM. Use for key creation, rotation, encryption, decryption, signing, and verification.",
+      "path": "azure-security-keyvault-keys-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "security",
+        "keyvault",
+        "keys",
+        "dotnet",
+        "key"
+      ]
+    },
+    {
+      "id": "azure-security-keyvault-keys-java",
+      "description": "Azure Key Vault Keys Java SDK for cryptographic key management. Use when creating, managing, or using RSA/EC keys, performing encrypt/decrypt/sign/verify operations, or working with HSM-backed keys.",
+      "path": "azure-security-keyvault-keys-java/SKILL.md",
+      "tags": [
+        "azure",
+        "security",
+        "keyvault",
+        "keys",
+        "java",
+        "key"
+      ]
+    },
+    {
+      "id": "azure-security-keyvault-secrets-java",
+      "description": "Azure Key Vault Secrets Java SDK for secret management. Use when storing, retrieving, or managing passwords, API keys, connection strings, or other sensitive configuration data.",
+      "path": "azure-security-keyvault-secrets-java/SKILL.md",
+      "tags": [
+        "azure",
+        "security",
+        "keyvault",
+        "secrets",
+        "java",
+        "key"
+      ]
+    },
+    {
+      "id": "azure-servicebus-dotnet",
+      "description": "Azure Service Bus SDK for .NET. Enterprise messaging with queues, topics, subscriptions, and sessions.",
+      "path": "azure-servicebus-dotnet/SKILL.md",
+      "tags": [
+        "azure",
+        "servicebus",
+        "dotnet",
+        "service",
+        "bus",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-servicebus-py",
+      "description": "Azure Service Bus messaging",
+      "path": "azure-servicebus-py/SKILL.md",
+      "tags": [
+        "azure",
+        "servicebus",
+        "service",
+        "bus",
+        "messaging"
+      ]
+    },
+    {
+      "id": "azure-servicebus-ts",
+      "description": "Enterprise messaging with queues, topics, and subscriptions.",
+      "path": "azure-servicebus-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "servicebus",
+        "enterprise",
+        "messaging",
+        "queues",
+        "topics"
+      ]
+    },
+    {
+      "id": "azure-speech-to-text-rest-py",
+      "description": "Azure Speech to Text REST API for short audio (Python). Use for simple speech recognition of audio files up to 60 seconds without the Speech SDK.",
+      "path": "azure-speech-to-text-rest-py/SKILL.md",
+      "tags": [
+        "azure",
+        "speech",
+        "text",
+        "rest",
+        "api",
+        "short"
+      ]
+    },
+    {
+      "id": "azure-storage-blob-java",
+      "description": "Build blob storage applications using the Azure Storage Blob SDK for Java.",
+      "path": "azure-storage-blob-java/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "blob",
+        "java",
+        "build",
+        "applications"
+      ]
+    },
+    {
+      "id": "azure-storage-blob-py",
+      "description": "Azure Blob Storage for Python",
+      "path": "azure-storage-blob-py/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "blob",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-storage-blob-rust",
+      "description": "Azure Blob Storage SDK for Rust. Use for uploading, downloading, and managing blobs and containers.",
+      "path": "azure-storage-blob-rust/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "blob",
+        "rust",
+        "sdk",
+        "uploading"
+      ]
+    },
+    {
+      "id": "azure-storage-blob-ts",
+      "description": "Azure Blob Storage JavaScript/TypeScript SDK (@azure/storage-blob) for blob operations. Use for uploading, downloading, listing, and managing blobs and containers.",
+      "path": "azure-storage-blob-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "blob",
+        "javascript",
+        "typescript",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-storage-file-datalake-py",
+      "description": "Azure Data Lake Storage Gen2 SDK for Python. Use for hierarchical file systems, big data analytics, and file/directory operations.",
+      "path": "azure-storage-file-datalake-py/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "file",
+        "datalake",
+        "data",
+        "lake"
+      ]
+    },
+    {
+      "id": "azure-storage-file-share-py",
+      "description": "Azure Storage File Share SDK for Python. Use for SMB file shares, directories, and file operations in the cloud.",
+      "path": "azure-storage-file-share-py/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "file",
+        "share",
+        "sdk",
+        "python"
+      ]
+    },
+    {
+      "id": "azure-storage-file-share-ts",
+      "description": "Azure File Share JavaScript/TypeScript SDK (@azure/storage-file-share) for SMB file share operations.",
+      "path": "azure-storage-file-share-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "file",
+        "share",
+        "javascript",
+        "typescript"
+      ]
+    },
+    {
+      "id": "azure-storage-queue-py",
+      "description": "Azure Queue Storage SDK for Python. Use for reliable message queuing, task distribution, and asynchronous processing.",
+      "path": "azure-storage-queue-py/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "queue",
+        "sdk",
+        "python",
+        "reliable"
+      ]
+    },
+    {
+      "id": "azure-storage-queue-ts",
+      "description": "Azure Queue Storage JavaScript/TypeScript SDK (@azure/storage-queue) for message queue operations. Use for sending, receiving, peeking, and deleting messages in queues.",
+      "path": "azure-storage-queue-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "storage",
+        "queue",
+        "javascript",
+        "typescript",
+        "sdk"
+      ]
+    },
+    {
+      "id": "azure-web-pubsub-ts",
+      "description": "Real-time messaging with WebSocket connections and pub/sub patterns.",
+      "path": "azure-web-pubsub-ts/SKILL.md",
+      "tags": [
+        "azure",
+        "web",
+        "pubsub",
+        "real",
+        "time",
+        "messaging"
+      ]
+    },
+    {
+      "id": "cloud-penetration-testing",
+      "description": "Conduct comprehensive security assessments of cloud infrastructure across Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP).",
+      "path": "cloud-penetration-testing/SKILL.md",
+      "tags": [
+        "cloud",
+        "penetration",
+        "testing",
+        "conduct",
+        "security",
+        "assessments"
+      ]
+    },
+    {
+      "id": "cost-optimization",
+      "description": "Strategies and patterns for optimizing cloud costs across AWS, Azure, and GCP.",
+      "path": "cost-optimization/SKILL.md",
+      "tags": [
+        "cost",
+        "optimization",
+        "strategies",
+        "patterns",
+        "optimizing",
+        "cloud"
+      ]
+    },
+    {
+      "id": "database-cloud-optimization-cost-optimize",
+      "description": "You are a cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyze cloud spending, identify savings opportunities, and implement cost-effective architectures across AWS, Azure, and GCP.",
+      "path": "database-cloud-optimization-cost-optimize/SKILL.md",
+      "tags": [
+        "database",
+        "cloud",
+        "optimization",
+        "cost",
+        "optimize",
+        "you"
+      ]
+    },
+    {
+      "id": "hosted-agents-v2-py",
+      "description": "Build hosted agents using Azure AI Projects SDK with ImageBasedHostedAgentDefinition. Use when creating container-based agents in Azure AI Foundry.",
+      "path": "hosted-agents-v2-py/SKILL.md",
+      "tags": [
+        "hosted",
+        "agents",
+        "build",
+        "azure",
+        "projects",
+        "sdk"
+      ]
+    },
+    {
+      "id": "hybrid-cloud-architect",
+      "description": "Expert hybrid cloud architect specializing in complex multi-cloud solutions across AWS/Azure/GCP and private clouds (OpenStack/VMware).",
+      "path": "hybrid-cloud-architect/SKILL.md",
+      "tags": [
+        "hybrid",
+        "cloud",
+        "architect",
+        "specializing",
+        "complex",
+        "multi"
+      ]
+    },
+    {
+      "id": "microsoft-azure-webjobs-extensions-authentication-events-dotnet",
+      "description": "Microsoft Entra Authentication Events SDK for .NET. Azure Functions triggers for custom authentication extensions.",
+      "path": "microsoft-azure-webjobs-extensions-authentication-events-dotnet/SKILL.md",
+      "tags": [
+        "microsoft",
+        "azure",
+        "webjobs",
+        "extensions",
+        "authentication",
+        "events"
+      ]
+    },
+    {
+      "id": "multi-cloud-architecture",
+      "description": "Decision framework and patterns for architecting applications across AWS, Azure, and GCP.",
+      "path": "multi-cloud-architecture/SKILL.md",
+      "tags": [
+        "multi",
+        "cloud",
+        "decision",
+        "patterns",
+        "architecting",
+        "applications"
+      ]
+    },
+    {
+      "id": "podcast-generation",
+      "description": "Generate real audio narratives from text content using Azure OpenAI's Realtime API.",
+      "path": "podcast-generation/SKILL.md",
+      "tags": [
+        "podcast",
+        "generation",
+        "generate",
+        "real",
+        "audio",
+        "narratives"
+      ]
+    },
+    {
+      "id": "skill-creator-ms",
+      "description": "Guide for creating effective skills for AI coding agents working with Azure SDKs and Microsoft Foundry services. Use when creating new skills or updating existing skills.",
+      "path": "skill-creator-ms/SKILL.md",
+      "tags": [
+        "skill",
+        "creator",
+        "guide",
+        "creating",
+        "effective",
+        "skills"
+      ]
+    },
+    {
+      "id": "terraform-module-library",
+      "description": "Production-ready Terraform module patterns for AWS, Azure, and GCP infrastructure.",
+      "path": "terraform-module-library/SKILL.md",
+      "tags": [
+        "terraform",
+        "module",
+        "library",
+        "patterns",
+        "aws",
+        "azure"
+      ]
+    }
+  ]
+}
