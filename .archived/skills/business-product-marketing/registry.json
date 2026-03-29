@@ -6,6 +6,7 @@
       "id": "business-analyst",
       "description": "KPI frameworks, predictive models",
       "path": "business-analyst/SKILL.md",
+      "triggers": [],
       "tags": [
         "analytics",
         "business",
@@ -21,6 +22,7 @@
       "id": "copywriting",
       "description": "Conversion-focused marketing copy",
       "path": "copywriting/SKILL.md",
+      "triggers": [],
       "tags": [
         "phase",
         "copy",
@@ -36,6 +38,7 @@
       "id": "micro-saas-launcher",
       "description": "Idea → paying customers in weeks",
       "path": "micro-saas-launcher/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "pricing",
@@ -51,6 +54,7 @@
       "id": "pricing-strategy",
       "description": "Pricing, packaging, monetization",
       "path": "pricing-strategy/SKILL.md",
+      "triggers": [],
       "tags": [
         "pricing",
         "price",
@@ -66,6 +70,7 @@
       "id": "saas-mvp-launcher",
       "description": "SaaS MVP roadmap",
       "path": "saas-mvp-launcher/SKILL.md",
+      "triggers": [],
       "tags": [
         "stripe",
         "authentication",
@@ -81,6 +86,7 @@
       "id": "sales-automator",
       "description": "Cold emails, proposals, pricing pages",
       "path": "sales-automator/SKILL.md",
+      "triggers": [],
       "tags": [
         "focus",
         "instructions",
@@ -96,6 +102,7 @@
       "id": "senior-product-manager",
       "description": "PM agent with 30+ frameworks",
       "path": "senior-product-manager/SKILL.md",
+      "triggers": [],
       "tags": [
         "product",
         "decision",
@@ -111,6 +118,7 @@
       "id": "startup-analyst",
       "description": "Market sizing, financial modeling",
       "path": "startup-analyst/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "financial",
@@ -126,6 +134,7 @@
       "id": "whatsapp-automation",
       "description": "Automate WhatsApp Business tasks via Rube MCP (Composio): send messages, manage templates, upload media, and handle contacts. Always search tools first for current schemas.",
       "path": "whatsapp-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "send",

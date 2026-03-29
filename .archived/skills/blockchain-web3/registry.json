@@ -6,6 +6,7 @@
       "id": "blockchain-developer",
       "description": "Smart contracts, DeFi, NFTs, DAOs",
       "path": "blockchain-developer/SKILL.md",
+      "triggers": [],
       "tags": [
         "ethereum",
         "blockchain",
@@ -21,6 +22,7 @@
       "id": "nft-standards",
       "description": "ERC-721, ERC-1155 best practices",
       "path": "nft-standards/SKILL.md",
+      "triggers": [],
       "tags": [
         "nft",
         "metadata",
@@ -36,6 +38,7 @@
       "id": "solidity-security",
       "description": "Smart contract security patterns",
       "path": "solidity-security/SKILL.md",
+      "triggers": [],
       "tags": [
         "solidity",
         "resources",
@@ -51,6 +54,7 @@
       "id": "web3-testing",
       "description": "Hardhat, Foundry testing strategies",
       "path": "web3-testing/SKILL.md",
+      "triggers": [],
       "tags": [
         "testing",
         "hardhat",

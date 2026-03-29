@@ -6,6 +6,7 @@
       "id": "box-automation",
       "description": "Automate Box operations including file upload/download, content search, folder management, collaboration, metadata queries, and sign requests through Composio's Box toolkit.",
       "path": "box-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "pagination",
         "box",
@@ -21,6 +22,7 @@
       "id": "constant-time-analysis",
       "description": "Analyze cryptographic code to detect operations that leak secret data through execution timing variations.",
       "path": "constant-time-analysis/SKILL.md",
+      "triggers": [],
       "tags": [
         "java",
         "kotlin",
@@ -36,6 +38,7 @@
       "id": "content-marketer",
       "description": "Elite content marketing strategist specializing in AI-powered content creation, omnichannel distribution, SEO optimization, and data-driven performance marketing.",
       "path": "content-marketer/SKILL.md",
+      "triggers": [],
       "tags": [
         "content",
         "seo",
@@ -51,6 +54,7 @@
       "id": "data-engineer",
       "description": "Data pipelines, Spark, dbt, Airflow",
       "path": "data-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "azure",
         "aws",
@@ -66,6 +70,7 @@
       "id": "data-scientist",
       "description": "Advanced analytics, predictive modeling",
       "path": "data-scientist/SKILL.md",
+      "triggers": [],
       "tags": [
         "analytics",
         "monitoring",
@@ -81,6 +86,7 @@
       "id": "data-storytelling",
       "description": "Transform raw data into compelling narratives that drive decisions and inspire action.",
       "path": "data-storytelling/SKILL.md",
+      "triggers": [],
       "tags": [
         "story",
         "analysis",
@@ -96,6 +102,7 @@
       "id": "datadog-automation",
       "description": "Automate Datadog tasks via Rube MCP (Composio): query metrics, search logs, manage monitors/dashboards, create events and downtimes. Always search tools first for current schemas.",
       "path": "datadog-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "datadog",
@@ -111,6 +118,7 @@
       "id": "dbt-transformation-patterns",
       "description": "dbt model organization, testing",
       "path": "dbt-transformation-patterns/SKILL.md",
+      "triggers": [],
       "tags": [
         "resources",
         "dbt",
@@ -126,6 +134,7 @@
       "id": "docx-official",
       "description": "A user may ask you to create, edit, or analyze the contents of a .docx file. A .docx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks.",
       "path": "docx-official/SKILL.md",
+      "triggers": [],
       "tags": [
         "xml",
         "document",
@@ -141,6 +150,7 @@
       "id": "health-trend-analyzer",
       "description": "分析一段时间内健康数据的趋势和模式。关联药物、症状、生命体征、化验结果和其他健康指标的变化。识别令人担忧的趋势、改善情况，并提供数据驱动的洞察。当用户询问健康趋势、模式、随时间的变化或\"我的健康状况有什么变化？\"时使用。支持多维度分析（体重/BMI、症状、药物依从性、化验结果、情绪睡眠），相关性分析，变化检测，以及交互式HTML可视化报告（ECharts图表）。",
       "path": "health-trend-analyzer/SKILL.md",
+      "triggers": [],
       "tags": [
         "bmi",
         "glob",
@@ -156,6 +166,7 @@
       "id": "mailchimp-automation",
       "description": "Automate Mailchimp email marketing including campaigns, audiences, subscribers, segments, and analytics via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "mailchimp-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "html",
         "pagination",
@@ -171,6 +182,7 @@
       "id": "ml-engineer",
       "description": "PyTorch 2.x, TensorFlow, model serving",
       "path": "ml-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "tensorflow",
@@ -186,6 +198,7 @@
       "id": "mlops-engineer",
       "description": "ML pipelines, MLflow, Kubeflow",
       "path": "mlops-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "azure",
@@ -201,6 +214,7 @@
       "id": "polars",
       "description": "Fast DataFrames for 1-100GB datasets",
       "path": "polars/SKILL.md",
+      "triggers": [],
       "tags": [
         "polars",
         "columns",
@@ -216,6 +230,7 @@
       "id": "pptx-official",
       "description": "A user may ask you to create, edit, or analyze the contents of a .pptx file. A .pptx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks.",
       "path": "pptx-official/SKILL.md",
+      "triggers": [],
       "tags": [
         "xml",
         "json",
@@ -231,6 +246,7 @@
       "id": "scikit-learn",
       "description": "Classification, regression, ML pipelines",
       "path": "scikit-learn/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "pipeline",
@@ -246,6 +262,7 @@
       "id": "segment-cdp",
       "description": "Client-side tracking with Analytics.js. Include track, identify, page, and group calls. Anonymous ID persists until identify merges with user.",
       "path": "segment-cdp/SKILL.md",
+      "triggers": [],
       "tags": [
         "tracking",
         "issue",
@@ -261,6 +278,7 @@
       "id": "sendgrid-automation",
       "description": "Automate SendGrid email delivery workflows including marketing campaigns (Single Sends), contact and list management, sender identity setup, and email analytics through Composio's SendGrid toolkit.",
       "path": "sendgrid-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "sendgrid",
@@ -276,6 +294,7 @@
       "id": "spark-optimization",
       "description": "Spark performance tuning",
       "path": "spark-optimization/SKILL.md",
+      "triggers": [],
       "tags": [
         "spark",
         "shuffle",
@@ -291,6 +310,7 @@
       "id": "youtube-automation",
       "description": "Automate YouTube tasks via Rube MCP (Composio): upload videos, manage playlists, search content, get analytics, and handle comments. Always search tools first for current schemas.",
       "path": "youtube-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "pagination",

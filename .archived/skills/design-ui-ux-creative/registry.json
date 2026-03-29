@@ -6,6 +6,7 @@
       "id": "3d-web-experience",
       "description": "3D on the web: impact vs. performance",
       "path": "3d-web-experience/SKILL.md",
+      "triggers": [],
       "tags": [
         "react",
         "model",
@@ -21,6 +22,7 @@
       "id": "agent-manager-skill",
       "description": "Manage multiple local CLI agents via tmux sessions (start/stop/monitor/assign) with cron-friendly scheduling.",
       "path": "agent-manager-skill/SKILL.md",
+      "triggers": [],
       "tags": [
         "agent",
         "manager",
@@ -36,6 +38,7 @@
       "id": "antigravity-design-expert",
       "description": "Glassmorphism, GSAP, 3D CSS interfaces",
       "path": "antigravity-design-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "css",
         "antigravity",
@@ -51,6 +54,13 @@
       "id": "bash-linux",
       "description": "Bash/Linux terminal patterns. Critical commands, piping, error handling, scripting. Use when working on macOS or Linux systems.",
       "path": "bash-linux/SKILL.md",
+      "triggers": [
+        "Bash/Linux",
+        "terminal",
+        "patterns.",
+        "Critical",
+        "commands"
+      ],
       "tags": [
         "bash",
         "patterns",
@@ -66,6 +76,7 @@
       "id": "brainstorming",
       "description": "Use before creative or constructive work (features, architecture, behavior). Transforms vague ideas into validated designs through disciplined reasoning and collaboration.",
       "path": "brainstorming/SKILL.md",
+      "triggers": [],
       "tags": [
         "understanding",
         "mandatory",
@@ -81,6 +92,7 @@
       "id": "canva-automation",
       "description": "Automate Canva tasks via Rube MCP (Composio): designs, exports, folders, brand templates, autofill. Always search tools first for current schemas.",
       "path": "canva-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "canva",
@@ -96,6 +108,7 @@
       "id": "canvas-design",
       "description": "These are instructions for creating design philosophies - aesthetic movements that are then EXPRESSED VISUALLY. Output only .md files, .pdf files, and .png files.",
       "path": "canvas-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "philosophy",
         "visual",
@@ -111,6 +124,7 @@
       "id": "code-refactoring-refactor-clean",
       "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.",
       "path": "code-refactoring-refactor-clean/SKILL.md",
+      "triggers": [],
       "tags": [
         "refactoring",
         "resources",
@@ -126,6 +140,7 @@
       "id": "codebase-cleanup-refactor-clean",
       "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.",
       "path": "codebase-cleanup-refactor-clean/SKILL.md",
+      "triggers": [],
       "tags": [
         "resources",
         "refactoring",
@@ -141,6 +156,7 @@
       "id": "context-degradation",
       "description": "Language models exhibit predictable degradation patterns as context length increases. Understanding these patterns is essential for diagnosing failures and designing resilient systems.",
       "path": "context-degradation/SKILL.md",
+      "triggers": [],
       "tags": [
         "context",
         "claude",
@@ -156,6 +172,7 @@
       "id": "deployment-pipeline-design",
       "description": "Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.",
       "path": "deployment-pipeline-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "pipeline",
         "rollback",
@@ -171,6 +188,7 @@
       "id": "design-md",
       "description": "Analyze Stitch projects and synthesize a semantic design system into DESIGN.md files",
       "path": "design-md/SKILL.md",
+      "triggers": [],
       "tags": [
         "html",
         "json",
@@ -186,6 +204,7 @@
       "id": "design-orchestration",
       "description": "Orchestrates design workflows by routing work through brainstorming, multi-agent review, and execution readiness in the correct order.",
       "path": "design-orchestration/SKILL.md",
+      "triggers": [],
       "tags": [
         "routing",
         "brainstorming",
@@ -201,6 +220,7 @@
       "id": "design-spells",
       "description": "Micro-interactions and design \"magic\"",
       "path": "design-spells/SKILL.md",
+      "triggers": [],
       "tags": [
         "spells",
         "execution",
@@ -216,6 +236,7 @@
       "id": "domain-driven-design",
       "description": "Plan and route Domain-Driven Design work from strategic modeling to tactical implementation and evented architecture patterns.",
       "path": "domain-driven-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "routing",
         "ddd",
@@ -231,6 +252,7 @@
       "id": "figma-automation",
       "description": "Automate Figma tasks via Rube MCP (Composio): files, components, design tokens, comments, exports. Always search tools first for current schemas.",
       "path": "figma-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "figma",
@@ -246,6 +268,7 @@
       "id": "frontend-slides",
       "description": "Animation-rich HTML presentations",
       "path": "frontend-slides/SKILL.md",
+      "triggers": [],
       "tags": [
         "css",
         "html",
@@ -261,6 +284,7 @@
       "id": "game-audio",
       "description": "Game audio principles. Sound design, music integration, adaptive audio systems.",
       "path": "game-audio/SKILL.md",
+      "triggers": [],
       "tags": [
         "audio",
         "music",
@@ -276,6 +300,7 @@
       "id": "game-design",
       "description": "Game design principles. GDD structure, balancing, player psychology, progression.",
       "path": "game-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "principles",
         "game",
@@ -291,6 +316,7 @@
       "id": "hig-components-controls",
       "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered.",
       "path": "hig-components-controls/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "controls",
@@ -306,6 +332,7 @@
       "id": "hig-components-menus",
       "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered.",
       "path": "hig-components-menus/SKILL.md",
+      "triggers": [],
       "tags": [
         "menus",
         "hig",
@@ -321,6 +348,7 @@
       "id": "hig-inputs",
       "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered.",
       "path": "hig-inputs/SKILL.md",
+      "triggers": [],
       "tags": [
         "apple",
         "pencil",
@@ -336,6 +364,7 @@
       "id": "hig-technologies",
       "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered.",
       "path": "hig-technologies/SKILL.md",
+      "triggers": [],
       "tags": [
         "apple",
         "authentication",
@@ -351,6 +380,7 @@
       "id": "iconsax-library",
       "description": "Icon library with AI-driven generation",
       "path": "iconsax-library/SKILL.md",
+      "triggers": [],
       "tags": [
         "iconsax",
         "library",
@@ -366,6 +396,7 @@
       "id": "interactive-portfolio",
       "description": "Portfolio sites that convert",
       "path": "interactive-portfolio/SKILL.md",
+      "triggers": [],
       "tags": [
         "portfolio",
         "github",
@@ -381,6 +412,7 @@
       "id": "kpi-dashboard-design",
       "description": "Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions.",
       "path": "kpi-dashboard-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "dashboard",
         "kpis",
@@ -396,6 +428,13 @@
       "id": "lead-magnets",
       "description": "Plan and optimize lead magnets for email capture and lead generation. Use when designing gated content, checklists, templates, downloadable resources, or other offers that convert visitors into subscribers.",
       "path": "lead-magnets/SKILL.md",
+      "triggers": [
+        "optimize",
+        "magnets",
+        "email",
+        "capture",
+        "generation."
+      ],
       "tags": [
         "lead",
         "stage",
@@ -411,6 +450,7 @@
       "id": "linux-troubleshooting",
       "description": "Linux system troubleshooting workflow for diagnosing and resolving system issues, performance problems, and service failures.",
       "path": "linux-troubleshooting/SKILL.md",
+      "triggers": [],
       "tags": [
         "phase",
         "invoke",
@@ -426,6 +466,7 @@
       "id": "llm-application-dev-ai-assistant",
       "description": "You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natur",
       "path": "llm-application-dev-ai-assistant/SKILL.md",
+      "triggers": [],
       "tags": [
         "resources",
         "assistant",
@@ -441,6 +482,7 @@
       "id": "machine-learning-ops-ml-pipeline",
       "description": "Design and implement a complete ML pipeline for: $ARGUMENTS",
       "path": "machine-learning-ops-ml-pipeline/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "validation",
@@ -456,6 +498,7 @@
       "id": "magic-ui-generator",
       "description": "Multiple UI component variations",
       "path": "magic-ui-generator/SKILL.md",
+      "triggers": [],
       "tags": [
         "typescript",
         "magic",
@@ -471,6 +514,7 @@
       "id": "multi-agent-brainstorming",
       "description": "Simulate a structured peer-review process using multiple specialized agents to validate designs, surface hidden assumptions, and identify failure modes before implementation.",
       "path": "multi-agent-brainstorming/SKILL.md",
+      "triggers": [],
       "tags": [
         "agent",
         "phase",
@@ -486,6 +530,7 @@
       "id": "nerdzao-elite",
       "description": "Senior Elite Software Engineer (15+) and Senior Product Designer. Full workflow with planning, architecture, TDD, clean code, and pixel-perfect UX validation.",
       "path": "nerdzao-elite/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "nerdzao-elite",
@@ -501,6 +546,7 @@
       "id": "nerdzao-elite-gemini-high",
       "description": "Modo Elite Coder + UX Pixel-Perfect otimizado especificamente para Gemini 3.1 Pro High. Workflow completo com foco em qualidade máxima e eficiência de tokens.",
       "path": "nerdzao-elite-gemini-high/SKILL.md",
+      "triggers": [],
       "tags": [
         "gemini",
         "high",
@@ -516,6 +562,7 @@
       "id": "observability-monitoring-slo-implement",
       "description": "You are an SLO (Service Level Objective) expert specializing in implementing reliability standards and error budget-based engineering practices. Design comprehensive SLO frameworks, establish meaningful SLIs, and create monitoring systems that balance reliability with feature velocity.",
       "path": "observability-monitoring-slo-implement/SKILL.md",
+      "triggers": [],
       "tags": [
         "slo",
         "monitoring",
@@ -531,6 +578,7 @@
       "id": "pakistan-payments-stack",
       "description": "Design and implement production-grade Pakistani payment integrations (JazzCash, Easypaisa, bank/PSP rails, optional Raast) for SaaS with PKR billing, webhook reliability, and reconciliation.",
       "path": "pakistan-payments-stack/SKILL.md",
+      "triggers": [],
       "tags": [
         "pakistan",
         "payments",
@@ -546,6 +594,7 @@
       "id": "product-design",
       "description": "Apple-level product design",
       "path": "product-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "estrutura",
         "auri",
@@ -561,6 +610,7 @@
       "id": "programmatic-seo",
       "description": "Design and evaluate programmatic SEO strategies for creating SEO-driven pages at scale using templates and structured data.",
       "path": "programmatic-seo/SKILL.md",
+      "triggers": [],
       "tags": [
         "seo",
         "programmatic",
@@ -576,6 +626,7 @@
       "id": "referral-program",
       "description": "You are an expert in viral growth and referral marketing with access to referral program data and third-party tools. Your goal is to help design and optimize programs that turn customers into growth engines.",
       "path": "referral-program/SKILL.md",
+      "triggers": [],
       "tags": [
         "referral",
         "program",
@@ -591,6 +642,13 @@
       "id": "revops",
       "description": "Design and improve revenue operations, lead lifecycle rules, scoring, routing, handoffs, and CRM process automation. Use when marketing, sales, and customer success workflows need clearer operational structure.",
       "path": "revops/SKILL.md",
+      "triggers": [
+        "Design",
+        "improve",
+        "revenue",
+        "operations",
+        "lifecycle"
+      ],
       "tags": [
         "routing",
         "mql",
@@ -606,6 +664,7 @@
       "id": "schema-markup",
       "description": "Design, validate, and optimize schema.org structured data for eligibility, correctness, and measurable SEO impact.",
       "path": "schema-markup/SKILL.md",
+      "triggers": [],
       "tags": [
         "schema",
         "validation",
@@ -621,6 +680,7 @@
       "id": "scroll-experience",
       "description": "Scroll-driven narrative design",
       "path": "scroll-experience/SKILL.md",
+      "triggers": [],
       "tags": [
         "scroll",
         "css",
@@ -636,6 +696,7 @@
       "id": "social-orchestrator",
       "description": "Orquestrador unificado de canais sociais — coordena Instagram, Telegram e WhatsApp em um unico fluxo de trabalho. Publicacao cross-channel, metricas unificadas, reutilizacao de conteudo por formato, agendamento sincronizado e gestao centralizada de campanhas em todos os canais simultaneamente.",
       "path": "social-orchestrator/SKILL.md",
+      "triggers": [],
       "tags": [
         "instagram",
         "telegram",
@@ -651,6 +712,7 @@
       "id": "steve-jobs",
       "description": "Agente que simula Steve Jobs — cofundador da Apple, CEO da Pixar, fundador da NeXT, o maior designer de produtos tecnologicos da historia e o mais influente apresentador de produtos do mundo.",
       "path": "steve-jobs/SKILL.md",
+      "triggers": [],
       "tags": [
         "jobs",
         "apple",
@@ -666,6 +728,7 @@
       "id": "stitch-ui-design",
       "description": "AI-powered UI design with Google Stitch",
       "path": "stitch-ui-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "stitch",
         "html",
@@ -681,6 +744,7 @@
       "id": "theme-factory",
       "description": "Professional font and color themes",
       "path": "theme-factory/SKILL.md",
+      "triggers": [],
       "tags": [
         "theme",
         "themes",
@@ -696,6 +760,7 @@
       "id": "threejs-skills",
       "description": "3D scenes with Three.js",
       "path": "threejs-skills/SKILL.md",
+      "triggers": [],
       "tags": [
         "rendering",
         "meshstandardmaterial",
@@ -711,6 +776,7 @@
       "id": "ui-ux-designer",
       "description": "Interface design, wireframes, design systems",
       "path": "ui-ux-designer/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "research",
@@ -726,6 +792,7 @@
       "id": "ui-ux-pro-max",
       "description": "Comprehensive web/mobile design guide",
       "path": "ui-ux-pro-max/SKILL.md",
+      "triggers": [],
       "tags": [
         "react",
         "vue",
@@ -741,6 +808,7 @@
       "id": "vizcom",
       "description": "AI-powered product design tool for transforming sketches into full-fidelity 3D renders.",
       "path": "vizcom/SKILL.md",
+      "triggers": [],
       "tags": [
         "vizcom",
         "rendering",
@@ -756,6 +824,7 @@
       "id": "wordpress-theme-development",
       "description": "WordPress theme development workflow covering theme architecture, template hierarchy, custom post types, block editor support, responsive design, and WordPress 7.0 features: DataViews, Pattern Editing, Navigation Overlays, and admin refresh.",
       "path": "wordpress-theme-development/SKILL.md",
+      "triggers": [],
       "tags": [
         "wordpress",
         "theme",

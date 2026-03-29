@@ -6,6 +6,7 @@
       "id": "android-jetpack-compose-expert",
       "description": "Modern Android with Jetpack Compose",
       "path": "android-jetpack-compose-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "jetpack",
         "compose",
@@ -21,6 +22,7 @@
       "id": "app-store-optimization",
       "description": "Complete App Store Optimization (ASO) toolkit for researching, optimizing, and tracking mobile app performance on Apple App Store and Google Play Store",
       "path": "app-store-optimization/SKILL.md",
+      "triggers": [],
       "tags": [
         "claude",
         "store",
@@ -36,6 +38,7 @@
       "id": "audit-skills",
       "description": "Expert security auditor for AI Skills and Bundles. Performs non-intrusive static analysis to identify malicious patterns, data leaks, system stability risks, and obfuscated payloads across Windows, macOS, Linux/Unix, and Mobile (Android/iOS).",
       "path": "audit-skills/SKILL.md",
+      "triggers": [],
       "tags": [
         "security",
         "manipulation",
@@ -51,6 +54,7 @@
       "id": "building-native-ui",
       "description": "Beautiful apps with Expo Router",
       "path": "building-native-ui/SKILL.md",
+      "triggers": [],
       "tags": [
         "expo",
         "link",
@@ -66,6 +70,7 @@
       "id": "carrier-relationship-management",
       "description": "Codified expertise for managing carrier portfolios, negotiating freight rates, tracking carrier performance, allocating freight, and maintaining strategic carrier relationships.",
       "path": "carrier-relationship-management/SKILL.md",
+      "triggers": [],
       "tags": [
         "routing",
         "carrier",
@@ -81,6 +86,7 @@
       "id": "expo-api-routes",
       "description": "API routes in Expo with EAS Hosting",
       "path": "expo-api-routes/SKILL.md",
+      "triggers": [],
       "tags": [
         "api",
         "json",
@@ -96,6 +102,7 @@
       "id": "expo-deployment",
       "description": "Deploy Expo apps to production",
       "path": "expo-deployment/SKILL.md",
+      "triggers": [],
       "tags": [
         "expo",
         "deployment",
@@ -111,6 +118,7 @@
       "id": "flutter-expert",
       "description": "Flutter with Dart 3, multi-platform",
       "path": "flutter-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "flutter",
         "dart",
@@ -126,6 +134,7 @@
       "id": "ios-developer",
       "description": "iOS 18, SwiftUI, UIKit, Core Data",
       "path": "ios-developer/SKILL.md",
+      "triggers": [],
       "tags": [
         "swiftui",
         "swift",
@@ -141,6 +150,7 @@
       "id": "leiloeiro-risco",
       "description": "Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco.",
       "path": "leiloeiro-risco/SKILL.md",
+      "triggers": [],
       "tags": [
         "risco",
         "alto",
@@ -156,6 +166,7 @@
       "id": "mobile-design",
       "description": "(Mobile-First · Touch-First · Platform-Respectful)",
       "path": "mobile-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "mobile",
         "react",
@@ -171,6 +182,7 @@
       "id": "mobile-developer",
       "description": "React Native, Flutter, native apps",
       "path": "mobile-developer/SKILL.md",
+      "triggers": [],
       "tags": [
         "react",
         "flutter",
@@ -186,6 +198,7 @@
       "id": "mobile-games",
       "description": "Mobile game development principles. Touch input, battery, performance, app stores.",
       "path": "mobile-games/SKILL.md",
+      "triggers": [],
       "tags": [
         "touch",
         "app",
@@ -201,6 +214,7 @@
       "id": "mobile-security-coder",
       "description": "Expert in secure mobile coding practices specializing in input validation, WebView security, and mobile-specific security patterns.",
       "path": "mobile-security-coder/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "authentication",
@@ -216,6 +230,7 @@
       "id": "skill-sentinel",
       "description": "Auditoria e evolucao do ecossistema de skills. Qualidade de codigo, seguranca, custos, gaps, duplicacoes, dependencias e relatorios de saude.",
       "path": "skill-sentinel/SKILL.md",
+      "triggers": [],
       "tags": [
         "peso",
         "analyzers",
@@ -231,6 +246,7 @@
       "id": "swift-concurrency-expert",
       "description": "Review and fix Swift concurrency issues such as actor isolation and Sendable violations.",
       "path": "swift-concurrency-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "swift",
         "mainactor",
@@ -246,6 +262,7 @@
       "id": "swiftui-expert-skill",
       "description": "SwiftUI best practices, Liquid Glass",
       "path": "swiftui-expert-skill/SKILL.md",
+      "triggers": [],
       "tags": [
         "references",
         "swiftui",
@@ -261,6 +278,7 @@
       "id": "swiftui-ui-patterns",
       "description": "Navigation, sheets, async state patterns",
       "path": "swiftui-ui-patterns/SKILL.md",
+      "triggers": [],
       "tags": [
         "swiftui",
         "references",
@@ -276,6 +294,7 @@
       "id": "temporal-python-testing",
       "description": "Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.",
       "path": "temporal-python-testing/SKILL.md",
+      "triggers": [],
       "tags": [
         "resources",
         "testing",

@@ -6,6 +6,7 @@
       "id": "astropy",
       "description": "Astronomy research with Python",
       "path": "astropy/SKILL.md",
+      "triggers": [],
       "tags": [
         "astropy",
         "references",
@@ -21,6 +22,7 @@
       "id": "biopython",
       "description": "Biological computation tools",
       "path": "biopython/SKILL.md",
+      "triggers": [],
       "tags": [
         "bio",
         "blast",
@@ -36,6 +38,7 @@
       "id": "matplotlib",
       "description": "Python visualization",
       "path": "matplotlib/SKILL.md",
+      "triggers": [],
       "tags": [
         "plot",
         "references",
@@ -51,6 +54,7 @@
       "id": "networkx",
       "description": "Complex network analysis",
       "path": "networkx/SKILL.md",
+      "triggers": [],
       "tags": [
         "graph",
         "references",
@@ -66,6 +70,7 @@
       "id": "plotly",
       "description": "Interactive visualizations",
       "path": "plotly/SKILL.md",
+      "triggers": [],
       "tags": [
         "express",
         "plotly",
@@ -81,6 +86,7 @@
       "id": "qiskit",
       "description": "Quantum computing framework",
       "path": "qiskit/SKILL.md",
+      "triggers": [],
       "tags": [
         "references",
         "quantum",
@@ -96,6 +102,7 @@
       "id": "scanpy",
       "description": "Single-cell RNA-seq analysis",
       "path": "scanpy/SKILL.md",
+      "triggers": [],
       "tags": [
         "normalization",
         "genes",
@@ -111,6 +118,7 @@
       "id": "sympy",
       "description": "Symbolic mathematics",
       "path": "sympy/SKILL.md",
+      "triggers": [],
       "tags": [
         "python",
         "solve",

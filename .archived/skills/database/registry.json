@@ -6,6 +6,7 @@
       "id": "cc-skill-clickhouse-io",
       "description": "ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads.",
       "path": "cc-skill-clickhouse-io/SKILL.md",
+      "triggers": [],
       "tags": [
         "patterns",
         "select",
@@ -21,6 +22,13 @@
       "id": "closed-loop-delivery",
       "description": "Use when a coding task must be completed against explicit acceptance criteria with minimal user re-intervention across implementation, review feedback, deployment, and runtime verification.",
       "path": "closed-loop-delivery/SKILL.md",
+      "triggers": [
+        "coding",
+        "completed",
+        "against",
+        "explicit",
+        "acceptance"
+      ],
       "tags": [
         "gate",
         "dod",
@@ -36,6 +44,7 @@
       "id": "code-review-excellence",
       "description": "Transform code reviews from gatekeeping to knowledge sharing through constructive feedback, systematic analysis, and collaborative improvement.",
       "path": "code-review-excellence/SKILL.md",
+      "triggers": [],
       "tags": [
         "resources",
         "review",
@@ -51,6 +60,7 @@
       "id": "database",
       "description": "SQL, NoSQL, design, migrations, optimization",
       "path": "database/SKILL.md",
+      "triggers": [],
       "tags": [
         "phase",
         "invoke",
@@ -66,6 +76,7 @@
       "id": "database-admin",
       "description": "Cloud databases, automation, reliability",
       "path": "database-admin/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "database",
@@ -81,6 +92,7 @@
       "id": "database-architect",
       "description": "Data layer design, technology selection",
       "path": "database-architect/SKILL.md",
+      "triggers": [],
       "tags": [
         "caching",
         "indexing",
@@ -96,6 +108,7 @@
       "id": "database-design",
       "description": "Schema design, indexing, ORM selection",
       "path": "database-design/SKILL.md",
+      "triggers": [],
       "tags": [
         "postgresql",
         "indexing",
@@ -111,6 +124,7 @@
       "id": "database-migration",
       "description": "Schema migrations, zero-downtime",
       "path": "database-migration/SKILL.md",
+      "triggers": [],
       "tags": [
         "sequelize",
         "migrations",
@@ -126,6 +140,7 @@
       "id": "database-migrations-migration-observability",
       "description": "Migration monitoring, CDC, and observability infrastructure",
       "path": "database-migrations-migration-observability/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "observability",
@@ -141,6 +156,7 @@
       "id": "database-migrations-sql-migrations",
       "description": "SQL database migrations with zero-downtime strategies for PostgreSQL, MySQL, and SQL Server. Focus on data integrity and rollback plans.",
       "path": "database-migrations-sql-migrations/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "validation",
@@ -156,6 +172,7 @@
       "id": "database-optimizer",
       "description": "Performance tuning, query optimization",
       "path": "database-optimizer/SKILL.md",
+      "triggers": [],
       "tags": [
         "caching",
         "indexing",
@@ -171,6 +188,7 @@
       "id": "dx-optimizer",
       "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.",
       "path": "dx-optimizer/SKILL.md",
+      "triggers": [],
       "tags": [
         "setup",
         "workflows",
@@ -186,6 +204,7 @@
       "id": "food-database-query",
       "description": "Food Database Query",
       "path": "food-database-query/SKILL.md",
+      "triggers": [],
       "tags": [
         "food",
         "query",
@@ -201,6 +220,7 @@
       "id": "gdb-cli",
       "description": "GDB debugging assistant for AI agents - analyze core dumps, debug live processes, investigate crashes and deadlocks with source code correlation",
       "path": "gdb-cli/SKILL.md",
+      "triggers": [],
       "tags": [
         "session",
         "python",
@@ -216,6 +236,7 @@
       "id": "hugging-face-datasets",
       "description": "Create and manage datasets on Hugging Face Hub. Supports initializing repos, defining configs/system prompts, streaming row updates, and SQL-based dataset querying/transformation. Designed to work alongside HF MCP server for comprehensive dataset workflows.",
       "path": "hugging-face-datasets/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "dataset",
@@ -231,6 +252,7 @@
       "id": "local-db-migration",
       "description": "Manages schema migrations and vector initialization for the based-workspace-postgres container.",
       "path": "local-db-migration/SKILL.md",
+      "triggers": [],
       "tags": [
         "vector",
         "migration",
@@ -246,6 +268,7 @@
       "id": "neon-postgres",
       "description": "Prisma + Neon connection pooling",
       "path": "neon-postgres/SKILL.md",
+      "triggers": [],
       "tags": [
         "prisma",
         "neon",
@@ -261,6 +284,7 @@
       "id": "nosql-expert",
       "description": "Cassandra, DynamoDB, query-first modeling",
       "path": "nosql-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "dynamodb",
         "cassandra",
@@ -276,6 +300,13 @@
       "id": "obsidian-bases",
       "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian.",
       "path": "obsidian-bases/SKILL.md",
+      "triggers": [
+        "Create",
+        "Obsidian",
+        "Bases",
+        "(.base",
+        "files)"
+      ],
       "tags": [
         "yaml",
         "duration",
@@ -291,6 +322,7 @@
       "id": "postgres-best-practices",
       "description": "Supabase Postgres optimization",
       "path": "postgres-best-practices/SKILL.md",
+      "triggers": [],
       "tags": [
         "postgres",
         "sql",
@@ -306,6 +338,7 @@
       "id": "postgresql",
       "description": "PostgreSQL schema best practices",
       "path": "postgresql/SKILL.md",
+      "triggers": [],
       "tags": [
         "gin",
         "postgresql",
@@ -321,6 +354,7 @@
       "id": "postgresql-optimization",
       "description": "Query tuning, indexing, production management",
       "path": "postgresql-optimization/SKILL.md",
+      "triggers": [],
       "tags": [
         "postgresql",
         "monitoring",
@@ -336,6 +370,7 @@
       "id": "progressive-estimation",
       "description": "Estimate AI-assisted and hybrid human+agent development work with research-backed PERT statistics and calibration feedback loops",
       "path": "progressive-estimation/SKILL.md",
+      "triggers": [],
       "tags": [
         "estimation",
         "progressive",
@@ -351,6 +386,7 @@
       "id": "sankhya-dashboard-html-jsp-custom-best-pratices",
       "description": "This skill should be used when the user asks for patterns, best practices, creation, or fixing of Sankhya dashboards using HTML, JSP, Java, and SQL.",
       "path": "sankhya-dashboard-html-jsp-custom-best-pratices/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "jsp",
@@ -366,6 +402,7 @@
       "id": "snowflake-development",
       "description": "Comprehensive Snowflake development assistant covering SQL best practices, data pipeline design (Dynamic Tables, Streams, Tasks, Snowpipe), Cortex AI functions, Cortex Agents, Snowpark Python, dbt integration, performance tuning, and security hardening.",
       "path": "snowflake-development/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "snowflake",
@@ -381,6 +418,7 @@
       "id": "sql-optimization-patterns",
       "description": "Slow query → fast query transformation",
       "path": "sql-optimization-patterns/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "resources",
@@ -396,6 +434,7 @@
       "id": "sql-pro",
       "description": "Cloud-native SQL, OLTP/OLAP optimization",
       "path": "sql-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "database",
@@ -411,6 +450,7 @@
       "id": "sqlmap-database-pentesting",
       "description": "Provide systematic methodologies for automated SQL injection detection and exploitation using SQLMap.",
       "path": "sqlmap-database-pentesting/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "http",
@@ -426,6 +466,7 @@
       "id": "supabase-automation",
       "description": "Automate Supabase database queries, table management, project administration, storage, edge functions, and SQL execution via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": "supabase-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "supabase",
         "sql",
@@ -441,6 +482,7 @@
       "id": "using-neon",
       "description": "Neon is a serverless Postgres platform that separates compute and storage to offer autoscaling, branching, instant restore, and scale-to-zero. It's fully compatible with Postgres and works with any language, framework, or ORM that supports Postgres.",
       "path": "using-neon/SKILL.md",
+      "triggers": [],
       "tags": [
         "neon",
         "references",
@@ -456,6 +498,7 @@
       "id": "vector-database-engineer",
       "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar",
       "path": "vector-database-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "embedding",
         "vector",
@@ -471,6 +514,7 @@
       "id": "vibers-code-review",
       "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.",
       "path": "vibers-code-review/SKILL.md",
+      "triggers": [],
       "tags": [
         "github",
         "add",
@@ -486,6 +530,7 @@
       "id": "videodb-skills",
       "description": "Upload, stream, search, edit, transcribe, and generate AI video and audio using the VideoDB SDK.",
       "path": "videodb-skills/SKILL.md",
+      "triggers": [],
       "tags": [
         "videodb",
         "install",

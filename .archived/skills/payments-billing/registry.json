@@ -6,6 +6,7 @@
       "id": "billing-automation",
       "description": "Recurring billing, invoicing, dunning",
       "path": "billing-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "resources",
         "billing",
@@ -21,6 +22,7 @@
       "id": "payment-integration",
       "description": "Stripe, PayPal, PCI compliance",
       "path": "payment-integration/SKILL.md",
+      "triggers": [],
       "tags": [
         "stripe",
         "paypal",
@@ -36,6 +38,7 @@
       "id": "paypal-integration",
       "description": "PayPal checkout, IPN, recurring billing",
       "path": "paypal-integration/SKILL.md",
+      "triggers": [],
       "tags": [
         "paypal",
         "authorization",
@@ -51,6 +54,7 @@
       "id": "stripe-integration",
       "description": "Stripe checkout, subscriptions, webhooks",
       "path": "stripe-integration/SKILL.md",
+      "triggers": [],
       "tags": [
         "stripe",
         "customer",

@@ -6,6 +6,7 @@
       "id": "animejs-animation",
       "description": "Advanced JavaScript animation library skill for creating complex, high-performance web animations.",
       "path": "animejs-animation/SKILL.md",
+      "triggers": [],
       "tags": [
         "css",
         "animation",
@@ -21,6 +22,7 @@
       "id": "bun-development",
       "description": "Fast, modern JavaScript/TypeScript development with the Bun runtime, inspired by [oven-sh/bun](https://github.com/oven-sh/bun).",
       "path": "bun-development/SKILL.md",
+      "triggers": [],
       "tags": [
         "bun",
         "json",
@@ -36,6 +38,7 @@
       "id": "c-pro",
       "description": "C with proper memory management",
       "path": "c-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "instructions",
         "focus",
@@ -51,6 +54,7 @@
       "id": "cpp-pro",
       "description": "Modern C++, RAII, smart pointers, STL",
       "path": "cpp-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "cpp",
         "instructions",
@@ -66,6 +70,7 @@
       "id": "csharp-pro",
       "description": "Modern C# with records, pattern matching",
       "path": "csharp-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "net",
         "csharp",
@@ -81,6 +86,7 @@
       "id": "elixir-pro",
       "description": "Elixir OTP, supervision trees, Phoenix",
       "path": "elixir-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "elixir",
         "instructions",
@@ -96,6 +102,7 @@
       "id": "golang-pro",
       "description": "Go 1.21+ with modern concurrency",
       "path": "golang-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "modern",
         "profiling",
@@ -111,6 +118,7 @@
       "id": "haskell-pro",
       "description": "Advanced Haskell type systems",
       "path": "haskell-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "haskell",
         "parsing",
@@ -126,6 +134,7 @@
       "id": "java-pro",
       "description": "Java 21+, virtual threads, Spring Boot 3",
       "path": "java-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "spring",
         "java",
@@ -141,6 +150,7 @@
       "id": "julia-pro",
       "description": "Julia 1.10+ with multiple dispatch",
       "path": "julia-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "julia",
         "inference",
@@ -156,6 +166,7 @@
       "id": "kotlin-coroutines-expert",
       "description": "Kotlin Coroutines and Flow",
       "path": "kotlin-coroutines-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "kotlin",
         "flow",
@@ -171,6 +182,13 @@
       "id": "mtls-configuration",
       "description": "Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing internal service communication.",
       "path": "mtls-configuration/SKILL.md",
+      "triggers": [
+        "Configure",
+        "mutual",
+        "(mTLS)",
+        "zero-trust",
+        "service-to-service"
+      ],
       "tags": [
         "mtls",
         "istio",
@@ -186,6 +204,7 @@
       "id": "php-pro",
       "description": "Modern PHP with generators, iterators",
       "path": "php-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "php",
         "focus",
@@ -201,6 +220,7 @@
       "id": "popup-cro",
       "description": "Create and optimize popups, modals, overlays, slide-ins, and banners to increase conversions without harming user experience or brand trust.",
       "path": "popup-cro/SKILL.md",
+      "triggers": [],
       "tags": [
         "popup",
         "intent",
@@ -216,6 +236,7 @@
       "id": "python-patterns",
       "description": "Python development principles and decision-making. Framework selection, async patterns, type hints, project structure. Teaches thinking, not copying.",
       "path": "python-patterns/SKILL.md",
+      "triggers": [],
       "tags": [
         "fastapi",
         "django",
@@ -231,6 +252,7 @@
       "id": "python-pro",
       "description": "Python 3.12+, uv, ruff, pydantic, FastAPI",
       "path": "python-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "python",
         "fastapi",
@@ -246,6 +268,7 @@
       "id": "ruby-pro",
       "description": "Ruby metaprogramming, Rails, gems",
       "path": "ruby-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "ruby",
         "rails",
@@ -261,6 +284,7 @@
       "id": "rust-pro",
       "description": "Rust 1.75+, async, advanced type system",
       "path": "rust-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "rust",
         "modern",
@@ -276,6 +300,7 @@
       "id": "scala-pro",
       "description": "Scala FP, Pekko, Spark, ZIO",
       "path": "scala-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "scala",
         "profiling",
@@ -291,6 +316,7 @@
       "id": "seaborn",
       "description": "Seaborn is a Python visualization library for creating publication-quality statistical graphics. Use this skill for dataset-oriented plotting, multivariate analysis, automatic statistical estimation, and complex multi-panel figures with minimal code.",
       "path": "seaborn/SKILL.md",
+      "triggers": [],
       "tags": [
         "plot",
         "functions",
@@ -306,6 +332,7 @@
       "id": "sql-pro",
       "description": "Cloud-native SQL, OLTP/OLAP",
       "path": "sql-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "sql",
         "database",
@@ -321,6 +348,7 @@
       "id": "statsmodels",
       "description": "Statsmodels is Python's premier library for statistical modeling, providing tools for estimation, inference, and diagnostics across a wide range of statistical methods.",
       "path": "statsmodels/SKILL.md",
+      "triggers": [],
       "tags": [
         "model",
         "models",

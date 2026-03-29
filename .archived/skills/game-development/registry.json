@@ -6,6 +6,7 @@
       "id": "bevy-ecs-expert",
       "description": "Bevy ECS in Rust",
       "path": "bevy-ecs-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "component",
         "query",
@@ -21,6 +22,7 @@
       "id": "game-development",
       "description": "Game dev orchestrator",
       "path": "game-development/SKILL.md",
+      "triggers": [],
       "tags": [
         "game-development",
         "selection",
@@ -36,6 +38,7 @@
       "id": "godot-gdscript-patterns",
       "description": "Godot 4 GDScript patterns",
       "path": "godot-gdscript-patterns/SKILL.md",
+      "triggers": [],
       "tags": [
         "godot",
         "gdscript",
@@ -51,6 +54,7 @@
       "id": "unity-developer",
       "description": "Unity 6 LTS, URP/HDRP",
       "path": "unity-developer/SKILL.md",
+      "triggers": [],
       "tags": [
         "unity",
         "rendering",
@@ -66,6 +70,7 @@
       "id": "unreal-engine-cpp-pro",
       "description": "Unreal Engine 5 C++",
       "path": "unreal-engine-cpp-pro/SKILL.md",
+      "triggers": [],
       "tags": [
         "unreal",
         "engine",

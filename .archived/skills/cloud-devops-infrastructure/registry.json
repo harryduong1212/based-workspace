@@ -6,6 +6,7 @@
       "id": "amazon-alexa",
       "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB, Polly, Transcribe, Lex, Smart Home).",
       "path": "amazon-alexa/SKILL.md",
+      "triggers": [],
       "tags": [
         "claude",
         "aws",
@@ -21,6 +22,7 @@
       "id": "apify-actorization",
       "description": "Actorization converts existing software into reusable serverless applications compatible with the Apify platform. Actors are programs packaged as Docker images that accept well-defined JSON input, perform an action, and optionally produce structured JSON output.",
       "path": "apify-actorization/SKILL.md",
+      "triggers": [],
       "tags": [
         "python",
         "actor",
@@ -36,6 +38,7 @@
       "id": "auri-core",
       "description": "Auri: assistente de voz inteligente (Alexa + Claude claude-opus-4-20250805). Visao do produto, persona Vitoria Neural, stack AWS, modelo Free/Pro/Business/Enterprise, roadmap 4 fases, GTM, north star WAC e analise competitiva.",
       "path": "auri-core/SKILL.md",
+      "triggers": [],
       "tags": [
         "claude",
         "dynamodb",
@@ -51,6 +54,7 @@
       "id": "aws-cost-cleanup",
       "description": "Automated cleanup of unused AWS resources to reduce costs",
       "path": "aws-cost-cleanup/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "cleanup",
@@ -66,6 +70,7 @@
       "id": "aws-cost-optimizer",
       "description": "Comprehensive AWS cost analysis and optimization recommendations using AWS CLI and Cost Explorer",
       "path": "aws-cost-optimizer/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "cost",
@@ -81,6 +86,7 @@
       "id": "aws-penetration-testing",
       "description": "Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations.",
       "path": "aws-penetration-testing/SKILL.md",
+      "triggers": [],
       "tags": [
         "list",
         "aws",
@@ -96,6 +102,7 @@
       "id": "aws-serverless",
       "description": "Lambda functions with error handling",
       "path": "aws-serverless/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "json",
@@ -111,6 +118,7 @@
       "id": "aws-skills",
       "description": "AWS dev with infrastructure automation",
       "path": "aws-skills/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "overview",
@@ -126,6 +134,13 @@
       "id": "cdk-patterns",
       "description": "Common AWS CDK patterns and constructs for building cloud infrastructure with TypeScript, Python, or Java. Use when designing reusable CDK stacks and L3 constructs.",
       "path": "cdk-patterns/SKILL.md",
+      "triggers": [
+        "Common",
+        "patterns",
+        "constructs",
+        "building",
+        "cloud"
+      ],
       "tags": [
         "tracing",
         "cdk",
@@ -141,6 +156,7 @@
       "id": "cloud-architect",
       "description": "Multi-cloud, IaC, FinOps",
       "path": "cloud-architect/SKILL.md",
+      "triggers": [],
       "tags": [
         "azure",
         "aws",
@@ -156,6 +172,7 @@
       "id": "cloud-devops",
       "description": "AWS/Azure/GCP, K8s, Terraform, CI/CD",
       "path": "cloud-devops/SKILL.md",
+      "triggers": [],
       "tags": [
         "actions",
         "monitoring",
@@ -171,6 +188,13 @@
       "id": "cloudformation-best-practices",
       "description": "CloudFormation template optimization, nested stacks, drift detection, and production-ready patterns. Use when writing or reviewing CF templates.",
       "path": "cloudformation-best-practices/SKILL.md",
+      "triggers": [
+        "CloudFormation",
+        "template",
+        "optimization",
+        "nested",
+        "stacks"
+      ],
       "tags": [
         "yaml",
         "vpc",
@@ -186,6 +210,7 @@
       "id": "deployment-engineer",
       "description": "CI/CD pipelines, GitOps, automation",
       "path": "deployment-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "observability",
@@ -201,6 +226,7 @@
       "id": "devops-deploy",
       "description": "DevOps e deploy de aplicacoes — Docker, CI/CD com GitHub Actions, AWS Lambda, SAM, Terraform, infraestrutura como codigo e monitoramento.",
       "path": "devops-deploy/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "deploy",
@@ -216,6 +242,7 @@
       "id": "docker-expert",
       "description": "Container optimization, security, orchestration",
       "path": "docker-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "docker",
         "validation",
@@ -231,6 +258,7 @@
       "id": "gcp-cloud-run",
       "description": "When to use: ['Web applications and APIs', 'Need any runtime or library', 'Complex services with multiple endpoints', 'Stateless containerized workloads']",
       "path": "gcp-cloud-run/SKILL.md",
+      "triggers": [],
       "tags": [
         "cloud",
         "cpu",
@@ -246,6 +274,7 @@
       "id": "github-actions-templates",
       "description": "Production GitHub Actions workflows",
       "path": "github-actions-templates/SKILL.md",
+      "triggers": [],
       "tags": [
         "github",
         "kubernetes",
@@ -261,6 +290,7 @@
       "id": "gitops-workflow",
       "description": "ArgoCD and Flux for K8s",
       "path": "gitops-workflow/SKILL.md",
+      "triggers": [],
       "tags": [
         "argocd",
         "kubernetes",
@@ -276,6 +306,7 @@
       "id": "grafana-dashboards",
       "description": "Production Grafana dashboards",
       "path": "grafana-dashboards/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "dashboard",
@@ -291,6 +322,7 @@
       "id": "helm-chart-scaffolding",
       "description": "Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications.",
       "path": "helm-chart-scaffolding/SKILL.md",
+      "triggers": [],
       "tags": [
         "scaffolding",
         "kubernetes",
@@ -306,6 +338,7 @@
       "id": "hugging-face-jobs",
       "description": "Run any workload on fully managed Hugging Face infrastructure. No local setup required—jobs run on cloud CPUs, GPUs, or TPUs and can persist results to the Hugging Face Hub.",
       "path": "hugging-face-jobs/SKILL.md",
+      "triggers": [],
       "tags": [
         "python",
         "token",
@@ -321,6 +354,7 @@
       "id": "hugging-face-model-trainer",
       "description": "Train language models using TRL (Transformer Reinforcement Learning) on fully managed Hugging Face infrastructure. No local GPU setup required—models train on cloud GPUs and results are automatically saved to the Hugging Face Hub.",
       "path": "hugging-face-model-trainer/SKILL.md",
+      "triggers": [],
       "tags": [
         "scripts",
         "monitoring",
@@ -336,6 +370,7 @@
       "id": "hybrid-cloud-networking",
       "description": "Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute.",
       "path": "hybrid-cloud-networking/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "azure",
@@ -351,6 +386,7 @@
       "id": "ilya-sutskever",
       "description": "Agente que simula Ilya Sutskever — co-fundador da OpenAI, ex-Chief Scientist, fundador da SSI. Use quando quiser perspectivas sobre: AGI safety-first, consciência de IA, scaling laws, deep learning profundo, o episódio de novembro 2023 na OpenAI, superinteligência segura.",
       "path": "ilya-sutskever/SKILL.md",
+      "triggers": [],
       "tags": [
         "openai",
         "ilya",
@@ -366,6 +402,7 @@
       "id": "incident-responder",
       "description": "Rapid problem resolution, observability",
       "path": "incident-responder/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "validation",
@@ -381,6 +418,7 @@
       "id": "k8s-manifest-generator",
       "description": "Step-by-step guidance for creating production-ready Kubernetes manifests including Deployments, Services, ConfigMaps, Secrets, and PersistentVolumeClaims.",
       "path": "k8s-manifest-generator/SKILL.md",
+      "triggers": [],
       "tags": [
         "kubernetes",
         "resources",
@@ -396,6 +434,7 @@
       "id": "k8s-security-policies",
       "description": "Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and Pod Security Standards in Kubernetes.",
       "path": "k8s-security-policies/SKILL.md",
+      "triggers": [],
       "tags": [
         "kubernetes",
         "authorization",
@@ -411,6 +450,7 @@
       "id": "kubernetes-architect",
       "description": "Cloud-native K8s, ArgoCD/Flux",
       "path": "kubernetes-architect/SKILL.md",
+      "triggers": [],
       "tags": [
         "kubernetes",
         "observability",
@@ -426,6 +466,7 @@
       "id": "kubernetes-deployment",
       "description": "Helm charts, service mesh, production K8s",
       "path": "kubernetes-deployment/SKILL.md",
+      "triggers": [],
       "tags": [
         "phase",
         "invoke",
@@ -441,6 +482,7 @@
       "id": "linkerd-patterns",
       "description": "Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes.",
       "path": "linkerd-patterns/SKILL.md",
+      "triggers": [],
       "tags": [
         "template",
         "install",
@@ -456,6 +498,7 @@
       "id": "loki-mode",
       "description": "Version 2.35.0 | PRD to Production | Zero Human Intervention > Research-enhanced: OpenAI SDK, DeepMind, Anthropic, AWS Bedrock, Agent SDK, HN Production (2025)",
       "path": "loki-mode/SKILL.md",
+      "triggers": [],
       "tags": [
         "references",
         "task",
@@ -471,6 +514,7 @@
       "id": "network-engineer",
       "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
       "path": "network-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "dns",
         "monitoring",
@@ -486,6 +530,7 @@
       "id": "observability-engineer",
       "description": "Monitoring, logging, tracing, SLI/SLO",
       "path": "observability-engineer/SKILL.md",
+      "triggers": [],
       "tags": [
         "monitoring",
         "observability",
@@ -501,6 +546,7 @@
       "id": "odoo-backup-strategy",
       "description": "Complete Odoo backup and restore strategy: database dumps, filestore backup, automated scheduling, cloud storage upload, and tested restore procedures.",
       "path": "odoo-backup-strategy/SKILL.md",
+      "triggers": [],
       "tags": [
         "odoo",
         "backup",
@@ -516,6 +562,7 @@
       "id": "odoo-docker-deployment",
       "description": "Production-ready Docker and docker-compose setup for Odoo with PostgreSQL, persistent volumes, environment-based configuration, and Nginx reverse proxy.",
       "path": "odoo-docker-deployment/SKILL.md",
+      "triggers": [],
       "tags": [
         "docker",
         "odoo",
@@ -531,6 +578,7 @@
       "id": "secrets-management",
       "description": "Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets Manager, and other tools.",
       "path": "secrets-management/SKILL.md",
+      "triggers": [],
       "tags": [
         "aws",
         "secrets",
@@ -546,6 +594,7 @@
       "id": "service-mesh-expert",
       "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con",
       "path": "service-mesh-expert/SKILL.md",
+      "triggers": [],
       "tags": [
         "observability",
         "service",
@@ -561,6 +610,13 @@
       "id": "terraform-aws-modules",
       "description": "Terraform module creation for AWS — reusable modules, state management, and HCL best practices. Use when building or reviewing Terraform AWS infrastructure.",
       "path": "terraform-aws-modules/SKILL.md",
+      "triggers": [
+        "Terraform",
+        "module",
+        "creation",
+        "reusable",
+        "modules"
+      ],
       "tags": [
         "terraform",
         "aws",
@@ -576,6 +632,7 @@
       "id": "terraform-infrastructure",
       "description": "Terraform for cloud resources",
       "path": "terraform-infrastructure/SKILL.md",
+      "triggers": [],
       "tags": [
         "terraform",
         "actions",
@@ -591,6 +648,7 @@
       "id": "terraform-specialist",
       "description": "Advanced IaC, state management",
       "path": "terraform-specialist/SKILL.md",
+      "triggers": [],
       "tags": [
         "terraform",
         "validation",
@@ -606,6 +664,7 @@
       "id": "vibe-code-auditor",
       "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, and production risks.",
       "path": "vibe-code-auditor/SKILL.md",
+      "triggers": [],
       "tags": [
         "validation",
         "critical",
@@ -621,6 +680,7 @@
       "id": "web-security-testing",
       "description": "Web application security testing workflow for OWASP Top 10 vulnerabilities including injection, XSS, authentication flaws, and access control issues.",
       "path": "web-security-testing/SKILL.md",
+      "triggers": [],
       "tags": [
         "authentication",
         "phase",
@@ -636,6 +696,7 @@
       "id": "whatsapp-cloud-api",
       "description": "Integracao com WhatsApp Business Cloud API (Meta). Mensagens, templates, webhooks HMAC-SHA256, automacao de atendimento. Boilerplates Node.js e Python.",
       "path": "whatsapp-cloud-api/SKILL.md",
+      "triggers": [],
       "tags": [
         "python",
         "whatsapp",
@@ -651,6 +712,7 @@
       "id": "x-twitter-scraper",
       "description": "X (Twitter) data platform skill — tweet search, user lookup, follower extraction, engagement metrics, giveaway draws, monitoring, webhooks, 19 extraction tools, MCP server.",
       "path": "x-twitter-scraper/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "api",

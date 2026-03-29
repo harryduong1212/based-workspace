@@ -6,6 +6,7 @@
       "id": "airtable-automation",
       "description": "Airtable via Composio",
       "path": "airtable-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "airtable",
@@ -21,6 +22,7 @@
       "id": "asana-automation",
       "description": "Asana via Composio",
       "path": "asana-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "asana",
@@ -36,6 +38,7 @@
       "id": "clickup-automation",
       "description": "ClickUp via Composio",
       "path": "clickup-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "clickup",
@@ -51,6 +54,7 @@
       "id": "discord-automation",
       "description": "Discord via Composio",
       "path": "discord-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "discord",
@@ -66,6 +70,7 @@
       "id": "github-automation",
       "description": "GitHub via Composio",
       "path": "github-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "github",
         "repo",
@@ -81,6 +86,7 @@
       "id": "gmail-automation",
       "description": "Gmail with standalone OAuth",
       "path": "gmail-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "gmail",
         "send",
@@ -96,6 +102,7 @@
       "id": "google-calendar-automation",
       "description": "Google Calendar with OAuth",
       "path": "google-calendar-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "event",
         "calendar",
@@ -111,6 +118,7 @@
       "id": "google-drive-automation",
       "description": "Google Drive with OAuth",
       "path": "google-drive-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "search",
         "folder",
@@ -126,6 +134,7 @@
       "id": "google-sheets-automation",
       "description": "Google Sheets with OAuth",
       "path": "google-sheets-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "json",
         "formatting",
@@ -141,6 +150,7 @@
       "id": "hubspot-automation",
       "description": "HubSpot CRM via Composio",
       "path": "hubspot-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "pagination",
@@ -156,6 +166,7 @@
       "id": "jira-automation",
       "description": "Jira via Composio",
       "path": "jira-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "jira",
@@ -171,6 +182,7 @@
       "id": "linear-automation",
       "description": "Linear via Composio",
       "path": "linear-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "graphql",
@@ -186,6 +198,7 @@
       "id": "notion-automation",
       "description": "Notion via Composio",
       "path": "notion-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "notion",
@@ -201,6 +214,7 @@
       "id": "salesforce-automation",
       "description": "Salesforce via Composio",
       "path": "salesforce-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "salesforce",
@@ -216,6 +230,7 @@
       "id": "shopify-automation",
       "description": "Shopify via Composio",
       "path": "shopify-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "pagination",
@@ -231,6 +246,7 @@
       "id": "slack-automation",
       "description": "Slack via Composio",
       "path": "slack-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "channel",
         "mcp",
@@ -246,6 +262,7 @@
       "id": "stripe-automation",
       "description": "Stripe via Composio",
       "path": "stripe-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "stripe",
         "mcp",
@@ -261,6 +278,7 @@
       "id": "trello-automation",
       "description": "Trello via Composio",
       "path": "trello-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "trello",
@@ -276,6 +294,7 @@
       "id": "zendesk-automation",
       "description": "Zendesk via Composio",
       "path": "zendesk-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "mcp",
         "pagination",
@@ -291,6 +310,7 @@
       "id": "zoom-automation",
       "description": "Zoom via Composio",
       "path": "zoom-automation/SKILL.md",
+      "triggers": [],
       "tags": [
         "pagination",
         "mcp",
