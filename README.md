@@ -16,23 +16,21 @@ Works on **Windows 11 · macOS · Linux**.
 
 ---
 
-## Table of Contents
+## Documentation Hub
 
-1. [Prerequisites](#prerequisites)
-2. [Quick Start](#quick-start)
-3. [Using with Your Projects](#using-with-your-projects)
-4. [Workspace Layout](#workspace-layout)
-5. [Infrastructure Services](#infrastructure-services)
-6. [MCP Servers](#mcp-servers)
-7. [Skills, Workflows & Rules](#skills-workflows--rules)
-8. [Customization](#customization)
-9. [Troubleshooting](#troubleshooting)
-10. [Advanced Asset Management](#advanced-asset-management)
-11. [License](#license)
+To keep this guide concise, deep dives into specific areas of the workspace have been moved to dedicated documentation files:
+
+- **[SKILLS.md](SKILLS.md)**: Browse and activate specialized AI knowledge modules (1,300+ skills).
+- **[WORKFLOWS.md](WORKFLOWS.md)**: Explore slash-command automations to accelerate your development loop.
+- **[RULES.md](RULES.md)**: Understand the behavioral guardrails applied to every AI interaction.
+- **[MCP_GUIDE.md](MCP_GUIDE.md)**: A comprehensive guide for configuring and managing Model Context Protocol (MCP) servers.
+- **[ADVANCED_USAGE.md](ADVANCED_USAGE.md)**: Details on customizing the workspace, reorganizing assets, registry sharding, and deep tag extraction.
 
 ---
 
-## Prerequisites
+## Quick Start
+
+### 1. Prerequisites
 
 Install the following **before** starting the workspace. 
 *(If you are on Windows, ensure you are running your terminal commands in **PowerShell 7** or higher, not Command Prompt).*
@@ -44,7 +42,7 @@ Install the following **before** starting the workspace.
 | **Git** | 2.30+ | <https://git-scm.com> |
 | **AI coding tool** | — | Antigravity, VS Code + Copilot, Cursor, etc. |
 
-### Container Engine
+#### Container Engine
 
 This workspace uses containers for PostgreSQL (pgvector) and n8n. Choose one:
 
@@ -53,11 +51,14 @@ This workspace uses containers for PostgreSQL (pgvector) and n8n. Choose one:
 | **Podman** | Windows 11, Linux | <https://podman.io/getting-started/installation> |
 | **Docker** | macOS, Linux | <https://docs.docker.com/get-docker/> |
 
-> **Windows 11 Setup Tip:** Completely fresh Windows installations do not have WSL2 enabled by default. Open an **admin** PowerShell and run `wsl --install` before installing Podman or Docker Desktop, or your background container engine will fail to start.
+**Quick Installation Tips:**
+- **macOS:** Install via Homebrew: `brew install podman` (then run `podman machine init` and `podman machine start`), or for Docker: `brew install --cask docker`.
+- **Linux:** Install via your package manager, e.g., Ubuntu/Debian: `sudo apt-get install podman` (or `docker.io`), Fedora: `sudo dnf install podman`.
+- **Windows 11:** Completely fresh Windows installations do not have WSL2 enabled by default. Open an **admin** PowerShell and run `wsl --install` before installing Podman or Docker Desktop, or your background container engine will fail to start.
 
-> **Note:** The rules in this workspace default to `podman`. If you use Docker, update `.agents/rules/terminal-environment.md` (see [Customization](#customization)).
+> **Note:** The rules in this workspace default to `podman`. If you use Docker, update `.agents/rules/terminal-environment.md` (see [ADVANCED_USAGE.md](ADVANCED_USAGE.md)).
 
-### 🔍 Verify Your Setup
+#### 🔍 Verify Your Setup
 Restart your terminal after installing the tools above, then run:
 
 ```bash
@@ -68,11 +69,7 @@ podman -v # or docker -v
 
 If these print versions (and not "command not found"), you are ready to proceed!
 
----
-
-## Quick Start
-
-### 1. Initial Git Setup & Clone
+### 2. Initial Git Setup & Clone
 
 If this is a completely fresh laptop, configure your Git identity first so you can commit and push:
 ```bash
@@ -86,7 +83,7 @@ git clone https://github.com/harryduong1212/based-workspace.git
 cd based-workspace
 ```
 
-### 2. Configure Environment & Secrets
+### 3. Configure Environment & Secrets
 
 This workspace uses a secure, automated setup to manage your local database passwords and environment variables without leaking them to Git.
 
@@ -100,7 +97,7 @@ This script:
 - Creates a `.env` file at the root (ignored by Git).
 - Synchronizes `.vscode/mcp.json` to use a secure loader script.
 
-### 3. Start Infrastructure
+### 4. Start Infrastructure
 
 Choose the command for your container engine:
 
@@ -121,7 +118,7 @@ This starts:
 > [!TIP]
 > Always run `setup_env.py` **before** starting your containers for the first time or whenever you want to rotate your passwords.
 
-### 4. Open in your AI coding tool
+### 5. Open in your AI coding tool
 
 Open the `based-workspace` folder in **Antigravity**, **VS Code**, **Cursor**, or any editor that supports the `.agents/` convention.
 
@@ -261,198 +258,25 @@ based-workspace/
 ├── SKILLS.md                     ← 🧠 Catalogue of all 1,300+ skills
 ├── WORKFLOWS.md                  ← 🚀 Catalogue of all 50+ workflows
 ├── MCP_GUIDE.md                  ← 🔌 Comprehensive guide for MCP servers
+├── ADVANCED_USAGE.md             ← ⚙️ Advanced customization guide
 └── README.md                     ← 📖 This file
 ```
 
 ---
 
-## Infrastructure Services
+## Troubleshooting & License
 
-Started via `compose.yaml`:
+### Troubleshooting
 
-| Service | Container Name | Port | Purpose |
-|---|---|---|---|
-| **PostgreSQL 16 + pgvector** | `based-workspace-postgres` | `5432` | Vector memory, embeddings, project data |
-| **n8n** | `based-workspace-n8n` | `5678` | Workflow automation engine |
-
-### Common Commands
-
-| Action | Podman | Docker |
-|---|---|---|
-| **Start** | `podman compose -f infrastructure/compose.yaml up -d` | `docker compose -f infrastructure/compose.yaml up -d` |
-| **Stop** | `podman compose -f infrastructure/compose.yaml down` | `docker compose -f infrastructure/compose.yaml down` |
-| **Logs** | `podman logs based-workspace-postgres` | `docker logs based-workspace-postgres` |
-| **Status** | `podman ps` | `docker ps` |
-| **Reset data** | `podman compose -f infrastructure/compose.yaml down -v` | `docker compose -f infrastructure/compose.yaml down -v` |
-
-### Database Credentials
-
-All credentials are encrypted/randomized locally and stored in your root `.env` file. Do not edit these directly unless you are comfortable with container environment variables.
-
-| Key | Value (Default) | Source |
-|---|---|---|
-| User | `admin` | `.env` (`POSTGRES_USER`) |
-| Password | *[Randomly Generated]* | `.env` (`POSTGRES_PASSWORD`) |
-| Database | `ai_memory` | `.env` (`POSTGRES_DB`) |
-
-> [!NOTE]
-> To rotate your passwords, simply run `python scripts/setup_env.py` again and restart your containers.
-
----
-
-## MCP Servers & Global Setup
-
-In the **Antigravity IDE**, MCP (Model Context Protocol) servers are managed **globally**, not per-workspace. The local `.vscode/mcp.json` file in this repository serves as a **template** that you must copy to your global configuration directory.
-
-### 1. Global Configuration Path
-
-Copy the contents of `.vscode/mcp.json` into the following file on your machine:
-
-| Platform | Global Configuration Path |
-|---|---|
-| **Windows 11** | `%USERPROFILE%\.gemini\antigravity\mcp_config.json` |
-| **macOS / Linux** | `~/.gemini/antigravity/mcp_config.json` |
-
-### 2. Required Modifications (Absolute Paths)
-
-Antigravity executes these servers from its own internal context, so you **must use absolute paths** to the scripts inside your `based-workspace/scripts/` folder.
-
-#### Windows Example (`mcp_config.json`):
-```json
-{
-  "mcpServers": {
-    "postgres-memory": {
-      "command": "node",
-      "args": ["C:/path/to/scripts/postgres-mcp.js"]
-    }
-  }
-}
-```
-> [!IMPORTANT]
-> - Use **forward slashes** `/` even on Windows (e.g., `C:/path/to/script.js`).
-> - Use `npx.cmd` if you are calling `npx` directly on Windows.
-
-#### macOS / Linux Example (`mcp_config.json`):
-```json
-{
-  "mcpServers": {
-    "postgres-memory": {
-      "command": "node",
-      "args": ["/Users/name/based-workspace/scripts/postgres-mcp.js"]
-    }
-  }
-}
-```
-
-### 3. Why Wrapper Scripts?
-
-This workspace provides `scripts/grep-mcp.js` and `scripts/postgres-mcp.js`. These are "wrapper" scripts that:
-1. **Manage Secrets:** Securely load credentials from your `.env` file so they aren't exposed in your JSON config.
-2. **Sanitize Streams:** Prevent debug logs from polluting the JSON-RPC stream, which often causes "invalid trailing data" or protocol errors in the AI tool.
-3. **Environment Setup:** Ensure the correct working directory is set before spawning the actual MCP server.
-
----
-
-## Skills, Workflows & Rules
-
-This workspace leverages a massive library of domain-specific expertise. Assets are stored in hierarchical categories and indexed in machine-readable registries.
-
-### Skills (1,300+)
-Browse and activate specialized AI knowledge modules.
-
-**PowerShell:**
-```powershell
-# Count all available skills
-Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
-
-# Search for specific skills
-Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory | Where-Object { $_.Name -like "*react*" }
-```
-
-**Bash / Zsh:**
-```bash
-# Count
-ls -d .archived/skills/*/*/ | wc -l
-
-# Search
-ls -d .archived/skills/*/*react*/
-```
-
-**How to activate a skill:**
-Copy the desired skill folder from `.archived/skills/<category>/<name>` to `.agents/skills/`.
-
-See [`SKILLS.md`](SKILLS.md) for the full categorized catalogue.
-
-### Workflows (50)
-Slash-command automations to accelerate your development loop.
-
-**How to activate a workflow:**
-Copy the desired workflow folder from `.archived/workflows/<category>/<name>` to `.agents/workflows/`.
-
-Once activated, you can trigger them via chat:
-- `/git-commit-group-changes` — Logical commit automation
-- `/custom-feature-kickoff` — Start-to-finish orchestration
-- `/unit-test` — Generate project tests
-
-See [`WORKFLOWS.md`](WORKFLOWS.md) for the full list.
-
-### Rules (always active)
-Behavioral guardrails applied to every AI interaction:
-
-| Rule File | What It Does |
-|---|---|
-| `terminal-environment.md` | Enforces correct shell syntax and container engine |
-| `workspace-boundaries.md` | Restricts DB/automation to relevant local containers |
-
----
-
-## Customization
-
-### Reorganizing Assets
-If you add new skills or workflows manually to the `.archived` directories, run the reorganization scripts to keep the structure and registries in sync:
-
-```bash
-# Maintain hierarchical structure and registry sharding
-python scripts/reorganize_skills_safe.py
-python scripts/reorganize_workflows_safe.py
-
-# Extract deep operational tags based on actual content
-python scripts/generate_deep_tags.py --type skills
-python scripts/generate_deep_tags.py --type workflows
-```
-
----
-
-## 🏗️ Advanced Asset Management
-
-### Registry Sharding
-To maintain performance and scalability as the library grows (now 1,300+ skills), we use **Registry Sharding**. Instead of one massive `registry.json`, each category in `.archived/skills/` and `.archived/workflows/` contains its own dedicated `registry.json` file. This prevents merge conflicts and allows the AI agent to load only the relevant category context.
-
-### Deep Tag Extraction
-The `scripts/generate_deep_tags.py` script uses lightweight natural language processing to read your **SKILL.md** or **WORKFLOW.md** instruction files and extract high-signal tags:
-- **Technologies** (e.g., `fastapi`, `tailwind`, `openai`)
-- **Protocols** (e.g., `grpc`, `rest`, `oauth`)
-- **Operations** (e.g., `scraping`, `fuzzing`, `deployment`)
-
-These tags are automatically indexed in the `registry.json` files, helping the AI agent find the exact expertise needed for your task.
-
-### Orphan Cleanup
-The reorganization scripts automatically detect and remove "orphan" entries—skills listed in a registry that no longer have a corresponding `SKILL.md` file on disk. This ensures your library index is always 100% accurate.
-
----
-
-## Troubleshooting
-
-### MCP & Connectivity
+#### MCP & Connectivity
 - **"Invalid trailing data":** Always use the wrapper scripts in `scripts/`.
 - **"Connection Refused":** Ensure containers are running (`podman ps`).
 - **Path Issues:** Ensure absolute paths with forward slashes in `mcp_config.json`.
 
-### Asset Loading
+#### Asset Loading
 - Ensure the workspace root is opened (not a subfolder).
 - Ensure `.agents/` and `.agents/agents.md` are present.
 
----
+### License
 
-## License
 MIT — Use freely, modify as needed.
