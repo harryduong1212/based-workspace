@@ -2,6 +2,7 @@ node_modules/
 dist/
 infrastructure/pgdata/
 .n8n/
+tmp/
 
 # Secrets
 .env
