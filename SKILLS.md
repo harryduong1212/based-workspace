@@ -41,11 +41,10 @@ Each skill is organized for both human browsing and AI context:
 
 ## 🏗️ Skills by Category
 
-Below is the complete index of your 1,331 installed skills. Categories help you find the right expertise for your project.
-
-
 ### 🤖 AI, LLM & Agent Development
+
 <details>
+<summary><b>🤖 AI, LLM & Agent Development (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -134,7 +133,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🌐 Frontend Development
+
 <details>
+<summary><b>🌐 Frontend Development (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -423,7 +424,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### ⚙️ Backend Development
+
 <details>
+<summary><b>⚙️ Backend Development (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -512,7 +515,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🗄️ Database
+
 <details>
+<summary><b>🗄️ Database (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -553,7 +558,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 📱 Mobile Development
+
 <details>
+<summary><b>📱 Mobile Development (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -580,7 +587,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🔒 Security & Penetration Testing
+
 <details>
+<summary><b>🔒 Security & Penetration Testing (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -661,7 +670,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### ☁️ Cloud, DevOps & Infrastructure
+
 <details>
+<summary><b>☁️ Cloud, DevOps & Infrastructure (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -713,7 +724,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🧪 Testing & Quality
+
 <details>
+<summary><b>🧪 Testing & Quality (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -780,7 +793,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🔧 Programming Languages
+
 <details>
+<summary><b>🔧 Programming Languages (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -810,7 +825,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🎨 Design, UI/UX & Creative
+
 <details>
+<summary><b>🎨 Design, UI/UX & Creative (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -869,7 +886,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 📚 Documentation & Writing
+
 <details>
+<summary><b>📚 Documentation & Writing (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -883,7 +902,6 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 | [coda-automation](.archived/skills/documentation-writing/coda-automation/SKILL.md) | Automate Coda tasks via Rube MCP (Composio): manage docs, pages, tables, rows, formulas, permissions, and publishing. Always search tools first for current schemas. |
 | [cold-email](.archived/skills/documentation-writing/cold-email/SKILL.md) | Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR outreach, personalized opening lines, subject lines, CTAs, and multi-touch follow-up sequences. |
 | [content-creator](.archived/skills/documentation-writing/content-creator/SKILL.md) | Brand voice analysis, SEO, content frameworks |
-
 | [daily-news-report](.archived/skills/documentation-writing/daily-news-report/SKILL.md) | Scrapes content based on a preset URL list, filters high-quality technical information, and generates daily Markdown reports. |
 | [defuddle](.archived/skills/documentation-writing/defuddle/SKILL.md) | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or analyze, for online documentation, articles, blog posts, or any standard web page. |
 | [docs](.archived/skills/documentation-writing/docs/SKILL.md) | Docs |
@@ -911,7 +929,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🔀 Git & Version Control
+
 <details>
+<summary><b>🔀 Git & Version Control (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1081,7 +1101,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🏗️ Architecture & Patterns
+
 <details>
+<summary><b>🏗️ Architecture & Patterns (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1092,7 +1114,6 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 | [c4-component](.archived/skills/architecture-patterns/c4-component/SKILL.md) | Expert C4 Component-level documentation specialist. Synthesizes C4 Code-level documentation into Component-level architecture, defining component boundaries, interfaces, and relationships. |
 | [clean-code](.archived/skills/architecture-patterns/clean-code/SKILL.md) | Uncle Bob's Clean Code principles |
 | [cqrs-implementation](.archived/skills/architecture-patterns/cqrs-implementation/SKILL.md) | Command Query Responsibility Segregation |
-
 | [ddd-context-mapping](.archived/skills/architecture-patterns/ddd-context-mapping/SKILL.md) | Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns. |
 | [ddd-strategic-design](.archived/skills/architecture-patterns/ddd-strategic-design/SKILL.md) | Bounded contexts, ubiquitous language |
 | [ddd-tactical-patterns](.archived/skills/architecture-patterns/ddd-tactical-patterns/SKILL.md) | Entities, value objects, aggregates |
@@ -1109,13 +1130,14 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 | [robius-app-architecture](.archived/skills/architecture-patterns/robius-app-architecture/SKILL.md) | | |
 | [robius-widget-patterns](.archived/skills/architecture-patterns/robius-widget-patterns/SKILL.md) | | |
 | [saga-orchestration](.archived/skills/architecture-patterns/saga-orchestration/SKILL.md) | Distributed transactions, long-running processes |
-
 | [software-architecture](.archived/skills/architecture-patterns/software-architecture/SKILL.md) | Quality-focused architecture guide |
 
 </details>
 
 ### 📊 Data & ML Engineering
+
 <details>
+<summary><b>📊 Data & ML Engineering (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1143,7 +1165,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🔎 SEO & Growth
+
 <details>
+<summary><b>🔎 SEO & Growth (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1170,14 +1194,14 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 💰 Business, Product & Marketing
+
 <details>
+<summary><b>💰 Business, Product & Marketing (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
-
 | [business-analyst](.archived/skills/business-product-marketing/business-analyst/SKILL.md) | KPI frameworks, predictive models |
 | [copywriting](.archived/skills/business-product-marketing/copywriting/SKILL.md) | Conversion-focused marketing copy |
-
 | [micro-saas-launcher](.archived/skills/business-product-marketing/micro-saas-launcher/SKILL.md) | Idea → paying customers in weeks |
 | [pricing-strategy](.archived/skills/business-product-marketing/pricing-strategy/SKILL.md) | Pricing, packaging, monetization |
 | [saas-mvp-launcher](.archived/skills/business-product-marketing/saas-mvp-launcher/SKILL.md) | SaaS MVP roadmap |
@@ -1189,7 +1213,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🔌 SaaS Integrations & Automations
+
 <details>
+<summary><b>🔌 SaaS Integrations & Automations (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1217,7 +1243,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### ☁️ Azure SDKs
+
 <details>
+<summary><b>☁️ Azure SDKs (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1354,7 +1382,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🎮 Game Development
+
 <details>
+<summary><b>🎮 Game Development (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1367,7 +1397,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🛠️ Workflow & Automation Platforms
+
 <details>
+<summary><b>🛠️ Workflow & Automation Platforms (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1428,7 +1460,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 💳 Payments & Billing
+
 <details>
+<summary><b>💳 Payments & Billing (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1440,7 +1474,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🌍 Blockchain & Web3
+
 <details>
+<summary><b>🌍 Blockchain & Web3 (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1452,7 +1488,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🧬 Scientific Computing
+
 <details>
+<summary><b>🧬 Scientific Computing (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1468,7 +1506,9 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 📦 Miscellaneous / Other
+
 <details>
+<summary><b>📦 Miscellaneous / Other (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
@@ -1525,7 +1565,6 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 | [plan-writing](.archived/skills/miscellaneous-other/plan-writing/SKILL.md) | Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work. |
 | [quality-nonconformance](.archived/skills/miscellaneous-other/quality-nonconformance/SKILL.md) | Codified expertise for quality control, non-conformance investigation, root cause analysis, corrective action, and supplier quality management in regulated manufacturing. |
 | [rehabilitation-analyzer](.archived/skills/miscellaneous-other/rehabilitation-analyzer/SKILL.md) | 分析康复训练数据、识别康复模式、评估康复进展，并提供个性化康复建议 |
-| [resources](.archived/skills/miscellaneous-other/resources/SKILL.md) | Resources |
 | [risk-manager](.archived/skills/miscellaneous-other/risk-manager/SKILL.md) | Monitor portfolio risk, R-multiples, and position limits. Creates hedging strategies, calculates expectancy, and implements stop-losses. |
 | [robius-event-action](.archived/skills/miscellaneous-other/robius-event-action/SKILL.md) | | |
 | [robius-matrix-integration](.archived/skills/miscellaneous-other/robius-matrix-integration/SKILL.md) | | |
@@ -1567,22 +1606,32 @@ Below is the complete index of your 1,331 installed skills. Categories help you 
 </details>
 
 ### 🎯 Custom Skills
-<details>
 
-These skills have been specifically tailored or added to this workspace to handle proprietary workflows and advanced business logic.
+<details>
+<summary><b>🎯 Custom Skills (Click to expand)</b></summary>
 
 | Skill | Description |
 |---|---|
-| [custom-debrief](.archived/skills/documentation-writing/custom-debrief/SKILL.md) | **(Custom)** Post-mortem task breakdowns and mentor insights. |
-| [custom-senior-architect](.archived/skills/architecture-patterns/custom-senior-architect/SKILL.md) | **(Custom)** Specialist for end-to-end technical flow mapping and sequence diagrams. |
-| [custom-senior-it-ba-specialist](.archived/skills/business-product-marketing/custom-senior-it-ba-specialist/SKILL.md) | **(Custom)** Senior IT business analyst for technical requirements and workflow mapping. |
-| [custom-video-analyst](.archived/skills/workflow-automation-platforms/custom-video-analyst/SKILL.md) | **(Custom)** Expert note-taker for video/transcripts with zero technical loss. |
-| [senior-architect](.archived/skills/architecture-patterns/senior-architect/SKILL.md) | **(Custom)** Senior architect toolkit for modern system designs. |
+| [custom-debrief](.archived/skills/custom-skills/custom-debrief/SKILL.md) | **(Custom)** Post-mortem task breakdowns and mentor insights. |
+| [custom-senior-architect](.archived/skills/custom-skills/custom-senior-architect/SKILL.md) | **(Custom)** Specialist for end-to-end technical flow mapping and sequence diagrams. |
+| [custom-senior-it-ba-specialist](.archived/skills/custom-skills/custom-senior-it-ba-specialist/SKILL.md) | **(Custom)** Senior IT business analyst for technical requirements and workflow mapping. |
+| [custom-video-analyst](.archived/skills/custom-skills/custom-video-analyst/SKILL.md) | **(Custom)** Expert note-taker for video/transcripts with zero technical loss. |
+| [senior-architect](.archived/skills/custom-skills/senior-architect/SKILL.md) | **(Custom)** Senior architect toolkit for modern system designs. |
 
 </details>
 
 ## Finding Skills
 
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**PowerShell:**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1329
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 
 **PowerShell:**
