@@ -11,113 +11,81 @@
         "stage",
         "critical",
         "rules",
-        "workflow",
         "spec",
         "planning",
         "execution",
-        "research"
+        "research",
+        "regression"
       ]
     },
     {
-      "id": "acceptance-orchestrator",
-      "description": "Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention.",
-      "path": "acceptance-orchestrator/SKILL.md",
+      "id": "address-github-comments",
+      "description": "Use when you need to address review or issue comments on an open GitHub Pull Request using the gh CLI.",
+      "path": "address-github-comments/SKILL.md",
       "triggers": [
-        "coding",
-        "should",
-        "driven",
-        "end-to-end",
-        "issue"
+        "address",
+        "review",
+        "issue",
+        "comments",
+        "GitHub"
       ],
       "tags": [
-        "acceptance",
-        "accepted",
-        "orchestrator",
-        "human",
-        "dod",
-        "escalated",
-        "stop",
-        "create-issue-gate"
+        "github",
+        "comments",
+        "address",
+        "overview",
+        "prerequisites",
+        "inspect",
+        "categorize",
+        "plan"
       ]
     },
     {
-      "id": "arm-cortex-expert",
-      "description": "Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD).",
-      "path": "arm-cortex-expert/SKILL.md",
+      "id": "advogado-especialista",
+      "description": "Advogado especialista em todas as areas do Direito brasileiro: familia, criminal, trabalhista, tributario, consumidor, imobiliario, empresarial, civil e constitucional.",
+      "path": "advogado-especialista/SKILL.md",
       "triggers": [],
       "tags": [
-        "rust",
-        "dma",
-        "arm",
-        "spi",
-        "cortex",
-        "memory",
-        "pattern",
-        "fpu"
+        "art",
+        "lei",
+        "cpc",
+        "etapa",
+        "bens",
+        "stj",
+        "clt",
+        "direito"
       ]
     },
     {
-      "id": "aws-compliance-checker",
-      "description": "Automated compliance checking against CIS, PCI-DSS, HIPAA, and SOC 2 benchmarks",
-      "path": "aws-compliance-checker/SKILL.md",
+      "id": "app-store-changelog",
+      "description": "Generate user-facing App Store release notes from git history since the last tag.",
+      "path": "app-store-changelog/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "app",
+        "store",
+        "output",
+        "changelog",
+        "scripts",
+        "collect",
+        "overview",
+        "changes"
+      ]
+    },
+    {
+      "id": "aws-cost-cleanup",
+      "description": "Automated cleanup of unused AWS resources to reduce costs",
+      "path": "aws-cost-cleanup/SKILL.md",
       "triggers": [],
       "tags": [
         "aws",
-        "logging",
-        "monitoring",
-        "validation",
-        "compliance",
-        "cloudtrail",
-        "encryption",
-        "access"
-      ]
-    },
-    {
-      "id": "aws-iam-best-practices",
-      "description": "IAM policy review, hardening, and least privilege implementation",
-      "path": "aws-iam-best-practices/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "iam",
-        "aws",
-        "access",
-        "mfa",
-        "find",
-        "policies",
-        "policy",
-        "list"
-      ]
-    },
-    {
-      "id": "aws-secrets-rotation",
-      "description": "Automate AWS secrets rotation for RDS, API keys, and credentials",
-      "path": "aws-secrets-rotation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "rotation",
-        "aws",
-        "secret",
-        "secrets",
-        "rds",
-        "api",
-        "monitoring",
-        "python"
-      ]
-    },
-    {
-      "id": "aws-security-audit",
-      "description": "Comprehensive AWS security posture assessment using AWS CLI and security best practices",
-      "path": "aws-security-audit/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "logging",
-        "aws",
-        "encryption",
-        "security",
-        "monitoring",
-        "find",
-        "checks",
-        "audit"
+        "cleanup",
+        "cost",
+        "savings",
+        "ebs",
+        "elastic",
+        "calculate",
+        "integration"
       ]
     },
     {
@@ -137,43 +105,35 @@
       ]
     },
     {
-      "id": "c4-context",
-      "description": "Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies.",
-      "path": "c4-context/SKILL.md",
+      "id": "busybox-on-windows",
+      "description": "How to use a Win32 build of BusyBox to run many of the standard UNIX command line tools on Windows.",
+      "path": "busybox-on-windows/SKILL.md",
       "triggers": [],
       "tags": [
-        "context",
-        "external",
-        "journey",
-        "diagram",
-        "persona",
-        "feature",
-        "documentation",
-        "features"
+        "busybox",
+        "unix",
+        "progresspreference",
+        "silentlycontinue",
+        "uri",
+        "outfile",
+        "windows",
+        "invoke"
       ]
     },
     {
-      "id": "cc-skill-continuous-learning",
-      "description": "Development skill from everything-claude-code",
-      "path": "cc-skill-continuous-learning/SKILL.md",
+      "id": "c-pro",
+      "description": "Write efficient C code with proper memory management, pointer",
+      "path": "c-pro/SKILL.md",
       "triggers": [],
       "tags": [
-        "cc-skill-continuous-learning",
-        "cc",
-        "continuous",
-        "learning"
-      ]
-    },
-    {
-      "id": "cc-skill-strategic-compact",
-      "description": "Development skill from everything-claude-code",
-      "path": "cc-skill-strategic-compact/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "cc-skill-strategic-compact",
-        "cc",
-        "strategic",
-        "compact"
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "pro",
+        "resources",
+        "memory",
+        "needing"
       ]
     },
     {
@@ -193,18 +153,35 @@
       ]
     },
     {
-      "id": "claude-scientific-skills",
-      "description": "Scientific research and analysis skills",
-      "path": "claude-scientific-skills/SKILL.md",
+      "id": "claude-code-expert",
+      "description": "Especialista profundo em Claude Code - CLI da Anthropic. Maximiza produtividade com atalhos, hooks, MCPs, configuracoes avancadas, workflows, CLAUDE.md, memoria, sub-agentes, permissoes e integracao com ecossistemas.",
+      "path": "claude-code-expert/SKILL.md",
       "triggers": [],
       "tags": [
         "claude",
-        "scientific",
+        "mcp",
+        "json",
+        "bash",
+        "hooks",
+        "fase",
+        "hook",
+        "ver"
+      ]
+    },
+    {
+      "id": "claude-speed-reader",
+      "description": "-Speed read Claude's responses at 600+ WPM using RSVP with Spritz-style ORP highlighting",
+      "path": "claude-speed-reader/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "claude",
+        "speed",
+        "reader",
         "overview",
         "instructions",
-        "dense",
-        "research",
-        "analysis"
+        "wpm",
+        "rsvp",
+        "orp"
       ]
     },
     {
@@ -221,6 +198,22 @@
         "instructions",
         "windows",
         "notmyself"
+      ]
+    },
+    {
+      "id": "clean-code",
+      "description": "This skill embodies the principles of \\\"Clean Code\\\" by Robert C. Martin (Uncle Bob). Use it to transform \\\"code that works\\\" into \\\"code that is clean.\\",
+      "path": "clean-code/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "names",
+        "don",
+        "clean",
+        "formatting",
+        "functions",
+        "comments",
+        "classes",
+        "objects"
       ]
     },
     {
@@ -242,6 +235,107 @@
         "restoration",
         "vector",
         "advanced"
+      ]
+    },
+    {
+      "id": "code-refactoring-tech-debt",
+      "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
+      "path": "code-refactoring-tech-debt/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "refactoring",
+        "debt",
+        "phase",
+        "validation",
+        "metrics",
+        "roi",
+        "plan",
+        "quantify"
+      ]
+    },
+    {
+      "id": "code-review-excellence",
+      "description": "Transform code reviews from gatekeeping to knowledge sharing through constructive feedback, systematic analysis, and collaborative improvement.",
+      "path": "code-review-excellence/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "resources",
+        "review",
+        "excellence",
+        "instructions",
+        "output",
+        "format",
+        "transform",
+        "reviewing"
+      ]
+    },
+    {
+      "id": "codebase-cleanup-tech-debt",
+      "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
+      "path": "codebase-cleanup-tech-debt/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "refactoring",
+        "debt",
+        "phase",
+        "validation",
+        "metrics",
+        "roi",
+        "plan",
+        "quantify"
+      ]
+    },
+    {
+      "id": "commit",
+      "description": "ALWAYS use this skill when committing code changes — never commit directly without it. Creates commits following Sentry conventions with proper conventional commit format and issue references. Trigger on any commit, git commit, save changes, or commit message task.",
+      "path": "commit/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "claude",
+        "commit",
+        "sentry",
+        "fixes",
+        "format",
+        "references",
+        "validation",
+        "create-branch"
+      ]
+    },
+    {
+      "id": "comprehensive-review-full-review",
+      "description": "Use when working with comprehensive review full review",
+      "path": "comprehensive-review-full-review/SKILL.md",
+      "triggers": [
+        "working",
+        "comprehensive",
+        "review",
+        "review"
+      ],
+      "tags": [
+        "review",
+        "phase",
+        "quality",
+        "analysis",
+        "priority",
+        "task",
+        "refactoring",
+        "performance"
+      ]
+    },
+    {
+      "id": "comprehensive-review-pr-enhance",
+      "description": ">",
+      "path": "comprehensive-review-pr-enhance/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "resources",
+        "review",
+        "checklist",
+        "changes",
+        "rollback",
+        "pull",
+        "request",
+        "enhancement"
       ]
     },
     {
@@ -283,22 +377,6 @@
       ]
     },
     {
-      "id": "conductor-implement",
-      "description": "Execute tasks from a track's implementation plan following TDD workflow",
-      "path": "conductor-implement/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "track",
-        "conductor",
-        "task",
-        "update",
-        "tdd",
-        "completion",
-        "failure",
-        "workflow"
-      ]
-    },
-    {
       "id": "conductor-manage",
       "description": "Manage track lifecycle: archive, restore, delete, rename, and cleanup",
       "path": "conductor-manage/SKILL.md",
@@ -328,6 +406,38 @@
         "verification",
         "specification",
         "generation"
+      ]
+    },
+    {
+      "id": "conductor-validator",
+      "description": "Validates Conductor project artifacts for completeness,",
+      "path": "conductor-validator/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "track",
+        "conductor",
+        "task",
+        "directory",
+        "exists",
+        "find",
+        "instructions",
+        "pattern"
+      ]
+    },
+    {
+      "id": "context-guardian",
+      "description": "Guardiao de contexto que preserva dados criticos antes da compactacao automatica. Snapshots, verificacao de integridade e zero perda de informacao.",
+      "path": "context-guardian/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "claude",
+        "fase",
+        "que",
+        "nao",
+        "context",
+        "memory",
+        "ativacao",
+        "sql"
       ]
     },
     {
@@ -374,6 +484,28 @@
       ]
     },
     {
+      "id": "create-branch",
+      "description": "Create a git branch following Sentry naming conventions. Use when asked to \"create a branch\", \"new branch\", \"start a branch\", \"make a branch\", \"switch to a new branch\", or when starting new work on the default branch.",
+      "path": "create-branch/SKILL.md",
+      "triggers": [
+        "Create",
+        "branch",
+        "following",
+        "Sentry",
+        "naming"
+      ],
+      "tags": [
+        "branch",
+        "priscila",
+        "feat",
+        "ref",
+        "chore",
+        "username",
+        "prefix",
+        "determine"
+      ]
+    },
+    {
       "id": "create-issue-gate",
       "description": "Use when starting a new implementation task and an issue must be created with strict acceptance criteria gating before execution.",
       "path": "create-issue-gate/SKILL.md",
@@ -396,22 +528,6 @@
       ]
     },
     {
-      "id": "customs-trade-compliance",
-      "description": "Codified expertise for customs documentation, tariff classification, duty optimisation, restricted party screening, and regulatory compliance across multiple jurisdictions.",
-      "path": "customs-trade-compliance/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "gri",
-        "cbp",
-        "customs",
-        "compliance",
-        "fta",
-        "classification",
-        "incoterms",
-        "method"
-      ]
-    },
-    {
       "id": "distributed-tracing",
       "description": "Implement distributed tracing with Jaeger and Tempo for request flow visibility across microservices.",
       "path": "distributed-tracing/SKILL.md",
@@ -428,6 +544,38 @@
       ]
     },
     {
+      "id": "django-access-review",
+      "description": "django-access-review",
+      "path": "django-access-review/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "authorization",
+        "django",
+        "phase",
+        "find",
+        "investigation",
+        "custom",
+        "access",
+        "review"
+      ]
+    },
+    {
+      "id": "docx-official",
+      "description": "A user may ask you to create, edit, or analyze the contents of a .docx file. A .docx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks.",
+      "path": "docx-official/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "xml",
+        "document",
+        "word",
+        "editing",
+        "tracked",
+        "read",
+        "python",
+        "docx"
+      ]
+    },
+    {
       "id": "emergency-card",
       "description": "生成紧急情况下快速访问的医疗信息摘要卡片。当用户需要旅行、就诊准备、紧急情况或询问\"紧急信息\"、\"医疗卡片\"、\"急救信息\"时使用此技能。提取关键信息（过敏、用药、急症、植入物），支持多格式输出（JSON、文本、二维码），用于急救或快速就医。",
       "path": "emergency-card/SKILL.md",
@@ -441,6 +589,76 @@
         "python",
         "javascript",
         "emergency"
+      ]
+    },
+    {
+      "id": "energy-procurement",
+      "description": "Codified expertise for electricity and gas procurement, tariff optimisation, demand charge management, renewable PPA evaluation, and multi-facility energy cost management.",
+      "path": "energy-procurement/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "mwh",
+        "ppa",
+        "procurement",
+        "energy",
+        "demand",
+        "recs",
+        "within",
+        "market"
+      ]
+    },
+    {
+      "id": "environment-setup-guide",
+      "description": "Guide developers through setting up development environments with proper tools, dependencies, and configurations",
+      "path": "environment-setup-guide/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "docker",
+        "install",
+        "environment",
+        "python",
+        "setup",
+        "verify",
+        "node",
+        "installation"
+      ]
+    },
+    {
+      "id": "error-diagnostics-smart-debug",
+      "description": "Use when working with error diagnostics smart debug",
+      "path": "error-diagnostics-smart-debug/SKILL.md",
+      "triggers": [
+        "working",
+        "error",
+        "diagnostics",
+        "smart",
+        "debug"
+      ],
+      "tags": [
+        "validation",
+        "observability",
+        "error",
+        "debug",
+        "logging",
+        "profiling",
+        "monitoring",
+        "fix"
+      ]
+    },
+    {
+      "id": "ethical-hacking-methodology",
+      "description": "Master the complete penetration testing lifecycle from reconnaissance through reporting. This skill covers the five stages of ethical hacking methodology, essential tools, attack techniques, and professional reporting for authorized security assessments.",
+      "path": "ethical-hacking-methodology/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "phase",
+        "ssh",
+        "metasploit",
+        "persistence",
+        "scan",
+        "dns",
+        "sql",
+        "find"
       ]
     },
     {
@@ -496,17 +714,19 @@
       ]
     },
     {
-      "id": "ffuf-claude-skill",
-      "description": "Web fuzzing with ffuf",
-      "path": "ffuf-claude-skill/SKILL.md",
+      "id": "file-organizer",
+      "description": "6. Reduces Clutter: Identifies old files you probably don't need anymore",
+      "path": "file-organizer/SKILL.md",
       "triggers": [],
       "tags": [
-        "fuzzing",
-        "claude",
-        "ffuf",
-        "overview",
-        "instructions",
-        "web"
+        "archive",
+        "naming",
+        "organization",
+        "find",
+        "organizer",
+        "current",
+        "documents",
+        "folder"
       ]
     },
     {
@@ -558,25 +778,95 @@
       ]
     },
     {
-      "id": "full-stack-orchestration-full-stack-feature",
-      "description": "Use when working with full stack orchestration full stack feature",
-      "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
+      "id": "fp-errors",
+      "description": "Stop throwing everywhere - handle errors as values using Either and TaskEither for cleaner, more predictable code",
+      "path": "fp-errors/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "error",
+        "taskeither",
+        "validation",
+        "errors",
+        "operations",
+        "promise",
+        "json",
+        "chain"
+      ]
+    },
+    {
+      "id": "geoffrey-hinton",
+      "description": "Agente que simula Geoffrey Hinton — Godfather of Deep Learning, Prêmio Turing 2018, criador do backpropagation e das Deep Belief Networks.",
+      "path": "geoffrey-hinton/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "sobre",
+        "hinton",
+        "nao",
+        "por",
+        "que",
+        "routing",
+        "networks",
+        "mais"
+      ]
+    },
+    {
+      "id": "gh-review-requests",
+      "description": "Fetch unread GitHub notifications for open PRs where review is requested from a specified team or opened by a team member. Use when asked to \"find PRs I need to review\", \"show my review requests\", \"what needs my review\", \"fetch GitHub review requests\", or \"check team review queue\".",
+      "path": "gh-review-requests/SKILL.md",
       "triggers": [
-        "working",
-        "stack",
-        "orchestration",
-        "stack",
-        "feature"
+        "Fetch",
+        "unread",
+        "GitHub",
+        "notifications",
+        "where"
       ],
       "tags": [
-        "observability",
-        "phase",
-        "api",
-        "authentication",
-        "architecture",
-        "monitoring",
-        "caching",
-        "validation"
+        "github",
+        "streaming",
+        "script",
+        "review",
+        "requests",
+        "team",
+        "review_requested",
+        "streaming-platform"
+      ]
+    },
+    {
+      "id": "git-pushing",
+      "description": "Stage all changes, create a conventional commit, and push to the remote branch. Use when explicitly asks to push changes (\\\"push this\\\", \\\"commit and push\\\"), mentions saving work to remote (\\\"save to github\\\", \\\"push to remote\\\"), or completes a feature and wants to share it.",
+      "path": "git-pushing/SKILL.md",
+      "triggers": [
+        "Stage",
+        "changes",
+        "create",
+        "conventional",
+        "commit"
+      ],
+      "tags": [
+        "git",
+        "push",
+        "claude",
+        "pushing",
+        "stage",
+        "automatically",
+        "explicitly",
+        "mentions"
+      ]
+    },
+    {
+      "id": "github-issue-creator",
+      "description": "Transform messy input (error logs, voice notes, screenshots) into clean, actionable GitHub issues.",
+      "path": "github-issue-creator/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "behavior",
+        "github",
+        "summary",
+        "environment",
+        "reproduction",
+        "steps",
+        "expected",
+        "actual"
       ]
     },
     {
@@ -593,6 +883,38 @@
         "analyzer",
         "echarts",
         "cdn"
+      ]
+    },
+    {
+      "id": "health-trend-analyzer",
+      "description": "分析一段时间内健康数据的趋势和模式。关联药物、症状、生命体征、化验结果和其他健康指标的变化。识别令人担忧的趋势、改善情况，并提供数据驱动的洞察。当用户询问健康趋势、模式、随时间的变化或\"我的健康状况有什么变化？\"时使用。支持多维度分析（体重/BMI、症状、药物依从性、化验结果、情绪睡眠），相关性分析，变化检测，以及交互式HTML可视化报告（ECharts图表）。",
+      "path": "health-trend-analyzer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "bmi",
+        "glob",
+        "javascript",
+        "json",
+        "health",
+        "trend",
+        "analyzer",
+        "date"
+      ]
+    },
+    {
+      "id": "hugging-face-cli",
+      "description": "The hf CLI provides direct terminal access to the Hugging Face Hub for downloading, uploading, and managing repositories, cache, and compute resources.",
+      "path": "hugging-face-cli/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "authentication",
+        "download",
+        "list",
+        "delete",
+        "cache",
+        "model",
+        "hugging",
+        "face"
       ]
     },
     {
@@ -634,6 +956,38 @@
       ]
     },
     {
+      "id": "issues",
+      "description": "Interact with GitHub issues - create, list, and view issues.",
+      "path": "issues/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "issue",
+        "github",
+        "issues",
+        "view",
+        "selected",
+        "behavior",
+        "list",
+        "askuserquestion"
+      ]
+    },
+    {
+      "id": "javascript-mastery",
+      "description": "33+ essential JavaScript concepts every developer should know, inspired by [33-js-concepts](https://github.com/leonardomso/33-js-concepts).",
+      "path": "javascript-mastery/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "javascript",
+        "object",
+        "functions",
+        "rest",
+        "promise",
+        "closures",
+        "event",
+        "scope"
+      ]
+    },
+    {
       "id": "keyword-extractor",
       "description": ">",
       "path": "keyword-extractor/SKILL.md",
@@ -644,25 +998,9 @@
         "extractor",
         "core",
         "rules",
-        "workflow",
         "generate",
-        "keywords"
-      ]
-    },
-    {
-      "id": "legacy-modernizer",
-      "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility.",
-      "path": "legacy-modernizer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "focus",
-        "instructions",
-        "areas",
-        "output",
-        "react",
-        "java",
-        "python",
-        "refactoring"
+        "keywords",
+        "mandate"
       ]
     },
     {
@@ -682,96 +1020,233 @@
       ]
     },
     {
-      "id": "libreoffice-base",
-      "description": "Database management, forms, reports, and data operations with LibreOffice Base.",
-      "path": "libreoffice-base/SKILL.md",
+      "id": "lightning-channel-factories",
+      "description": "Technical reference on Lightning Network channel factories, multi-party channels, LSP architectures, and Bitcoin Layer 2 scaling without soft forks. Covers Decker-Wattenhofer, timeout trees, MuSig2 key aggregation, HTLC/PTLC forwarding, and watchtower breach detection.",
+      "path": "lightning-channel-factories/SKILL.md",
       "triggers": [],
       "tags": [
-        "database",
-        "python",
-        "sql",
-        "mysql",
-        "postgresql",
+        "lightning",
         "sqlite",
-        "connection",
-        "base"
+        "superscalar",
+        "instructions",
+        "purpose",
+        "topics",
+        "references",
+        "network"
       ]
     },
     {
-      "id": "libreoffice-calc",
-      "description": "Spreadsheet creation, format conversion (ODS/XLSX/CSV), formulas, data automation with LibreOffice Calc.",
-      "path": "libreoffice-calc/SKILL.md",
+      "id": "linear-claude-skill",
+      "description": "Manage Linear issues, projects, and teams",
+      "path": "linear-claude-skill/SKILL.md",
       "triggers": [],
       "tags": [
-        "ods",
-        "python",
-        "xlsx",
-        "html",
-        "method",
-        "csv",
-        "calc",
-        "libreoffice"
-      ]
-    },
-    {
-      "id": "libreoffice-draw",
-      "description": "Vector graphics and diagram creation, format conversion (ODG/SVG/PDF) with LibreOffice Draw.",
-      "path": "libreoffice-draw/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "odg",
-        "python",
-        "svg",
-        "png",
-        "draw",
-        "pdf",
-        "reference",
-        "libreoffice"
-      ]
-    },
-    {
-      "id": "libreoffice-impress",
-      "description": "Presentation creation, format conversion (ODP/PPTX/PDF), slide automation with LibreOffice Impress.",
-      "path": "libreoffice-impress/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "python",
-        "odp",
-        "pptx",
-        "pdf",
-        "impress",
-        "presentation",
-        "reference",
-        "libreoffice"
-      ]
-    },
-    {
-      "id": "libreoffice-writer",
-      "description": "Document creation, format conversion (ODT/DOCX/PDF), mail merge, and automation with LibreOffice Writer.",
-      "path": "libreoffice-writer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "python",
-        "odt",
-        "html",
-        "document",
-        "docx",
-        "conversion",
-        "method",
-        "libreoffice"
-      ]
-    },
-    {
-      "id": "linear",
-      "description": "Managing Linear issues, projects, and teams for issue tracking, status updates, querying projects, and managing team workflows.",
-      "path": "linear/SKILL.md",
-      "triggers": [],
-      "tags": [
+        "mcp",
+        "update",
         "linear",
-        "triggers",
+        "claude",
+        "phase",
         "issue",
-        "team",
-        "status"
+        "status",
+        "issues"
+      ]
+    },
+    {
+      "id": "linkedin-cli",
+      "description": "Use when automating LinkedIn via CLI: fetch profiles, search people/companies, send messages, manage connections, create posts, and Sales Navigator.",
+      "path": "linkedin-cli/SKILL.md",
+      "triggers": [
+        "automating",
+        "LinkedIn",
+        "fetch",
+        "profiles",
+        "search"
+      ],
+      "tags": [
+        "comma",
+        "search",
+        "linkedin",
+        "fetch",
+        "company",
+        "post",
+        "react",
+        "filter"
+      ]
+    },
+    {
+      "id": "lint-and-validate",
+      "description": "MANDATORY: Run appropriate validation tools after EVERY code change. Do not finish a task until the code is error-free.",
+      "path": "lint-and-validate/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "lint",
+        "python",
+        "scripts",
+        "typescript",
+        "validate",
+        "procedures",
+        "ecosystem",
+        "node"
+      ]
+    },
+    {
+      "id": "logistics-exception-management",
+      "description": "Codified expertise for handling freight exceptions, shipment delays, damages, losses, and carrier disputes. Informed by logistics professionals with 15+ years operational experience.",
+      "path": "logistics-exception-management/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "carrier",
+        "exception",
+        "escalation",
+        "claims",
+        "patterns",
+        "customer",
+        "ltl",
+        "damage"
+      ]
+    },
+    {
+      "id": "makepad-animation",
+      "description": "|",
+      "path": "makepad-animation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "animation",
+        "rust",
+        "forward",
+        "state",
+        "easing",
+        "snap",
+        "documentation",
+        "patterns"
+      ]
+    },
+    {
+      "id": "makepad-basics",
+      "description": "|",
+      "path": "makepad-basics/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "app",
+        "makepad",
+        "documentation",
+        "cargo",
+        "setup",
+        "rendering",
+        "widgetref",
+        "appmain"
+      ]
+    },
+    {
+      "id": "makepad-dsl",
+      "description": "|",
+      "path": "makepad-dsl/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "rust",
+        "dsl",
+        "override",
+        "object",
+        "inheritance",
+        "documentation",
+        "widget",
+        "named"
+      ]
+    },
+    {
+      "id": "makepad-event-action",
+      "description": "|",
+      "path": "makepad-event-action/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "event",
+        "action",
+        "actions",
+        "hit",
+        "documentation",
+        "enum",
+        "timer",
+        "widget"
+      ]
+    },
+    {
+      "id": "makepad-font",
+      "description": "|",
+      "path": "makepad-font/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "text",
+        "font",
+        "fonts",
+        "settings",
+        "documentation",
+        "makepad",
+        "dsl",
+        "rendering"
+      ]
+    },
+    {
+      "id": "makepad-layout",
+      "description": "|",
+      "path": "makepad-layout/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "fill",
+        "layout",
+        "fit",
+        "align",
+        "documentation",
+        "view",
+        "flow",
+        "makepad"
+      ]
+    },
+    {
+      "id": "makepad-platform",
+      "description": "|",
+      "path": "makepad-platform/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "platform",
+        "ostype",
+        "documentation",
+        "windows",
+        "web",
+        "makepad",
+        "linux",
+        "android"
+      ]
+    },
+    {
+      "id": "makepad-shaders",
+      "description": "|",
+      "path": "makepad-shaders/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "shader",
+        "documentation",
+        "patterns",
+        "makepad",
+        "shaders",
+        "circle",
+        "built-in",
+        "functions"
+      ]
+    },
+    {
+      "id": "makepad-splash",
+      "description": "|",
+      "path": "makepad-splash/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "splash",
+        "http",
+        "rust",
+        "makepad",
+        "documentation",
+        "async",
+        "syntax",
+        "operations"
       ]
     },
     {
@@ -823,19 +1298,51 @@
       ]
     },
     {
-      "id": "notebooklm",
-      "description": "Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.",
-      "path": "notebooklm/SKILL.md",
+      "id": "multi-advisor",
+      "description": "Conselho de especialistas — consulta multiplos agentes do ecossistema em paralelo para analise multi-perspectiva de qualquer topico. Ativa personas, especialistas e agentes tecnicos simultaneamente, cada um pela sua otica unica, e consolida em sintese decisoria final.",
+      "path": "multi-advisor/SKILL.md",
       "triggers": [],
       "tags": [
-        "authentication",
-        "notebook",
-        "query",
-        "notebooklm",
-        "add",
-        "browser",
-        "ask",
-        "critical"
+        "board",
+        "persona",
+        "exemplo",
+        "principal",
+        "cada",
+        "angulo",
+        "produto",
+        "decisao"
+      ]
+    },
+    {
+      "id": "neon-postgres",
+      "description": "Configure Prisma for Neon with connection pooling.",
+      "path": "neon-postgres/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "prisma",
+        "neon",
+        "postgres",
+        "drizzle",
+        "issue",
+        "connection",
+        "http",
+        "pgbouncer"
+      ]
+    },
+    {
+      "id": "nft-standards",
+      "description": "Master ERC-721 and ERC-1155 NFT standards, metadata best practices, and advanced NFT features.",
+      "path": "nft-standards/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "nft",
+        "metadata",
+        "standards",
+        "standard",
+        "erc",
+        "token",
+        "ipfs",
+        "resources"
       ]
     },
     {
@@ -852,6 +1359,38 @@
         "dris",
         "yyyy",
         "json"
+      ]
+    },
+    {
+      "id": "observability-monitoring-monitor-setup",
+      "description": "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da",
+      "path": "observability-monitoring-monitor-setup/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "monitoring",
+        "observability",
+        "resources",
+        "setup",
+        "context",
+        "requirements",
+        "instructions",
+        "output"
+      ]
+    },
+    {
+      "id": "obsidian-cli",
+      "description": "Use the Obsidian CLI to read, create, search, and manage vault content, or to develop and debug Obsidian plugins and themes from the command line.",
+      "path": "obsidian-cli/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "obsidian",
+        "cli",
+        "targeting",
+        "vault",
+        "command",
+        "plugin",
+        "commands",
+        "syntax"
       ]
     },
     {
@@ -935,73 +1474,99 @@
       ]
     },
     {
-      "id": "page-cro",
-      "description": "Analyze and optimize individual pages for conversion performance.",
-      "path": "page-cro/SKILL.md",
+      "id": "planning-with-files",
+      "description": "Work like Manus: Use persistent markdown files as your \\\"working memory on disk.\\",
+      "path": "planning-with-files/SKILL.md",
       "triggers": [],
       "tags": [
-        "conversion",
+        "read",
+        "task_plan",
+        "findings",
+        "progress",
+        "scripts",
+        "errors",
+        "pattern",
+        "planning"
+      ]
+    },
+    {
+      "id": "playwright-java",
+      "description": "Scaffold, write, debug, and enhance enterprise-grade Playwright E2E tests in Java using Page Object Model, JUnit 5, Allure reporting, and parallel execution.",
+      "path": "playwright-java/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "playwright",
+        "tracing",
         "page",
-        "readiness",
-        "phase",
-        "cro",
-        "goal",
-        "traffic",
-        "impact"
+        "java",
+        "test",
+        "threadlocal",
+        "string",
+        "references"
       ]
     },
     {
-      "id": "performance-engineer",
-      "description": "Expert performance engineer specializing in modern observability,",
-      "path": "performance-engineer/SKILL.md",
+      "id": "playwright-skill",
+      "description": "IMPORTANT - Path Resolution: This skill can be installed in different locations (plugin system, manual installation, global, or project-specific). Before executing any commands, determine the skill directory based on where you loaded this SKILL.md file, and use that path in all commands below.",
+      "path": "playwright-skill/SKILL.md",
       "triggers": [],
       "tags": [
-        "caching",
-        "profiling",
-        "monitoring",
-        "performance",
-        "observability",
-        "validation",
-        "load-testing",
-        "alerting"
+        "playwright",
+        "test",
+        "http",
+        "json",
+        "screenshot",
+        "take",
+        "claude",
+        "execution"
       ]
     },
     {
-      "id": "plan-writing",
-      "description": "Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work.",
-      "path": "plan-writing/SKILL.md",
-      "triggers": [
-        "Structured",
-        "planning",
-        "clear",
-        "breakdowns",
-        "dependencies"
-      ],
+      "id": "pptx-official",
+      "description": "A user may ask you to create, edit, or analyze the contents of a .pptx file. A .pptx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks.",
+      "path": "pptx-official/SKILL.md",
+      "triggers": [],
       "tags": [
-        "principle",
-        "plan",
-        "task",
-        "verification",
-        "tasks",
+        "xml",
+        "json",
+        "html",
+        "formatting",
+        "validation",
+        "powerpoint",
+        "ppt",
+        "read"
+      ]
+    },
+    {
+      "id": "professional-proofreader",
+      "description": ">",
+      "path": "professional-proofreader/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "mode",
+        "professional",
+        "proofreader",
+        "inline",
+        "text",
+        "processing",
+        "grammar",
+        "spelling"
+      ]
+    },
+    {
+      "id": "red-team-tactics",
+      "description": "Red team tactics principles based on MITRE ATT&CK. Attack phases, detection evasion, reporting.",
+      "path": "red-team-tactics/SKILL.md",
+      "triggers": [],
+      "tags": [
         "principles",
-        "dynamic",
-        "writing"
-      ]
-    },
-    {
-      "id": "quality-nonconformance",
-      "description": "Codified expertise for quality control, non-conformance investigation, root cause analysis, corrective action, and supplier quality management in regulated manufacturing.",
-      "path": "quality-nonconformance/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "capa",
-        "quality",
-        "validation",
-        "supplier",
-        "ncr",
-        "monitoring",
-        "escalation",
-        "spc"
+        "attack",
+        "targets",
+        "movement",
+        "active",
+        "access",
+        "red",
+        "initial"
       ]
     },
     {
@@ -1018,6 +1583,22 @@
         "functional_assessments",
         "phase_progression",
         "pain_diary"
+      ]
+    },
+    {
+      "id": "remotion",
+      "description": "Generate walkthrough videos from Stitch projects using Remotion with smooth transitions, zooming, and text overlays",
+      "path": "remotion/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "remotion",
+        "mcp",
+        "stitch",
+        "retrieval",
+        "screenslide",
+        "video",
+        "screen",
+        "pattern"
       ]
     },
     {
@@ -1053,22 +1634,6 @@
       ]
     },
     {
-      "id": "robius-matrix-integration",
-      "description": "|",
-      "path": "robius-matrix-integration/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "ownedroomid",
-        "matrix",
-        "timelineupdate",
-        "pattern",
-        "pagination",
-        "enum",
-        "updates",
-        "matrixrequest"
-      ]
-    },
-    {
       "id": "robius-state-management",
       "description": "|",
       "path": "robius-state-management/SKILL.md",
@@ -1085,19 +1650,249 @@
       ]
     },
     {
-      "id": "search-specialist",
-      "description": "Expert web researcher using advanced search techniques and",
-      "path": "search-specialist/SKILL.md",
+      "id": "sales-enablement",
+      "description": "Create sales collateral such as decks, one-pagers, objection docs, demo scripts, playbooks, and proposal templates. Use when a sales team needs assets that help reps move deals forward and close.",
+      "path": "sales-enablement/SKILL.md",
+      "triggers": [
+        "Create",
+        "sales",
+        "collateral",
+        "decks",
+        "one-pagers"
+      ],
+      "tags": [
+        "sales",
+        "structure",
+        "principles",
+        "persona",
+        "roi",
+        "deck",
+        "objection",
+        "buyer"
+      ]
+    },
+    {
+      "id": "secrets-management",
+      "description": "Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets Manager, and other tools.",
+      "path": "secrets-management/SKILL.md",
       "triggers": [],
       "tags": [
-        "search",
+        "aws",
+        "secrets",
+        "github",
+        "vault",
+        "secret",
+        "gitlab",
+        "manager",
+        "deploying"
+      ]
+    },
+    {
+      "id": "senior-fullstack",
+      "description": "Complete toolkit for senior fullstack with modern tools and best practices.",
+      "path": "senior-fullstack/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "references",
+        "quality",
+        "scaffolder",
+        "script",
+        "fullstack",
+        "analyzer",
+        "capabilities",
+        "tech"
+      ]
+    },
+    {
+      "id": "seo-cannibalization-detector",
+      "description": "Analyzes multiple provided pages to identify keyword overlap and potential cannibalization issues. Suggests differentiation strategies. Use PROACTIVELY when reviewing similar content.",
+      "path": "seo-cannibalization-detector/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "cannibalization",
         "focus",
-        "query",
-        "domain",
+        "prevention",
+        "strategy",
+        "keyword",
         "instructions",
         "areas",
-        "strategies",
-        "optimization"
+        "output"
+      ]
+    },
+    {
+      "id": "seo-competitor-pages",
+      "description": ">",
+      "path": "seo-competitor-pages/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "comparison",
+        "pages",
+        "product",
+        "schema",
+        "feature",
+        "competitor",
+        "alternatives",
+        "page"
+      ]
+    },
+    {
+      "id": "seo-content",
+      "description": ">",
+      "path": "seo-content/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "content",
+        "geo",
+        "google",
+        "quality",
+        "e-e-a-t",
+        "analysis",
+        "citation",
+        "sept"
+      ]
+    },
+    {
+      "id": "seo-content-planner",
+      "description": "Creates comprehensive content outlines and topic clusters for SEO.",
+      "path": "seo-content-planner/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "content",
+        "topic",
+        "focus",
+        "main",
+        "instructions",
+        "areas",
+        "planning",
+        "framework"
+      ]
+    },
+    {
+      "id": "seo-hreflang",
+      "description": ">",
+      "path": "seo-hreflang/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "html",
+        "validation",
+        "http",
+        "hreflang",
+        "https",
+        "xml",
+        "method",
+        "tags"
+      ]
+    },
+    {
+      "id": "seo-images",
+      "description": ">",
+      "path": "seo-images/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "images",
+        "lazy-loading",
+        "css",
+        "format",
+        "lcp",
+        "image",
+        "jpeg",
+        "cdn"
+      ]
+    },
+    {
+      "id": "seo-meta-optimizer",
+      "description": "Creates optimized meta titles, descriptions, and URL suggestions based on character limits and best practices. Generates compelling, keyword-rich metadata. Use PROACTIVELY for new content.",
+      "path": "seo-meta-optimizer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "meta",
+        "focus",
+        "optimization",
+        "instructions",
+        "areas",
+        "rules",
+        "output",
+        "title"
+      ]
+    },
+    {
+      "id": "seo-page",
+      "description": ">",
+      "path": "seo-page/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "html",
+        "page",
+        "schema",
+        "seo",
+        "json",
+        "authentication",
+        "content",
+        "technical"
+      ]
+    },
+    {
+      "id": "seo-plan",
+      "description": ">",
+      "path": "seo-plan/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "phase",
+        "seo",
+        "content",
+        "weeks",
+        "foundation",
+        "assets",
+        "generic",
+        "competitive"
+      ]
+    },
+    {
+      "id": "seo-schema",
+      "description": ">",
+      "path": "seo-schema/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "json",
+        "validation",
+        "schema",
+        "recommend",
+        "url",
+        "generation",
+        "deprecated",
+        "organization"
+      ]
+    },
+    {
+      "id": "seo-sitemap",
+      "description": ">",
+      "path": "seo-sitemap/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "sitemap",
+        "urls",
+        "xml",
+        "validation",
+        "http",
+        "analysis",
+        "generation",
+        "mode"
+      ]
+    },
+    {
+      "id": "seo-snippet-hunter",
+      "description": "Formats content to be eligible for featured snippets and SERP features. Creates snippet-optimized content blocks based on best practices. Use PROACTIVELY for question-based content.",
+      "path": "seo-snippet-hunter/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "snippet",
+        "formatting",
+        "question",
+        "focus",
+        "optimization",
+        "faq",
+        "format",
+        "instructions"
       ]
     },
     {
@@ -1133,28 +1928,6 @@
       ]
     },
     {
-      "id": "shellcheck-configuration",
-      "description": "Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.",
-      "path": "shellcheck-configuration/SKILL.md",
-      "triggers": [
-        "Master",
-        "ShellCheck",
-        "static",
-        "analysis",
-        "configuration"
-      ],
-      "tags": [
-        "shellcheck",
-        "configuration",
-        "disable",
-        "output",
-        "instead",
-        "shell",
-        "problem",
-        "solution"
-      ]
-    },
-    {
       "id": "signup-flow-cro",
       "description": "You are an expert in optimizing signup and registration flows. Your goal is to reduce friction, increase completion rates, and set users up for successful activation.",
       "path": "signup-flow-cro/SKILL.md",
@@ -1187,22 +1960,6 @@
       ]
     },
     {
-      "id": "skill-installer",
-      "description": "Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao.",
-      "path": "skill-installer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "cenario",
-        "claude",
-        "json",
-        "uma",
-        "zip",
-        "instalar",
-        "detectar",
-        "para"
-      ]
-    },
-    {
       "id": "skill-router",
       "description": "Use when the user is unsure which skill to use or where to start. Interviews the user with targeted questions and recommends the best skill(s) from the installed library for their goal.",
       "path": "skill-router/SKILL.md",
@@ -1225,6 +1982,22 @@
       ]
     },
     {
+      "id": "slack-gif-creator",
+      "description": "A toolkit providing utilities and knowledge for creating animated GIFs optimized for Slack.",
+      "path": "slack-gif-creator/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "core",
+        "slack",
+        "pil",
+        "optimization",
+        "easing",
+        "graphics",
+        "gif",
+        "drawing"
+      ]
+    },
+    {
       "id": "sleep-analyzer",
       "description": "分析睡眠数据、识别睡眠模式、评估睡眠质量，并提供个性化睡眠改善建议。支持与其他健康数据的关联分析。",
       "path": "sleep-analyzer/SKILL.md",
@@ -1241,22 +2014,6 @@
       ]
     },
     {
-      "id": "slo-implementation",
-      "description": "Framework for defining and implementing Service Level Indicators (SLIs), Service Level Objectives (SLOs), and error budgets.",
-      "path": "slo-implementation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "slo",
-        "error",
-        "sli",
-        "budget",
-        "review",
-        "requests",
-        "total",
-        "rules"
-      ]
-    },
-    {
       "id": "speckit-updater",
       "description": "SpecKit Safe Update",
       "path": "speckit-updater/SKILL.md",
@@ -1269,7 +2026,7 @@
         "hashing",
         "update",
         "git",
-        "workflow"
+        "commands"
       ]
     },
     {
@@ -1300,6 +2057,22 @@
         "overview",
         "instructions",
         "environment"
+      ]
+    },
+    {
+      "id": "swift-concurrency-expert",
+      "description": "Review and fix Swift concurrency issues such as actor isolation and Sendable violations.",
+      "path": "swift-concurrency-expert/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "swift",
+        "mainactor",
+        "sendable",
+        "concurrency",
+        "references",
+        "fix",
+        "int",
+        "actor"
       ]
     },
     {
@@ -1359,107 +2132,25 @@
       ]
     },
     {
-      "id": "threejs-fundamentals",
-      "description": "Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms.",
-      "path": "threejs-fundamentals/SKILL.md",
+      "id": "threejs-animation",
+      "description": "Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing GLTF animations, creating procedural motion, or blending animations.",
+      "path": "threejs-animation/SKILL.md",
       "triggers": [
         "Three.js",
-        "scene",
-        "setup",
-        "cameras",
-        "renderer"
+        "animation",
+        "keyframe",
+        "animation",
+        "skeletal"
       ],
       "tags": [
-        "mathutils",
+        "animation",
+        "spring",
         "math",
-        "color",
-        "mesh",
-        "scene",
-        "webglrenderer",
-        "group",
-        "quaternion"
-      ]
-    },
-    {
-      "id": "threejs-interaction",
-      "description": "Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click detection, adding camera controls, or creating interactive 3D experiences.",
-      "path": "threejs-interaction/SKILL.md",
-      "triggers": [
-        "Three.js",
-        "interaction",
-        "raycasting",
-        "controls",
-        "mouse/touch"
-      ],
-      "tags": [
-        "raycaster",
-        "orbitcontrols",
-        "raycasting",
-        "world",
-        "screen",
-        "conversion",
-        "flycontrols",
-        "firstpersoncontrols"
-      ]
-    },
-    {
-      "id": "threejs-lighting",
-      "description": "Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.",
-      "path": "threejs-lighting/SKILL.md",
-      "triggers": [
-        "Three.js",
-        "lighting",
-        "light",
-        "types",
-        "shadows"
-      ],
-      "tags": [
-        "shadows",
-        "light",
-        "lighting",
-        "directionallight",
-        "shadow",
-        "pointlight",
-        "spotlight",
-        "rectarealight"
-      ]
-    },
-    {
-      "id": "threejs-textures",
-      "description": "Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, cubemaps, HDR environments, or texture optimization.",
-      "path": "threejs-textures/SKILL.md",
-      "triggers": [
-        "Three.js",
-        "textures",
-        "texture",
-        "types",
-        "mapping"
-      ],
-      "tags": [
-        "texture",
-        "textures",
-        "rgbeloader",
-        "render",
-        "loading",
-        "promise",
-        "exrloader",
-        "maps"
-      ]
-    },
-    {
-      "id": "track-management",
-      "description": "Use this skill when creating, managing, or working with Conductor tracks - the logical work units for features, bugs, and refactors. Applies to spec.md, plan.md, and track lifecycle operations.",
-      "path": "track-management/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "resources",
-        "track",
-        "instructions",
-        "conductor",
-        "writing",
-        "understanding",
-        "interpreting",
-        "clarify"
+        "interpolation",
+        "animationclip",
+        "morph",
+        "blending",
+        "bone"
       ]
     },
     {
@@ -1476,6 +2167,22 @@
         "emergency",
         "blood",
         "read"
+      ]
+    },
+    {
+      "id": "tutorial-engineer",
+      "description": "Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples.",
+      "path": "tutorial-engineer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "refactoring",
+        "tutorial",
+        "quick",
+        "time",
+        "add",
+        "scaffolding",
+        "exercise",
+        "rule"
       ]
     },
     {
@@ -1527,57 +2234,35 @@
       ]
     },
     {
-      "id": "vector-index-tuning",
-      "description": "Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.",
-      "path": "vector-index-tuning/SKILL.md",
-      "triggers": [
-        "Optimize",
-        "vector",
-        "index",
-        "performance",
-        "latency"
-      ],
-      "tags": [
-        "vector",
-        "resources",
-        "tuning",
-        "index",
-        "instructions",
-        "safety",
-        "retrieval",
-        "validate"
-      ]
-    },
-    {
-      "id": "vexor",
-      "description": "Vector-powered CLI for semantic file search with a Claude/Codex skill",
-      "path": "vexor/SKILL.md",
+      "id": "varlock-claude-skill",
+      "description": "Secure environment variable management ensuring secrets are never exposed in Claude sessions, terminals, logs, or git commits",
+      "path": "varlock-claude-skill/SKILL.md",
       "triggers": [],
       "tags": [
-        "vexor",
         "claude",
+        "varlock",
         "overview",
         "instructions",
-        "vector",
-        "cli",
-        "codex",
-        "vector-powered"
+        "secure",
+        "environment",
+        "variable",
+        "secrets"
       ]
     },
     {
-      "id": "web-performance-optimization",
-      "description": "Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance",
-      "path": "web-performance-optimization/SKILL.md",
+      "id": "viral-generator-builder",
+      "description": "You understand why people share things. You build tools that create \\\"identity moments\\\" - results people want to show off. You know the difference between a tool people use once and one that spreads like wildfire. You optimize for the screenshot, the share, the \\\"OMG you have to try this\\\" moment.",
+      "path": "viral-generator-builder/SKILL.md",
       "triggers": [],
       "tags": [
-        "javascript",
-        "optimization",
-        "css",
-        "code-splitting",
-        "caching",
-        "performance",
-        "bundle",
-        "web"
+        "generator",
+        "pattern",
+        "result",
+        "builder",
+        "quiz",
+        "viral",
+        "input",
+        "results"
       ]
     },
     {
@@ -1613,6 +2298,22 @@
       ]
     },
     {
+      "id": "workspace-configurator",
+      "description": "Invisible orchestrator that configures the active workspace context based on the user's natural language intent.",
+      "path": "workspace-configurator/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "java",
+        "workspace",
+        "configurator",
+        "scripts",
+        "select",
+        "profile",
+        "tags",
+        "purpose"
+      ]
+    },
+    {
       "id": "x-article-publisher-skill",
       "description": "Publish articles to X/Twitter",
       "path": "x-article-publisher-skill/SKILL.md",
@@ -1625,6 +2326,22 @@
         "publish",
         "twitter",
         "articles"
+      ]
+    },
+    {
+      "id": "x-twitter-scraper",
+      "description": "X (Twitter) data platform skill — tweet search, user lookup, follower extraction, engagement metrics, giveaway draws, monitoring, webhooks, 19 extraction tools, MCP server.",
+      "path": "x-twitter-scraper/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "mcp",
+        "api",
+        "xquik",
+        "claude",
+        "monitoring",
+        "gemini",
+        "twitter",
+        "scraper"
       ]
     },
     {

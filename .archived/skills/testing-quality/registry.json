@@ -3,94 +3,8 @@
   "category_name": "🧪 Testing & Quality",
   "skills": [
     {
-      "id": "active-directory-attacks",
-      "description": "Provide comprehensive techniques for attacking Microsoft Active Directory environments. Covers reconnaissance, credential harvesting, Kerberos attacks, lateral movement, privilege escalation, and domain dominance for red team operations and penetration testing.",
-      "path": "active-directory-attacks/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "impacket",
-        "relay",
-        "attacks",
-        "ticket",
-        "clock",
-        "rubeus",
-        "signing",
-        "kerberos"
-      ]
-    },
-    {
-      "id": "ad-creative",
-      "description": "Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when generating headlines, descriptions, primary text, or large sets of ad variations for testing and performance optimization.",
-      "path": "ad-creative/SKILL.md",
-      "triggers": [
-        "Create",
-        "iterate",
-        "scale",
-        "creative",
-        "Google"
-      ],
-      "tags": [
-        "ads",
-        "generate",
-        "performance",
-        "analyze",
-        "output",
-        "platform",
-        "iteration",
-        "variations"
-      ]
-    },
-    {
-      "id": "ai-md",
-      "description": "Convert human-written CLAUDE.md into AI-native structured-label format. Battle-tested across 4 models. Same rules, fewer tokens, higher compliance.",
-      "path": "ai-md/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "claude",
-        "gate",
-        "phase",
-        "technique",
-        "rules",
-        "labels",
-        "label",
-        "mechanism"
-      ]
-    },
-    {
-      "id": "bash-scripting",
-      "description": "Bash scripting workflow for creating production-ready shell scripts with defensive patterns, error handling, and testing.",
-      "path": "bash-scripting/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "logging",
-        "phase",
-        "invoke",
-        "actions",
-        "prompts",
-        "copy-paste",
-        "workflow",
-        "script"
-      ]
-    },
-    {
-      "id": "behavioral-modes",
-      "description": "AI operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). Use to adapt behavior based on task type.",
-      "path": "behavioral-modes/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mode",
-        "modes",
-        "review",
-        "behavior",
-        "output",
-        "critical",
-        "behavioral",
-        "brainstorm"
-      ]
-    },
-    {
       "id": "bug-hunter",
-      "description": "Systematic debugging: symptoms → root cause",
+      "description": "Systematically finds and fixes bugs using proven debugging techniques. Traces from symptoms to root cause, implements fixes, and prevents regression.",
       "path": "bug-hunter/SKILL.md",
       "triggers": [],
       "tags": [
@@ -105,46 +19,62 @@
       ]
     },
     {
-      "id": "circleci-automation",
-      "description": "Automate CircleCI tasks via Rube MCP (Composio): trigger pipelines, monitor workflows/jobs, retrieve artifacts and test metadata. Always search tools first for current schemas.",
-      "path": "circleci-automation/SKILL.md",
+      "id": "copilot-sdk",
+      "description": "Build applications that programmatically interact with GitHub Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, Python, Go, and .NET.",
+      "path": "copilot-sdk/SKILL.md",
       "triggers": [],
       "tags": [
-        "circleci",
+        "github",
+        "python",
+        "streaming",
         "mcp",
-        "pagination",
-        "pipeline",
-        "job",
-        "project_slug",
-        "workflows",
-        "pitfalls"
+        "copilot",
+        "session",
+        "server",
+        "openai"
       ]
     },
     {
-      "id": "debug-buttercup",
-      "description": "All pods run in namespace crs. Use when pods in the crs namespace are in CrashLoopBackOff, OOMKilled, or restarting, multiple services restart simultaneously (cascade failure), or redis is unresponsive or showing AOF warnings.",
-      "path": "debug-buttercup/SKILL.md",
+      "id": "custom-senior-it-ba-specialist",
+      "description": "Act as a senior IT business analyst for software development initiatives. Use when the user needs business objectives translated into technical requirements, complex workflow analysis, system integration mapping, or rigorous requirements traceability.",
+      "path": "custom-senior-it-ba-specialist/SKILL.md",
       "triggers": [
-        "namespace",
-        "namespace",
-        "CrashLoopBackOff",
-        "OOMKilled",
-        "restarting"
+        "senior",
+        "business",
+        "analyst",
+        "software",
+        "development"
       ],
       "tags": [
-        "redis",
-        "disk",
-        "pod",
-        "aof",
-        "pressure",
-        "logs",
-        "resource",
-        "status"
+        "validation",
+        "business",
+        "requirements",
+        "nfrs",
+        "traceability",
+        "senior",
+        "structured",
+        "constraints"
+      ]
+    },
+    {
+      "id": "ddd-context-mapping",
+      "description": "Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns.",
+      "path": "ddd-context-mapping/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "context",
+        "ddd",
+        "mapping",
+        "instructions",
+        "output",
+        "limitations",
+        "requirements",
+        "references"
       ]
     },
     {
       "id": "debugger",
-      "description": "Errors, test failures, unexpected behavior",
+      "description": "Debugging specialist for errors, test failures, and unexpected",
       "path": "debugger/SKILL.md",
       "triggers": [],
       "tags": [
@@ -197,35 +127,19 @@
       ]
     },
     {
-      "id": "dependency-upgrade",
-      "description": "Master major dependency version upgrades, compatibility analysis, staged upgrade strategies, and comprehensive testing approaches.",
-      "path": "dependency-upgrade/SKILL.md",
+      "id": "devops-troubleshooter",
+      "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability.",
+      "path": "devops-troubleshooter/SKILL.md",
       "triggers": [],
       "tags": [
-        "upgrade",
-        "react",
-        "update",
-        "dependency",
-        "tests",
-        "npm",
-        "typescript",
-        "dependencies"
-      ]
-    },
-    {
-      "id": "deployment-validation-config-validate",
-      "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
-      "path": "deployment-validation-config-validate/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "validation",
-        "configuration",
-        "json",
-        "dict",
-        "list",
-        "schema",
-        "analysis",
-        "migration"
+        "observability",
+        "monitoring",
+        "kubernetes",
+        "dns",
+        "tracing",
+        "aws",
+        "azure",
+        "debugging"
       ]
     },
     {
@@ -245,24 +159,8 @@
       ]
     },
     {
-      "id": "dwarf-expert",
-      "description": "Provides expertise for analyzing DWARF debug files and understanding the DWARF debug format/standard (v3-v5). Triggers when understanding DWARF information, interacting with DWARF files, answering DWARF-related questions, or working with code that parses DWARF data.",
-      "path": "dwarf-expert/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "dwarf",
-        "parsing",
-        "json",
-        "validation",
-        "readelf",
-        "dwarfdump",
-        "verification",
-        "output"
-      ]
-    },
-    {
       "id": "e2e-testing",
-      "description": "Playwright E2E testing workflow",
+      "description": "End-to-end testing workflow with Playwright for browser automation, visual regression, cross-browser testing, and CI/CD integration.",
       "path": "e2e-testing/SKILL.md",
       "triggers": [],
       "tags": [
@@ -272,40 +170,8 @@
         "prompts",
         "playwright",
         "copy-paste",
-        "workflow",
-        "test"
-      ]
-    },
-    {
-      "id": "e2e-testing-patterns",
-      "description": "Reliable, fast E2E test suites",
-      "path": "e2e-testing-patterns/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "testing",
-        "resources",
-        "e2e",
-        "patterns",
-        "instructions",
-        "safety",
-        "tracing",
-        "debugging"
-      ]
-    },
-    {
-      "id": "email-systems",
-      "description": "You are an email systems engineer who has maintained 99.9% deliverability across millions of emails. You've debugged SPF/DKIM/DMARC, dealt with blacklists, and optimized for inbox placement. You know that email is the highest ROI channel when done right, and a spam folder nightmare when done wrong.",
-      "path": "email-systems/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "email",
-        "html",
-        "transactional",
-        "patterns",
-        "queue",
-        "emails",
-        "event",
-        "tracking"
+        "test",
+        "testing"
       ]
     },
     {
@@ -322,6 +188,22 @@
         "resolution",
         "requirements",
         "instructions"
+      ]
+    },
+    {
+      "id": "error-debugging-error-trace",
+      "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging, and ensure teams can quickly identify and resolve production issues.",
+      "path": "error-debugging-error-trace/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "monitoring",
+        "logging",
+        "resources",
+        "error",
+        "tracing",
+        "tracking",
+        "context",
+        "requirements"
       ]
     },
     {
@@ -363,137 +245,216 @@
       ]
     },
     {
-      "id": "error-diagnostics-smart-debug",
-      "description": "Use when working with error diagnostics smart debug",
-      "path": "error-diagnostics-smart-debug/SKILL.md",
-      "triggers": [
-        "working",
+      "id": "error-handling-patterns",
+      "description": "Build resilient applications with robust error handling strategies that gracefully handle failures and provide excellent debugging experiences.",
+      "path": "error-handling-patterns/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "resources",
         "error",
-        "diagnostics",
-        "smart",
-        "debug"
+        "patterns",
+        "instructions",
+        "apis",
+        "debugging",
+        "improving",
+        "clarify"
+      ]
+    },
+    {
+      "id": "git-hooks-automation",
+      "description": "Master Git hooks setup with Husky, lint-staged, pre-commit framework, and commitlint. Automate code quality gates, formatting, linting, and commit message enforcement before code reaches CI.",
+      "path": "git-hooks-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "hooks",
+        "husky",
+        "linting",
+        "python",
+        "add",
+        "hook",
+        "pre-commit",
+        "install"
+      ]
+    },
+    {
+      "id": "git-pr-workflows-onboard",
+      "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You",
+      "path": "git-pr-workflows-onboard/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "day",
+        "team",
+        "onboarding",
+        "monitoring",
+        "week",
+        "setup",
+        "buddy",
+        "documentation"
+      ]
+    },
+    {
+      "id": "gmail-automation",
+      "description": "Lightweight Gmail integration with standalone OAuth authentication. No MCP server required.",
+      "path": "gmail-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "gmail",
+        "send",
+        "emails",
+        "html",
+        "draft",
+        "unread",
+        "label",
+        "search"
+      ]
+    },
+    {
+      "id": "go-concurrency-patterns",
+      "description": "Master Go concurrency with goroutines, channels, sync primitives, and context. Use when building concurrent Go applications, implementing worker pools, or debugging race conditions.",
+      "path": "go-concurrency-patterns/SKILL.md",
+      "triggers": [
+        "Master",
+        "concurrency",
+        "goroutines",
+        "channels",
+        "primitives"
       ],
       "tags": [
-        "validation",
-        "observability",
-        "error",
-        "debug",
-        "logging",
-        "profiling",
-        "monitoring",
-        "fix"
-      ]
-    },
-    {
-      "id": "framework-migration-deps-upgrade",
-      "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa",
-      "path": "framework-migration-deps-upgrade/SKILL.md",
-      "triggers": [],
-      "tags": [
         "resources",
-        "upgrade",
-        "dependency",
-        "strategy",
-        "monitoring",
-        "context",
-        "requirements",
-        "instructions"
-      ]
-    },
-    {
-      "id": "git-pr-workflows-git-workflow",
-      "description": "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g",
-      "path": "git-pr-workflows-git-workflow/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "validation",
-        "phase",
-        "analysis",
-        "commit",
-        "test",
-        "branch",
-        "change",
-        "task"
-      ]
-    },
-    {
-      "id": "go-playwright",
-      "description": "Expert capability for robust, stealthy, and efficient browser automation using Playwright Go.",
-      "path": "go-playwright/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "playwright",
-        "logging",
-        "cloudflare",
-        "browser",
-        "contexts",
-        "observability",
-        "github",
-        "browsers"
-      ]
-    },
-    {
-      "id": "incident-response-smart-fix",
-      "description": "[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and res",
-      "path": "incident-response-smart-fix/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "observability",
-        "resources",
-        "issue",
-        "intelligent",
-        "resolution",
-        "orchestration",
-        "phase",
-        "multi-agent"
-      ]
-    },
-    {
-      "id": "infinite-gratitude",
-      "description": "Multi-agent research skill for parallel research execution (10 agents, battle-tested with real case studies).",
-      "path": "infinite-gratitude/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "infinite",
-        "gratitude",
-        "https",
-        "github",
-        "please",
-        "sstklen",
-        "infinite-gratitude",
-        "com"
-      ]
-    },
-    {
-      "id": "javascript-testing-patterns",
-      "description": "JS/TS testing with modern frameworks",
-      "path": "javascript-testing-patterns/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "javascript",
-        "resources",
-        "testing",
+        "concurrency",
         "patterns",
-        "mocking",
         "instructions",
-        "typescript",
-        "react"
+        "go",
+        "debugging",
+        "clarify"
       ]
     },
     {
-      "id": "k6-load-testing",
-      "description": "k6 load testing for APIs and browsers",
-      "path": "k6-load-testing/SKILL.md",
+      "id": "google-calendar-automation",
+      "description": "Lightweight Google Calendar integration with standalone OAuth authentication. No MCP server required.",
+      "path": "google-calendar-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "event",
+        "calendar",
+        "list",
+        "update",
+        "time",
+        "events",
+        "find",
+        "google"
+      ]
+    },
+    {
+      "id": "google-docs-automation",
+      "description": "Lightweight Google Docs integration with standalone OAuth authentication. No MCP server required.",
+      "path": "google-docs-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "document",
+        "text",
+        "google",
+        "docs",
+        "authentication",
+        "find",
+        "content",
+        "url"
+      ]
+    },
+    {
+      "id": "google-drive-automation",
+      "description": "Lightweight Google Drive integration with standalone OAuth authentication. No MCP server required. Full read/write access.",
+      "path": "google-drive-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "search",
+        "folder",
+        "drive",
+        "google",
+        "upload",
+        "list",
+        "download",
+        "move"
+      ]
+    },
+    {
+      "id": "google-sheets-automation",
+      "description": "Lightweight Google Sheets integration with standalone OAuth authentication. No MCP server required. Full read/write access.",
+      "path": "google-sheets-automation/SKILL.md",
       "triggers": [],
       "tags": [
         "json",
-        "websocket",
-        "test",
-        "testing",
-        "load",
-        "authorization",
-        "thresholds",
-        "http"
+        "formatting",
+        "spreadsheet",
+        "range",
+        "update",
+        "google",
+        "sheets",
+        "text"
+      ]
+    },
+    {
+      "id": "google-slides-automation",
+      "description": "Lightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access.",
+      "path": "google-slides-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "slide",
+        "presentation",
+        "find",
+        "add",
+        "title",
+        "google",
+        "slides",
+        "commands"
+      ]
+    },
+    {
+      "id": "hubspot-automation",
+      "description": "Automate HubSpot CRM operations (contacts, companies, deals, tickets, properties) via Rube MCP using Composio integration.",
+      "path": "hubspot-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "mcp",
+        "pagination",
+        "properties",
+        "hubspot",
+        "search",
+        "batch",
+        "pipeline",
+        "pitfalls"
+      ]
+    },
+    {
+      "id": "hubspot-integration",
+      "description": "Authentication for single-account integrations",
+      "path": "hubspot-integration/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "authentication",
+        "issue",
+        "oauth",
+        "instead",
+        "hubspot",
+        "integration",
+        "patterns",
+        "crm"
+      ]
+    },
+    {
+      "id": "linux-shell-scripting",
+      "description": "Provide production-ready shell script templates for common Linux system administration tasks including backups, monitoring, user management, log analysis, and automation. These scripts serve as building blocks for security operations and penetration testing environments.",
+      "path": "linux-shell-scripting/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "phase",
+        "scripts",
+        "backup",
+        "cpu",
+        "monitoring",
+        "usage",
+        "log",
+        "password"
       ]
     },
     {
@@ -513,35 +474,41 @@
       ]
     },
     {
-      "id": "obsidian-cli",
-      "description": "Use the Obsidian CLI to read, create, search, and manage vault content, or to develop and debug Obsidian plugins and themes from the command line.",
-      "path": "obsidian-cli/SKILL.md",
-      "triggers": [],
+      "id": "nextjs-supabase-auth",
+      "description": "Expert integration of Supabase Auth with Next.js App Router Use when: supabase auth next, authentication next.js, login supabase, auth middleware, protected route.",
+      "path": "nextjs-supabase-auth/SKILL.md",
+      "triggers": [
+        "Expert",
+        "integration",
+        "Supabase",
+        "Next.js",
+        "Router"
+      ],
       "tags": [
-        "obsidian",
-        "cli",
-        "targeting",
-        "vault",
-        "command",
-        "plugin",
-        "commands",
-        "syntax"
+        "supabase",
+        "auth",
+        "client",
+        "server",
+        "components",
+        "patterns",
+        "middleware",
+        "tokens"
       ]
     },
     {
-      "id": "odoo-automated-tests",
-      "description": "Write and run Odoo automated tests using TransactionCase, HttpCase, and browser tour tests. Covers test data setup, mocking, and CI integration.",
-      "path": "odoo-automated-tests/SKILL.md",
+      "id": "office-productivity",
+      "description": "Office productivity workflow covering document creation, spreadsheet automation, presentation generation, and integration with LibreOffice and Microsoft Office formats.",
+      "path": "office-productivity/SKILL.md",
       "triggers": [],
       "tags": [
-        "tests",
-        "transactioncase",
-        "odoo",
-        "httpcase",
-        "test",
-        "javascript",
-        "mocking",
-        "validationerror"
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "copy-paste",
+        "office",
+        "document",
+        "automation"
       ]
     },
     {
@@ -557,212 +524,83 @@
         "troubleshooting",
         "logging",
         "copy-paste",
-        "workflow"
+        "usage"
       ]
     },
     {
-      "id": "performance-testing-review-ai-review",
-      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
-      "path": "performance-testing-review-ai-review/SKILL.md",
+      "id": "protocol-reverse-engineering",
+      "description": "Comprehensive techniques for capturing, analyzing, and documenting network protocols for security research, interoperability, and debugging.",
+      "path": "protocol-reverse-engineering/SKILL.md",
       "triggers": [],
       "tags": [
-        "review",
-        "claude",
-        "github",
-        "authentication",
-        "sql",
-        "security",
-        "performance",
-        "json"
+        "resources",
+        "protocol",
+        "reverse",
+        "engineering",
+        "instructions",
+        "needing",
+        "clarify"
       ]
     },
     {
-      "id": "performance-testing-review-multi-agent-review",
-      "description": "Use when working with performance testing review multi agent review",
-      "path": "performance-testing-review-multi-agent-review/SKILL.md",
-      "triggers": [
-        "working",
-        "performance",
-        "testing",
-        "review",
-        "multi"
-      ],
+      "id": "quality-nonconformance",
+      "description": "Codified expertise for quality control, non-conformance investigation, root cause analysis, corrective action, and supplier quality management in regulated manufacturing.",
+      "path": "quality-nonconformance/SKILL.md",
+      "triggers": [],
       "tags": [
+        "capa",
+        "quality",
+        "validation",
+        "supplier",
+        "ncr",
+        "monitoring",
+        "escalation",
+        "spc"
+      ]
+    },
+    {
+      "id": "robius-matrix-integration",
+      "description": "|",
+      "path": "robius-matrix-integration/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "ownedroomid",
+        "matrix",
+        "timelineupdate",
+        "pattern",
+        "pagination",
+        "enum",
+        "updates",
+        "matrixrequest"
+      ]
+    },
+    {
+      "id": "service-mesh-expert",
+      "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con",
+      "path": "service-mesh-expert/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "observability",
+        "service",
+        "mesh",
+        "instructions",
+        "capabilities",
+        "kubernetes",
         "routing",
-        "validation",
-        "review",
-        "agent",
-        "orchestration",
-        "parallel",
-        "context",
-        "sequential"
-      ]
-    },
-    {
-      "id": "playwright-java",
-      "description": "Scaffold, write, debug, and enhance enterprise-grade Playwright E2E tests in Java using Page Object Model, JUnit 5, Allure reporting, and parallel execution.",
-      "path": "playwright-java/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "playwright",
-        "tracing",
-        "page",
-        "java",
-        "test",
-        "threadlocal",
-        "string",
-        "references"
-      ]
-    },
-    {
-      "id": "playwright-skill",
-      "description": "Playwright automation skill",
-      "path": "playwright-skill/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "playwright",
-        "test",
-        "http",
-        "json",
-        "screenshot",
-        "take",
-        "claude",
-        "execution"
-      ]
-    },
-    {
-      "id": "prompt-library",
-      "description": "A comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices.",
-      "path": "prompt-library/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "prompts",
-        "prompt",
-        "analysis",
-        "refactoring",
-        "authentication",
-        "complexity",
-        "format",
-        "output"
-      ]
-    },
-    {
-      "id": "pypict-skill",
-      "description": "Pairwise test generation",
-      "path": "pypict-skill/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pypict",
-        "overview",
-        "instructions",
-        "pairwise",
-        "test",
-        "generation"
-      ]
-    },
-    {
-      "id": "python-performance-optimization",
-      "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.",
-      "path": "python-performance-optimization/SKILL.md",
-      "triggers": [
-        "Profile",
-        "optimize",
-        "Python",
-        "using",
-        "cProfile"
-      ],
-      "tags": [
-        "python",
-        "profiling",
-        "resources",
-        "performance",
-        "optimization",
-        "instructions",
-        "optimizing",
-        "cpu"
-      ]
-    },
-    {
-      "id": "python-testing-patterns",
-      "description": "pytest, fixtures, mocking, TDD",
-      "path": "python-testing-patterns/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "python",
-        "resources",
-        "testing",
-        "mocking",
-        "patterns",
-        "instructions",
-        "setting",
-        "writing"
-      ]
-    },
-    {
-      "id": "screenshots",
-      "description": "Generate marketing screenshots of your app using Playwright. Use when the user wants to create screenshots for Product Hunt, social media, landing pages, or documentation.",
-      "path": "screenshots/SKILL.md",
-      "triggers": [
-        "Generate",
-        "marketing",
-        "screenshots",
-        "using",
-        "Playwright."
-      ],
-      "tags": [
-        "playwright",
-        "screenshots",
-        "authentication",
-        "app",
-        "script",
-        "url",
-        "screenshot",
-        "askuserquestion"
-      ]
-    },
-    {
-      "id": "semgrep-rule-variant-creator",
-      "description": "Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an existing rule and target languages as input, produces independent rule+test directories for each language.",
-      "path": "semgrep-rule-variant-creator/SKILL.md",
-      "triggers": [
-        "Creates",
-        "language",
-        "variants",
-        "existing",
-        "Semgrep"
-      ],
-      "tags": [
-        "yaml",
-        "phase",
-        "validation",
-        "rule",
-        "semgrep",
-        "creation",
-        "test",
-        "java"
-      ]
-    },
-    {
-      "id": "shodan-reconnaissance",
-      "description": "Provide systematic methodologies for leveraging Shodan as a reconnaissance tool during penetration testing engagements.",
-      "path": "shodan-reconnaissance/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "find",
-        "scan",
-        "search",
-        "filters",
-        "output",
-        "api",
-        "results",
-        "download"
+        "tracing"
       ]
     },
     {
       "id": "systematic-debugging",
-      "description": "Debug any bug before proposing fixes",
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
       "path": "systematic-debugging/SKILL.md",
-      "triggers": [],
+      "triggers": [
+        "encountering",
+        "failure",
+        "unexpected",
+        "behavior",
+        "before"
+      ],
       "tags": [
         "phase",
         "tracing",
@@ -775,88 +613,8 @@
       ]
     },
     {
-      "id": "systems-programming-rust-project",
-      "description": "You are a Rust project architecture expert specializing in scaffolding production-ready Rust applications. Generate complete project structures with cargo tooling, proper module organization, testing",
-      "path": "systems-programming-rust-project/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "cargo",
-        "rust",
-        "scaffolding",
-        "generate",
-        "structure",
-        "tracing",
-        "library",
-        "initialize"
-      ]
-    },
-    {
-      "id": "tdd-orchestrator",
-      "description": "Red-green-refactor TDD discipline",
-      "path": "tdd-orchestrator/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "tdd",
-        "refactoring",
-        "validation",
-        "test",
-        "testing",
-        "integration",
-        "monitoring",
-        "load-testing"
-      ]
-    },
-    {
-      "id": "tdd-workflow",
-      "description": "Test-Driven Development workflow principles. RED-GREEN-REFACTOR cycle.",
-      "path": "tdd-workflow/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "tdd",
-        "phase",
-        "write",
-        "principles",
-        "rules",
-        "red",
-        "green",
-        "refactor"
-      ]
-    },
-    {
-      "id": "tdd-workflows-tdd-green",
-      "description": "Implement the minimal code needed to make failing tests pass in the TDD green phase.",
-      "path": "tdd-workflows-tdd-green/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "refactor",
-        "green",
-        "view",
-        "express",
-        "resources",
-        "phase",
-        "tdd",
-        "simple"
-      ]
-    },
-    {
-      "id": "tdd-workflows-tdd-red",
-      "description": "Generate failing tests for the TDD red phase to define expected behavior and edge cases.",
-      "path": "tdd-workflows-tdd-red/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "jest",
-        "requirements",
-        "validation",
-        "avoid",
-        "edge",
-        "tdd",
-        "framework",
-        "patterns"
-      ]
-    },
-    {
       "id": "test-automator",
-      "description": "AI-powered test automation",
+      "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration.",
       "path": "test-automator/SKILL.md",
       "triggers": [],
       "tags": [
@@ -871,44 +629,6 @@
       ]
     },
     {
-      "id": "test-driven-development",
-      "description": "Use when implementing any feature or bugfix, before writing implementation code",
-      "path": "test-driven-development/SKILL.md",
-      "triggers": [
-        "implementing",
-        "feature",
-        "bugfix",
-        "before",
-        "writing"
-      ],
-      "tags": [
-        "test",
-        "tests",
-        "tdd",
-        "red",
-        "write",
-        "verify",
-        "green",
-        "watch"
-      ]
-    },
-    {
-      "id": "testing-patterns",
-      "description": "Jest patterns, factories, mocking, TDD",
-      "path": "testing-patterns/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mocking",
-        "patterns",
-        "testing",
-        "factory",
-        "test",
-        "behavior",
-        "utilities",
-        "custom"
-      ]
-    },
-    {
       "id": "testing-qa",
       "description": "Comprehensive testing and QA workflow covering unit testing, integration testing, E2E testing, browser automation, and quality assurance.",
       "path": "testing-qa/SKILL.md",
@@ -920,40 +640,40 @@
         "prompts",
         "testing",
         "copy-paste",
-        "workflow",
-        "linting"
+        "linting",
+        "test"
       ]
     },
     {
-      "id": "unit-testing-test-generate",
-      "description": "Generate comprehensive, maintainable unit tests across languages with strong coverage and edge case focus.",
-      "path": "unit-testing-test-generate/SKILL.md",
+      "id": "track-management",
+      "description": "Use this skill when creating, managing, or working with Conductor tracks - the logical work units for features, bugs, and refactors. Applies to spec.md, plan.md, and track lifecycle operations.",
+      "path": "track-management/SKILL.md",
       "triggers": [],
       "tags": [
-        "generate",
-        "test",
-        "tests",
-        "generation",
-        "dict",
-        "python",
-        "javascript",
-        "typescript"
+        "resources",
+        "track",
+        "instructions",
+        "conductor",
+        "writing",
+        "understanding",
+        "interpreting",
+        "clarify"
       ]
     },
     {
-      "id": "webapp-testing",
-      "description": "To test local web applications, write native Python Playwright scripts.",
-      "path": "webapp-testing/SKILL.md",
+      "id": "unsplash-integration",
+      "description": "Integration skill for searching and fetching high-quality, free-to-use professional photography from Unsplash.",
+      "path": "unsplash-integration/SKILL.md",
       "triggers": [],
       "tags": [
-        "playwright",
-        "html",
-        "scripts",
-        "testing",
-        "python",
-        "web",
-        "application",
-        "decision"
+        "unsplash",
+        "integration",
+        "context",
+        "execution",
+        "strict",
+        "rules",
+        "api",
+        "never"
       ]
     },
     {
@@ -976,38 +696,6 @@
         "qa",
         "answer",
         "detect"
-      ]
-    },
-    {
-      "id": "wordpress-penetration-testing",
-      "description": "Assess WordPress installations for common vulnerabilities and WordPress 7.0 attack surfaces.",
-      "path": "wordpress-penetration-testing/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "wordpress",
-        "enumeration",
-        "phase",
-        "api",
-        "enumerate",
-        "xml",
-        "plugin",
-        "php"
-      ]
-    },
-    {
-      "id": "yes-md",
-      "description": "6-layer AI governance: safety gates, evidence-based debugging, anti-slack detection, and machine-enforced hooks. Makes AI safe, thorough, and honest.",
-      "path": "yes-md/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "gate",
-        "safety",
-        "grep",
-        "ripple",
-        "read",
-        "deploying",
-        "evidence",
-        "stop"
       ]
     }
   ]

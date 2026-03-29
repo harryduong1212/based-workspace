@@ -3,323 +3,117 @@
   "category_name": "🔌 SaaS Integrations & Automations",
   "skills": [
     {
-      "id": "airtable-automation",
-      "description": "Airtable via Composio",
-      "path": "airtable-automation/SKILL.md",
-      "triggers": [],
+      "id": "clerk-auth",
+      "description": "Expert patterns for Clerk auth implementation, middleware, organizations, webhooks, and user sync Use when: adding authentication, clerk auth, user authentication, sign in, sign up.",
+      "path": "clerk-auth/SKILL.md",
+      "triggers": [
+        "Expert",
+        "patterns",
+        "Clerk",
+        "implementation",
+        "middleware"
+      ],
       "tags": [
-        "mcp",
-        "airtable",
-        "pagination",
-        "fields",
-        "rube",
-        "records",
-        "pitfalls",
-        "offset"
+        "authentication",
+        "clerk",
+        "issue",
+        "app",
+        "next",
+        "router",
+        "middleware",
+        "server"
       ]
     },
     {
-      "id": "asana-automation",
-      "description": "Asana via Composio",
-      "path": "asana-automation/SKILL.md",
-      "triggers": [],
+      "id": "n8n-mcp-tools-expert",
+      "description": "Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns.",
+      "path": "n8n-mcp-tools-expert/SKILL.md",
+      "triggers": [
+        "Expert",
+        "guide",
+        "using",
+        "n8n-mcp",
+        "tools"
+      ],
       "tags": [
-        "mcp",
-        "asana",
-        "gid",
-        "list",
-        "workspace",
-        "pagination",
-        "rube",
-        "pitfalls"
-      ]
-    },
-    {
-      "id": "clickup-automation",
-      "description": "ClickUp via Composio",
-      "path": "clickup-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "clickup",
-        "list",
-        "team_id",
-        "list_id",
-        "task_id",
-        "assignee",
-        "tasks"
-      ]
-    },
-    {
-      "id": "discord-automation",
-      "description": "Discord via Composio",
-      "path": "discord-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "discord",
-        "send",
-        "pagination",
-        "messages",
-        "pitfalls",
-        "rube",
-        "discordbot"
-      ]
-    },
-    {
-      "id": "github-automation",
-      "description": "GitHub via Composio",
-      "path": "github-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "github",
-        "repo",
-        "owner",
-        "mcp",
-        "pagination",
-        "list",
-        "per_page",
-        "search"
-      ]
-    },
-    {
-      "id": "gmail-automation",
-      "description": "Gmail with standalone OAuth",
-      "path": "gmail-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "gmail",
-        "send",
-        "emails",
-        "html",
-        "draft",
-        "unread",
-        "label",
-        "search"
-      ]
-    },
-    {
-      "id": "google-calendar-automation",
-      "description": "Google Calendar with OAuth",
-      "path": "google-calendar-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "event",
-        "calendar",
-        "list",
-        "update",
-        "time",
-        "events",
-        "find",
-        "google"
-      ]
-    },
-    {
-      "id": "google-drive-automation",
-      "description": "Google Drive with OAuth",
-      "path": "google-drive-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
+        "validation",
+        "mistake",
+        "node",
+        "sanitization",
         "search",
-        "folder",
-        "drive",
-        "google",
-        "upload",
-        "list",
-        "download",
-        "move"
-      ]
-    },
-    {
-      "id": "google-sheets-automation",
-      "description": "Google Sheets with OAuth",
-      "path": "google-sheets-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "json",
-        "formatting",
-        "spreadsheet",
-        "range",
-        "update",
-        "google",
-        "sheets",
-        "text"
-      ]
-    },
-    {
-      "id": "hubspot-automation",
-      "description": "HubSpot CRM via Composio",
-      "path": "hubspot-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
         "mcp",
-        "pagination",
-        "properties",
-        "hubspot",
-        "search",
-        "batch",
-        "pipeline",
-        "pitfalls"
+        "template",
+        "format"
       ]
     },
     {
-      "id": "jira-automation",
-      "description": "Jira via Composio",
-      "path": "jira-automation/SKILL.md",
-      "triggers": [],
+      "id": "n8n-node-configuration",
+      "description": "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common configuration patterns by node type.",
+      "path": "n8n-node-configuration/SKILL.md",
+      "triggers": [
+        "Operation-aware",
+        "configuration",
+        "guidance.",
+        "configuring",
+        "nodes"
+      ],
       "tags": [
-        "mcp",
-        "jira",
-        "jql",
-        "pagination",
-        "list",
-        "pitfalls",
-        "rube",
-        "search"
+        "validation",
+        "http",
+        "authentication",
+        "configuration",
+        "pattern",
+        "node",
+        "post",
+        "request"
       ]
     },
     {
-      "id": "linear-automation",
-      "description": "Linear via Composio",
-      "path": "linear-automation/SKILL.md",
+      "id": "n8n-validation-expert",
+      "description": "Expert guide for interpreting and fixing n8n validation errors.",
+      "path": "n8n-validation-expert/SKILL.md",
       "triggers": [],
       "tags": [
-        "mcp",
-        "graphql",
-        "linear",
-        "pagination",
-        "pitfalls",
-        "rube",
-        "list",
-        "team"
+        "validation",
+        "fix",
+        "error",
+        "strategy",
+        "sanitization",
+        "connections",
+        "http",
+        "errors"
       ]
     },
     {
-      "id": "notion-automation",
-      "description": "Notion via Composio",
-      "path": "notion-automation/SKILL.md",
+      "id": "n8n-workflow-patterns",
+      "description": "Proven architectural patterns for building n8n workflows.",
+      "path": "n8n-workflow-patterns/SKILL.md",
       "triggers": [],
       "tags": [
-        "mcp",
-        "notion",
-        "pagination",
-        "query",
-        "database",
-        "pitfalls",
-        "rube",
-        "page"
+        "http",
+        "validation",
+        "pattern",
+        "postgres",
+        "webhook",
+        "phase",
+        "authentication",
+        "patterns"
       ]
     },
     {
-      "id": "salesforce-automation",
-      "description": "Salesforce via Composio",
-      "path": "salesforce-automation/SKILL.md",
+      "id": "zapier-make-patterns",
+      "description": "You are a no-code automation architect who has built thousands of Zaps and Scenarios for businesses of all sizes. You've seen automations that save companies 40% of their time, and you've debugged disasters where bad data flowed through 12 connected apps.",
+      "path": "zapier-make-patterns/SKILL.md",
       "triggers": [],
       "tags": [
-        "mcp",
-        "salesforce",
-        "pagination",
-        "soql",
-        "lastname",
-        "search",
-        "account",
-        "pitfalls"
-      ]
-    },
-    {
-      "id": "shopify-automation",
-      "description": "Shopify via Composio",
-      "path": "shopify-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagination",
-        "graphql",
-        "shopify",
-        "pitfalls",
-        "list",
-        "rube",
-        "inventory"
-      ]
-    },
-    {
-      "id": "slack-automation",
-      "description": "Slack via Composio",
-      "path": "slack-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "channel",
-        "mcp",
-        "pagination",
-        "slack",
-        "messages",
-        "slack_find_channels",
-        "query",
-        "response"
-      ]
-    },
-    {
-      "id": "stripe-automation",
-      "description": "Stripe via Composio",
-      "path": "stripe-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "stripe",
-        "mcp",
-        "customer",
-        "list",
-        "amount",
-        "pitfalls",
-        "search",
-        "rube"
-      ]
-    },
-    {
-      "id": "trello-automation",
-      "description": "Trello via Composio",
-      "path": "trello-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "trello",
-        "cards",
-        "search",
-        "add",
-        "pitfalls",
-        "card",
-        "lists"
-      ]
-    },
-    {
-      "id": "zendesk-automation",
-      "description": "Zendesk via Composio",
-      "path": "zendesk-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagination",
-        "zendesk",
-        "list",
-        "tickets",
-        "search",
-        "ticket",
-        "update"
-      ]
-    },
-    {
-      "id": "zoom-automation",
-      "description": "Zoom via Composio",
-      "path": "zoom-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pagination",
-        "mcp",
-        "zoom",
-        "userid",
-        "meetingid",
-        "meeting",
-        "next_page_token",
-        "list"
+        "zapier",
+        "pattern",
+        "patterns",
+        "issue",
+        "capabilities",
+        "basic",
+        "sequential",
+        "conditional"
       ]
     }
   ]

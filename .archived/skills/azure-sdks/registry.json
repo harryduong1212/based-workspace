@@ -3,89 +3,67 @@
   "category_name": "☁️ Azure SDKs",
   "skills": [
     {
-      "id": "agent-framework-azure-ai-py",
-      "description": "Build persistent agents on Azure AI Foundry using the Microsoft Agent Framework Python SDK.",
-      "path": "agent-framework-azure-ai-py/SKILL.md",
+      "id": "active-directory-attacks",
+      "description": "Provide comprehensive techniques for attacking Microsoft Active Directory environments. Covers reconnaissance, credential harvesting, Kerberos attacks, lateral movement, privilege escalation, and domain dominance for red team operations and penetration testing.",
+      "path": "active-directory-attacks/SKILL.md",
       "triggers": [],
       "tags": [
-        "azure",
-        "agent",
-        "mcp",
-        "python",
-        "streaming",
-        "azureclicredential",
-        "azureaiagentsprovider",
-        "hosted"
+        "impacket",
+        "relay",
+        "attacks",
+        "ticket",
+        "clock",
+        "rubeus",
+        "signing",
+        "kerberos"
       ]
     },
     {
-      "id": "agents-v2-py",
-      "description": "Build container-based Foundry Agents with Azure AI Projects SDK (ImageBasedHostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry.",
-      "path": "agents-v2-py/SKILL.md",
-      "triggers": [
-        "Build",
-        "container-based",
-        "Foundry",
-        "Agents",
-        "Azure"
-      ],
-      "tags": [
-        "azure",
-        "agent",
-        "imagebasedhostedagentdefinition",
-        "agentprotocol",
-        "responses",
-        "defaultazurecredential",
-        "environment",
-        "hosted"
-      ]
-    },
-    {
-      "id": "azd-deployment",
-      "description": "Deploy containerized frontend + backend applications to Azure Container Apps with remote builds, managed identity, and idempotent infrastructure.",
-      "path": "azd-deployment/SKILL.md",
+      "id": "api-documenter",
+      "description": "Master API documentation with OpenAPI 3.1, AI-powered tools, and modern developer experience practices. Create interactive docs, generate SDKs, and build comprehensive developer portals.",
+      "path": "api-documenter/SKILL.md",
       "triggers": [],
       "tags": [
-        "azure",
-        "environment",
-        "configuration",
-        "container",
-        "deployment",
-        "bicep",
-        "rbac",
-        "apps"
-      ]
-    },
-    {
-      "id": "azure-ai-agents-persistent-dotnet",
-      "description": "Azure AI Agents Persistent SDK for .NET. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools.",
-      "path": "azure-ai-agents-persistent-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "streaming",
-        "search",
-        "streamingupdatereason",
-        "agents",
-        "persistent",
-        "vector",
-        "agent"
-      ]
-    },
-    {
-      "id": "azure-ai-agents-persistent-java",
-      "description": "Azure AI Agents Persistent SDK for Java. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools.",
-      "path": "azure-ai-agents-persistent-java/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "java",
+        "validation",
         "authentication",
-        "agent",
-        "agents",
-        "persistent",
+        "api",
+        "documentation",
+        "developer",
         "sdk",
-        "persistentagentsclient"
+        "integration",
+        "openapi"
+      ]
+    },
+    {
+      "id": "apify-actorization",
+      "description": "Actorization converts existing software into reusable serverless applications compatible with the Apify platform. Actors are programs packaged as Docker images that accept well-defined JSON input, perform an action, and optionally produce structured JSON output.",
+      "path": "apify-actorization/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "python",
+        "actor",
+        "apify",
+        "mcp",
+        "javascript",
+        "actorization",
+        "json",
+        "checklist"
+      ]
+    },
+    {
+      "id": "aws-serverless",
+      "description": "Proper Lambda function structure with error handling",
+      "path": "aws-serverless/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "aws",
+        "json",
+        "lambda",
+        "logging",
+        "handler",
+        "python",
+        "http",
+        "pattern"
       ]
     },
     {
@@ -175,54 +153,6 @@
       ]
     },
     {
-      "id": "azure-ai-document-intelligence-dotnet",
-      "description": "Azure AI Document Intelligence SDK for .NET. Extract text, tables, and structured data from documents using prebuilt and custom models.",
-      "path": "azure-ai-document-intelligence-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "console",
-        "writeline",
-        "extract",
-        "document",
-        "uri",
-        "documentintelligence",
-        "analyzeresult"
-      ]
-    },
-    {
-      "id": "azure-ai-document-intelligence-ts",
-      "description": "Extract text, tables, and structured data from documents using prebuilt and custom models.",
-      "path": "azure-ai-document-intelligence-ts/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "document",
-        "azure",
-        "documentintelligence",
-        "rest",
-        "typescript",
-        "extract",
-        "fields",
-        "analyze"
-      ]
-    },
-    {
-      "id": "azure-ai-formrecognizer-java",
-      "description": "Build document analysis applications using the Azure AI Document Intelligence SDK for Java.",
-      "path": "azure-ai-formrecognizer-java/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "java",
-        "document",
-        "models",
-        "azure",
-        "custom",
-        "analyze",
-        "analyzeresult",
-        "model"
-      ]
-    },
-    {
       "id": "azure-ai-ml-py",
       "description": "Azure Machine Learning SDK v2 for Python. Use for ML workspaces, jobs, models, datasets, compute, and pipelines.",
       "path": "azure-ai-ml-py/SKILL.md",
@@ -240,7 +170,7 @@
     },
     {
       "id": "azure-ai-openai-dotnet",
-      "description": "Azure OpenAI SDK for .NET",
+      "description": "Azure OpenAI SDK for .NET. Client library for Azure OpenAI and OpenAI services. Use for chat completions, embeddings, image generation, audio transcription, and assistants.",
       "path": "azure-ai-openai-dotnet/SKILL.md",
       "triggers": [],
       "tags": [
@@ -252,22 +182,6 @@
         "json",
         "embedding",
         "console"
-      ]
-    },
-    {
-      "id": "azure-ai-projects-dotnet",
-      "description": "Azure AI Projects SDK for .NET. High-level client for Azure AI Foundry projects including agents, connections, datasets, deployments, evaluations, and indexes.",
-      "path": "azure-ai-projects-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "openai",
-        "projects",
-        "agents",
-        "client",
-        "authentication",
-        "versioned",
-        "evaluation"
       ]
     },
     {
@@ -288,7 +202,7 @@
     },
     {
       "id": "azure-ai-projects-py",
-      "description": "Azure AI Foundry SDK for Python",
+      "description": "Build AI applications on Microsoft Foundry using the azure-ai-projects SDK.",
       "path": "azure-ai-projects-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -300,22 +214,6 @@
         "python",
         "azure",
         "aiprojectclient"
-      ]
-    },
-    {
-      "id": "azure-ai-projects-ts",
-      "description": "High-level SDK for Azure AI Foundry projects with agents, connections, deployments, and evaluations.",
-      "path": "azure-ai-projects-ts/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "client",
-        "agent",
-        "openai",
-        "typescript",
-        "authentication",
-        "projects",
-        "list"
       ]
     },
     {
@@ -437,22 +335,6 @@
       ]
     },
     {
-      "id": "azure-ai-voicelive-dotnet",
-      "description": "Azure AI Voice Live SDK for .NET. Build real-time voice AI applications with bidirectional WebSocket communication.",
-      "path": "azure-ai-voicelive-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "voicelive",
-        "azurestandardvoice",
-        "audio",
-        "api",
-        "voiceliveclient",
-        "reference",
-        "error"
-      ]
-    },
-    {
       "id": "azure-ai-voicelive-java",
       "description": "Azure AI VoiceLive SDK for Java. Real-time bidirectional voice conversations with AI assistants using WebSocket.",
       "path": "azure-ai-voicelive-java/SKILL.md",
@@ -466,38 +348,6 @@
         "voicelive",
         "authentication",
         "voice"
-      ]
-    },
-    {
-      "id": "azure-ai-voicelive-py",
-      "description": "Build real-time voice AI applications with bidirectional WebSocket communication.",
-      "path": "azure-ai-voicelive-py/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "audio",
-        "conn",
-        "vad",
-        "voice",
-        "session",
-        "turn",
-        "api"
-      ]
-    },
-    {
-      "id": "azure-ai-voicelive-ts",
-      "description": "Azure AI Voice Live SDK for JavaScript/TypeScript. Build real-time voice AI applications with bidirectional WebSocket communication.",
-      "path": "azure-ai-voicelive-ts/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "logging",
-        "streaming",
-        "typescript",
-        "json",
-        "voiceliveclient",
-        "api",
-        "reference"
       ]
     },
     {
@@ -546,38 +396,6 @@
         "typescript",
         "crud",
         "load"
-      ]
-    },
-    {
-      "id": "azure-communication-callautomation-java",
-      "description": "Build server-side call automation workflows including IVR systems, call routing, recording, and AI-powered interactions.",
-      "path": "azure-communication-callautomation-java/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "call",
-        "java",
-        "azure",
-        "recognize",
-        "dtmf",
-        "communication",
-        "communicationuseridentifier",
-        "phonenumberidentifier"
-      ]
-    },
-    {
-      "id": "azure-communication-callingserver-java",
-      "description": "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.",
-      "path": "azure-communication-callingserver-java/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "java",
-        "callconnection",
-        "call",
-        "legacy",
-        "callingserver",
-        "communication",
-        "automation"
       ]
     },
     {
@@ -673,40 +491,8 @@
       ]
     },
     {
-      "id": "azure-cosmos-db-py",
-      "description": "Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.",
-      "path": "azure-cosmos-db-py/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "cosmos",
-        "authentication",
-        "azure",
-        "mocking",
-        "none",
-        "service",
-        "defaultazurecredential",
-        "security"
-      ]
-    },
-    {
-      "id": "azure-cosmos-java",
-      "description": "Azure Cosmos DB SDK for Java. NoSQL database operations with global distribution, multi-model support, and reactive patterns.",
-      "path": "azure-cosmos-java/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "authentication",
-        "java",
-        "client",
-        "cosmosclient",
-        "cosmos",
-        "container",
-        "cosmosasyncclient"
-      ]
-    },
-    {
       "id": "azure-cosmos-py",
-      "description": "Cosmos DB NoSQL for Python",
+      "description": "Azure Cosmos DB SDK for Python (NoSQL API). Use for document CRUD, queries, containers, and globally distributed data.",
       "path": "azure-cosmos-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -766,22 +552,6 @@
         "tableentity",
         "tables",
         "storage"
-      ]
-    },
-    {
-      "id": "azure-data-tables-py",
-      "description": "Azure Tables SDK for Python (Storage and Cosmos DB). Use for NoSQL key-value storage, entity CRUD, and batch operations.",
-      "path": "azure-data-tables-py/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "entity",
-        "table",
-        "client",
-        "query",
-        "tables",
-        "operations",
-        "partitionkey"
       ]
     },
     {
@@ -878,7 +648,7 @@
     },
     {
       "id": "azure-eventhub-py",
-      "description": "Azure Event Hubs streaming",
+      "description": "Azure Event Hubs SDK for Python streaming. Use for high-throughput event ingestion, producers, consumers, and checkpointing.",
       "path": "azure-eventhub-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -974,7 +744,7 @@
     },
     {
       "id": "azure-identity-py",
-      "description": "Azure Identity authentication",
+      "description": "Azure Identity SDK for Python authentication. Use for DefaultAzureCredential, managed identity, service principals, and token caching.",
       "path": "azure-identity-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -1082,7 +852,7 @@
     },
     {
       "id": "azure-keyvault-py",
-      "description": "Azure Key Vault secrets/keys",
+      "description": "Azure Key Vault SDK for Python. Use for secrets, keys, and certificates management with secure storage.",
       "path": "azure-keyvault-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -1153,28 +923,6 @@
         "search",
         "geocoding",
         "authentication"
-      ]
-    },
-    {
-      "id": "azure-messaging-webpubsub-java",
-      "description": "Build real-time web applications with Azure Web PubSub SDK for Java. Use when implementing WebSocket-based messaging, live updates, chat applications, or server-to-client push notifications.",
-      "path": "azure-messaging-webpubsub-java/SKILL.md",
-      "triggers": [
-        "Build",
-        "real-time",
-        "applications",
-        "Azure",
-        "PubSub"
-      ],
-      "tags": [
-        "send",
-        "java",
-        "azure",
-        "client",
-        "webpubsubcontenttype",
-        "connection",
-        "async",
-        "json"
       ]
     },
     {
@@ -1530,22 +1278,6 @@
       ]
     },
     {
-      "id": "azure-postgres-ts",
-      "description": "Connect to Azure Database for PostgreSQL Flexible Server from Node.js/TypeScript using the pg (node-postgres) package.",
-      "path": "azure-postgres-ts/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "authentication",
-        "pool",
-        "postgresql",
-        "typescript",
-        "entra",
-        "client",
-        "connection"
-      ]
-    },
-    {
       "id": "azure-resource-manager-cosmosdb-dotnet",
       "description": "Azure Resource Manager SDK for Cosmos DB in .NET.",
       "path": "azure-resource-manager-cosmosdb-dotnet/SKILL.md",
@@ -1578,22 +1310,6 @@
       ]
     },
     {
-      "id": "azure-resource-manager-mysql-dotnet",
-      "description": "Azure MySQL Flexible Server SDK for .NET. Database management for MySQL Flexible Server deployments.",
-      "path": "azure-resource-manager-mysql-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "mysql",
-        "server",
-        "resourcemanager",
-        "completed",
-        "console",
-        "writeline",
-        "mysqlflexibleserverresource"
-      ]
-    },
-    {
       "id": "azure-resource-manager-playwright-dotnet",
       "description": "Azure Resource Manager SDK for Microsoft Playwright Testing in .NET.",
       "path": "azure-resource-manager-playwright-dotnet/SKILL.md",
@@ -1607,22 +1323,6 @@
         "resourcemanager",
         "authentication",
         "dataplaneuri"
-      ]
-    },
-    {
-      "id": "azure-resource-manager-postgresql-dotnet",
-      "description": "Azure PostgreSQL Flexible Server SDK for .NET. Database management for PostgreSQL Flexible Server deployments.",
-      "path": "azure-resource-manager-postgresql-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "postgresql",
-        "azure",
-        "server",
-        "authentication",
-        "resourcemanager",
-        "completed",
-        "console",
-        "writeline"
       ]
     },
     {
@@ -1675,7 +1375,7 @@
     },
     {
       "id": "azure-search-documents-py",
-      "description": "Azure AI Search (vector, hybrid, semantic)",
+      "description": "Azure AI Search SDK for Python. Use for vector search, hybrid search, semantic ranking, indexing, and skillsets.",
       "path": "azure-search-documents-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -1703,22 +1403,6 @@
         "typescript",
         "authentication",
         "documents"
-      ]
-    },
-    {
-      "id": "azure-security-keyvault-keys-dotnet",
-      "description": "Azure Key Vault Keys SDK for .NET. Client library for managing cryptographic keys in Azure Key Vault and Managed HSM. Use for key creation, rotation, encryption, decryption, signing, and verification.",
-      "path": "azure-security-keyvault-keys-dotnet/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "azure",
-        "keys",
-        "rsa",
-        "cryptographyclient",
-        "security",
-        "keyvault",
-        "encryption",
-        "keyvaultkey"
       ]
     },
     {
@@ -1783,7 +1467,7 @@
     },
     {
       "id": "azure-servicebus-py",
-      "description": "Azure Service Bus messaging",
+      "description": "Azure Service Bus SDK for Python messaging. Use for queues, topics, subscriptions, and enterprise messaging patterns.",
       "path": "azure-servicebus-py/SKILL.md",
       "triggers": [],
       "tags": [
@@ -1843,70 +1527,6 @@
         "list",
         "string",
         "storage"
-      ]
-    },
-    {
-      "id": "azure-storage-blob-py",
-      "description": "Azure Blob Storage for Python",
-      "path": "azure-storage-blob-py/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "blob",
-        "azure",
-        "list",
-        "download",
-        "client",
-        "python",
-        "blobserviceclient",
-        "storage"
-      ]
-    },
-    {
-      "id": "azure-storage-blob-rust",
-      "description": "Azure Blob Storage SDK for Rust. Use for uploading, downloading, and managing blobs and containers.",
-      "path": "azure-storage-blob-rust/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "blob",
-        "azure",
-        "rust",
-        "storage",
-        "operations",
-        "none",
-        "core",
-        "authentication"
-      ]
-    },
-    {
-      "id": "azure-storage-blob-ts",
-      "description": "Azure Blob Storage JavaScript/TypeScript SDK (@azure/storage-blob) for blob operations. Use for uploading, downloading, listing, and managing blobs and containers.",
-      "path": "azure-storage-blob-ts/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "blob",
-        "node",
-        "sas",
-        "container",
-        "upload",
-        "typescript",
-        "generate",
-        "storagesharedkeycredential"
-      ]
-    },
-    {
-      "id": "azure-storage-file-datalake-py",
-      "description": "Azure Data Lake Storage Gen2 SDK for Python. Use for hierarchical file systems, big data analytics, and file/directory operations.",
-      "path": "azure-storage-file-datalake-py/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "directory",
-        "list",
-        "download",
-        "acl",
-        "client",
-        "azure",
-        "operations",
-        "delete"
       ]
     },
     {
@@ -1990,6 +1610,38 @@
       ]
     },
     {
+      "id": "bill-gates",
+      "description": "Agente que simula Bill Gates — cofundador da Microsoft, arquiteto da industria de software comercial, estrategista tecnologico global, investidor sistemico e filantropo baseado em dados.",
+      "path": "bill-gates/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "gates",
+        "sobre",
+        "bill",
+        "por",
+        "que",
+        "nao",
+        "isso",
+        "passo"
+      ]
+    },
+    {
+      "id": "cloud-architect",
+      "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns.",
+      "path": "cloud-architect/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "azure",
+        "aws",
+        "monitoring",
+        "gcp",
+        "observability",
+        "cloud",
+        "kubernetes",
+        "infrastructure"
+      ]
+    },
+    {
       "id": "cloud-penetration-testing",
       "description": "Conduct comprehensive security assessments of cloud infrastructure across Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP).",
       "path": "cloud-penetration-testing/SKILL.md",
@@ -2038,25 +1690,19 @@
       ]
     },
     {
-      "id": "hosted-agents-v2-py",
-      "description": "Build hosted agents using Azure AI Projects SDK with ImageBasedHostedAgentDefinition. Use when creating container-based agents in Azure AI Foundry.",
-      "path": "hosted-agents-v2-py/SKILL.md",
-      "triggers": [
-        "Build",
-        "hosted",
-        "agents",
-        "using",
-        "Azure"
-      ],
+      "id": "gcp-cloud-run",
+      "description": "When to use: ['Web applications and APIs', 'Need any runtime or library', 'Complex services with multiple endpoints', 'Stateless containerized workloads']",
+      "path": "gcp-cloud-run/SKILL.md",
+      "triggers": [],
       "tags": [
-        "azure",
-        "agent",
-        "imagebasedhostedagentdefinition",
-        "agentprotocol",
-        "responses",
-        "defaultazurecredential",
-        "hosted",
-        "environment"
+        "cloud",
+        "cpu",
+        "http",
+        "deploy",
+        "pattern",
+        "function",
+        "copy",
+        "gcp"
       ]
     },
     {
@@ -2073,6 +1719,22 @@
         "observability",
         "edge",
         "openstack"
+      ]
+    },
+    {
+      "id": "java-pro",
+      "description": "Master Java 21+ with modern features like virtual threads, pattern matching, and Spring Boot 3.x. Expert in the latest Java ecosystem including GraalVM, Project Loom, and cloud-native patterns.",
+      "path": "java-pro/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "spring",
+        "java",
+        "monitoring",
+        "validation",
+        "jvm",
+        "modern",
+        "performance",
+        "security"
       ]
     },
     {
@@ -2146,19 +1808,19 @@
       ]
     },
     {
-      "id": "terraform-module-library",
-      "description": "Production-ready Terraform module patterns for AWS, Azure, and GCP infrastructure.",
-      "path": "terraform-module-library/SKILL.md",
+      "id": "whatsapp-cloud-api",
+      "description": "Integracao com WhatsApp Business Cloud API (Meta). Mensagens, templates, webhooks HMAC-SHA256, automacao de atendimento. Boilerplates Node.js e Python.",
+      "path": "whatsapp-cloud-api/SKILL.md",
       "triggers": [],
       "tags": [
-        "terraform",
-        "module",
-        "aws",
-        "validation",
-        "vpc",
-        "azure",
-        "gcp",
-        "references"
+        "python",
+        "whatsapp",
+        "references",
+        "api",
+        "claude",
+        "typescript",
+        "mensagem",
+        "authorization"
       ]
     }
   ]

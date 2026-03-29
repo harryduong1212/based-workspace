@@ -4,7 +4,7 @@
   "skills": [
     {
       "id": "007",
-      "description": "Full security: audit, STRIDE, Red/Blue Team, OWASP",
+      "description": "Security audit, hardening, threat modeling (STRIDE/PASTA), Red/Blue Team, OWASP checks, code review, incident response, and infrastructure security for any project.",
       "path": "007/SKILL.md",
       "triggers": [],
       "tags": [
@@ -19,56 +19,24 @@
       ]
     },
     {
-      "id": "agentic-actions-auditor",
-      "description": ">",
-      "path": "agentic-actions-auditor/SKILL.md",
+      "id": "accessibility-compliance-accessibility-audit",
+      "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.",
+      "path": "accessibility-compliance-accessibility-audit/SKILL.md",
       "triggers": [],
       "tags": [
-        "github",
-        "yaml",
-        "claude",
-        "gemini",
-        "openai",
-        "vector",
-        "action",
-        "inference"
-      ]
-    },
-    {
-      "id": "analytics-tracking",
-      "description": "Design, audit, and improve analytics tracking systems that produce reliable, decision-ready data.",
-      "path": "analytics-tracking/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "event",
-        "context",
-        "validation",
-        "measurement",
-        "conversion",
-        "quality",
-        "readiness",
-        "strategy"
-      ]
-    },
-    {
-      "id": "anti-reversing-techniques",
-      "description": "AUTHORIZED USE ONLY: This skill contains dual-use security techniques. Before proceeding with any bypass or analysis: > 1.",
-      "path": "anti-reversing-techniques/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "authorization",
+        "wcag",
         "resources",
-        "instructions",
-        "safety",
-        "legal",
-        "techniques",
-        "authorized",
-        "confirm"
+        "accessibility",
+        "audit",
+        "testing",
+        "context",
+        "requirements",
+        "instructions"
       ]
     },
     {
       "id": "api-security-best-practices",
-      "description": "Auth, rate limiting, input validation",
+      "description": "Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities",
       "path": "api-security-best-practices/SKILL.md",
       "triggers": [],
       "tags": [
@@ -83,121 +51,133 @@
       ]
     },
     {
-      "id": "api-security-testing",
-      "description": "REST/GraphQL security testing",
-      "path": "api-security-testing/SKILL.md",
+      "id": "audit-context-building",
+      "description": "Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding.",
+      "path": "audit-context-building/SKILL.md",
       "triggers": [],
       "tags": [
-        "fuzzing",
-        "authentication",
-        "api",
-        "authorization",
+        "claude",
+        "analysis",
+        "external",
         "phase",
-        "invoke",
-        "actions",
-        "prompts"
-      ]
-    },
-    {
-      "id": "avoid-ai-writing",
-      "description": "Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table",
-      "path": "avoid-ai-writing/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "writing",
-        "avoid",
-        "audit",
-        "detects",
-        "rewrite",
-        "limitations",
-        "formatting",
-        "moreover"
-      ]
-    },
-    {
-      "id": "backend-security-coder",
-      "description": "Input validation, auth, API security",
-      "path": "backend-security-coder/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "validation",
-        "authentication",
-        "logging",
-        "security",
-        "encryption",
-        "authorization",
-        "monitoring",
-        "secure"
-      ]
-    },
-    {
-      "id": "broken-authentication",
-      "description": "Identify and exploit authentication and session management vulnerabilities in web applications. Broken authentication consistently ranks in the OWASP Top 10 and can lead to account takeover, identity theft, and unauthorized access to sensitive systems.",
-      "path": "broken-authentication/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "authentication",
-        "test",
-        "token",
-        "jwt",
-        "testing",
-        "phase",
-        "session",
-        "password"
-      ]
-    },
-    {
-      "id": "cicd-automation-workflow-automate",
-      "description": "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design and implement automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security.",
-      "path": "cicd-automation-workflow-automate/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "resources",
-        "workflow",
-        "automation",
-        "safety",
         "context",
-        "requirements",
-        "instructions",
-        "output"
+        "function",
+        "checklist",
+        "calls"
       ]
     },
     {
-      "id": "clerk-auth",
-      "description": "Expert patterns for Clerk auth implementation, middleware, organizations, webhooks, and user sync Use when: adding authentication, clerk auth, user authentication, sign in, sign up.",
-      "path": "clerk-auth/SKILL.md",
+      "id": "aws-iam-best-practices",
+      "description": "IAM policy review, hardening, and least privilege implementation",
+      "path": "aws-iam-best-practices/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "iam",
+        "aws",
+        "access",
+        "mfa",
+        "find",
+        "policies",
+        "policy",
+        "list"
+      ]
+    },
+    {
+      "id": "aws-security-audit",
+      "description": "Comprehensive AWS security posture assessment using AWS CLI and security best practices",
+      "path": "aws-security-audit/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "logging",
+        "aws",
+        "encryption",
+        "security",
+        "monitoring",
+        "find",
+        "checks",
+        "audit"
+      ]
+    },
+    {
+      "id": "azure-security-keyvault-keys-dotnet",
+      "description": "Azure Key Vault Keys SDK for .NET. Client library for managing cryptographic keys in Azure Key Vault and Managed HSM. Use for key creation, rotation, encryption, decryption, signing, and verification.",
+      "path": "azure-security-keyvault-keys-dotnet/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "azure",
+        "keys",
+        "rsa",
+        "cryptographyclient",
+        "security",
+        "keyvault",
+        "encryption",
+        "keyvaultkey"
+      ]
+    },
+    {
+      "id": "burpsuite-project-parser",
+      "description": "Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with regex patterns, extracting security audit findings, dumping proxy history or site map data, or analyzing HTTP traffic captured in a Burp project.",
+      "path": "burpsuite-project-parser/SKILL.md",
       "triggers": [
-        "Expert",
-        "patterns",
-        "Clerk",
-        "implementation",
-        "middleware"
+        "Searches",
+        "explores",
+        "Suite",
+        "project",
+        "files"
       ],
       "tags": [
-        "authentication",
-        "clerk",
-        "issue",
-        "app",
-        "next",
-        "router",
-        "middleware",
-        "server"
+        "burp",
+        "search",
+        "always",
+        "body",
+        "proxyhistory",
+        "truncate",
+        "output",
+        "sitemap"
       ]
     },
     {
-      "id": "code-review-checklist",
-      "description": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability",
-      "path": "code-review-checklist/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "review",
-        "checklist",
+      "id": "cc-skill-security-review",
+      "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints.",
+      "path": "cc-skill-security-review/SKILL.md",
+      "triggers": [
+        "skill",
+        "ensures",
+        "follows",
         "security",
-        "authentication",
+        "practices"
+      ],
+      "tags": [
+        "verification",
+        "security",
         "authorization",
+        "steps",
         "validation",
         "sql",
-        "functionality"
+        "rate-limiting",
+        "authentication"
+      ]
+    },
+    {
+      "id": "claude-settings-audit",
+      "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Use when setting up a new project, auditing existing settings, or determining which read-only bash commands to allow. Detects tech stack, build tools, and monorepo structure.",
+      "path": "claude-settings-audit/SKILL.md",
+      "triggers": [
+        "Analyze",
+        "repository",
+        "generate",
+        "recommended",
+        "Claude"
+      ],
+      "tags": [
+        "mcp",
+        "cargo",
+        "bash",
+        "python",
+        "sentry",
+        "detected",
+        "claude",
+        "settings"
       ]
     },
     {
@@ -249,6 +229,22 @@
       ]
     },
     {
+      "id": "dependency-upgrade",
+      "description": "Master major dependency version upgrades, compatibility analysis, staged upgrade strategies, and comprehensive testing approaches.",
+      "path": "dependency-upgrade/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "upgrade",
+        "react",
+        "update",
+        "dependency",
+        "tests",
+        "npm",
+        "typescript",
+        "dependencies"
+      ]
+    },
+    {
       "id": "differential-review",
       "description": "Security-focused code review for PRs, commits, and diffs.",
       "path": "differential-review/SKILL.md",
@@ -262,54 +258,6 @@
         "codebase",
         "reference",
         "strategy"
-      ]
-    },
-    {
-      "id": "ethical-hacking-methodology",
-      "description": "Full penetration testing lifecycle",
-      "path": "ethical-hacking-methodology/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "phase",
-        "ssh",
-        "metasploit",
-        "persistence",
-        "scan",
-        "dns",
-        "sql",
-        "find"
-      ]
-    },
-    {
-      "id": "fda-food-safety-auditor",
-      "description": "Expert AI auditor for FDA Food Safety (FSMA), HACCP, and PCQI compliance. Reviews food facility records and preventive controls.",
-      "path": "fda-food-safety-auditor/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "fda",
-        "food",
-        "safety",
-        "monitoring",
-        "auditor",
-        "review",
-        "ccp",
-        "deviation"
-      ]
-    },
-    {
-      "id": "fda-medtech-compliance-auditor",
-      "description": "Expert AI auditor for Medical Device (SaMD) compliance, IEC 62304, and 21 CFR Part 820. Reviews DHFs, technical files, and software validation.",
-      "path": "fda-medtech-compliance-auditor/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "fda",
-        "medtech",
-        "compliance",
-        "auditor",
-        "capa",
-        "iso",
-        "root",
-        "cause"
       ]
     },
     {
@@ -329,26 +277,16 @@
       ]
     },
     {
-      "id": "file-uploads",
-      "description": "Careful about security and performance. Never trusts file extensions. Knows that large uploads need special handling. Prefers presigned URLs over server proxying.",
-      "path": "file-uploads/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "uploads",
-        "storage",
-        "sharp",
-        "edges",
-        "presigned",
-        "url",
-        "role",
-        "upload"
-      ]
-    },
-    {
       "id": "find-bugs",
-      "description": "Find bugs and security issues in branch changes",
+      "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch.",
       "path": "find-bugs/SKILL.md",
-      "triggers": [],
+      "triggers": [
+        "bugs",
+        "security",
+        "vulnerabilities",
+        "quality",
+        "issues"
+      ],
       "tags": [
         "phase",
         "authentication",
@@ -374,22 +312,6 @@
         "import",
         "capabilities",
         "modular"
-      ]
-    },
-    {
-      "id": "firmware-analyst",
-      "description": "Expert firmware analyst specializing in embedded systems, IoT security, and hardware reverse engineering.",
-      "path": "firmware-analyst/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "firmware",
-        "analysis",
-        "emulation",
-        "qemu",
-        "extraction",
-        "extract",
-        "phase",
-        "identify"
       ]
     },
     {
@@ -448,29 +370,13 @@
         "critical",
         "medium",
         "url",
-        "workflow",
-        "priority"
-      ]
-    },
-    {
-      "id": "frontend-security-coder",
-      "description": "XSS prevention, output sanitization",
-      "path": "frontend-security-coder/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "validation",
-        "css",
-        "sanitization",
-        "security",
-        "authentication",
-        "secure",
-        "csp",
-        "html"
+        "priority",
+        "reference"
       ]
     },
     {
       "id": "gha-security-review",
-      "description": "GitHub Actions workflow vulnerabilities",
+      "description": "Find exploitable vulnerabilities in GitHub Actions workflows. Every finding MUST include a concrete exploitation scenario — if you can't build the attack, don't report it.",
       "path": "gha-security-review/SKILL.md",
       "triggers": [],
       "tags": [
@@ -501,38 +407,6 @@
       ]
     },
     {
-      "id": "hubspot-integration",
-      "description": "Authentication for single-account integrations",
-      "path": "hubspot-integration/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "authentication",
-        "issue",
-        "oauth",
-        "instead",
-        "hubspot",
-        "integration",
-        "patterns",
-        "crm"
-      ]
-    },
-    {
-      "id": "hugging-face-paper-publisher",
-      "description": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.",
-      "path": "hugging-face-paper-publisher/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "paper",
-        "link",
-        "yaml",
-        "index",
-        "arxiv",
-        "research",
-        "add",
-        "method"
-      ]
-    },
-    {
       "id": "idor-testing",
       "description": "Provide systematic methodologies for identifying and exploiting Insecure Direct Object Reference (IDOR) vulnerabilities in web applications.",
       "path": "idor-testing/SKILL.md",
@@ -549,35 +423,35 @@
       ]
     },
     {
-      "id": "leiloeiro-edital",
-      "description": "Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade.",
-      "path": "leiloeiro-edital/SKILL.md",
+      "id": "kotlin-coroutines-expert",
+      "description": "Expert patterns for Kotlin Coroutines and Flow, covering structured concurrency, error handling, and testing.",
+      "path": "kotlin-coroutines-expert/SKILL.md",
       "triggers": [],
       "tags": [
-        "edital",
-        "bloco",
-        "venda",
-        "risco",
-        "verificar",
-        "editais",
-        "valor",
-        "direta"
+        "kotlin",
+        "flow",
+        "coroutines",
+        "coroutinescope",
+        "exception",
+        "structured",
+        "concurrency",
+        "coroutineexceptionhandler"
       ]
     },
     {
-      "id": "linux-privilege-escalation",
-      "description": "Execute systematic privilege escalation assessments on Linux systems to identify and exploit misconfigurations, vulnerable services, and security weaknesses that allow elevation from low-privilege user access to root-level control.",
-      "path": "linux-privilege-escalation/SKILL.md",
+      "id": "laravel-security-audit",
+      "description": "Security auditor for Laravel applications. Analyzes code for vulnerabilities, misconfigurations, and insecure practices using OWASP standards and Laravel security best practices.",
+      "path": "laravel-security-audit/SKILL.md",
       "triggers": [],
       "tags": [
-        "suid",
-        "phase",
-        "sudo",
-        "exploitation",
-        "cron",
-        "exploit",
-        "linux",
-        "enumeration"
+        "laravel",
+        "authorization",
+        "validation",
+        "security",
+        "audit",
+        "authentication",
+        "model",
+        "api"
       ]
     },
     {
@@ -594,54 +468,6 @@
         "business",
         "sites",
         "gbp"
-      ]
-    },
-    {
-      "id": "malware-analyst",
-      "description": "Defensive malware research, threat intel",
-      "path": "malware-analyst/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "analysis",
-        "dns",
-        "monitoring",
-        "malware",
-        "techniques",
-        "phase",
-        "static",
-        "dynamic"
-      ]
-    },
-    {
-      "id": "metasploit-framework",
-      "description": "⚠️ AUTHORIZED USE ONLY > This skill is for educational purposes or authorized security assessments only. > You must have explicit, written permission from the system owner before using this tool. > Misuse of this tool is illegal and strictly prohibited.",
-      "path": "metasploit-framework/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "metasploit",
-        "phase",
-        "modules",
-        "payload",
-        "shell",
-        "search",
-        "meterpreter",
-        "session"
-      ]
-    },
-    {
-      "id": "network-101",
-      "description": "Configure and test common network services (HTTP, HTTPS, SNMP, SMB) for penetration testing lab environments. Enable hands-on practice with service enumeration, log analysis, and security testing against properly configured target systems.",
-      "path": "network-101/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "snmp",
-        "http",
-        "https",
-        "configure",
-        "service",
-        "port",
-        "smb",
-        "tcp"
       ]
     },
     {
@@ -694,7 +520,7 @@
     },
     {
       "id": "pentest-checklist",
-      "description": "Comprehensive penetration testing checklist",
+      "description": "Provide a comprehensive checklist for planning, executing, and following up on penetration tests. Ensure thorough preparation, proper scoping, and effective remediation of discovered vulnerabilities.",
       "path": "pentest-checklist/SKILL.md",
       "triggers": [],
       "tags": [
@@ -709,19 +535,25 @@
       ]
     },
     {
-      "id": "privilege-escalation-methods",
-      "description": "Provide comprehensive techniques for escalating privileges from a low-privileged user to root/administrator access on compromised Linux and Windows systems. Essential for penetration testing post-exploitation phase and red team operations.",
-      "path": "privilege-escalation-methods/SKILL.md",
-      "triggers": [],
+      "id": "privacy-by-design",
+      "description": "Use when building apps that collect user data. Ensures privacy protections are built in from the start—data minimization, consent, encryption.",
+      "path": "privacy-by-design/SKILL.md",
+      "triggers": [
+        "building",
+        "collect",
+        "data.",
+        "Ensures",
+        "privacy"
+      ],
       "tags": [
-        "abusing",
-        "windows",
-        "mysql",
-        "ticket",
-        "linux",
-        "root",
-        "sudo",
-        "golden"
+        "logging",
+        "javascript",
+        "privacy",
+        "purpose",
+        "gdpr",
+        "python",
+        "limitation",
+        "pii"
       ]
     },
     {
@@ -757,103 +589,24 @@
       ]
     },
     {
-      "id": "protocol-reverse-engineering",
-      "description": "Comprehensive techniques for capturing, analyzing, and documenting network protocols for security research, interoperability, and debugging.",
-      "path": "protocol-reverse-engineering/SKILL.md",
+      "id": "security-audit",
+      "description": "Comprehensive security auditing workflow covering web application testing, API security, penetration testing, vulnerability scanning, and security hardening.",
+      "path": "security-audit/SKILL.md",
       "triggers": [],
       "tags": [
-        "resources",
-        "protocol",
-        "reverse",
-        "engineering",
-        "instructions",
-        "needing",
-        "clarify"
-      ]
-    },
-    {
-      "id": "red-team-tools",
-      "description": "Implement proven methodologies and tool workflows from top security researchers for effective reconnaissance, vulnerability discovery, and bug bounty hunting. Automate common tasks while maintaining thorough coverage of attack surfaces.",
-      "path": "red-team-tools/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "api",
-        "discovery",
-        "xss",
-        "alternative",
-        "subdomain",
-        "nuclei",
-        "live",
-        "recon"
-      ]
-    },
-    {
-      "id": "returns-reverse-logistics",
-      "description": "Codified expertise for returns authorisation, receipt and inspection, disposition decisions, refund processing, fraud detection, and warranty claims management.",
-      "path": "returns-reverse-logistics/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "routing",
-        "return",
-        "grade",
-        "returns",
-        "fraud",
-        "vendor",
-        "escalation",
-        "policy"
-      ]
-    },
-    {
-      "id": "reverse-engineer",
-      "description": "Binary analysis with IDA Pro, Ghidra",
-      "path": "reverse-engineer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "analysis",
+        "authentication",
+        "security",
         "phase",
-        "ghidra",
-        "ctf",
-        "python",
-        "response",
-        "api",
-        "dynamic"
-      ]
-    },
-    {
-      "id": "sast-configuration",
-      "description": "Static Application Security Testing (SAST) tool setup, configuration, and custom rule creation for comprehensive security scanning across multiple programming languages.",
-      "path": "sast-configuration/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "github",
-        "setup",
-        "sast",
-        "semgrep",
-        "integration",
-        "sonarqube",
-        "configuration",
-        "codeql"
-      ]
-    },
-    {
-      "id": "scanning-tools",
-      "description": "Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. This skill covers tool selection, configuration, and practical usage across different scanning categories.",
-      "path": "scanning-tools/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "scan",
-        "scanning",
-        "nmap",
-        "phase",
-        "output",
-        "web",
-        "burp",
-        "aws"
+        "invoke",
+        "actions",
+        "prompts",
+        "owasp",
+        "copy-paste"
       ]
     },
     {
       "id": "security-auditor",
-      "description": "DevSecOps, cybersecurity, compliance",
+      "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks.",
       "path": "security-auditor/SKILL.md",
       "triggers": [],
       "tags": [
@@ -916,63 +669,41 @@
       ]
     },
     {
-      "id": "seo-programmatic",
-      "description": "Plan and audit programmatic SEO pages generated at scale from structured data. Use when designing templates, URL systems, internal linking, quality gates, and index-bloat safeguards for pages at scale.",
-      "path": "seo-programmatic/SKILL.md",
+      "id": "semgrep-rule-creator",
+      "description": "Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rules or building custom static analysis detections.",
+      "path": "semgrep-rule-creator/SKILL.md",
       "triggers": [
-        "audit",
-        "programmatic",
-        "pages",
-        "generated",
-        "scale"
+        "Creates",
+        "custom",
+        "Semgrep",
+        "rules",
+        "detecting"
       ],
       "tags": [
-        "url",
-        "programmatic",
-        "seo",
-        "content",
-        "priority",
-        "template",
-        "fix",
-        "planning"
+        "semgrep",
+        "my-rule",
+        "matches",
+        "ruleid",
+        "yaml",
+        "insecure-eval",
+        "rule",
+        "quick"
       ]
     },
     {
-      "id": "site-architecture",
-      "description": "Plan or restructure website hierarchy, navigation, URL patterns, breadcrumbs, and internal linking. Use when mapping pages, sections, and site structure, but not for XML sitemap auditing or schema markup.",
-      "path": "site-architecture/SKILL.md",
-      "triggers": [
-        "restructure",
-        "website",
-        "hierarchy",
-        "navigation",
-        "patterns"
-      ],
-      "tags": [
-        "url",
-        "navigation",
-        "home",
-        "blog",
-        "hierarchy",
-        "site",
-        "page",
-        "header"
-      ]
-    },
-    {
-      "id": "skill-scanner",
-      "description": "Scan agent skills for security issues before adoption. Detects prompt injection, malicious code, excessive permissions, secret exposure, and supply chain risks.",
-      "path": "skill-scanner/SKILL.md",
+      "id": "seo-technical",
+      "description": "Audit technical SEO across crawlability, indexability, security, URLs, mobile, Core Web Vitals, structured data, JavaScript rendering, and related platform signals like robots.txt and AI crawler access.",
+      "path": "seo-technical/SKILL.md",
       "triggers": [],
       "tags": [
-        "phase",
-        "json",
-        "analysis",
-        "validation",
-        "claude",
-        "script",
-        "scan",
-        "scripts"
+        "javascript",
+        "indexing",
+        "html",
+        "rendering",
+        "seo",
+        "google",
+        "openai",
+        "priority"
       ]
     },
     {
@@ -992,44 +723,6 @@
       ]
     },
     {
-      "id": "spec-to-code-compliance",
-      "description": "Verifies code implements exactly what documentation specifies for blockchain audits. Use when comparing code against whitepapers, finding gaps between specs and implementation, or performing compliance checks for protocol implementations.",
-      "path": "spec-to-code-compliance/SKILL.md",
-      "triggers": [
-        "Verifies",
-        "implements",
-        "exactly",
-        "documentation",
-        "specifies"
-      ],
-      "tags": [
-        "phase",
-        "spec",
-        "alignment",
-        "requirements",
-        "documentation",
-        "compliance",
-        "normalization",
-        "divergence"
-      ]
-    },
-    {
-      "id": "sql-injection-testing",
-      "description": "SQL injection vulnerability assessment",
-      "path": "sql-injection-testing/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "select",
-        "http",
-        "mysql",
-        "sql",
-        "extraction",
-        "bypass",
-        "injection",
-        "union"
-      ]
-    },
-    {
       "id": "ssh-penetration-testing",
       "description": "Conduct comprehensive SSH security assessments including enumeration, credential attacks, vulnerability exploitation, tunneling techniques, and post-exploitation activities. This skill covers the complete methodology for testing SSH service security.",
       "path": "ssh-penetration-testing/SKILL.md",
@@ -1046,28 +739,6 @@
       ]
     },
     {
-      "id": "stride-analysis-patterns",
-      "description": "Apply STRIDE methodology to systematically identify threats. Use when analyzing system security, conducting threat modeling sessions, or creating security documentation.",
-      "path": "stride-analysis-patterns/SKILL.md",
-      "triggers": [
-        "Apply",
-        "STRIDE",
-        "methodology",
-        "systematically",
-        "identify"
-      ],
-      "tags": [
-        "resources",
-        "stride",
-        "patterns",
-        "analysis",
-        "instructions",
-        "systematic",
-        "starting",
-        "analyzing"
-      ]
-    },
-    {
       "id": "supply-chain-risk-auditor",
       "description": "Identifies dependencies at heightened risk of exploitation or takeover. Use when assessing supply chain attack surface, evaluating dependency health, or scoping security engagements.",
       "path": "supply-chain-risk-auditor/SKILL.md",
@@ -1080,13 +751,35 @@
       ],
       "tags": [
         "github",
-        "workflow",
         "supply",
         "chain",
         "criteria",
         "justification",
         "auditor",
-        "audit"
+        "audit",
+        "initial"
+      ]
+    },
+    {
+      "id": "testing-patterns",
+      "description": "Jest testing patterns, factory functions, mocking strategies, and TDD workflow. Use when writing unit tests, creating test factories, or following TDD red-green-refactor cycle.",
+      "path": "testing-patterns/SKILL.md",
+      "triggers": [
+        "testing",
+        "patterns",
+        "factory",
+        "functions",
+        "mocking"
+      ],
+      "tags": [
+        "mocking",
+        "patterns",
+        "testing",
+        "factory",
+        "test",
+        "behavior",
+        "utilities",
+        "custom"
       ]
     },
     {
@@ -1112,35 +805,41 @@
       ]
     },
     {
-      "id": "threat-modeling-expert",
-      "description": "STRIDE, PASTA, attack trees",
-      "path": "threat-modeling-expert/SKILL.md",
-      "triggers": [],
+      "id": "variant-analysis",
+      "description": "Find similar vulnerabilities and bugs across codebases using pattern-based analysis. Use when hunting bug variants, building CodeQL/Semgrep queries, analyzing security vulnerabilities, or performing systematic code audits after finding an initial issue.",
+      "path": "variant-analysis/SKILL.md",
+      "triggers": [
+        "similar",
+        "vulnerabilities",
+        "across",
+        "codebases",
+        "using"
+      ],
       "tags": [
-        "threat",
-        "modeling",
-        "capabilities",
-        "instructions",
-        "safety",
-        "stride",
-        "authorization",
-        "security"
+        "resources",
+        "python",
+        "javascript",
+        "java",
+        "cpp",
+        "analysis",
+        "variant",
+        "understand"
       ]
     },
     {
-      "id": "vulnerability-scanner",
-      "description": "OWASP 2025, supply chain, risk mapping",
-      "path": "vulnerability-scanner/SKILL.md",
+      "id": "web-security-testing",
+      "description": "Web application security testing workflow for OWASP Top 10 vulnerabilities including injection, XSS, authentication flaws, and access control issues.",
+      "path": "web-security-testing/SKILL.md",
       "triggers": [],
       "tags": [
-        "security",
-        "principles",
-        "prioritization",
+        "authentication",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
         "owasp",
-        "attack",
-        "cvss",
-        "surface",
-        "patterns"
+        "testing",
+        "copy-paste"
       ]
     },
     {
@@ -1160,51 +859,19 @@
       ]
     },
     {
-      "id": "wireshark-analysis",
-      "description": "Execute comprehensive network traffic analysis using Wireshark to capture, filter, and examine network packets for security investigations, performance optimization, and troubleshooting.",
-      "path": "wireshark-analysis/SKILL.md",
+      "id": "wordpress-penetration-testing",
+      "description": "Assess WordPress installations for common vulnerabilities and WordPress 7.0 attack surfaces.",
+      "path": "wordpress-penetration-testing/SKILL.md",
       "triggers": [],
       "tags": [
-        "tcp",
-        "dns",
-        "http",
-        "analysis",
-        "filters",
-        "traffic",
-        "capture",
-        "wireshark"
-      ]
-    },
-    {
-      "id": "xss-html-injection",
-      "description": "Client-side injection testing",
-      "path": "xss-html-injection/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "html",
-        "xss",
-        "javascript",
+        "wordpress",
+        "enumeration",
         "phase",
-        "injection",
-        "bypass",
-        "identify",
-        "reflected"
-      ]
-    },
-    {
-      "id": "zeroize-audit",
-      "description": "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with assembly-level analysis, and control-flow verification. Use for auditing C/C++/Rust code handling secrets, keys, passwords, or other sensitive data.",
-      "path": "zeroize-audit/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "rust",
-        "mcp",
-        "json",
-        "phase",
-        "validation",
-        "poc",
-        "cargo",
-        "wave"
+        "api",
+        "enumerate",
+        "xml",
+        "plugin",
+        "php"
       ]
     }
   ]

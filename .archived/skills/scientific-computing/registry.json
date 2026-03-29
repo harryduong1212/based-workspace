@@ -4,7 +4,7 @@
   "skills": [
     {
       "id": "astropy",
-      "description": "Astronomy research with Python",
+      "description": "Astropy is the core Python package for astronomy, providing essential functionality for astronomical research and data analysis.",
       "path": "astropy/SKILL.md",
       "triggers": [],
       "tags": [
@@ -19,24 +19,131 @@
       ]
     },
     {
-      "id": "biopython",
-      "description": "Biological computation tools",
-      "path": "biopython/SKILL.md",
+      "id": "citation-management",
+      "description": "Manage citations systematically throughout the research and writing process.",
+      "path": "citation-management/SKILL.md",
       "triggers": [],
       "tags": [
-        "bio",
-        "blast",
-        "parsing",
-        "entrez",
-        "issue",
+        "validation",
+        "bibtex",
+        "search",
+        "formatting",
+        "doi",
+        "citation",
+        "dois",
+        "validate"
+      ]
+    },
+    {
+      "id": "claude-scientific-skills",
+      "description": "Scientific research and analysis skills",
+      "path": "claude-scientific-skills/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "claude",
+        "scientific",
+        "overview",
+        "instructions",
+        "dense",
+        "research",
+        "analysis"
+      ]
+    },
+    {
+      "id": "dbos-python",
+      "description": "Guide for building reliable, fault-tolerant Python applications with DBOS durable workflows. Use when adding DBOS to existing Python code, creating workflows and steps, or using queues for concurrency control.",
+      "path": "dbos-python/SKILL.md",
+      "triggers": [
+        "Guide",
+        "building",
+        "reliable",
+        "fault-tolerant",
+        "Python"
+      ],
+      "tags": [
+        "dbos",
         "python",
-        "find",
-        "sequence"
+        "critical",
+        "priority",
+        "launch",
+        "references",
+        "medium",
+        "rule"
+      ]
+    },
+    {
+      "id": "deep-research",
+      "description": "Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports.",
+      "path": "deep-research/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "research",
+        "gemini",
+        "output",
+        "python",
+        "deep",
+        "time",
+        "stream",
+        "continue"
+      ]
+    },
+    {
+      "id": "devcontainer-setup",
+      "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding devcontainer support to a project, setting up isolated development environments, or configuring sandboxed Claude Code workspaces.",
+      "path": "devcontainer-setup/SKILL.md",
+      "triggers": [
+        "Creates",
+        "devcontainers",
+        "Claude",
+        "Code",
+        "language-specific"
+      ],
+      "tags": [
+        "python",
+        "cargo",
+        "rust",
+        "projects",
+        "typescript",
+        "customizations",
+        "claude",
+        "devcontainer"
+      ]
+    },
+    {
+      "id": "hugging-face-paper-publisher",
+      "description": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.",
+      "path": "hugging-face-paper-publisher/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "paper",
+        "link",
+        "yaml",
+        "index",
+        "arxiv",
+        "research",
+        "add",
+        "method"
+      ]
+    },
+    {
+      "id": "loki-mode",
+      "description": "Version 2.35.0 | PRD to Production | Zero Human Intervention > Research-enhanced: OpenAI SDK, DeepMind, Anthropic, AWS Bedrock, Agent SDK, HN Production (2025)",
+      "path": "loki-mode/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "references",
+        "task",
+        "anthropic",
+        "routing",
+        "openai",
+        "playwright",
+        "mcp",
+        "mode"
       ]
     },
     {
       "id": "matplotlib",
-      "description": "Python visualization",
+      "description": "Matplotlib is Python's foundational visualization library for creating static, animated, and interactive plots.",
       "path": "matplotlib/SKILL.md",
       "triggers": [],
       "tags": [
@@ -52,7 +159,7 @@
     },
     {
       "id": "networkx",
-      "description": "Complex network analysis",
+      "description": "NetworkX is a Python package for creating, manipulating, and analyzing complex networks and graphs.",
       "path": "networkx/SKILL.md",
       "triggers": [],
       "tags": [
@@ -67,10 +174,32 @@
       ]
     },
     {
-      "id": "plotly",
-      "description": "Interactive visualizations",
-      "path": "plotly/SKILL.md",
+      "id": "pdf-official",
+      "description": "This guide covers essential PDF processing operations using Python libraries and command-line tools. For advanced features, JavaScript libraries, and detailed examples, see reference.md. If you need to fill out a PDF form, read forms.md and follow its instructions.",
+      "path": "pdf-official/SKILL.md",
       "triggers": [],
+      "tags": [
+        "extract",
+        "pdf",
+        "text",
+        "pages",
+        "pdfs",
+        "add",
+        "rotate",
+        "python"
+      ]
+    },
+    {
+      "id": "plotly",
+      "description": "Interactive visualization library. Use when you need hover info, zoom, pan, or web-embeddable charts. Best for dashboards, exploratory analysis, and presentations. For static publication figures use matplotlib or scientific-visualization.",
+      "path": "plotly/SKILL.md",
+      "triggers": [
+        "Interactive",
+        "visualization",
+        "library.",
+        "hover",
+        "info"
+      ],
       "tags": [
         "express",
         "plotly",
@@ -83,24 +212,62 @@
       ]
     },
     {
-      "id": "qiskit",
-      "description": "Quantum computing framework",
-      "path": "qiskit/SKILL.md",
+      "id": "python-development-python-scaffold",
+      "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
+      "path": "python-development-python-scaffold/SKILL.md",
       "triggers": [],
       "tags": [
-        "references",
-        "quantum",
-        "qiskit",
-        "hardware",
-        "workflow",
-        "execution",
-        "pattern",
-        "circuit"
+        "python",
+        "django",
+        "fastapi",
+        "scaffolding",
+        "generate",
+        "structure",
+        "initialize",
+        "library"
+      ]
+    },
+    {
+      "id": "python-packaging",
+      "description": "Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.",
+      "path": "python-packaging/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "python",
+        "resources",
+        "packaging",
+        "instructions",
+        "pypi",
+        "publishing",
+        "setting",
+        "versioning"
+      ]
+    },
+    {
+      "id": "python-testing-patterns",
+      "description": "Implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. Use when writing Python tests, setting up test suites, or implementing testing best practices.",
+      "path": "python-testing-patterns/SKILL.md",
+      "triggers": [
+        "Implement",
+        "comprehensive",
+        "testing",
+        "strategies",
+        "pytest"
+      ],
+      "tags": [
+        "python",
+        "resources",
+        "testing",
+        "mocking",
+        "patterns",
+        "instructions",
+        "setting",
+        "writing"
       ]
     },
     {
       "id": "scanpy",
-      "description": "Single-cell RNA-seq analysis",
+      "description": "Scanpy is a scalable Python toolkit for analyzing single-cell RNA-seq data, built on AnnData. Apply this skill for complete single-cell workflows including quality control, normalization, dimensionality reduction, clustering, marker gene identification, visualization, and trajectory analysis.",
       "path": "scanpy/SKILL.md",
       "triggers": [],
       "tags": [
@@ -115,8 +282,40 @@
       ]
     },
     {
+      "id": "scientific-writing",
+      "description": "This is the core skill for the deep research and writing tool—combining AI-driven deep research with well-formatted written outputs. Every document produced is backed by comprehensive literature search and verified citations through the research-lookup skill.",
+      "path": "scientific-writing/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "formatting",
+        "references",
+        "writing",
+        "scientific",
+        "assets",
+        "prisma",
+        "scientific_report",
+        "professional"
+      ]
+    },
+    {
+      "id": "seaborn",
+      "description": "Seaborn is a Python visualization library for creating publication-quality statistical graphics. Use this skill for dataset-oriented plotting, multivariate analysis, automatic statistical estimation, and complex multi-panel figures with minimal code.",
+      "path": "seaborn/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "plot",
+        "functions",
+        "plots",
+        "palettes",
+        "issue",
+        "seaborn",
+        "relationships",
+        "faceting"
+      ]
+    },
+    {
       "id": "sympy",
-      "description": "Symbolic mathematics",
+      "description": "SymPy is a Python library for symbolic mathematics that enables exact computation using mathematical symbols rather than numerical approximations.",
       "path": "sympy/SKILL.md",
       "triggers": [],
       "tags": [
@@ -128,6 +327,54 @@
         "references",
         "equation",
         "convert"
+      ]
+    },
+    {
+      "id": "temporal-python-testing",
+      "description": "Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.",
+      "path": "temporal-python-testing/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "resources",
+        "testing",
+        "python",
+        "temporal",
+        "test",
+        "coverage",
+        "unit",
+        "integration"
+      ]
+    },
+    {
+      "id": "uv-package-manager",
+      "description": "Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.",
+      "path": "uv-package-manager/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "python",
+        "resources",
+        "package",
+        "manager",
+        "migrating",
+        "instructions",
+        "rust",
+        "docker"
+      ]
+    },
+    {
+      "id": "xvary-stock-research",
+      "description": "Thesis-driven equity analysis from public SEC EDGAR and market data; /analyze, /score, /compare workflows with bundled Python tools (Claude Code, Cursor, Codex).",
+      "path": "xvary-stock-research/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "references",
+        "xvary",
+        "research",
+        "stock",
+        "ticker",
+        "score",
+        "methodology",
+        "edgar"
       ]
     }
   ]

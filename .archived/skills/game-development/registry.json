@@ -3,24 +3,88 @@
   "category_name": "🎮 Game Development",
   "skills": [
     {
-      "id": "bevy-ecs-expert",
-      "description": "Bevy ECS in Rust",
-      "path": "bevy-ecs-expert/SKILL.md",
+      "id": "2d-games",
+      "description": "2D game development principles. Sprites, tilemaps, physics, camera.",
+      "path": "2d-games/SKILL.md",
       "triggers": [],
       "tags": [
-        "component",
-        "query",
-        "ecs",
-        "without",
-        "bevy",
-        "reflect",
-        "res",
-        "components"
+        "physics",
+        "camera",
+        "sprite",
+        "considerations",
+        "collision",
+        "animation",
+        "principles",
+        "layers"
+      ]
+    },
+    {
+      "id": "3d-games",
+      "description": "3D game development principles. Rendering, shaders, physics, cameras.",
+      "path": "3d-games/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "principles",
+        "camera",
+        "rendering",
+        "lod",
+        "shader",
+        "collision",
+        "performance",
+        "detail"
+      ]
+    },
+    {
+      "id": "algorithmic-art",
+      "description": "Algorithmic philosophies are computational aesthetic movements that are then expressed through code. Output .md files (philosophy), .html files (interactive viewer), and .js files (generative algorithms).",
+      "path": "algorithmic-art/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "html",
+        "anthropic",
+        "algorithmic",
+        "philosophy",
+        "critical",
+        "seed",
+        "artifact",
+        "creation"
+      ]
+    },
+    {
+      "id": "claude-d3js-skill",
+      "description": "This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js.",
+      "path": "claude-d3js-skill/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "javascript",
+        "scales",
+        "react",
+        "vue",
+        "visualisation",
+        "chart",
+        "add",
+        "pattern"
+      ]
+    },
+    {
+      "id": "discord-bot-architect",
+      "description": "Specialized skill for building production-ready Discord bots. Covers Discord.js (JavaScript) and Pycord (Python), gateway intents, slash commands, interactive components, rate limiting, and sharding.",
+      "path": "discord-bot-architect/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "discord",
+        "bot",
+        "intents",
+        "privileged",
+        "slash",
+        "python",
+        "issue",
+        "commands"
       ]
     },
     {
       "id": "game-development",
-      "description": "Game dev orchestrator",
+      "description": "Game development orchestrator. Routes to platform-specific skills based on project needs.",
       "path": "game-development/SKILL.md",
       "triggers": [],
       "tags": [
@@ -35,51 +99,175 @@
       ]
     },
     {
-      "id": "godot-gdscript-patterns",
-      "description": "Godot 4 GDScript patterns",
-      "path": "godot-gdscript-patterns/SKILL.md",
+      "id": "interactive-portfolio",
+      "description": "You know a portfolio isn't a resume - it's a first impression that needs to convert. You balance creativity with usability. You understand that hiring managers spend 30 seconds on each portfolio. You make those 30 seconds count. You help people stand out without being gimmicky.",
+      "path": "interactive-portfolio/SKILL.md",
       "triggers": [],
       "tags": [
-        "godot",
-        "gdscript",
-        "resources",
+        "portfolio",
+        "github",
+        "showcase",
+        "interactive",
         "patterns",
-        "instructions",
-        "optimizing",
-        "learning",
-        "clarify"
+        "architecture",
+        "developer",
+        "technical"
       ]
     },
     {
-      "id": "unity-developer",
-      "description": "Unity 6 LTS, URP/HDRP",
-      "path": "unity-developer/SKILL.md",
+      "id": "mobile-games",
+      "description": "Mobile game development principles. Touch input, battery, performance, app stores.",
+      "path": "mobile-games/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "touch",
+        "app",
+        "mobile",
+        "store",
+        "platform",
+        "battery",
+        "thermal",
+        "game"
+      ]
+    },
+    {
+      "id": "multiplayer",
+      "description": "Multiplayer game development principles. Architecture, networking, synchronization.",
+      "path": "multiplayer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "server",
+        "principles",
+        "multiplayer",
+        "architecture",
+        "state",
+        "game",
+        "input",
+        "lag"
+      ]
+    },
+    {
+      "id": "odoo-upgrade-advisor",
+      "description": "Step-by-step Odoo version upgrade advisor: pre-upgrade checklist, community vs enterprise upgrade path, OCA module compatibility, and post-upgrade validation.",
+      "path": "odoo-upgrade-advisor/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "upgrade",
+        "odoo",
+        "validation",
+        "openupgrade",
+        "checklist",
+        "oca",
+        "migration",
+        "review"
+      ]
+    },
+    {
+      "id": "pc-games",
+      "description": "PC and console game development principles. Engine selection, platform features, optimization strategies.",
+      "path": "pc-games/SKILL.md",
       "triggers": [],
       "tags": [
         "unity",
-        "rendering",
-        "advanced",
-        "streaming",
+        "godot",
+        "unreal",
+        "profiling",
+        "engine",
+        "console",
         "game",
-        "optimization",
-        "audio",
-        "asset"
+        "platform"
       ]
     },
     {
-      "id": "unreal-engine-cpp-pro",
-      "description": "Unreal Engine 5 C++",
-      "path": "unreal-engine-cpp-pro/SKILL.md",
+      "id": "startup-business-analyst-market-opportunity",
+      "description": "Generate comprehensive market opportunity analysis with TAM/SAM/SOM",
+      "path": "startup-business-analyst-market-opportunity/SKILL.md",
       "triggers": [],
       "tags": [
-        "unreal",
-        "engine",
-        "prefix",
-        "uobject",
-        "uproperty",
-        "beginplay",
-        "tick",
-        "postinitializecomponents"
+        "validation",
+        "market",
+        "claude",
+        "sam",
+        "som",
+        "tam",
+        "analysis",
+        "gather"
+      ]
+    },
+    {
+      "id": "threejs-interaction",
+      "description": "Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click detection, adding camera controls, or creating interactive 3D experiences.",
+      "path": "threejs-interaction/SKILL.md",
+      "triggers": [
+        "Three.js",
+        "interaction",
+        "raycasting",
+        "controls",
+        "mouse/touch"
+      ],
+      "tags": [
+        "raycaster",
+        "orbitcontrols",
+        "raycasting",
+        "world",
+        "screen",
+        "conversion",
+        "flycontrols",
+        "firstpersoncontrols"
+      ]
+    },
+    {
+      "id": "unity-ecs-patterns",
+      "description": "Production patterns for Unity's Data-Oriented Technology Stack (DOTS) including Entity Component System, Job System, and Burst Compiler.",
+      "path": "unity-ecs-patterns/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "unity",
+        "resources",
+        "ecs",
+        "patterns",
+        "instructions",
+        "burst",
+        "oriented",
+        "technology"
+      ]
+    },
+    {
+      "id": "web-games",
+      "description": "Web browser game development principles. Framework selection, WebGPU, optimization, PWA.",
+      "path": "web-games/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "browser",
+        "rendering",
+        "web",
+        "strategy",
+        "audio",
+        "decision",
+        "requirements",
+        "phaser"
+      ]
+    },
+    {
+      "id": "wiki-vitepress",
+      "description": "Transform generated wiki Markdown files into a polished VitePress static site with dark theme and interactive Mermaid diagrams. Use when user asks to \\\"build a site\\\" or \\\"package as VitePress\\\", user runs the /deep-wiki, or user wants a browsable HTML output from generated wiki pages.",
+      "path": "wiki-vitepress/SKILL.md",
+      "triggers": [
+        "Transform",
+        "generated",
+        "Markdown",
+        "files",
+        "polished"
+      ],
+      "tags": [
+        "css",
+        "mermaid",
+        "vitepress",
+        "layer",
+        "config",
+        "theme",
+        "style",
+        "scaffolding"
       ]
     }
   ]

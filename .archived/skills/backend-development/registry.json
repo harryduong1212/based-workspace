@@ -3,19 +3,101 @@
   "category_name": "⚙️ Backend Development",
   "skills": [
     {
-      "id": "agentmail",
-      "description": "Email infrastructure for AI agents. Create accounts, send/receive emails, manage webhooks, and check karma balance via the AgentMail API.",
-      "path": "agentmail/SKILL.md",
+      "id": "ad-creative",
+      "description": "Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when generating headlines, descriptions, primary text, or large sets of ad variations for testing and performance optimization.",
+      "path": "ad-creative/SKILL.md",
+      "triggers": [
+        "Create",
+        "iterate",
+        "scale",
+        "creative",
+        "Google"
+      ],
+      "tags": [
+        "ads",
+        "generate",
+        "performance",
+        "analyze",
+        "output",
+        "platform",
+        "iteration",
+        "variations"
+      ]
+    },
+    {
+      "id": "agent-orchestration-multi-agent-optimize",
+      "description": "Optimize multi-agent systems with coordinated profiling, workload distribution, and cost-aware orchestration. Use when improving agent performance, throughput, or reliability.",
+      "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
+      "triggers": [
+        "Optimize",
+        "multi-agent",
+        "systems",
+        "coordinated",
+        "profiling"
+      ],
+      "tags": [
+        "profiling",
+        "optimization",
+        "performance",
+        "monitoring",
+        "agent",
+        "cost",
+        "context",
+        "multi-agent"
+      ]
+    },
+    {
+      "id": "android-jetpack-compose-expert",
+      "description": "Expert guidance for building modern Android UIs with Jetpack Compose, covering state management, navigation, performance, and Material Design 3.",
+      "path": "android-jetpack-compose-expert/SKILL.md",
       "triggers": [],
       "tags": [
-        "authorization",
-        "karma",
-        "email",
-        "send",
-        "agentmail",
-        "typescript",
-        "read",
-        "bearer"
+        "jetpack",
+        "compose",
+        "viewmodel",
+        "composable",
+        "remember",
+        "list",
+        "android",
+        "state"
+      ]
+    },
+    {
+      "id": "angular-best-practices",
+      "description": "Angular performance optimization and best practices guide. Use when writing, reviewing, or refactoring Angular code for optimal performance, bundle size, and rendering efficiency.",
+      "path": "angular-best-practices/SKILL.md",
+      "triggers": [
+        "Angular",
+        "performance",
+        "optimization",
+        "practices",
+        "guide."
+      ],
+      "tags": [
+        "angular",
+        "rendering",
+        "hydration",
+        "component",
+        "critical",
+        "correct",
+        "wrong",
+        "ssr"
+      ]
+    },
+    {
+      "id": "api-design-principles",
+      "description": "Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers and stand the test of time.",
+      "path": "api-design-principles/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "api",
+        "rest",
+        "graphql",
+        "resources",
+        "principles",
+        "apis",
+        "refactoring",
+        "migrating"
       ]
     },
     {
@@ -35,6 +117,22 @@
       ]
     },
     {
+      "id": "api-endpoint-builder",
+      "description": "Builds production-ready REST API endpoints with validation, error handling, authentication, and documentation. Follows best practices for security and scalability.",
+      "path": "api-endpoint-builder/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "validation",
+        "pagination",
+        "authentication",
+        "http",
+        "endpoint",
+        "api",
+        "error",
+        "authorization"
+      ]
+    },
+    {
       "id": "api-fuzzing-bug-bounty",
       "description": "Provide comprehensive techniques for testing REST, SOAP, and GraphQL APIs during bug bounty hunting and penetration testing engagements. Covers vulnerability discovery, authentication bypass, IDOR exploitation, and API-specific attack vectors.",
       "path": "api-fuzzing-bug-bounty/SKILL.md",
@@ -51,19 +149,19 @@
       ]
     },
     {
-      "id": "api-patterns",
-      "description": "API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.",
-      "path": "api-patterns/SKILL.md",
+      "id": "api-security-testing",
+      "description": "API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices.",
+      "path": "api-security-testing/SKILL.md",
       "triggers": [],
       "tags": [
-        "rest",
+        "fuzzing",
+        "authentication",
         "api",
-        "graphql",
-        "rate-limiting",
-        "patterns",
-        "documentation",
-        "script",
-        "response"
+        "authorization",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts"
       ]
     },
     {
@@ -80,22 +178,6 @@
         "context",
         "requirements",
         "instructions"
-      ]
-    },
-    {
-      "id": "apify-actor-development",
-      "description": "Important: Before you begin, fill in the generatedBy property in the meta section of .actor/actor.json. Replace it with the tool and model you're currently using, such as \\\"Claude Code with Claude Sonnet 4.5\\\". This helps Apify monitor and improve AGENTS.md for specific AI tools and models.",
-      "path": "apify-actor-development/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "apify",
-        "javascript",
-        "python",
-        "logging",
-        "actor",
-        "mcp",
-        "json",
-        "typescript"
       ]
     },
     {
@@ -131,22 +213,6 @@
       ]
     },
     {
-      "id": "apify-competitor-intelligence",
-      "description": "Analyze competitor strategies, content, pricing, ads, and market positioning across Google Maps, Booking.com, Facebook, Instagram, YouTube, and TikTok.",
-      "path": "apify-competitor-intelligence/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "apify",
-        "competitor",
-        "benchmarking",
-        "actor",
-        "json",
-        "monitoring",
-        "compass",
-        "ask"
-      ]
-    },
-    {
       "id": "apify-content-analytics",
       "description": "Track engagement metrics, measure campaign ROI, and analyze content performance across Instagram, Facebook, YouTube, and TikTok.",
       "path": "apify-content-analytics/SKILL.md",
@@ -160,22 +226,6 @@
         "ask",
         "fetch",
         "identify"
-      ]
-    },
-    {
-      "id": "apify-ecommerce",
-      "description": "Extract product data, prices, reviews, and seller information from any e-commerce platform using Apify's E-commerce Scraping Tool.",
-      "path": "apify-ecommerce/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "www",
-        "workflow",
-        "scraping",
-        "options",
-        "product",
-        "input",
-        "keyword",
-        "search"
       ]
     },
     {
@@ -211,51 +261,19 @@
       ]
     },
     {
-      "id": "apify-market-research",
-      "description": "Analyze market conditions, geographic opportunities, pricing, consumer behavior, and product validation across Google Maps, Facebook, Instagram, Booking.com, and TripAdvisor.",
-      "path": "apify-market-research/SKILL.md",
+      "id": "app-store-optimization",
+      "description": "Complete App Store Optimization (ASO) toolkit for researching, optimizing, and tracking mobile app performance on Apple App Store and Google Play Store",
+      "path": "app-store-optimization/SKILL.md",
       "triggers": [],
       "tags": [
-        "apify",
-        "market",
-        "actor",
-        "json",
+        "claude",
+        "store",
+        "optimization",
+        "aso",
+        "keyword",
+        "validation",
         "research",
-        "ask",
-        "compass",
-        "fetch"
-      ]
-    },
-    {
-      "id": "apify-trend-analysis",
-      "description": "Discover and track emerging trends across Google Trends, Instagram, Facebook, YouTube, and TikTok to inform content strategy.",
-      "path": "apify-trend-analysis/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "apify",
-        "actor",
-        "json",
-        "clockworks",
-        "trend",
-        "ask",
-        "analysis",
-        "fetch"
-      ]
-    },
-    {
-      "id": "apify-ultimate-scraper",
-      "description": "AI-driven data extraction from 55+ Actors across all major platforms. This skill automatically selects the best Actor for your task.",
-      "path": "apify-ultimate-scraper/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "apify",
-        "clockworks",
-        "actor",
-        "actors",
-        "compass",
-        "streamers",
-        "json",
-        "google"
+        "analysis"
       ]
     },
     {
@@ -281,8 +299,46 @@
       ]
     },
     {
+      "id": "application-performance-performance-optimization",
+      "description": "Optimize end-to-end application performance with profiling, observability, and backend/frontend tuning. Use when coordinating performance optimization across the stack.",
+      "path": "application-performance-performance-optimization/SKILL.md",
+      "triggers": [
+        "Optimize",
+        "end-to-end",
+        "application",
+        "performance",
+        "profiling"
+      ],
+      "tags": [
+        "monitoring",
+        "profiling",
+        "optimization",
+        "performance",
+        "observability",
+        "caching",
+        "phase",
+        "load-testing"
+      ]
+    },
+    {
+      "id": "aws-secrets-rotation",
+      "description": "Automate AWS secrets rotation for RDS, API keys, and credentials",
+      "path": "aws-secrets-rotation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "rotation",
+        "aws",
+        "secret",
+        "secrets",
+        "rds",
+        "api",
+        "monitoring",
+        "python"
+      ]
+    },
+    {
       "id": "backend-architect",
-      "description": "Scalable API design, microservices, distributed systems",
+      "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems.",
       "path": "backend-architect/SKILL.md",
       "triggers": [],
       "tags": [
@@ -298,9 +354,15 @@
     },
     {
       "id": "backend-dev-guidelines",
-      "description": "Routes, controllers, services, Prisma",
+      "description": "You are a senior backend engineer operating production-grade services under strict architectural and reliability constraints. Use when routes, controllers, services, repositories, express middleware, or prisma database access.",
       "path": "backend-dev-guidelines/SKILL.md",
-      "triggers": [],
+      "triggers": [
+        "senior",
+        "backend",
+        "engineer",
+        "operating",
+        "production-grade"
+      ],
       "tags": [
         "validation",
         "prisma",
@@ -313,57 +375,95 @@
       ]
     },
     {
-      "id": "bdistill-behavioral-xray",
-      "description": "X-ray any AI model's behavioral patterns — refusal boundaries, hallucination tendencies, reasoning style, formatting defaults. No API key needed.",
-      "path": "bdistill-behavioral-xray/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "claude",
-        "mcp",
-        "probe",
-        "behavioral",
-        "html",
-        "dimensions",
-        "x-ray",
-        "overview"
-      ]
-    },
-    {
-      "id": "bdistill-knowledge-extraction",
-      "description": "Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed.",
-      "path": "bdistill-knowledge-extraction/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "ollama",
-        "extraction",
-        "knowledge",
-        "claude",
-        "install",
-        "extract",
-        "output",
-        "search"
-      ]
-    },
-    {
-      "id": "bullmq-specialist",
-      "description": "BullMQ expert for Redis-backed job queues, background processing, and reliable async execution in Node.js/TypeScript applications. Use when: bullmq, bull queue, redis queue, background job, job queue.",
-      "path": "bullmq-specialist/SKILL.md",
+      "id": "backend-development-feature-development",
+      "description": "Orchestrate end-to-end backend feature development from requirements to deployment. Use when coordinating multi-phase feature delivery across teams and services.",
+      "path": "backend-development-feature-development/SKILL.md",
       "triggers": [
-        "BullMQ",
-        "expert",
-        "Redis-backed",
-        "queues",
-        "background"
+        "Orchestrate",
+        "end-to-end",
+        "backend",
+        "feature",
+        "development"
       ],
       "tags": [
-        "queue",
-        "job",
-        "bullmq",
-        "jobs",
+        "monitoring",
+        "observability",
+        "validation",
+        "phase",
+        "arguments",
+        "feature",
+        "parameters",
+        "task"
+      ]
+    },
+    {
+      "id": "backend-security-coder",
+      "description": "Expert in secure backend coding practices specializing in input validation, authentication, and API security. Use PROACTIVELY for backend security implementations or security code reviews.",
+      "path": "backend-security-coder/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "validation",
+        "authentication",
+        "logging",
+        "security",
+        "encryption",
+        "authorization",
+        "monitoring",
+        "secure"
+      ]
+    },
+    {
+      "id": "bazel-build-optimization",
+      "description": "Optimize Bazel builds for large-scale monorepos. Use when configuring Bazel, implementing remote execution, or optimizing build performance for enterprise codebases.",
+      "path": "bazel-build-optimization/SKILL.md",
+      "triggers": [
+        "Optimize",
+        "Bazel",
+        "builds",
+        "large-scale",
+        "monorepos."
+      ],
+      "tags": [
+        "bazel",
+        "template",
+        "caching",
+        "find",
+        "python",
+        "docker",
+        "typescript",
+        "remote"
+      ]
+    },
+    {
+      "id": "binary-analysis-patterns",
+      "description": "Comprehensive patterns and techniques for analyzing compiled binaries, understanding assembly code, and reconstructing program logic.",
+      "path": "binary-analysis-patterns/SKILL.md",
+      "triggers": [],
+      "tags": [
         "patterns",
-        "capabilities",
-        "basic",
-        "setup"
+        "analysis",
+        "function",
+        "calling",
+        "recovery",
+        "ghidra",
+        "structure",
+        "functions"
+      ]
+    },
+    {
+      "id": "biopython",
+      "description": "Biopython is a comprehensive set of freely available Python tools for biological computation. It provides functionality for sequence manipulation, file I/O, database access, structural bioinformatics, phylogenetics, and many other bioinformatics tasks.",
+      "path": "biopython/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "bio",
+        "blast",
+        "parsing",
+        "entrez",
+        "issue",
+        "python",
+        "find",
+        "sequence"
       ]
     },
     {
@@ -383,25 +483,19 @@
       ]
     },
     {
-      "id": "cc-skill-security-review",
-      "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints.",
-      "path": "cc-skill-security-review/SKILL.md",
-      "triggers": [
-        "skill",
-        "ensures",
-        "follows",
-        "security",
-        "practices"
-      ],
+      "id": "cc-skill-clickhouse-io",
+      "description": "ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads.",
+      "path": "cc-skill-clickhouse-io/SKILL.md",
+      "triggers": [],
       "tags": [
-        "verification",
-        "security",
-        "authorization",
-        "steps",
-        "validation",
-        "sql",
-        "rate-limiting",
-        "authentication"
+        "patterns",
+        "select",
+        "monitoring",
+        "clickhouse",
+        "order",
+        "analysis",
+        "table",
+        "insert"
       ]
     },
     {
@@ -421,24 +515,56 @@
       ]
     },
     {
-      "id": "cloudflare-workers-expert",
-      "description": "Workers, KV, D1, Durable Objects, R2",
-      "path": "cloudflare-workers-expert/SKILL.md",
+      "id": "code-review-checklist",
+      "description": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability",
+      "path": "code-review-checklist/SKILL.md",
       "triggers": [],
       "tags": [
-        "cloudflare",
-        "response",
-        "workers",
-        "wrangler",
-        "env",
-        "edge",
-        "fetch",
-        "node"
+        "review",
+        "checklist",
+        "security",
+        "authentication",
+        "authorization",
+        "validation",
+        "sql",
+        "functionality"
+      ]
+    },
+    {
+      "id": "comfyui-gateway",
+      "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and image delivery (URL + base64).",
+      "path": "comfyui-gateway/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "comfyui",
+        "jwt",
+        "src",
+        "api",
+        "validation",
+        "rest",
+        "claude",
+        "http"
+      ]
+    },
+    {
+      "id": "conductor-revert",
+      "description": "Git-aware undo by logical work unit (track, phase, or task)",
+      "path": "conductor-revert/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "revert",
+        "track",
+        "task",
+        "plan",
+        "reverting",
+        "execution",
+        "updates",
+        "already"
       ]
     },
     {
       "id": "convex",
-      "description": "Convex reactive backend, real-time subscriptions",
+      "description": "Convex reactive backend expert: schema design, TypeScript functions, real-time subscriptions, auth, file storage, scheduling, and deployment.",
       "path": "convex/SKILL.md",
       "triggers": [],
       "tags": [
@@ -453,73 +579,73 @@
       ]
     },
     {
-      "id": "data-structure-protocol",
-      "description": "Give agents persistent structural memory of a codebase — navigate dependencies, track public APIs, and understand why connections exist without re-reading the whole repo.",
-      "path": "data-structure-protocol/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "dsp",
-        "output",
-        "create-function",
-        "create-shared",
-        "add-import",
-        "python",
-        "create-object",
-        "move-entity"
-      ]
-    },
-    {
-      "id": "devcontainer-setup",
-      "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding devcontainer support to a project, setting up isolated development environments, or configuring sandboxed Claude Code workspaces.",
-      "path": "devcontainer-setup/SKILL.md",
+      "id": "cqrs-implementation",
+      "description": "Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.",
+      "path": "cqrs-implementation/SKILL.md",
       "triggers": [
-        "Creates",
-        "devcontainers",
-        "Claude",
-        "Code",
-        "language-specific"
+        "Implement",
+        "Command",
+        "Query",
+        "Responsibility",
+        "Segregation"
       ],
       "tags": [
-        "python",
-        "cargo",
-        "rust",
-        "projects",
-        "typescript",
-        "customizations",
-        "claude",
-        "devcontainer"
+        "resources",
+        "cqrs",
+        "instructions",
+        "query",
+        "command",
+        "responsibility",
+        "segregation",
+        "separating"
       ]
     },
     {
-      "id": "devops-troubleshooter",
-      "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability.",
-      "path": "devops-troubleshooter/SKILL.md",
+      "id": "database-migration",
+      "description": "Master database schema and data migrations across ORMs (Sequelize, TypeORM, Prisma), including rollback strategies and zero-downtime deployments.",
+      "path": "database-migration/SKILL.md",
       "triggers": [],
       "tags": [
-        "observability",
+        "sequelize",
+        "migrations",
+        "typeorm",
+        "prisma",
+        "mysql",
+        "migration",
+        "rollback",
+        "postgresql"
+      ]
+    },
+    {
+      "id": "database-optimizer",
+      "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures.",
+      "path": "database-optimizer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "caching",
+        "indexing",
         "monitoring",
-        "kubernetes",
-        "dns",
-        "tracing",
-        "aws",
+        "sql",
+        "database",
+        "benchmarking",
         "azure",
-        "debugging"
+        "query"
       ]
     },
     {
-      "id": "django-access-review",
-      "description": "django-access-review",
-      "path": "django-access-review/SKILL.md",
+      "id": "development",
+      "description": "Comprehensive web, mobile, and backend development workflow bundling frontend, backend, full-stack, and mobile development skills for end-to-end application delivery.",
+      "path": "development/SKILL.md",
       "triggers": [],
       "tags": [
-        "authorization",
-        "django",
         "phase",
-        "find",
-        "investigation",
-        "custom",
-        "access",
-        "review"
+        "invoke",
+        "actions",
+        "prompts",
+        "react",
+        "copy-paste",
+        "express",
+        "typescript"
       ]
     },
     {
@@ -545,24 +671,8 @@
       ]
     },
     {
-      "id": "django-pro",
-      "description": "Django 5.x, DRF, Celery, Channels",
-      "path": "django-pro/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "django",
-        "authentication",
-        "celery",
-        "redis",
-        "caching",
-        "postgresql",
-        "database",
-        "orm"
-      ]
-    },
-    {
       "id": "dotnet-architect",
-      "description": "C#, ASP.NET Core, Entity Framework, Dapper",
+      "description": "Expert .NET backend architect specializing in C#, ASP.NET Core, Entity Framework, Dapper, and enterprise application patterns.",
       "path": "dotnet-architect/SKILL.md",
       "triggers": [],
       "tags": [
@@ -578,7 +688,7 @@
     },
     {
       "id": "dotnet-backend",
-      "description": "ASP.NET Core 8+, EF Core, auth, background jobs",
+      "description": "Build ASP.NET Core 8+ backend services with EF Core, auth, background jobs, and production API patterns.",
       "path": "dotnet-backend/SKILL.md",
       "triggers": [],
       "tags": [
@@ -593,10 +703,32 @@
       ]
     },
     {
-      "id": "drizzle-orm-expert",
-      "description": "Type-safe database layers with Drizzle",
-      "path": "drizzle-orm-expert/SKILL.md",
+      "id": "dotnet-backend-patterns",
+      "description": "Master C#/.NET patterns for building production-grade APIs, MCP servers, and enterprise backends with modern best practices (2024/2025).",
+      "path": "dotnet-backend-patterns/SKILL.md",
       "triggers": [],
+      "tags": [
+        "resources",
+        "net",
+        "mcp",
+        "caching",
+        "patterns",
+        "backend",
+        "instructions",
+        "redis"
+      ]
+    },
+    {
+      "id": "drizzle-orm-expert",
+      "description": "Expert in Drizzle ORM for TypeScript — schema design, relational queries, migrations, and serverless database integration. Use when building type-safe database layers with Drizzle.",
+      "path": "drizzle-orm-expert/SKILL.md",
+      "triggers": [
+        "Expert",
+        "Drizzle",
+        "TypeScript",
+        "schema",
+        "design"
+      ],
       "tags": [
         "drizzle",
         "sql",
@@ -609,19 +741,19 @@
       ]
     },
     {
-      "id": "emblemai-crypto-wallet",
-      "description": "Crypto wallet management across 7 blockchains via EmblemAI Agent Hustle API. Balance checks, token swaps, portfolio analysis, and transaction execution for Solana, Ethereum, Base, BSC, Polygon, Hedera, and Bitcoin.",
-      "path": "emblemai-crypto-wallet/SKILL.md",
+      "id": "elon-musk",
+      "description": "Agente que simula Elon Musk com profundidade psicologica e comunicacional de alta fidelidade. Ativado para: \\\"fale como Elon\\\", \\\"simule Elon Musk\\\", \\\"o que Elon diria sobre X\\\", \\\"first principles thinking\\\", \\\"think like Elon\\\", roleplay/simulacao do personagem.",
+      "path": "elon-musk/SKILL.md",
       "triggers": [],
       "tags": [
-        "emblemai",
-        "balance",
-        "crypto",
-        "wallet",
-        "api",
-        "authentication",
-        "setup",
-        "supported"
+        "elon",
+        "como",
+        "tesla",
+        "padroes",
+        "spacex",
+        "musk",
+        "sobre",
+        "nao"
       ]
     },
     {
@@ -647,6 +779,22 @@
       ]
     },
     {
+      "id": "expo-api-routes",
+      "description": "Guidelines for creating API routes in Expo Router with EAS Hosting",
+      "path": "expo-api-routes/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "api",
+        "json",
+        "cloudflare",
+        "expo",
+        "response",
+        "http",
+        "authorization",
+        "request"
+      ]
+    },
+    {
       "id": "fal-platform",
       "description": "Platform APIs for model management, pricing, and usage tracking",
       "path": "fal-platform/SKILL.md",
@@ -664,7 +812,7 @@
     },
     {
       "id": "fastapi-pro",
-      "description": "Async APIs with FastAPI, SQLAlchemy, Pydantic",
+      "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2. Master microservices, WebSockets, and modern Python async patterns.",
       "path": "fastapi-pro/SKILL.md",
       "triggers": [],
       "tags": [
@@ -692,6 +840,44 @@
         "authenticated",
         "models",
         "status"
+      ]
+    },
+    {
+      "id": "fastapi-templates",
+      "description": "Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.",
+      "path": "fastapi-templates/SKILL.md",
+      "triggers": [
+        "Create",
+        "production-ready",
+        "FastAPI",
+        "projects",
+        "async"
+      ],
+      "tags": [
+        "fastapi",
+        "resources",
+        "templates",
+        "instructions",
+        "rest",
+        "python",
+        "postgresql",
+        "mongodb"
+      ]
+    },
+    {
+      "id": "file-uploads",
+      "description": "Careful about security and performance. Never trusts file extensions. Knows that large uploads need special handling. Prefers presigned URLs over server proxying.",
+      "path": "file-uploads/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "uploads",
+        "storage",
+        "sharp",
+        "edges",
+        "presigned",
+        "url",
+        "role",
+        "upload"
       ]
     },
     {
@@ -727,19 +913,47 @@
       ]
     },
     {
-      "id": "gemini-api-dev",
-      "description": "The Gemini API provides access to Google's most advanced AI models. Key capabilities include:",
-      "path": "gemini-api-dev/SKILL.md",
-      "triggers": [],
+      "id": "fp-taskeither-ref",
+      "description": "Quick reference for TaskEither. Use when user needs async error handling, API calls, or Promise-based operations that can fail.",
+      "path": "fp-taskeither-ref/SKILL.md",
+      "triggers": [
+        "Quick",
+        "reference",
+        "TaskEither.",
+        "needs",
+        "async"
+      ],
       "tags": [
-        "gemini",
-        "api",
-        "python",
+        "taskeither",
+        "transform",
+        "async",
+        "quick",
+        "reference",
+        "execute",
+        "patterns",
+        "await"
+      ]
+    },
+    {
+      "id": "frontend-dev-guidelines",
+      "description": "You are a senior frontend engineer operating under strict architectural and performance standards. Use when creating components or pages, adding new features, or fetching or mutating data.",
+      "path": "frontend-dev-guidelines/SKILL.md",
+      "triggers": [
+        "senior",
+        "frontend",
+        "engineer",
+        "operating",
+        "under"
+      ],
+      "tags": [
+        "react",
         "typescript",
-        "javascript",
-        "embeddings",
-        "models",
-        "sdks"
+        "standards",
+        "routing",
+        "api",
+        "component",
+        "checklist",
+        "ffci"
       ]
     },
     {
@@ -765,8 +979,40 @@
       ]
     },
     {
+      "id": "github",
+      "description": "Use the `gh` CLI for issues, pull requests, Actions runs, and GitHub API queries.",
+      "path": "github/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "github",
+        "json",
+        "api",
+        "output",
+        "pull",
+        "requests",
+        "debugging",
+        "failure"
+      ]
+    },
+    {
+      "id": "golang-pro",
+      "description": "Master Go 1.21+ with modern patterns, advanced concurrency, performance optimization, and production-ready microservices.",
+      "path": "golang-pro/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "modern",
+        "profiling",
+        "database",
+        "sql",
+        "observability",
+        "redis",
+        "kubernetes",
+        "rate-limiting"
+      ]
+    },
+    {
       "id": "graphql",
-      "description": "GraphQL at scale, N+1 prevention",
+      "description": "You're a developer who has built GraphQL APIs at scale. You've seen the N+1 query problem bring down production servers. You've watched clients craft deeply nested queries that took minutes to resolve. You know that GraphQL's power is also its danger.",
       "path": "graphql/SKILL.md",
       "triggers": [],
       "tags": [
@@ -781,35 +1027,19 @@
       ]
     },
     {
-      "id": "graphql-architect",
-      "description": "Federation, caching, real-time systems",
-      "path": "graphql-architect/SKILL.md",
+      "id": "hr-pro",
+      "description": "Professional, ethical HR partner for hiring, onboarding/offboarding, PTO and leave, performance, compliant policies, and employee relations.",
+      "path": "hr-pro/SKILL.md",
       "triggers": [],
       "tags": [
-        "graphql",
-        "caching",
-        "validation",
-        "authorization",
-        "monitoring",
-        "schema",
-        "modern",
-        "optimization"
-      ]
-    },
-    {
-      "id": "hono",
-      "description": "Ultra-fast APIs on Workers, Deno, Bun, Node",
-      "path": "hono/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "hono",
-        "cloudflare",
-        "jwt",
-        "response",
-        "middleware",
-        "bun",
-        "routing",
-        "streaming"
+        "claude",
+        "pto",
+        "pip",
+        "legal",
+        "performance",
+        "hiring",
+        "onboarding",
+        "employee"
       ]
     },
     {
@@ -845,62 +1075,56 @@
       ]
     },
     {
-      "id": "instagram",
-      "description": "Integracao completa com Instagram via Graph API. Publicacao, analytics, comentarios, DMs, hashtags, agendamento, templates e gestao de contas Business/Creator.",
-      "path": "instagram/SKILL.md",
+      "id": "hugging-face-tool-builder",
+      "description": "Your purpose is now is to create reusable command line scripts and utilities for using the Hugging Face API, allowing chaining, piping and intermediate processing where helpful. You can access the API directly, as well as use the hf command line tool.",
+      "path": "hugging-face-tool-builder/SKILL.md",
       "triggers": [],
       "tags": [
-        "posts",
-        "oauth",
-        "para",
-        "listar",
-        "uma",
-        "post",
         "references",
-        "instagram"
-      ]
-    },
-    {
-      "id": "json-canvas",
-      "description": "Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or when the user mentions Canvas files in Obsidian.",
-      "path": "json-canvas/SKILL.md",
-      "triggers": [
-        "Create",
-        "Canvas",
-        "files",
-        "(.canvas)",
-        "nodes"
-      ],
-      "tags": [
+        "api",
+        "authorization",
         "json",
-        "nodes",
-        "canvas",
-        "fromnode",
-        "tonode",
-        "text",
-        "validation",
-        "link"
+        "hugging",
+        "face",
+        "hf_token",
+        "hub"
       ]
     },
     {
-      "id": "junta-leiloeiros",
-      "description": "Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.",
-      "path": "junta-leiloeiros/SKILL.md",
+      "id": "hybrid-cloud-networking",
+      "description": "Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute.",
+      "path": "hybrid-cloud-networking/SKILL.md",
       "triggers": [],
       "tags": [
-        "sqlite",
-        "javascript",
-        "rest",
-        "leiloeiros",
+        "aws",
+        "azure",
+        "vpn",
+        "routing",
+        "hybrid",
+        "cloud",
+        "gcp",
+        "connect"
+      ]
+    },
+    {
+      "id": "julia-pro",
+      "description": "Master Julia 1.10+ with modern features, performance optimization, multiple dispatch, and production-ready practices.",
+      "path": "julia-pro/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "julia",
+        "inference",
         "python",
-        "scraper",
-        "dados",
-        "estados"
+        "modern",
+        "package",
+        "github",
+        "http",
+        "formatting"
       ]
     },
     {
       "id": "laravel-expert",
-      "description": "Production Laravel 10/11+",
+      "description": "Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).",
       "path": "laravel-expert/SKILL.md",
       "triggers": [],
       "tags": [
@@ -915,57 +1139,67 @@
       ]
     },
     {
-      "id": "laravel-security-audit",
-      "description": "Security auditor for Laravel applications. Analyzes code for vulnerabilities, misconfigurations, and insecure practices using OWASP standards and Laravel security best practices.",
-      "path": "laravel-security-audit/SKILL.md",
+      "id": "libreoffice-base",
+      "description": "Database management, forms, reports, and data operations with LibreOffice Base.",
+      "path": "libreoffice-base/SKILL.md",
       "triggers": [],
       "tags": [
-        "laravel",
-        "authorization",
-        "validation",
-        "security",
-        "audit",
-        "authentication",
-        "model",
-        "api"
+        "database",
+        "python",
+        "sql",
+        "mysql",
+        "postgresql",
+        "sqlite",
+        "connection",
+        "base"
       ]
     },
     {
-      "id": "m365-agents-ts",
-      "description": "Microsoft 365 Agents SDK for TypeScript/Node.js.",
-      "path": "m365-agents-ts/SKILL.md",
+      "id": "linux-troubleshooting",
+      "description": "Linux system troubleshooting workflow for diagnosing and resolving system issues, performance problems, and service failures.",
+      "path": "linux-troubleshooting/SKILL.md",
       "triggers": [],
       "tags": [
-        "streaming",
-        "agentapplication",
-        "copilot",
-        "studio",
-        "agents",
+        "phase",
+        "invoke",
+        "actions",
+        "prompts",
+        "commands",
+        "copy-paste",
+        "troubleshooting",
+        "bash-linux"
+      ]
+    },
+    {
+      "id": "mcp-builder",
+      "description": "Create MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. The quality of an MCP server is measured by how well it enables LLMs to accomplish real-world tasks.",
+      "path": "mcp-builder/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "mcp",
         "typescript",
-        "azure",
-        "microsoft"
+        "python",
+        "phase",
+        "documentation",
+        "load",
+        "evaluation",
+        "pagination"
       ]
     },
     {
-      "id": "manifest",
-      "description": "Install and configure the Manifest observability plugin for your agents. Use when setting up telemetry, configuring API keys, or troubleshooting the plugin.",
-      "path": "manifest/SKILL.md",
-      "triggers": [
-        "Install",
-        "configure",
-        "Manifest",
-        "observability",
-        "plugin"
-      ],
+      "id": "mcp-builder-ms",
+      "description": "Use this skill when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "path": "mcp-builder-ms/SKILL.md",
+      "triggers": [],
       "tags": [
-        "observability",
-        "manifest",
-        "mnfst_",
-        "api",
-        "setup",
-        "gateway",
-        "plugin",
-        "stop"
+        "mcp",
+        "azure",
+        "typescript",
+        "python",
+        "microsoft",
+        "foundry",
+        "phase",
+        "documentation"
       ]
     },
     {
@@ -985,28 +1219,6 @@
       ]
     },
     {
-      "id": "n8n-expression-syntax",
-      "description": "Validate n8n expression syntax and fix common errors. Use when writing n8n expressions, using {{}} syntax, accessing $json/$node variables, troubleshooting expression errors, or working with webhook data in workflows.",
-      "path": "n8n-expression-syntax/SKILL.md",
-      "triggers": [
-        "Validate",
-        "expression",
-        "syntax",
-        "common",
-        "errors."
-      ],
-      "tags": [
-        "http",
-        "webhook",
-        "node",
-        "expression",
-        "request",
-        "variables",
-        "nodes",
-        "access"
-      ]
-    },
-    {
       "id": "n8n-global-deploy",
       "description": "Validates JSON output and pushes it to http://localhost:5678/api/v1/workflows",
       "path": "n8n-global-deploy/SKILL.md",
@@ -1020,51 +1232,89 @@
       ]
     },
     {
-      "id": "nestjs-expert",
-      "description": "NestJS DI, guards, interceptors, pipes",
-      "path": "nestjs-expert/SKILL.md",
+      "id": "network-engineer",
+      "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
+      "path": "network-engineer/SKILL.md",
       "triggers": [],
       "tags": [
-        "authentication",
-        "jwt",
-        "typeorm",
-        "validation",
-        "github",
-        "module",
-        "database",
-        "nest"
+        "dns",
+        "monitoring",
+        "network",
+        "azure",
+        "http",
+        "aws",
+        "gcp",
+        "kubernetes"
       ]
     },
     {
-      "id": "nodejs-backend-patterns",
-      "description": "Scalable Node.js backends",
-      "path": "nodejs-backend-patterns/SKILL.md",
-      "triggers": [],
+      "id": "obsidian-bases",
+      "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian.",
+      "path": "obsidian-bases/SKILL.md",
+      "triggers": [
+        "Create",
+        "Obsidian",
+        "Bases",
+        "(.base",
+        "files)"
+      ],
       "tags": [
-        "resources",
-        "node",
-        "backend",
-        "patterns",
-        "instructions",
-        "rest",
-        "graphql",
-        "sql"
+        "yaml",
+        "duration",
+        "view",
+        "properties",
+        "formulas",
+        "correct",
+        "wrong",
+        "formula"
       ]
     },
     {
-      "id": "nodejs-best-practices",
-      "description": "Framework selection, async, security",
-      "path": "nodejs-best-practices/SKILL.md",
+      "id": "odoo-migration-helper",
+      "description": "Step-by-step guide for migrating Odoo custom modules between versions (v14→v15→v16→v17). Covers API changes, deprecated methods, and view migration.",
+      "path": "odoo-migration-helper/SKILL.md",
       "triggers": [],
       "tags": [
-        "validation",
-        "principles",
-        "selection",
-        "typescript",
-        "express",
-        "error",
-        "security",
-        "node"
+        "odoo",
+        "migrate",
+        "migration",
+        "python",
+        "version",
+        "v15",
+        "v16",
+        "attrs"
+      ]
+    },
+    {
+      "id": "odoo-orm-expert",
+      "description": "Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques.",
+      "path": "odoo-orm-expert/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "orm",
+        "odoo",
+        "sql",
+        "python",
+        "date",
+        "query",
+        "search",
+        "domain"
+      ]
+    },
+    {
+      "id": "odoo-performance-tuner",
+      "description": "Expert guide for diagnosing and fixing Odoo performance issues: slow queries, worker configuration, memory limits, PostgreSQL tuning, and profiling tools.",
+      "path": "odoo-performance-tuner/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "postgresql",
+        "odoo",
+        "profiling",
+        "sql",
+        "python",
+        "performance",
+        "tuner",
+        "worker"
       ]
     },
     {
@@ -1116,25 +1366,51 @@
       ]
     },
     {
-      "id": "openapi-spec-generation",
-      "description": "Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs, or ensuring API contract compliance.",
-      "path": "openapi-spec-generation/SKILL.md",
-      "triggers": [
-        "Generate",
-        "maintain",
-        "OpenAPI",
-        "specifications",
-        "code"
-      ],
+      "id": "page-cro",
+      "description": "Analyze and optimize individual pages for conversion performance.",
+      "path": "page-cro/SKILL.md",
+      "triggers": [],
       "tags": [
-        "resources",
-        "openapi",
-        "spec",
-        "generation",
-        "api",
-        "instructions",
-        "generating",
-        "restful"
+        "conversion",
+        "page",
+        "readiness",
+        "phase",
+        "cro",
+        "goal",
+        "traffic",
+        "impact"
+      ]
+    },
+    {
+      "id": "paid-ads",
+      "description": "You are an expert performance marketer with direct access to ad platform accounts. Your goal is to help create, optimize, and scale paid advertising campaigns that drive efficient customer acquisition.",
+      "path": "paid-ads/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "ads",
+        "audience",
+        "mistakes",
+        "creative",
+        "campaign",
+        "checklist",
+        "setup",
+        "google"
+      ]
+    },
+    {
+      "id": "performance-engineer",
+      "description": "Expert performance engineer specializing in modern observability,",
+      "path": "performance-engineer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "caching",
+        "profiling",
+        "monitoring",
+        "performance",
+        "observability",
+        "validation",
+        "load-testing",
+        "alerting"
       ]
     },
     {
@@ -1154,19 +1430,57 @@
       ]
     },
     {
-      "id": "prisma-expert",
-      "description": "Schema design, migrations, query optimization",
-      "path": "prisma-expert/SKILL.md",
+      "id": "performance-profiling",
+      "description": "Performance profiling principles. Measurement, analysis, and optimization techniques.",
+      "path": "performance-profiling/SKILL.md",
       "triggers": [],
       "tags": [
-        "prisma",
-        "schema",
-        "query",
-        "migration",
-        "connection",
-        "migrations",
-        "patterns",
-        "logging"
+        "profiling",
+        "analysis",
+        "performance",
+        "runtime",
+        "tab",
+        "scripts",
+        "measure",
+        "bundle"
+      ]
+    },
+    {
+      "id": "performance-testing-review-multi-agent-review",
+      "description": "Use when working with performance testing review multi agent review",
+      "path": "performance-testing-review-multi-agent-review/SKILL.md",
+      "triggers": [
+        "working",
+        "performance",
+        "testing",
+        "review",
+        "multi"
+      ],
+      "tags": [
+        "routing",
+        "validation",
+        "review",
+        "agent",
+        "orchestration",
+        "parallel",
+        "context",
+        "sequential"
+      ]
+    },
+    {
+      "id": "postgres-best-practices",
+      "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+      "path": "postgres-best-practices/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "postgres",
+        "sql",
+        "supabase",
+        "security",
+        "rule",
+        "priority",
+        "monitoring",
+        "query"
       ]
     },
     {
@@ -1178,11 +1492,11 @@
         "search",
         "api",
         "citation",
-        "workflow",
         "pubmed",
         "mesh",
         "xml",
-        "monitoring"
+        "monitoring",
+        "diabetes"
       ]
     },
     {
@@ -1202,22 +1516,6 @@
       ]
     },
     {
-      "id": "python-development-python-scaffold",
-      "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
-      "path": "python-development-python-scaffold/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "python",
-        "django",
-        "fastapi",
-        "scaffolding",
-        "generate",
-        "structure",
-        "initialize",
-        "library"
-      ]
-    },
-    {
       "id": "python-fastapi-development",
       "description": "Python FastAPI backend development with async patterns, SQLAlchemy, Pydantic, authentication, and production API patterns.",
       "path": "python-fastapi-development/SKILL.md",
@@ -1234,41 +1532,181 @@
       ]
     },
     {
-      "id": "security-audit",
-      "description": "Comprehensive security auditing workflow covering web application testing, API security, penetration testing, vulnerability scanning, and security hardening.",
-      "path": "security-audit/SKILL.md",
-      "triggers": [],
+      "id": "python-performance-optimization",
+      "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.",
+      "path": "python-performance-optimization/SKILL.md",
+      "triggers": [
+        "Profile",
+        "optimize",
+        "Python",
+        "using",
+        "cProfile"
+      ],
       "tags": [
-        "authentication",
-        "security",
-        "phase",
-        "invoke",
-        "actions",
-        "prompts",
-        "owasp",
-        "copy-paste"
+        "python",
+        "profiling",
+        "resources",
+        "performance",
+        "optimization",
+        "instructions",
+        "optimizing",
+        "cpu"
       ]
     },
     {
-      "id": "tavily-web",
-      "description": "Web search, content extraction, crawling, and research capabilities using Tavily API. Use when you need to search the web for current information, extracting content from URLs, or crawling websites.",
-      "path": "tavily-web/SKILL.md",
-      "triggers": [
-        "search",
-        "content",
-        "extraction",
-        "crawling",
-        "research"
-      ],
+      "id": "python-pro",
+      "description": "Master Python 3.12+ with modern features, async programming, performance optimization, and production-ready practices. Expert in the latest Python ecosystem including uv, ruff, pydantic, and FastAPI.",
+      "path": "python-pro/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "python",
+        "fastapi",
+        "validation",
+        "django",
+        "modern",
+        "performance",
+        "profiling",
+        "authentication"
+      ]
+    },
+    {
+      "id": "receiving-code-review",
+      "description": "Code review requires technical evaluation, not emotional performance.",
+      "path": "receiving-code-review/SKILL.md",
+      "triggers": [],
       "tags": [
         "github",
-        "crawling",
-        "tavily-web",
-        "overview",
-        "installation",
-        "troubleshooting",
-        "related",
-        "tavily"
+        "feedback",
+        "yagni",
+        "unclear",
+        "push",
+        "review",
+        "external",
+        "verify"
+      ]
+    },
+    {
+      "id": "ruby-pro",
+      "description": "Write idiomatic Ruby code with metaprogramming, Rails patterns, and performance optimization. Specializes in Ruby on Rails, gem development, and testing frameworks.",
+      "path": "ruby-pro/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "ruby",
+        "rails",
+        "refactoring",
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "profiling"
+      ]
+    },
+    {
+      "id": "salesforce-development",
+      "description": "Use @wire decorator for reactive data binding with Lightning Data Service or Apex methods. @wire fits LWC's reactive architecture and enables Salesforce performance optimizations.",
+      "path": "salesforce-development/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "apex",
+        "issue",
+        "inside",
+        "loops",
+        "salesforce",
+        "patterns",
+        "lightning",
+        "wire"
+      ]
+    },
+    {
+      "id": "scroll-experience",
+      "description": "You see scrolling as a narrative device, not just navigation. You create moments of delight as users scroll. You know when to use subtle animations and when to go cinematic. You balance performance with visual impact. You make websites feel like movies you control with your thumb.",
+      "path": "scroll-experience/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "scroll",
+        "css",
+        "sticky",
+        "animation",
+        "experience",
+        "parallax",
+        "gsap",
+        "scrolltrigger"
+      ]
+    },
+    {
+      "id": "seo-audit",
+      "description": "Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance.",
+      "path": "seo-audit/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "seo",
+        "health",
+        "audit",
+        "category",
+        "scoring",
+        "index",
+        "score",
+        "content"
+      ]
+    },
+    {
+      "id": "similarity-search-patterns",
+      "description": "Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.",
+      "path": "similarity-search-patterns/SKILL.md",
+      "triggers": [
+        "Implement",
+        "efficient",
+        "similarity",
+        "search",
+        "vector"
+      ],
+      "tags": [
+        "resources",
+        "patterns",
+        "similarity",
+        "search",
+        "instructions",
+        "rag",
+        "retrieval",
+        "optimizing"
+      ]
+    },
+    {
+      "id": "swiftui-expert-skill",
+      "description": "Write, review, or improve SwiftUI code following best practices for state management, view composition, performance, and iOS 26+ Liquid Glass adoption. Use when building new SwiftUI features, refactoring existing views, reviewing code quality, or adopting modern SwiftUI patterns.",
+      "path": "swiftui-expert-skill/SKILL.md",
+      "triggers": [
+        "Write",
+        "review",
+        "improve",
+        "SwiftUI",
+        "following"
+      ],
+      "tags": [
+        "references",
+        "swiftui",
+        "glass",
+        "liquid",
+        "state",
+        "foreach",
+        "button",
+        "observableobject"
+      ]
+    },
+    {
+      "id": "swiftui-performance-audit",
+      "description": "Audit SwiftUI performance issues from code review and profiling evidence.",
+      "path": "swiftui-performance-audit/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "profiling",
+        "references",
+        "swiftui",
+        "rendering",
+        "audit",
+        "performance",
+        "foreach",
+        "intake"
       ]
     },
     {
@@ -1288,19 +1726,63 @@
       ]
     },
     {
-      "id": "trpc-fullstack",
-      "description": "End-to-end type-safe APIs with tRPC",
-      "path": "trpc-fullstack/SKILL.md",
+      "id": "threejs-lighting",
+      "description": "Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.",
+      "path": "threejs-lighting/SKILL.md",
+      "triggers": [
+        "Three.js",
+        "lighting",
+        "light",
+        "types",
+        "shadows"
+      ],
+      "tags": [
+        "shadows",
+        "light",
+        "lighting",
+        "directionallight",
+        "shadow",
+        "pointlight",
+        "spotlight",
+        "rectarealight"
+      ]
+    },
+    {
+      "id": "threejs-materials",
+      "description": "Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, creating custom shaders, or optimizing material performance.",
+      "path": "threejs-materials/SKILL.md",
+      "triggers": [
+        "Three.js",
+        "materials",
+        "basic",
+        "phong",
+        "shader"
+      ],
+      "tags": [
+        "material",
+        "pbr",
+        "rendering",
+        "meshbasicmaterial",
+        "materials",
+        "meshstandardmaterial",
+        "meshphysicalmaterial",
+        "custom"
+      ]
+    },
+    {
+      "id": "typescript-expert",
+      "description": "TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling.",
+      "path": "typescript-expert/SKILL.md",
       "triggers": [],
       "tags": [
-        "react",
-        "router",
-        "http",
-        "context",
-        "approuter",
         "typescript",
-        "request",
-        "app"
+        "performance",
+        "patterns",
+        "vitest",
+        "linting",
+        "error",
+        "expertise",
+        "validation"
       ]
     },
     {
@@ -1320,19 +1802,35 @@
       ]
     },
     {
-      "id": "web-scraper",
-      "description": "Web scraping inteligente multi-estrategia. Extrai dados estruturados de paginas web (tabelas, listas, precos). Paginacao, monitoramento e export CSV/JSON.",
-      "path": "web-scraper/SKILL.md",
+      "id": "unreal-engine-cpp-pro",
+      "description": "Expert guide for Unreal Engine 5.x C++ development, covering UObject hygiene, performance patterns, and best practices.",
+      "path": "unreal-engine-cpp-pro/SKILL.md",
       "triggers": [],
       "tags": [
-        "json",
-        "mode",
-        "strategy",
-        "pagination",
-        "normalization",
-        "phase",
-        "webfetch",
-        "extract"
+        "unreal",
+        "engine",
+        "prefix",
+        "uobject",
+        "uproperty",
+        "beginplay",
+        "tick",
+        "postinitializecomponents"
+      ]
+    },
+    {
+      "id": "vr-ar",
+      "description": "VR/AR development principles. Comfort, interaction, performance requirements.",
+      "path": "vr-ar/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "comfort",
+        "principles",
+        "platform",
+        "platforms",
+        "interaction",
+        "fps",
+        "motion",
+        "frame"
       ]
     },
     {
@@ -1349,22 +1847,6 @@
         "api",
         "copy-paste",
         "rest"
-      ]
-    },
-    {
-      "id": "wordpress-plugin-development",
-      "description": "WordPress plugin development workflow covering plugin architecture, hooks, admin interfaces, REST API, security best practices, and WordPress 7.0 features: Real-Time Collaboration, AI Connectors, Abilities API, DataViews, and PHP-only blocks.",
-      "path": "wordpress-plugin-development/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "wordpress",
-        "php",
-        "rest",
-        "phase",
-        "invoke",
-        "plugin",
-        "actions",
-        "prompts"
       ]
     }
   ]

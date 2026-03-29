@@ -3,24 +3,56 @@
   "category_name": "🎯 Custom Skills",
   "skills": [
     {
-      "id": "custom-debrief",
-      "description": "**(Custom)** Post-mortem task breakdowns and mentor insights.",
-      "path": "custom-debrief/SKILL.md",
+      "id": "advogado-criminal",
+      "description": "Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal.",
+      "path": "advogado-criminal/SKILL.md",
       "triggers": [],
       "tags": [
-        "debrief",
-        "personal",
-        "teacher",
-        "persona",
-        "tone",
-        "requirements",
-        "execution",
-        "steps"
+        "art",
+        "cpp",
+        "lei",
+        "violencia",
+        "etapa",
+        "publica",
+        "domestica",
+        "maria"
+      ]
+    },
+    {
+      "id": "amazon-alexa",
+      "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB, Polly, Transcribe, Lex, Smart Home).",
+      "path": "amazon-alexa/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "claude",
+        "aws",
+        "alexa",
+        "fase",
+        "python",
+        "dynamodb",
+        "lambda",
+        "smart"
+      ]
+    },
+    {
+      "id": "chrome-extension-developer",
+      "description": "Expert in building Chrome Extensions using Manifest V3. Covers background scripts, service workers, content scripts, and cross-context communication.",
+      "path": "chrome-extension-developer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "chrome",
+        "manifest",
+        "message",
+        "passing",
+        "extension",
+        "migrating",
+        "apis",
+        "service"
       ]
     },
     {
       "id": "custom-senior-architect",
-      "description": "**(Custom)** Specialist for end-to-end technical flow mapping and sequence diagrams.",
+      "description": "Expert system architect specializing in end-to-end technical flow mapping, component identification, and sequence diagram generation.",
       "path": "custom-senior-architect/SKILL.md",
       "triggers": [],
       "tags": [
@@ -35,51 +67,223 @@
       ]
     },
     {
-      "id": "custom-senior-it-ba-specialist",
-      "description": "**(Custom)** Senior IT business analyst for technical requirements and workflow mapping.",
-      "path": "custom-senior-it-ba-specialist/SKILL.md",
+      "id": "internal-comms",
+      "description": "Write internal communications such as status reports, leadership updates, 3P updates, newsletters, FAQs, incident reports, and project updates using repeatable internal formats.",
+      "path": "internal-comms/SKILL.md",
       "triggers": [],
       "tags": [
-        "validation",
-        "business",
-        "requirements",
-        "nfrs",
-        "traceability",
-        "senior",
-        "workflow",
-        "structured"
+        "keywords",
+        "formatting",
+        "internal",
+        "progress",
+        "plans",
+        "problems",
+        "company",
+        "comms"
       ]
     },
     {
-      "id": "custom-video-analyst",
-      "description": "**(Custom)** Expert note-taker for video/transcripts with zero technical loss.",
-      "path": "custom-video-analyst/SKILL.md",
+      "id": "internal-comms-anthropic",
+      "description": "To write internal communications, use this skill for:",
+      "path": "internal-comms-anthropic/SKILL.md",
       "triggers": [],
       "tags": [
-        "part",
-        "video",
-        "structure",
-        "chronological",
-        "notes",
-        "exhaustive",
-        "explainer",
-        "persona"
+        "keywords",
+        "formatting",
+        "internal",
+        "anthropic",
+        "progress",
+        "plans",
+        "problems",
+        "company"
       ]
     },
     {
-      "id": "senior-architect",
-      "description": "**(Custom)** Senior architect toolkit for modern system designs.",
-      "path": "senior-architect/SKILL.md",
+      "id": "internal-comms-community",
+      "description": "To write internal communications, use this skill for:",
+      "path": "internal-comms-community/SKILL.md",
       "triggers": [],
       "tags": [
-        "references",
-        "script",
-        "architect",
-        "architecture",
-        "analyzer",
-        "quality",
-        "capabilities",
-        "diagram"
+        "keywords",
+        "formatting",
+        "internal",
+        "progress",
+        "plans",
+        "problems",
+        "company",
+        "comms"
+      ]
+    },
+    {
+      "id": "junta-leiloeiros",
+      "description": "Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.",
+      "path": "junta-leiloeiros/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "sqlite",
+        "javascript",
+        "rest",
+        "leiloeiros",
+        "python",
+        "scraper",
+        "dados",
+        "estados"
+      ]
+    },
+    {
+      "id": "leiloeiro-avaliacao",
+      "description": "Avaliacao pericial de imoveis em leilao. Valor de mercado, liquidacao forcada, ABNT NBR 14653, metodos comparativo/renda/custo, CUB e margem de seguranca.",
+      "path": "leiloeiro-avaliacao/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "valor",
+        "passo",
+        "mercado",
+        "renda",
+        "verificar",
+        "abnt",
+        "fator",
+        "nbr"
+      ]
+    },
+    {
+      "id": "leiloeiro-edital",
+      "description": "Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade.",
+      "path": "leiloeiro-edital/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "edital",
+        "bloco",
+        "venda",
+        "risco",
+        "verificar",
+        "editais",
+        "valor",
+        "direta"
+      ]
+    },
+    {
+      "id": "leiloeiro-ia",
+      "description": "Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados.",
+      "path": "leiloeiro-ia/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "etapa",
+        "perfil",
+        "mercado",
+        "riscos",
+        "lei",
+        "exemplo",
+        "leiloeiro",
+        "tipo"
+      ]
+    },
+    {
+      "id": "leiloeiro-mercado",
+      "description": "Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII.",
+      "path": "leiloeiro-mercado/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "cdi",
+        "prazo",
+        "roi",
+        "por",
+        "para",
+        "selic",
+        "mercado",
+        "reforma"
+      ]
+    },
+    {
+      "id": "leiloeiro-risco",
+      "description": "Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco.",
+      "path": "leiloeiro-risco/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "risco",
+        "alto",
+        "riscos",
+        "roi",
+        "categoria",
+        "score",
+        "baixo",
+        "itbi"
+      ]
+    },
+    {
+      "id": "mtls-configuration",
+      "description": "Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing internal service communication.",
+      "path": "mtls-configuration/SKILL.md",
+      "triggers": [
+        "Configure",
+        "mutual",
+        "(mTLS)",
+        "zero-trust",
+        "service-to-service"
+      ],
+      "tags": [
+        "mtls",
+        "istio",
+        "tls",
+        "certificate",
+        "template",
+        "linkerd",
+        "spire",
+        "strict"
+      ]
+    },
+    {
+      "id": "seo-structure-architect",
+      "description": "Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization.",
+      "path": "seo-structure-architect/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "schema",
+        "focus",
+        "header",
+        "markup",
+        "instructions",
+        "areas",
+        "tag",
+        "siloing"
+      ]
+    },
+    {
+      "id": "site-architecture",
+      "description": "Plan or restructure website hierarchy, navigation, URL patterns, breadcrumbs, and internal linking. Use when mapping pages, sections, and site structure, but not for XML sitemap auditing or schema markup.",
+      "path": "site-architecture/SKILL.md",
+      "triggers": [
+        "restructure",
+        "website",
+        "hierarchy",
+        "navigation",
+        "patterns"
+      ],
+      "tags": [
+        "url",
+        "navigation",
+        "home",
+        "blog",
+        "hierarchy",
+        "site",
+        "page",
+        "header"
+      ]
+    },
+    {
+      "id": "skill-installer",
+      "description": "Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao.",
+      "path": "skill-installer/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "cenario",
+        "claude",
+        "json",
+        "uma",
+        "zip",
+        "instalar",
+        "detectar",
+        "para"
       ]
     }
   ]

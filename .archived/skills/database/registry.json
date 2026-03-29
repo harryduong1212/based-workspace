@@ -3,62 +3,136 @@
   "category_name": "🗄️ Database",
   "skills": [
     {
-      "id": "cc-skill-clickhouse-io",
-      "description": "ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads.",
-      "path": "cc-skill-clickhouse-io/SKILL.md",
+      "id": "aws-penetration-testing",
+      "description": "Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations.",
+      "path": "aws-penetration-testing/SKILL.md",
       "triggers": [],
       "tags": [
-        "patterns",
-        "select",
-        "monitoring",
-        "clickhouse",
-        "order",
-        "analysis",
+        "list",
+        "aws",
+        "access",
+        "lambda",
+        "bucket",
+        "admin",
+        "ssrf",
+        "credentials"
+      ]
+    },
+    {
+      "id": "azure-cosmos-db-py",
+      "description": "Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.",
+      "path": "azure-cosmos-db-py/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "cosmos",
+        "authentication",
+        "azure",
+        "mocking",
+        "none",
+        "service",
+        "defaultazurecredential",
+        "security"
+      ]
+    },
+    {
+      "id": "azure-cosmos-java",
+      "description": "Azure Cosmos DB SDK for Java. NoSQL database operations with global distribution, multi-model support, and reactive patterns.",
+      "path": "azure-cosmos-java/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "azure",
+        "authentication",
+        "java",
+        "client",
+        "cosmosclient",
+        "cosmos",
+        "container",
+        "cosmosasyncclient"
+      ]
+    },
+    {
+      "id": "azure-data-tables-py",
+      "description": "Azure Tables SDK for Python (Storage and Cosmos DB). Use for NoSQL key-value storage, entity CRUD, and batch operations.",
+      "path": "azure-data-tables-py/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "azure",
+        "entity",
         "table",
-        "insert"
+        "client",
+        "query",
+        "tables",
+        "operations",
+        "partitionkey"
       ]
     },
     {
-      "id": "closed-loop-delivery",
-      "description": "Use when a coding task must be completed against explicit acceptance criteria with minimal user re-intervention across implementation, review feedback, deployment, and runtime verification.",
-      "path": "closed-loop-delivery/SKILL.md",
-      "triggers": [
-        "coding",
-        "completed",
-        "against",
-        "explicit",
-        "acceptance"
-      ],
-      "tags": [
-        "gate",
-        "dod",
-        "dev",
-        "delivery",
-        "stop",
-        "issue",
-        "polling",
-        "overview"
-      ]
-    },
-    {
-      "id": "code-review-excellence",
-      "description": "Transform code reviews from gatekeeping to knowledge sharing through constructive feedback, systematic analysis, and collaborative improvement.",
-      "path": "code-review-excellence/SKILL.md",
+      "id": "azure-postgres-ts",
+      "description": "Connect to Azure Database for PostgreSQL Flexible Server from Node.js/TypeScript using the pg (node-postgres) package.",
+      "path": "azure-postgres-ts/SKILL.md",
       "triggers": [],
       "tags": [
-        "resources",
-        "review",
-        "excellence",
-        "instructions",
-        "output",
-        "format",
-        "transform",
-        "reviewing"
+        "azure",
+        "authentication",
+        "pool",
+        "postgresql",
+        "typescript",
+        "entra",
+        "client",
+        "connection"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-mysql-dotnet",
+      "description": "Azure MySQL Flexible Server SDK for .NET. Database management for MySQL Flexible Server deployments.",
+      "path": "azure-resource-manager-mysql-dotnet/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "azure",
+        "mysql",
+        "server",
+        "resourcemanager",
+        "completed",
+        "console",
+        "writeline",
+        "mysqlflexibleserverresource"
+      ]
+    },
+    {
+      "id": "azure-resource-manager-postgresql-dotnet",
+      "description": "Azure PostgreSQL Flexible Server SDK for .NET. Database management for PostgreSQL Flexible Server deployments.",
+      "path": "azure-resource-manager-postgresql-dotnet/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "postgresql",
+        "azure",
+        "server",
+        "authentication",
+        "resourcemanager",
+        "completed",
+        "console",
+        "writeline"
+      ]
+    },
+    {
+      "id": "cloudflare-workers-expert",
+      "description": "Expert in Cloudflare Workers and the Edge Computing ecosystem. Covers Wrangler, KV, D1, Durable Objects, and R2 storage.",
+      "path": "cloudflare-workers-expert/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "cloudflare",
+        "response",
+        "workers",
+        "wrangler",
+        "env",
+        "edge",
+        "fetch",
+        "node"
       ]
     },
     {
       "id": "database",
-      "description": "SQL, NoSQL, design, migrations, optimization",
+      "description": "Database development and operations workflow covering SQL, NoSQL, database design, migrations, optimization, and data engineering.",
       "path": "database/SKILL.md",
       "triggers": [],
       "tags": [
@@ -73,40 +147,8 @@
       ]
     },
     {
-      "id": "database-admin",
-      "description": "Cloud databases, automation, reliability",
-      "path": "database-admin/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "monitoring",
-        "database",
-        "azure",
-        "kubernetes",
-        "postgresql",
-        "mysql",
-        "sql",
-        "alerting"
-      ]
-    },
-    {
-      "id": "database-architect",
-      "description": "Data layer design, technology selection",
-      "path": "database-architect/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "caching",
-        "indexing",
-        "normalization",
-        "sql",
-        "monitoring",
-        "postgresql",
-        "mongodb",
-        "dynamodb"
-      ]
-    },
-    {
       "id": "database-design",
-      "description": "Schema design, indexing, ORM selection",
+      "description": "Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.",
       "path": "database-design/SKILL.md",
       "triggers": [],
       "tags": [
@@ -118,38 +160,6 @@
         "selective",
         "reading",
         "rule"
-      ]
-    },
-    {
-      "id": "database-migration",
-      "description": "Schema migrations, zero-downtime",
-      "path": "database-migration/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "sequelize",
-        "migrations",
-        "typeorm",
-        "prisma",
-        "mysql",
-        "migration",
-        "rollback",
-        "postgresql"
-      ]
-    },
-    {
-      "id": "database-migrations-migration-observability",
-      "description": "Migration monitoring, CDC, and observability infrastructure",
-      "path": "database-migrations-migration-observability/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "monitoring",
-        "observability",
-        "alerting",
-        "mongodb",
-        "migration",
-        "integration",
-        "migrations",
-        "counter"
       ]
     },
     {
@@ -169,38 +179,6 @@
       ]
     },
     {
-      "id": "database-optimizer",
-      "description": "Performance tuning, query optimization",
-      "path": "database-optimizer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "caching",
-        "indexing",
-        "monitoring",
-        "sql",
-        "database",
-        "benchmarking",
-        "azure",
-        "query"
-      ]
-    },
-    {
-      "id": "dx-optimizer",
-      "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.",
-      "path": "dx-optimizer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "setup",
-        "workflows",
-        "instructions",
-        "optimization",
-        "areas",
-        "environment",
-        "tooling",
-        "enhancement"
-      ]
-    },
-    {
       "id": "food-database-query",
       "description": "Food Database Query",
       "path": "food-database-query/SKILL.md",
@@ -214,22 +192,6 @@
         "recommendation",
         "auto",
         "calculation"
-      ]
-    },
-    {
-      "id": "gdb-cli",
-      "description": "GDB debugging assistant for AI agents - analyze core dumps, debug live processes, investigate crashes and deadlocks with source code correlation",
-      "path": "gdb-cli/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "session",
-        "python",
-        "gdb",
-        "debugging",
-        "pattern",
-        "github",
-        "threads",
-        "crash"
       ]
     },
     {
@@ -249,40 +211,21 @@
       ]
     },
     {
-      "id": "local-db-migration",
-      "description": "Manages schema migrations and vector initialization for the based-workspace-postgres container.",
-      "path": "local-db-migration/SKILL.md",
+      "id": "linear",
+      "description": "Managing Linear issues, projects, and teams for issue tracking, status updates, querying projects, and managing team workflows.",
+      "path": "linear/SKILL.md",
       "triggers": [],
       "tags": [
-        "vector",
-        "migration",
-        "local",
-        "sql",
-        "ai_memory",
-        "postgres-memory",
-        "core",
-        "responsibilities"
-      ]
-    },
-    {
-      "id": "neon-postgres",
-      "description": "Prisma + Neon connection pooling",
-      "path": "neon-postgres/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "prisma",
-        "neon",
-        "postgres",
-        "drizzle",
+        "linear",
+        "triggers",
         "issue",
-        "connection",
-        "http",
-        "pgbouncer"
+        "team",
+        "status"
       ]
     },
     {
       "id": "nosql-expert",
-      "description": "Cassandra, DynamoDB, query-first modeling",
+      "description": "Expert guidance for distributed NoSQL databases (Cassandra, DynamoDB). Focuses on mental models, query-first modeling, single-table design, and avoiding hot partitions in high-scale systems.",
       "path": "nosql-expert/SKILL.md",
       "triggers": [],
       "tags": [
@@ -297,46 +240,24 @@
       ]
     },
     {
-      "id": "obsidian-bases",
-      "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian.",
-      "path": "obsidian-bases/SKILL.md",
-      "triggers": [
-        "Create",
-        "Obsidian",
-        "Bases",
-        "(.base",
-        "files)"
-      ],
-      "tags": [
-        "yaml",
-        "duration",
-        "view",
-        "properties",
-        "formulas",
-        "correct",
-        "wrong",
-        "formula"
-      ]
-    },
-    {
-      "id": "postgres-best-practices",
-      "description": "Supabase Postgres optimization",
-      "path": "postgres-best-practices/SKILL.md",
+      "id": "odoo-backup-strategy",
+      "description": "Complete Odoo backup and restore strategy: database dumps, filestore backup, automated scheduling, cloud storage upload, and tested restore procedures.",
+      "path": "odoo-backup-strategy/SKILL.md",
       "triggers": [],
       "tags": [
-        "postgres",
-        "sql",
-        "supabase",
-        "security",
-        "rule",
-        "priority",
-        "monitoring",
-        "query"
+        "odoo",
+        "backup",
+        "filestore",
+        "restore",
+        "database",
+        "add",
+        "date",
+        "recreate"
       ]
     },
     {
       "id": "postgresql",
-      "description": "PostgreSQL schema best practices",
+      "description": "Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features",
       "path": "postgresql/SKILL.md",
       "triggers": [],
       "tags": [
@@ -352,7 +273,7 @@
     },
     {
       "id": "postgresql-optimization",
-      "description": "Query tuning, indexing, production management",
+      "description": "PostgreSQL database optimization workflow for query tuning, indexing strategies, performance analysis, and production database management.",
       "path": "postgresql-optimization/SKILL.md",
       "triggers": [],
       "tags": [
@@ -367,19 +288,19 @@
       ]
     },
     {
-      "id": "progressive-estimation",
-      "description": "Estimate AI-assisted and hybrid human+agent development work with research-backed PERT statistics and calibration feedback loops",
-      "path": "progressive-estimation/SKILL.md",
+      "id": "prisma-expert",
+      "description": "You are an expert in Prisma ORM with deep knowledge of schema design, migrations, query optimization, relations modeling, and database operations across PostgreSQL, MySQL, and SQLite.",
+      "path": "prisma-expert/SKILL.md",
       "triggers": [],
       "tags": [
-        "estimation",
-        "progressive",
-        "github",
-        "estimate",
-        "formatting",
-        "overview",
-        "pitfalls",
-        "related"
+        "prisma",
+        "schema",
+        "query",
+        "migration",
+        "connection",
+        "migrations",
+        "patterns",
+        "logging"
       ]
     },
     {
@@ -399,24 +320,24 @@
       ]
     },
     {
-      "id": "snowflake-development",
-      "description": "Comprehensive Snowflake development assistant covering SQL best practices, data pipeline design (Dynamic Tables, Streams, Tasks, Snowpipe), Cortex AI functions, Cortex Agents, Snowpark Python, dbt integration, performance tuning, and security hardening.",
-      "path": "snowflake-development/SKILL.md",
+      "id": "sql-injection-testing",
+      "description": "Execute comprehensive SQL injection vulnerability assessments on web applications to identify database security flaws, demonstrate exploitation techniques, and validate input sanitization mechanisms.",
+      "path": "sql-injection-testing/SKILL.md",
       "triggers": [],
       "tags": [
-        "sql",
-        "snowflake",
-        "python",
-        "cortex",
-        "error",
         "select",
-        "dynamic",
-        "json"
+        "http",
+        "mysql",
+        "sql",
+        "extraction",
+        "bypass",
+        "injection",
+        "union"
       ]
     },
     {
       "id": "sql-optimization-patterns",
-      "description": "Slow query → fast query transformation",
+      "description": "Transform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis.",
       "path": "sql-optimization-patterns/SKILL.md",
       "triggers": [],
       "tags": [
@@ -432,7 +353,7 @@
     },
     {
       "id": "sql-pro",
-      "description": "Cloud-native SQL, OLTP/OLAP optimization",
+      "description": "Master modern SQL with cloud-native databases, OLTP/OLAP optimization, and advanced query techniques. Expert in performance tuning, data modeling, and hybrid analytical systems.",
       "path": "sql-pro/SKILL.md",
       "triggers": [],
       "tags": [
@@ -479,67 +400,19 @@
       ]
     },
     {
-      "id": "using-neon",
-      "description": "Neon is a serverless Postgres platform that separates compute and storage to offer autoscaling, branching, instant restore, and scale-to-zero. It's fully compatible with Postgres and works with any language, framework, or ORM that supports Postgres.",
-      "path": "using-neon/SKILL.md",
+      "id": "videodb",
+      "description": "Video and audio perception, indexing, and editing. Ingest files/URLs/live streams, build visual/spoken indexes, search with timestamps, edit timelines, add overlays/subtitles, generate media, and create real-time alerts.",
+      "path": "videodb/SKILL.md",
       "triggers": [],
       "tags": [
-        "neon",
-        "references",
-        "postgres",
-        "authentication",
-        "api",
-        "cli",
-        "http",
-        "websocket"
-      ]
-    },
-    {
-      "id": "vector-database-engineer",
-      "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar",
-      "path": "vector-database-engineer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "embedding",
-        "vector",
-        "retrieval",
-        "rag",
-        "database",
-        "engineer",
-        "chunking",
-        "instructions"
-      ]
-    },
-    {
-      "id": "vibers-code-review",
-      "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.",
-      "path": "vibers-code-review/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "github",
-        "add",
-        "vibers",
-        "claude",
-        "review",
-        "commit",
-        "action",
-        "marsiandeployer"
-      ]
-    },
-    {
-      "id": "videodb-skills",
-      "description": "Upload, stream, search, edit, transcribe, and generate AI video and audio using the VideoDB SDK.",
-      "path": "videodb-skills/SKILL.md",
-      "triggers": [],
-      "tags": [
+        "timeline",
+        "python",
+        "websocket",
+        "search",
+        "error",
+        "video",
         "videodb",
-        "install",
-        "setup",
-        "sdk",
-        "upload",
-        "purpose",
-        "capabilities",
-        "repository"
+        "desktop"
       ]
     }
   ]

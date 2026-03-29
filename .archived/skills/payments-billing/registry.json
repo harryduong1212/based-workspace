@@ -4,7 +4,7 @@
   "skills": [
     {
       "id": "billing-automation",
-      "description": "Recurring billing, invoicing, dunning",
+      "description": "Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation.",
       "path": "billing-automation/SKILL.md",
       "triggers": [],
       "tags": [
@@ -19,8 +19,40 @@
       ]
     },
     {
+      "id": "monetization",
+      "description": "Estrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio SaaS.",
+      "path": "monetization/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "stripe",
+        "revenue",
+        "subscription",
+        "customer",
+        "pricing",
+        "saas",
+        "churn",
+        "para"
+      ]
+    },
+    {
+      "id": "pakistan-payments-stack",
+      "description": "Design and implement production-grade Pakistani payment integrations (JazzCash, Easypaisa, bank/PSP rails, optional Raast) for SaaS with PKR billing, webhook reliability, and reconciliation.",
+      "path": "pakistan-payments-stack/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "pakistan",
+        "payments",
+        "saas",
+        "paymentsservice",
+        "stack",
+        "rules",
+        "pkr",
+        "sbp"
+      ]
+    },
+    {
       "id": "payment-integration",
-      "description": "Stripe, PayPal, PCI compliance",
+      "description": "Integrate Stripe, PayPal, and payment processors. Handles checkout flows, subscriptions, webhooks, and PCI compliance. Use PROACTIVELY when implementing payments, billing, or subscription features.",
       "path": "payment-integration/SKILL.md",
       "triggers": [],
       "tags": [
@@ -36,7 +68,7 @@
     },
     {
       "id": "paypal-integration",
-      "description": "PayPal checkout, IPN, recurring billing",
+      "description": "Master PayPal payment integration including Express Checkout, IPN handling, recurring billing, and refund workflows.",
       "path": "paypal-integration/SKILL.md",
       "triggers": [],
       "tags": [
@@ -51,8 +83,40 @@
       ]
     },
     {
+      "id": "plaid-fintech",
+      "description": "Create a linktoken for Plaid Link, exchange publictoken for accesstoken. Link tokens are short-lived, one-time use. Access tokens don't expire but may need updating when users change passwords.",
+      "path": "plaid-fintech/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "plaid",
+        "issue",
+        "link",
+        "item",
+        "fintech",
+        "patterns",
+        "transactions",
+        "access"
+      ]
+    },
+    {
+      "id": "stripe-automation",
+      "description": "Automate Stripe tasks via Rube MCP (Composio): customers, charges, subscriptions, invoices, products, refunds. Always search tools first for current schemas.",
+      "path": "stripe-automation/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "stripe",
+        "mcp",
+        "customer",
+        "list",
+        "amount",
+        "pitfalls",
+        "search",
+        "rube"
+      ]
+    },
+    {
       "id": "stripe-integration",
-      "description": "Stripe checkout, subscriptions, webhooks",
+      "description": "Master Stripe payment processing integration for robust, PCI-compliant payment flows including checkout, subscriptions, webhooks, and refunds.",
       "path": "stripe-integration/SKILL.md",
       "triggers": [],
       "tags": [

@@ -3,24 +3,8 @@
   "category_name": "📚 Documentation & Writing",
   "skills": [
     {
-      "id": "agents-md",
-      "description": "This skill should be used when the user asks to \"create AGENTS.md\", \"update AGENTS.md\", \"maintain agent docs\", \"set up CLAUDE.md\", or needs to keep agent instructions concise. Enforces research-backed best practices for minimal, high-signal agent documentation.",
-      "path": "agents-md/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "agents",
-        "package",
-        "manager",
-        "commands",
-        "commit",
-        "attribution",
-        "file-scoped",
-        "writing"
-      ]
-    },
-    {
       "id": "api-documentation",
-      "description": "OpenAPI specs, developer guides",
+      "description": "API documentation workflow for generating OpenAPI specs, creating developer guides, and maintaining comprehensive API documentation.",
       "path": "api-documentation/SKILL.md",
       "triggers": [],
       "tags": [
@@ -31,194 +15,109 @@
         "copy-paste",
         "api",
         "documentation",
-        "workflow"
+        "api-documenter"
       ]
     },
     {
-      "id": "api-documenter",
-      "description": "OpenAPI 3.1, interactive docs, SDKs",
-      "path": "api-documenter/SKILL.md",
+      "id": "c4-code",
+      "description": "Expert C4 Code-level documentation specialist. Analyzes code directories to create comprehensive C4 code-level documentation including function signatures, arguments, dependencies, and code structure.",
+      "path": "c4-code/SKILL.md",
       "triggers": [],
       "tags": [
-        "validation",
-        "authentication",
-        "api",
+        "dependencies",
+        "classdiagram",
+        "functions",
+        "procedural",
+        "classes",
+        "modules",
+        "functional",
+        "diagram"
+      ]
+    },
+    {
+      "id": "c4-context",
+      "description": "Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies.",
+      "path": "c4-context/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "context",
+        "external",
+        "journey",
+        "diagram",
+        "persona",
+        "feature",
         "documentation",
-        "developer",
-        "sdk",
-        "integration",
-        "openapi"
+        "features"
       ]
     },
     {
-      "id": "architecture-decision-records",
-      "description": "ADRs for technical decisions",
-      "path": "architecture-decision-records/SKILL.md",
+      "id": "code-documentation-doc-generate",
+      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "path": "code-documentation-doc-generate/SKILL.md",
       "triggers": [],
       "tags": [
-        "postgresql",
-        "adr",
-        "mongodb",
-        "decision",
-        "template",
-        "json",
-        "mysql",
-        "typescript"
+        "resources",
+        "documentation",
+        "generate",
+        "generation",
+        "context",
+        "requirements",
+        "instructions",
+        "safety"
       ]
     },
     {
-      "id": "audio-transcriber",
-      "description": "Transform audio recordings into professional Markdown documentation with intelligent summaries using LLM integration",
-      "path": "audio-transcriber/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "transcription",
-        "output",
-        "processing",
-        "audio",
-        "duration",
-        "claude",
-        "whisper",
-        "markdown"
-      ]
-    },
-    {
-      "id": "beautiful-prose",
-      "description": "Forceful prose without AI tics",
-      "path": "beautiful-prose/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "beautiful",
-        "prose",
-        "claude",
-        "filler",
-        "contains",
-        "sentence",
-        "prefer",
-        "activation"
-      ]
-    },
-    {
-      "id": "blog-writing-guide",
-      "description": "Sentry blog writing standards",
-      "path": "blog-writing-guide/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "sentry",
-        "blog",
-        "never",
-        "writing",
-        "opening",
-        "technical",
-        "title",
-        "post"
-      ]
-    },
-    {
-      "id": "coda-automation",
-      "description": "Automate Coda tasks via Rube MCP (Composio): manage docs, pages, tables, rows, formulas, permissions, and publishing. Always search tools first for current schemas.",
-      "path": "coda-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "coda",
-        "ids",
-        "docid",
-        "document",
-        "url",
-        "pagination",
-        "list"
-      ]
-    },
-    {
-      "id": "cold-email",
-      "description": "Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR outreach, personalized opening lines, subject lines, CTAs, and multi-touch follow-up sequences.",
-      "path": "cold-email/SKILL.md",
+      "id": "create-pr",
+      "description": "Alias for sentry-skills:pr-writer. Use when users explicitly ask for \"create-pr\" or reference the legacy skill name. Redirects to the canonical PR writing workflow.",
+      "path": "create-pr/SKILL.md",
       "triggers": [
-        "Write",
-        "emails",
-        "follow-up",
-        "sequences",
-        "replies."
+        "Alias",
+        "sentry-skills:pr-writer.",
+        "users",
+        "explicitly",
+        "\"create-pr\""
       ],
       "tags": [
-        "writing",
-        "cold",
-        "ask",
-        "email",
-        "subject",
-        "write",
-        "personalization",
-        "problem"
+        "create-pr",
+        "alias",
+        "pr"
       ]
     },
     {
-      "id": "content-creator",
-      "description": "Brand voice analysis, SEO, content frameworks",
-      "path": "content-creator/SKILL.md",
+      "id": "custom-debrief",
+      "description": "Custom Debrief",
+      "path": "custom-debrief/SKILL.md",
       "triggers": [],
       "tags": [
-        "content",
-        "references",
-        "metrics",
-        "seo",
-        "brand",
-        "voice",
-        "creation",
-        "social"
+        "debrief",
+        "personal",
+        "teacher",
+        "persona",
+        "tone",
+        "requirements",
+        "execution",
+        "steps"
       ]
     },
     {
-      "id": "daily-news-report",
-      "description": "Scrapes content based on a preset URL list, filters high-quality technical information, and generates daily Markdown reports.",
-      "path": "daily-news-report/SKILL.md",
+      "id": "customs-trade-compliance",
+      "description": "Codified expertise for customs documentation, tariff classification, duty optimisation, restricted party screening, and regulatory compliance across multiple jurisdictions.",
+      "path": "customs-trade-compliance/SKILL.md",
       "triggers": [],
       "tags": [
-        "phase",
-        "scraping",
-        "agent",
-        "monitoring",
-        "report",
-        "subagent",
-        "json",
-        "worker"
-      ]
-    },
-    {
-      "id": "defuddle",
-      "description": "Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or analyze, for online documentation, articles, blog posts, or any standard web page.",
-      "path": "defuddle/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "defuddle",
-        "html",
-        "usage",
-        "output",
-        "json",
-        "formats",
-        "prefer",
-        "url"
-      ]
-    },
-    {
-      "id": "docs-architect",
-      "description": "Technical documentation from codebases",
-      "path": "docs-architect/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "output",
-        "documentation",
-        "format",
-        "core",
-        "characteristics",
-        "authentication",
-        "instructions",
-        "competencies"
+        "gri",
+        "cbp",
+        "customs",
+        "compliance",
+        "fta",
+        "classification",
+        "incoterms",
+        "method"
       ]
     },
     {
       "id": "documentation",
-      "description": "API docs, architecture docs, README",
+      "description": "Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing.",
       "path": "documentation/SKILL.md",
       "triggers": [],
       "tags": [
@@ -228,179 +127,105 @@
         "actions",
         "prompts",
         "copy-paste",
-        "workflow",
-        "api"
-      ]
-    },
-    {
-      "id": "googlesheets-automation",
-      "description": "Automate Google Sheets operations (read, write, format, filter, manage spreadsheets) via Rube MCP (Composio). Read/write data, manage tabs, apply formatting, and search rows programmatically.",
-      "path": "googlesheets-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "formatting",
-        "mcp",
-        "spreadsheet_id",
-        "spreadsheetid",
-        "rows",
-        "range",
-        "filter",
-        "google"
-      ]
-    },
-    {
-      "id": "internal-comms",
-      "description": "Write internal communications such as status reports, leadership updates, 3P updates, newsletters, FAQs, incident reports, and project updates using repeatable internal formats.",
-      "path": "internal-comms/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "keywords",
-        "formatting",
-        "internal",
-        "progress",
-        "plans",
-        "problems",
-        "company",
-        "comms"
-      ]
-    },
-    {
-      "id": "internal-comms-anthropic",
-      "description": "To write internal communications, use this skill for:",
-      "path": "internal-comms-anthropic/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "keywords",
-        "formatting",
-        "internal",
-        "anthropic",
-        "progress",
-        "plans",
-        "problems",
-        "company"
-      ]
-    },
-    {
-      "id": "internal-comms-community",
-      "description": "To write internal communications, use this skill for:",
-      "path": "internal-comms-community/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "keywords",
-        "formatting",
-        "internal",
-        "progress",
-        "plans",
-        "problems",
-        "company",
-        "comms"
-      ]
-    },
-    {
-      "id": "last30days",
-      "description": "Research a topic from the last 30 days on Reddit + X + Web, become an expert, and write copy-paste-ready prompts for the user's target tool.",
-      "path": "last30days/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "claude",
-        "research",
-        "json",
-        "topic",
-        "reddit",
         "api",
-        "websearch",
-        "critical"
+        "readme"
       ]
     },
     {
-      "id": "meta-skills-guide",
-      "description": "Meta Skills Guide",
-      "path": "meta-skills-guide/SKILL.md",
+      "id": "documentation-generation-doc-generate",
+      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "path": "documentation-generation-doc-generate/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "resources",
+        "documentation",
+        "generation",
+        "generate",
+        "context",
+        "requirements",
+        "instructions",
+        "safety"
+      ]
+    },
+    {
+      "id": "documentation-templates",
+      "description": "Documentation templates and structure guidelines. README, API docs, code comments, and AI-friendly documentation.",
+      "path": "documentation-templates/SKILL.md",
       "triggers": [],
       "tags": [
         "documentation",
-        "security",
-        "formatting",
-        "core",
-        "governance",
-        "maintenance",
-        "integrations",
-        "python"
+        "template",
+        "structure",
+        "changelog",
+        "comment",
+        "templates",
+        "api",
+        "decision"
       ]
     },
     {
-      "id": "obsidian-markdown",
-      "description": "Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes.",
-      "path": "obsidian-markdown/SKILL.md",
+      "id": "employment-contract-templates",
+      "description": "Templates and patterns for creating legally sound employment documentation including contracts, offer letters, and HR policies.",
+      "path": "employment-contract-templates/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "resources",
+        "templates",
+        "employment",
+        "contract",
+        "instructions",
+        "safety",
+        "drafting",
+        "writing"
+      ]
+    },
+    {
+      "id": "finishing-a-development-branch",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "path": "finishing-a-development-branch/SKILL.md",
       "triggers": [
-        "Create",
-        "Obsidian",
-        "Flavored",
-        "Markdown",
-        "wikilinks"
+        "implementation",
+        "complete",
+        "tests",
+        "pass",
+        "decide"
       ],
       "tags": [
-        "obsidian",
-        "markdown",
-        "tags",
-        "callouts",
-        "properties",
-        "embeds",
-        "formatting",
-        "embed"
-      ]
-    },
-    {
-      "id": "odoo-orm-expert",
-      "description": "Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques.",
-      "path": "odoo-orm-expert/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "orm",
-        "odoo",
-        "sql",
-        "python",
-        "date",
-        "query",
-        "search",
-        "domain"
-      ]
-    },
-    {
-      "id": "planning-with-files",
-      "description": "Work like Manus: Use persistent markdown files as your \\\"working memory on disk.\\",
-      "path": "planning-with-files/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "read",
-        "task_plan",
-        "findings",
-        "progress",
-        "scripts",
-        "errors",
-        "pattern",
-        "planning"
-      ]
-    },
-    {
-      "id": "pr-writer",
-      "description": "Create pull requests following Sentry's engineering practices.",
-      "path": "pr-writer/SKILL.md",
-      "triggers": [],
-      "tags": [
         "branch",
-        "github",
-        "update",
-        "validation",
+        "option",
+        "merge",
+        "tests",
+        "verify",
         "base",
-        "sentry",
-        "changes",
-        "references"
+        "push",
+        "present"
+      ]
+    },
+    {
+      "id": "plan-writing",
+      "description": "Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work.",
+      "path": "plan-writing/SKILL.md",
+      "triggers": [
+        "Structured",
+        "planning",
+        "clear",
+        "breakdowns",
+        "dependencies"
+      ],
+      "tags": [
+        "principle",
+        "plan",
+        "task",
+        "verification",
+        "tasks",
+        "principles",
+        "dynamic",
+        "writing"
       ]
     },
     {
       "id": "readme",
-      "description": "Absurdly thorough README files",
+      "description": "You are an expert technical writer creating comprehensive project documentation. Your goal is to write a README.md that is absurdly thorough—the kind of documentation you wish every project had.",
       "path": "readme/SKILL.md",
       "triggers": [],
       "tags": [
@@ -415,84 +240,24 @@
       ]
     },
     {
-      "id": "sales-enablement",
-      "description": "Create sales collateral such as decks, one-pagers, objection docs, demo scripts, playbooks, and proposal templates. Use when a sales team needs assets that help reps move deals forward and close.",
-      "path": "sales-enablement/SKILL.md",
-      "triggers": [
-        "Create",
-        "sales",
-        "collateral",
-        "decks",
-        "one-pagers"
-      ],
+      "id": "reference-builder",
+      "description": "Creates exhaustive technical references and API documentation. Generates comprehensive parameter listings, configuration guides, and searchable reference materials.",
+      "path": "reference-builder/SKILL.md",
+      "triggers": [],
       "tags": [
-        "sales",
+        "documentation",
+        "reference",
         "structure",
-        "principles",
-        "persona",
-        "roi",
-        "deck",
-        "objection",
-        "buyer"
-      ]
-    },
-    {
-      "id": "scientific-writing",
-      "description": "Deep research with verified citations",
-      "path": "scientific-writing/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "formatting",
-        "references",
-        "writing",
-        "scientific",
-        "assets",
-        "prisma",
-        "scientific_report",
-        "professional"
-      ]
-    },
-    {
-      "id": "seo-content-writer",
-      "description": "Writes SEO-optimized content based on provided keywords and topic briefs. Creates engaging, comprehensive content following best practices. Use PROACTIVELY for content creation tasks.",
-      "path": "seo-content-writer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "content",
-        "focus",
-        "instructions",
-        "areas",
-        "creation",
-        "framework",
-        "output",
-        "seo"
-      ]
-    },
-    {
-      "id": "skill-writer",
-      "description": "Create and improve agent skills following the Agent Skills specification. Use when asked to create, write, or update skills.",
-      "path": "skill-writer/SKILL.md",
-      "triggers": [
-        "Create",
-        "improve",
-        "agent",
-        "skills",
-        "following"
-      ],
-      "tags": [
-        "references",
         "validation",
-        "read",
-        "iteration",
-        "outcomes",
-        "update",
-        "iterate",
-        "writer"
+        "guides",
+        "format",
+        "feature",
+        "retrieval"
       ]
     },
     {
       "id": "wiki-architect",
-      "description": "Wiki catalogues from codebases",
+      "description": "You are a documentation architect that produces structured wiki catalogues and onboarding guides from codebases.",
       "path": "wiki-architect/SKILL.md",
       "triggers": [],
       "tags": [
@@ -507,25 +272,25 @@
       ]
     },
     {
-      "id": "wiki-changelog",
-      "description": "Generate structured changelogs from git history. Use when user asks \\\"what changed recently\\\", \\\"generate a changelog\\\", \\\"summarize commits\\\" or user wants to understand recent development activity.",
-      "path": "wiki-changelog/SKILL.md",
+      "id": "wiki-onboarding",
+      "description": "Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase. Use when user asks for onboarding docs or getting-started guides, user runs /deep-wiki, or user wants to help new team members understand a codebase.",
+      "path": "wiki-onboarding/SKILL.md",
       "triggers": [
         "Generate",
-        "structured",
-        "changelogs",
-        "history.",
-        "\\\"what"
+        "complementary",
+        "onboarding",
+        "documents",
+        "together"
       ],
       "tags": [
+        "onboarding",
+        "cargo",
+        "sections",
+        "rules",
         "wiki",
-        "changelog",
-        "refactoring",
-        "procedure",
-        "constraints",
-        "generate",
-        "examine",
-        "group"
+        "language",
+        "mermaid",
+        "generator"
       ]
     },
     {
@@ -542,28 +307,6 @@
         "writer",
         "mandatory",
         "diagrams"
-      ]
-    },
-    {
-      "id": "wiki-researcher",
-      "description": "You are an expert software engineer and systems analyst. Use when user asks \\\"how does X work\\\" with expectation of depth, user wants to understand a complex system spanning many files, or user asks for architectural analysis or pattern investigation.",
-      "path": "wiki-researcher/SKILL.md",
-      "triggers": [
-        "expert",
-        "software",
-        "engineer",
-        "systems",
-        "analyst."
-      ],
-      "tags": [
-        "wiki",
-        "researcher",
-        "evidence",
-        "inference",
-        "core",
-        "invariants",
-        "depth",
-        "breadth"
       ]
     }
   ]

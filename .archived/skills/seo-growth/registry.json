@@ -3,26 +3,70 @@
   "category_name": "🔎 SEO & Growth",
   "skills": [
     {
-      "id": "brevo-automation",
-      "description": "Automate Brevo (formerly Sendinblue) email marketing operations through Composio's Brevo toolkit via Rube MCP.",
-      "path": "brevo-automation/SKILL.md",
+      "id": "aws-cost-optimizer",
+      "description": "Comprehensive AWS cost analysis and optimization recommendations using AWS CLI and Cost Explorer",
+      "path": "aws-cost-optimizer/SKILL.md",
       "triggers": [],
       "tags": [
-        "mcp",
-        "brevo",
-        "pagination",
-        "sender",
-        "email",
-        "html",
-        "htmlcontent",
-        "htmlurl"
+        "aws",
+        "cost",
+        "optimization",
+        "ebs",
+        "cli",
+        "kiro",
+        "unused",
+        "resources"
+      ]
+    },
+    {
+      "id": "cloudformation-best-practices",
+      "description": "CloudFormation template optimization, nested stacks, drift detection, and production-ready patterns. Use when writing or reviewing CF templates.",
+      "path": "cloudformation-best-practices/SKILL.md",
+      "triggers": [
+        "CloudFormation",
+        "template",
+        "optimization",
+        "nested",
+        "stacks"
+      ],
+      "tags": [
+        "yaml",
+        "vpc",
+        "json",
+        "troubleshooting",
+        "cloudformation",
+        "sub",
+        "environment",
+        "conditions"
+      ]
+    },
+    {
+      "id": "content-creator",
+      "description": "Professional-grade brand voice analysis, SEO optimization, and platform-specific content frameworks.",
+      "path": "content-creator/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "content",
+        "references",
+        "metrics",
+        "seo",
+        "brand",
+        "voice",
+        "creation",
+        "social"
       ]
     },
     {
       "id": "content-strategy",
-      "description": "Topic clusters, editorial roadmap",
+      "description": "Plan a content strategy, topic clusters, editorial roadmap, and content mix for traffic, authority, and lead generation. Use when deciding what to publish, what topics to prioritize, or how to structure a content program.",
       "path": "content-strategy/SKILL.md",
-      "triggers": [],
+      "triggers": [
+        "content",
+        "strategy",
+        "topic",
+        "clusters",
+        "editorial"
+      ],
       "tags": [
         "content",
         "stage",
@@ -35,115 +79,121 @@
       ]
     },
     {
-      "id": "email-sequence",
-      "description": "You are an expert in email marketing and automation. Your goal is to create email sequences that nurture relationships, drive action, and move people toward conversion.",
-      "path": "email-sequence/SKILL.md",
+      "id": "context-optimization",
+      "description": "Context optimization extends the effective capacity of limited context windows through strategic compression, masking, caching, and partitioning. The goal is not to magically increase context windows but to make better use of available capacity.",
+      "path": "context-optimization/SKILL.md",
       "triggers": [],
       "tags": [
-        "email",
-        "sequence",
-        "day",
-        "emails",
-        "trigger",
-        "goal",
-        "cta",
-        "format"
+        "optimization",
+        "context",
+        "caching",
+        "compaction",
+        "observation",
+        "masking",
+        "partitioning",
+        "techniques"
       ]
     },
     {
-      "id": "growth-engine",
-      "description": "Growth hacking, SEO, ASO, viral loops",
-      "path": "growth-engine/SKILL.md",
+      "id": "cpp-pro",
+      "description": "Write idiomatic C++ code with modern features, RAII, smart pointers, and STL algorithms. Handles templates, move semantics, and performance optimization.",
+      "path": "cpp-pro/SKILL.md",
       "triggers": [],
       "tags": [
-        "auri",
-        "claude",
-        "para",
-        "viral",
-        "alexa",
-        "seo",
-        "meta",
-        "crescimento"
+        "cpp",
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "pro",
+        "resources",
+        "modern"
       ]
     },
     {
-      "id": "marketing-ideas",
-      "description": "SaaS marketing strategies",
-      "path": "marketing-ideas/SKILL.md",
+      "id": "git-pr-workflows-pr-enhance",
+      "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
+      "path": "git-pr-workflows-pr-enhance/SKILL.md",
       "triggers": [],
       "tags": [
-        "scoring",
-        "marketing",
-        "mfs",
-        "idea",
-        "feasibility",
-        "score",
-        "seo",
-        "rules"
+        "resources",
+        "context",
+        "pull",
+        "request",
+        "enhancement",
+        "prs",
+        "requirements",
+        "instructions"
       ]
     },
     {
-      "id": "seo",
-      "description": "Full SEO audit: technical, on-page, schema",
-      "path": "seo/SKILL.md",
+      "id": "istio-traffic-management",
+      "description": "Comprehensive guide to Istio traffic management for production service mesh deployments.",
+      "path": "istio-traffic-management/SKILL.md",
       "triggers": [],
       "tags": [
-        "seo",
-        "references",
-        "reference",
-        "detection",
-        "quality",
-        "analysis",
-        "quick",
-        "health"
+        "template",
+        "traffic",
+        "routing",
+        "virtualservice",
+        "resources",
+        "istio",
+        "don",
+        "gateway"
       ]
     },
     {
-      "id": "seo-audit",
-      "description": "Crawlability, indexation, rankings",
-      "path": "seo-audit/SKILL.md",
+      "id": "quant-analyst",
+      "description": "Build financial models, backtest trading strategies, and analyze market data. Implements risk metrics, portfolio optimization, and statistical arbitrage.",
+      "path": "quant-analyst/SKILL.md",
       "triggers": [],
       "tags": [
-        "seo",
-        "health",
-        "audit",
-        "category",
-        "scoring",
-        "index",
-        "score",
-        "content"
+        "instructions",
+        "focus",
+        "areas",
+        "output",
+        "quant",
+        "analyst",
+        "resources",
+        "trading"
       ]
     },
     {
-      "id": "seo-competitor-pages",
-      "description": ">",
-      "path": "seo-competitor-pages/SKILL.md",
-      "triggers": [],
+      "id": "semgrep-rule-variant-creator",
+      "description": "Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an existing rule and target languages as input, produces independent rule+test directories for each language.",
+      "path": "semgrep-rule-variant-creator/SKILL.md",
+      "triggers": [
+        "Creates",
+        "language",
+        "variants",
+        "existing",
+        "Semgrep"
+      ],
       "tags": [
-        "comparison",
-        "pages",
-        "product",
-        "schema",
-        "feature",
-        "competitor",
-        "alternatives",
-        "page"
+        "yaml",
+        "phase",
+        "validation",
+        "rule",
+        "semgrep",
+        "creation",
+        "test",
+        "java"
       ]
     },
     {
-      "id": "seo-content",
-      "description": "Content quality and E-E-A-T analysis",
-      "path": "seo-content/SKILL.md",
+      "id": "seo-content-writer",
+      "description": "Writes SEO-optimized content based on provided keywords and topic briefs. Creates engaging, comprehensive content following best practices. Use PROACTIVELY for content creation tasks.",
+      "path": "seo-content-writer/SKILL.md",
       "triggers": [],
       "tags": [
         "content",
-        "geo",
-        "google",
-        "quality",
-        "e-e-a-t",
-        "analysis",
-        "citation",
-        "sept"
+        "focus",
+        "instructions",
+        "areas",
+        "creation",
+        "framework",
+        "output",
+        "seo"
       ]
     },
     {
@@ -163,147 +213,89 @@
       ]
     },
     {
-      "id": "seo-geo",
-      "description": "AI Overviews, ChatGPT, Perplexity optimization",
-      "path": "seo-geo/SKILL.md",
+      "id": "seo-keyword-strategist",
+      "description": "Analyzes keyword usage in provided content, calculates density, suggests semantic variations and LSI keywords based on the topic. Prevents over-optimization. Use PROACTIVELY for content optimization.",
+      "path": "seo-keyword-strategist/SKILL.md",
       "triggers": [],
       "tags": [
-        "openai",
-        "rendering",
-        "geo",
-        "brand",
-        "optimization",
-        "chatgpt",
-        "perplexity",
-        "reddit"
+        "keyword",
+        "entity",
+        "focus",
+        "density",
+        "analysis",
+        "lsi",
+        "instructions",
+        "areas"
       ]
     },
     {
-      "id": "seo-hreflang",
-      "description": ">",
-      "path": "seo-hreflang/SKILL.md",
+      "id": "vexor",
+      "description": "Vector-powered CLI for semantic file search with a Claude/Codex skill",
+      "path": "vexor/SKILL.md",
       "triggers": [],
       "tags": [
-        "html",
+        "vexor",
+        "claude",
+        "overview",
+        "instructions",
+        "vector",
+        "cli",
+        "codex",
+        "vector-powered"
+      ]
+    },
+    {
+      "id": "vexor-cli",
+      "description": "Semantic file discovery via `vexor`. Use whenever locating where something is implemented/loaded/defined in a medium or large repo, or when the file location is unclear. Prefer this over manual browsing.",
+      "path": "vexor-cli/SKILL.md",
+      "triggers": [
+        "Semantic",
+        "discovery",
+        "`vexor`.",
+        "whenever",
+        "locating"
+      ],
+      "tags": [
+        "vexor",
+        "cli",
+        "javascript",
         "validation",
-        "http",
-        "hreflang",
-        "https",
-        "xml",
-        "method",
-        "tags"
+        "find",
+        "search",
+        "config",
+        "exclude"
       ]
     },
     {
-      "id": "seo-images",
-      "description": ">",
-      "path": "seo-images/SKILL.md",
+      "id": "wireshark-analysis",
+      "description": "Execute comprehensive network traffic analysis using Wireshark to capture, filter, and examine network packets for security investigations, performance optimization, and troubleshooting.",
+      "path": "wireshark-analysis/SKILL.md",
       "triggers": [],
       "tags": [
-        "images",
-        "lazy-loading",
-        "css",
-        "format",
-        "lcp",
-        "image",
-        "jpeg",
-        "cdn"
-      ]
-    },
-    {
-      "id": "seo-page",
-      "description": ">",
-      "path": "seo-page/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "html",
-        "page",
-        "schema",
-        "seo",
-        "json",
-        "authentication",
-        "content",
-        "technical"
-      ]
-    },
-    {
-      "id": "seo-plan",
-      "description": ">",
-      "path": "seo-plan/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "phase",
-        "seo",
-        "content",
-        "weeks",
-        "foundation",
-        "assets",
-        "generic",
-        "competitive"
-      ]
-    },
-    {
-      "id": "seo-schema",
-      "description": "Schema.org structured data",
-      "path": "seo-schema/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "json",
-        "validation",
-        "schema",
-        "recommend",
-        "url",
-        "generation",
-        "deprecated",
-        "organization"
-      ]
-    },
-    {
-      "id": "seo-sitemap",
-      "description": ">",
-      "path": "seo-sitemap/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "sitemap",
-        "urls",
-        "xml",
-        "validation",
+        "tcp",
+        "dns",
         "http",
         "analysis",
-        "generation",
-        "mode"
+        "filters",
+        "traffic",
+        "capture",
+        "wireshark"
       ]
     },
     {
-      "id": "seo-structure-architect",
-      "description": "Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization.",
-      "path": "seo-structure-architect/SKILL.md",
+      "id": "zeroize-audit",
+      "description": "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with assembly-level analysis, and control-flow verification. Use for auditing C/C++/Rust code handling secrets, keys, passwords, or other sensitive data.",
+      "path": "zeroize-audit/SKILL.md",
       "triggers": [],
       "tags": [
-        "schema",
-        "focus",
-        "header",
-        "markup",
-        "instructions",
-        "areas",
-        "tag",
-        "siloing"
-      ]
-    },
-    {
-      "id": "seo-technical",
-      "description": "Crawlability, Core Web Vitals, robots.txt",
-      "path": "seo-technical/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "javascript",
-        "indexing",
-        "html",
-        "rendering",
-        "seo",
-        "google",
-        "openai",
-        "priority"
+        "rust",
+        "mcp",
+        "json",
+        "phase",
+        "validation",
+        "poc",
+        "cargo",
+        "wave"
       ]
     }
   ]

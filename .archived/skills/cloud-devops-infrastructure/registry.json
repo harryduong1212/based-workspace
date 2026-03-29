@@ -3,120 +3,30 @@
   "category_name": "☁️ Cloud, DevOps & Infrastructure",
   "skills": [
     {
-      "id": "amazon-alexa",
-      "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB, Polly, Transcribe, Lex, Smart Home).",
-      "path": "amazon-alexa/SKILL.md",
-      "triggers": [],
+      "id": "acceptance-orchestrator",
+      "description": "Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention.",
+      "path": "acceptance-orchestrator/SKILL.md",
+      "triggers": [
+        "coding",
+        "should",
+        "driven",
+        "end-to-end",
+        "issue"
+      ],
       "tags": [
-        "claude",
-        "aws",
-        "alexa",
-        "fase",
-        "python",
-        "dynamodb",
-        "lambda",
-        "smart"
-      ]
-    },
-    {
-      "id": "apify-actorization",
-      "description": "Actorization converts existing software into reusable serverless applications compatible with the Apify platform. Actors are programs packaged as Docker images that accept well-defined JSON input, perform an action, and optionally produce structured JSON output.",
-      "path": "apify-actorization/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "python",
-        "actor",
-        "apify",
-        "mcp",
-        "javascript",
-        "actorization",
-        "json",
-        "checklist"
-      ]
-    },
-    {
-      "id": "auri-core",
-      "description": "Auri: assistente de voz inteligente (Alexa + Claude claude-opus-4-20250805). Visao do produto, persona Vitoria Neural, stack AWS, modelo Free/Pro/Business/Enterprise, roadmap 4 fases, GTM, north star WAC e analise competitiva.",
-      "path": "auri-core/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "claude",
-        "dynamodb",
-        "auri",
-        "echo",
-        "aws",
-        "fase",
-        "wac",
-        "alexa"
-      ]
-    },
-    {
-      "id": "aws-cost-cleanup",
-      "description": "Automated cleanup of unused AWS resources to reduce costs",
-      "path": "aws-cost-cleanup/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "aws",
-        "cleanup",
-        "cost",
-        "savings",
-        "ebs",
-        "elastic",
-        "calculate",
-        "integration"
-      ]
-    },
-    {
-      "id": "aws-cost-optimizer",
-      "description": "Comprehensive AWS cost analysis and optimization recommendations using AWS CLI and Cost Explorer",
-      "path": "aws-cost-optimizer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "aws",
-        "cost",
-        "optimization",
-        "ebs",
-        "cli",
-        "kiro",
-        "unused",
-        "resources"
-      ]
-    },
-    {
-      "id": "aws-penetration-testing",
-      "description": "Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations.",
-      "path": "aws-penetration-testing/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "list",
-        "aws",
-        "access",
-        "lambda",
-        "bucket",
-        "admin",
-        "ssrf",
-        "credentials"
-      ]
-    },
-    {
-      "id": "aws-serverless",
-      "description": "Lambda functions with error handling",
-      "path": "aws-serverless/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "aws",
-        "json",
-        "lambda",
-        "logging",
-        "handler",
-        "python",
-        "http",
-        "pattern"
+        "acceptance",
+        "accepted",
+        "orchestrator",
+        "human",
+        "dod",
+        "escalated",
+        "stop",
+        "create-issue-gate"
       ]
     },
     {
       "id": "aws-skills",
-      "description": "AWS dev with infrastructure automation",
+      "description": "AWS development with infrastructure automation and cloud architecture patterns",
       "path": "aws-skills/SKILL.md",
       "triggers": [],
       "tags": [
@@ -128,6 +38,22 @@
         "cloud",
         "architecture",
         "patterns"
+      ]
+    },
+    {
+      "id": "azd-deployment",
+      "description": "Deploy containerized frontend + backend applications to Azure Container Apps with remote builds, managed identity, and idempotent infrastructure.",
+      "path": "azd-deployment/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "azure",
+        "environment",
+        "configuration",
+        "container",
+        "deployment",
+        "bicep",
+        "rbac",
+        "apps"
       ]
     },
     {
@@ -153,24 +79,30 @@
       ]
     },
     {
-      "id": "cloud-architect",
-      "description": "Multi-cloud, IaC, FinOps",
-      "path": "cloud-architect/SKILL.md",
-      "triggers": [],
+      "id": "closed-loop-delivery",
+      "description": "Use when a coding task must be completed against explicit acceptance criteria with minimal user re-intervention across implementation, review feedback, deployment, and runtime verification.",
+      "path": "closed-loop-delivery/SKILL.md",
+      "triggers": [
+        "coding",
+        "completed",
+        "against",
+        "explicit",
+        "acceptance"
+      ],
       "tags": [
-        "azure",
-        "aws",
-        "monitoring",
-        "gcp",
-        "observability",
-        "cloud",
-        "kubernetes",
-        "infrastructure"
+        "gate",
+        "dod",
+        "dev",
+        "delivery",
+        "stop",
+        "issue",
+        "polling",
+        "overview"
       ]
     },
     {
       "id": "cloud-devops",
-      "description": "AWS/Azure/GCP, K8s, Terraform, CI/CD",
+      "description": "Cloud infrastructure and DevOps workflow covering AWS, Azure, GCP, Kubernetes, Terraform, CI/CD, monitoring, and cloud-native development.",
       "path": "cloud-devops/SKILL.md",
       "triggers": [],
       "tags": [
@@ -185,41 +117,51 @@
       ]
     },
     {
-      "id": "cloudformation-best-practices",
-      "description": "CloudFormation template optimization, nested stacks, drift detection, and production-ready patterns. Use when writing or reviewing CF templates.",
-      "path": "cloudformation-best-practices/SKILL.md",
-      "triggers": [
-        "CloudFormation",
-        "template",
-        "optimization",
-        "nested",
-        "stacks"
-      ],
-      "tags": [
-        "yaml",
-        "vpc",
-        "json",
-        "troubleshooting",
-        "cloudformation",
-        "sub",
-        "environment",
-        "conditions"
-      ]
-    },
-    {
-      "id": "deployment-engineer",
-      "description": "CI/CD pipelines, GitOps, automation",
-      "path": "deployment-engineer/SKILL.md",
+      "id": "database-migrations-migration-observability",
+      "description": "Migration monitoring, CDC, and observability infrastructure",
+      "path": "database-migrations-migration-observability/SKILL.md",
       "triggers": [],
       "tags": [
         "monitoring",
         "observability",
-        "kubernetes",
         "alerting",
+        "mongodb",
+        "migration",
+        "integration",
+        "migrations",
+        "counter"
+      ]
+    },
+    {
+      "id": "deployment-procedures",
+      "description": "Production deployment principles and decision-making. Safe deployment workflows, rollback strategies, and verification. Teaches thinking, not scripts.",
+      "path": "deployment-procedures/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "rollback",
+        "principles",
         "deployment",
-        "gitops",
-        "advanced",
-        "security"
+        "monitoring",
+        "platform",
+        "procedures",
+        "vercel",
+        "netlify"
+      ]
+    },
+    {
+      "id": "deployment-validation-config-validate",
+      "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
+      "path": "deployment-validation-config-validate/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "validation",
+        "configuration",
+        "json",
+        "dict",
+        "list",
+        "schema",
+        "analysis",
+        "migration"
       ]
     },
     {
@@ -240,7 +182,7 @@
     },
     {
       "id": "docker-expert",
-      "description": "Container optimization, security, orchestration",
+      "description": "You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices.",
       "path": "docker-expert/SKILL.md",
       "triggers": [],
       "tags": [
@@ -255,40 +197,40 @@
       ]
     },
     {
-      "id": "gcp-cloud-run",
-      "description": "When to use: ['Web applications and APIs', 'Need any runtime or library', 'Complex services with multiple endpoints', 'Stateless containerized workloads']",
-      "path": "gcp-cloud-run/SKILL.md",
+      "id": "expo-deployment",
+      "description": "Deploy Expo apps to production",
+      "path": "expo-deployment/SKILL.md",
       "triggers": [],
       "tags": [
-        "cloud",
-        "cpu",
-        "http",
-        "deploy",
-        "pattern",
-        "function",
-        "copy",
-        "gcp"
+        "expo",
+        "deployment",
+        "deploying",
+        "app",
+        "store",
+        "ota",
+        "updates",
+        "configure"
       ]
     },
     {
-      "id": "github-actions-templates",
-      "description": "Production GitHub Actions workflows",
-      "path": "github-actions-templates/SKILL.md",
+      "id": "gitlab-ci-patterns",
+      "description": "Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.",
+      "path": "gitlab-ci-patterns/SKILL.md",
       "triggers": [],
       "tags": [
-        "github",
-        "kubernetes",
-        "pattern",
-        "workflow",
+        "gitlab",
+        "caching",
+        "cache",
         "docker",
-        "assets",
-        "deploy",
-        "actions"
+        "terraform",
+        "pipeline",
+        "security",
+        "patterns"
       ]
     },
     {
       "id": "gitops-workflow",
-      "description": "ArgoCD and Flux for K8s",
+      "description": "Complete guide to implementing GitOps workflows with ArgoCD and Flux for automated Kubernetes deployments.",
       "path": "gitops-workflow/SKILL.md",
       "triggers": [],
       "tags": [
@@ -300,22 +242,6 @@
         "install",
         "yaml",
         "secrets"
-      ]
-    },
-    {
-      "id": "grafana-dashboards",
-      "description": "Production Grafana dashboards",
-      "path": "grafana-dashboards/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "monitoring",
-        "dashboard",
-        "provisioning",
-        "assets",
-        "panel",
-        "variables",
-        "grafana",
-        "dashboards"
       ]
     },
     {
@@ -367,40 +293,8 @@
       ]
     },
     {
-      "id": "hybrid-cloud-networking",
-      "description": "Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute.",
-      "path": "hybrid-cloud-networking/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "aws",
-        "azure",
-        "vpn",
-        "routing",
-        "hybrid",
-        "cloud",
-        "gcp",
-        "connect"
-      ]
-    },
-    {
-      "id": "ilya-sutskever",
-      "description": "Agente que simula Ilya Sutskever — co-fundador da OpenAI, ex-Chief Scientist, fundador da SSI. Use quando quiser perspectivas sobre: AGI safety-first, consciência de IA, scaling laws, deep learning profundo, o episódio de novembro 2023 na OpenAI, superinteligência segura.",
-      "path": "ilya-sutskever/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "openai",
-        "ilya",
-        "que",
-        "como",
-        "hinton",
-        "sutskever",
-        "isso",
-        "altman"
-      ]
-    },
-    {
       "id": "incident-responder",
-      "description": "Rapid problem resolution, observability",
+      "description": "Expert SRE incident responder specializing in rapid problem resolution, modern observability, and comprehensive incident management.",
       "path": "incident-responder/SKILL.md",
       "triggers": [],
       "tags": [
@@ -412,6 +306,22 @@
         "immediate",
         "alerting",
         "modern"
+      ]
+    },
+    {
+      "id": "inngest",
+      "description": "You are an Inngest expert who builds reliable background processing without managing infrastructure. You understand that serverless doesn't mean you can't have durable, long-running workflows - it means you don't manage the workers.",
+      "path": "inngest/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "inngest",
+        "patterns",
+        "functions",
+        "steps",
+        "event",
+        "integration",
+        "capabilities",
+        "basic"
       ]
     },
     {
@@ -448,7 +358,7 @@
     },
     {
       "id": "kubernetes-architect",
-      "description": "Cloud-native K8s, ArgoCD/Flux",
+      "description": "Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration.",
       "path": "kubernetes-architect/SKILL.md",
       "triggers": [],
       "tags": [
@@ -464,7 +374,7 @@
     },
     {
       "id": "kubernetes-deployment",
-      "description": "Helm charts, service mesh, production K8s",
+      "description": "Kubernetes deployment workflow for container orchestration, Helm charts, service mesh, and production-ready K8s configurations.",
       "path": "kubernetes-deployment/SKILL.md",
       "triggers": [],
       "tags": [
@@ -474,8 +384,8 @@
         "prompts",
         "kubernetes",
         "copy-paste",
-        "workflow",
-        "deployment"
+        "deployment",
+        "monitoring"
       ]
     },
     {
@@ -495,67 +405,19 @@
       ]
     },
     {
-      "id": "loki-mode",
-      "description": "Version 2.35.0 | PRD to Production | Zero Human Intervention > Research-enhanced: OpenAI SDK, DeepMind, Anthropic, AWS Bedrock, Agent SDK, HN Production (2025)",
-      "path": "loki-mode/SKILL.md",
+      "id": "makepad-deployment",
+      "description": "|",
+      "path": "makepad-deployment/SKILL.md",
       "triggers": [],
       "tags": [
-        "references",
-        "task",
-        "anthropic",
-        "routing",
-        "openai",
-        "playwright",
-        "mcp",
-        "mode"
-      ]
-    },
-    {
-      "id": "network-engineer",
-      "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
-      "path": "network-engineer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "dns",
-        "monitoring",
-        "network",
-        "azure",
-        "http",
-        "aws",
-        "gcp",
-        "kubernetes"
-      ]
-    },
-    {
-      "id": "observability-engineer",
-      "description": "Monitoring, logging, tracing, SLI/SLO",
-      "path": "observability-engineer/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "monitoring",
-        "observability",
-        "tracing",
-        "alerting",
-        "aws",
-        "logging",
-        "validation",
-        "integration"
-      ]
-    },
-    {
-      "id": "odoo-backup-strategy",
-      "description": "Complete Odoo backup and restore strategy: database dumps, filestore backup, automated scheduling, cloud storage upload, and tested restore procedures.",
-      "path": "odoo-backup-strategy/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "odoo",
-        "backup",
-        "filestore",
-        "restore",
-        "database",
-        "add",
-        "date",
-        "recreate"
+        "install",
+        "cargo",
+        "github",
+        "packaging",
+        "provisioning",
+        "makepad",
+        "resources",
+        "android"
       ]
     },
     {
@@ -575,35 +437,57 @@
       ]
     },
     {
-      "id": "secrets-management",
-      "description": "Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets Manager, and other tools.",
-      "path": "secrets-management/SKILL.md",
-      "triggers": [],
+      "id": "shellcheck-configuration",
+      "description": "Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.",
+      "path": "shellcheck-configuration/SKILL.md",
+      "triggers": [
+        "Master",
+        "ShellCheck",
+        "static",
+        "analysis",
+        "configuration"
+      ],
       "tags": [
-        "aws",
-        "secrets",
-        "github",
-        "vault",
-        "secret",
-        "gitlab",
-        "manager",
-        "deploying"
+        "shellcheck",
+        "configuration",
+        "disable",
+        "output",
+        "instead",
+        "shell",
+        "problem",
+        "solution"
       ]
     },
     {
-      "id": "service-mesh-expert",
-      "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con",
-      "path": "service-mesh-expert/SKILL.md",
+      "id": "sred-project-organizer",
+      "description": "Take a list of projects and their related documentation, and organize them into the SRED format for submission.",
+      "path": "sred-project-organizer/SKILL.md",
       "triggers": [],
       "tags": [
-        "observability",
-        "service",
-        "mesh",
-        "instructions",
-        "capabilities",
-        "workflow",
-        "kubernetes",
-        "routing"
+        "github",
+        "sred",
+        "notion",
+        "summary",
+        "linear",
+        "uncertainty",
+        "sredable",
+        "mcp"
+      ]
+    },
+    {
+      "id": "sred-work-summary",
+      "description": "Go back through the previous year of work and create a Notion doc that groups relevant links into projects that can then be documented as SRED projects.",
+      "path": "sred-work-summary/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "github",
+        "notion",
+        "mcp",
+        "summary",
+        "linear",
+        "prs",
+        "find",
+        "sred"
       ]
     },
     {
@@ -630,7 +514,7 @@
     },
     {
       "id": "terraform-infrastructure",
-      "description": "Terraform for cloud resources",
+      "description": "Terraform infrastructure as code workflow for provisioning cloud resources, creating reusable modules, and managing infrastructure at scale.",
       "path": "terraform-infrastructure/SKILL.md",
       "triggers": [],
       "tags": [
@@ -641,12 +525,44 @@
         "prompts",
         "copy-paste",
         "provisioning",
-        "workflow"
+        "terraform-specialist"
+      ]
+    },
+    {
+      "id": "terraform-module-library",
+      "description": "Production-ready Terraform module patterns for AWS, Azure, and GCP infrastructure.",
+      "path": "terraform-module-library/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "terraform",
+        "module",
+        "aws",
+        "validation",
+        "vpc",
+        "azure",
+        "gcp",
+        "references"
+      ]
+    },
+    {
+      "id": "terraform-skill",
+      "description": "Terraform infrastructure as code best practices",
+      "path": "terraform-skill/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "terraform",
+        "validation",
+        "module",
+        "opentofu",
+        "claude",
+        "security",
+        "version",
+        "structure"
       ]
     },
     {
       "id": "terraform-specialist",
-      "description": "Advanced IaC, state management",
+      "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns.",
       "path": "terraform-specialist/SKILL.md",
       "triggers": [],
       "tags": [
@@ -661,67 +577,79 @@
       ]
     },
     {
-      "id": "vibe-code-auditor",
-      "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, and production risks.",
-      "path": "vibe-code-auditor/SKILL.md",
+      "id": "unity-developer",
+      "description": "Build Unity games with optimized C# scripts, efficient rendering, and proper asset management. Masters Unity 6 LTS, URP/HDRP pipelines, and cross-platform deployment.",
+      "path": "unity-developer/SKILL.md",
       "triggers": [],
       "tags": [
-        "validation",
-        "critical",
-        "sql",
+        "unity",
+        "rendering",
+        "advanced",
+        "streaming",
+        "game",
+        "optimization",
+        "audio",
+        "asset"
+      ]
+    },
+    {
+      "id": "upstash-qstash",
+      "description": "You are an Upstash QStash expert who builds reliable serverless messaging without infrastructure management. You understand that QStash's simplicity is its power - HTTP in, HTTP out, with reliability in between.",
+      "path": "upstash-qstash/SKILL.md",
+      "triggers": [],
+      "tags": [
         "http",
-        "observability",
-        "fix",
-        "quick",
-        "issues"
+        "qstash",
+        "endpoints",
+        "signature",
+        "verification",
+        "upstash",
+        "patterns",
+        "message"
       ]
     },
     {
-      "id": "web-security-testing",
-      "description": "Web application security testing workflow for OWASP Top 10 vulnerabilities including injection, XSS, authentication flaws, and access control issues.",
-      "path": "web-security-testing/SKILL.md",
-      "triggers": [],
+      "id": "vector-index-tuning",
+      "description": "Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.",
+      "path": "vector-index-tuning/SKILL.md",
+      "triggers": [
+        "Optimize",
+        "vector",
+        "index",
+        "performance",
+        "latency"
+      ],
       "tags": [
-        "authentication",
-        "phase",
-        "invoke",
-        "actions",
-        "prompts",
-        "owasp",
-        "testing",
-        "copy-paste"
+        "vector",
+        "resources",
+        "tuning",
+        "index",
+        "instructions",
+        "safety",
+        "retrieval",
+        "validate"
       ]
     },
     {
-      "id": "whatsapp-cloud-api",
-      "description": "Integracao com WhatsApp Business Cloud API (Meta). Mensagens, templates, webhooks HMAC-SHA256, automacao de atendimento. Boilerplates Node.js e Python.",
-      "path": "whatsapp-cloud-api/SKILL.md",
-      "triggers": [],
+      "id": "vercel-deployment",
+      "description": "Expert knowledge for deploying to Vercel with Next.js Use when: vercel, deploy, deployment, hosting, production.",
+      "path": "vercel-deployment/SKILL.md",
+      "triggers": [
+        "Expert",
+        "knowledge",
+        "deploying",
+        "Vercel",
+        "Next.js"
+      ],
       "tags": [
-        "python",
-        "whatsapp",
-        "references",
-        "api",
-        "claude",
-        "typescript",
-        "mensagem",
-        "authorization"
-      ]
-    },
-    {
-      "id": "x-twitter-scraper",
-      "description": "X (Twitter) data platform skill — tweet search, user lookup, follower extraction, engagement metrics, giveaway draws, monitoring, webhooks, 19 extraction tools, MCP server.",
-      "path": "x-twitter-scraper/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "api",
-        "xquik",
-        "claude",
-        "monitoring",
-        "gemini",
-        "twitter",
-        "scraper"
+        "vercel",
+        "deploying",
+        "deployment",
+        "environment",
+        "edge",
+        "serverless",
+        "preview",
+        "patterns"
       ]
     }
   ]

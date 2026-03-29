@@ -3,760 +3,206 @@
   "category_name": "🛠️ Workflow & Automation Platforms",
   "skills": [
     {
-      "id": "activecampaign-automation",
-      "description": "Automate ActiveCampaign tasks via Rube MCP (Composio): manage contacts, tags, list subscriptions, automation enrollment, and tasks. Always search tools first for current schemas.",
-      "path": "activecampaign-automation/SKILL.md",
+      "id": "agentic-actions-auditor",
+      "description": ">",
+      "path": "agentic-actions-auditor/SKILL.md",
       "triggers": [],
       "tags": [
-        "contact",
-        "mcp",
-        "activecampaign",
-        "email",
-        "contact_id",
-        "add",
-        "tags",
-        "active_campaign_find_contact"
+        "github",
+        "yaml",
+        "claude",
+        "gemini",
+        "openai",
+        "vector",
+        "action",
+        "inference"
       ]
     },
     {
-      "id": "amplitude-automation",
-      "description": "Automate Amplitude tasks via Rube MCP (Composio): events, user activity, cohorts, user identification. Always search tools first for current schemas.",
-      "path": "amplitude-automation/SKILL.md",
+      "id": "conductor-implement",
+      "description": "Execute tasks from a track's implementation plan following TDD workflow",
+      "path": "conductor-implement/SKILL.md",
       "triggers": [],
       "tags": [
-        "amplitude",
-        "mcp",
-        "user_id",
-        "device_id",
-        "identify",
-        "pitfalls",
-        "rube",
+        "track",
+        "conductor",
+        "task",
+        "update",
+        "tdd",
+        "completion",
+        "failure",
+        "phase"
+      ]
+    },
+    {
+      "id": "conductor-status",
+      "description": "Display project status, active tracks, and next actions",
+      "path": "conductor-status/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "phase",
+        "conductor",
+        "task",
+        "status",
+        "track",
+        "progress",
+        "rendering",
+        "tracks"
+      ]
+    },
+    {
+      "id": "custom-video-analyst",
+      "description": "Custom Video Analyst",
+      "path": "custom-video-analyst/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "part",
+        "video",
+        "structure",
+        "chronological",
+        "notes",
+        "exhaustive",
+        "explainer",
+        "persona"
+      ]
+    },
+    {
+      "id": "dwarf-expert",
+      "description": "Provides expertise for analyzing DWARF debug files and understanding the DWARF debug format/standard (v3-v5). Triggers when understanding DWARF information, interacting with DWARF files, answering DWARF-related questions, or working with code that parses DWARF data.",
+      "path": "dwarf-expert/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "dwarf",
+        "parsing",
+        "json",
+        "validation",
+        "readelf",
+        "dwarfdump",
+        "verification",
+        "output"
+      ]
+    },
+    {
+      "id": "full-stack-orchestration-full-stack-feature",
+      "description": "Use when working with full stack orchestration full stack feature",
+      "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
+      "triggers": [
+        "working",
+        "stack",
+        "orchestration",
+        "stack",
+        "feature"
+      ],
+      "tags": [
+        "observability",
+        "phase",
+        "api",
+        "authentication",
+        "architecture",
+        "monitoring",
+        "caching",
+        "validation"
+      ]
+    },
+    {
+      "id": "github-actions-templates",
+      "description": "Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.",
+      "path": "github-actions-templates/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "github",
+        "kubernetes",
+        "pattern",
+        "docker",
+        "assets",
+        "deploy",
+        "actions",
+        "deploying"
+      ]
+    },
+    {
+      "id": "hig-components-system",
+      "description": "Apple HIG guidance for system experience components: widgets, live activities, notifications, complications, home screen quick actions, top shelf, watch faces, app clips, and app shortcuts.",
+      "path": "hig-components-system/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "app",
+        "screen",
+        "live",
+        "activities",
+        "clips",
+        "shortcuts",
+        "hig",
+        "widgets"
+      ]
+    },
+    {
+      "id": "ml-pipeline-workflow",
+      "description": "Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.",
+      "path": "ml-pipeline-workflow/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "validation",
+        "pipeline",
+        "training",
+        "mlflow",
+        "monitoring",
+        "assets",
+        "deployment",
+        "yaml"
+      ]
+    },
+    {
+      "id": "odoo-qweb-templates",
+      "description": "Expert in Odoo QWeb templating for PDF reports, email templates, and website pages. Covers t-if, t-foreach, t-field, and report actions.",
+      "path": "odoo-qweb-templates/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "qweb",
+        "rendering",
+        "python",
+        "html",
+        "odoo",
+        "pdf",
+        "t-esc",
+        "templates"
+      ]
+    },
+    {
+      "id": "saga-orchestration",
+      "description": "Patterns for managing distributed transactions and long-running business processes.",
+      "path": "saga-orchestration/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "saga",
+        "dict",
+        "template",
+        "don",
+        "execution",
+        "sagastep",
+        "orchestration",
         "event"
       ]
     },
     {
-      "id": "bamboohr-automation",
-      "description": "Automate BambooHR tasks via Rube MCP (Composio): employees, time-off, benefits, dependents, employee updates. Always search tools first for current schemas.",
-      "path": "bamboohr-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "bamboohr",
-        "employee",
-        "list",
-        "pitfalls",
-        "employeeid",
-        "rube",
-        "update"
-      ]
-    },
-    {
-      "id": "bitbucket-automation",
-      "description": "Automate Bitbucket repositories, pull requests, branches, issues, and workspace management via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "bitbucket-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "bitbucket",
-        "workspace",
-        "repo_slug",
-        "mcp",
-        "pagination",
-        "pull_request_id",
-        "list",
-        "state"
-      ]
-    },
-    {
-      "id": "cal-com-automation",
-      "description": "Automate Cal.com tasks via Rube MCP (Composio): manage bookings, check availability, configure webhooks, and handle teams. Always search tools first for current schemas.",
-      "path": "cal-com-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "cal",
-        "webhook",
-        "pitfalls",
-        "team",
-        "rube",
-        "booking",
-        "timezone"
-      ]
-    },
-    {
-      "id": "calendly-automation",
-      "description": "Automate Calendly scheduling, event management, invitee tracking, availability checks, and organization administration via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "calendly-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "uuid",
-        "pagination",
-        "mcp",
-        "calendly",
-        "uri",
-        "calendly_get_current_user",
-        "organization",
-        "status"
-      ]
-    },
-    {
-      "id": "close-automation",
-      "description": "Automate Close CRM tasks via Rube MCP (Composio): create leads, manage calls/SMS, handle tasks, and track notes. Always search tools first for current schemas.",
-      "path": "close-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "close",
-        "sms",
-        "lead",
-        "pitfalls",
-        "custom",
-        "rube",
-        "contact"
-      ]
-    },
-    {
-      "id": "confluence-automation",
-      "description": "Automate Confluence page creation, content search, space management, labels, and hierarchy navigation via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "confluence-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pagination",
-        "confluence",
-        "limit",
-        "mcp",
-        "body",
-        "content",
-        "version",
-        "space"
-      ]
-    },
-    {
-      "id": "convertkit-automation",
-      "description": "Automate ConvertKit (Kit) tasks via Rube MCP (Composio): manage subscribers, tags, broadcasts, and broadcast stats. Always search tools first for current schemas.",
-      "path": "convertkit-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pagination",
-        "mcp",
-        "subscriber",
-        "kit",
-        "list",
-        "broadcast",
-        "pitfalls",
-        "rube"
-      ]
-    },
-    {
-      "id": "docusign-automation",
-      "description": "Automate DocuSign tasks via Rube MCP (Composio): templates, envelopes, signatures, document management. Always search tools first for current schemas.",
-      "path": "docusign-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "signing",
-        "envelope",
-        "docusign",
-        "status",
-        "templates",
-        "template",
-        "pitfalls"
-      ]
-    },
-    {
-      "id": "dropbox-automation",
-      "description": "Automate Dropbox file management, sharing, search, uploads, downloads, and folder operations via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "dropbox-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "dropbox",
-        "mcp",
-        "pagination",
-        "url",
-        "settings",
-        "dropbox_get_metadata",
-        "options",
-        "dropbox_read_file"
-      ]
-    },
-    {
-      "id": "freshdesk-automation",
-      "description": "Automate Freshdesk helpdesk operations including tickets, contacts, companies, notes, and replies via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "freshdesk-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "page",
-        "mcp",
-        "pagination",
-        "html",
-        "freshdesk",
-        "email",
-        "ticket_id",
-        "search"
-      ]
-    },
-    {
-      "id": "freshservice-automation",
-      "description": "Automate Freshservice ITSM tasks via Rube MCP (Composio): create/update tickets, bulk operations, service requests, and outbound emails. Always search tools first for current schemas.",
-      "path": "freshservice-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "ticket",
-        "freshservice",
-        "email",
-        "status",
-        "html",
-        "tickets",
-        "reference"
-      ]
-    },
-    {
-      "id": "helpdesk-automation",
-      "description": "Automate HelpDesk tasks via Rube MCP (Composio): list tickets, manage views, use canned responses, and configure custom fields. Always search tools first for current schemas.",
-      "path": "helpdesk-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pagination",
-        "mcp",
-        "helpdesk",
-        "ticket",
-        "list",
-        "next",
-        "prev",
-        "rube"
-      ]
-    },
-    {
-      "id": "inngest",
-      "description": "Durable background processing",
-      "path": "inngest/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "inngest",
-        "patterns",
-        "workflow",
-        "functions",
-        "steps",
-        "event",
-        "integration",
-        "capabilities"
-      ]
-    },
-    {
-      "id": "instagram-automation",
-      "description": "Automate Instagram tasks via Rube MCP (Composio): create posts, carousels, manage media, get insights, and publishing limits. Always search tools first for current schemas.",
-      "path": "instagram-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "instagram",
-        "media",
-        "publishing",
-        "post",
-        "pitfalls",
-        "rube",
-        "urls"
-      ]
-    },
-    {
-      "id": "intercom-automation",
-      "description": "Automate Intercom tasks via Rube MCP (Composio): conversations, contacts, companies, segments, admins. Always search tools first for current schemas.",
-      "path": "intercom-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pagination",
-        "mcp",
-        "html",
-        "intercom",
-        "search",
-        "admin",
-        "pitfalls",
-        "list"
-      ]
-    },
-    {
-      "id": "klaviyo-automation",
-      "description": "Automate Klaviyo tasks via Rube MCP (Composio): manage email/SMS campaigns, inspect campaign messages, track tags, and monitor send jobs. Always search tools first for current schemas.",
-      "path": "klaviyo-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "campaign",
-        "pagination",
-        "klaviyo",
-        "filter",
-        "pitfalls",
-        "ids",
-        "rube"
-      ]
-    },
-    {
-      "id": "make-automation",
-      "description": "Automate Make (Integromat) tasks via Rube MCP (Composio): operations, enums, language and timezone lookups. Always search tools first for current schemas.",
-      "path": "make-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "operations",
-        "authentication",
-        "list",
-        "monitoring",
-        "rube",
-        "workflows",
-        "available"
-      ]
-    },
-    {
-      "id": "makepad-animation",
-      "description": "|",
-      "path": "makepad-animation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "animation",
-        "rust",
-        "forward",
-        "state",
-        "easing",
-        "snap",
-        "documentation",
-        "patterns"
-      ]
-    },
-    {
-      "id": "makepad-basics",
-      "description": "|",
-      "path": "makepad-basics/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "app",
-        "makepad",
-        "documentation",
-        "cargo",
-        "setup",
-        "rendering",
-        "widgetref",
-        "appmain"
-      ]
-    },
-    {
-      "id": "makepad-deployment",
-      "description": "|",
-      "path": "makepad-deployment/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "install",
-        "cargo",
-        "github",
-        "packaging",
-        "provisioning",
-        "makepad",
-        "resources",
-        "android"
-      ]
-    },
-    {
-      "id": "makepad-dsl",
-      "description": "|",
-      "path": "makepad-dsl/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "rust",
-        "dsl",
-        "override",
-        "object",
-        "inheritance",
-        "documentation",
-        "widget",
-        "named"
-      ]
-    },
-    {
-      "id": "makepad-event-action",
-      "description": "|",
-      "path": "makepad-event-action/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "event",
-        "action",
-        "actions",
-        "hit",
-        "documentation",
-        "enum",
-        "timer",
-        "widget"
-      ]
-    },
-    {
-      "id": "makepad-font",
-      "description": "|",
-      "path": "makepad-font/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "text",
-        "font",
-        "fonts",
-        "settings",
-        "documentation",
-        "makepad",
-        "dsl",
-        "rendering"
-      ]
-    },
-    {
-      "id": "makepad-layout",
-      "description": "|",
-      "path": "makepad-layout/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "fill",
-        "layout",
-        "fit",
-        "align",
-        "documentation",
-        "view",
-        "flow",
-        "makepad"
-      ]
-    },
-    {
-      "id": "makepad-platform",
-      "description": "|",
-      "path": "makepad-platform/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "platform",
-        "ostype",
-        "documentation",
-        "windows",
-        "web",
-        "makepad",
-        "linux",
-        "android"
-      ]
-    },
-    {
-      "id": "makepad-shaders",
-      "description": "|",
-      "path": "makepad-shaders/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "shader",
-        "documentation",
-        "patterns",
-        "makepad",
-        "shaders",
-        "circle",
-        "built-in",
-        "functions"
-      ]
-    },
-    {
-      "id": "makepad-splash",
-      "description": "|",
-      "path": "makepad-splash/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "splash",
-        "http",
-        "rust",
-        "makepad",
-        "documentation",
-        "async",
-        "syntax",
-        "operations"
-      ]
-    },
-    {
-      "id": "makepad-widgets",
-      "description": "Version: makepad-widgets (dev branch) | Last Updated: 2026-01-19 > > Check for updates: https://crates.io/crates/makepad-widgets",
-      "path": "makepad-widgets/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "view",
-        "widgets",
-        "button",
-        "label",
-        "image",
-        "html",
-        "text",
-        "textinput"
-      ]
-    },
-    {
-      "id": "microsoft-teams-automation",
-      "description": "Automate Microsoft Teams tasks via Rube MCP (Composio): send messages, manage channels, create meetings, handle chats, and search messages. Always search tools first for current schemas.",
-      "path": "microsoft-teams-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "teams",
-        "microsoft",
-        "messages",
-        "list",
-        "channel",
-        "pagination",
-        "send"
-      ]
-    },
-    {
-      "id": "miro-automation",
-      "description": "Automate Miro tasks via Rube MCP (Composio): boards, items, sticky notes, frames, sharing, connectors. Always search tools first for current schemas.",
-      "path": "miro-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagination",
-        "miro",
-        "boards",
-        "board",
-        "board_id",
-        "items",
-        "pitfalls"
-      ]
-    },
-    {
-      "id": "monday-automation",
-      "description": "Automate Monday.com work management including boards, items, columns, groups, subitems, and updates via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "monday-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "graphql",
-        "board_id",
-        "json",
-        "mcp",
-        "monday",
-        "column",
-        "pagination",
-        "monday_list_columns"
-      ]
-    },
-    {
-      "id": "n8n-code-javascript",
-      "description": "JavaScript in n8n Code nodes",
-      "path": "n8n-code-javascript/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "javascript",
-        "return",
-        "item",
-        "http",
-        "validation",
-        "pattern",
-        "webhook",
-        "json"
-      ]
-    },
-    {
-      "id": "n8n-code-python",
-      "description": "Python in n8n Code nodes",
-      "path": "n8n-code-python/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "python",
-        "javascript",
-        "http",
-        "wrong",
-        "return",
-        "access",
-        "list",
-        "correct"
-      ]
-    },
-    {
-      "id": "n8n-workflow-patterns",
-      "description": "n8n workflow architecture patterns",
-      "path": "n8n-workflow-patterns/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "http",
-        "validation",
-        "pattern",
-        "postgres",
-        "webhook",
-        "workflow",
-        "phase",
-        "authentication"
-      ]
-    },
-    {
-      "id": "one-drive-automation",
-      "description": "Automate OneDrive file management, search, uploads, downloads, sharing, permissions, and folder operations via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "one-drive-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "item_id",
-        "mcp",
-        "pagination",
-        "onedrive",
-        "one_drive_onedrive_find_folder",
-        "folder",
-        "http",
-        "one_drive_get_item"
-      ]
-    },
-    {
-      "id": "outlook-automation",
-      "description": "Automate Outlook tasks via Rube MCP (Composio): emails, calendar, contacts, folders, attachments. Always search tools first for current schemas.",
-      "path": "outlook-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagination",
-        "outlook",
-        "list",
-        "filter",
-        "search",
-        "pitfalls",
-        "query"
-      ]
-    },
-    {
-      "id": "outlook-calendar-automation",
-      "description": "Automate Outlook Calendar tasks via Rube MCP (Composio): create events, manage attendees, find meeting times, and handle invitations. Always search tools first for current schemas.",
-      "path": "outlook-calendar-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "calendar",
-        "events",
-        "outlook",
-        "meeting",
-        "pitfalls",
-        "filter",
-        "timezone"
-      ]
-    },
-    {
-      "id": "pagerduty-automation",
-      "description": "Automate PagerDuty tasks via Rube MCP (Composio): manage incidents, services, schedules, escalation policies, and on-call rotations. Always search tools first for current schemas.",
-      "path": "pagerduty-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagerduty",
-        "pagination",
-        "incident",
-        "service",
-        "pitfalls",
-        "list",
-        "rube"
-      ]
-    },
-    {
-      "id": "pipedrive-automation",
-      "description": "Automate Pipedrive CRM operations including deals, contacts, organizations, activities, notes, and pipeline management via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "pipedrive-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagination",
-        "pipedrive",
-        "pipedrive_search_persons",
-        "org_id",
-        "html",
-        "person_id",
-        "response"
-      ]
-    },
-    {
-      "id": "postmark-automation",
-      "description": "Automate Postmark email delivery tasks via Rube MCP (Composio): send templated emails, manage templates, monitor delivery stats and bounces. Always search tools first for current schemas.",
-      "path": "postmark-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "pagination",
-        "postmark",
-        "templateid",
-        "templatemodel",
-        "pitfalls",
-        "rube",
-        "authentication"
-      ]
-    },
-    {
-      "id": "reddit-automation",
-      "description": "Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content. Always search tools first for current schemas.",
-      "path": "reddit-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "reddit",
-        "subreddit",
-        "pagination",
-        "pitfalls",
-        "rube",
-        "search",
-        "posts"
-      ]
-    },
-    {
-      "id": "segment-automation",
-      "description": "Automate Segment tasks via Rube MCP (Composio): track events, identify users, manage groups, page views, aliases, batch operations. Always search tools first for current schemas.",
-      "path": "segment-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "anonymousid",
-        "userid",
-        "segment",
-        "batch",
-        "track",
-        "alias",
-        "pitfalls"
-      ]
-    },
-    {
-      "id": "square-automation",
-      "description": "Automate Square tasks via Rube MCP (Composio): payments, orders, invoices, locations. Always search tools first for current schemas.",
-      "path": "square-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "pagination",
-        "mcp",
-        "square",
-        "cursor",
-        "list",
-        "ids",
-        "rube",
-        "search"
-      ]
-    },
-    {
-      "id": "telegram-automation",
-      "description": "Automate Telegram tasks via Rube MCP (Composio): send messages, manage chats, share photos/documents, and handle bot commands. Always search tools first for current schemas.",
-      "path": "telegram-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "telegram",
-        "formatting",
-        "send",
-        "messages",
-        "html",
-        "pitfalls",
-        "chat_id"
-      ]
-    },
-    {
       "id": "temporal-python-pro",
-      "description": "Temporal workflow orchestration",
+      "description": "Master Temporal workflow orchestration with Python SDK. Implements durable workflows, saga patterns, and distributed transactions. Covers async/await, testing strategies, and production deployment.",
       "path": "temporal-python-pro/SKILL.md",
       "triggers": [],
       "tags": [
         "python",
         "validation",
-        "workflow",
         "patterns",
         "testing",
         "monitoring",
         "activity",
-        "temporal"
+        "temporal",
+        "error"
       ]
     },
     {
       "id": "trigger-dev",
-      "description": "Background jobs with Trigger.dev",
+      "description": "You are a Trigger.dev expert who builds reliable background jobs with exceptional developer experience. You understand that Trigger.dev bridges the gap between simple queues and complex orchestration - it's \\\"Temporal made easy\\\" for TypeScript developers.",
       "path": "trigger-dev/SKILL.md",
       "triggers": [],
       "tags": [
@@ -768,86 +214,6 @@
         "dev",
         "patterns",
         "tasks"
-      ]
-    },
-    {
-      "id": "twitter-automation",
-      "description": "Automate Twitter/X tasks via Rube MCP (Composio): posts, search, users, bookmarks, lists, media. Always search tools first for current schemas.",
-      "path": "twitter-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "twitter",
-        "pagination",
-        "posts",
-        "search",
-        "pitfalls",
-        "twitter_user_lookup_me",
-        "ids"
-      ]
-    },
-    {
-      "id": "webflow-automation",
-      "description": "Automate Webflow CMS collections, site publishing, page management, asset uploads, and ecommerce orders via Rube MCP (Composio). Always search tools first for current schemas.",
-      "path": "webflow-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "site_id",
-        "mcp",
-        "pagination",
-        "webflow",
-        "collection_id",
-        "cms",
-        "webflow_list_webflow_sites",
-        "oauth"
-      ]
-    },
-    {
-      "id": "workflow-automation",
-      "description": "Workflow automation architecture",
-      "path": "workflow-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "workflow",
-        "pattern",
-        "issue",
-        "observability",
-        "automation",
-        "patterns",
-        "durable",
-        "execution"
-      ]
-    },
-    {
-      "id": "zapier-make-patterns",
-      "description": "No-code Zapier/Make automations",
-      "path": "zapier-make-patterns/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "zapier",
-        "pattern",
-        "patterns",
-        "issue",
-        "capabilities",
-        "basic",
-        "sequential",
-        "conditional"
-      ]
-    },
-    {
-      "id": "zoho-crm-automation",
-      "description": "Automate Zoho CRM tasks via Rube MCP (Composio): create/update records, search contacts, manage leads, and convert leads. Always search tools first for current schemas.",
-      "path": "zoho-crm-automation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "mcp",
-        "module",
-        "zoho",
-        "records",
-        "crm",
-        "search",
-        "pagination",
-        "leads"
       ]
     }
   ]
