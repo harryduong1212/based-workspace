@@ -21,12 +21,31 @@ from pathlib import Path
 from argparse import ArgumentParser
 
 # ─── Configuration ────────────────────────────────────────────────────────────
-SKILLS_ROOT = Path(__file__).resolve().parent.parent / ".archived" / "skills"
+# Default root (can be overridden by --type)
+ASSETS_ROOT_SKILLS = Path(__file__).resolve().parent.parent / ".archived" / "skills"
+ASSETS_ROOT_WORKFLOWS = Path(__file__).resolve().parent.parent / ".archived" / "workflows"
+
 MIN_TAGS = 4
 MAX_TAGS = 8
 
+# ─── Type Configuration Mappings ────────────────────────────────────────────────
+TYPE_CONFIG = {
+    "skills": {
+        "root": ASSETS_ROOT_SKILLS,
+        "key": "skills",
+        "file": "SKILL.md",
+        "label": "Skill"
+    },
+    "workflows": {
+        "root": ASSETS_ROOT_WORKFLOWS,
+        "key": "workflows",
+        "file": "WORKFLOW.md",
+        "label": "Workflow"
+    }
+}
+
 # ─── Stop Words ───────────────────────────────────────────────────────────────
-# Broad set of filler words that carry no operational signal.
+# ... (rest of stop words remains the same)
 STOP_WORDS = frozenset([
     # English articles, prepositions, conjunctions
     "the", "a", "an", "and", "or", "but", "of", "to", "in", "on", "at", "by",
@@ -42,7 +61,7 @@ STOP_WORDS = frozenset([
     "very", "too", "here", "there", "now", "well", "still", "even",
     # Common AI-boilerplate words that appear everywhere
     "you", "use", "using", "used", "user", "users",
-    "skill", "skills", "expert", "specialist", "tool", "tools",
+    "skill", "skills", "workflow", "workflows", "expert", "specialist", "tool", "tools",
     "system", "systems", "based", "level", "approach", "following",
     "create", "creating", "build", "building", "make", "making",
     "implement", "implementing", "implementation", "implementations",
@@ -166,10 +185,9 @@ def strip_boilerplate(text: str) -> str:
         text = re.sub(pat, "", text, flags=re.MULTILINE | re.IGNORECASE)
     return text
 
-
-def extract_tags_from_content(content: str, skill_id: str) -> list[str]:
+def extract_tags_from_content(content: str, asset_id: str) -> list[str]:
     """
-    Extract high-signal tags from SKILL.md content using lightweight NLP.
+    Extract high-signal tags from asset content using lightweight NLP.
     Returns a deduplicated list of 4-8 tags sorted by relevance score.
     """
     content = strip_boilerplate(content)
@@ -215,8 +233,8 @@ def extract_tags_from_content(content: str, skill_id: str) -> list[str]:
             bonus = 2 if word in KNOWN_TECH else 1
             scores[word] += bonus
 
-    # ── 6. Inject tokens from the skill ID itself ─────────────────────────
-    for part in skill_id.split("-"):
+    # ── 6. Inject tokens from the asset ID itself ─────────────────────────
+    for part in asset_id.split("-"):
         if part and part not in STOP_WORDS and len(part) > 1:
             if part in KNOWN_TECH:
                 scores[part] += 3
@@ -232,9 +250,9 @@ def extract_tags_from_content(content: str, skill_id: str) -> list[str]:
 
     top_tags = [tag for tag, _ in scores.most_common(MAX_TAGS)]
 
-    # Ensure minimum tags by padding from skill_id parts
+    # Ensure minimum tags by padding from asset_id parts
     if len(top_tags) < MIN_TAGS:
-        for part in skill_id.split("-"):
+        for part in asset_id.split("-"):
             if part and part not in top_tags and part not in STOP_WORDS and len(part) > 1:
                 top_tags.append(part)
             if len(top_tags) >= MIN_TAGS:
@@ -243,7 +261,7 @@ def extract_tags_from_content(content: str, skill_id: str) -> list[str]:
     return top_tags[:MAX_TAGS]
 
 
-def process_category(category_dir: Path, dry_run: bool = False) -> dict:
+def process_category(category_dir: Path, config: dict, dry_run: bool = False) -> dict:
     """Process a single category directory. Returns stats dict."""
     registry_file = category_dir / "registry.json"
     stats = {"category": category_dir.name, "total": 0, "tagged": 0, "missing": 0, "errors": 0}
@@ -255,30 +273,32 @@ def process_category(category_dir: Path, dry_run: bool = False) -> dict:
     with open(registry_file, "r", encoding="utf-8") as f:
         registry = json.load(f)
 
-    skills = registry.get("skills", [])
-    stats["total"] = len(skills)
+    asset_key = config["key"]
+    asset_file = config["file"]
+    assets = registry.get(asset_key, [])
+    stats["total"] = len(assets)
 
-    for i, skill in enumerate(skills):
-        skill_id = skill["id"]
-        skill_md_path = category_dir / skill_id / "SKILL.md"
+    for i, asset in enumerate(assets):
+        asset_id = asset["id"]
+        asset_md_path = category_dir / asset_id / asset_file
 
-        progress = f"  [{i+1:3d}/{len(skills)}]"
+        progress = f"  [{i+1:3d}/{len(assets)}]"
 
-        if not skill_md_path.exists():
-            print(f"{progress} [MISS] {skill_id}/SKILL.md")
+        if not asset_md_path.exists():
+            print(f"{progress} [MISS] {asset_id}/{asset_file}")
             stats["missing"] += 1
             continue
 
         try:
-            content = skill_md_path.read_text(encoding="utf-8", errors="replace")
-            tags = extract_tags_from_content(content, skill_id)
-            skill["tags"] = tags
+            content = asset_md_path.read_text(encoding="utf-8", errors="replace")
+            tags = extract_tags_from_content(content, asset_id)
+            asset["tags"] = tags
             stats["tagged"] += 1
             tag_str = ", ".join(tags[:5])
             ellipsis = "..." if len(tags) > 5 else ""
-            print(f"{progress} [OK]   {skill_id:<45s} -> [{tag_str}{ellipsis}]")
+            print(f"{progress} [OK]   {asset_id:<45s} -> [{tag_str}{ellipsis}]")
         except Exception as e:
-            print(f"{progress} [ERR]  {skill_id}: {e}")
+            print(f"{progress} [ERR]  {asset_id}: {e}")
             stats["errors"] += 1
 
     if not dry_run:
@@ -290,25 +310,24 @@ def process_category(category_dir: Path, dry_run: bool = False) -> dict:
 
 
 def main():
-    # Force UTF-8 output on Windows to avoid charmap errors
-    if sys.platform == "win32":
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
-
-    parser = ArgumentParser(description="Deep Tag Extraction for Skills Registry")
+    parser = ArgumentParser(description="Deep Tag Extraction for Registry")
     parser.add_argument("--dry-run", action="store_true", help="Preview without writing JSON files")
     parser.add_argument("--category", type=str, default=None, help="Process only a specific category folder")
+    parser.add_argument("--type", type=str, choices=["skills", "workflows"], default="skills", help="Asset type to process")
     args = parser.parse_args()
 
+    config = TYPE_CONFIG[args.type]
+    root_dir = config["root"]
+
     print("=" * 72)
-    print("  Deep Tag Extraction & Registry Update")
-    print(f"  Skills root: {SKILLS_ROOT}")
+    print(f"  Deep Tag Extraction & Registry Update ({config['label']}s)")
+    print(f"  Root: {root_dir}")
     print(f"  Mode: {'DRY RUN (no writes)' if args.dry_run else 'LIVE (will overwrite registry.json files)'}")
     print("=" * 72)
     print()
 
-    if not SKILLS_ROOT.exists():
-        print(f"ERROR: Skills directory not found: {SKILLS_ROOT}")
+    if not root_dir.exists():
+        print(f"ERROR: Directory not found: {root_dir}")
         sys.exit(1)
 
     start_time = time.time()
@@ -316,14 +335,14 @@ def main():
 
     # Collect category directories
     if args.category:
-        target = SKILLS_ROOT / args.category
+        target = root_dir / args.category
         if not target.is_dir():
             print(f"ERROR: Category directory not found: {target}")
             sys.exit(1)
         categories = [target]
     else:
         categories = sorted([
-            d for d in SKILLS_ROOT.iterdir()
+            d for d in root_dir.iterdir()
             if d.is_dir() and (d / "registry.json").exists()
         ])
 
@@ -332,13 +351,13 @@ def main():
 
     for idx, cat_dir in enumerate(categories):
         print(f"--- [{idx+1}/{total_categories}] {cat_dir.name} ---")
-        stats = process_category(cat_dir, dry_run=args.dry_run)
+        stats = process_category(cat_dir, config, dry_run=args.dry_run)
         all_stats.append(stats)
         print()
 
     # ── Summary ───────────────────────────────────────────────────────────
     elapsed = time.time() - start_time
-    total_skills = sum(s["total"] for s in all_stats)
+    total_assets = sum(s["total"] for s in all_stats)
     total_tagged = sum(s["tagged"] for s in all_stats)
     total_missing = sum(s["missing"] for s in all_stats)
     total_errors = sum(s["errors"] for s in all_stats)
@@ -347,9 +366,9 @@ def main():
     print("  SUMMARY")
     print("=" * 72)
     print(f"  Categories processed : {total_categories}")
-    print(f"  Total skills         : {total_skills}")
+    print(f"  Total {config['label'].lower()}s         : {total_assets}")
     print(f"  Successfully tagged  : {total_tagged}")
-    print(f"  Missing SKILL.md     : {total_missing}")
+    print(f"  Missing docs         : {total_missing}")
     print(f"  Errors               : {total_errors}")
     print(f"  Elapsed time         : {elapsed:.1f}s")
     print("=" * 72)
@@ -357,6 +376,10 @@ def main():
     if args.dry_run:
         print("\n  [INFO] DRY RUN complete. No files were modified.")
         print("  Re-run without --dry-run to apply changes.\n")
+
+
+if __name__ == "__main__":
+    main()
 
 
 if __name__ == "__main__":
