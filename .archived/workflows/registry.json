@@ -1,0 +1,585 @@
+{
+  "version": "1.0.0",
+  "type": "workflow_registry",
+  "last_updated": "2026-03-29T10:08:43Z",
+  "categories": [
+    {
+      "category_id": "accessibility",
+      "category_name": "\u267f Accessibility",
+      "workflows": [
+        {
+          "id": "accessibility-audit",
+          "description": "Perform comprehensive accessibility audit",
+          "path": ".archived/workflows/accessibility/accessibility-audit/WORKFLOW.md",
+          "triggers": [
+            "accessibility-audit"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "configuration",
+      "category_name": "\u2699\ufe0f Configuration",
+      "workflows": [
+        {
+          "id": "env-config",
+          "description": "Manage environment variables securely",
+          "path": ".archived/workflows/configuration/env-config/WORKFLOW.md",
+          "triggers": [
+            "env-config"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "creative-ui",
+      "category_name": "\ud83c\udfa8 Creative & UI",
+      "workflows": [
+        {
+          "id": "dashboard-ui",
+          "description": "Create admin dashboards (any stack)",
+          "path": ".archived/workflows/creative-ui/dashboard-ui/WORKFLOW.md",
+          "triggers": [
+            "dashboard-ui"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "design-system",
+          "description": "Create and analyze design tokens",
+          "path": ".archived/workflows/creative-ui/design-system/WORKFLOW.md",
+          "triggers": [
+            "design-system"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "email-template",
+          "description": "Design responsive emails",
+          "path": ".archived/workflows/creative-ui/email-template/WORKFLOW.md",
+          "triggers": [
+            "email-template"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "landing-page",
+          "description": "Build landing pages (any stack)",
+          "path": ".archived/workflows/creative-ui/landing-page/WORKFLOW.md",
+          "triggers": [
+            "landing-page"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "custom-workflows",
+      "category_name": "\ud83c\udfaf Custom Workflows",
+      "workflows": [
+        {
+          "id": "custom-feature-kickoff",
+          "description": "\ud83d\ude80 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep",
+          "path": ".archived/workflows/custom-workflows/custom-feature-kickoff/WORKFLOW.md",
+          "triggers": [
+            "custom-feature-kickoff"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "custom-generate-api-spec",
+          "description": "\ud83d\udd0c Generates standardized API contracts based on the SRS and DB Schema",
+          "path": ".archived/workflows/custom-workflows/custom-generate-api-spec/WORKFLOW.md",
+          "triggers": [
+            "custom-generate-api-spec"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "custom-generate-db-schema",
+          "description": "\ud83d\uddc4\ufe0f Transforms SRS into a finalized database schema and ERD",
+          "path": ".archived/workflows/custom-workflows/custom-generate-db-schema/WORKFLOW.md",
+          "triggers": [
+            "custom-generate-db-schema"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "custom-generate-feature-spec",
+          "description": "\ud83d\udccb Coordination to transform a raw idea into a standardized SRS",
+          "path": ".archived/workflows/custom-workflows/custom-generate-feature-spec/WORKFLOW.md",
+          "triggers": [
+            "custom-generate-feature-spec"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "custom-generate-sequence-diagram",
+          "description": "\ud83d\udd00 Maps the interaction flow between users, system, and services",
+          "path": ".archived/workflows/custom-workflows/custom-generate-sequence-diagram/WORKFLOW.md",
+          "triggers": [
+            "custom-generate-sequence-diagram"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "git-commit-group-changes",
+          "description": "\ud83d\udce6 Automatically groups and commits changes by logical feature",
+          "path": ".archived/workflows/custom-workflows/git-commit-group-changes/WORKFLOW.md",
+          "triggers": [
+            "git-commit-group-changes"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "debugging",
+      "category_name": "\ud83d\udc1b Debugging",
+      "workflows": [
+        {
+          "id": "debug-error",
+          "description": "Analyze errors and suggest fixes",
+          "path": ".archived/workflows/debugging/debug-error/WORKFLOW.md",
+          "triggers": [
+            "debug-error"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "debug-log",
+          "description": "Add strategic logging/debugging",
+          "path": ".archived/workflows/debugging/debug-log/WORKFLOW.md",
+          "triggers": [
+            "debug-log"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "performance",
+          "description": "Profile and optimize slow code",
+          "path": ".archived/workflows/debugging/performance/WORKFLOW.md",
+          "triggers": [
+            "performance"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "documentation",
+      "category_name": "\ud83d\udcda Documentation",
+      "workflows": [
+        {
+          "id": "api-docs",
+          "description": "Generate API documentation (OpenAPI, JSDoc)",
+          "path": ".archived/workflows/documentation/api-docs/WORKFLOW.md",
+          "triggers": [
+            "api-docs"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "architecture",
+          "description": "Create architecture diagrams (Mermaid, C4)",
+          "path": ".archived/workflows/documentation/architecture/WORKFLOW.md",
+          "triggers": [
+            "architecture"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "readme",
+          "description": "Generate comprehensive README",
+          "path": ".archived/workflows/documentation/readme/WORKFLOW.md",
+          "triggers": [
+            "readme"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "git-collaboration",
+      "category_name": "\ud83d\udd00 Git & Collaboration",
+      "workflows": [
+        {
+          "id": "git-commit",
+          "description": "Generate conventional commits from staged changes",
+          "path": ".archived/workflows/git-collaboration/git-commit/WORKFLOW.md",
+          "triggers": [
+            "git-commit"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "git-conflict",
+          "description": "Help resolve merge conflicts",
+          "path": ".archived/workflows/git-collaboration/git-conflict/WORKFLOW.md",
+          "triggers": [
+            "git-conflict"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "git-pr",
+          "description": "Create comprehensive PR descriptions",
+          "path": ".archived/workflows/git-collaboration/git-pr/WORKFLOW.md",
+          "triggers": [
+            "git-pr"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "git-rebase",
+          "description": "Interactive rebase assistance",
+          "path": ".archived/workflows/git-collaboration/git-rebase/WORKFLOW.md",
+          "triggers": [
+            "git-rebase"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "security",
+      "category_name": "\ud83d\udd12 Security",
+      "workflows": [
+        {
+          "id": "auth-implementation",
+          "description": "Implement authentication patterns",
+          "path": ".archived/workflows/security/auth-implementation/WORKFLOW.md",
+          "triggers": [
+            "auth-implementation"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "dependency-check",
+          "description": "Check for vulnerable dependencies",
+          "path": ".archived/workflows/security/dependency-check/WORKFLOW.md",
+          "triggers": [
+            "dependency-check"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "security-audit",
+          "description": "Scan for vulnerabilities and secrets",
+          "path": ".archived/workflows/security/security-audit/WORKFLOW.md",
+          "triggers": [
+            "security-audit"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "development",
+      "category_name": "\ud83d\udd27 Development",
+      "workflows": [
+        {
+          "id": "cli-tool",
+          "description": "Build command-line applications",
+          "path": ".archived/workflows/development/cli-tool/WORKFLOW.md",
+          "triggers": [
+            "cli-tool"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "migrate",
+          "description": "Technology migrations (JS\u2192TS, framework upgrades)",
+          "path": ".archived/workflows/development/migrate/WORKFLOW.md",
+          "triggers": [
+            "migrate"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "new-api",
+          "description": "Create API endpoints (any backend)",
+          "path": ".archived/workflows/development/new-api/WORKFLOW.md",
+          "triggers": [
+            "new-api"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "new-component",
+          "description": "Create reusable UI components (any framework)",
+          "path": ".archived/workflows/development/new-component/WORKFLOW.md",
+          "triggers": [
+            "new-component"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "new-feature",
+          "description": "Full feature implementation from design to deployment",
+          "path": ".archived/workflows/development/new-feature/WORKFLOW.md",
+          "triggers": [
+            "new-feature"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "new-project",
+          "description": "Scaffold any project (detects or asks for stack)",
+          "path": ".archived/workflows/development/new-project/WORKFLOW.md",
+          "triggers": [
+            "new-project"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "refactor",
+          "description": "Improve code quality, extract, reduce duplication",
+          "path": ".archived/workflows/development/refactor/WORKFLOW.md",
+          "triggers": [
+            "refactor"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "database",
+      "category_name": "\ud83d\uddc4\ufe0f Database",
+      "workflows": [
+        {
+          "id": "db-migrate",
+          "description": "Create and run migrations",
+          "path": ".archived/workflows/database/db-migrate/WORKFLOW.md",
+          "triggers": [
+            "db-migrate"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "db-schema",
+          "description": "\ud83d\uddc4\ufe0f Transforms SRS into a finalized database schema and ERD",
+          "path": ".archived/workflows/database/db-schema/WORKFLOW.md",
+          "triggers": [
+            "custom-generate-db-schema"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "db-seed",
+          "description": "Generate seed/test data",
+          "path": ".archived/workflows/database/db-seed/WORKFLOW.md",
+          "triggers": [
+            "db-seed"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "deployment",
+      "category_name": "\ud83d\ude80 Deployment",
+      "workflows": [
+        {
+          "id": "ci-cd",
+          "description": "Set up CI/CD pipelines",
+          "path": ".archived/workflows/deployment/ci-cd/WORKFLOW.md",
+          "triggers": [
+            "ci-cd"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "deploy",
+          "description": "Deploy to any platform (detects or configures)",
+          "path": ".archived/workflows/deployment/deploy/WORKFLOW.md",
+          "triggers": [
+            "deploy"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "docker",
+          "description": "Containerize application",
+          "path": ".archived/workflows/deployment/docker/WORKFLOW.md",
+          "triggers": [
+            "docker"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "railway-deploy",
+          "description": "Deploy to Railway",
+          "path": ".archived/workflows/deployment/railway-deploy/WORKFLOW.md",
+          "triggers": [
+            "railway-deploy"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "vercel-deploy",
+          "description": "Deploy to Vercel",
+          "path": ".archived/workflows/deployment/vercel-deploy/WORKFLOW.md",
+          "triggers": [
+            "vercel-deploy"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "ai-llm",
+      "category_name": "\ud83e\udd16 AI & LLM",
+      "workflows": [
+        {
+          "id": "ai-agent",
+          "description": "Create AI agents with tools",
+          "path": ".archived/workflows/ai-llm/ai-agent/WORKFLOW.md",
+          "triggers": [
+            "ai-agent"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "prompt-engineering",
+          "description": "Design and optimize LLM prompts",
+          "path": ".archived/workflows/ai-llm/prompt-engineering/WORKFLOW.md",
+          "triggers": [
+            "prompt-engineering"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "rag-pipeline",
+          "description": "Build retrieval-augmented generation",
+          "path": ".archived/workflows/ai-llm/rag-pipeline/WORKFLOW.md",
+          "triggers": [
+            "rag-pipeline"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "skill-creator",
+          "description": "Create specialized expert knowledge modules",
+          "path": ".archived/workflows/ai-llm/skill-creator/WORKFLOW.md",
+          "triggers": [
+            "skill-creator"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "workflow-creator",
+          "description": "Create new antigravity workflows",
+          "path": ".archived/workflows/ai-llm/workflow-creator/WORKFLOW.md",
+          "triggers": [
+            "workflow-creator"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    },
+    {
+      "category_id": "testing-quality",
+      "category_name": "\ud83e\uddea Testing & Quality",
+      "workflows": [
+        {
+          "id": "code-review",
+          "description": "Comprehensive code review",
+          "path": ".archived/workflows/testing-quality/code-review/WORKFLOW.md",
+          "triggers": [
+            "code-review"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "e2e-test",
+          "description": "End-to-end browser tests",
+          "path": ".archived/workflows/testing-quality/e2e-test/WORKFLOW.md",
+          "triggers": [
+            "e2e-test"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "playwright-test",
+          "description": "Browser automation tests with Playwright",
+          "path": ".archived/workflows/testing-quality/playwright-test/WORKFLOW.md",
+          "triggers": [
+            "playwright-test"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "test-coverage",
+          "description": "Improve test coverage for files",
+          "path": ".archived/workflows/testing-quality/test-coverage/WORKFLOW.md",
+          "triggers": [
+            "test-coverage"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        },
+        {
+          "id": "unit-test",
+          "description": "Generate unit tests (detects testing framework)",
+          "path": ".archived/workflows/testing-quality/unit-test/WORKFLOW.md",
+          "triggers": [
+            "unit-test"
+          ],
+          "required_skills": [],
+          "entry_point": null
+        }
+      ]
+    }
+  ]
+}
