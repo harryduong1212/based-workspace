@@ -645,7 +645,6 @@ Each skill is organized for both human browsing and AI context:
 | [reverse-engineer](.archived/skills/security-penetration-testing/reverse-engineer/SKILL.md) | Binary analysis with IDA Pro, Ghidra |
 | [sast-configuration](.archived/skills/security-penetration-testing/sast-configuration/SKILL.md) | Static Application Security Testing (SAST) tool setup, configuration, and custom rule creation for comprehensive security scanning across multiple programming languages. |
 | [scanning-tools](.archived/skills/security-penetration-testing/scanning-tools/SKILL.md) | Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. This skill covers tool selection, configuration, and practical usage across different scanning categories. |
-| [security](.archived/skills/security-penetration-testing/security/SKILL.md) | Security |
 | [security-auditor](.archived/skills/security-penetration-testing/security-auditor/SKILL.md) | DevSecOps, cybersecurity, compliance |
 | [security-scanning-security-dependencies](.archived/skills/security-penetration-testing/security-scanning-security-dependencies/SKILL.md) | You are a security expert specializing in dependency vulnerability analysis, SBOM generation, and supply chain security. Scan project dependencies across multiple ecosystems to identify vulnerabilities, assess risks, and provide automated remediation strategies. |
 | [security-scanning-security-hardening](.archived/skills/security-penetration-testing/security-scanning-security-hardening/SKILL.md) | Coordinate multi-layer security scanning and hardening across application, infrastructure, and compliance controls. |
@@ -904,7 +903,6 @@ Each skill is organized for both human browsing and AI context:
 | [content-creator](.archived/skills/documentation-writing/content-creator/SKILL.md) | Brand voice analysis, SEO, content frameworks |
 | [daily-news-report](.archived/skills/documentation-writing/daily-news-report/SKILL.md) | Scrapes content based on a preset URL list, filters high-quality technical information, and generates daily Markdown reports. |
 | [defuddle](.archived/skills/documentation-writing/defuddle/SKILL.md) | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or analyze, for online documentation, articles, blog posts, or any standard web page. |
-| [docs](.archived/skills/documentation-writing/docs/SKILL.md) | Docs |
 | [docs-architect](.archived/skills/documentation-writing/docs-architect/SKILL.md) | Technical documentation from codebases |
 | [documentation](.archived/skills/documentation-writing/documentation/SKILL.md) | API docs, architecture docs, README |
 | [googlesheets-automation](.archived/skills/documentation-writing/googlesheets-automation/SKILL.md) | Automate Google Sheets operations (read, write, format, filter, manage spreadsheets) via Rube MCP (Composio). Read/write data, manage tabs, apply formatting, and search rows programmatically. |
@@ -912,6 +910,7 @@ Each skill is organized for both human browsing and AI context:
 | [internal-comms-anthropic](.archived/skills/documentation-writing/internal-comms-anthropic/SKILL.md) | To write internal communications, use this skill for: |
 | [internal-comms-community](.archived/skills/documentation-writing/internal-comms-community/SKILL.md) | To write internal communications, use this skill for: |
 | [last30days](.archived/skills/documentation-writing/last30days/SKILL.md) | Research a topic from the last 30 days on Reddit + X + Web, become an expert, and write copy-paste-ready prompts for the user's target tool. |
+| [meta-skills-guide](.archived/skills/documentation-writing/meta-skills-guide/SKILL.md) | Meta Skills Guide |
 | [obsidian-markdown](.archived/skills/documentation-writing/obsidian-markdown/SKILL.md) | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes. |
 | [odoo-orm-expert](.archived/skills/documentation-writing/odoo-orm-expert/SKILL.md) | Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques. |
 | [planning-with-files](.archived/skills/documentation-writing/planning-with-files/SKILL.md) | Work like Manus: Use persistent markdown files as your \"working memory on disk.\ |
@@ -1515,6 +1514,10 @@ Each skill is organized for both human browsing and AI context:
 | [SPDD](.archived/skills/miscellaneous-other/SPDD/SKILL.md) | Spdd |
 | [acceptance-orchestrator](.archived/skills/miscellaneous-other/acceptance-orchestrator/SKILL.md) | Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention. |
 | [arm-cortex-expert](.archived/skills/miscellaneous-other/arm-cortex-expert/SKILL.md) | Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD). |
+| [aws-compliance-checker](.archived/skills/miscellaneous-other/aws-compliance-checker/SKILL.md) | Automated compliance checking against CIS, PCI-DSS, HIPAA, and SOC 2 benchmarks |
+| [aws-iam-best-practices](.archived/skills/miscellaneous-other/aws-iam-best-practices/SKILL.md) | IAM policy review, hardening, and least privilege implementation |
+| [aws-secrets-rotation](.archived/skills/miscellaneous-other/aws-secrets-rotation/SKILL.md) | Automate AWS secrets rotation for RDS, API keys, and credentials |
+| [aws-security-audit](.archived/skills/miscellaneous-other/aws-security-audit/SKILL.md) | Comprehensive AWS security posture assessment using AWS CLI and security best practices |
 | [blockrun](.archived/skills/miscellaneous-other/blockrun/SKILL.md) | BlockRun works with Claude Code and Google Antigravity. |
 | [c4-context](.archived/skills/miscellaneous-other/c4-context/SKILL.md) | Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies. |
 | [cc-skill-continuous-learning](.archived/skills/miscellaneous-other/cc-skill-continuous-learning/SKILL.md) | Development skill from everything-claude-code |
@@ -1548,7 +1551,11 @@ Each skill is organized for both human browsing and AI context:
 | [keyword-extractor](.archived/skills/miscellaneous-other/keyword-extractor/SKILL.md) | > |
 | [legacy-modernizer](.archived/skills/miscellaneous-other/legacy-modernizer/SKILL.md) | Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. |
 | [lex](.archived/skills/miscellaneous-other/lex/SKILL.md) | Centralized 'Truth Engine' for cross-jurisdictional legal context (US, EU, CA) and contract scaffolding. |
-| [libreoffice](.archived/skills/miscellaneous-other/libreoffice/SKILL.md) | Libreoffice |
+| [libreoffice-base](.archived/skills/miscellaneous-other/libreoffice-base/SKILL.md) | Database management, forms, reports, and data operations with LibreOffice Base. |
+| [libreoffice-calc](.archived/skills/miscellaneous-other/libreoffice-calc/SKILL.md) | Spreadsheet creation, format conversion (ODS/XLSX/CSV), formulas, data automation with LibreOffice Calc. |
+| [libreoffice-draw](.archived/skills/miscellaneous-other/libreoffice-draw/SKILL.md) | Vector graphics and diagram creation, format conversion (ODG/SVG/PDF) with LibreOffice Draw. |
+| [libreoffice-impress](.archived/skills/miscellaneous-other/libreoffice-impress/SKILL.md) | Presentation creation, format conversion (ODP/PPTX/PDF), slide automation with LibreOffice Impress. |
+| [libreoffice-writer](.archived/skills/miscellaneous-other/libreoffice-writer/SKILL.md) | Document creation, format conversion (ODT/DOCX/PDF), mail merge, and automation with LibreOffice Writer. |
 | [linear](.archived/skills/miscellaneous-other/linear/SKILL.md) | Linear |
 | [mental-health-analyzer](.archived/skills/miscellaneous-other/mental-health-analyzer/SKILL.md) | 分析心理健康数据、识别心理模式、评估心理健康状况、提供个性化心理健康建议。支持与睡眠、运动、营养等其他健康数据的关联分析。 |
 | [molykit](.archived/skills/miscellaneous-other/molykit/SKILL.md) | | |
@@ -1622,6 +1629,26 @@ Each skill is organized for both human browsing and AI context:
 
 ## Finding Skills
 
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**PowerShell:**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**PowerShell:**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 
 **PowerShell:**
