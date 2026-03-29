@@ -1,6 +1,6 @@
 # based-workspace
 
-**A portable AI-powered development workspace** — providing an archive of 1 000+ skills, 45 workflows, MCP servers, and local infrastructure (PostgreSQL + n8n) so every project you open gets the customized AI super-powers you need.
+**A portable AI-powered development workspace** — providing an archive of 1,300+ skills, 50 workflows, MCP servers, and local infrastructure (PostgreSQL + n8n) so every project you open gets the customized AI super-powers you need.
 
 Works on **Windows 11 · macOS · Linux**.
 
@@ -219,13 +219,20 @@ based-workspace/
 │   ├── skills/                   ←   Active domain skills tailored for your project
 │   │   └── <skill-name>/SKILL.md
 │   ├── workflows/                ←   Active slash-command workflows
-│   │   └── <workflow>.md
+│   │   └── <workflow>/WORKFLOW.md
 │   ├── RULES.md                  ←   Catalogue of all rules
 │   ├── SKILLS.md                 ←   Catalogue of all skills
 │   └── WORKFLOWS.md              ←   Catalogue of all workflows
 │
-├── archieved_skills/             ← 🗃️ Library of 1000+ available skills
-├── archieved_workflows/          ← 🗃️ Library of 45 available workflows
+├── .archived/                    ← 🗃️ Library of 1,300+ available assets
+│   ├── skills/                   ←   Hierarchical expertise modules
+│   │   ├── <category>/
+│   │   │   └── <skill-name>/SKILL.md
+│   │   └── registry.json         ←   Machine-readable skill index
+│   └── workflows/                ←   Hierarchical workflow automations
+│       ├── <category>/
+│       │   └── <wf-name>/WORKFLOW.md
+│       └── registry.json         ←   Machine-readable workflow index
 │
 ├── .vscode/
 │   └── mcp.json                  ← 🔌 MCP server config
@@ -235,6 +242,8 @@ based-workspace/
 │
 ├── scripts/
 │   ├── setup_env.py              ← 🛠️ Env initialization script
+│   ├── reorganize_skills_safe.py ← 🔄 Skill reorganization & registry sync
+│   ├── reorganize_workflows_safe.py ← 🔄 Workflow reorganization & registry sync
 │   └── postgres-mcp.js           ← 🔑 Secure MCP credential loader
 │
 ├── .env                          ← 🤐 Active secrets (ignored by Git)
@@ -330,173 +339,88 @@ This workspace provides `scripts/grep-mcp.js` and `scripts/postgres-mcp.js`. The
 
 ---
 
----
-
 ## Skills, Workflows & Rules
 
-To keep your AI assistant focused and performant, this workspace does not load all available capabilities by default. This repository provides an extensive archive.
-**You must look at the skills and workflows available, select the suitable ones for your specific project, and move them to `.agents/skills/` or `.agents/workflows/`.**
+This workspace leverages a massive library of domain-specific expertise. Assets are stored in hierarchical categories and indexed in machine-readable registries.
 
-### Skills (1 000+)
-
-Pre-installed domain expertise the AI can leverage. Browse the complete archive:
+### Skills (1,300+)
+Browse and activate specialized AI knowledge modules.
 
 **PowerShell:**
 ```powershell
-Get-ChildItem -Path "archieved_skills" -Directory | Measure-Object                                # Count
-Get-ChildItem -Path "archieved_skills" -Directory | Where-Object { $_.Name -like "*react*" }      # Search
+# Count all available skills
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+
+# Search for specific skills
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory | Where-Object { $_.Name -like "*react*" }
 ```
 
 **Bash / Zsh:**
 ```bash
-ls -d archieved_skills/*/ | wc -l          # Count
-ls -d archieved_skills/*react*/            # Search
+# Count
+ls -d .archived/skills/*/*/ | wc -l
+
+# Search
+ls -d .archived/skills/*/*react*/
 ```
 
 **How to activate a skill:**
-Find a skill you need in `archieved_skills/` and copy or move its folder to `.agents/skills/`.
+Copy the desired skill folder from `.archived/skills/<category>/<name>` to `.agents/skills/`.
 
-See [`.agents/SKILLS.md`](.agents/SKILLS.md) for the full categorised catalogue.
+See [`.agents/SKILLS.md`](.agents/SKILLS.md) for the full categorized catalogue.
 
-### Workflows (45)
-
-Slash-command automations — type in chat to trigger.
+### Workflows (50)
+Slash-command automations to accelerate your development loop.
 
 **How to activate a workflow:**
-Find a workflow you need in `archieved_workflows/` and copy or move its `.md` file to `.agents/workflows/`.
+Copy the desired workflow folder from `.archived/workflows/<category>/<name>` to `.agents/workflows/`.
 
-Once activated, you can trigger them:
-
-```
-/new-project     — Scaffold any project
-/unit-test       — Generate unit tests
-/security-audit  — Scan for vulnerabilities
-/deploy          — Deploy to any platform
-```
+Once activated, you can trigger them via chat:
+- `/git-commit-group-changes` — Logical commit automation
+- `/custom-feature-kickoff` — Start-to-finish orchestration
+- `/unit-test` — Generate project tests
 
 See [`.agents/WORKFLOWS.md`](.agents/WORKFLOWS.md) for the full list.
 
 ### Rules (always active)
-
-Behavioural guardrails applied to every AI interaction:
+Behavioral guardrails applied to every AI interaction:
 
 | Rule File | What It Does |
 |---|---|
 | `terminal-environment.md` | Enforces correct shell syntax and container engine |
-| `workspace-boundaries.md` | Restricts DB/automation to the local containers |
-
-See [`.agents/RULES.md`](.agents/RULES.md) for the full list.
+| `workspace-boundaries.md` | Restricts DB/automation to relevant local containers |
 
 ---
 
 ## Customization
 
-### Change container engine (Podman → Docker)
+### Reorganizing Assets
+If you add new skills or workflows manually to the `.archived` directories, run the reorganization scripts to keep the structure and registries in sync:
 
-Edit `.agents/rules/terminal-environment.md`:
-
-```diff
-- * Container Engine: Podman
-+ * Container Engine: Docker
+```bash
+python scripts/reorganize_skills_safe.py
+python scripts/reorganize_workflows_safe.py
 ```
 
-And update directive 3:
+### Adding New Content
 
-```diff
-- 3. **Container Precedence:** always use `podman` and `podman compose`.
-+ 3. **Container Precedence:** always use `docker` and `docker compose`.
-```
-
-### Change shell (PowerShell → Bash/Zsh)
-
-Edit `.agents/rules/terminal-environment.md`:
-
-```diff
-- * Primary Shell: PowerShell 7
-+ * Primary Shell: Zsh
-```
-
-### Add a new rule
-
-Create a markdown file in `.agents/rules/`:
-
-```yaml
----
-trigger: always_on
----
-
-# My Custom Rule
-
-- Description of what the AI should always do.
-```
-
-### Add a new skill
-
-Create a folder in `.agents/skills/my-skill/SKILL.md`:
-
-```yaml
----
-name: my-skill
-description: What this skill does
----
-
-# My Skill
-
-Instructions for the AI when this skill is activated.
-```
-
-### Add a new workflow
-
-Create a file in `.agents/workflows/my-workflow.md`:
-
-```yaml
----
-description: Short description of the workflow
----
-
-1. Step one
-2. Step two
-3. Step three
-```
-
-Trigger it with `/my-workflow` in chat.
+**Add a new skill:** Create a folder in `.agents/skills/<name>/SKILL.md`.
+**Add a new workflow:** Create a folder in `.agents/workflows/<command>/WORKFLOW.md`.
 
 ---
 
 ## Troubleshooting
 
-### Containers won't start
+### MCP & Connectivity
+- **"Invalid trailing data":** Always use the wrapper scripts in `scripts/`.
+- **"Connection Refused":** Ensure containers are running (`podman ps`).
+- **Path Issues:** Ensure absolute paths with forward slashes in `mcp_config.json`.
 
-```bash
-# Check if port 5432 or 5678 is already in use:
-
-# Windows (PowerShell)
-Get-NetTCPConnection -LocalPort 5432 | Select-Object OwningProcess
-
-# macOS / Linux
-lsof -i :5432
-```
-
-### MCP Servers (Global Setup)
-
-- **`EINVAL` or `EOF` errors:** This usually means the path to your script is incorrect or Node.js cannot find the file. Double-check your absolute paths in `mcp_config.json`.
-- **"Invalid trailing data":** This happens when a script prints non-JSON text to its output. Always use our provided wrapper scripts in `scripts/` to sanitize the output.
-- **Windows execution:** Ensure your wrapper scripts (like `postgres-mcp.js`) use `shell: true` when spawning child processes on Windows to handle `.cmd` files correctly.
-- **Connection Refused:** Ensure your Podman/Docker containers are running (`podman ps`). The `postgres-memory` server cannot connect if the database container is down.
-- **Manual Reload:** After editing your global `mcp_config.json`, you must restart Antigravity or reload the window (`Ctrl+Shift+P` -> `Developer: Reload Window`) for changes to take effect.
-
-### Skills not loading
-
-- Ensure the workspace root is opened in your AI tool (not a subfolder)
-- Check that `.agents/` exists in the workspace root
-- Verify `agents.md` exists in `.agents/`
-
-### n8n web UI
-
-Open <http://localhost:5678> in your browser after starting infrastructure.
+### Asset Loading
+- Ensure the workspace root is opened (not a subfolder).
+- Ensure `.agents/` and `.agents/agents.md` are present.
 
 ---
 
 ## License
-
 MIT — Use freely, modify as needed.
