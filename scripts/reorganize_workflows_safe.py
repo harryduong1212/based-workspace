@@ -50,55 +50,40 @@ def get_workflows_mapping():
             
     return mapping
 
-def generate_registry_json(mapping, original_content):
+def generate_category_registry(cat_slug, cat_name, file_list, staging_path, original_content):
     registry = {
-        "version": "1.0.0",
-        "type": "workflow_registry",
-        "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "categories": []
+        "category_id": cat_slug,
+        "category_name": cat_name,
+        "workflows": []
     }
     
-    for cat_name in sorted(mapping.keys()):
-        cat_slug = slugify(cat_name)
-        category = {
-            "category_id": cat_slug,
-            "category_name": cat_name,
-            "workflows": []
-        }
+    for filename in sorted(file_list):
+        workflow_id = filename.replace(".md", "")
+        # Robust search for description and slash command
+        esc_id = re.escape(workflow_id)
+        row_pattern = rf'\| \[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(?:.*?){esc_id}(?:/WORKFLOW\.md|\.md)\) \| ([^|]+) \| ([^|]*?) \| ([^|]*?)? \|'
+        match = re.search(row_pattern, original_content)
         
-        for filename in sorted(mapping[cat_name]):
-            workflow_id = filename.replace(".md", "")
-            # Robust search for description and slash command
-            # Escape workflow_id for regex
-            esc_id = re.escape(workflow_id)
-            # Match | [Name](path/to/esc_id/...) | /slash | Status | Desc |
-            row_pattern = rf'\| \[([^\]]+)\]\(\.(?:archived/workflows/|archived_workflows/)(?:.*?){esc_id}(?:/WORKFLOW\.md|\.md)\) \| ([^|]+) \| ([^|]*?) \| ([^|]*?)? \|'
-            match = re.search(row_pattern, original_content)
-            
-            description = ""
-            triggers = []
-            if match:
-                # If there are 4 columns (new format) or 3 (old format)
-                # We need to be careful. The format I'm generating has 4 columns.
-                slash = match.group(2).strip()
-                desc = match.group(4).strip() if match.group(4) else match.group(3).strip()
-                triggers = [slash.replace("/", "").replace("`", "")]
-                description = desc
-            
-            category["workflows"].append({
-                "id": workflow_id,
-                "description": description,
-                "path": f".archived/workflows/{cat_slug}/{workflow_id}/WORKFLOW.md",
-                "triggers": triggers,
-                "required_skills": [],
-                "entry_point": None
-            })
+        description = ""
+        triggers = []
+        if match:
+            slash = match.group(2).strip()
+            desc = match.group(4).strip() if match.group(4) else match.group(3).strip()
+            triggers = [slash.replace("/", "").replace("`", "")]
+            description = desc
         
-        if category["workflows"]:
-            registry["categories"].append(category)
-            
-    with open(os.path.join(STAGING_DIR, "registry.json"), "w", encoding="utf-8") as f:
-        json.dump(registry, f, indent=2)
+        registry["workflows"].append({
+            "id": workflow_id,
+            "description": description,
+            "path": f"{workflow_id}/WORKFLOW.md",  # Local path
+            "triggers": triggers,
+            "required_skills": [],
+            "entry_point": None
+        })
+    
+    registry_file = os.path.join(staging_path, "registry.json")
+    with open(registry_file, "w", encoding="utf-8") as f:
+        json.dump(registry, f, indent=2, ensure_ascii=False)
 
 def reorganize():
     mapping = get_workflows_mapping()
@@ -119,14 +104,18 @@ def reorganize():
                 else:
                     all_files[f] = os.path.join(root, f)
     
+    with open(WORKFLOWS_MD, "r", encoding="utf-8") as f:
+        original_content = f.read()
+
     moved_filenames = set()
     
-    # 3. Copy files to category folders in staging
+    # 3. Process categories and generate sharded registries
     for cat_name, file_list in mapping.items():
         cat_slug = slugify(cat_name)
         cat_staging_path = os.path.join(STAGING_DIR, cat_slug)
         os.makedirs(cat_staging_path, exist_ok=True)
         
+        valid_files_in_cat = []
         for filename in file_list:
             if filename in all_files:
                 workflow_id = filename.replace(".md", "")
@@ -134,9 +123,15 @@ def reorganize():
                 os.makedirs(wf_folder, exist_ok=True)
                 shutil.copy2(all_files[filename], os.path.join(wf_folder, "WORKFLOW.md"))
                 moved_filenames.add(filename)
+                valid_files_in_cat.append(filename)
+        
+        # Generate Registry for this category
+        if valid_files_in_cat:
+            generate_category_registry(cat_slug, cat_name, valid_files_in_cat, cat_staging_path, original_content)
                 
     # 4. Handle miscellaneous
     misc_path = os.path.join(STAGING_DIR, "miscellaneous")
+    misc_files = []
     for filename, full_path in all_files.items():
         if filename not in moved_filenames:
             if not os.path.exists(misc_path): os.makedirs(misc_path)
@@ -144,13 +139,12 @@ def reorganize():
             wf_folder = os.path.join(misc_path, workflow_id)
             os.makedirs(wf_folder, exist_ok=True)
             shutil.copy2(full_path, os.path.join(wf_folder, "WORKFLOW.md"))
+            misc_files.append(filename)
+    
+    if misc_files:
+        generate_category_registry("miscellaneous", "📦 Miscellaneous", misc_files, misc_path, original_content)
 
     # 5. Reconstruct WORKFLOWS.md content
-    with open(WORKFLOWS_MD, "r", encoding="utf-8") as f:
-        original_content = f.read()
-    
-    generate_registry_json(mapping, original_content)
-        
     total_workflows = sum(len(v) for v in mapping.values())
     
     header_part = f"""# Antigravity Workflows 🚀

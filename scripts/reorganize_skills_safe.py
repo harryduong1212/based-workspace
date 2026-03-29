@@ -28,46 +28,34 @@ def get_desc(folder_path):
             pass
     return os.path.basename(folder_path).replace("-", " ").title()
 
-def generate_registry_json(categories, total_count):
+def generate_category_registry(cat_slug, cat_name, skills, staging_path):
     registry = {
-        "version": "1.0.0",
-        "type": "skill_registry",
-        "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "categories": []
+        "category_id": cat_slug,
+        "category_name": cat_name,
+        "skills": []
     }
     
-    for cat_header, data in categories.items():
-        if not data["skills"]: continue
+    for skill in sorted(skills, key=lambda x: x["name"]):
+        if "new_path" not in skill: continue
         
-        category = {
-            "category_id": data["slug"],
-            "category_name": cat_header,
-            "skills": []
-        }
-        
-        for skill in sorted(data["skills"], key=lambda x: x["name"]):
-            if "new_path" not in skill: continue
+        desc = skill["desc"]
+        triggers = []
+        if "Triggers:" in desc:
+            triggers = [t.strip().strip("'\"") for t in desc.split("Triggers:")[1].split(",")]
+        elif "Use when" in desc:
+            triggers = [w.strip(",") for w in desc.split() if len(w) > 4][:5]
             
-            desc = skill["desc"]
-            triggers = []
-            if "Triggers:" in desc:
-                triggers = [t.strip().strip("'\"") for t in desc.split("Triggers:")[1].split(",")]
-            elif "Use when" in desc:
-                triggers = [w.strip(",") for w in desc.split() if len(w) > 4][:5]
-                
-            category["skills"].append({
-                "id": skill["name"],
-                "description": desc,
-                "path": skill["new_path"],
-                "triggers": triggers,
-                "dependencies": []
-            })
-            
-        if category["skills"]:
-            registry["categories"].append(category)
+        registry["skills"].append({
+            "id": skill["name"],
+            "description": desc,
+            "path": f"{skill['name']}/SKILL.md",  # Local path within category
+            "triggers": triggers,
+            "tags": []  # To be filled by generate_deep_tags.py
+        })
         
-    with open(os.path.join(NEW_SKILLS_DIR, "registry.json"), "w", encoding="utf-8") as f:
-        json.dump(registry, f, indent=2)
+    registry_file = os.path.join(staging_path, "registry.json")
+    with open(registry_file, "w", encoding="utf-8") as f:
+        json.dump(registry, f, indent=2, ensure_ascii=False)
 
 def reorganize():
     if not os.path.exists(SKILLS_DIR):
@@ -154,8 +142,9 @@ def reorganize():
                 total_count += 1
                 skill["new_path"] = f".archived/skills/{data['slug']}/{name}/SKILL.md"
 
-    # Generate Registry JSON
-    generate_registry_json(categories, total_count)
+        # Generate Per-Category Registry
+        if data["skills"]:
+            generate_category_registry(data["slug"], cat_name, data["skills"], cat_staging_path)
 
     # 5. Copy root files
     for item in os.listdir(SKILLS_DIR):

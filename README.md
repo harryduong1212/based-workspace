@@ -6,6 +6,16 @@ Works on **Windows 11 · macOS · Linux**.
 
 ---
 
+### 🆕 What's New? (March 2026)
+
+- **Registry Sharding**: Both the massive 1,300+ skill index and the 50+ workflow registry are now sharded by category for lightning-fast loading and zero merge conflicts.
+- **Deep Tag Extraction**: Assets (Skills & Workflows) are now automatically tagged with technologies (`fastapi`, `tailwind`) and protocols (`grpc`, `oauth`) extracted directly from their instruction files.
+- **Root-Level Indexing**: `SKILLS.md`, `WORKFLOWS.md`, and `RULES.md` are now conveniently located in the repository root for easier browsing.
+- **Smart Cleanup**: Maintenance scripts (`reorganize_*.py`) now automatically prune orphaned registry entries, keeping your library 100% clean.
+- **MCP Security**: New `MCP_GUIDE.md` and secure wrapper scripts ensure your database passwords never touch a JSON config.
+
+---
+
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
@@ -17,6 +27,8 @@ Works on **Windows 11 · macOS · Linux**.
 7. [Skills, Workflows & Rules](#skills-workflows--rules)
 8. [Customization](#customization)
 9. [Troubleshooting](#troubleshooting)
+10. [Advanced Asset Management](#advanced-asset-management)
+11. [License](#license)
 
 ---
 
@@ -218,24 +230,21 @@ based-workspace/
 │   │   └── workspace-boundaries.md
 │   ├── skills/                   ←   Active domain skills tailored for your project
 │   │   └── <skill-name>/SKILL.md
-│   ├── workflows/                ←   Active slash-command workflows
-│   │   └── <workflow>/WORKFLOW.md
-│   ├── RULES.md                  ←   Catalogue of all rules
-│   ├── SKILLS.md                 ←   Catalogue of all skills
-│   └── WORKFLOWS.md              ←   Catalogue of all workflows
+│   └── workflows/                ←   Active slash-command workflows
+│       └── <workflow>/WORKFLOW.md
 │
 ├── .archived/                    ← 🗃️ Library of 1,300+ available assets
 │   ├── skills/                   ←   Hierarchical expertise modules
 │   │   ├── <category>/
 │   │   │   └── <skill-name>/SKILL.md
-│   │   └── registry.json         ←   Machine-readable skill index
+│   │   └── registry.json         ←   Machine-readable skill index (per-category)
 │   └── workflows/                ←   Hierarchical workflow automations
 │       ├── <category>/
 │       │   └── <wf-name>/WORKFLOW.md
-│       └── registry.json         ←   Machine-readable workflow index
+│       └── registry.json         ←   Machine-readable workflow index (per-category)
 │
 ├── .vscode/
-│   └── mcp.json                  ← 🔌 MCP server config
+│   └── mcp.json                  ← 🔌 MCP server template
 │
 ├── infrastructure/
 │   └── compose.yaml              ← 🐳 PostgreSQL + n8n containers
@@ -244,9 +253,14 @@ based-workspace/
 │   ├── setup_env.py              ← 🛠️ Env initialization script
 │   ├── reorganize_skills_safe.py ← 🔄 Skill reorganization & registry sync
 │   ├── reorganize_workflows_safe.py ← 🔄 Workflow reorganization & registry sync
+│   ├── generate_deep_tags.py     ← 🧠 Deep Tag Extraction for Registered Assets
 │   └── postgres-mcp.js           ← 🔑 Secure MCP credential loader
 │
 ├── .env                          ← 🤐 Active secrets (ignored by Git)
+├── RULES.md                      ← 📐 Catalogue of active rules
+├── SKILLS.md                     ← 🧠 Catalogue of all 1,300+ skills
+├── WORKFLOWS.md                  ← 🚀 Catalogue of all 50+ workflows
+├── MCP_GUIDE.md                  ← 🔌 Comprehensive guide for MCP servers
 └── README.md                     ← 📖 This file
 ```
 
@@ -367,7 +381,7 @@ ls -d .archived/skills/*/*react*/
 **How to activate a skill:**
 Copy the desired skill folder from `.archived/skills/<category>/<name>` to `.agents/skills/`.
 
-See [`.agents/SKILLS.md`](.agents/SKILLS.md) for the full categorized catalogue.
+See [`SKILLS.md`](SKILLS.md) for the full categorized catalogue.
 
 ### Workflows (50)
 Slash-command automations to accelerate your development loop.
@@ -380,7 +394,7 @@ Once activated, you can trigger them via chat:
 - `/custom-feature-kickoff` — Start-to-finish orchestration
 - `/unit-test` — Generate project tests
 
-See [`.agents/WORKFLOWS.md`](.agents/WORKFLOWS.md) for the full list.
+See [`WORKFLOWS.md`](WORKFLOWS.md) for the full list.
 
 ### Rules (always active)
 Behavioral guardrails applied to every AI interaction:
@@ -398,14 +412,32 @@ Behavioral guardrails applied to every AI interaction:
 If you add new skills or workflows manually to the `.archived` directories, run the reorganization scripts to keep the structure and registries in sync:
 
 ```bash
+# Maintain hierarchical structure and registry sharding
 python scripts/reorganize_skills_safe.py
 python scripts/reorganize_workflows_safe.py
+
+# Extract deep operational tags based on actual content
+python scripts/generate_deep_tags.py --type skills
+python scripts/generate_deep_tags.py --type workflows
 ```
 
-### Adding New Content
+---
 
-**Add a new skill:** Create a folder in `.agents/skills/<name>/SKILL.md`.
-**Add a new workflow:** Create a folder in `.agents/workflows/<command>/WORKFLOW.md`.
+## 🏗️ Advanced Asset Management
+
+### Registry Sharding
+To maintain performance and scalability as the library grows (now 1,300+ skills), we use **Registry Sharding**. Instead of one massive `registry.json`, each category in `.archived/skills/` and `.archived/workflows/` contains its own dedicated `registry.json` file. This prevents merge conflicts and allows the AI agent to load only the relevant category context.
+
+### Deep Tag Extraction
+The `scripts/generate_deep_tags.py` script uses lightweight natural language processing to read your **SKILL.md** or **WORKFLOW.md** instruction files and extract high-signal tags:
+- **Technologies** (e.g., `fastapi`, `tailwind`, `openai`)
+- **Protocols** (e.g., `grpc`, `rest`, `oauth`)
+- **Operations** (e.g., `scraping`, `fuzzing`, `deployment`)
+
+These tags are automatically indexed in the `registry.json` files, helping the AI agent find the exact expertise needed for your task.
+
+### Orphan Cleanup
+The reorganization scripts automatically detect and remove "orphan" entries—skills listed in a registry that no longer have a corresponding `SKILL.md` file on disk. This ensures your library index is always 100% accurate.
 
 ---
 
