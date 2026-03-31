@@ -1,15 +1,14 @@
 # based-workspace
 
-**based-workspace** is a high-performance, automation-first development environment designed to eliminate the friction of AI-assisted engineering. It provides a portable orchestration layer of 1,300+ skills, 50+ workflows, and local infrastructure (pgvector + n8n) so every project you open instantly inherits customized AI super-powers.
+**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 1,300+ skills, 50+ workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
 
-## 🚀 Solving Modern AI Pain Points
+## 🚀 Addressing AI Context Challenges
 
-Most AI coding assistants suffer from **Context Rot**: they either have too little information about your domain or too much irrelevant data that causes hallucinations. This workspace solves these pain points through deep automation:
+Most AI coding assistants face challenges with context management—either having insufficient information about your specific domain or too much irrelevant data. This workspace addresses these issues through two primary mechanisms:
 
--   **Eliminate Setup Fatigue**: Our **Inheritance Engine** (`workspace_manager.py`) dynamically symlinks the exact subset of specialized assets your task requires, based on high-level professional profiles.
--   **Modular Intelligence**: Task-focused sub-roles (e.g., `backend-dev`, `devops-ops`, `security-sec`) keep your AI's context lean, specialized, and highly accurate.
--   **Unified Maintenance**: A suite of specialized CLIs (`profile_manager.py`, `asset_manager.py`) automates registry health, deep tagging, and dependency resolution across Windows, macOS, and Linux.
--   **Local-First Infrastructure**: Built-in containers for vector memory (PostgreSQL) and workflow automation (n8n) provide a secure, local backbone for your agentic workflows.
+-   **Modular Context Management**: The **Inheritance Engine** (`workspace_manager.py`) symlinks specific subsets of specialized assets based on role-based profiles (e.g., `backend-dev`, `devops-ops`).
+-   **Structured Workflows**: A suite of specialized CLIs and workflows helps automate repetitive tasks like registry maintenance, tagging, and dependency resolution.
+-   **Local Infrastructure**: Built-in containers for PostgreSQL (vector storage) and n8n (automation) provide a standard local backbone for integrated workflows.
 
 ---
 
@@ -20,12 +19,12 @@ Most AI coding assistants suffer from **Context Rot**: they either have too litt
 - **[RULES.md](RULES.md)**: Behavioral guardrails applied to every AI interaction.
 - **[MCP_GUIDE.md](MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
 
-## ⚡ High-Value Automations
+## ⚙️ Core Workspace Automations
 
-This workspace is powered by specialized workflows to accelerate your daily tasks:
-- **`git-commit-group-changes`**: Automatically group your work into logical units and generate conventional commits.
-- **`feature-kickoff`**: Rapidly generate feature specs, API contracts, database schemas, and test plans with a single command.
-- **`workspace_manager.py`**: Switch between professional personas (Backend, Architect, DevOps) in seconds.
+The workspace includes scripts and workflows to streamline repetitive engineering tasks:
+- **`git-commit-group-changes`**: Groups uncommitted changes into logical units and generates conventional commit messages.
+- **`feature-kickoff`**: Generates a standard set of initial documentation (specs, API contracts, schemas) for new features.
+- **`workspace_manager.py`**: A CLI to manage your active context by symlinking required skills and workflows based on predefined role profiles.
 
 ---
 
