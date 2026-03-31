@@ -3,6 +3,29 @@
   "category_name": "🎯 Custom Workflows",
   "workflows": [
     {
+      "id": "feature-deep-dive",
+      "description": "✅ Ready",
+      "path": "feature-deep-dive.md",
+      "triggers": [
+        "feature-deep-dive"
+      ],
+      "required_skills": [
+        "senior-architect-v2",
+        "workspace-analyzer"
+      ],
+      "entry_point": null,
+      "tags": [
+        "feature",
+        "deep-dive",
+        "architecture",
+        "execution",
+        "architectural",
+        "technical",
+        "deep",
+        "dive"
+      ]
+    },
+    {
       "id": "feature-kickoff",
       "description": "🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep",
       "path": "feature-kickoff.md",
@@ -133,26 +156,23 @@
       ]
     },
     {
-      "id": "feature-deep-dive",
-      "description": "🏗️ Generates a standardized architecture deep-dive document to deconstruct a specific feature's codebase",
-      "path": "feature-deep-dive.md",
+      "id": "prepare-test-environment",
+      "description": "✅ Ready",
+      "path": "prepare-test-environment.md",
       "triggers": [
-        "feature-deep-dive"
+        "prepare-test-environment"
       ],
-      "required_skills": [
-        "senior-architect-v2",
-        "workspace-analyzer"
-      ],
+      "required_skills": [],
       "entry_point": null,
       "tags": [
-        "architecture",
-        "deep-dive",
-        "deconstruction",
-        "action",
-        "analysis",
-        "tracing",
-        "sequence",
-        "artifact"
+        "scaffolding",
+        "environment",
+        "prisma",
+        "test",
+        "seed",
+        "mock",
+        "strategy",
+        "automation"
       ]
     }
   ]

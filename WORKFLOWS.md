@@ -19,6 +19,8 @@ Trigger any workflow by typing its slash command in the chat:
 
 ---
 
+---
+
 ## 🛠️ Companion Tools
 
 Need to extend the workspace? Use these specialized creators:
@@ -42,7 +44,7 @@ Need to extend the workspace? Use these specialized creators:
 
 ---
 
-## 📂 Available Workflows (50)
+## 📂 Available Workflows (52)
 
 ### ♿ Accessibility
 <details>
@@ -79,12 +81,14 @@ Need to extend the workspace? Use these specialized creators:
 
 | Workflow | Command | Status | Description |
 |---|---|---|---|
-| [feature-kickoff](.archived/workflows/custom-workflows/feature-kickoff.md) | /feature-kickoff | 🚧 Custom | 🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep |
-| [cusm-generate-api-spec](.archived/workflows/custom-workflows/generate-api-spec.md) | /generate-api-spec | 🚧 Custom | 🔌 Generates standardized API contracts based on the SRS and DB Schema |
-| [generate-db-schema](.archived/workflows/custom-workflows/generate-db-schema.md) | /generate-db-schema | 🚧 Custom | 🗄️ Transforms SRS into a finalized database schema and ERD |
-| [generate-feature-spec](.archived/workflows/custom-workflows/generate-feature-spec.md) | /generate-feature-spec | 🚧 Custom | 📋 Coordination to transform a raw idea into a standardized SRS |
-| [generate-sequence-diagram](.archived/workflows/custom-workflows/generate-sequence-diagram.md) | /generate-sequence-diagram | 🚧 Custom | 🔀 Maps the interaction flow between users, system, and services |
+| [feature-deep-dive](.archived/workflows/custom-workflows/feature-deep-dive.md) | /feature-deep-dive | ✅ Ready | ✅ Ready |
+| [feature-kickoff](.archived/workflows/custom-workflows/feature-kickoff.md) | /feature-kickoff | ✅ Ready | 🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep |
+| [generate-api-spec](.archived/workflows/custom-workflows/generate-api-spec.md) | /generate-api-spec | ✅ Ready | 🔌 Generates standardized API contracts based on the SRS and DB Schema |
+| [generate-db-schema](.archived/workflows/custom-workflows/generate-db-schema.md) | /generate-db-schema | ✅ Ready | 🗄️ Transforms SRS into a finalized database schema and ERD |
+| [generate-feature-spec](.archived/workflows/custom-workflows/generate-feature-spec.md) | /generate-feature-spec | ✅ Ready | 📋 Coordination to transform a raw idea into a standardized SRS |
+| [generate-sequence-diagram](.archived/workflows/custom-workflows/generate-sequence-diagram.md) | /generate-sequence-diagram | ✅ Ready | 🔀 Maps the interaction flow between users, system, and services |
 | [git-commit-group-changes](.archived/workflows/custom-workflows/git-commit-group-changes.md) | /git-commit-group-changes | ✅ Ready | 📦 Automatically groups and commits changes by logical feature |
+| [prepare-test-environment](.archived/workflows/custom-workflows/prepare-test-environment.md) | /prepare-test-environment | ✅ Ready | ✅ Ready |
 
 </details>
 
@@ -114,8 +118,8 @@ Need to extend the workspace? Use these specialized creators:
 
 | Workflow | Command | Status | Description |
 |---|---|---|---|
-| [library](.archived/workflows/miscellaneous/library.md) | /library | ✅ Ready | ✅ Ready |
-| [nextjs-app](.archived/workflows/miscellaneous/nextjs-app.md) | /nextjs-app | ✅ Ready | ✅ Ready |
+| [library](.archived/workflows/miscellaneous/library.md) | /library | ✅ Ready |  |
+| [nextjs-app](.archived/workflows/miscellaneous/nextjs-app.md) | /nextjs-app | ✅ Ready |  |
 
 </details>
 
@@ -163,7 +167,7 @@ Need to extend the workspace? Use these specialized creators:
 | Workflow | Command | Status | Description |
 |---|---|---|---|
 | [db-migrate](.archived/workflows/database/db-migrate.md) | /db-migrate | ✅ Ready | Create and run migrations |
-| [db-schema](.archived/workflows/database/db-schema.md) | /db-schema | ✅ Ready | 🗄️ Transforms SRS into a finalized database schema and ERD |
+| [db-schema](.archived/workflows/database/db-schema.md) | /generate-db-schema | ✅ Ready | 🗄️ Transforms SRS into a finalized database schema and ERD |
 | [db-seed](.archived/workflows/database/db-seed.md) | /db-seed | ✅ Ready | Generate seed/test data |
 
 </details>

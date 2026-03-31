@@ -35,28 +35,6 @@
       ]
     },
     {
-      "id": "senior-it-ba-specialist",
-      "description": "Act as a senior IT business analyst for software development initiatives. Use when the user needs business objectives translated into technical requirements, complex workflow analysis, system integration mapping, or rigorous requirements traceability.",
-      "path": "senior-it-ba-specialist/SKILL.md",
-      "triggers": [
-        "senior",
-        "business",
-        "analyst",
-        "software",
-        "development"
-      ],
-      "tags": [
-        "validation",
-        "business",
-        "requirements",
-        "nfrs",
-        "traceability",
-        "senior",
-        "structured",
-        "constraints"
-      ]
-    },
-    {
       "id": "ddd-context-mapping",
       "description": "Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns.",
       "path": "ddd-context-mapping/SKILL.md",
@@ -572,6 +550,28 @@
         "enum",
         "updates",
         "matrixrequest"
+      ]
+    },
+    {
+      "id": "senior-it-ba-specialist",
+      "description": "Act as a senior IT business analyst for software development initiatives. Use when the user needs business objectives translated into technical requirements, complex workflow analysis, system integration mapping, or rigorous requirements traceability.",
+      "path": "senior-it-ba-specialist/SKILL.md",
+      "triggers": [
+        "senior",
+        "business",
+        "analyst",
+        "software",
+        "development"
+      ],
+      "tags": [
+        "validation",
+        "business",
+        "requirements",
+        "nfrs",
+        "traceability",
+        "senior",
+        "structured",
+        "constraints"
       ]
     },
     {

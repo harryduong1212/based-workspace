@@ -12,14 +12,24 @@ Skills are specialized instruction sets that teach AI assistants how to handle s
 
 **Simple analogy:** Just like you might consult different experts (a designer, a security expert, a marketer), skills let your AI become an expert in different areas exactly when you need them.
 
-## 🚀 How to Use Skills
+| Efficiency | 📉 Minimal context is loaded first; details are only added as needed. |
 
-| Concept | Description |
-|---|---|
-| **Auto-Activation** | ⚡ Skills trigger automatically when your request matches a skill's domain. |
-| **Manual Activation** | 🛠️ Say *"Use the [name] skill"* to explicitly load one. |
-| **Deep Learning** | 📖 Each folder contains a `SKILL.md` with full technical instructions. |
-| **Efficiency** | 📉 Minimal context is loaded first; details are only added as needed. |
+---
+
+## 🏗️ Modular Base Suites
+
+To reduce context overhead, 212+ core skills are now grouped into **Base Suites**. These functional foundations form the heart of all role-based profiles.
+
+| Suite | Description | Key Capabilities |
+| :--- | :--- | :--- |
+| **`base-core`** | ✨ Foundations | Planning, documentation, testing, and tool design. |
+| **`base-ai`** | 🤖 Intelligence | RAG, agent orchestration, and LLM patterns. |
+| **`base-dev`** | ⚙️ Engineering | API design, architecture, and framework expertise. |
+| **`base-infra-ops`** | 📦 Operations | Docker, K8s, CI/CD, and cloud infrastructure. |
+| **`base-security`** | 🛡️ Hardening | Security audits, JWT, and penetration testing. |
+| **`base-product-cro`**| 📈 Growth | Payments, A/B testing, and SEO patterns. |
+
+---
 
 ---
 
@@ -841,7 +851,6 @@ Each skill is organized for both human browsing and AI context:
 |---|---|
 | [bug-hunter](.archived/skills/testing-quality/bug-hunter/SKILL.md) | Systematically finds and fixes bugs using proven debugging techniques. Traces from symptoms to root cause, implements fixes, and prevents regression. |
 | [copilot-sdk](.archived/skills/testing-quality/copilot-sdk/SKILL.md) | Build applications that programmatically interact with GitHub Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, Python, Go, and .NET. |
-| [senior-it-ba-specialist](.archived/skills/testing-quality/senior-it-ba-specialist/SKILL.md) | Act as a senior IT business analyst for software development initiatives. Use when the user needs business objectives translated into technical requirements, complex workflow analysis, system integration mapping, or rigorous requirements traceability. |
 | [ddd-context-mapping](.archived/skills/testing-quality/ddd-context-mapping/SKILL.md) | Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns. |
 | [debugger](.archived/skills/testing-quality/debugger/SKILL.md) | Debugging specialist for errors, test failures, and unexpected |
 | [debugging-strategies](.archived/skills/testing-quality/debugging-strategies/SKILL.md) | Transform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches. |
@@ -873,6 +882,7 @@ Each skill is organized for both human browsing and AI context:
 | [protocol-reverse-engineering](.archived/skills/testing-quality/protocol-reverse-engineering/SKILL.md) | Comprehensive techniques for capturing, analyzing, and documenting network protocols for security research, interoperability, and debugging. |
 | [quality-nonconformance](.archived/skills/testing-quality/quality-nonconformance/SKILL.md) | Codified expertise for quality control, non-conformance investigation, root cause analysis, corrective action, and supplier quality management in regulated manufacturing. |
 | [robius-matrix-integration](.archived/skills/testing-quality/robius-matrix-integration/SKILL.md) | | |
+| [senior-it-ba-specialist](.archived/skills/testing-quality/senior-it-ba-specialist/SKILL.md) | Act as a senior IT business analyst for software development initiatives. Use when the user needs business objectives translated into technical requirements, complex workflow analysis, system integration mapping, or rigorous requirements traceability. |
 | [service-mesh-expert](.archived/skills/testing-quality/service-mesh-expert/SKILL.md) | Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con |
 | [systematic-debugging](.archived/skills/testing-quality/systematic-debugging/SKILL.md) | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
 | [test-automator](.archived/skills/testing-quality/test-automator/SKILL.md) | Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. |
@@ -949,7 +959,6 @@ Each skill is organized for both human browsing and AI context:
 | [c4-context](.archived/skills/documentation-writing/c4-context/SKILL.md) | Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies. |
 | [code-documentation-doc-generate](.archived/skills/documentation-writing/code-documentation-doc-generate/SKILL.md) | You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices. |
 | [create-pr](.archived/skills/documentation-writing/create-pr/SKILL.md) | Alias for sentry-skills:pr-writer. Use when users explicitly ask for "create-pr" or reference the legacy skill name. Redirects to the canonical PR writing workflow. |
-| [custom-debrief](.archived/skills/documentation-writing/custom-debrief/SKILL.md) | Custom Debrief |
 | [customs-trade-compliance](.archived/skills/documentation-writing/customs-trade-compliance/SKILL.md) | Codified expertise for customs documentation, tariff classification, duty optimisation, restricted party screening, and regulatory compliance across multiple jurisdictions. |
 | [documentation](.archived/skills/documentation-writing/documentation/SKILL.md) | Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing. |
 | [documentation-generation-doc-generate](.archived/skills/documentation-writing/documentation-generation-doc-generate/SKILL.md) | You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices. |
@@ -1367,7 +1376,6 @@ Each skill is organized for both human browsing and AI context:
 | [agentic-actions-auditor](.archived/skills/workflow-automation-platforms/agentic-actions-auditor/SKILL.md) | > |
 | [conductor-implement](.archived/skills/workflow-automation-platforms/conductor-implement/SKILL.md) | Execute tasks from a track's implementation plan following TDD workflow |
 | [conductor-status](.archived/skills/workflow-automation-platforms/conductor-status/SKILL.md) | Display project status, active tracks, and next actions |
-| [custom-video-analyst](.archived/skills/workflow-automation-platforms/custom-video-analyst/SKILL.md) | Custom Video Analyst |
 | [dwarf-expert](.archived/skills/workflow-automation-platforms/dwarf-expert/SKILL.md) | Provides expertise for analyzing DWARF debug files and understanding the DWARF debug format/standard (v3-v5). Triggers when understanding DWARF information, interacting with DWARF files, answering DWARF-related questions, or working with code that parses DWARF data. |
 | [full-stack-orchestration-full-stack-feature](.archived/skills/workflow-automation-platforms/full-stack-orchestration-full-stack-feature/SKILL.md) | Use when working with full stack orchestration full stack feature |
 | [github-actions-templates](.archived/skills/workflow-automation-platforms/github-actions-templates/SKILL.md) | Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications. |
@@ -1609,7 +1617,8 @@ Each skill is organized for both human browsing and AI context:
 | [advogado-criminal](.archived/skills/custom-skills/advogado-criminal/SKILL.md) | Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal. |
 | [amazon-alexa](.archived/skills/custom-skills/amazon-alexa/SKILL.md) | Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB, Polly, Transcribe, Lex, Smart Home). |
 | [chrome-extension-developer](.archived/skills/custom-skills/chrome-extension-developer/SKILL.md) | Expert in building Chrome Extensions using Manifest V3. Covers background scripts, service workers, content scripts, and cross-context communication. |
-| [senior-architect-v2](.archived/skills/custom-skills/senior-architect-v2/SKILL.md) | Expert system architect specializing in end-to-end technical flow mapping, component identification, and sequence diagram generation. |
+| [debrief-teacher](.archived/skills/custom-skills/debrief-teacher/SKILL.md) | Acts as a mentor and teacher, generating highly detailed, conversational post-mortem breakdowns of completed tasks to accelerate learning and reveal the underlying decision-making process. |
+| [exhaustive-video-note-taker](.archived/skills/custom-skills/exhaustive-video-note-taker/SKILL.md) | Acts as an expert note-taker to process video content or transcripts. Generates highly detailed, chronological, and time-stamped notes, ensuring zero loss of technical concepts, examples, or visual descriptions, followed by a structured synthesis. |
 | [internal-comms](.archived/skills/custom-skills/internal-comms/SKILL.md) | Write internal communications such as status reports, leadership updates, 3P updates, newsletters, FAQs, incident reports, and project updates using repeatable internal formats. |
 | [internal-comms-anthropic](.archived/skills/custom-skills/internal-comms-anthropic/SKILL.md) | To write internal communications, use this skill for: |
 | [internal-comms-community](.archived/skills/custom-skills/internal-comms-community/SKILL.md) | To write internal communications, use this skill for: |
@@ -1620,6 +1629,7 @@ Each skill is organized for both human browsing and AI context:
 | [leiloeiro-mercado](.archived/skills/custom-skills/leiloeiro-mercado/SKILL.md) | Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII. |
 | [leiloeiro-risco](.archived/skills/custom-skills/leiloeiro-risco/SKILL.md) | Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco. |
 | [mtls-configuration](.archived/skills/custom-skills/mtls-configuration/SKILL.md) | Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing internal service communication. |
+| [senior-architect-v2](.archived/skills/custom-skills/senior-architect-v2/SKILL.md) | Expert system architect specializing in end-to-end technical flow mapping, component identification, and sequence diagram generation. |
 | [seo-structure-architect](.archived/skills/custom-skills/seo-structure-architect/SKILL.md) | Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization. |
 | [site-architecture](.archived/skills/custom-skills/site-architecture/SKILL.md) | Plan or restructure website hierarchy, navigation, URL patterns, breadcrumbs, and internal linking. Use when mapping pages, sections, and site structure, but not for XML sitemap auditing or schema markup. |
 | [skill-installer](.archived/skills/custom-skills/skill-installer/SKILL.md) | Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao. |
@@ -1629,6 +1639,141 @@ Each skill is organized for both human browsing and AI context:
 
 ## Finding Skills
 
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 16
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 
 **macOS / Linux:**
