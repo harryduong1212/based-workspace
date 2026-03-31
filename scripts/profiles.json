@@ -31,14 +31,14 @@
     "technical-project-manager": {
       "description": "Technical PM — business analysis, C4 architecture diagramming, and debriefs.",
       "skills": [
-        "custom-senior-it-ba-specialist",
+        "senior-it-ba-specialist",
         "c4-context",
         "custom-debrief"
       ],
       "workflows": [
-        "custom-feature-kickoff",
-        "custom-generate-feature-spec",
-        "custom-generate-sequence-diagram"
+        "feature-kickoff",
+        "generate-feature-spec",
+        "generate-sequence-diagram"
       ]
     }
   }

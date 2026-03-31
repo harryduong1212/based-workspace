@@ -79,11 +79,11 @@ Need to extend the workspace? Use these specialized creators:
 
 | Workflow | Command | Status | Description |
 |---|---|---|---|
-| [custom-feature-kickoff](.archived/workflows/custom-workflows/custom-feature-kickoff.md) | /custom-feature-kickoff | 🚧 Custom | 🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep |
-| [custom-generate-api-spec](.archived/workflows/custom-workflows/custom-generate-api-spec.md) | /custom-generate-api-spec | 🚧 Custom | 🔌 Generates standardized API contracts based on the SRS and DB Schema |
-| [custom-generate-db-schema](.archived/workflows/custom-workflows/custom-generate-db-schema.md) | /custom-generate-db-schema | 🚧 Custom | 🗄️ Transforms SRS into a finalized database schema and ERD |
-| [custom-generate-feature-spec](.archived/workflows/custom-workflows/custom-generate-feature-spec.md) | /custom-generate-feature-spec | 🚧 Custom | 📋 Coordination to transform a raw idea into a standardized SRS |
-| [custom-generate-sequence-diagram](.archived/workflows/custom-workflows/custom-generate-sequence-diagram.md) | /custom-generate-sequence-diagram | 🚧 Custom | 🔀 Maps the interaction flow between users, system, and services |
+| [feature-kickoff](.archived/workflows/custom-workflows/feature-kickoff.md) | /feature-kickoff | 🚧 Custom | 🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep |
+| [cusm-generate-api-spec](.archived/workflows/custom-workflows/generate-api-spec.md) | /generate-api-spec | 🚧 Custom | 🔌 Generates standardized API contracts based on the SRS and DB Schema |
+| [generate-db-schema](.archived/workflows/custom-workflows/generate-db-schema.md) | /generate-db-schema | 🚧 Custom | 🗄️ Transforms SRS into a finalized database schema and ERD |
+| [generate-feature-spec](.archived/workflows/custom-workflows/generate-feature-spec.md) | /generate-feature-spec | 🚧 Custom | 📋 Coordination to transform a raw idea into a standardized SRS |
+| [generate-sequence-diagram](.archived/workflows/custom-workflows/generate-sequence-diagram.md) | /generate-sequence-diagram | 🚧 Custom | 🔀 Maps the interaction flow between users, system, and services |
 | [git-commit-group-changes](.archived/workflows/custom-workflows/git-commit-group-changes.md) | /git-commit-group-changes | ✅ Ready | 📦 Automatically groups and commits changes by logical feature |
 
 </details>
@@ -163,7 +163,7 @@ Need to extend the workspace? Use these specialized creators:
 | Workflow | Command | Status | Description |
 |---|---|---|---|
 | [db-migrate](.archived/workflows/database/db-migrate.md) | /db-migrate | ✅ Ready | Create and run migrations |
-| [db-schema](.archived/workflows/database/db-schema.md) | /custom-generate-db-schema | ✅ Ready | 🗄️ Transforms SRS into a finalized database schema and ERD |
+| [db-schema](.archived/workflows/database/db-schema.md) | /db-schema | ✅ Ready | 🗄️ Transforms SRS into a finalized database schema and ERD |
 | [db-seed](.archived/workflows/database/db-seed.md) | /db-seed | ✅ Ready | Generate seed/test data |
 
 </details>

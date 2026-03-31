@@ -146,7 +146,7 @@ python scripts/workspace_manager.py --profile "n8n-orchestrator,technical-projec
 
 **Add specific skills or workflows on the fly:**
 ```bash
-python scripts/workspace_manager.py --skills "postgresql-optimization" --workflows "custom-feature-kickoff"
+python scripts/workspace_manager.py --skills "postgresql-optimization" --workflows "feature-kickoff"
 ```
 
 **Clear your active context (removes everything except preserved skills):**

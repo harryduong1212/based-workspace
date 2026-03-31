@@ -538,7 +538,7 @@ def main() -> None:
         epilog="Examples:\n"
         "  python scripts/workspace_manager.py --profile java-backend-dev\n"
         '  python scripts/workspace_manager.py --skills "n8n-workflow-patterns"\n'
-        '  python scripts/workspace_manager.py --workflows "custom-feature-kickoff"\n'
+        '  python scripts/workspace_manager.py --workflows "feature-kickoff"\n'
         "  python scripts/workspace_manager.py --clear\n",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
