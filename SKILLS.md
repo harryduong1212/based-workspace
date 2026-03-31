@@ -962,7 +962,6 @@ Each skill is organized for both human browsing and AI context:
 | [wiki-architect](.archived/skills/documentation-writing/wiki-architect/SKILL.md) | You are a documentation architect that produces structured wiki catalogues and onboarding guides from codebases. |
 | [wiki-onboarding](.archived/skills/documentation-writing/wiki-onboarding/SKILL.md) | Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase. Use when user asks for onboarding docs or getting-started guides, user runs /deep-wiki, or user wants to help new team members understand a codebase. |
 | [wiki-page-writer](.archived/skills/documentation-writing/wiki-page-writer/SKILL.md) | You are a senior documentation engineer that generates comprehensive technical documentation pages with evidence-based depth. |
-| [workspace-analyzer](.archived/skills/documentation-writing/workspace-analyzer/SKILL.md) | Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code. |
 
 </details>
 
@@ -1624,6 +1623,7 @@ Each skill is organized for both human browsing and AI context:
 | [seo-structure-architect](.archived/skills/custom-skills/seo-structure-architect/SKILL.md) | Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization. |
 | [site-architecture](.archived/skills/custom-skills/site-architecture/SKILL.md) | Plan or restructure website hierarchy, navigation, URL patterns, breadcrumbs, and internal linking. Use when mapping pages, sections, and site structure, but not for XML sitemap auditing or schema markup. |
 | [skill-installer](.archived/skills/custom-skills/skill-installer/SKILL.md) | Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao. |
+| [workspace-analyzer](.archived/skills/custom-skills/workspace-analyzer/SKILL.md) | Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code. |
 
 </details>
 

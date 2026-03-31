@@ -131,6 +131,29 @@
         "formatting",
         "pom"
       ]
+    },
+    {
+      "id": "feature-deep-dive",
+      "description": "🏗️ Generates a standardized architecture deep-dive document to deconstruct a specific feature's codebase",
+      "path": "feature-deep-dive.md",
+      "triggers": [
+        "feature-deep-dive"
+      ],
+      "required_skills": [
+        "custom-senior-architect",
+        "workspace-analyzer"
+      ],
+      "entry_point": null,
+      "tags": [
+        "architecture",
+        "deep-dive",
+        "deconstruction",
+        "action",
+        "analysis",
+        "tracing",
+        "sequence",
+        "artifact"
+      ]
     }
   ]
 }
