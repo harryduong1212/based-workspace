@@ -278,20 +278,34 @@ def resolve_ids(args: argparse.Namespace) -> tuple[list[str], list[str]]:
     """Return flat lists of skill IDs and workflow IDs from the CLI arguments."""
     skill_ids: list[str] = []
     workflow_ids: list[str] = list(DEFAULT_WORKFLOWS)
+    
+    profiles_data = _load_json(PROFILES_PATH).get("profiles", {})
+
+    def resolve_profile_recursively(p_name: str, visited: set[str]) -> None:
+        if p_name in visited:
+            return
+        visited.add(p_name)
+        
+        entry = profiles_data.get(p_name)
+        if entry is None:
+            available = ", ".join(profiles_data.keys())
+            print(f"{_red('ERROR')} Profile '{p_name}' not found. Available: {available}")
+            sys.exit(1)
+            
+        # 1. Recurse into extensions first (precedence)
+        for parent in entry.get("extends", []):
+            resolve_profile_recursively(parent, visited)
+            
+        # 2. Add skills and workflows from this profile
+        skill_ids.extend(entry.get("skills", []))
+        workflow_ids.extend(entry.get("workflows", []))
 
     if args.profile:
-        profiles = _load_json(PROFILES_PATH)
+        visited = set()
         for p_name in (p.strip() for p in args.profile.split(",") if p.strip()):
-            entry = profiles.get("profiles", {}).get(p_name)
-            if entry is None:
-                available = ", ".join(profiles.get("profiles", {}).keys())
-                print(f"{_red('ERROR')} Profile '{p_name}' not found.  Available: {available}")
-                sys.exit(1)
-            skill_ids.extend(entry.get("skills", []))
-            workflow_ids.extend(entry.get("workflows", []))
-            if entry.get("skills", []) or entry.get("workflows", []):
-                print(f"\n{_bold('Profile')} : {_cyan(p_name)}")
-                print(f"{_bold('Desc')}    : {entry.get('description', 'N/A')}\n")
+            resolve_profile_recursively(p_name, visited)
+            print(f"\n{_bold('Profile')} : {_cyan(p_name)}")
+            print(f"{_bold('Desc')}    : {profiles_data.get(p_name, {}).get('description', 'N/A')}\n")
 
     if args.skills:
         skill_ids.extend(s.strip() for s in args.skills.split(",") if s.strip())
@@ -353,9 +367,20 @@ def activate_skills(skill_ids: list[str], wipe_first: bool = False) -> None:
         print(f"\n{'-' * 52}")
         print(f"  {_bold('Skills Context Cleared')}")
         print(f"{'-' * 52}")
+        
         preserved_present = [d for d in PRESERVED_DIRS if (SKILLS_ACTIVE / d).exists()]
         if preserved_present:
-            print(f"  {_cyan('*')} Preserved: {', '.join(preserved_present)}")
+            # We want to show them like the normal loader summary
+            for sid in preserved_present:
+                entry = index.get(sid)
+                cat_name = entry["category_name"] if entry else "Orchestration"
+                # Override generic miscellaneous for the orchestrator
+                if "Miscellaneous" in cat_name and sid == "workspace-configurator":
+                    cat_name = "🏗️ Orchestration"
+                print(f"  {_green('+')} {sid:<24}  <- {cat_name}")
+        
+        print(f"{'-' * 52}")
+        print(f"  Total: {_green(str(len(preserved_present)))} loaded (default)")
         print(f"{'-' * 52}\n")
         return
 
@@ -522,8 +547,9 @@ def activate_workflows(workflow_ids: list[str], wipe_first: bool = False) -> Non
             print(f"  {_red('x')} {m:<20}  (not found in any registry)")
 
     print(f"{'-' * 52}")
+    suffix = " (default)" if wipe_first else ""
     print(
-        f"  Total: {_green(str(len(loaded)))} loaded"
+        f"  Total: {_green(str(len(loaded)))} loaded{suffix}"
         + (f", {_red(str(len(missing)))} missing" if missing else "")
     )
     print(f"{'-' * 52}\n")
