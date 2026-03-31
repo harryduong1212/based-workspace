@@ -1,26 +1,31 @@
 # based-workspace
 
-**A portable AI-powered development workspace** — providing an archive of 1,300+ skills, 50 workflows, MCP servers, and local infrastructure (PostgreSQL + n8n) so every project you open gets the customized AI super-powers you need.
+**based-workspace** is a high-performance, automation-first development environment designed to eliminate the friction of AI-assisted engineering. It provides a portable orchestration layer of 1,300+ skills, 50+ workflows, and local infrastructure (pgvector + n8n) so every project you open instantly inherits customized AI super-powers.
 
-Works on **Windows 11 · macOS · Linux**.
+## 🚀 Solving Modern AI Pain Points
 
-### 🆕 What's New? (March 2026)
+Most AI coding assistants suffer from **Context Rot**: they either have too little information about your domain or too much irrelevant data that causes hallucinations. This workspace solves these pain points through deep automation:
 
-- **Modular Profile System**: Profiles are now compositional! Use `extends` to build roles from base functional suites.
-- **Contextual Sub-Roles**: Major roles are split into task-focused contexts (e.g., `-dev`, `-ops`, `-sec`) to keep your AI context lean. See [ADVANCED_USAGE.md](ADVANCED_USAGE.md).
-- **Unified Maintenance CLIs**: Manage your entire workspace with two specialized tools: `profile_manager.py` for role-based contexts and `asset_manager.py` for repository maintenance.
-- **Inheritance Engine**: The workspace manager now recursively resolves profile dependencies at runtime, ensuring all required tools are automatically symlinked.
+-   **Eliminate Setup Fatigue**: Our **Inheritance Engine** (`workspace_manager.py`) dynamically symlinks the exact subset of specialized assets your task requires, based on high-level professional profiles.
+-   **Modular Intelligence**: Task-focused sub-roles (e.g., `backend-dev`, `devops-ops`, `security-sec`) keep your AI's context lean, specialized, and highly accurate.
+-   **Unified Maintenance**: A suite of specialized CLIs (`profile_manager.py`, `asset_manager.py`) automates registry health, deep tagging, and dependency resolution across Windows, macOS, and Linux.
+-   **Local-First Infrastructure**: Built-in containers for vector memory (PostgreSQL) and workflow automation (n8n) provide a secure, local backbone for your agentic workflows.
 
 ---
 
 ## Documentation Hub
 
-To keep this guide concise, deep dives into specific areas of the workspace have been moved to dedicated documentation files:
-
 - **[SKILLS.md](SKILLS.md)**: Browse 212+ curated **Base Skills** and 1,100+ archived modules.
 - **[WORKFLOWS.md](WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
 - **[RULES.md](RULES.md)**: Behavioral guardrails applied to every AI interaction.
 - **[MCP_GUIDE.md](MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
+
+## ⚡ High-Value Automations
+
+This workspace is powered by specialized workflows to accelerate your daily tasks:
+- **`git-commit-group-changes`**: Automatically group your work into logical units and generate conventional commits.
+- **`feature-kickoff`**: Rapidly generate feature specs, API contracts, database schemas, and test plans with a single command.
+- **`workspace_manager.py`**: Switch between professional personas (Backend, Architect, DevOps) in seconds.
 
 ---
 
