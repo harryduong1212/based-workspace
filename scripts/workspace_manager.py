@@ -211,49 +211,63 @@ def wipe_symlinks(directory: Path, preserved: set[str]) -> list[str]:
     return removed
 
 
-def create_symlink(source: Path, link: Path) -> None:
-    """Create an OS-agnostic directory symlink, falling back to a Windows junction."""
+def create_deep_link(source: Path, link: Path) -> None:
+    """
+    Create an OS-agnostic 'deep link'.
+    For directories, it creates a real directory and recursively links its contents.
+    For files, it creates a symlink or a fallback hardlink (Windows).
+    This ensures that folders (like skills) are correctly indexed by the environment.
+    """
+    # 1. Ensure the parent directory exists.
+    link.parent.mkdir(parents=True, exist_ok=True)
+
+    # 2. Handle existing items at the link path.
     if link.exists() or link.is_symlink() or _is_link(link):
         try:
             if link.is_dir() and not _is_link(link):
                 shutil.rmtree(link)
             else:
-                link.unlink()
+                _remove_link(link)
         except Exception as e:
             print(f"  {_yellow('SKIP')} {link.name} — could not remove existing item: {e}")
             return
 
+    # 3. If source is a directory, use the 'deep link' approach.
+    if source.is_dir():
+        link.mkdir(parents=True, exist_ok=True)
+        for item in source.iterdir():
+            create_deep_link(item, link / item.name)
+        return
+
+    # 4. If source is a file, use a simple link (Symlink or Hardlink).
     # Attempt a true symlink first (works on Unix & Windows w/ Developer Mode).
     try:
-        rel = os.path.relpath(source, link.parent)
-    except ValueError:
-        rel = str(source)
-
-    try:
-        os.symlink(rel, str(link), target_is_directory=source.is_dir())
+        # Use relative path if possible for portability of the workspace.
+        try:
+            rel_source = os.path.relpath(source, link.parent)
+        except ValueError:
+            rel_source = str(source)
+            
+        os.symlink(rel_source, str(link), target_is_directory=False)
         return
-    except OSError:
-        pass  # Fall through to junction fallback.
+    except (OSError, ValueError):
+        pass  # Fall through to OS-specific hardlink fallback.
 
-    # Fallback: Windows NTFS junction or hardlink (no admin rights required).
+    # Fallback: Windows NTFS hardlink (no admin rights required).
     if os.name == "nt":
         abs_source = str(source.resolve())
         abs_link = str(link.resolve()) if not link.exists() else str(link)
-        if source.is_dir():
-            result = subprocess.run(
-                ["cmd", "/c", "mklink", "/J", str(link), abs_source],
-                capture_output=True,
-                text=True,
-            )
-        else:
-            result = subprocess.run(
-                ["cmd", "/c", "mklink", "/H", str(link), abs_source],
-                capture_output=True,
-                text=True,
-            )
+        # We already handled directories above, so this is always a file hardlink.
+        result = subprocess.run(
+            ["cmd", "/c", "mklink", "/H", str(link), abs_source],
+            capture_output=True,
+            text=True,
+        )
         if result.returncode != 0:
             print(f"  {_red('FAIL')} Could not create link for {link.name}: {result.stderr.strip()}")
     else:
+        # On non-Windows, if os.symlink failed, we don't have a good fallback if not root,
+        # but os.symlink shouldn't fail for files unless permission denied.
         print(f"  {_red('FAIL')} os.symlink failed for {link.name}")
 
 
@@ -363,7 +377,7 @@ def activate_skills(skill_ids: list[str], wipe_first: bool = False) -> None:
             continue
 
         link = SKILLS_ACTIVE / sid
-        create_symlink(source, link)
+        create_deep_link(source, link)
         loaded.append({"id": sid, **entry})
 
         if sid not in existing_ids:
@@ -477,7 +491,7 @@ def activate_workflows(workflow_ids: list[str], wipe_first: bool = False) -> Non
         if not safe_wid.endswith(".md"): safe_wid += ".md"
         
         link = WORKFLOWS_ACTIVE / safe_wid
-        create_symlink(source, link)
+        create_deep_link(source, link)
         loaded.append({"id": wid, **entry})
 
         if wid not in existing_ids:
