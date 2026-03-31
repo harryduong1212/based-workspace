@@ -962,6 +962,7 @@ Each skill is organized for both human browsing and AI context:
 | [wiki-architect](.archived/skills/documentation-writing/wiki-architect/SKILL.md) | You are a documentation architect that produces structured wiki catalogues and onboarding guides from codebases. |
 | [wiki-onboarding](.archived/skills/documentation-writing/wiki-onboarding/SKILL.md) | Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase. Use when user asks for onboarding docs or getting-started guides, user runs /deep-wiki, or user wants to help new team members understand a codebase. |
 | [wiki-page-writer](.archived/skills/documentation-writing/wiki-page-writer/SKILL.md) | You are a senior documentation engineer that generates comprehensive technical documentation pages with evidence-based depth. |
+| [workspace-analyzer](.archived/skills/documentation-writing/workspace-analyzer/SKILL.md) | Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code. |
 
 </details>
 
@@ -1628,6 +1629,21 @@ Each skill is organized for both human browsing and AI context:
 
 ## Finding Skills
 
+All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
+
+**macOS / Linux:**
+```bash
+find .archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
+```
+
+**Windows (PowerShell 7):**
+```powershell
+Get-ChildItem -Path ".archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
+```
+
+---
+
+> **Total Installed Skills:** 1336
 All skills live in `.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
 
 **macOS / Linux:**

@@ -308,6 +308,33 @@
         "mandatory",
         "diagrams"
       ]
+    },
+    {
+      "id": "workspace-analyzer",
+      "description": "Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code.",
+      "path": "workspace-analyzer/SKILL.md",
+      "triggers": [
+        "analyze workspace",
+        "investigate repository",
+        "explain this codebase",
+        "scan the code",
+        "map the architecture",
+        "find technical debt",
+        "how does this repo work",
+        "analyze the current workspace",
+        "summarize this project"
+      ],
+      "tags": [
+        "architecture-mapping",
+        "static-analysis",
+        "code-discovery",
+        "technical-debt",
+        "critical-path",
+        "dependency-resolution",
+        "developer-onboarding",
+        "system-design",
+        "repository-scanning"
+      ]
     }
   ]
 }
