@@ -18,7 +18,7 @@ To maintain performance and scalability as the library grows (now 1,300+ skills 
   - **Modularity:** Easy to add or remove entire categories without breaking the global index.
 
 ### 2. Deep Tag Extraction
-Searchability is powered by the `scripts/generate_deep_tags.py` utility. This script performs a "deep read" of every **SKILL.md** and **WORKFLOW.md** to extract high-signal operational tags.
+Searchability is powered by the `scripts/asset_manager.py tags` command. This utility performs a "deep read" of every **SKILL.md** and **WORKFLOW.md** to extract high-signal operational tags.
 
 - **Technology Tags:** `fastapi`, `postgresql`, `tailwind`, `langchain`
 - **Protocol Tags:** `grpc`, `rest`, `oauth2`, `websocket`
@@ -31,12 +31,13 @@ Whenever you manually add, move, or delete assets in the `.archived/` directorie
 
 ```bash
 # 1. Maintain folder hierarchies and update sharded registries
-python scripts/reorganize_skills_safe.py
-python scripts/reorganize_workflows_safe.py
+# This now AUTOMATICALLY performs deep tag extraction as well!
+python scripts/asset_manager.py reorganize_skills
+python scripts/asset_manager.py reorganize_workflows
 
-# 2. Extract deep tags to ensure searchability
-python scripts/generate_deep_tags.py --type skills
-python scripts/generate_deep_tags.py --type workflows
+# 2. Extract deep tags manually (only if needed for partial updates)
+python scripts/asset_manager.py tags --type skills
+python scripts/asset_manager.py tags --type workflows
 ```
 
 **What these scripts do:**
@@ -63,6 +64,20 @@ The `scripts/profiles.json` file contains bundles of skills and workflows catego
 
 - **How it works:** When you run `python scripts/workspace_manager.py --profile java-backend-dev`, the script looks up the `java-backend-dev` definition and automatically symlinks all listed skills and workflows into your workspace.
 - **Customization:** You can easily add your own profiles or modify existing ones to include your favorite tools.
+
+### 🧩 Contextual Profiles (Sub-Roles)
+To keep your AI context lean and focused, major roles are split into **Contextual Sub-Roles**. These use a naming convention that prioritizes specific functional suites:
+
+| Context | Purpose | Extended Suites |
+| :--- | :--- | :--- |
+| **`-dev`** | Pure Development | `base-core`, `base-dev`, `base-ai` |
+| **`-ops`** | Infrastructure / Deploy | `base-core`, `base-dev`, `base-infra-ops` |
+| **`-sec`** | Security / Hardening | `base-core`, `base-dev`, `base-security` |
+| **`-biz`** | Product / Growth / CRO | `base-core`, `base-dev`, `base-product-cro` |
+| **`-ultimate`** | Full Suite (Kitchen Sink)| All `base-*` suites |
+
+**Why use sub-roles?** 
+Loading only relevant skills (e.g., just `backend-ops` instead of a full stack) reduces "hallucination surface area" and keeps the AI focused on the task at hand. Workflows are also filtered based on these contexts.
 
 ### 3. Dynamic Registry & Metadata
 Every time you run `workspace_manager.py`, it automatically generates (or appends to) a `registry.json` file inside your active `.agents/skills/` and `.agents/workflows/` folders. 

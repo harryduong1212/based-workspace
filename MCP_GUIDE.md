@@ -90,7 +90,7 @@ To add a new server:
    - **If YES:** Create a `scripts/<your-server>-mcp.js` script to load the API key from your `.env` file.
    - **If NO:** Use `npx` directly in the `mcp.json` (as seen in the `context7` block).
 3. Append it to the `"mcpServers"` object.
-4. Reload your editor window (`Ctrl+Shift+P` -> `Developer: Reload Window`).
+4. Reload your editor window (`Ctrl+Shift+P` on Windows/Linux or `Cmd+Shift+P` on macOS -> `Developer: Reload Window`).
 
 ---
 

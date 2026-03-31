@@ -6,11 +6,10 @@ Works on **Windows 11 · macOS · Linux**.
 
 ### 🆕 What's New? (March 2026)
 
-- **Registry Sharding**: Both the massive 1,300+ skill index and the 50+ workflow registry are now sharded by category for lightning-fast loading and zero merge conflicts.
-- **Deep Tag Extraction**: Assets (Skills & Workflows) are now automatically tagged with technologies (`fastapi`, `tailwind`) and protocols (`grpc`, `oauth`) extracted directly from their instruction files.
-- **Root-Level Indexing**: `SKILLS.md`, `WORKFLOWS.md`, and `RULES.md` are now conveniently located in the repository root for easier browsing.
-- **Safe Reorganization**: Maintenance scripts (`reorganize_*.py`) now automatically maintain folder hierarchies and prune orphaned registry entries, keeping your library 100% clean.
-- **MCP Security**: New `MCP_GUIDE.md` and secure wrapper scripts ensure your database passwords never touch a JSON config.
+- **Modular Profile System**: Profiles are now compositional! Use `extends` to build roles from base functional suites.
+- **Contextual Sub-Roles**: Major roles are split into task-focused contexts (e.g., `-dev`, `-ops`, `-sec`) to keep your AI context lean. See [ADVANCED_USAGE.md](ADVANCED_USAGE.md).
+- **Unified Maintenance CLIs**: Manage your entire workspace with two specialized tools: `profile_manager.py` for role-based contexts and `asset_manager.py` for repository maintenance.
+- **Inheritance Engine**: The workspace manager now recursively resolves profile dependencies at runtime, ensuring all required tools are automatically symlinked.
 
 ---
 
@@ -18,11 +17,10 @@ Works on **Windows 11 · macOS · Linux**.
 
 To keep this guide concise, deep dives into specific areas of the workspace have been moved to dedicated documentation files:
 
-- **[SKILLS.md](SKILLS.md)**: Browse and activate specialized AI knowledge modules (1,300+ skills).
-- **[WORKFLOWS.md](WORKFLOWS.md)**: Explore slash-command automations to accelerate your development loop.
-- **[RULES.md](RULES.md)**: Understand the behavioral guardrails applied to every AI interaction.
-- **[MCP_GUIDE.md](MCP_GUIDE.md)**: A comprehensive guide for configuring and managing Model Context Protocol (MCP) servers.
-- **[ADVANCED_USAGE.md](ADVANCED_USAGE.md)**: Details on customizing the workspace, reorganizing assets, registry sharding, and deep tag extraction.
+- **[SKILLS.md](SKILLS.md)**: Browse 212+ curated **Base Skills** and 1,100+ archived modules.
+- **[WORKFLOWS.md](WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
+- **[RULES.md](RULES.md)**: Behavioral guardrails applied to every AI interaction.
+- **[MCP_GUIDE.md](MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
 
 ---
 
@@ -31,7 +29,7 @@ To keep this guide concise, deep dives into specific areas of the workspace have
 ### 1. Prerequisites
 
 Install the following **before** starting the workspace. 
-*(If you are on Windows, ensure you are running your terminal commands in **PowerShell 7** or higher, not Command Prompt).*
+*(If you are on Windows, avoid using the legacy Command Prompt; we recommend using **PowerShell 7** or a modern terminal for the best experience).*
 
 | Tool | Min Version | Install |
 |---|---|---|
@@ -132,26 +130,31 @@ The AI assistant will automatically pick up:
 
 ### 6. Manage Your Workspace Context
 
-Use the `workspace_manager.py` script to dynamically load the specific skills and workflows you need for your current task. 
+Use the **Profile Manager CLI** to dynamically load the context you need.
 
-**Load a developer profile:**
+**List all profiles and their optimized weights:**
 ```bash
-python scripts/workspace_manager.py --profile java-backend-dev
+python scripts/profile_manager.py stats
 ```
 
-**Load multiple profiles at once:**
+**Load a task-focused backend context (~140 skills):**
 ```bash
-python scripts/workspace_manager.py --profile "n8n-orchestrator,technical-project-manager"
+python scripts/workspace_manager.py --profile backend-dev
 ```
 
-**Add specific skills or workflows on the fly:**
+**Load an "Ultimate" full-stack context (~221 skills):**
 ```bash
-python scripts/workspace_manager.py --skills "postgresql-optimization" --workflows "feature-kickoff"
+python scripts/workspace_manager.py --profile backend-ultimate
 ```
 
-**Clear your active context (removes everything except preserved skills):**
+**Switch to DevOps context to deploy:**
 ```bash
-python scripts/workspace_manager.py --clear
+python scripts/workspace_manager.py --profile devops-ops --clear
+```
+
+**Audit your profiles for broken links:**
+```bash
+python scripts/profile_manager.py audit
 ```
 
 ---
@@ -273,11 +276,11 @@ based-workspace/
 │
 ├── scripts/
 │   ├── setup_env.py              ← 🛠️ Env initialization script
-│   ├── workspace_manager.py      ← 🕹️ Active context controller (Profiles & Assets)
-│   ├── profiles.json             ← 📋 Predefined role-based profile definitions
-│   ├── reorganize_skills_safe.py ← 🔄 Skill reorganization & registry sync
-│   ├── reorganize_workflows_safe.py ← 🔄 Workflow reorganization & registry sync
-│   ├── generate_deep_tags.py     ← 🧠 Deep Tag Extraction for Registered Assets
+│   ├── workspace_manager.py      ← 🕹️ Active context controller (Symlink engine)
+│   ├── profile_manager.py        ← 📋 Role Context Manager (stats, audit, fix)
+│   ├── asset_manager.py          ← 🛠️ Registry & Tag Manager (tags, reorganize)
+│   ├── lib/                      ← 📦 Shared workspace utility library
+│   ├── profiles.json             ← 📋 Modular role-based profile definitions
 │   └── postgres-mcp.js           ← 🔑 Secure MCP credential loader
 │
 ├── .env                          ← 🤐 Active secrets (ignored by Git)

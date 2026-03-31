@@ -19,9 +19,9 @@
 
 | # | Rule | Purpose |
 |---|---|---|
-| 1 | Use PowerShell 7 syntax for all terminal commands | OS compliance — no Bash aliases on Windows |
+| 1 | Use the syntax of the Primary Shell defined in metadata | OS compliance — avoid shell-specific aliases |
 | 2 | Probe command availability before complex chains | Safety — avoid broken execution |
-| 3 | Use `podman` and `podman compose` (never `docker`) | Container engine preference |
+| 3 | Use the Container Engine defined in metadata | Container engine preference (Podman/Docker) |
 | 4 | Prefer `npx` or Python scripts for OS-dependent file operations | Cross-platform reliability |
 
 ---
@@ -41,7 +41,7 @@
 | 5 | Before building any feature, check `.agents/skills/` for an existing skill that covers the domain | 🎯 Skill Reuse |
 | 6 | Consult `.agents/WORKFLOWS.md` when a task matches a repeatable workflow | 📋 Workflow Reuse |
 | 7 | Always verify changes compile/lint/pass tests before reporting completion | ✅ Verification |
-| 8 | Use PowerShell 7 syntax for all terminal commands; use `podman` (not `docker`) for containers | 💻 Environment |
+| 8 | Use syntax appropriate for the Primary Shell of the current environment | 💻 Environment |
 
 ---
 
@@ -58,4 +58,4 @@ Rules are enforced automatically on every interaction within this workspace.
 
 ---
 
-> **Total Active Rules:** 12 (4 global + 8 project)
+> **Total Active Rules:** 13 (4 global + 9 project)
