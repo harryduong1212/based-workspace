@@ -51,9 +51,9 @@
       ]
     },
     {
-      "id": "custom-senior-architect",
+      "id": "senior-architect-v2",
       "description": "Expert system architect specializing in end-to-end technical flow mapping, component identification, and sequence diagram generation.",
-      "path": "custom-senior-architect/SKILL.md",
+      "path": "senior-architect-v2/SKILL.md",
       "triggers": [],
       "tags": [
         "mapping",

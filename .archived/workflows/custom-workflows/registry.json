@@ -3,11 +3,11 @@
   "category_name": "🎯 Custom Workflows",
   "workflows": [
     {
-      "id": "custom-feature-kickoff",
+      "id": "feature-kickoff",
       "description": "🚀 Orchestration from Raw Idea -> SRS -> DB -> API -> Sequence -> Test Prep",
-      "path": "custom-feature-kickoff.md",
+      "path": "feature-kickoff.md",
       "triggers": [
-        "custom-feature-kickoff"
+        "feature-kickoff"
       ],
       "required_skills": [],
       "entry_point": null,
@@ -23,11 +23,11 @@
       ]
     },
     {
-      "id": "custom-generate-api-spec",
+      "id": "generate-api-spec",
       "description": "🔌 Generates standardized API contracts based on the SRS and DB Schema",
-      "path": "custom-generate-api-spec.md",
+      "path": "generate-api-spec.md",
       "triggers": [
-        "custom-generate-api-spec"
+        "generate-api-spec"
       ],
       "required_skills": [
         "backend-architect"
@@ -45,11 +45,11 @@
       ]
     },
     {
-      "id": "custom-generate-db-schema",
+      "id": "generate-db-schema",
       "description": "🗄️ Transforms SRS into a finalized database schema and ERD",
-      "path": "custom-generate-db-schema.md",
+      "path": "generate-db-schema.md",
       "triggers": [
-        "custom-generate-db-schema"
+        "generate-db-schema"
       ],
       "required_skills": [
         "database-architect"
@@ -67,14 +67,14 @@
       ]
     },
     {
-      "id": "custom-generate-feature-spec",
+      "id": "generate-feature-spec",
       "description": "📋 Coordination to transform a raw idea into a standardized SRS",
-      "path": "custom-generate-feature-spec.md",
+      "path": "generate-feature-spec.md",
       "triggers": [
-        "custom-generate-feature-spec"
+        "generate-feature-spec"
       ],
       "required_skills": [
-        "custom-senior-it-ba-specialist",
+        "senior-it-ba-specialist",
         "senior-product-manager",
         "ui-ux-designer"
       ],
@@ -91,14 +91,14 @@
       ]
     },
     {
-      "id": "custom-generate-sequence-diagram",
+      "id": "generate-sequence-diagram",
       "description": "🔀 Maps the interaction flow between users, system, and services",
-      "path": "custom-generate-sequence-diagram.md",
+      "path": "generate-sequence-diagram.md",
       "triggers": [
-        "custom-generate-sequence-diagram"
+        "generate-sequence-diagram"
       ],
       "required_skills": [
-        "senior-architect"
+        "senior-architect-v2"
       ],
       "entry_point": null,
       "tags": [
@@ -140,7 +140,7 @@
         "feature-deep-dive"
       ],
       "required_skills": [
-        "custom-senior-architect",
+        "senior-architect-v2",
         "workspace-analyzer"
       ],
       "entry_point": null,

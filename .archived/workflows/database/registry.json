@@ -27,7 +27,7 @@
       "description": "🗄️ Transforms SRS into a finalized database schema and ERD",
       "path": "db-schema.md",
       "triggers": [
-        "custom-generate-db-schema"
+        "db-schema"
       ],
       "required_skills": [],
       "entry_point": null,

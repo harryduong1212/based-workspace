@@ -10,7 +10,7 @@ You are the Orchestrator coordinating specialized architectural AI agents to ana
 
 | Agent | Role |
 | :--- | :--- |
-| **`@custom-senior-architect`** | Maps end-to-end technical flows and identifies system components. |
+| **`@senior-architect-v2`** | Maps end-to-end technical flows and identifies system components. |
 | **`@workspace-analyzer`** | Conducts deep repository scans to identify the critical path and technical debt. |
 
 ## Guardrails
@@ -51,4 +51,4 @@ When Step 5 is reached, use the following structure for the final document at `.
 ### Technical Debt & Recommendations
 - [Finding 1]
 - [Finding 2]
-```
+```
