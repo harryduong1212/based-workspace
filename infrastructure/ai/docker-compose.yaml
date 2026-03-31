@@ -1,0 +1,29 @@
+name: infrastructure-ai
+
+services:
+  ollama:
+    image: docker.io/ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0  # Allows external connections from the host
+      - OLLAMA_ORIGINS="*"
+    volumes:
+      - based-workspace-ollama-data:/root/.ollama
+    devices:
+      - nvidia.com/gpu=all
+    networks:
+      - based-workspace-net
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  based-workspace-ollama-data:
+
+networks:
+  based-workspace-net:
+    external: true

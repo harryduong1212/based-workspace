@@ -101,12 +101,12 @@ Choose the command for your container engine:
 
 **Podman:**
 ```bash
-podman compose -f infrastructure/compose.yaml up -d
+podman compose -f infrastructure/core/docker-compose.yaml up -d
 ```
 
 **Docker:**
 ```bash
-docker compose -f infrastructure/compose.yaml up -d
+docker compose -f infrastructure/core/docker-compose.yaml up -d
 ```
 
 This starts:
@@ -266,7 +266,10 @@ based-workspace/
 │   └── mcp.json                  ← 🔌 MCP server template
 │
 ├── infrastructure/
-│   └── compose.yaml              ← 🐳 PostgreSQL + n8n containers
+│   ├── core/
+│   │   └── docker-compose.yaml   ← 🐳 PostgreSQL + n8n containers
+│   └── ai/
+│       └── docker-compose.yaml   ← 🤖 Local AI inference + automatic model pull
 │
 ├── scripts/
 │   ├── setup_env.py              ← 🛠️ Env initialization script

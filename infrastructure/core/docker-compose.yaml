@@ -1,10 +1,12 @@
+name: infrastructure-core
+
 services:
   based-workspace-postgres:
     image: pgvector/pgvector:pg16
     container_name: based-workspace-postgres
     restart: unless-stopped
     env_file:
-      - ../.env
+      - ../../.env
     ports:
       - "5432:5432"
     volumes:
@@ -27,6 +29,7 @@ services:
     environment:
       N8N_HOST: localhost
       NODE_ENV: production
+      NODE_FUNCTION_ALLOW_EXTERNAL: axios,lodash
     ports:
       - "5678:5678"
     volumes:

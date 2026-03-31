@@ -32,6 +32,7 @@ N8N_HOST=localhost
 N8N_PORT=5678
 NODE_ENV=production
 WEBHOOK_URL=http://localhost:5678/
+AI_BACKEND_TYPE=gemini
 """
     env_file.write_text(env_content, encoding="utf-8")
     print(f"[+] Security configuration created at: {env_file}")

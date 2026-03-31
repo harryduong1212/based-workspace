@@ -1,0 +1,25 @@
+name: infrastructure-webui
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    environment:
+      # Connects to the 'ollama' container on the shared network
+      - OLLAMA_BASE_URL=http://ollama:11434
+      # Optional: Disable authentication for faster local access
+      - WEBUI_AUTH=False
+    volumes:
+      - open-webui-data:/app/data
+    networks:
+      - based-workspace-net
+
+volumes:
+  open-webui-data:
+
+networks:
+  based-workspace-net:
+    external: true
