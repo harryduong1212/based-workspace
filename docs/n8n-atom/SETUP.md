@@ -32,9 +32,9 @@ docker compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml u
 This starts three containers:
 | Service | URL | Description |
 |---|---|---|
-| **n8n-atom** | [http://localhost:5678](http://localhost:5678) | Workflow automation engine |
-| **MCP Inspector** | [http://localhost:6274](http://localhost:6274) | Diagnostics UI for MCP servers |
-| **PostgreSQL** | `localhost:5432` (internal) | Database backend (pgvector-enabled) |
+| **n8n-atom** | [http://localhost:5678](http://localhost:5678) | Workflow automation engine (upstream `atom8n/n8n:fork`) |
+| **MCP Inspector** | [http://localhost:6274](http://localhost:6274) | Official MCP diagnostics UI |
+| **PostgreSQL** | `localhost:5432` | Database backend (pgvector-enabled) |
 
 ### 3. Stop
 ```bash
@@ -155,7 +155,8 @@ Your workflows, credentials, and database are stored in Docker/Podman **volumes*
 
 ### How do I update the quickstart pre-built images?
 ```bash
-podman pull ghcr.io/harryduong1212/n8n-atom:latest
+podman pull atom8n/n8n:fork
+podman pull ghcr.io/modelcontextprotocol/inspector:latest
 podman compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
 ```
 

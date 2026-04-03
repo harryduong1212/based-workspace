@@ -10,6 +10,8 @@ services:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: n8n_secret
       POSTGRES_DB: n8n_atom
+    ports:
+      - "5432:5432"
     volumes:
       - based-workspace-postgres-data:/var/lib/postgresql/data
     networks:
@@ -20,10 +22,9 @@ services:
       timeout: 5s
       retries: 5
 
-  # n8n-atom — Workflow automation engine
-  # n8n-atom — Workflow automation engine
+  # n8n-atom — Workflow automation engine (upstream pre-built image)
   n8n-atom:
-    image: ghcr.io/harryduong1212/n8n-atom:latest
+    image: atom8n/n8n:fork
     container_name: n8n-atom
     restart: unless-stopped
     depends_on:
@@ -31,7 +32,7 @@ services:
         condition: service_healthy
     environment:
       - N8N_HOST=localhost
-      - N8N_PORT=5678
+      - N8N_PORT=5888
       - N8N_PROTOCOL=http
       - NODE_ENV=production
       - WEBHOOK_URL=http://localhost:5678/
@@ -45,15 +46,15 @@ services:
       # n8n settings
       - NODE_FUNCTION_ALLOW_EXTERNAL=axios,lodash
     ports:
-      - "5678:5678"
+      - "5678:5888"
     volumes:
       - n8n-atom-data:/home/node/.n8n
     networks:
       - based-workspace-net
 
-  # MCP Inspector — Diagnostics UI for MCP servers
+  # MCP Inspector — Official diagnostics UI for MCP servers
   mcp-inspector:
-    image: ghcr.io/harryduong1212/mcp-inspector-atom8n:latest
+    image: ghcr.io/modelcontextprotocol/inspector:latest
     container_name: mcp-inspector
     ports:
       - "6274:6274"
@@ -61,7 +62,6 @@ services:
     environment:
       - CLIENT_PORT=6274
       - SERVER_PORT=6277
-      - N8N_API_URL=http://n8n-atom:5678
     depends_on:
       - n8n-atom
     networks:
