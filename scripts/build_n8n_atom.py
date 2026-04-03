@@ -275,51 +275,48 @@ def stage_docker_assets(target_dir: Path):
 
 def clean_build_artifacts(engine: str, args: argparse.Namespace):
     """Remove compiled output and node_modules to force a clean rebuild.
-
-    Scope is determined by the build target flags:
-      --n8n --clean   → clean n8n only
-      --mcp --clean   → clean mcp only
-      --all --clean   → clean both
-      --clean (bare)  → clean both
+    
+    This performs a 'Deep Clean' by recursively removing host-side artifacts.
     """
-    print("🧹 Cleaning build artifacts...")
+    print("🧹 Starting Deep Clean of build artifacts...")
 
-    clean_n8n = args.all or args.n8n or (not args.n8n and not args.mcp)
-    clean_mcp = args.all or args.mcp or (not args.n8n and not args.mcp)
+    targets = []
+    if args.all or args.n8n or (not args.n8n and not args.mcp):
+        targets.append(WORKSPACE_ROOT / "external" / "n8n-atom")
+    if args.all or args.mcp or (not args.n8n and not args.mcp):
+        targets.append(WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n")
 
-    dirs_to_clean = []
+    # 1. Recursive Host-Side Cleanup
+    artifact_names = ["node_modules", "dist", "build", ".pnpm-store", "build_context"]
+    
+    for target in targets:
+        if not target.exists():
+            continue
+            
+        print(f"  🔍 Scanning {target.name} for junk...")
+        for root, dirs, files in os.walk(target, topdown=False):
+            for name in dirs:
+                if name in artifact_names:
+                    full_path = Path(root) / name
+                    # Avoid deleting .git or other core folders if they somehow match
+                    if ".git" in str(full_path):
+                        continue
+                    print(f"    🗑️  Removing {full_path.relative_to(WORKSPACE_ROOT)}...")
+                    shutil.rmtree(full_path, ignore_errors=True)
 
-    if clean_n8n:
-        dirs_to_clean.extend([
-            WORKSPACE_ROOT / "external" / "n8n-atom" / "build_context",
-            WORKSPACE_ROOT / "external" / "n8n-atom" / "node_modules",
-        ])
-
-    if clean_mcp:
-        dirs_to_clean.extend([
-            WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n" / "node_modules",
-            WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n" / "client" / "dist",
-            WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n" / "server" / "build",
-            WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n" / "cli" / "build",
-        ])
-
-    for d in dirs_to_clean:
-        if d.exists():
-            print(f"  🗑️  Removing {d.relative_to(WORKSPACE_ROOT)}...")
-            shutil.rmtree(d, ignore_errors=True)
-
-    if clean_n8n:
-        # Clean up tar archive if present
+    # 2. Container-Side Cleanup (Volumes)
+    if args.all or args.n8n or (not args.n8n and not args.mcp):
+        # Clean up n8n-specific tar archive if present
         tar_file = WORKSPACE_ROOT / "external" / "n8n-atom" / "compiled.tar"
         if tar_file.exists():
             print(f"  🗑️  Removing {tar_file.relative_to(WORKSPACE_ROOT)}...")
             tar_file.unlink()
-        # Clean pnpm cache and workspace volumes
+            
         for vol in ["vibe-pnpm-store", "vibe-n8n-workspace"]:
-            print(f"  🗑️  Removing volume {vol}...")
+            print(f"  🗑️  Removing persistent volume: {vol}...")
             subprocess.run([engine, "volume", "rm", "-f", vol], capture_output=True)
 
-    print("✅ Clean complete. Ready for a fresh build.")
+    print("✅ Deep Clean complete. Your host is now lean and ready for a fresh build.")
 
 
 # =============================================================================
