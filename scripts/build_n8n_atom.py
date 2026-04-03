@@ -3,14 +3,23 @@ import os
 import shutil
 import subprocess
 import sys
+import stat
 from pathlib import Path
 
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 
 
 # =============================================================================
-# Platform Helpers
+# Set of Helpers
 # =============================================================================
+
+def handle_remove_readonly(func, path, excinfo):
+    """Event handler for shutil.rmtree to handle read-only files on Windows.
+    Clear the read-only bit and re-try the removal.
+    """
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
+
 
 def posix_volume_path(p: Path) -> str:
     """Convert any OS path to a format suitable for container volume mounts.
@@ -101,9 +110,14 @@ def build_volume_mount(host_path: Path, container_path: str) -> str:
 # =============================================================================
 
 def build_mcp_inspector(engine: str):
-    """Compile mcp-inspector-atom8n via ephemeral container."""
+    """Compile mcp-inspector-atom8n via ephemeral container.
+    
+    We use a dedicated volume for node_modules to avoid EACCES errors on Windows
+    host mounts during npm install renames.
+    """
     print("🚀 Building mcp-inspector-atom8n via Ephemeral Container...")
     target_dir = WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n"
+    cache_volume = "vibe-mcp-inspector-modules"
 
     if not target_dir.exists():
         print(f"❌ Source directory not found: {target_dir}")
@@ -115,6 +129,7 @@ def build_mcp_inspector(engine: str):
     cmd = [
         engine, "run", "--rm",
         "-v", volume,
+        "-v", f"{cache_volume}:/app/node_modules",
         "-w", "/app",
         "docker.io/node:22-bookworm",
         "bash", "-c", "npm install --ignore-scripts && npm run build",
@@ -129,7 +144,7 @@ def build_mcp_inspector(engine: str):
 
 def build_n8n_atom(engine: str, args: argparse.Namespace) -> None:
     """Build n8n-atom using an ephemeral container with tar-based export.
-
+    
     The key insight: pnpm creates symlinks that break when written to a
     Windows host via Docker/Podman volume mounts. To avoid this, we:
     1. Build everything inside a Linux container (as before).
@@ -291,46 +306,121 @@ def stage_docker_assets(target_dir: Path):
     (build_context_dir / ".dockerignore").write_text("*.log\n.env\n")
 
 
+def force_delete_dir(path: Path):
+    """Forcefully delete a directory, handling Windows file locks and attributes."""
+    if not path.exists():
+        return
+        
+    print(f"    🗑️  Removing {path.relative_to(WORKSPACE_ROOT)}...")
+    
+    # Try the "Rename then Delete" trick on Windows to bypass some file locks
+    if sys.platform == "win32":
+        try:
+            # We move the folder to a temporary name first. This often succeeds even if files inside are "busy" or locked.
+            # Then we delete the renamed folder.
+            temp_path = path.with_name(f"{path.name}.to_delete")
+            
+            # If a leftover "to_delete" folder exists from a previous failed run, try to kill it first
+            if temp_path.exists():
+                subprocess.run(["cmd", "/c", "rd", "/s", "/q", str(temp_path.absolute())], check=False)
+            
+            if not temp_path.exists():
+                path.rename(temp_path)
+                subprocess.run(["cmd", "/c", "rd", "/s", "/q", str(temp_path.absolute())], check=False)
+            
+            # If the renaming worked but the deletion of the renamed folder failed (lock held),
+            # we notify the user so they aren't surprised by the leftover folder.
+            if not path.exists():
+                if temp_path.exists():
+                    print(f"      ⚠️  Note: {path.name} was moved to {temp_path.name} but could not be fully deleted due to a file lock. You may need to delete it manually later.")
+                return
+        except Exception as e:
+            # Fallback to direct rd if rename fails
+            subprocess.run(["cmd", "/c", "rd", "/s", "/q", str(path.absolute())], check=False)
+    else:
+        # Linux/macOS native nuke
+        subprocess.run(["rm", "-rf", str(path.absolute())], check=False)
+
+    # Final fallback to standard library if native commands didn't grab everything
+    if path.exists():
+        try:
+            shutil.rmtree(path, onerror=handle_remove_readonly)
+        except Exception:
+            pass
+
+
 def clean_build_artifacts(engine: str, args: argparse.Namespace):
     """Remove compiled output and node_modules to force a clean rebuild.
     
-    This performs a 'Deep Clean' by recursively removing host-side artifacts.
+    Targeted approach: Directly nukes the 'Big Three' (node_modules, dist, compiled)
+    to avoid slow recursive scans that trigger Windows permission errors.
     """
-    print("🧹 Starting Deep Clean of build artifacts...")
+    print("🧹 Starting Targeted Nuke of build artifacts...")
 
-    # 1. Recursive Host-Side Cleanup
-    # We NO LONGER include 'dist' or 'build' here as the user wants to keep them
-    # on the host for IDE intelligence and visibility.
-    artifact_names = ["node_modules", ".pnpm-store", "build_context", ".turbo"]
+    # Default to all if clean is specified without specific targets
+    is_generic_clean = args.clean and not (args.n8n or args.mcp or args.all)
     
-    for target in targets:
-        if not target.exists():
-            continue
+    # 1. Targeted n8n-atom cleanup
+    if args.all or args.n8n or is_generic_clean:
+        n8n_dir = WORKSPACE_ROOT / "external" / "n8n-atom"
+        if n8n_dir.exists():
+            print(f"  🔍 Sweeping n8n-atom monorepo artifacts...")
             
-        print(f"  🔍 Scanning {target.name} for host-side junk (node_modules/turbo)...")
-        for root, dirs, files in os.walk(target, topdown=False):
-            for name in dirs:
-                if name in artifact_names:
-                    full_path = Path(root) / name
-                    # Avoid deleting .git or other core folders if they somehow match
-                    if ".git" in str(full_path):
-                        continue
-                    print(f"    🗑️  Removing {full_path.relative_to(WORKSPACE_ROOT)}...")
-                    shutil.rmtree(full_path, ignore_errors=True)
+            # High-level targets
+            targets = [
+                n8n_dir / "node_modules",
+                n8n_dir / ".turbo",
+                n8n_dir / "build_context",
+                n8n_dir / ".pnpm-store",
+                n8n_dir / "dist",
+                n8n_dir / "build",
+                n8n_dir / "compiled",
+            ]
+            
+            # Sub-package targets
+            packages_dir = n8n_dir / "packages"
+            if packages_dir.exists():
+                for pkg in packages_dir.iterdir():
+                    if pkg.is_dir():
+                        targets.extend([
+                            pkg / "node_modules",
+                            pkg / "dist",
+                            pkg / "build",
+                            pkg / "compiled",
+                        ])
+            
+            for t in targets:
+                force_delete_dir(t)
 
-    # 2. Container-Side Cleanup (Volumes)
-    if args.all or args.n8n or (not args.n8n and not args.mcp):
+    # 2. Targeted mcp-inspector cleanup
+    if args.all or args.mcp or is_generic_clean:
+        mcp_dir = WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n"
+        if mcp_dir.exists():
+            print(f"  🔍 Sweeping mcp-inspector artifacts...")
+            targets = [
+                mcp_dir / "node_modules",
+                mcp_dir / "client" / "dist",
+                mcp_dir / "server" / "build",
+                mcp_dir / "cli" / "build",
+                mcp_dir / "build_context",
+                mcp_dir / ".turbo",
+            ]
+            for t in targets:
+                force_delete_dir(t)
+
+    # 3. Container-Side Cleanup (Volumes)
+    if args.all or args.n8n or is_generic_clean:
         # Clean up n8n-specific tar archive if present
         tar_file = WORKSPACE_ROOT / "external" / "n8n-atom" / "compiled.tar"
         if tar_file.exists():
             print(f"  🗑️  Removing {tar_file.relative_to(WORKSPACE_ROOT)}...")
             tar_file.unlink()
             
-        for vol in ["vibe-pnpm-store", "vibe-n8n-workspace"]:
+        for vol in ["vibe-pnpm-store", "vibe-n8n-workspace", "vibe-mcp-inspector-modules"]:
             print(f"  🗑️  Removing persistent volume: {vol}...")
             subprocess.run([engine, "volume", "rm", "-f", vol], capture_output=True)
 
-    print("✅ Deep Clean complete. Your host is now lean and ready for a fresh build.")
+    print("✅ Targeted Nuke complete. Your host is now lean and ready for a fresh build.")
 
 
 # =============================================================================
@@ -410,8 +500,8 @@ def main():
 
     args = parser.parse_args()
 
-    # Default to all if nothing specified
-    if not (args.n8n or args.mcp or args.check):
+    # Default to all ONLY if no action at all was specified (no build, no check, no clean)
+    if not (args.n8n or args.mcp or args.check or args.clean):
         args.all = True
 
     engine = detect_engine(args.engine)
@@ -434,11 +524,12 @@ def main():
     if args.all or args.n8n:
         build_n8n_atom(engine, args)
 
-    # Final check after building
-    verify_build(
-        WORKSPACE_ROOT / "external" / "n8n-atom",
-        WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n",
-    )
+    # Final check after building - only verify if a build was actually requested
+    if args.all or args.n8n or args.mcp:
+        verify_build(
+            WORKSPACE_ROOT / "external" / "n8n-atom",
+            WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n",
+        )
 
     print("\n🎉 Compilation process finished!")
     print("▶️  You can now start the dev stack:")

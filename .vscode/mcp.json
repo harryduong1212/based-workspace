@@ -5,29 +5,36 @@
       "args": [
         "-y",
         "@upstash/context7-mcp@latest"
-      ]
+      ],
+      "disabled": true
     },
     "grep_app": {
       "command": "node",
       "args": [
         "scripts/grep-mcp.js"
-      ]
+      ],
+      "disabled": true
     },
     "postgres-memory": {
       "command": "node",
       "args": [
         "scripts/postgres-mcp.js"
-      ]
+      ],
+      "disabled": true
     },
     "atom8n": {
-      "command": "node",
+      "command": "npx.cmd",
       "args": [
-        "external/mcp-inspector-atom8n/build/index.js"
+        "-y",
+        "n8n-atom-cli@latest",
+        "mcp",
+        "n8n-workflows/mcp-curl-get.n8n",
+        "n8n-workflows/mcp-logger.n8n"
       ],
       "env": {
-        "N8N_API_URL": "http://localhost:5678",
-        "N8N_API_KEY": "${N8N_API_KEY}"
-      }
+        "N8N_PORT": "5678"
+      },
+      "disabled": true
     }
   }
 }

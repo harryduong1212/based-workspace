@@ -1,4 +1,4 @@
-name: n8n-atom-quickstart
+name: infrastructure-core-quickstart
 
 services:
   # Shared AI Memory Database
@@ -60,6 +60,7 @@ services:
       - "6274:6274"
       - "6277:6277"
     environment:
+      - HOST=0.0.0.0
       - CLIENT_PORT=6274
       - SERVER_PORT=6277
     depends_on:

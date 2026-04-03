@@ -157,7 +157,7 @@ Your workflows, credentials, and database are stored in Docker/Podman **volumes*
 ```bash
 podman pull atom8n/n8n:fork
 podman pull ghcr.io/modelcontextprotocol/inspector:latest
-podman compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
+podman compose --env-file .env -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
 ```
 
 ### Password authentication failed for user "admin"
