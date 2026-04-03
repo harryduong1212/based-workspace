@@ -204,12 +204,15 @@ def build_n8n_atom(engine: str, args: argparse.Namespace) -> None:
         "pnpm run build:n8n && "
         "echo '--- CREATING PORTABLE ARCHIVE (Linux FS) ---' && "
         "tar chf /tmp/compiled.tar -C /build/compiled . && "
+        "echo '--- PACKAGING ARTIFACTS FOR HOST SYNC ---' && "
+        "find /build -type d \\( -name 'dist' -o -name 'build' -o -name 'compiled' \\) -not -path '*/node_modules/*' -print0 | xargs -0 tar cf /tmp/sync_artifacts.tar && "
         "echo '--- COPYING ARCHIVE TO HOST ---' && "
-        "rm -f /out/compiled.tar /out/pnpm-lock.yaml && "
+        "rm -f /out/compiled.tar /out/pnpm-lock.yaml /out/sync_artifacts.tar && "
         "cp /tmp/compiled.tar /out/compiled.tar && "
+        "cp /tmp/sync_artifacts.tar /out/sync_artifacts.tar && "
         "cp /build/pnpm-lock.yaml /out/pnpm-lock.yaml && "
         "echo '--- ARCHIVE READY ---' && "
-        "ls -lh /out/compiled.tar"
+        "ls -lh /out/compiled.tar /out/sync_artifacts.tar"
     )
 
     cmd = [
@@ -228,6 +231,21 @@ def build_n8n_atom(engine: str, args: argparse.Namespace) -> None:
         if sys.platform == "win32":
             print("💡 Windows tips: If OOM, increase WSL2 memory in .wslconfig")
         sys.exit(result.returncode)
+
+    # NEW: Sync artifacts back to the host filesystem from the synchronization tarball
+    sync_tar = target_dir / "sync_artifacts.tar"
+    if sync_tar.exists():
+        print("\n🔄 Mirroring build artifacts to host (dist/build/compiled)...")
+        # Extract the tarball on the host. -C target_dir ensures it goes to external/n8n-atom
+        # Use subprocess to run the local tar command
+        extract_cmd = ["tar", "-xf", str(sync_tar), "-C", "/"] # Paths inside tar are absolute /build/...
+        # But we want them relative to target_dir. Wait, the tar command above used 'find /build'
+        # so the paths in sync_artifacts.tar are /build/packages/cli/dist etc.
+        # We need to map /build/ -> target_dir/
+        extract_cmd = ["tar", "-xf", str(sync_tar), "--strip-components=1", "-C", str(target_dir)]
+        subprocess.run(extract_cmd, capture_output=True)
+        sync_tar.unlink() # Cleanup the sync tarball on host
+        print("✅ Host-side synchronization complete.")
 
     # Stage assets for the Docker build context
     stage_docker_assets(target_dir)
@@ -280,20 +298,16 @@ def clean_build_artifacts(engine: str, args: argparse.Namespace):
     """
     print("🧹 Starting Deep Clean of build artifacts...")
 
-    targets = []
-    if args.all or args.n8n or (not args.n8n and not args.mcp):
-        targets.append(WORKSPACE_ROOT / "external" / "n8n-atom")
-    if args.all or args.mcp or (not args.n8n and not args.mcp):
-        targets.append(WORKSPACE_ROOT / "external" / "mcp-inspector-atom8n")
-
     # 1. Recursive Host-Side Cleanup
-    artifact_names = ["node_modules", "dist", "build", ".pnpm-store", "build_context"]
+    # We NO LONGER include 'dist' or 'build' here as the user wants to keep them
+    # on the host for IDE intelligence and visibility.
+    artifact_names = ["node_modules", ".pnpm-store", "build_context", ".turbo"]
     
     for target in targets:
         if not target.exists():
             continue
             
-        print(f"  🔍 Scanning {target.name} for junk...")
+        print(f"  🔍 Scanning {target.name} for host-side junk (node_modules/turbo)...")
         for root, dirs, files in os.walk(target, topdown=False):
             for name in dirs:
                 if name in artifact_names:
