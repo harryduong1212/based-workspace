@@ -1,0 +1,6 @@
+[submodule "infrastructure/n8n-atom"]
+	path = external/n8n-atom
+	url = https://github.com/harryduong1212/n8n-atom.git
+[submodule "tools/mcp-inspector-atom8n"]
+	path = external/mcp-inspector-atom8n
+	url = https://github.com/harryduong1212/mcp-inspector-atom8n.git

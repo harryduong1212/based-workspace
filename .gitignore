@@ -1,6 +1,5 @@
 node_modules/
 dist/
-infrastructure/pgdata/
 .n8n/
 
 # Secrets
@@ -35,3 +34,6 @@ build/
 # Node.js & Frontend (MCP tools)
 dist/
 .npm/
+
+# tmp and external
+tmp/
