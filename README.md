@@ -18,6 +18,7 @@ Most AI coding assistants face challenges with context management—either havin
 - **[WORKFLOWS.md](WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
 - **[RULES.md](RULES.md)**: Behavioral guardrails applied to every AI interaction.
 - **[MCP_GUIDE.md](MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
+- **[N8N_LOCAL_SETUP.md](N8N_LOCAL_SETUP.md)**: Comprehensive guide for compiling and running n8n from source.
 
 ## ⚙️ Core Workspace Automations
 
@@ -103,17 +104,28 @@ Choose the command for your container engine:
 
 **Podman:**
 ```bash
-podman compose -f infrastructure/core/docker-compose.yaml up -d
+# Developer Mode (Build from source)
+python scripts/build_n8n_atom.py --all
+podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
+
+# User Mode (Quickstart)
+podman compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
 ```
 
 **Docker:**
 ```bash
-docker compose -f infrastructure/core/docker-compose.yaml up -d
+# Developer Mode (Build from source)
+python scripts/build_n8n_atom.py --all
+docker compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
+
+# User Mode (Quickstart)
+docker compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
 ```
 
 This starts:
-- `based-workspace-postgres` — PostgreSQL 16 + pgvector on port **5432**
-- `based-workspace-n8n` — n8n workflow automation on port **5678**
+- `based-workspace-postgres` — PostgreSQL 16 + pgvector on port **5432** (AI Memory + n8n)
+- `n8n-atom` — n8n workflow automation on port **5678** (Quickstart)
+- `n8n-atom-dev` — n8n workflow automation on port **5678** (Developer Mode)
 
 > [!TIP]
 > Always run `setup_env.py` **before** starting your containers for the first time or whenever you want to rotate your passwords.
