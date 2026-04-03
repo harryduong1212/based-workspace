@@ -183,17 +183,11 @@ jobs:
         # The runner already has Node.js installed, so we don't
         # need a container-in-a-container.
 
-      # ── Step 7: Prepare build context ──
-      - name: Copy entrypoint to compiled/
-        run: |
-          cp docker/images/n8n/docker-entrypoint.sh compiled/docker-entrypoint.sh
-          chmod +x compiled/docker-entrypoint.sh
-
-      # ── Step 8: Build & push the Docker image ──
+      # ── Step 7: Build & push the Docker image ──
       - name: Build & Push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./compiled
+          context: .
           file: ./docker/images/n8n/Dockerfile
           platforms: linux/amd64,linux/arm64
           # ↑ Build for BOTH architectures:
