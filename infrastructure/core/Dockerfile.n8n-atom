@@ -1,0 +1,46 @@
+# ==============================================================================
+# n8n-atom Custom Dockerfile
+# ==============================================================================
+# We use bookworm-slim because the compiled.tar was generated using the 
+# node:22-bookworm builder, ensuring native module (sqlite3) glibc compatibility.
+FROM docker.io/node:22-bookworm-slim AS runtime
+
+ARG N8N_RELEASE_TYPE=dev
+ENV NODE_ENV=production
+ENV N8N_RELEASE_TYPE=${N8N_RELEASE_TYPE}
+ENV NODE_ICU_DATA=/usr/local/lib/node_modules/full-icu
+ENV SHELL=/bin/sh
+
+WORKDIR /home/node
+
+# Install essential runtime tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tini \
+    graphicsmagick \
+    ghostscript \
+    fonts-liberation \
+    && rm -rf /var/lib/apt/lists/*
+
+# Extract the standalone bundle
+# Since compiled.tar is directly in build_context, we ADD it here
+# The ADD instruction automatically extracts tar files!
+ADD compiled.tar /usr/local/lib/node_modules/n8n/
+
+# Add entrypoint script
+COPY docker-entrypoint.sh /
+
+RUN cd /usr/local/lib/node_modules/n8n && \
+    npm install -g npm@11.6.4 && \
+    ln -s /usr/local/lib/node_modules/n8n/bin/n8n /usr/local/bin/n8n && \
+    mkdir -p /home/node/.n8n && \
+    chown -R node:node /home/node && \
+    chmod +x /docker-entrypoint.sh
+
+EXPOSE 5678/tcp
+USER node
+ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
+
+LABEL org.opencontainers.image.title="n8n" \
+      org.opencontainers.image.description="Workflow Automation Tool" \
+      org.opencontainers.image.source="https://github.com/n8n-io/n8n" \
+      org.opencontainers.image.version="dev"

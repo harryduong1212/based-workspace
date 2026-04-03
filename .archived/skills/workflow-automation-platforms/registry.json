@@ -137,6 +137,22 @@
       ]
     },
     {
+      "id": "n8n-atom-executor",
+      "description": "Executes n8n-atom automated workflows and integrates with the MCP inspector bridge.",
+      "path": "n8n-atom-executor/SKILL.md",
+      "triggers": [],
+      "tags": [
+        "orchestrating",
+        "deploying",
+        "overview",
+        "capabilities",
+        "mcp",
+        "n8n-atom-executor",
+        "n8n",
+        "n8n-atom"
+      ]
+    },
+    {
       "id": "odoo-qweb-templates",
       "description": "Expert in Odoo QWeb templating for PDF reports, email templates, and website pages. Covers t-if, t-foreach, t-field, and report actions.",
       "path": "odoo-qweb-templates/SKILL.md",

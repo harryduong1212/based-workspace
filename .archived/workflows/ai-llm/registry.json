@@ -4,10 +4,10 @@
   "workflows": [
     {
       "id": "ai-agent",
-      "description": "Create AI agents with tools",
+      "description": "✅ Ready",
       "path": "ai-agent.md",
       "triggers": [
-        "ai-agent"
+        "ai-llm-ai-agent"
       ],
       "required_skills": [],
       "entry_point": null,
@@ -24,10 +24,10 @@
     },
     {
       "id": "prompt-engineering",
-      "description": "Design and optimize LLM prompts",
+      "description": "✅ Ready",
       "path": "prompt-engineering.md",
       "triggers": [
-        "prompt-engineering"
+        "ai-llm-prompt-engineering"
       ],
       "required_skills": [],
       "entry_point": null,
@@ -44,10 +44,10 @@
     },
     {
       "id": "rag-pipeline",
-      "description": "Build retrieval-augmented generation",
+      "description": "✅ Ready",
       "path": "rag-pipeline.md",
       "triggers": [
-        "rag-pipeline"
+        "ai-llm-rag-pipeline"
       ],
       "required_skills": [],
       "entry_point": null,

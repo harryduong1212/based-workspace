@@ -189,8 +189,8 @@ def _remove_link(p: Path) -> None:
         p.unlink(missing_ok=True)
 
 
-def wipe_symlinks(directory: Path, preserved: set[str]) -> list[str]:
-    """Remove all contents in *directory* except preserved items and registry.json."""
+def wipe_symlinks(directory: Path, preserved: set[str], limit_to_ids: set[str] | None = None) -> list[str]:
+    """Remove contents in *directory* except preserved items, registry.json, and items not in limit_to_ids."""
     removed: list[str] = []
     if not directory.exists():
         return removed
@@ -198,6 +198,10 @@ def wipe_symlinks(directory: Path, preserved: set[str]) -> list[str]:
         if child.name in preserved or child.name == "registry.json":
             continue
         
+        # If limit_to_ids is specified, only remove if the ID is found in the archive registries.
+        if limit_to_ids is not None and child.name not in limit_to_ids:
+            continue
+
         try:
             if child.is_dir() and not _is_link(child):
                 shutil.rmtree(child)
@@ -335,10 +339,11 @@ def activate_skills(skill_ids: list[str], wipe_first: bool = False) -> None:
         "skills": []
     }
 
+    index = build_skill_index()
     if wipe_first:
-        removed = wipe_symlinks(SKILLS_ACTIVE, PRESERVED_DIRS)
+        removed = wipe_symlinks(SKILLS_ACTIVE, PRESERVED_DIRS, limit_to_ids=set(index.keys()))
         if removed:
-            print(f"  {_yellow('Cleared')} {len(removed)} existing symlink(s) from .agents/skills/")
+            print(f"  {_yellow('Cleared')} {len(removed)} archived symlink(s) from .agents/skills/")
     else:
         if registry_path.exists():
             try:
@@ -473,10 +478,19 @@ def activate_workflows(workflow_ids: list[str], wipe_first: bool = False) -> Non
         "workflows": []
     }
 
+    index = build_workflow_index()
     if wipe_first:
-        removed = wipe_symlinks(WORKFLOWS_ACTIVE, set())
+        # Build a set of all valid filenames for workflows in the archive to ensure we clear them correctly.
+        valid_filenames = set()
+        for wid, entry in index.items():
+            cat_id = entry["category_id"]
+            safe_wid = f"{cat_id}-{wid}" if cat_id != "miscellaneous" else wid
+            if not safe_wid.endswith(".md"): safe_wid += ".md"
+            valid_filenames.add(safe_wid)
+
+        removed = wipe_symlinks(WORKFLOWS_ACTIVE, set(), limit_to_ids=valid_filenames)
         if removed:
-            print(f"  {_yellow('Cleared')} {len(removed)} existing symlink(s) from .agents/workflows/")
+            print(f"  {_yellow('Cleared')} {len(removed)} archived symlink(s) from .agents/workflows/")
     else:
         if registry_path.exists():
             try:
@@ -558,10 +572,67 @@ def activate_workflows(workflow_ids: list[str], wipe_first: bool = False) -> Non
 # ──────────────────────────────────────────────
 # Entry-point
 # ──────────────────────────────────────────────
+
+def show_current_status() -> None:
+    """Display the currently active skills and workflows."""
+    print(f"\n{_bold('Current Workspace Status')}")
+    print(f"{'=' * 52}")
+
+    # Skills
+    registry_path_skills = SKILLS_ACTIVE / "registry.json"
+    if registry_path_skills.exists():
+        try:
+            data = _load_json(registry_path_skills)
+            skills = data.get("skills", [])
+            print(f"\n{_cyan('Active Skills')} ({len(skills)}):")
+            if skills:
+                for s in sorted(skills, key=lambda x: x["id"]):
+                    print(f"  {_green('•')} {s['id']}")
+            else:
+                print("  (none)")
+        except Exception:
+            print(f"  {_red('ERROR')} Could not read skills registry.")
+    else:
+        print(f"\n{_cyan('Active Skills')}: Not initialized.")
+
+    # Workflows
+    registry_path_workflows = WORKFLOWS_ACTIVE / "registry.json"
+    if registry_path_workflows.exists():
+        try:
+            data = _load_json(registry_path_workflows)
+            workflows = data.get("workflows", [])
+            print(f"\n{_cyan('Active Workflows')} ({len(workflows)}):")
+            if workflows:
+                for w in sorted(workflows, key=lambda x: x["id"]):
+                    print(f"  {_green('•')} {w['id']}")
+            else:
+                print("  (none)")
+        except Exception:
+            print(f"  {_red('ERROR')} Could not read workflows registry.")
+    else:
+        print(f"\n{_cyan('Active Workflows')}: Not initialized.")
+
+    print(f"\n{'=' * 52}\n")
+
+
+# ──────────────────────────────────────────────
+# Entry-point
+# ──────────────────────────────────────────────
 def main() -> None:
+    # Load profile names for help message
+    profiles_data = {}
+    try:
+        profiles_data = _load_json(PROFILES_PATH).get("profiles", {})
+    except Exception:
+        pass
+    
+    profile_list = ", ".join(sorted(profiles_data.keys())) if profiles_data else "None found"
+
     parser = argparse.ArgumentParser(
         description="Workspace Context Manager — configure which skills and workflows are active.",
-        epilog="Examples:\n"
+        epilog="Available Profiles:\n"
+        f"  {profile_list}\n\n"
+        "Examples:\n"
         "  python scripts/workspace_manager.py --profile java-backend-dev\n"
         '  python scripts/workspace_manager.py --skills "n8n-workflow-patterns"\n'
         '  python scripts/workspace_manager.py --workflows "feature-kickoff"\n'
@@ -594,7 +665,8 @@ def main() -> None:
     args = parser.parse_args()
 
     if not args.profile and not args.skills and not args.workflows and not args.clear:
-        parser.print_help()
+        show_current_status()
+        print("Use --help to see available commands.")
         sys.exit(0)
 
     skill_ids, workflow_ids = resolve_ids(args)

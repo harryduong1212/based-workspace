@@ -223,7 +223,8 @@ def reorganize_full():
         "web-games": "game-development",
         "mobile-games": "game-development",
         "workspace-analyzer": "custom-skills",
-        "senior-architect-v2": "custom-skills"
+        "senior-architect-v2": "custom-skills",
+        "n8n-atom-executor": "workflow-automation-platforms"
     }
 
     all_skill_folders = {}
