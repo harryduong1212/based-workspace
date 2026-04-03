@@ -14,11 +14,11 @@ Most AI coding assistants face challenges with context management—either havin
 
 ## Documentation Hub
 
-- **[SKILLS.md](SKILLS.md)**: Browse 212+ curated **Base Skills** and 1,100+ archived modules.
-- **[WORKFLOWS.md](WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
-- **[RULES.md](RULES.md)**: Behavioral guardrails applied to every AI interaction.
-- **[MCP_GUIDE.md](MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
-- **[N8N_LOCAL_SETUP.md](N8N_LOCAL_SETUP.md)**: Comprehensive guide for compiling and running n8n from source.
+- **[SKILLS.md](docs/SKILLS.md)**: Browse 212+ curated **Base Skills** and 1,100+ archived modules.
+- **[WORKFLOWS.md](docs/WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
+- **[RULES.md](docs/RULES.md)**: Behavioral guardrails applied to every AI interaction.
+- **[MCP_GUIDE.md](docs/MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
+- **[N8N-ATOM SETUP](docs/n8n-atom/SETUP.md)**: Comprehensive guide for running n8n via quickstart or compiling from source.
 
 ## ⚙️ Core Workspace Automations
 
@@ -57,7 +57,7 @@ This workspace uses containers for PostgreSQL (pgvector) and n8n. Choose one:
 - **Linux:** Install via your package manager, e.g., Ubuntu/Debian: `sudo apt-get install podman` (or `docker.io`), Fedora: `sudo dnf install podman`.
 - **Windows 11:** Completely fresh Windows installations do not have WSL2 enabled by default. Open an **admin** PowerShell and run `wsl --install` before installing Podman or Docker Desktop, or your background container engine will fail to start.
 
-> **Note:** The rules in this workspace default to `podman`. If you use Docker, update `.agents/rules/terminal-environment.md` (see [ADVANCED_USAGE.md](ADVANCED_USAGE.md)).
+> **Note:** The rules in this workspace default to `podman`. If you use Docker, update `.agents/rules/terminal-environment.md` (see [ADVANCED_USAGE.md](docs/ADVANCED_USAGE.md)).
 
 #### 🔍 Verify Your Setup
 Restart your terminal after installing the tools above, then run:
@@ -300,11 +300,13 @@ based-workspace/
 │   └── postgres-mcp.js           ← 🔑 Secure MCP credential loader
 │
 ├── .env                          ← 🤐 Active secrets (ignored by Git)
-├── RULES.md                      ← 📐 Catalogue of active rules
-├── SKILLS.md                     ← 🧠 Catalogue of all 1,300+ skills
-├── WORKFLOWS.md                  ← 🚀 Catalogue of all 50+ workflows
-├── MCP_GUIDE.md                  ← 🔌 Comprehensive guide for MCP servers
-├── ADVANCED_USAGE.md             ← ⚙️ Advanced customization guide
+├── docs/                         ← 📚 Centralized documentation hub
+│   ├── n8n-atom/                 ←   n8n setup, architecture and CI/CD
+│   ├── RULES.md                  ←   Catalogue of active rules
+│   ├── SKILLS.md                 ←   Catalogue of all 1,300+ skills
+│   ├── WORKFLOWS.md              ←   Catalogue of all 50+ workflows
+│   ├── MCP_GUIDE.md              ←   Comprehensive guide for MCP servers
+│   └── ADVANCED_USAGE.md         ←   Advanced ecosystem customization
 └── README.md                     ← 📖 This file
 ```
 
