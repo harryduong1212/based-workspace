@@ -98,6 +98,60 @@ graph TD
 
 ---
 
+## 🏆 Zero-to-Hero Windows Test Plan (From Scratch)
+
+This section acts as a step-by-step tutorial to validating the full development environment on a brand new Windows laptop.
+
+### 1. Install Windows Subsystem for Linux (WSL2)
+1. Open PowerShell as Administrator.
+2. Run: `wsl --install`
+3. Restart the computer if prompted.
+
+### 2. Configure WSL2 Memory (Crucial for Node/pnpm)
+1. Press `Win + R`, type `%USERPROFILE%`, and hit Enter.
+2. Create a new text file named EXACTLY `.wslconfig` in that directory.
+3. Paste the following to allocate 8GB of RAM to the Docker/Podman engine:
+```ini
+[wsl2]
+memory=8GB
+```
+4. Restart WSL: In PowerShell, run `wsl --shutdown`.
+
+### 3. Install Developer Tooling
+Install the following core tools:
+- **Git for Windows**: Run `winget install --id Git.Git -e --source winget`
+- **Python 3.10+**: Run `winget install -e --id Python.Python.3.11`
+- **Podman Desktop**: Run `winget install -e --id RedHat.Podman-Desktop` (During install, initialize the Podman machine).
+
+### 4. Clone & Setup Repository
+Open PowerShell 7 and ensure you clone with submodules:
+```powershell
+git clone --recurse-submodules https://github.com/harryduong1212/based-workspace.git
+cd based-workspace
+```
+Generate your private environment credentials:
+```powershell
+python scripts/setup_env.py
+```
+*(Verify that a `.env` file was created in the root).*
+
+### 5. Execute Build Pipeline
+Run the orchestrator script to compile both the frontend and backend in an isolated linux container:
+```powershell
+python scripts/build_n8n_atom.py --all
+```
+*(First run will take 5-10 minutes to download images and dependencies).*
+
+### 6. Verify Launch Health
+Bootstrap the application and verify it comes online securely via the new compose command:
+```powershell
+podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
+```
+- **n8n Backend Health**: [http://localhost:5678/healthz](http://localhost:5678/healthz)
+- **MCP Inspector UI**: [http://localhost:6274](http://localhost:6274)
+
+---
+
 ## 🚀 Building from Source
 
 ### Basic Usage
