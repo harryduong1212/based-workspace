@@ -1,6 +1,7 @@
 name: infrastructure-core
 
 services:
+  # Core Infrastructure (Always runs by default)
   based-workspace-postgres:
     image: pgvector/pgvector:pg16
     container_name: based-workspace-postgres
@@ -19,21 +20,67 @@ services:
       timeout: 5s
       retries: 5
 
-  based-workspace-n8n:
-    image: docker.n8n.io/n8nio/n8n
-    container_name: based-workspace-n8n
+  # Optional Automation Layer (Runs only when the n8n-atom profile is active)
+  n8n-atom:
+    image: based-workspace/n8n-atom:latest
+    build:
+      context: ../../external/n8n-atom/build_context
+      dockerfile: ../../../infrastructure/core/Dockerfile.n8n-atom
+    container_name: n8n-atom-dev
     restart: unless-stopped
+    profiles:
+      - "n8n-atom"
     depends_on:
       based-workspace-postgres:
         condition: service_healthy
+    env_file:
+      - ../../.env
     environment:
-      N8N_HOST: localhost
-      NODE_ENV: production
-      NODE_FUNCTION_ALLOW_EXTERNAL: axios,lodash
+      - N8N_HOST=${N8N_HOST:-localhost}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=${N8N_WEBHOOK_URL:-http://localhost:5678/}
+      # Enhanced: Configure n8n to use the core Postgres instance instead of SQLite
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB:-n8n}
+      - DB_POSTGRESDB_HOST=based-workspace-postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=${POSTGRES_USER:-n8n}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD:-n8n}
+      - NODE_FUNCTION_ALLOW_EXTERNAL=axios,lodash
+      - EXECUTIONS_DATA_SAVE_ON_ERROR=all
+      - EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
+      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
     ports:
       - "5678:5678"
     volumes:
       - based-workspace-n8n-data:/home/node/.n8n
+    networks:
+      - based-workspace-net
+
+  mcp-inspector:
+    image: based-workspace/mcp-inspector:latest
+    build: 
+      context: ../../external/mcp-inspector-atom8n
+      dockerfile: Dockerfile
+    container_name: mcp-inspector-dev
+    profiles:
+      - "n8n-atom"
+    ports:
+      - "6274:6274"
+      - "6277:6277"
+    environment:
+      - HOST=0.0.0.0
+      - CLIENT_PORT=6274
+      - SERVER_PORT=6277
+      - N8N_API_URL=http://n8n-atom:5678
+      - N8N_API_KEY=${N8N_API_KEY:-}
+    env_file:
+      - ../../.env
+    depends_on:
+      - n8n-atom
     networks:
       - based-workspace-net
 
