@@ -21,6 +21,7 @@ def init_workspace_security():
 
     # 1. Generate password and write .env file
     db_password = generate_secure_password()
+    n8n_api_key = generate_secure_password(32)
     env_content = f"""# PostgreSQL Configuration
 POSTGRES_USER=admin
 POSTGRES_PASSWORD={db_password}
@@ -32,6 +33,7 @@ N8N_HOST=localhost
 N8N_PORT=5678
 NODE_ENV=production
 WEBHOOK_URL=http://localhost:5678/
+N8N_API_KEY={n8n_api_key}
 AI_BACKEND_TYPE=gemini
 """
     env_file.write_text(env_content, encoding="utf-8")
