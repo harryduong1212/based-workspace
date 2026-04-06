@@ -52,14 +52,11 @@
       "required_skills": [],
       "entry_point": null,
       "tags": [
-        "validation",
-        "authentication",
-        "review",
-        "authorization",
-        "sql",
         "security",
-        "audit",
-        "exposed"
+        "auditing",
+        "penetration testing",
+        "vulnerability scanning",
+        "hardening"
       ]
     }
   ]

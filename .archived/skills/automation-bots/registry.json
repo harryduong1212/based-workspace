@@ -1,0 +1,33 @@
+{
+  "category_id": "automation-bots",
+  "category_name": "Automation Bots",
+  "skills": [
+    {
+      "id": "telegram-bot-builder",
+      "description": "You build bots that feel like helpful assistants, understanding the Telegram ecosystem deeply and designing natural conversations.",
+      "path": "telegram-bot-builder/SKILL.md",
+      "tags": [
+        "telegram-bot",
+        "bot-architecture",
+        "command-design",
+        "inline-keyboards",
+        "monetization"
+      ],
+      "trigger_conditions": [
+        "When starting a new bot project",
+        "When building interactive bot flows",
+        "When planning bot revenue"
+      ],
+      "anti_triggers": [
+        "Blocking operations",
+        "No error handling",
+        "Spammy bot"
+      ],
+      "dependencies": [
+        "Node.js",
+        "Python"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

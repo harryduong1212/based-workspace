@@ -1,0 +1,34 @@
+{
+  "category_id": "quality-debugging",
+  "category_name": "Quality Debugging",
+  "skills": [
+    {
+      "id": "debugging-strategies",
+      "description": "Transform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches.",
+      "path": "debugging-strategies/SKILL.md",
+      "tags": [
+        "debugging",
+        "systematic",
+        "tools",
+        "methodical",
+        "performance"
+      ],
+      "trigger_conditions": [
+        "Tracking down elusive bugs",
+        "Investigating performance issues",
+        "Debugging production incidents",
+        "Analyzing crash dumps or stack traces",
+        "Debugging distributed systems"
+      ],
+      "anti_triggers": [
+        "There is no reproducible issue or observable symptom",
+        "The task is purely feature development",
+        "You cannot access logs",
+        "traces",
+        "or runtime signals"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

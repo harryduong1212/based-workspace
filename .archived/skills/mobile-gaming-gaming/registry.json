@@ -1,0 +1,153 @@
+{
+  "category_id": "mobile-gaming-gaming",
+  "category_name": "Mobile Gaming Gaming",
+  "skills": [
+    {
+      "id": "3d-games",
+      "description": "A comprehensive guide on 3D game development principles including rendering, shaders, physics, and camera systems.",
+      "path": "3d-games/SKILL.md",
+      "tags": [
+        "3D",
+        "game development",
+        "rendering",
+        "shaders",
+        "physics"
+      ],
+      "trigger_conditions": [
+        "Developing a new 3D game",
+        "Optimizing an existing 3D game"
+      ],
+      "anti_triggers": [
+        "Using overly complex colliders",
+        "Applying real-time shadows on mobile devices"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "godot-4-migration",
+      "description": "A specialized guide for migrating Godot 3.x projects to Godot 4, focusing on syntax changes, the new Tween system, and export annotation updates.",
+      "path": "godot-4-migration/SKILL.md",
+      "tags": [
+        "Godot",
+        "GDScript",
+        "Migration",
+        "Tween",
+        "Export"
+      ],
+      "trigger_conditions": [
+        "Porting a Godot 3 project to Godot 4",
+        "Encountering syntax errors after upgrading",
+        "Replacing deprecated nodes",
+        "Updating export variables to @export annotations"
+      ],
+      "anti_triggers": [
+        "Using string-based connections for signals",
+        "Not using typed arrays"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "unity-developer",
+      "description": "A skill for building high-performance Unity games with optimized C# scripts, efficient rendering, and proper asset management.",
+      "path": "unity-developer/SKILL.md",
+      "tags": [
+        "Unity",
+        "C#",
+        "performance optimization",
+        "rendering pipelines",
+        "cross-platform deployment"
+      ],
+      "trigger_conditions": [
+        "Working on unity developer tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for unity developer"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to unity developer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Unity 6 LTS",
+        "URP/HDRP pipelines"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "unity-ecs-patterns",
+      "description": "Production patterns for Unity's Data-Oriented Technology Stack (DOTS) including Entity Component System, Job System, and Burst Compiler.",
+      "path": "unity-ecs-patterns/SKILL.md",
+      "tags": [
+        "Unity",
+        "ECS",
+        "Job System",
+        "Burst Compiler",
+        "Data-Oriented"
+      ],
+      "trigger_conditions": [
+        "Building high-performance Unity games",
+        "Managing thousands of entities efficiently",
+        "Implementing data-oriented game systems",
+        "Optimizing CPU-bound game logic",
+        "Converting OOP game code to ECS"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to unity ecs patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "unreal-engine-cpp-pro",
+      "description": "Expert guide for Unreal Engine 5.x C++ development, covering UObject hygiene, performance patterns, and best practices.",
+      "path": "unreal-engine-cpp-pro/SKILL.md",
+      "tags": [
+        "Unreal Engine",
+        "C++",
+        "UObject",
+        "Performance",
+        "Blueprints"
+      ],
+      "trigger_conditions": [
+        "Developing C++ code for Unreal Engine 5.x projects",
+        "Writing Actors",
+        "Components",
+        "or UObject-derived classes",
+        "Optimizing performance-critical code in Unreal Engine"
+      ],
+      "anti_triggers": [
+        "Working with Blueprint-only projects (no C++ code)",
+        "Developing for Unreal Engine versions prior to 5.x",
+        "Working on non-Unreal game engines"
+      ],
+      "dependencies": [
+        "Unreal Engine"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "web-games",
+      "description": "Web browser game development principles, including framework selection, WebGPU adoption, performance optimization, asset strategy, PWA implementation, and audio handling.",
+      "path": "web-games/SKILL.md",
+      "tags": [
+        "web-games",
+        "browser-games",
+        "WebGPU",
+        "PWA"
+      ],
+      "trigger_conditions": [
+        "Developing a web-based game for browsers",
+        "Need to optimize game performance for various devices"
+      ],
+      "anti_triggers": [
+        "Developing a native mobile app",
+        "Creating a game that requires offline play without PWA"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

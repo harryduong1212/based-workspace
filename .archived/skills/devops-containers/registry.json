@@ -1,0 +1,95 @@
+{
+  "category_id": "devops-containers",
+  "category_name": "Devops Containers",
+  "skills": [
+    {
+      "id": "docker-expert",
+      "description": "You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices.",
+      "path": "docker-expert/SKILL.md",
+      "tags": [
+        "Docker",
+        "containerization",
+        "optimization",
+        "security",
+        "multi-stage builds",
+        "orchestration",
+        "production deployment"
+      ],
+      "trigger_conditions": [
+        "When dealing with Docker container setup or optimization",
+        "For issues related to Docker security hardening",
+        "When working on multi-stage build strategies"
+      ],
+      "anti_triggers": [
+        "Kubernetes orchestration",
+        "pods",
+        "services",
+        "ingress → kubernetes-expert (future)",
+        "GitHub Actions CI/CD with containers → github-actions-expert",
+        "AWS ECS/Fargate or cloud-specific container services → devops-expert",
+        "Database containerization with complex persistence → database-expert"
+      ],
+      "dependencies": [
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "kubernetes-architect",
+      "description": "Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration.",
+      "path": "kubernetes-architect/SKILL.md",
+      "tags": [
+        "Kubernetes",
+        "GitOps",
+        "Container Orchestration",
+        "Cloud-Native",
+        "Enterprise"
+      ],
+      "trigger_conditions": [
+        "Designing Kubernetes platform architecture or multi-cluster strategy",
+        "Implementing GitOps workflows and progressive delivery",
+        "Planning service mesh",
+        "security",
+        "or multi-tenancy patterns"
+      ],
+      "anti_triggers": [
+        "You only need a local dev cluster or single-node setup",
+        "You are troubleshooting application code without platform changes",
+        "You are not using Kubernetes or container orchestration"
+      ],
+      "dependencies": [
+        "Kubernetes",
+        "GitOps tools (ArgoCD",
+        "Flux)"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "kubernetes-deployment",
+      "description": "A specialized workflow for deploying applications to Kubernetes, including container orchestration, Helm charts, service mesh configuration, and production-ready K8s patterns.",
+      "path": "kubernetes-deployment/SKILL.md",
+      "tags": [
+        "Kubernetes",
+        "Helm",
+        "Service Mesh",
+        "Container Orchestration",
+        "Production Ready"
+      ],
+      "trigger_conditions": [
+        "Deploying to Kubernetes",
+        "Creating Helm charts",
+        "Configuring service mesh"
+      ],
+      "anti_triggers": [
+        "Non-Kubernetes deployment scenarios",
+        "Simple application deployments"
+      ],
+      "dependencies": [
+        "Kubernetes",
+        "Helm",
+        "Istio/Linkerd"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

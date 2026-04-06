@@ -1,0 +1,174 @@
+{
+  "category_id": "quality-observability",
+  "category_name": "Quality Observability",
+  "skills": [
+    {
+      "id": "error-diagnostics-error-trace",
+      "description": "You are an expert in setting up and optimizing error tracking systems, including configuring alerts, implementing structured logging, and ensuring real-time visibility of errors.",
+      "path": "error-diagnostics-error-trace/SKILL.md",
+      "tags": [
+        "error tracking",
+        "observability",
+        "logging",
+        "alerting",
+        "monitoring"
+      ],
+      "trigger_conditions": [
+        "Working on error tracking and monitoring tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for error tracking and monitoring"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to error tracking and monitoring",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "incident-response-incident-response",
+      "description": "Orchestrate multi-agent incident response with modern SRE practices for rapid resolution and learning.",
+      "path": "incident-response-incident-response/SKILL.md",
+      "tags": [
+        "incident-response",
+        "sre",
+        "observability",
+        "performance-engineering",
+        "security-assessment"
+      ],
+      "trigger_conditions": [
+        "Working on incident response tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for incident response"
+      ],
+      "anti_triggers": [
+        "Task is unrelated to incident response",
+        "Need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Task tool",
+        "PagerDuty/Opsgenie/monitoring",
+        "ELK/Splunk",
+        "OpenTelemetry/Jaeger",
+        "Prometheus/Grafana/DataDog"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "incident-runbook-templates",
+      "description": "Production-ready templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.",
+      "path": "incident-runbook-templates/SKILL.md",
+      "tags": [
+        "incident",
+        "runbook",
+        "templates",
+        "detection",
+        "triage",
+        "mitigation",
+        "resolution",
+        "communication"
+      ],
+      "trigger_conditions": [
+        "Creating incident response procedures",
+        "Building service-specific runbooks",
+        "Establishing escalation paths",
+        "Documenting recovery procedures",
+        "Responding to active incidents",
+        "Onboarding on-call engineers"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to incident runbook templates",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Kubernetes",
+        "Prometheus",
+        "Grafana",
+        "Sentry",
+        "Slack",
+        "PagerDuty"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "manifest",
+      "description": "Configure the Manifest observability plugin for agents, setting up telemetry and connecting to Manifest for monitoring.",
+      "path": "manifest/SKILL.md",
+      "tags": [
+        "observability",
+        "telemetry",
+        "manifest",
+        "api-key",
+        "plugin"
+      ],
+      "trigger_conditions": [
+        "User wants to set up observability or telemetry for their agent",
+        "User wants to connect their agent to Manifest for monitoring",
+        "User needs to configure a Manifest API key or custom endpoint",
+        "User is troubleshooting Manifest plugin connection issues"
+      ],
+      "anti_triggers": [
+        "General observability design (use `observability-engineer` instead)",
+        "Building custom dashboards or alerting rules"
+      ],
+      "dependencies": [
+        "claude"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "prometheus-configuration",
+      "description": "A comprehensive guide to setting up Prometheus for metric collection, scraping, and alerting.",
+      "path": "prometheus-configuration/SKILL.md",
+      "tags": [
+        "Prometheus",
+        "Monitoring",
+        "Metrics",
+        "Alerting",
+        "Configuration"
+      ],
+      "trigger_conditions": [
+        "Set up Prometheus monitoring",
+        "Configure metric scraping",
+        "Create recording rules"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to prometheus configuration",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Docker",
+        "Kubernetes"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "slo-implementation",
+      "description": "A framework for defining and implementing Service Level Indicators (SLIs), Service Level Objectives (SLOs), and error budgets.",
+      "path": "slo-implementation/SKILL.md",
+      "tags": [
+        "Service Level Indicators",
+        "Service Level Objectives",
+        "error budgets",
+        "Prometheus",
+        "Grafana"
+      ],
+      "trigger_conditions": [
+        "Define service reliability targets",
+        "Measure user-perceived reliability",
+        "Implement error budgets"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to slo implementation",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Prometheus",
+        "Grafana"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

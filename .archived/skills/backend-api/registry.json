@@ -1,0 +1,358 @@
+{
+  "category_id": "backend-api",
+  "category_name": "Backend API",
+  "skills": [
+    {
+      "id": "ad-creative",
+      "description": "Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when generating headlines, descriptions, primary text, or large sets of ad variations for testing and performance optimization.",
+      "path": "ad-creative/SKILL.md",
+      "tags": [
+        "ad creative",
+        "Google Ads",
+        "Meta",
+        "LinkedIn",
+        "TikTok"
+      ],
+      "trigger_conditions": [
+        "Use when generating or iterating paid ad copy at scale.",
+        "Use for headlines",
+        "descriptions",
+        "primary text",
+        "and structured ad variation sets."
+      ],
+      "anti_triggers": [
+        "Do not use when performance data should inform the next round of creative."
+      ],
+      "dependencies": [
+        "Google Ads",
+        "Meta Ads",
+        "LinkedIn Ads",
+        "TikTok Ads"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "api-documentation-generator",
+      "description": "Generate comprehensive, developer-friendly API documentation from code, including endpoints, parameters, examples, and best practices",
+      "path": "api-documentation-generator/SKILL.md",
+      "tags": [
+        "API",
+        "Documentation",
+        "REST",
+        "GraphQL",
+        "WebSocket"
+      ],
+      "trigger_conditions": [
+        "When you need to document a new API",
+        "When updating existing API documentation",
+        "When your API lacks clear documentation"
+      ],
+      "anti_triggers": [
+        "When the API is already well-documented",
+        "When the documentation is up-to-date with the codebase"
+      ],
+      "dependencies": [
+        "codebase"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "api-documenter",
+      "description": "Master API documentation with OpenAPI 3.1, AI-powered tools, and modern developer experience practices. Create interactive docs, generate SDKs, and build comprehensive developer portals.",
+      "path": "api-documenter/SKILL.md",
+      "tags": [
+        "api-documentation",
+        "openapi",
+        "sdk-generation",
+        "developer-portal",
+        "ai-assisted"
+      ],
+      "trigger_conditions": [
+        "Creating or updating OpenAPI/AsyncAPI specifications",
+        "Building developer portals",
+        "SDK docs",
+        "or onboarding flows",
+        "Improving API documentation quality and discoverability"
+      ],
+      "anti_triggers": [
+        "You only need a quick internal note or informal summary",
+        "The task is pure backend implementation without docs",
+        "There is no API surface or spec to document"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "api-endpoint-builder",
+      "description": "Builds production-ready REST API endpoints with validation, error handling, authentication, and documentation. Follows best practices for security and scalability.",
+      "path": "api-endpoint-builder/SKILL.md",
+      "tags": [
+        "API",
+        "REST",
+        "endpoint",
+        "validation",
+        "authentication"
+      ],
+      "trigger_conditions": [
+        "User asks to 'create an API endpoint' or 'build a REST API'",
+        "Building new backend features",
+        "Adding endpoints to existing APIs"
+      ],
+      "anti_triggers": [
+        "Creating CRUD operations without proper validation and error handling"
+      ],
+      "dependencies": [
+        "Express",
+        "Fastify",
+        "bcrypt"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "api-patterns",
+      "description": "API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.",
+      "path": "api-patterns/SKILL.md",
+      "tags": [
+        "api",
+        "rest",
+        "graphql",
+        "trpc",
+        "versioning"
+      ],
+      "trigger_conditions": [
+        "Choosing API type",
+        "Designing REST API",
+        "Response structure",
+        "Considering GraphQL",
+        "TS fullstack projects",
+        "API evolution planning",
+        "Auth pattern selection",
+        "API protection",
+        "Documentation",
+        "Security audits"
+      ],
+      "anti_triggers": [
+        "Default to REST for everything",
+        "Use verbs in REST endpoints (/getUsers)",
+        "Return inconsistent response formats",
+        "Expose internal errors to clients",
+        "Skip rate limiting"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "fastapi-pro",
+      "description": "This skill provides comprehensive guidance on building high-performance, async APIs using FastAPI, SQLAlchemy 2.0, and Pydantic V2, covering best practices, architecture patterns, and advanced features.",
+      "path": "fastapi-pro/SKILL.md",
+      "tags": [
+        "FastAPI",
+        "SQLAlchemy",
+        "Pydantic",
+        "async",
+        "microservices"
+      ],
+      "trigger_conditions": [
+        "Working on fastapi pro tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for fastapi pro"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to fastapi pro",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "FastAPI",
+        "SQLAlchemy",
+        "Pydantic"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fastapi-router-py",
+      "description": "Create FastAPI routers following established patterns with proper authentication, response models, and HTTP status codes.",
+      "path": "fastapi-router-py/SKILL.md",
+      "tags": [
+        "FastAPI",
+        "Python",
+        "Authentication",
+        "Response Models",
+        "HTTP Status Codes"
+      ],
+      "trigger_conditions": [
+        "Developing a new API endpoint in FastAPI",
+        "Need to ensure proper authentication for an API"
+      ],
+      "anti_triggers": [
+        "Creating a simple GET request without authentication",
+        "Ignoring response models and HTTP status codes"
+      ],
+      "dependencies": [
+        "FastAPI"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fastapi-templates",
+      "description": "Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.",
+      "path": "fastapi-templates/SKILL.md",
+      "tags": [
+        "FastAPI",
+        "async",
+        "dependency injection",
+        "error handling",
+        "production ready"
+      ],
+      "trigger_conditions": [
+        "Starting new FastAPI projects from scratch",
+        "Implementing async REST APIs with Python",
+        "Building high-performance web services and microservices"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to fastapi project templates",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "gemini-api-integration",
+      "description": "This skill provides a comprehensive guide for integrating the Google Gemini API into various applications, covering setup, text generation, streaming, multimodal inputs, function calling, model selection, and best practices.",
+      "path": "gemini-api-integration/SKILL.md",
+      "tags": [
+        "Gemini API",
+        "Node.js",
+        "Python",
+        "Multimodal",
+        "Streaming"
+      ],
+      "trigger_conditions": [
+        "Setting up Gemini API for the first time in a Node.js or Python project",
+        "Implementing multimodal inputs (text + image/audio/video)",
+        "Adding streaming responses to improve perceived latency"
+      ],
+      "anti_triggers": [
+        "Using `gemini-pro` for simple tasks — Flash is cheaper and faster",
+        "Sending large base64 images inline for files > 20MB — use File API instead"
+      ],
+      "dependencies": [
+        "Node.js",
+        "Python"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "graphql",
+      "description": "A developer skilled in GraphQL API design and optimization, addressing common pitfalls like N+1 queries and deep nested queries.",
+      "path": "graphql/SKILL.md",
+      "tags": [
+        "graphql",
+        "api-design",
+        "performance"
+      ],
+      "trigger_conditions": [
+        "building a large-scale GraphQL API",
+        "optimizing existing GraphQL APIs"
+      ],
+      "anti_triggers": [
+        "not using DataLoader for batch querying",
+        "allowing unlimited query depth"
+      ],
+      "dependencies": [
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-fastapi-development",
+      "description": "A specialized workflow for building production-ready Python backends with FastAPI, featuring async patterns, SQLAlchemy ORM, Pydantic validation, and comprehensive API patterns.",
+      "path": "python-fastapi-development/SKILL.md",
+      "tags": [
+        "FastAPI",
+        "Python",
+        "SQLAlchemy",
+        "Pydantic",
+        "Authentication"
+      ],
+      "trigger_conditions": [
+        "Building new REST APIs with FastAPI",
+        "Creating async Python backends",
+        "Implementing database integration with SQLAlchemy"
+      ],
+      "anti_triggers": [
+        "Developing simple scripts without a backend",
+        "Using synchronous patterns instead of async"
+      ],
+      "dependencies": [
+        "FastAPI",
+        "SQLAlchemy",
+        "Pydantic",
+        "PostgreSQL"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "similarity-search-patterns",
+      "description": "Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.",
+      "path": "similarity-search-patterns/SKILL.md",
+      "tags": [
+        "similarity search",
+        "vector databases",
+        "semantic search",
+        "nearest neighbor queries",
+        "retrieval optimization"
+      ],
+      "trigger_conditions": [
+        "building semantic search systems",
+        "implementing RAG retrieval",
+        "creating recommendation engines",
+        "optimizing search latency",
+        "scaling to millions of vectors",
+        "combining semantic and keyword search"
+      ],
+      "anti_triggers": [
+        "the task is unrelated to similarity search patterns",
+        "you need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "trpc-fullstack",
+      "description": "Build end-to-end type-safe APIs with tRPC, focusing on routers, procedures, middleware, subscriptions, and Next.js/React integration patterns.",
+      "path": "trpc-fullstack/SKILL.md",
+      "tags": [
+        "typescript",
+        "trpc",
+        "api",
+        "fullstack",
+        "nextjs",
+        "react",
+        "type-safety"
+      ],
+      "trigger_conditions": [
+        "Building a TypeScript full-stack app (Next.js",
+        "Remix",
+        "Express + React) where the client and server share a single repo",
+        "Adding real-time features (subscriptions) to an existing tRPC setup",
+        "Designing multi-step middleware (auth",
+        "rate limiting",
+        "tenant scoping) on tRPC procedures"
+      ],
+      "anti_triggers": [
+        "Using REST/GraphQL schema overhead for type safety",
+        "Not using shared context state in procedures"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

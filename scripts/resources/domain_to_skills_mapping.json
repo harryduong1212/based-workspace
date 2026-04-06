@@ -1,0 +1,485 @@
+{
+  "ai-ml-agents": [
+    "langchain-architecture",
+    "pydantic-ai",
+    "llm-application-dev-ai-assistant",
+    "agents-md",
+    "ai-engineer",
+    "ai-engineering-toolkit",
+    "diary",
+    "langgraph",
+    "last30days",
+    "llm-ops",
+    "progressive-estimation",
+    "filesystem-context",
+    "moyu",
+    "skill-router",
+    "workspace-configurator",
+    "cc-skill-continuous-learning",
+    "cc-skill-strategic-compact",
+    "antigravity-skill-orchestrator",
+    "notebooklm",
+    "skill-developer",
+    "agent-orchestration-multi-agent-optimize",
+    "mcp-builder",
+    "claude-settings-audit",
+    "multi-agent-patterns",
+    "tool-design",
+    "devcontainer-setup",
+    "embedding-strategies",
+    "claude-code-guide",
+    "context7-auto-research",
+    "brainstorming",
+    "memory-systems"
+  ],
+  "ai-ml-evaluation": [
+    "advanced-evaluation",
+    "bdistill-behavioral-xray",
+    "langfuse",
+    "llm-evaluation",
+    "analyze-project"
+  ],
+  "ai-ml-mcp": [
+    "skill-creator",
+    "skill-improver",
+    "skill-scanner",
+    "skill-seekers",
+    "skill-writer",
+    "agent-tool-builder",
+    "ai-native-cli",
+    "skill-check"
+  ],
+  "ai-ml-memory": [
+    "bdistill-knowledge-extraction",
+    "context-driven-development",
+    "context-fundamentals",
+    "context-manager",
+    "hierarchical-agent-memory",
+    "hybrid-search-implementation",
+    "rag-engineer",
+    "rag-implementation",
+    "recallmax",
+    "context-optimization",
+    "context-window-management"
+  ],
+  "ai-ml-prompting": [
+    "explain-like-socrates",
+    "llm-application-dev-prompt-optimize",
+    "avoid-ai-writing",
+    "beautiful-prose",
+    "llm-structured-output",
+    "prompt-engineer",
+    "prompt-caching"
+  ],
+  "ai-ml-science": [
+    "astropy",
+    "plotly",
+    "context-degradation",
+    "deep-research",
+    "matplotlib",
+    "scanpy",
+    "sympy",
+    "wiki-researcher",
+    "seaborn"
+  ],
+  "automation-bots": [
+    "telegram-bot-builder"
+  ],
+  "automation-n8n": [
+    "n8n-code-javascript",
+    "n8n-code-python",
+    "n8n-expression-syntax",
+    "n8n-mcp-tools-expert",
+    "n8n-node-configuration",
+    "n8n-atom-executor",
+    "n8n-global-deploy",
+    "n8n-validation-expert",
+    "n8n-workflow-patterns"
+  ],
+  "automation-scraping": [
+    "daily-news-report",
+    "x-twitter-scraper"
+  ],
+  "automation-workflows": [
+    "billing-automation",
+    "ml-pipeline-workflow",
+    "workflow-automation"
+  ],
+  "backend-api": [
+    "trpc-fullstack",
+    "ad-creative",
+    "fastapi-pro",
+    "fastapi-router-py",
+    "fastapi-templates",
+    "gemini-api-integration",
+    "python-fastapi-development",
+    "api-patterns",
+    "api-documentation-generator",
+    "api-endpoint-builder",
+    "api-documenter",
+    "similarity-search-patterns",
+    "graphql"
+  ],
+  "backend-arch": [
+    "backend-architect",
+    "backend-dev-guidelines",
+    "binary-analysis-patterns",
+    "performance-engineer",
+    "performance-optimizer",
+    "c4-architecture-c4-architecture",
+    "architect-review",
+    "code-refactoring-refactor-clean",
+    "codebase-cleanup-refactor-clean",
+    "ddd-strategic-design",
+    "domain-driven-design",
+    "error-detective",
+    "event-sourcing-architect",
+    "event-store-design",
+    "graphql-architect",
+    "kpi-dashboard-design",
+    "rust-async-patterns",
+    "senior-architect",
+    "framework-migration-code-migrate",
+    "framework-migration-legacy-modernize",
+    "legacy-modernizer",
+    "memory-safety-patterns",
+    "cqrs-implementation",
+    "network-engineer",
+    "auth-implementation-patterns",
+    "docs-architect",
+    "microservices-patterns",
+    "monorepo-architect",
+    "software-architecture",
+    "chrome-extension-developer",
+    "senior-architect-v2",
+    "senior-fullstack",
+    "full-stack-orchestration-full-stack-feature",
+    "projection-patterns",
+    "risk-metrics-calculation"
+  ],
+  "backend-core": [
+    "backend-development-feature-development",
+    "biopython",
+    "code-review-checklist",
+    "database-migration",
+    "database-optimizer",
+    "golang-pro",
+    "performance-profiling",
+    "python-pro",
+    "receiving-code-review",
+    "typescript-expert",
+    "nextjs-best-practices",
+    "systems-programming-rust-project",
+    "typescript-pro",
+    "java-pro",
+    "python-development-python-scaffold",
+    "grpc-golang",
+    "python-patterns",
+    "rust-pro",
+    "temporal-golang-pro",
+    "pdf-official",
+    "fp-backend",
+    "fp-data-transforms",
+    "seo-audit",
+    "uv-package-manager",
+    "python-performance-optimization",
+    "python-packaging",
+    "go-concurrency-patterns",
+    "postgres-best-practices"
+  ],
+  "business-content": [
+    "competitor-alternatives",
+    "copy-editing",
+    "copywriting",
+    "marketing-ideas",
+    "marketing-psychology",
+    "product-marketing-context"
+  ],
+  "business-health": [
+    "goal-analyzer",
+    "health-trend-analyzer"
+  ],
+  "business-product": [
+    "analytics-product",
+    "market-sizing-analysis",
+    "product-manager-toolkit",
+    "senior-product-manager"
+  ],
+  "business-seo": [
+    "seo-content-writer",
+    "seo",
+    "seo-content-refresher",
+    "seo-structure-architect",
+    "seo-cannibalization-detector",
+    "seo-competitor-pages",
+    "seo-content-planner",
+    "seo-images",
+    "seo-meta-optimizer",
+    "seo-sitemap",
+    "seo-keyword-strategist",
+    "seo-image-gen",
+    "keyword-extractor"
+  ],
+  "data-admin": [
+    "local-db-migration",
+    "vector-database-engineer"
+  ],
+  "data-nosql": [
+    "nosql-expert"
+  ],
+  "data-orm": [
+    "videodb",
+    "database-architect",
+    "database-design",
+    "linear"
+  ],
+  "data-pipelines": [
+    "database",
+    "data-engineer",
+    "data-engineering-data-pipeline"
+  ],
+  "data-sql": [
+    "database-migrations-sql-migrations",
+    "food-database-query",
+    "postgresql",
+    "postgresql-optimization",
+    "sql-pro",
+    "sql-optimization-patterns"
+  ],
+  "design-apple-hig": [
+    "hig-technologies",
+    "hig-components-menus",
+    "hig-components-controls",
+    "hig-inputs"
+  ],
+  "design-core": [
+    "canvas-design"
+  ],
+  "design-ux-ui": [
+    "c4-component",
+    "json-canvas",
+    "ui-visual-validator",
+    "interactive-portfolio",
+    "ui-ux-designer"
+  ],
+  "design-visuals": [
+    "iconsax-library",
+    "magic-animator",
+    "imagen",
+    "favicon"
+  ],
+  "devops-cicd": [
+    "git-advanced-workflows",
+    "github-actions-templates",
+    "gitlab-ci-patterns",
+    "deployment-pipeline-design",
+    "deployment-engineer",
+    "environment-setup-guide"
+  ],
+  "devops-cli": [
+    "personal-tool-builder",
+    "file-organizer",
+    "claude-code-expert"
+  ],
+  "devops-cloud": [
+    "cloud-devops",
+    "cloud-architect",
+    "database-cloud-optimization-cost-optimize"
+  ],
+  "devops-containers": [
+    "docker-expert",
+    "kubernetes-architect",
+    "kubernetes-deployment"
+  ],
+  "devops-iac": [
+    "deployment-validation-config-validate",
+    "gitops-workflow",
+    "k8s-security-policies",
+    "sred-project-organizer",
+    "sred-work-summary",
+    "terraform-aws-modules",
+    "terraform-module-library",
+    "terraform-skill",
+    "terraform-specialist",
+    "deployment-procedures",
+    "helm-chart-scaffolding",
+    "k8s-manifest-generator"
+  ],
+  "devops-os-scripting": [
+    "bash-pro",
+    "windows-shell-reliability",
+    "bash-defensive-patterns",
+    "linux-troubleshooting",
+    "bash-scripting",
+    "powershell-windows",
+    "bash-linux"
+  ],
+  "devops-quality": [
+    "devops-troubleshooter"
+  ],
+  "documentation-planning": [
+    "plan-writing",
+    "github-issue-creator",
+    "concise-planning"
+  ],
+  "documentation-writing": [
+    "c4-context",
+    "api-documentation",
+    "c4-code",
+    "wiki-architect",
+    "wiki-onboarding",
+    "wiki-page-writer",
+    "wiki-changelog",
+    "debrief-teacher",
+    "exhaustive-video-note-taker",
+    "workspace-analyzer"
+  ],
+  "frontend-3d-anim": [
+    "3d-web-experience",
+    "fixing-motion-performance"
+  ],
+  "frontend-core": [
+    "javascript-pro",
+    "nodejs-best-practices",
+    "progressive-web-app",
+    "react-component-performance",
+    "react-flow-architect",
+    "react-nextjs-development",
+    "react-state-management",
+    "senior-frontend",
+    "web-artifacts-builder",
+    "web-performance-optimization",
+    "ab-test-setup",
+    "browser-extension-builder",
+    "javascript-testing-patterns",
+    "react-best-practices",
+    "i18n-localization",
+    "screen-reader-testing"
+  ],
+  "frontend-security": [
+    "frontend-security-coder"
+  ],
+  "frontend-seo": [
+    "seo-technical",
+    "seo-authority-builder",
+    "seo-content-auditor",
+    "seo-fundamentals"
+  ],
+  "frontend-ui": [
+    "building-native-ui",
+    "landing-page-generator",
+    "react-ui-patterns",
+    "web-design-guidelines",
+    "web-scraper",
+    "mermaid-expert",
+    "frontend-ui-dark-ts",
+    "remotion-best-practices",
+    "antigravity-design-expert"
+  ],
+  "mobile-gaming-debugging": [
+    "ios-debugger-agent"
+  ],
+  "mobile-gaming-gaming": [
+    "web-games",
+    "unity-developer",
+    "unreal-engine-cpp-pro",
+    "godot-4-migration",
+    "unity-ecs-patterns",
+    "3d-games"
+  ],
+  "mobile-gaming-mobile": [
+    "ios-developer",
+    "mobile-developer",
+    "mobile-design",
+    "multiplayer",
+    "pc-games",
+    "2d-games",
+    "mobile-games"
+  ],
+  "productivity-office": [
+    "latex-paper-conversion",
+    "docx-official",
+    "obsidian-cli",
+    "pptx-official",
+    "xlsx-official"
+  ],
+  "quality-code-review": [
+    "codebase-cleanup-tech-debt",
+    "comprehensive-review-full-review",
+    "address-github-comments"
+  ],
+  "quality-debugging": [
+    "debugging-strategies"
+  ],
+  "quality-documentation": [
+    "ask-questions-if-underspecified",
+    "writing-plans"
+  ],
+  "quality-observability": [
+    "incident-runbook-templates",
+    "incident-response-incident-response",
+    "slo-implementation",
+    "prometheus-configuration",
+    "error-diagnostics-error-trace",
+    "manifest"
+  ],
+  "quality-testing": [
+    "memory-forensics",
+    "webapp-testing",
+    "fixing-accessibility",
+    "ddd-context-mapping",
+    "e2e-testing",
+    "git-hooks-automation",
+    "test-automator",
+    "wiki-qa",
+    "python-testing-patterns",
+    "e2e-testing-patterns",
+    "senior-it-ba-specialist",
+    "performance-testing-review-ai-review",
+    "tdd-orchestrator",
+    "test-fixing",
+    "go-playwright",
+    "playwright-java",
+    "playwright-skill"
+  ],
+  "security-compliance": [
+    "pci-compliance",
+    "legal-advisor"
+  ],
+  "security-defensive": [
+    "privacy-by-design",
+    "anti-reversing-techniques",
+    "vulnerability-scanner",
+    "ethical-hacking-methodology",
+    "wireshark-analysis",
+    "threat-mitigation-mapping"
+  ],
+  "security-offensive": [
+    "broken-authentication",
+    "sql-injection-testing",
+    "audit-skills",
+    "api-security-best-practices",
+    "audit-context-building",
+    "cc-skill-security-review",
+    "codebase-audit-pre-push",
+    "codebase-cleanup-deps-audit",
+    "dependency-upgrade",
+    "differential-review",
+    "file-path-traversal",
+    "find-bugs",
+    "fixing-metadata",
+    "gha-security-review",
+    "html-injection-testing",
+    "idor-testing",
+    "production-code-audit",
+    "security-audit",
+    "web-security-testing",
+    "windows-privilege-escalation",
+    "linux-privilege-escalation",
+    "privilege-escalation-methods",
+    "attack-tree-construction"
+  ],
+  "security-testing": [
+    "scanning-tools"
+  ]
+}

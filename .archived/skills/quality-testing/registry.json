@@ -1,0 +1,502 @@
+{
+  "category_id": "quality-testing",
+  "category_name": "Quality Testing",
+  "skills": [
+    {
+      "id": "ddd-context-mapping",
+      "description": "Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns.",
+      "path": "ddd-context-mapping/SKILL.md",
+      "tags": [
+        "ddd",
+        "context-map",
+        "anti-corruption-layer",
+        "integration"
+      ],
+      "trigger_conditions": [
+        "Defining integration patterns between bounded contexts.",
+        "Preventing domain leakage across service boundaries.",
+        "Planning anti-corruption layers during migration.",
+        "Clarifying upstream and downstream ownership for contracts."
+      ],
+      "anti_triggers": [
+        "You have a single-context system with no integrations.",
+        "You only need internal class design.",
+        "You are selecting cloud infrastructure tooling."
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "e2e-testing",
+      "description": "End-to-end testing workflow using Playwright for browser automation, visual regression, cross-browser testing, and CI/CD integration.",
+      "path": "e2e-testing/SKILL.md",
+      "tags": [
+        "Playwright",
+        "E2E Testing",
+        "Browser Automation",
+        "Visual Regression",
+        "CI/CD"
+      ],
+      "trigger_conditions": [
+        "Setting up E2E testing",
+        "Automating browser tests",
+        "Implementing visual regression",
+        "Testing across browsers",
+        "Integrating tests with CI/CD"
+      ],
+      "anti_triggers": [],
+      "dependencies": [
+        "Playwright"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "e2e-testing-patterns",
+      "description": "Build reliable, fast, and maintainable end-to-end test suites that provide confidence to ship code quickly and catch regressions before users do.",
+      "path": "e2e-testing-patterns/SKILL.md",
+      "tags": [
+        "end-to-end",
+        "testing",
+        "reliable",
+        "fast",
+        "maintainable"
+      ],
+      "trigger_conditions": [
+        "Implementing end-to-end test automation",
+        "Debugging flaky or unreliable tests",
+        "Testing critical user workflows",
+        "Setting up CI/CD test pipelines",
+        "Testing across multiple browsers",
+        "Validating accessibility requirements",
+        "Testing responsive designs",
+        "Establishing E2E testing standards"
+      ],
+      "anti_triggers": [
+        "You only need unit or integration tests",
+        "The environment cannot support stable UI automation",
+        "You cannot provision safe test accounts or data"
+      ],
+      "dependencies": [
+        "CI/CD",
+        "Dedicated test environments"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fixing-accessibility",
+      "description": "Audit and fix HTML accessibility issues including ARIA labels, keyboard navigation, focus management, color contrast, and form errors. Use when adding interactive controls, forms, dialogs, or reviewing WCAG compliance.",
+      "path": "fixing-accessibility/SKILL.md",
+      "tags": [
+        "accessibility",
+        "ARIA",
+        "HTML",
+        "WCAG"
+      ],
+      "trigger_conditions": [
+        "adding or changing buttons",
+        "links",
+        "inputs",
+        "menus",
+        "dialogs",
+        "tabs",
+        "dropdowns",
+        "building forms",
+        "validation",
+        "error states",
+        "helper text",
+        "implementing keyboard shortcuts or custom interactions",
+        "working on focus states",
+        "focus trapping",
+        "or modal behavior",
+        "rendering icon-only controls",
+        "adding hover-only interactions or hidden content"
+      ],
+      "anti_triggers": [
+        "rewriting large parts of the UI",
+        "not using minimal",
+        "targeted fixes"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "git-hooks-automation",
+      "description": "Master Git hooks setup with Husky, lint-staged, pre-commit framework, and commitlint. Automate code quality gates, formatting, linting, and commit message enforcement before code reaches CI.",
+      "path": "git-hooks-automation/SKILL.md",
+      "tags": [
+        "git",
+        "hooks",
+        "husky",
+        "lint-staged",
+        "pre-commit",
+        "commitlint"
+      ],
+      "trigger_conditions": [
+        "User asks to 'set up git hooks' or 'add pre-commit hooks'",
+        "Configuring Husky",
+        "lint-staged",
+        "or the pre-commit framework",
+        "Enforcing commit message conventions (Conventional Commits",
+        "commitlint)"
+      ],
+      "anti_triggers": [
+        "Migrating from Husky v4 to v9+ or adopting hooks from scratch"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "go-playwright",
+      "description": "Comprehensive framework for writing high-performance, production-grade browser automation scripts using Playwright Go, enforcing architectural best practices, robust error handling, structured logging, and advanced human-emulation techniques.",
+      "path": "go-playwright/SKILL.md",
+      "tags": [
+        "playwright",
+        "go",
+        "browser-automation",
+        "human-like",
+        "structured-logging",
+        "error-handling"
+      ],
+      "trigger_conditions": [
+        "User asks to scrape",
+        "automate",
+        "or test a website using Go",
+        "Target site has complex dynamic content requiring real browser",
+        "Stealth",
+        "avoiding detection",
+        "cloudflare",
+        "human-like behavior mentioned"
+      ],
+      "anti_triggers": [
+        "CAPTCHA solving capabilities required"
+      ],
+      "dependencies": [
+        "Playwright drivers",
+        "browsers installed",
+        "go.uber.org/zap for logging"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "memory-forensics",
+      "description": "Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for incident response and malware analysis.",
+      "path": "memory-forensics/SKILL.md",
+      "tags": [
+        "memory forensics",
+        "volatility",
+        "incident response",
+        "malware analysis"
+      ],
+      "trigger_conditions": [
+        "Working on memory forensics tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for memory forensics"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to memory forensics",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "volatility3"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "performance-testing-review-ai-review",
+      "description": "Comprehensive AI-powered code review combining multi-tool static analysis, state-of-the-art LLMs, and seamless CI/CD integration for actionable review comments across 30+ languages.",
+      "path": "performance-testing-review-ai-review/SKILL.md",
+      "tags": [
+        "code-review",
+        "ai-assisted",
+        "static-analysis",
+        "ci-cd",
+        "llms"
+      ],
+      "trigger_conditions": [
+        "Working on ai-powered code review specialist tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for ai-powered code review specialist"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to ai-powered code review specialist",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "SonarQube",
+        "CodeQL",
+        "Semgrep",
+        "GitHub Copilot",
+        "Qodo",
+        "GPT-5",
+        "Claude 4.5 Sonnet"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "playwright-java",
+      "description": "This skill produces production-quality, enterprise-grade Playwright Java test code that enforces the Page Object Model (POM), strict locator strategies, thread-safe parallel execution, and full Allure reporting integration.",
+      "path": "playwright-java/SKILL.md",
+      "tags": [
+        "playwright",
+        "java",
+        "e2e-testing",
+        "junit5",
+        "page-object-model",
+        "allure",
+        "selenium-alternative"
+      ],
+      "trigger_conditions": [
+        "Use when scaffolding a new Playwright Java project from scratch",
+        "Use when writing Page Object classes or JUnit 5 test classes",
+        "Use when the user asks about cross-browser testing",
+        "parallel execution",
+        "or Allure reports"
+      ],
+      "anti_triggers": [
+        "Never use Thread.sleep()",
+        "Never hardcode base URLs",
+        "Never create a Playwright instance inside a Page Object"
+      ],
+      "dependencies": [
+        "Java 17+",
+        "Playwright 1.44+",
+        "Maven",
+        "JUnit 5",
+        "Allure"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "playwright-skill",
+      "description": "A general-purpose browser automation skill that writes custom Playwright code for any requested task and executes it via the universal executor.",
+      "path": "playwright-skill/SKILL.md",
+      "tags": [
+        "browser",
+        "automation",
+        "playwright",
+        "testing",
+        "responsive",
+        "login",
+        "forms"
+      ],
+      "trigger_conditions": [
+        "User requests browser automation for a specific task",
+        "Developer needs to test a web application's functionality",
+        "Automated testing is required for a responsive design check"
+      ],
+      "anti_triggers": [
+        "Manual testing of non-interactive elements (e.g.",
+        "CSS styles)"
+      ],
+      "dependencies": [
+        "Playwright",
+        "Chromium browser"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-testing-patterns",
+      "description": "Comprehensive guide to implementing robust testing strategies in Python using pytest, fixtures, mocking, parameterization, and test-driven development practices.",
+      "path": "python-testing-patterns/SKILL.md",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "fixtures",
+        "mocking"
+      ],
+      "trigger_conditions": [
+        "Writing unit tests for Python code",
+        "Setting up test suites and test infrastructure",
+        "Implementing test-driven development (TDD)",
+        "Creating integration tests for APIs and services",
+        "Mocking external dependencies and services",
+        "Testing async code and concurrent operations",
+        "Setting up continuous testing in CI/CD",
+        "Implementing property-based testing",
+        "Testing database operations",
+        "Debugging failing tests"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to python testing patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "senior-it-ba-specialist",
+      "description": "Act as a senior IT business analyst for software development initiatives, focusing on requirement elicitation, process modeling, traceability, and ensuring systems meet strict functional, security, and enterprise standards.",
+      "path": "senior-it-ba-specialist/SKILL.md",
+      "tags": [
+        "IT Business Analysis",
+        "Requirements Traceability",
+        "Process Modeling",
+        "System Integration",
+        "Security Compliance"
+      ],
+      "trigger_conditions": [
+        "User needs business objectives translated into technical requirements",
+        "Complex workflow analysis required",
+        "System integration mapping needed",
+        "Rigorous requirements traceability needed"
+      ],
+      "anti_triggers": [
+        "Setting overall business strategy or organizational design",
+        "Finalizing budget approvals or procurement vendor selection",
+        "Creating low-level backend architecture",
+        "Designing high-fidelity UI mockups"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "tdd-orchestrator",
+      "description": "Expert TDD orchestrator specializing in comprehensive test-driven development coordination, modern TDD practices, and multi-agent workflow management.",
+      "path": "tdd-orchestrator/SKILL.md",
+      "tags": [
+        "tdd",
+        "test-driven-development",
+        "red-green-refactor",
+        "multi-agent-workflow",
+        "comprehensive-test-coverage"
+      ],
+      "trigger_conditions": [
+        "Working on tdd orchestrator tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for tdd orchestrator"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to tdd orchestrator",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Multi-language TDD support (Java",
+        "C#",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Go)",
+        "Testing framework expertise (JUnit",
+        "NUnit",
+        "pytest",
+        "Jest",
+        "Mocha",
+        "testing/T)",
+        "Build system integration (Maven",
+        "Gradle",
+        "npm",
+        "Cargo",
+        "MSBuild)"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "test-automator",
+      "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration.",
+      "path": "test-automator/SKILL.md",
+      "tags": [
+        "test automation",
+        "AI",
+        "TDD",
+        "CI/CD"
+      ],
+      "trigger_conditions": [
+        "Working on test automator tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for test automator"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to test automator",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Jenkins",
+        "GitLab CI",
+        "GitHub Actions",
+        "Docker",
+        "Kubernetes"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "test-fixing",
+      "description": "Systematically identify and fix all failing tests using smart grouping strategies when explicitly asked to fix tests, reports test failures, or completes implementation and wants tests passing.",
+      "path": "test-fixing/SKILL.md",
+      "tags": [
+        "testing",
+        "debugging",
+        "fix-tests",
+        "test-fixing",
+        "smart-grouping"
+      ],
+      "trigger_conditions": [
+        "Explicitly asks to fix tests",
+        "Reports test failures",
+        "Completes implementation and wants tests passing"
+      ],
+      "anti_triggers": [
+        "General request for help without specific testing issues"
+      ],
+      "dependencies": [
+        "make",
+        "pytest"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "webapp-testing",
+      "description": "To test local web applications, write native Python Playwright scripts using provided helper scripts.",
+      "path": "webapp-testing/SKILL.md",
+      "tags": [
+        "Python",
+        "Playwright",
+        "Web Testing",
+        "Automation"
+      ],
+      "trigger_conditions": [
+        "Testing a static HTML page",
+        "Testing a dynamic web application with an already running server"
+      ],
+      "anti_triggers": [
+        "Inspecting the DOM before waiting for 'networkidle' on dynamic apps"
+      ],
+      "dependencies": [
+        "python",
+        "playwright"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "wiki-qa",
+      "description": "Answer repository questions grounded entirely in source code evidence. Use when user asks a question about the codebase, user wants to understand a specific file, function, or component, or user asks \"how does X work\" or \"where is Y defined\".",
+      "path": "wiki-qa/SKILL.md",
+      "tags": [
+        "code",
+        "source",
+        "repository",
+        "Q&A"
+      ],
+      "trigger_conditions": [
+        "User asks a question about the codebase",
+        "User wants to understand a specific file",
+        "function",
+        "or component",
+        "User asks 'how does X work' or 'where is Y defined'"
+      ],
+      "anti_triggers": [],
+      "dependencies": [
+        "codebase"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

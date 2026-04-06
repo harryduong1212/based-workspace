@@ -1,297 +1,289 @@
 {
   "category_id": "documentation-writing",
-  "category_name": "📚 Documentation & Writing",
+  "category_name": "Documentation Writing",
   "skills": [
     {
       "id": "api-documentation",
-      "description": "API documentation workflow for generating OpenAPI specs, creating developer guides, and maintaining comprehensive API documentation.",
+      "description": "Specialized workflow for creating comprehensive API documentation including OpenAPI/Swagger specs, developer guides, code examples, and interactive documentation.",
       "path": "api-documentation/SKILL.md",
-      "triggers": [],
       "tags": [
-        "phase",
-        "invoke",
-        "actions",
-        "prompts",
-        "copy-paste",
         "api",
         "documentation",
-        "api-documenter"
-      ]
+        "openapi",
+        "swagger",
+        "developer-guides",
+        "code-examples",
+        "interactive-docs"
+      ],
+      "trigger_conditions": [
+        "Creating API documentation",
+        "Generating OpenAPI specs",
+        "Writing developer guides",
+        "Adding code examples",
+        "Setting up API portals"
+      ],
+      "anti_triggers": [
+        "Creating general documentation"
+      ],
+      "dependencies": [
+        "@api-documenter",
+        "@openapi-spec-generation",
+        "@api-documentation-generator",
+        "@tutorial-engineer",
+        "@docs-architect",
+        "@wiki-page-writer"
+      ],
+      "mcp_tools": []
     },
     {
       "id": "c4-code",
       "description": "Expert C4 Code-level documentation specialist. Analyzes code directories to create comprehensive C4 code-level documentation including function signatures, arguments, dependencies, and code structure.",
       "path": "c4-code/SKILL.md",
-      "triggers": [],
       "tags": [
-        "dependencies",
-        "classdiagram",
-        "functions",
-        "procedural",
-        "classes",
-        "modules",
-        "functional",
-        "diagram"
-      ]
+        "c4",
+        "code",
+        "documentation",
+        "analysis",
+        "mermaid"
+      ],
+      "trigger_conditions": [
+        "Working on c4 code level tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for c4 code level documentation"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to c4 code level documentation",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "mermaid"
+      ],
+      "mcp_tools": []
     },
     {
       "id": "c4-context",
       "description": "Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies.",
       "path": "c4-context/SKILL.md",
-      "triggers": [],
       "tags": [
+        "c4",
         "context",
-        "external",
-        "journey",
-        "diagram",
-        "persona",
-        "feature",
         "documentation",
-        "features"
-      ]
-    },
-    {
-      "id": "code-documentation-doc-generate",
-      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
-      "path": "code-documentation-doc-generate/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "resources",
-        "documentation",
-        "generate",
-        "generation",
-        "context",
-        "requirements",
-        "instructions",
-        "safety"
-      ]
-    },
-    {
-      "id": "create-pr",
-      "description": "Alias for sentry-skills:pr-writer. Use when users explicitly ask for \"create-pr\" or reference the legacy skill name. Redirects to the canonical PR writing workflow.",
-      "path": "create-pr/SKILL.md",
-      "triggers": [
-        "Alias",
-        "sentry-skills:pr-writer.",
-        "users",
-        "explicitly",
-        "\"create-pr\""
+        "system",
+        "diagrams"
       ],
-      "tags": [
-        "create-pr",
-        "alias",
-        "pr"
-      ]
-    },
-    {
-      "id": "customs-trade-compliance",
-      "description": "Codified expertise for customs documentation, tariff classification, duty optimisation, restricted party screening, and regulatory compliance across multiple jurisdictions.",
-      "path": "customs-trade-compliance/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "gri",
-        "cbp",
-        "customs",
-        "compliance",
-        "fta",
-        "classification",
-        "incoterms",
-        "method"
-      ]
-    },
-    {
-      "id": "documentation",
-      "description": "Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing.",
-      "path": "documentation/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "documentation",
-        "phase",
-        "invoke",
-        "actions",
-        "prompts",
-        "copy-paste",
-        "api",
-        "readme"
-      ]
-    },
-    {
-      "id": "documentation-generation-doc-generate",
-      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
-      "path": "documentation-generation-doc-generate/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "resources",
-        "documentation",
-        "generation",
-        "generate",
-        "context",
-        "requirements",
-        "instructions",
-        "safety"
-      ]
-    },
-    {
-      "id": "documentation-templates",
-      "description": "Documentation templates and structure guidelines. README, API docs, code comments, and AI-friendly documentation.",
-      "path": "documentation-templates/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "documentation",
-        "template",
-        "structure",
-        "changelog",
-        "comment",
-        "templates",
-        "api",
-        "decision"
-      ]
-    },
-    {
-      "id": "employment-contract-templates",
-      "description": "Templates and patterns for creating legally sound employment documentation including contracts, offer letters, and HR policies.",
-      "path": "employment-contract-templates/SKILL.md",
-      "triggers": [],
-      "tags": [
-        "resources",
-        "templates",
-        "employment",
-        "contract",
-        "instructions",
-        "safety",
-        "drafting",
-        "writing"
-      ]
-    },
-    {
-      "id": "finishing-a-development-branch",
-      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
-      "path": "finishing-a-development-branch/SKILL.md",
-      "triggers": [
-        "implementation",
-        "complete",
-        "tests",
-        "pass",
-        "decide"
+      "trigger_conditions": [
+        "Working on c4 context level: system context tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for c4 context level: system context"
       ],
-      "tags": [
-        "branch",
-        "option",
-        "merge",
-        "tests",
-        "verify",
-        "base",
-        "push",
-        "present"
-      ]
-    },
-    {
-      "id": "plan-writing",
-      "description": "Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work.",
-      "path": "plan-writing/SKILL.md",
-      "triggers": [
-        "Structured",
-        "planning",
-        "clear",
-        "breakdowns",
-        "dependencies"
+      "anti_triggers": [
+        "The task is unrelated to c4 context level: system context",
+        "You need a different domain or tool outside this scope"
       ],
-      "tags": [
-        "principle",
-        "plan",
-        "task",
-        "verification",
-        "tasks",
-        "principles",
-        "dynamic",
-        "writing"
-      ]
+      "dependencies": [],
+      "mcp_tools": []
     },
     {
-      "id": "readme",
-      "description": "You are an expert technical writer creating comprehensive project documentation. Your goal is to write a README.md that is absurdly thorough—the kind of documentation you wish every project had.",
-      "path": "readme/SKILL.md",
-      "triggers": [],
+      "id": "debrief-teacher",
+      "description": "Generates detailed conversational post-mortem breakdowns of completed tasks to accelerate learning and reveal the underlying decision-making process.",
+      "path": "debrief-teacher/SKILL.md",
       "tags": [
-        "rails",
-        "postgresql",
-        "vite",
-        "react",
-        "ruby",
-        "docker",
-        "readme",
-        "tests"
-      ]
+        "debrief",
+        "post-mortem",
+        "mentor",
+        "teacher",
+        "project review",
+        "decision-making",
+        "learning",
+        "tradeoffs",
+        "architecture",
+        "retrospective"
+      ],
+      "trigger_conditions": [
+        "Automatic execution upon completion of any task or project",
+        "Revealing the underlying decision-making process of a completed task",
+        "Extracting transferrable lessons and identifying pitfalls for future reference"
+      ],
+      "anti_triggers": [
+        "Sounding like textbook",
+        "technical documentation",
+        "or generic corporate review"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
     },
     {
-      "id": "reference-builder",
-      "description": "Creates exhaustive technical references and API documentation. Generates comprehensive parameter listings, configuration guides, and searchable reference materials.",
-      "path": "reference-builder/SKILL.md",
-      "triggers": [],
+      "id": "exhaustive-video-note-taker",
+      "description": "A skill that generates detailed, chronological, and time-stamped notes from video content or transcripts, capturing all technical concepts, examples, visuals, and synthesizing them into a structured format.",
+      "path": "exhaustive-video-note-taker/SKILL.md",
       "tags": [
-        "documentation",
-        "reference",
-        "structure",
-        "validation",
-        "guides",
-        "format",
-        "feature",
-        "retrieval"
-      ]
+        "video notes",
+        "note-taker",
+        "transcript",
+        "time-stamped",
+        "chronological",
+        "synthesis",
+        "technical explainer"
+      ],
+      "trigger_conditions": [
+        "Processing video content or transcripts",
+        "Generating highly detailed",
+        "chronological",
+        "and time-stamped notes",
+        "Capturing technical concepts",
+        "definitions",
+        "examples",
+        "and visual descriptions comprehensively"
+      ],
+      "anti_triggers": [
+        "Summarizing content without capturing all details",
+        "Omitting any part of the input"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
     },
     {
       "id": "wiki-architect",
-      "description": "You are a documentation architect that produces structured wiki catalogues and onboarding guides from codebases.",
+      "description": "A documentation architect that produces structured wiki catalogues and onboarding guides from codebases.",
       "path": "wiki-architect/SKILL.md",
-      "triggers": [],
       "tags": [
-        "json",
-        "python",
+        "documentation",
         "wiki",
         "onboarding",
-        "architect",
-        "language",
         "architecture",
-        "procedure"
-      ]
+        "catalogue",
+        "codebase"
+      ],
+      "trigger_conditions": [
+        "User asks to create a wiki",
+        "User wants to understand project structure or architecture",
+        "User asks for a table of contents or documentation plan",
+        "User asks for an onboarding guide or zero to hero path"
+      ],
+      "anti_triggers": [
+        "Small repos (≤10 files): Getting Started only"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "wiki-changelog",
+      "description": "Generate structured changelogs from git history for users asking about recent changes, changelog summaries, or wanting to understand development activity.",
+      "path": "wiki-changelog/SKILL.md",
+      "tags": [
+        "git",
+        "changelog",
+        "commit",
+        "summary",
+        "timeline"
+      ],
+      "trigger_conditions": [
+        "User asks 'what changed recently'",
+        "User asks 'generate a changelog'",
+        "User asks 'summarize commits'",
+        "User wants to understand recent development activity"
+      ],
+      "anti_triggers": [
+        "Focus on internal changes",
+        "not user-facing"
+      ],
+      "dependencies": [
+        "git",
+        "n8n"
+      ],
+      "mcp_tools": []
     },
     {
       "id": "wiki-onboarding",
-      "description": "Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase. Use when user asks for onboarding docs or getting-started guides, user runs /deep-wiki, or user wants to help new team members understand a codebase.",
+      "description": "Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase.",
       "path": "wiki-onboarding/SKILL.md",
-      "triggers": [
-        "Generate",
-        "complementary",
-        "onboarding",
-        "documents",
-        "together"
-      ],
       "tags": [
         "onboarding",
-        "cargo",
-        "sections",
-        "rules",
-        "wiki",
-        "language",
-        "mermaid",
-        "generator"
-      ]
+        "documentation",
+        "codebase",
+        "architecture",
+        "engineering"
+      ],
+      "trigger_conditions": [
+        "User asks for onboarding docs or getting-started guides",
+        "User runs `/deep-wiki:onboard` command",
+        "User wants to help new team members understand a codebase"
+      ],
+      "anti_triggers": [
+        "User is already an expert in the codebase"
+      ],
+      "dependencies": [
+        "Mermaid",
+        "YAML",
+        "Dark-mode colors"
+      ],
+      "mcp_tools": []
     },
     {
       "id": "wiki-page-writer",
-      "description": "You are a senior documentation engineer that generates comprehensive technical documentation pages with evidence-based depth.",
+      "description": "Generates comprehensive technical documentation pages with evidence-based depth, following a structured procedure and mandatory requirements.",
       "path": "wiki-page-writer/SKILL.md",
-      "triggers": [],
       "tags": [
-        "page",
-        "requirements",
-        "vitepress",
-        "mermaid",
+        "documentation",
         "wiki",
-        "writer",
-        "mandatory",
-        "diagrams"
-      ]
+        "technical-writing",
+        "code-analysis",
+        "mermaid-diagrams",
+        "citations"
+      ],
+      "trigger_conditions": [
+        "User asks to document a specific component",
+        "system",
+        "or feature",
+        "User wants a technical deep-dive with diagrams",
+        "A wiki catalogue section needs its content generated"
+      ],
+      "anti_triggers": [
+        "Guessing code paths from file names instead of reading implementation"
+      ],
+      "dependencies": [
+        "VitePress",
+        "Mermaid"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "workspace-analyzer",
+      "description": "Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code.",
+      "path": "workspace-analyzer/SKILL.md",
+      "tags": [
+        "architecture",
+        "analysis",
+        "investigation",
+        "codebase",
+        "redundancy",
+        "integrations"
+      ],
+      "trigger_conditions": [
+        "User asks to analyze, investigate, scan, or explain the current workspace or a specific repository.",
+        "User has just fetched or cloned a repository and wants to understand it.",
+        "User asks for a high-level overview of architecture, business logic, or directory structure.",
+        "User asks to identify technical debt, redundant code, or core dependencies within the current project."
+      ],
+      "anti_triggers": [
+        "User explicitly requests modifications or changes to the codebase during analysis."
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
     }
   ]
 }

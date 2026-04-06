@@ -1,0 +1,120 @@
+{
+  "category_id": "data-orm",
+  "category_name": "Data ORM",
+  "skills": [
+    {
+      "id": "database-architect",
+      "description": "Expert database architect specializing in data layer design from scratch, technology selection, schema modeling, and scalable database architectures.",
+      "path": "database-architect/SKILL.md",
+      "tags": [
+        "database architecture",
+        "data modeling",
+        "technology selection",
+        "schema design",
+        "scalable databases"
+      ],
+      "trigger_conditions": [
+        "Selecting database technologies or storage patterns",
+        "Designing schemas",
+        "partitions",
+        "or replication strategies",
+        "Planning migrations or re-architecting data layers"
+      ],
+      "anti_triggers": [
+        "You only need query tuning",
+        "You need application-level feature design only",
+        "You cannot modify the data model or infrastructure"
+      ],
+      "dependencies": [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "database-design",
+      "description": "Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.",
+      "path": "database-design/SKILL.md",
+      "tags": [
+        "database",
+        "schema",
+        "indexing",
+        "ORM",
+        "serverless"
+      ],
+      "trigger_conditions": [
+        "Need to design a database schema",
+        "Deciding on a database or ORM",
+        "Performance tuning of queries"
+      ],
+      "anti_triggers": [
+        "Defaulting to PostgreSQL for simple apps",
+        "Skipping indexing",
+        "Using SELECT * in production",
+        "Storing JSON when structured data is better",
+        "Ignoring N+1 queries"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "linear",
+      "description": "Managing Linear issues, projects, and teams for issue tracking, status updates, querying projects, and managing team workflows.",
+      "path": "linear/SKILL.md",
+      "tags": [
+        "Linear",
+        "issue tracking",
+        "project management",
+        "team workflows",
+        "status updates"
+      ],
+      "trigger_conditions": [
+        "Linear",
+        "Issue tracking",
+        "Project management",
+        "Team workflows",
+        "Status updates"
+      ],
+      "anti_triggers": [],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "videodb",
+      "description": "Video and audio perception, indexing, and editing. Ingest files/URLs/live streams, build visual/spoken indexes, search with timestamps, edit timelines, add overlays/subtitles, generate media, and create real-time alerts.",
+      "path": "videodb/SKILL.md",
+      "tags": [
+        "video",
+        "editing",
+        "transcription",
+        "subtitles",
+        "search",
+        "streaming",
+        "ai-generation",
+        "media",
+        "live-streams",
+        "desktop-capture"
+      ],
+      "trigger_conditions": [
+        "Start/stop a desktop session capturing screen",
+        "mic",
+        "and system audio",
+        "Ingest a file or URL and return a playable web stream link",
+        "Build visual",
+        "spoken",
+        "and keyword indexes"
+      ],
+      "anti_triggers": [
+        "Do not use for non-video/audio processing tasks",
+        "Avoid using for general data indexing without video/audio context"
+      ],
+      "dependencies": [
+        "python",
+        "videodb[capture]",
+        "python-dotenv"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

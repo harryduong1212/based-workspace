@@ -1,0 +1,345 @@
+{
+  "category_id": "ai-ml-memory",
+  "category_name": "AI ML Memory",
+  "skills": [
+    {
+      "id": "bdistill-knowledge-extraction",
+      "description": "Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed.",
+      "path": "bdistill-knowledge-extraction/SKILL.md",
+      "tags": [
+        "ai",
+        "knowledge-extraction",
+        "domain-specific",
+        "data-moat",
+        "mcp",
+        "reference-data"
+      ],
+      "trigger_conditions": [
+        "When you need structured reference data on any domain (medical",
+        "legal",
+        "finance",
+        "cybersecurity)",
+        "When building lookup tables",
+        "Q&A datasets",
+        "or research corpora",
+        "When generating training data for traditional ML models (regression",
+        "classification — NOT competing LLMs)",
+        "When you want cross-model comparison on domain knowledge"
+      ],
+      "anti_triggers": [
+        "When extracting training data for other AI models"
+      ],
+      "dependencies": [
+        "pip",
+        "bdistill",
+        "Claude"
+      ],
+      "mcp_tools": [
+        "claude",
+        "cursor",
+        "codex",
+        "copilot"
+      ]
+    },
+    {
+      "id": "context-driven-development",
+      "description": "Guide for implementing and maintaining context as a managed artifact alongside code, enabling consistent AI interactions and team alignment through structured project documentation.",
+      "path": "context-driven-development/SKILL.md",
+      "tags": [
+        "context-driven-development",
+        "project-context",
+        "ai-interactions",
+        "team-alignment",
+        "structured-documentation"
+      ],
+      "trigger_conditions": [
+        "Setting up new projects with Conductor",
+        "Understanding the relationship between context artifacts",
+        "Maintaining consistency across AI-assisted development sessions",
+        "Onboarding team members to an existing Conductor project"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to context-driven development"
+      ],
+      "dependencies": [
+        "Conductor",
+        "Git",
+        "IDE Integration",
+        "CI/CD Integration"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "context-fundamentals",
+      "description": "Context engineering fundamentals, including system prompts, tool definitions, retrieved documents, message history, and tool outputs.",
+      "path": "context-fundamentals/SKILL.md",
+      "tags": [
+        "context",
+        "attention",
+        "progressive-disclosure",
+        "language-models",
+        "system-prompts",
+        "tool-definitions",
+        "retrieval-augmented-generation"
+      ],
+      "trigger_conditions": [
+        "Designing new agent systems or modifying existing architectures",
+        "Debugging unexpected agent behavior related to context",
+        "Optimizing context usage to reduce token costs or improve performance",
+        "Onboarding new team members to context engineering concepts",
+        "Reviewing context-related design decisions"
+      ],
+      "anti_triggers": [
+        "Purely theoretical discussions without practical implementation details"
+      ],
+      "dependencies": [
+        "filesystem",
+        "bash",
+        "python"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "context-manager",
+      "description": "An elite AI context engineering specialist focused on dynamic context management, intelligent memory systems, and multi-agent workflow orchestration.",
+      "path": "context-manager/SKILL.md",
+      "tags": [
+        "context-engineering",
+        "dynamic-context-management",
+        "intelligent-memory-systems",
+        "multi-agent-workflow-orchestration"
+      ],
+      "trigger_conditions": [
+        "Working on context manager tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for context manager"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to context manager",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "vector-databases",
+        "knowledge-graphs",
+        "intelligent-retrieval-systems"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "context-optimization",
+      "description": "Context optimization extends the effective capacity of limited context windows through strategic compression, masking, caching, and partitioning.",
+      "path": "context-optimization/SKILL.md",
+      "tags": [
+        "context",
+        "optimization",
+        "compression",
+        "masking",
+        "caching",
+        "partitioning"
+      ],
+      "trigger_conditions": [
+        "Context limits constrain task complexity",
+        "Optimizing for cost reduction (fewer tokens = lower costs)",
+        "Reducing latency for long conversations",
+        "Implementing long-running agent systems",
+        "Need to handle larger documents or conversations",
+        "Building production systems at scale"
+      ],
+      "anti_triggers": [
+        "When context utilization is below 70%",
+        "When response quality is satisfactory without optimization"
+      ],
+      "dependencies": [
+        "context-fundamentals",
+        "context-degradation",
+        "evaluation"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "context-window-management",
+      "description": "Optimize LLM applications handling millions of conversations by managing context windows effectively, avoiding token limits and context rot.",
+      "path": "context-window-management/SKILL.md",
+      "tags": [
+        "context-engineering",
+        "context-summarization",
+        "context-trimming",
+        "context-routing",
+        "token-counting",
+        "context-prioritization"
+      ],
+      "trigger_conditions": [
+        "LLM applications handling millions of conversations",
+        "systems hit token limits",
+        "suffer context rot"
+      ],
+      "anti_triggers": [
+        "Naive Truncation",
+        "Ignoring Token Costs",
+        "One-Size-Fits-All"
+      ],
+      "dependencies": [
+        "rag-implementation",
+        "conversation-memory",
+        "prompt-caching",
+        "llm-npc-dialogue"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "hierarchical-agent-memory",
+      "description": "Scoped CLAUDE.md memory system that reduces context token spend by creating directory-level context files, tracking savings via dashboard, and routing agents to the right sub-context.",
+      "path": "hierarchical-agent-memory/SKILL.md",
+      "tags": [
+        "hierarchical",
+        "memory",
+        "context",
+        "token-savings",
+        "dashboard",
+        "routing"
+      ],
+      "trigger_conditions": [
+        "Use when you want to reduce input token costs across Claude Code sessions",
+        "Use when your project has 3+ directories and the agent keeps re-reading the same files",
+        "Use when you want directory-scoped context instead of one monolithic CLAUDE.md",
+        "Use when you want a dashboard to visualize token savings",
+        "session history",
+        "and context health"
+      ],
+      "anti_triggers": [
+        "Projects with less than 3 directories",
+        "When re-reading the same files is not an issue"
+      ],
+      "dependencies": [
+        "Node.js 18+"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "hybrid-search-implementation",
+      "description": "Combine vector similarity and keyword-based search to improve retrieval in RAG systems, search engines, or when recall is insufficient.",
+      "path": "hybrid-search-implementation/SKILL.md",
+      "tags": [
+        "hybrid",
+        "search",
+        "vector",
+        "keyword",
+        "RAG",
+        "recall"
+      ],
+      "trigger_conditions": [
+        "Building RAG systems with improved recall",
+        "Combining semantic understanding with exact matching",
+        "Handling queries with specific terms (names",
+        "codes)",
+        "Improving search for domain-specific vocabulary"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to hybrid search implementation"
+      ],
+      "dependencies": [
+        "Clarify goals",
+        "constraints",
+        "and required inputs",
+        "Apply relevant best practices and validate outcomes",
+        "Provide actionable steps and verification"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "rag-engineer",
+      "description": "RAG Engineer bridges the gap between raw documents and LLM understanding, focusing on retrieval quality to determine generation quality.",
+      "path": "rag-engineer/SKILL.md",
+      "tags": [
+        "vector-embeddings",
+        "retrieval-pipeline",
+        "semantic-search",
+        "document-chunking",
+        "llm"
+      ],
+      "trigger_conditions": [
+        "design-retrieval-pipelines",
+        "implement-semantic-search",
+        "optimize-context-windows"
+      ],
+      "anti_triggers": [
+        "fixed-chunk-size",
+        "embedding-everything"
+      ],
+      "dependencies": [
+        "llm-fundamentals",
+        "understanding-of-embeddings",
+        "basic-nlp-concepts"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "rag-implementation",
+      "description": "RAG Implementation Workflow covering embedding selection, vector database setup, chunking strategies, retrieval optimization, and LLM integration.",
+      "path": "rag-implementation/SKILL.md",
+      "tags": [
+        "rag",
+        "embedding-selection",
+        "vector-database-setup",
+        "chunking-strategies",
+        "retrieval-optimization",
+        "llm-integration"
+      ],
+      "trigger_conditions": [
+        "Building RAG-powered applications",
+        "Implementing semantic search",
+        "Creating knowledge-grounded AI",
+        "Setting up document Q&A systems",
+        "Optimizing retrieval quality"
+      ],
+      "anti_triggers": [
+        "Low-latency",
+        "high-throughput applications"
+      ],
+      "dependencies": [
+        "Vector database",
+        "LLM provider"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "recallmax",
+      "description": "RecallMax enhances AI agent memory capabilities by injecting large amounts of clean context, auto-summarizing conversations while preserving tone and intent, and compressing multi-turn histories into high-density token sequences.",
+      "path": "recallmax/SKILL.md",
+      "tags": [
+        "memory",
+        "context",
+        "rag",
+        "summarization",
+        "compression",
+        "long-context",
+        "agent-infrastructure"
+      ],
+      "trigger_conditions": [
+        "Use when your agent loses context in long conversations (50+ turns)",
+        "Use when injecting large RAG/external documents into agent context",
+        "Use when you need to compress conversation history without losing meaning",
+        "Use when fact-checking claims across a long thread",
+        "Use for any agent that needs to remember everything"
+      ],
+      "anti_triggers": [
+        "Don't inject unvetted external content without dedup",
+        "Don't skip summarization and rely on raw truncation"
+      ],
+      "dependencies": [
+        "npx"
+      ],
+      "mcp_tools": [
+        "claude",
+        "cursor",
+        "codex",
+        "gemini",
+        "copilot",
+        "windsurf",
+        "antigravity",
+        "grok"
+      ]
+    }
+  ]
+}

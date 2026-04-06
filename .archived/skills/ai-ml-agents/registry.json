@@ -1,0 +1,848 @@
+{
+  "category_id": "ai-ml-agents",
+  "category_name": "AI ML Agents",
+  "skills": [
+    {
+      "id": "agent-orchestration-multi-agent-optimize",
+      "description": "Optimize multi-agent systems through coordinated profiling, workload distribution, and cost-aware orchestration. Use for improving agent performance, throughput, or reliability.",
+      "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
+      "tags": [
+        "multi-agent",
+        "performance optimization",
+        "orchestration",
+        "cost management"
+      ],
+      "trigger_conditions": [
+        "Improving multi-agent coordination",
+        "throughput",
+        "or latency",
+        "Profiling agent workflows to identify bottlenecks",
+        "Designing orchestration strategies for complex workflows"
+      ],
+      "anti_triggers": [
+        "Tuning a single agent prompt",
+        "No measurable metrics or evaluation data",
+        "Task unrelated to multi-agent orchestration"
+      ],
+      "dependencies": [
+        "Python",
+        "concurrent.futures",
+        "PriorityQueue"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "agents-md",
+      "description": "A skill for creating concise, research-backed AGENTS.md documentation to maintain agent instructions and best practices.",
+      "path": "agents-md/SKILL.md",
+      "tags": [
+        "AGENTS.md",
+        "documentation",
+        "minimalism",
+        "high-signal",
+        "agent-instructions"
+      ],
+      "trigger_conditions": [
+        "create AGENTS.md",
+        "update AGENTS.md",
+        "maintain agent docs",
+        "set up CLAUDE.md"
+      ],
+      "anti_triggers": [
+        "hand-holding instructions",
+        "exceeding 100 lines"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "ai-engineer",
+      "description": "Expert AI engineer specializing in production-grade LLM applications, generative AI systems, and intelligent agent architectures.",
+      "path": "ai-engineer/SKILL.md",
+      "tags": [
+        "AI",
+        "LLM",
+        "RAG",
+        "Agent",
+        "Vector Search",
+        "Embeddings",
+        "Multimodal"
+      ],
+      "trigger_conditions": [
+        "Building or improving LLM features",
+        "RAG systems",
+        "or AI agents",
+        "Designing production AI architectures and model integration",
+        "Optimizing vector search",
+        "embeddings",
+        "or retrieval pipelines"
+      ],
+      "anti_triggers": [
+        "Pure data science without LLMs",
+        "Quick UI changes unrelated to AI"
+      ],
+      "dependencies": [
+        "Apache Airflow",
+        "Dagster",
+        "Prefect",
+        "FastAPI",
+        "Flask",
+        "GraphQL",
+        "Kafka",
+        "Pulsar",
+        "TorchServe",
+        "MLflow",
+        "BentoML",
+        "Postgres",
+        "LangChain",
+        "LangGraph",
+        "CrewAI",
+        "AutoGen"
+      ],
+      "mcp_tools": [
+        "Apache Airflow-memory",
+        "Dagster-memory",
+        "Prefect-memory",
+        "FastAPI-memory",
+        "Flask-memory",
+        "GraphQL-memory",
+        "Kafka-memory",
+        "Pulsar-memory",
+        "TorchServe-memory",
+        "MLflow-memory",
+        "BentoML-memory"
+      ]
+    },
+    {
+      "id": "ai-engineering-toolkit",
+      "description": "A collection of 6 structured, expert-level workflows that turn your AI coding assistant into a senior AI engineering partner.",
+      "path": "ai-engineering-toolkit/SKILL.md",
+      "tags": [
+        "prompt-engineering",
+        "rag",
+        "security",
+        "evaluation",
+        "ai-engineering",
+        "llm"
+      ],
+      "trigger_conditions": [
+        "Evaluating or optimizing LLM system prompts before production deployment",
+        "Designing a RAG pipeline and needing structured architecture decisions",
+        "Planning token budget allocation across context window zones",
+        "Running pre-launch security audits on AI agents",
+        "Building evaluation frameworks for LLM applications",
+        "Thinking through product strategy before writing code"
+      ],
+      "anti_triggers": [
+        "Purely theoretical discussions without practical implementation details"
+      ],
+      "dependencies": [
+        "claude",
+        "cursor"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "antigravity-skill-orchestrator",
+      "description": "A meta-skill that dynamically selects appropriate skills based on task complexity, tracks successful combinations using agent-memory-mcp, and prevents overuse of specialized skills for simple tasks.",
+      "path": "antigravity-skill-orchestrator/SKILL.md",
+      "tags": [
+        "orchestration",
+        "meta-skill",
+        "agent-memory",
+        "task-evaluation"
+      ],
+      "trigger_conditions": [
+        "tackling a complex",
+        "multi-step problem that likely requires multiple domains of expertise",
+        "unsure which specific skills are best suited for a given user request",
+        "user explicitly asks to 'orchestrate'",
+        "'combine skills'",
+        "or 'use the best tools for the job' on a significant task"
+      ],
+      "anti_triggers": [
+        "simple issues (e.g.",
+        "small CSS fixes",
+        "simple script writing",
+        "renaming a variable)",
+        "creating new skills"
+      ],
+      "dependencies": [
+        "agent-memory-mcp"
+      ],
+      "mcp_tools": [
+        "agent-memory-mcp"
+      ]
+    },
+    {
+      "id": "brainstorming",
+      "description": "A structured approach to transforming vague ideas into validated designs through disciplined reasoning and collaboration, ensuring that no creative implementation occurs while this skill is active.",
+      "path": "brainstorming/SKILL.md",
+      "tags": [
+        "brainstorming",
+        "design facilitation",
+        "structured dialogue"
+      ],
+      "trigger_conditions": [
+        "before any implementation begins",
+        "when raw ideas need validation"
+      ],
+      "anti_triggers": [
+        "during the actual implementation phase",
+        "for speculative features"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "cc-skill-strategic-compact",
+      "description": "A development skill from everything-claude-code, applicable for executing workflows or actions.",
+      "path": "cc-skill-strategic-compact/SKILL.md",
+      "tags": [
+        "development",
+        "skill",
+        "workflows",
+        "actions"
+      ],
+      "trigger_conditions": [
+        "Applicable for executing workflows or actions described in the overview."
+      ],
+      "anti_triggers": [],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "claude-code-guide",
+      "description": "A comprehensive guide for configuring and using Claude Code, an agentic coding tool, with best practices, configuration templates, and advanced usage patterns.",
+      "path": "claude-code-guide/SKILL.md",
+      "tags": [
+        "Claude Code",
+        "agentic coding",
+        "configuration",
+        "best practices"
+      ],
+      "trigger_conditions": [
+        "When starting a new project",
+        "Before editing files",
+        "After editing files"
+      ],
+      "anti_triggers": [
+        "When the agent is stuck or behaving unexpectedly"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "claude-settings-audit",
+      "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Detects tech stack, build tools, and monorepo structure.",
+      "path": "claude-settings-audit/SKILL.md",
+      "tags": [
+        "claude",
+        "settings.json",
+        "permissions",
+        "tech stack",
+        "audit"
+      ],
+      "trigger_conditions": [
+        "Setting up a new project",
+        "Auditing existing settings",
+        "Determining read-only bash commands"
+      ],
+      "anti_triggers": [
+        "Modifying state with install",
+        "build",
+        "run",
+        "write",
+        "or delete commands",
+        "Including custom scripts that may have side effects",
+        "Using absolute paths or user-specific paths"
+      ],
+      "dependencies": [
+        "bash"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "context7-auto-research",
+      "description": "Automatically fetch latest library/framework documentation for Claude Code via Context7 API. Use when you need up-to-date documentation for libraries and frameworks or asking about React, Next.js, Prisma, or any other popular library.",
+      "path": "context7-auto-research/SKILL.md",
+      "tags": [
+        "Context7",
+        "API",
+        "Documentation",
+        "React",
+        "Next.js"
+      ],
+      "trigger_conditions": [
+        "When you need up-to-date documentation for libraries and frameworks",
+        "When asking about React",
+        "Next.js",
+        "Prisma",
+        "or any other popular library"
+      ],
+      "anti_triggers": [],
+      "dependencies": [
+        "npx skills add -g BenedictKing/context7-auto-research"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "devcontainer-setup",
+      "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes.",
+      "path": "devcontainer-setup/SKILL.md",
+      "tags": [
+        "devcontainer",
+        "Claude Code",
+        "language-specific tooling",
+        "persistent volumes"
+      ],
+      "trigger_conditions": [
+        "User asks to 'set up a devcontainer' or 'add devcontainer support'",
+        "User wants a sandboxed Claude Code development environment",
+        "User needs isolated development environments with persistent configuration"
+      ],
+      "anti_triggers": [
+        "User already has a devcontainer configuration and just needs modifications",
+        "User is asking about general Docker or container questions",
+        "User wants to deploy production containers (this is for development only)"
+      ],
+      "dependencies": [
+        "devcontainer"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "diary",
+      "description": "A context-preserving automated logger for multi-project development that summarizes progress, writes a daily dev log, and performs a daily review while keeping project contexts isolated and synced to Notion/Obsidian.",
+      "path": "diary/SKILL.md",
+      "tags": [
+        "diary",
+        "log",
+        "context",
+        "isolation",
+        "sync",
+        "notion",
+        "obsidian"
+      ],
+      "trigger_conditions": [
+        "Want to summarize progress",
+        "Need to write a daily dev log",
+        "Performing a daily review"
+      ],
+      "anti_triggers": [
+        "Mixing project contexts",
+        "Overwriting existing diary entries"
+      ],
+      "dependencies": [
+        "Notion",
+        "Obsidian"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "embedding-strategies",
+      "description": "A guide to selecting and optimizing embedding models for vector search applications, including templates for OpenAI embeddings, local embeddings with Sentence Transformers, chunking strategies, domain-specific pipelines, and quality evaluation.",
+      "path": "embedding-strategies/SKILL.md",
+      "tags": [
+        "embedding",
+        "vector search",
+        "OpenAI",
+        "Sentence Transformers",
+        "chunking",
+        "domain-specific",
+        "quality evaluation"
+      ],
+      "trigger_conditions": [
+        "Choosing embedding models for RAG",
+        "Optimizing chunking strategies",
+        "Fine-tuning embeddings for domains",
+        "Comparing embedding model performance",
+        "Reducing embedding dimensions",
+        "Handling multilingual content"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to embedding strategies",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "OpenAI",
+        "Sentence Transformers"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "filesystem-context",
+      "description": "Use filesystem context management to offload large outputs, persist state, and dynamically load skills.",
+      "path": "filesystem-context/SKILL.md",
+      "tags": [
+        "filesystem",
+        "context-management",
+        "dynamic-discovery",
+        "skill-loading"
+      ],
+      "trigger_conditions": [
+        "Tool outputs exceed 2000 tokens",
+        "Tasks span multiple conversation turns",
+        "Multiple agents need to share state",
+        "Skills or instructions exceed what fits comfortably in system prompt",
+        "Logs or terminal output need selective querying"
+      ],
+      "anti_triggers": [
+        "Tasks complete in single turns",
+        "Context fits comfortably in window",
+        "Latency is critical (file I/O adds overhead)",
+        "Simple model incapable of filesystem tool use"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "langchain-architecture",
+      "description": "Master the LangChain framework for building sophisticated LLM applications with agents, chains, memory, and tool integration.",
+      "path": "langchain-architecture/SKILL.md",
+      "tags": [
+        "langchain",
+        "llm",
+        "agents",
+        "chains",
+        "memory",
+        "tools"
+      ],
+      "trigger_conditions": [
+        "Building autonomous AI agents with tool access",
+        "Implementing complex multi-step LLM workflows",
+        "Managing conversation memory and state"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to langchain architecture"
+      ],
+      "dependencies": [
+        "langchain",
+        "openai"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "langgraph",
+      "description": "You are an expert in building production-grade AI agents with LangGraph by structuring them as graphs, making the flow visible and debuggable.",
+      "path": "langgraph/SKILL.md",
+      "tags": [
+        "langgraph",
+        "ai-agents",
+        "state-management",
+        "reducers",
+        "graph-construction",
+        "conditional-routing"
+      ],
+      "trigger_conditions": [
+        "Building production-grade AI agents",
+        "Need for explicit structure in agent flows",
+        "Debugging complex agent workflows"
+      ],
+      "anti_triggers": [
+        "Infinite loops without exit conditions",
+        "Stateless nodes lacking state management"
+      ],
+      "dependencies": [
+        "Python 3.9+",
+        "langgraph package",
+        "LLM API access (OpenAI",
+        "Anthropic)"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "last30days",
+      "description": "Research any topic from the last 30 days across Reddit, X, and the web, then synthesize copy-paste-ready prompts for the user's target tool.",
+      "path": "last30days/SKILL.md",
+      "tags": [
+        "research",
+        "prompting",
+        "recommendations",
+        "news",
+        "general",
+        "Reddit",
+        "X",
+        "WebSearch",
+        "API keys",
+        "synthesis"
+      ],
+      "trigger_conditions": [
+        "User wants to learn techniques and get copy-paste prompts",
+        "User wants a list of specific things people are mentioning",
+        "User wants current events and updates on a topic",
+        "User is curious about any topic and wants an understanding of what the community is saying"
+      ],
+      "anti_triggers": [
+        "User asks for generic advice or opinions instead of research-based insights"
+      ],
+      "dependencies": [
+        "Python",
+        "OpenAI API (optional)",
+        "xAI API (optional)"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "llm-application-dev-ai-assistant",
+      "description": "An expert in creating intelligent conversational interfaces, chatbots, and AI-powered applications with natural language understanding and context management.",
+      "path": "llm-application-dev-ai-assistant/SKILL.md",
+      "tags": [
+        "ai",
+        "chatbot",
+        "conversational interface",
+        "natural language processing",
+        "context management"
+      ],
+      "trigger_conditions": [
+        "Working on ai assistant development tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for ai assistant development"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to ai assistant development",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "$ARGUMENTS"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "llm-ops",
+      "description": "LLM Operations -- RAG, embeddings, vector databases, fine-tuning, prompt engineering advanced, LLM costs, quality evals and AI architectures for production.",
+      "path": "llm-ops/SKILL.md",
+      "tags": [
+        "llm",
+        "rag",
+        "embeddings",
+        "vector-db",
+        "fine-tuning",
+        "prompt-engineering",
+        "cost-reduction",
+        "quality-evals"
+      ],
+      "trigger_conditions": [
+        "When you need specialized assistance with this domain"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to llm ops",
+        "A simpler",
+        "more specific tool can handle the request",
+        "The user needs general-purpose assistance without domain expertise"
+      ],
+      "dependencies": [
+        "anthropic",
+        "chromadb",
+        "postgres"
+      ],
+      "mcp_tools": [
+        "claude-code",
+        "antigravity",
+        "cursor",
+        "gemini-cli",
+        "codex-cli"
+      ]
+    },
+    {
+      "id": "mcp-builder",
+      "description": "Create MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. The quality of an MCP server is measured by how well it enables LLMs to accomplish real-world tasks.",
+      "path": "mcp-builder/SKILL.md",
+      "tags": [
+        "MCP",
+        "LLMs",
+        "External Services",
+        "Tool Design",
+        "Workflow"
+      ],
+      "trigger_conditions": [
+        "Developing an MCP server for LLM interaction with external services",
+        "Creating a tool-based interface for LLMs to perform complex tasks"
+      ],
+      "anti_triggers": [
+        "Using generic API endpoints without specialized tools",
+        "Ignoring error handling and user feedback in tool implementations"
+      ],
+      "dependencies": [
+        "TypeScript",
+        "Python",
+        "MCP SDK",
+        "WebFetch"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "memory-systems",
+      "description": "Design short-term, long-term, and graph-based memory architectures to maintain entity consistency across conversations and enable reasoning over accumulated knowledge.",
+      "path": "memory-systems/SKILL.md",
+      "tags": [
+        "memory",
+        "architecture",
+        "graph-based",
+        "long-term",
+        "short-term"
+      ],
+      "trigger_conditions": [
+        "Building agents that must persist across sessions",
+        "Need to maintain entity consistency across conversations",
+        "Implementing reasoning over accumulated knowledge"
+      ],
+      "anti_triggers": [
+        "Simple agents relying entirely on context for memory",
+        "Systems without the need for persistent state or structured memory"
+      ],
+      "dependencies": [
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "moyu",
+      "description": "An AI coding agent skill that enforces restraint and avoids over-engineering by only making changes explicitly requested by the user.",
+      "path": "moyu/SKILL.md",
+      "tags": [
+        "ai",
+        "coding",
+        "restraint",
+        "over-engineering",
+        "scope"
+      ],
+      "trigger_conditions": [
+        "User requests a specific change to code",
+        "AI agent feels urge to modify code beyond original request",
+        "Complex solution is proposed when simple one exists"
+      ],
+      "anti_triggers": [
+        "AI agent introduces unrequested abstractions or refactorings"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "multi-agent-patterns",
+      "description": "This skill provides guidance on designing and implementing multi-agent systems, including patterns like supervisor/orchestrator, peer-to-peer/swarm, and hierarchical structures, with a focus on context isolation and effective coordination.",
+      "path": "multi-agent-patterns/SKILL.md",
+      "tags": [
+        "multi-agent",
+        "supervisor pattern",
+        "swarm architecture",
+        "context isolation",
+        "agent handoffs"
+      ],
+      "trigger_conditions": [
+        "user asks to 'design multi-agent system'",
+        "user mentions 'multi-agent patterns'",
+        "user requests 'create swarm architecture'"
+      ],
+      "anti_triggers": [
+        "user asks for a single-agent solution",
+        "user does not mention context isolation or sub-agents"
+      ],
+      "dependencies": [
+        "memory-systems",
+        "tool-design",
+        "context-optimization"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "notebooklm",
+      "description": "Interact with Google NotebookLM to query documentation using Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.",
+      "path": "notebooklm/SKILL.md",
+      "tags": [
+        "NotebookLM",
+        "Google Docs",
+        "Documentation Query"
+      ],
+      "trigger_conditions": [
+        "User mentions NotebookLM explicitly",
+        "Shares NotebookLM URL",
+        "Asks to query their notebooks/documentation"
+      ],
+      "anti_triggers": [
+        "General questions not related to specific documents or notebooks"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "progressive-estimation",
+      "description": "Estimate AI-assisted and hybrid human+agent development work using research-backed formulas with PERT statistics, confidence bands, and calibration feedback loops.",
+      "path": "progressive-estimation/SKILL.md",
+      "tags": [
+        "estimation",
+        "project-management",
+        "pert",
+        "sprint-planning",
+        "ai-agents"
+      ],
+      "trigger_conditions": [
+        "Estimating development tasks where AI agents handle part of the work",
+        "Sprint planning with hybrid human+agent teams",
+        "Batch sizing a backlog (handles 5 or 500 issues)",
+        "Staffing and capacity planning with agent multipliers",
+        "Release date forecasting with confidence intervals"
+      ],
+      "anti_triggers": [
+        "Estimating tasks for a purely human-only team"
+      ],
+      "dependencies": [],
+      "mcp_tools": [
+        "claude"
+      ]
+    },
+    {
+      "id": "pydantic-ai",
+      "description": "PydanticAI is a Python agent framework that brings type-safety and validation guarantees to LLM-based applications, supporting structured outputs, dependency injection, streamed responses, multi-turn conversations, and tool use across various providers.",
+      "path": "pydantic-ai/SKILL.md",
+      "tags": [
+        "pydantic-ai",
+        "ai-agents",
+        "llm",
+        "openai",
+        "anthropic",
+        "gemini",
+        "tool-use",
+        "structured-output",
+        "python"
+      ],
+      "trigger_conditions": [
+        "Building Python AI agents that call tools and return structured data",
+        "Requiring validated",
+        "typed LLM outputs (not raw strings)",
+        "Need to write unit tests for agent logic without hitting a real LLM",
+        "Switching between LLM providers without rewriting agent code"
+      ],
+      "anti_triggers": [
+        "Purely theoretical and lacks practical implementation details"
+      ],
+      "dependencies": [
+        "pip",
+        "python"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "skill-developer",
+      "description": "Comprehensive guide for creating and managing skills in Claude Code with auto-activation system, following Anthropic's official best practices including the 500-line rule and progressive disclosure pattern.",
+      "path": "skill-developer/SKILL.md",
+      "tags": [
+        "Claude",
+        "skills",
+        "auto-activation",
+        "Anthropic",
+        "best-practices"
+      ],
+      "trigger_conditions": [
+        "Creating or adding skills",
+        "Modifying skill triggers or rules",
+        "Understanding how skill activation works",
+        "Debugging skill activation issues",
+        "Working with skill-rules.json",
+        "Hook system mechanics",
+        "Claude Code best practices",
+        "Progressive disclosure",
+        "YAML frontmatter",
+        "500-line rule"
+      ],
+      "anti_triggers": [
+        "General knowledge questions not related to skills or Claude Code",
+        "Non-technical queries"
+      ],
+      "dependencies": [
+        "npx",
+        "tsx"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "skill-router",
+      "description": "A conversational skill that interviews users with targeted questions to determine their goal and recommends the best skill(s) from the installed library for their needs.",
+      "path": "skill-router/SKILL.md",
+      "tags": [
+        "conversational",
+        "interview",
+        "recommendation",
+        "skill-routing"
+      ],
+      "trigger_conditions": [
+        "User says 'I don't know where to start' or 'which skill should I use'",
+        "User has a vague goal without a clear method",
+        "User asks 'what should I use for...' or 'I'm not sure how to approach this'"
+      ],
+      "anti_triggers": [
+        "User already knows exactly what they want and which skill to use"
+      ],
+      "dependencies": [
+        "n8n",
+        "Antigravity"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "tool-design",
+      "description": "Build tools that agents can use effectively, including architectural reduction patterns.",
+      "path": "tool-design/SKILL.md",
+      "tags": [
+        "tool design",
+        "agent systems",
+        "architectural reduction"
+      ],
+      "trigger_conditions": [
+        "Creating new tools for agent systems",
+        "Debugging tool-related failures or misuse",
+        "Optimizing existing tool sets for better agent performance"
+      ],
+      "anti_triggers": [
+        "Building tools to protect the model from complexity",
+        "Using overly specialized tools that constrain reasoning"
+      ],
+      "dependencies": [
+        "MCP"
+      ],
+      "mcp_tools": [
+        "postgres-memory",
+        "atom8n"
+      ]
+    },
+    {
+      "id": "workspace-configurator",
+      "description": "Invisible orchestrator that configures the active workspace context based on the user's natural language intent.",
+      "path": "workspace-configurator/SKILL.md",
+      "tags": [
+        "context",
+        "router",
+        "intent",
+        "workspace",
+        "configurator"
+      ],
+      "trigger_conditions": [
+        "User assigns a new high-level objective",
+        "User shifts project domain",
+        "User explicitly asks for tools",
+        "skills",
+        "or capabilities",
+        "Currently loaded skills are clearly mismatched"
+      ],
+      "anti_triggers": [
+        "Minor follow-ups within an already well-matched context"
+      ],
+      "dependencies": [
+        "python",
+        "scripts/workspace_manager.py",
+        "scripts/profiles.json",
+        ".archived/skills/registry.json"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

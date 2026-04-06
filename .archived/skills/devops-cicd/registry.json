@@ -1,0 +1,184 @@
+{
+  "category_id": "devops-cicd",
+  "category_name": "Devops Cicd",
+  "skills": [
+    {
+      "id": "deployment-engineer",
+      "description": "Expert in modern CI/CD practices, GitOps workflows, and container orchestration, specializing in zero-downtime deployments, progressive delivery, and enterprise-scale automation.",
+      "path": "deployment-engineer/SKILL.md",
+      "tags": [
+        "ci/cd",
+        "gitops",
+        "kubernetes",
+        "deployment",
+        "automation"
+      ],
+      "trigger_conditions": [
+        "Designing or improving CI/CD pipelines and release workflows",
+        "Implementing GitOps or progressive delivery patterns",
+        "Automating deployments with zero-downtime requirements"
+      ],
+      "anti_triggers": [
+        "Local development automation",
+        "Application feature work without deployment changes"
+      ],
+      "dependencies": [
+        "CI/CD platforms (GitHub Actions",
+        "GitLab CI/CD",
+        "Azure DevOps",
+        "Jenkins)",
+        "GitOps tools (ArgoCD",
+        "Flux v2",
+        "Jenkins X)",
+        "Container technologies (Docker",
+        "Kubernetes)"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "deployment-pipeline-design",
+      "description": "Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.",
+      "path": "deployment-pipeline-design/SKILL.md",
+      "tags": [
+        "CI/CD",
+        "deployment",
+        "pipeline",
+        "approval-gates"
+      ],
+      "trigger_conditions": [
+        "Design CI/CD architecture",
+        "Implement deployment gates",
+        "Configure multi-environment pipelines"
+      ],
+      "anti_triggers": [
+        "Unrelated to deployment pipeline design",
+        "Different domain or tool required"
+      ],
+      "dependencies": [
+        "GitHub Actions",
+        "GitLab CI",
+        "Azure Pipelines",
+        "Kubernetes",
+        "Docker",
+        "Prometheus"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "environment-setup-guide",
+      "description": "Guide developers through setting up development environments with proper tools, dependencies, and configurations",
+      "path": "environment-setup-guide/SKILL.md",
+      "tags": [
+        "development",
+        "environment",
+        "setup",
+        "tools",
+        "dependencies",
+        "configuration"
+      ],
+      "trigger_conditions": [
+        "Use when starting a new project and need to set up the development environment",
+        "Use when onboarding new team members to a project",
+        "Use when switching to a new machine or operating system",
+        "Use when troubleshooting environment-related issues"
+      ],
+      "anti_triggers": [
+        "Use when only making minor changes to an existing setup"
+      ],
+      "dependencies": [
+        "Node.js",
+        "Python",
+        "Git",
+        "Docker",
+        "PostgreSQL",
+        "npm",
+        "pip",
+        "Homebrew (macOS)",
+        "Chocolatey (Windows)"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "git-advanced-workflows",
+      "description": "Master advanced Git techniques to maintain clean history, collaborate effectively, and recover from any situation with confidence.",
+      "path": "git-advanced-workflows/SKILL.md",
+      "tags": [
+        "git",
+        "advanced-workflows",
+        "clean-history",
+        "collaboration",
+        "recovery"
+      ],
+      "trigger_conditions": [
+        "Cleaning up commit history before merging",
+        "Applying specific commits across branches",
+        "Finding commits that introduced bugs",
+        "Working on multiple features simultaneously",
+        "Recovering from Git mistakes or lost commits"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to git advanced workflows"
+      ],
+      "dependencies": [
+        "git"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "github-actions-templates",
+      "description": "Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.",
+      "path": "github-actions-templates/SKILL.md",
+      "tags": [
+        "github",
+        "actions",
+        "ci/cd",
+        "workflow",
+        "templates",
+        "testing",
+        "deployment",
+        "docker",
+        "kubernetes"
+      ],
+      "trigger_conditions": [
+        "Automate testing and deployment",
+        "Build Docker images and push to registries",
+        "Deploy to Kubernetes clusters",
+        "Run security scans",
+        "Implement matrix builds for multiple environments"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to github actions templates",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "github",
+        "docker",
+        "kubernetes"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "gitlab-ci-patterns",
+      "description": "Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.",
+      "path": "gitlab-ci-patterns/SKILL.md",
+      "tags": [
+        "gitlab-ci",
+        "ci/cd",
+        "pipeline"
+      ],
+      "trigger_conditions": [
+        "Automate GitLab-based CI/CD",
+        "Implement multi-stage pipelines",
+        "Configure GitLab Runners"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to gitlab ci patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "gitlab"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

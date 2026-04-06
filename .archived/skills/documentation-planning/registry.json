@@ -1,0 +1,77 @@
+{
+  "category_id": "documentation-planning",
+  "category_name": "Documentation Planning",
+  "skills": [
+    {
+      "id": "concise-planning",
+      "description": "Use when a user asks for a plan for a coding task, to generate a clear, actionable, and atomic checklist.",
+      "path": "concise-planning/SKILL.md",
+      "tags": [
+        "planning",
+        "checklist",
+        "atomic",
+        "actionable",
+        "user-request"
+      ],
+      "trigger_conditions": [
+        "User requests a plan for a coding task"
+      ],
+      "anti_triggers": [
+        "Requests that cannot be turned into an atomic",
+        "actionable plan"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "github-issue-creator",
+      "description": "Transform messy input (error logs, voice notes, screenshots) into clean, actionable GitHub issues.",
+      "path": "github-issue-creator/SKILL.md",
+      "tags": [
+        "github",
+        "issue",
+        "template",
+        "markdown",
+        "input",
+        "transformation"
+      ],
+      "trigger_conditions": [
+        "User provides error logs",
+        "User provides voice notes",
+        "User provides screenshots"
+      ],
+      "anti_triggers": [
+        "Purely theoretical discussion"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "plan-writing",
+      "description": "Structured task planning with clear breakdowns, dependencies, and verification criteria for implementing features, refactoring, or any multi-step work.",
+      "path": "plan-writing/SKILL.md",
+      "tags": [
+        "task",
+        "planning",
+        "verification",
+        "dependencies",
+        "breakdown"
+      ],
+      "trigger_conditions": [
+        "Implementing features",
+        "Refactoring",
+        "Any multi-step work"
+      ],
+      "anti_triggers": [
+        "Single-step tasks",
+        "Purely theoretical planning"
+      ],
+      "dependencies": [
+        "npx",
+        "npm",
+        "curl"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

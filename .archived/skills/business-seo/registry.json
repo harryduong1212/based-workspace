@@ -1,0 +1,379 @@
+{
+  "category_id": "business-seo",
+  "category_name": "Business SEO",
+  "skills": [
+    {
+      "id": "keyword-extractor",
+      "description": "Extracts up to 50 SEO-friendly, relevant keywords from text for use in keyword generation or extraction requests.",
+      "path": "keyword-extractor/SKILL.md",
+      "tags": [
+        "keyword",
+        "extractor",
+        "seo",
+        "text",
+        "machine-ready"
+      ],
+      "trigger_conditions": [
+        "User wants to generate or extract keywords from given text",
+        "Keyword extraction is required for SEO",
+        "tagging",
+        "or metadata generation"
+      ],
+      "anti_triggers": [
+        "Summaries or paraphrasing requests",
+        "Text analysis without keyword generation"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo",
+      "description": "Comprehensive SEO analysis across all industries, orchestrating 12 specialized sub-skills and 7 subagents for technical SEO, content quality, schema, sitemaps, AI search readiness, and GEO.",
+      "path": "seo/SKILL.md",
+      "tags": [
+        "seo",
+        "technical-seo",
+        "on-page-seo",
+        "schema",
+        "sitemaps",
+        "content-quality",
+        "ai-search-readiness",
+        "geo"
+      ],
+      "trigger_conditions": [
+        "User asks for a full SEO audit or broad SEO strategy",
+        "Umbrella entry point when multiple SEO dimensions are in scope",
+        "Task spans technical SEO",
+        "content",
+        "schema",
+        "sitemaps",
+        "and AI search readiness together"
+      ],
+      "anti_triggers": [
+        "Purely theoretical and lacks practical implementation details"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-cannibalization-detector",
+      "description": "Analyzes multiple provided pages to identify keyword overlap and potential cannibalization issues, suggesting differentiation strategies.",
+      "path": "seo-cannibalization-detector/SKILL.md",
+      "tags": [
+        "seo",
+        "cannibalization",
+        "keyword",
+        "overlap",
+        "content",
+        "differentiation",
+        "analysis",
+        "detection"
+      ],
+      "trigger_conditions": [
+        "Working on seo cannibalization detector tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo cannibalization detector"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo cannibalization detector",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Clarify goals",
+        "constraints",
+        "and required inputs"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-competitor-pages",
+      "description": "Generate SEO-optimized competitor comparison and alternatives pages with 'X vs Y' layouts, schema markup, and conversion optimization.",
+      "path": "seo-competitor-pages/SKILL.md",
+      "tags": [
+        "seo",
+        "comparison",
+        "alternatives",
+        "schema-markup",
+        "conversion-optimization"
+      ],
+      "trigger_conditions": [
+        "User requests a 'comparison page'",
+        "User requests an 'alternatives page'",
+        "User specifies 'X vs Y' for two competitors",
+        "User mentions competitor-intent keywords"
+      ],
+      "anti_triggers": [
+        "User is looking for general product information",
+        "not comparisons"
+      ],
+      "dependencies": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash",
+        "WebFetch"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-content-planner",
+      "description": "Creates comprehensive content outlines and topic clusters for SEO, plans content calendars, and identifies topic gaps.",
+      "path": "seo-content-planner/SKILL.md",
+      "tags": [
+        "seo",
+        "content-planning",
+        "topic-clusters",
+        "content-outlines",
+        "content-calendars"
+      ],
+      "trigger_conditions": [
+        "Working on seo content planner tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo content planner"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo content planner",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-content-refresher",
+      "description": "Identifies outdated elements in provided content and suggests updates to maintain freshness.",
+      "path": "seo-content-refresher/SKILL.md",
+      "tags": [
+        "seo",
+        "content",
+        "freshness",
+        "updates",
+        "refresher"
+      ],
+      "trigger_conditions": [
+        "Working on seo content refresher tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo content refresher"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo content refresher",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-content-writer",
+      "description": "Writes SEO-optimized content based on provided keywords and topic briefs, creating engaging, comprehensive content following best practices.",
+      "path": "seo-content-writer/SKILL.md",
+      "tags": [
+        "seo",
+        "content",
+        "writing",
+        "optimization",
+        "engagement",
+        "comprehensive"
+      ],
+      "trigger_conditions": [
+        "Working on seo content writer tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo content writer"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo content writer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-image-gen",
+      "description": "Generate SEO-focused images such as OG cards, hero images, schema assets, product visuals, and infographics using Gemini's image generation via the banana Creative Director pipeline.",
+      "path": "seo-image-gen/SKILL.md",
+      "tags": [
+        "seo",
+        "image-generation",
+        "og-images",
+        "hero-images",
+        "schema-visuals",
+        "infographics",
+        "publishing-workflow"
+      ],
+      "trigger_conditions": [
+        "Generating OG images or social preview images",
+        "Requiring hero images for blog posts",
+        "Need to generate schema visuals or infographics"
+      ],
+      "anti_triggers": [
+        "Lack of image-generation extension availability"
+      ],
+      "dependencies": [
+        "banana extension",
+        "MCP server connected"
+      ],
+      "mcp_tools": [
+        "gemini_generate_image",
+        "set_aspect_ratio"
+      ]
+    },
+    {
+      "id": "seo-images",
+      "description": "Image optimization analysis for SEO and performance, checking alt text, file sizes, formats, responsive images, lazy loading, and CLS prevention.",
+      "path": "seo-images/SKILL.md",
+      "tags": [
+        "image",
+        "seo",
+        "performance",
+        "alt-text",
+        "file-size",
+        "format",
+        "responsive-images",
+        "lazy-loading",
+        "cls"
+      ],
+      "trigger_conditions": [
+        "User says 'image optimization'",
+        "'alt text'",
+        "'image SEO'",
+        "'image size'",
+        "or 'image audit'",
+        "Auditing image-specific SEO and performance",
+        "Checking media quality signals that affect both SEO and Core Web Vitals"
+      ],
+      "anti_triggers": [
+        "General website speed audit without specific focus on images"
+      ],
+      "dependencies": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash",
+        "WebFetch"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-keyword-strategist",
+      "description": "Analyzes keyword usage in provided content, calculates density, suggests semantic variations and LSI keywords based on the topic. Prevents over-optimization.",
+      "path": "seo-keyword-strategist/SKILL.md",
+      "tags": [
+        "seo",
+        "keyword",
+        "analysis",
+        "density",
+        "optimization",
+        "lsi",
+        "semantic",
+        "content"
+      ],
+      "trigger_conditions": [
+        "Working on seo keyword strategist tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo keyword strategist"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo keyword strategist",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "WordPress",
+        "Static sites"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-meta-optimizer",
+      "description": "Creates optimized meta titles, descriptions, and URL suggestions based on character limits and best practices.",
+      "path": "seo-meta-optimizer/SKILL.md",
+      "tags": [
+        "seo",
+        "meta-optimizer",
+        "character-limits",
+        "best-practices"
+      ],
+      "trigger_conditions": [
+        "Working on seo meta optimizer tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo meta optimizer"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo meta optimizer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "WordPress",
+        "Astro/Next.js"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-sitemap",
+      "description": "Analyze existing XML sitemaps or generate new ones using industry templates, validating format, URLs, and structure.",
+      "path": "seo-sitemap/SKILL.md",
+      "tags": [
+        "sitemap",
+        "xml",
+        "seo",
+        "analysis",
+        "generation",
+        "validation"
+      ],
+      "trigger_conditions": [
+        "User mentions 'sitemap'",
+        "User requests 'generate sitemap'",
+        "User asks about 'sitemap issues'",
+        "User inquires about 'XML sitemap'"
+      ],
+      "anti_triggers": [
+        "Generating pages with only city name swapped",
+        "Creating '[Competitor] alternative' pages without industry-specific value"
+      ],
+      "dependencies": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash",
+        "WebFetch",
+        "Write"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-structure-architect",
+      "description": "Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities.",
+      "path": "seo-structure-architect/SKILL.md",
+      "tags": [
+        "seo",
+        "content-structure",
+        "header-hierarchy",
+        "schema-markup",
+        "internal-linking"
+      ],
+      "trigger_conditions": [
+        "Working on seo structure architect tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo structure architect"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo structure architect",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "WordPress",
+        "Astro/Static"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

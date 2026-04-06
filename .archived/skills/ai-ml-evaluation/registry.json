@@ -1,0 +1,165 @@
+{
+  "category_id": "ai-ml-evaluation",
+  "category_name": "AI ML Evaluation",
+  "skills": [
+    {
+      "id": "advanced-evaluation",
+      "description": "This skill covers production-grade techniques for evaluating LLM outputs using LLMs as judges, synthesizing research from academic papers, industry practices, and practical implementation experience into actionable patterns for building reliable evaluation systems.",
+      "path": "advanced-evaluation/SKILL.md",
+      "tags": [
+        "evaluation",
+        "bias-mitigation",
+        "direct-scoring",
+        "pairwise-comparison",
+        "rubrics",
+        "metrics"
+      ],
+      "trigger_conditions": [
+        "user asks to implement LLM-as-judge",
+        "comparing model outputs",
+        "creating evaluation rubrics",
+        "mitigating evaluation bias",
+        "mentions direct scoring",
+        "pairwise comparison",
+        "position bias",
+        "evaluation pipelines",
+        "or automated quality assessment"
+      ],
+      "anti_triggers": [
+        "purely theoretical and lacks practical implementation details"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "analyze-project",
+      "description": "Forensic root cause analyzer for Antigravity sessions that classifies scope deltas, rework patterns, root causes, hotspots, and auto-improves prompts/health.",
+      "path": "analyze-project/SKILL.md",
+      "tags": [
+        "analysis",
+        "diagnostics",
+        "meta",
+        "root-cause",
+        "project-health",
+        "session-review"
+      ],
+      "trigger_conditions": [
+        "Analyze AI-assisted coding sessions",
+        "Produce a report explaining what happened",
+        "why it happened",
+        "who/what caused it",
+        "and what should change next time"
+      ],
+      "anti_triggers": [
+        "Purely theoretical sessions lacking practical implementation details"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "bdistill-behavioral-xray",
+      "description": "Systematically probe an AI model's behavioral patterns and generate a visual report using bdistill's Behavioral X-Ray. The skill runs 30 carefully designed probe questions across 6 dimensions, auto-tags each response with behavioral metadata, and compiles results into a styled HTML report with radar charts and actionable insights.",
+      "path": "bdistill-behavioral-xray/SKILL.md",
+      "tags": [
+        "ai",
+        "testing",
+        "behavioral-analysis",
+        "model-evaluation",
+        "red-team",
+        "compliance",
+        "mcp"
+      ],
+      "trigger_conditions": [
+        "Use when you want to understand how your AI model actually behaves (not how it claims to)",
+        "Use when choosing between models for a specific task",
+        "Use when debugging unexpected refusals",
+        "hallucinations",
+        "or formatting issues",
+        "Use for compliance auditing — documenting model behavior at deployment boundaries",
+        "Use for red team assessments — systematic boundary mapping across safety dimensions"
+      ],
+      "anti_triggers": [
+        "Do not use adversarial knowledge extraction alongside behavioral probes for complete model profiling"
+      ],
+      "dependencies": [
+        "pip",
+        "bdistill"
+      ],
+      "mcp_tools": [
+        "claude",
+        "cursor",
+        "codex",
+        "copilot"
+      ]
+    },
+    {
+      "id": "langfuse",
+      "description": "An expert in LLM observability and evaluation, focusing on traces, spans, and metrics for monitoring LLM applications.",
+      "path": "langfuse/SKILL.md",
+      "tags": [
+        "llm",
+        "observability",
+        "tracing",
+        "metrics",
+        "prompt-management",
+        "evaluation",
+        "dataset",
+        "cost-tracking",
+        "performance-monitoring",
+        "ab-testing"
+      ],
+      "trigger_conditions": [
+        "Any LLM application",
+        "OpenAI-based applications",
+        "LangChain-based applications"
+      ],
+      "anti_triggers": [
+        "Not flushing in serverless",
+        "Tracing everything",
+        "No user/session IDs"
+      ],
+      "dependencies": [
+        "Python or TypeScript/JavaScript",
+        "Langfuse account (cloud or self-hosted)",
+        "LLM API keys"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "llm-evaluation",
+      "description": "Master comprehensive evaluation strategies for LLM applications, from automated metrics to human evaluation and A/B testing.",
+      "path": "llm-evaluation/SKILL.md",
+      "tags": [
+        "llm",
+        "evaluation",
+        "metrics",
+        "human-evaluation",
+        "ab-testing",
+        "benchmarking"
+      ],
+      "trigger_conditions": [
+        "Measuring LLM application performance systematically",
+        "Comparing different models or prompts",
+        "Detecting performance regressions before deployment"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to llm evaluation"
+      ],
+      "dependencies": [
+        "nltk",
+        "openai",
+        "transformers",
+        "detoxify"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

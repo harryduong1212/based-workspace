@@ -6,18 +6,31 @@
       "id": "workspace-configurator",
       "description": "Invisible orchestrator that configures the active workspace context based on the user's natural language intent.",
       "path": "workspace-configurator/SKILL.md",
-      "root_category_id": "miscellaneous-other",
-      "triggers": [],
       "tags": [
-        "java",
+        "context",
+        "router",
+        "intent",
         "workspace",
-        "configurator",
-        "scripts",
-        "select",
-        "profile",
-        "tags",
-        "purpose"
-      ]
+        "configurator"
+      ],
+      "trigger_conditions": [
+        "User assigns a new high-level objective",
+        "User shifts project domain",
+        "User explicitly asks for tools",
+        "skills",
+        "or capabilities",
+        "Currently loaded skills are clearly mismatched"
+      ],
+      "anti_triggers": [
+        "Minor follow-ups within an already well-matched context"
+      ],
+      "dependencies": [
+        "python",
+        "scripts/workspace_manager.py",
+        "scripts/profiles.json",
+        ".archived/skills/registry.json"
+      ],
+      "mcp_tools": []
     }
   ]
 }

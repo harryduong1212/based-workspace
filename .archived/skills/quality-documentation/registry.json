@@ -1,0 +1,49 @@
+{
+  "category_id": "quality-documentation",
+  "category_name": "Quality Documentation",
+  "skills": [
+    {
+      "id": "ask-questions-if-underspecified",
+      "description": "Clarify requirements before implementing. Use when serious doubts arise.",
+      "path": "ask-questions-if-underspecified/SKILL.md",
+      "tags": [
+        "clarification",
+        "requirements",
+        "workflow"
+      ],
+      "trigger_conditions": [
+        "multiple plausible interpretations",
+        "unclear details"
+      ],
+      "anti_triggers": [
+        "request is already clear",
+        "quick discovery read can answer missing details"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "writing-plans",
+      "description": "A skill for creating comprehensive implementation plans before writing code, ensuring each step is bite-sized and follows best practices like TDD.",
+      "path": "writing-plans/SKILL.md",
+      "tags": [
+        "implementation planning",
+        "TDD",
+        "code documentation",
+        "subagent-driven development"
+      ],
+      "trigger_conditions": [
+        "When you have a spec or requirements for a multi-step task",
+        "before touching code"
+      ],
+      "anti_triggers": [
+        "When the engineer has existing context about the codebase and problem domain"
+      ],
+      "dependencies": [
+        "git",
+        "pytest"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

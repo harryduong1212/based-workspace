@@ -4,7 +4,7 @@
   "workflows": [
     {
       "id": "library",
-      "description": "",
+      "description": "✅ Ready",
       "path": "library.md",
       "triggers": [
         "library"
@@ -24,7 +24,7 @@
     },
     {
       "id": "nextjs-app",
-      "description": "",
+      "description": "✅ Ready",
       "path": "nextjs-app.md",
       "triggers": [
         "nextjs-app"

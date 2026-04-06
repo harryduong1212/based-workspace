@@ -10,19 +10,20 @@ Usage:
     python scripts/generate_deep_tags.py --category ai-llm-agent-development  # Single category
 """
 
-import io
 import json
-import os
 import re
-import sys
 import time
 from collections import Counter
 from pathlib import Path
 from argparse import ArgumentParser
+import llm_utils
 
-# ─── Configuration ────────────────────────────────────────────────────────────
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 # Default root (can be overridden by --type)
-ASSETS_ROOT_SKILLS = Path(__file__).resolve().parent.parent.parent / ".archived" / "skills"
+ASSETS_ROOT_SKILLS = ROOT_DIR / ".archived" / "skills"
+ASSETS_ROOT_WORKFLOWS = ROOT_DIR / ".archived" / "workflows"
+BASED_SKILLS_FILE = ROOT_DIR / "scripts" / "resources" / "based_skills_registry.json"
+ROOT_REGISTRY_JSON = ASSETS_ROOT_SKILLS / "registry.json"
 ASSETS_ROOT_WORKFLOWS = Path(__file__).resolve().parent.parent.parent / ".archived" / "workflows"
 
 MIN_TAGS = 4
@@ -262,10 +263,13 @@ def extract_tags_from_content(content: str, asset_id: str) -> list[str]:
     return top_tags[:MAX_TAGS]
 
 
-def process_category(category_dir: Path, config: dict, dry_run: bool = False) -> dict:
+def process_category(category_dir: Path, config: dict, dry_run: bool = False, based_skills_lookup: dict = None, force_llm: bool = False) -> dict:
     """Process a single category directory. Returns stats dict."""
+    if based_skills_lookup is None:
+        based_skills_lookup = {}
+        
     registry_file = category_dir / "registry.json"
-    stats = {"category": category_dir.name, "total": 0, "tagged": 0, "missing": 0, "errors": 0}
+    stats = {"category": category_dir.name, "total": 0, "tagged": 0, "missing": 0, "errors": 0, "category_all_tags": []}
 
     if not registry_file.exists():
         print(f"  [WARN] No registry.json in {category_dir.name}, skipping.")
@@ -297,7 +301,23 @@ def process_category(category_dir: Path, config: dict, dry_run: bool = False) ->
         try:
             content = asset_md_path.read_text(encoding="utf-8", errors="replace")
             old_tags = asset.get("tags", [])
-            new_tags = extract_tags_from_content(content, asset_id)
+            new_tags = None
+            
+            # 1. Base registry (if not forced)
+            if not force_llm and asset_id in based_skills_lookup:
+                new_tags = based_skills_lookup[asset_id].get("tags")
+                
+            # 2. LLM Studio attempts
+            if not new_tags and (force_llm or asset_id not in based_skills_lookup):
+                print(f"{progress} [LLM] Summarizing and extracting tags for {asset_id}...")
+                llm_meta = llm_utils.generate_skill_metadata(content)
+                if llm_meta and "tags" in llm_meta:
+                    new_tags = llm_meta["tags"]
+                    print(f"{progress} [LLM] Success! Found {len(new_tags)} tags.")
+                    
+            # 3. Fallback NLP extraction
+            if not new_tags:
+                new_tags = extract_tags_from_content(content, asset_id)
             
             if new_tags != old_tags:
                 asset["tags"] = new_tags
@@ -308,6 +328,9 @@ def process_category(category_dir: Path, config: dict, dry_run: bool = False) ->
         except Exception as e:
             print(f"{progress} [ERR]  {asset_id}: {e}")
             stats["errors"] += 1
+            
+        # Accumulate tags for category-level summarization
+        stats["category_all_tags"].extend(asset.get("tags", []))
 
     if stats["tagged"] > 0 and not dry_run:
         with open(registry_file, "w", encoding="utf-8") as f:
@@ -335,6 +358,13 @@ def run_tag_extraction(type_id: str, args):
 
     start_time = time.time()
     all_stats = []
+    
+    force_llm = getattr(args, "force_llm", False)
+    based_skills_lookup = {}
+    if BASED_SKILLS_FILE.exists():
+        based_data = json.loads(BASED_SKILLS_FILE.read_text(encoding="utf-8"))
+        for s in based_data.get("skills", []):
+            based_skills_lookup[s["id"]] = s
 
     # Collect category directories
     if args.category:
@@ -354,11 +384,38 @@ def run_tag_extraction(type_id: str, args):
 
     for idx, cat_dir in enumerate(categories):
         print(f"--- [{idx+1}/{total_categories}] {cat_dir.name} ---")
-        stats = process_category(cat_dir, config, dry_run=args.dry_run)
+        stats = process_category(cat_dir, config, dry_run=args.dry_run, based_skills_lookup=based_skills_lookup, force_llm=force_llm)
         all_stats.append(stats)
         print()
 
-    # ── Summary ───────────────────────────────────────────────────────────
+    # ── Summary & Root Registry ───────────────────────────────────────────
+    
+    if type_id == "skills" and ROOT_REGISTRY_JSON.exists() and not args.dry_run:
+        try:
+            root_data = json.loads(ROOT_REGISTRY_JSON.read_text(encoding="utf-8"))
+            for cat in root_data.get("categories", []):
+                cat_id = cat["category_id"]
+                stat = next((s for s in all_stats if s["category"] == cat_id), None)
+                if stat and stat.get("category_all_tags"):
+                    all_tags = stat["category_all_tags"]
+                    
+                    cat_tags = None
+                    if force_llm or not cat.get("category_tags"):
+                        print(f"  [LLM] Synthesizing domain tags for category '{cat_id}'...")
+                        most_common = [k for k, v in Counter(all_tags).most_common(50)]
+                        cat_tags = llm_utils.generate_category_tags(most_common)
+                        if cat_tags:
+                            print(f"  [LLM] '{cat_id}' mapped to: {', '.join(cat_tags)}")
+                            
+                    if not cat_tags:
+                        cat_tags = [k for k, v in Counter(all_tags).most_common(8)]
+                        
+                    cat["category_tags"] = cat_tags
+                    
+            ROOT_REGISTRY_JSON.write_text(json.dumps(root_data, indent=2, ensure_ascii=False), encoding="utf-8")
+        except Exception as e:
+            print(f"  [ERROR] Failed to update category_tags in root registry: {e}")
+
     elapsed = time.time() - start_time
     total_assets = sum(s["total"] for s in all_stats)
     total_tagged = sum(s["tagged"] for s in all_stats)
@@ -389,10 +446,11 @@ def run_tag_extraction(type_id: str, args):
 
 
 def main():
-    parser = ArgumentParser(description="Deep Tag Extraction for Registry")
-    parser.add_argument("--dry-run", action="store_true", help="Preview without writing JSON files")
-    parser.add_argument("--category", type=str, default=None, help="Process only a specific category folder")
-    parser.add_argument("--type", type=str, choices=["skills", "workflows"], default=None, help="Asset type to process (default: all)")
+    parser = ArgumentParser(description="Deep Tag Extraction: Scans asset content to extract key keywords and sync them to registries. Now supports AI-driven tag synthesis via LM Studio/Ollama.")
+    parser.add_argument("--dry-run", action="store_true", help="Preview tag extraction without writing JSON files.")
+    parser.add_argument("--category", type=str, default=None, help="Process only a specific category folder.")
+    parser.add_argument("--type", type=str, choices=["skills", "workflows"], default=None, help="Asset type (skills or workflows).")
+    parser.add_argument("--force-llm", action="store_true", help="Connect to LM Studio/Ollama to force-regenerate tags using AI for all processed assets.")
     args = parser.parse_args()
 
     types_to_run = [args.type] if args.type else ["skills", "workflows"]

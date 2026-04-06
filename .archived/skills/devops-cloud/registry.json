@@ -1,0 +1,98 @@
+{
+  "category_id": "devops-cloud",
+  "category_name": "Devops Cloud",
+  "skills": [
+    {
+      "id": "cloud-architect",
+      "description": "Expert cloud architect specializing in AWS, Azure, GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns.",
+      "path": "cloud-architect/SKILL.md",
+      "tags": [
+        "cloud architecture",
+        "IaC",
+        "FinOps",
+        "multi-cloud",
+        "serverless"
+      ],
+      "trigger_conditions": [
+        "Working on cloud architect tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for cloud architect"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to cloud architect",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "AWS",
+        "Azure",
+        "GCP"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "cloud-devops",
+      "description": "A comprehensive cloud and DevOps workflow bundle covering infrastructure provisioning, container orchestration, CI/CD pipelines, monitoring, and cloud-native application development.",
+      "path": "cloud-devops/SKILL.md",
+      "tags": [
+        "cloud",
+        "devops",
+        "aws",
+        "azure",
+        "gcp",
+        "kubernetes",
+        "terraform",
+        "ci/cd",
+        "monitoring"
+      ],
+      "trigger_conditions": [
+        "Setting up cloud infrastructure",
+        "Implementing CI/CD pipelines",
+        "Deploying Kubernetes applications"
+      ],
+      "anti_triggers": [
+        "Purely theoretical and lacks practical implementation details"
+      ],
+      "dependencies": [
+        "aws",
+        "azure",
+        "gcp",
+        "kubernetes",
+        "terraform"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "database-cloud-optimization-cost-optimize",
+      "description": "A cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyzes cloud spending, identifies savings opportunities, and implements cost-effective architectures across AWS, Azure, and GCP.",
+      "path": "database-cloud-optimization-cost-optimize/SKILL.md",
+      "tags": [
+        "cloud",
+        "cost optimization",
+        "AWS",
+        "Azure",
+        "GCP"
+      ],
+      "trigger_conditions": [
+        "Reducing cloud infrastructure spend while preserving performance",
+        "Rightsizing database instances or storage",
+        "Implementing cost controls",
+        "budgets",
+        "or tagging policies",
+        "Reviewing waste",
+        "idle resources",
+        "or overprovisioning"
+      ],
+      "anti_triggers": [
+        "You cannot access billing or resource data",
+        "The system is in active incident response",
+        "The request is unrelated to cost optimization"
+      ],
+      "dependencies": [
+        "billing data",
+        "resource data"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

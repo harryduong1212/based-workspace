@@ -1,0 +1,750 @@
+{
+  "category_id": "backend-core",
+  "category_name": "Backend Core",
+  "skills": [
+    {
+      "id": "backend-development-feature-development",
+      "description": "Orchestrate end-to-end backend feature development from requirements to deployment, supporting multiple methodologies and complex scenarios.",
+      "path": "backend-development-feature-development/SKILL.md",
+      "tags": [
+        "backend",
+        "feature development",
+        "multi-phase",
+        "deployment"
+      ],
+      "trigger_conditions": [
+        "Coordinating end-to-end feature delivery across teams and services",
+        "Managing multi-service changes with deployment needs"
+      ],
+      "anti_triggers": [
+        "Small",
+        "isolated backend change or bug fix",
+        "Single specialist task without full workflow"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": [
+        "postgres-memory",
+        "atom8n"
+      ]
+    },
+    {
+      "id": "biopython",
+      "description": "Biopython is a comprehensive set of Python tools for biological computation, supporting sequence manipulation, database access, BLAST operations, structural bioinformatics, and more.",
+      "path": "biopython/SKILL.md",
+      "tags": [
+        "biopython",
+        "python",
+        "bioinformatics",
+        "sequence analysis",
+        "database access",
+        "BLAST",
+        "structural bioinformatics",
+        "phylogenetics"
+      ],
+      "trigger_conditions": [
+        "Working with biological sequences (DNA",
+        "RNA",
+        "or protein)",
+        "Reading",
+        "writing",
+        "or converting biological file formats",
+        "Accessing NCBI databases via Entrez"
+      ],
+      "anti_triggers": [
+        "Non-biological data processing tasks",
+        "General programming tasks unrelated to bioinformatics"
+      ],
+      "dependencies": [
+        "python",
+        "numpy"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "code-review-checklist",
+      "description": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability.",
+      "path": "code-review-checklist/SKILL.md",
+      "tags": [
+        "code review",
+        "software development",
+        "quality assurance"
+      ],
+      "trigger_conditions": [
+        "pull requests",
+        "code audits",
+        "establishing standards"
+      ],
+      "anti_triggers": [
+        "unreviewed code",
+        "lack of documentation"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "database-migration",
+      "description": "Master database schema and data migrations across ORMs (Sequelize, TypeORM, Prisma), including rollback strategies and zero-downtime deployments.",
+      "path": "database-migration/SKILL.md",
+      "tags": [
+        "database migration",
+        "ORMs",
+        "schema transformation",
+        "data model refactoring",
+        "zero downtime"
+      ],
+      "trigger_conditions": [
+        "Migrating between different ORMs",
+        "Performing schema transformations",
+        "Moving data between databases"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to database migration",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "npx",
+        "sequelize-cli",
+        "typeorm",
+        "prisma"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "database-optimizer",
+      "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures.",
+      "path": "database-optimizer/SKILL.md",
+      "tags": [
+        "database",
+        "performance",
+        "query optimization",
+        "scalability"
+      ],
+      "trigger_conditions": [
+        "Working on database optimizer tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for database optimizer"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to database optimizer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "postgres",
+        "mysql",
+        "sql-server",
+        "oracle",
+        "mongodb",
+        "dynamodb"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fp-backend",
+      "description": "A collection of functional programming patterns for Node.js/Deno backend development using fp-ts, ReaderTaskEither, and functional dependency injection.",
+      "path": "fp-backend/SKILL.md",
+      "tags": [
+        "fp-ts",
+        "typescript",
+        "backend",
+        "functional-programming",
+        "node",
+        "deno",
+        "dependency-injection",
+        "reader-task-either"
+      ],
+      "trigger_conditions": [
+        "Developing a Node.js or Deno backend service that requires type safety and testability.",
+        "Using functional programming patterns for better code organization and maintainability."
+      ],
+      "anti_triggers": [
+        "Developing a backend service without considering type safety or testability.",
+        "Using traditional imperative programming patterns instead of functional ones."
+      ],
+      "dependencies": [
+        "fp-ts",
+        "ReaderTaskEither",
+        "PrismaClient"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fp-data-transforms",
+      "description": "This skill covers practical data transformations using functional programming patterns in TypeScript, including array operations, object transformations, data normalization, grouping and aggregation, and null-safe access.",
+      "path": "fp-data-transforms/SKILL.md",
+      "tags": [
+        "functional-programming",
+        "typescript",
+        "data-transformation",
+        "fp-ts",
+        "arrays",
+        "objects",
+        "grouping",
+        "aggregation",
+        "null-safety"
+      ],
+      "trigger_conditions": [
+        "Need to transform arrays of data",
+        "Reshape objects for better usability",
+        "Normalize API responses for internal use",
+        "Group and aggregate data for analytics",
+        "Safely access nested values in complex objects"
+      ],
+      "anti_triggers": [
+        "Using verbose loops instead of functional methods",
+        "Ignoring type safety when transforming data",
+        "Not normalizing data to reduce complexity",
+        "Failing to handle null or undefined values safely"
+      ],
+      "dependencies": [
+        "typescript"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "go-concurrency-patterns",
+      "description": "Master Go concurrency with goroutines, channels, sync primitives, and context. Use when building concurrent Go applications, implementing worker pools, or debugging race conditions.",
+      "path": "go-concurrency-patterns/SKILL.md",
+      "tags": [
+        "Go",
+        "concurrency",
+        "goroutines",
+        "channels",
+        "sync"
+      ],
+      "trigger_conditions": [
+        "Building concurrent Go applications",
+        "Implementing worker pools and pipelines",
+        "Managing goroutine lifecycles"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to go concurrency patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "golang-pro",
+      "description": "Master Go 1.21+ development with advanced concurrency, performance optimization, and production-ready microservices.",
+      "path": "golang-pro/SKILL.md",
+      "tags": [
+        "Go",
+        "concurrency",
+        "performance",
+        "microservices"
+      ],
+      "trigger_conditions": [
+        "Building Go services",
+        "CLIs",
+        "or microservices",
+        "Designing concurrency patterns and performance optimizations",
+        "Reviewing Go architecture and production readiness"
+      ],
+      "anti_triggers": [
+        "You need another language or runtime",
+        "You only need basic Go syntax explanations",
+        "You cannot change Go tooling or build configuration"
+      ],
+      "dependencies": [
+        "Go"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "grpc-golang",
+      "description": "A comprehensive guide for designing and implementing production-grade gRPC services in Go, covering contract standardization with Buf, transport layer security via mTLS, and deep observability with OpenTelemetry interceptors.",
+      "path": "grpc-golang/SKILL.md",
+      "tags": [
+        "gRPC",
+        "Go",
+        "mTLS",
+        "Buf",
+        "OpenTelemetry"
+      ],
+      "trigger_conditions": [
+        "Designing microservices communication with gRPC in Go",
+        "Building high-performance internal APIs using Protobuf",
+        "Implementing streaming workloads (unidirectional or bidirectional)"
+      ],
+      "anti_triggers": [
+        "Building pure REST/HTTP public APIs without gRPC requirements",
+        "Modifying legacy .proto files without the ability to introduce a new API version"
+      ],
+      "dependencies": [
+        "Go",
+        "gRPC-Go"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "java-pro",
+      "description": "Master Java 21+ with modern features like virtual threads, pattern matching, and Spring Boot 3.x. Expert in the latest Java ecosystem including GraalVM, Project Loom, and cloud-native patterns.",
+      "path": "java-pro/SKILL.md",
+      "tags": [
+        "Java",
+        "Spring Boot",
+        "GraalVM",
+        "Project Loom",
+        "Virtual Threads"
+      ],
+      "trigger_conditions": [
+        "Working on java pro tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for java pro"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to java pro",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Spring Boot",
+        "GraalVM"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "nextjs-best-practices",
+      "description": "Next.js App Router principles including server components, data fetching, routing patterns, API routes, performance optimization, metadata, caching strategy, and server actions.",
+      "path": "nextjs-best-practices/SKILL.md",
+      "tags": [
+        "nextjs",
+        "server-components",
+        "data-fetching",
+        "routing",
+        "api-routes"
+      ],
+      "trigger_conditions": [
+        "Developing a Next.js application using the App Router"
+      ],
+      "anti_triggers": [
+        "Using client components for data fetching",
+        "Skipping loading states"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "pdf-official",
+      "description": "A comprehensive guide on PDF processing using Python libraries and command-line tools. It covers merging, splitting, extracting text and tables, creating new PDFs, and more.",
+      "path": "pdf-official/SKILL.md",
+      "tags": [
+        "PDF",
+        "Python",
+        "Command-Line Tools",
+        "Text Extraction",
+        "Table Extraction"
+      ],
+      "trigger_conditions": [
+        "Need to process PDF files for data extraction or manipulation",
+        "Creating new PDF documents programmatically",
+        "Handling scanned PDFs with OCR"
+      ],
+      "anti_triggers": [
+        "Simple text editing tasks that do not involve PDF processing",
+        "Basic file operations unrelated to PDFs"
+      ],
+      "dependencies": [
+        "Python",
+        "poppler-utils",
+        "qpdf",
+        "pdftk"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "performance-profiling",
+      "description": "Performance profiling principles, including measurement, analysis, and optimization techniques.",
+      "path": "performance-profiling/SKILL.md",
+      "tags": [
+        "performance",
+        "profiling",
+        "optimization"
+      ],
+      "trigger_conditions": [
+        "development phase",
+        "CI/CD pipeline",
+        "production monitoring"
+      ],
+      "anti_triggers": [
+        "guessing at problems",
+        "micro-optimizing"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "postgres-best-practices",
+      "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+      "path": "postgres-best-practices/SKILL.md",
+      "tags": [
+        "Postgres",
+        "performance",
+        "optimization",
+        "best practices",
+        "Supabase"
+      ],
+      "trigger_conditions": [
+        "Writing SQL queries or designing schemas",
+        "Implementing indexes or query optimization",
+        "Reviewing database performance issues"
+      ],
+      "anti_triggers": [
+        "Configuring connection pooling or scaling (use 'connection-pooling' skill)",
+        "Optimizing for Postgres-specific features (use 'postgres-features' skill)"
+      ],
+      "dependencies": [
+        "Postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-development-python-scaffold",
+      "description": "A skill for generating complete production-ready Python project structures using modern tools like uv, FastAPI, Django, and type hints.",
+      "path": "python-development-python-scaffold/SKILL.md",
+      "tags": [
+        "Python",
+        "Scaffolding",
+        "FastAPI",
+        "Django",
+        "Type Hints"
+      ],
+      "trigger_conditions": [
+        "Working on python project scaffolding tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for python project scaffolding"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to python project scaffolding",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "uv"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-packaging",
+      "description": "Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.",
+      "path": "python-packaging/SKILL.md",
+      "tags": [
+        "python",
+        "packaging",
+        "pyproject.toml",
+        "PyPI",
+        "distribution"
+      ],
+      "trigger_conditions": [
+        "Creating Python libraries for distribution",
+        "Building command-line tools with entry points",
+        "Publishing packages to PyPI or private repositories"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to python packaging",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-patterns",
+      "description": "Teaches Python development principles and decision-making, including framework selection, async patterns, type hints, and project structure.",
+      "path": "python-patterns/SKILL.md",
+      "tags": [
+        "Python",
+        "development",
+        "async",
+        "type hints",
+        "project structure"
+      ],
+      "trigger_conditions": [
+        "Making Python architecture decisions",
+        "Choosing frameworks",
+        "Designing async patterns",
+        "Structuring Python projects"
+      ],
+      "anti_triggers": [
+        "Defaulting to Django for simple APIs",
+        "Using sync libraries in async code",
+        "Skipping type hints for public APIs",
+        "Putting business logic in routes/views",
+        "Ignoring N+1 queries",
+        "Mixing async and sync carelessly"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-performance-optimization",
+      "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.",
+      "path": "python-performance-optimization/SKILL.md",
+      "tags": [
+        "python",
+        "performance optimization",
+        "cProfile",
+        "memory profiling"
+      ],
+      "trigger_conditions": [
+        "Identifying performance bottlenecks in Python applications",
+        "Reducing application latency and response times"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to python performance optimization",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "python-pro",
+      "description": "Master Python 3.12+ development with advanced features, async programming, performance optimization, and production-ready practices using cutting-edge tools like uv, ruff, pydantic, and FastAPI.",
+      "path": "python-pro/SKILL.md",
+      "tags": [
+        "Python",
+        "async",
+        "performance",
+        "production",
+        "uv",
+        "ruff",
+        "pydantic",
+        "FastAPI"
+      ],
+      "trigger_conditions": [
+        "Writing or reviewing Python 3.12+ codebases",
+        "Implementing async workflows or performance optimizations",
+        "Designing production-ready Python services or tooling"
+      ],
+      "anti_triggers": [
+        "You need guidance for a non-Python stack",
+        "You only need basic syntax tutoring",
+        "You cannot modify Python runtime or dependencies"
+      ],
+      "dependencies": [
+        "uv",
+        "ruff",
+        "pydantic",
+        "FastAPI"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "receiving-code-review",
+      "description": "A structured approach for receiving and responding to code review feedback, emphasizing technical evaluation over emotional reactions.",
+      "path": "receiving-code-review/SKILL.md",
+      "tags": [
+        "code review",
+        "technical evaluation",
+        "software development"
+      ],
+      "trigger_conditions": [
+        "receiving code review feedback from a human partner or external reviewer"
+      ],
+      "anti_triggers": [
+        "performative agreement",
+        "blind implementation without verification"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "rust-pro",
+      "description": "Master Rust 1.75+ with modern async patterns, advanced type system features, and production-ready systems programming.",
+      "path": "rust-pro/SKILL.md",
+      "tags": [
+        "Rust",
+        "async",
+        "type system",
+        "systems programming",
+        "production ready"
+      ],
+      "trigger_conditions": [
+        "Building Rust services",
+        "libraries",
+        "or systems tooling",
+        "Solving ownership",
+        "lifetime",
+        "or async design issues",
+        "Optimizing performance with memory safety guarantees"
+      ],
+      "anti_triggers": [
+        "You need a quick script or dynamic runtime",
+        "You only need basic Rust syntax",
+        "You cannot introduce Rust into the stack"
+      ],
+      "dependencies": [
+        "Rust"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-audit",
+      "description": "Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance.",
+      "path": "seo-audit/SKILL.md",
+      "tags": [
+        "SEO",
+        "audit",
+        "crawlability",
+        "indexation",
+        "technical SEO"
+      ],
+      "trigger_conditions": [
+        "Need to identify SEO issues on a website",
+        "Request for an SEO health check"
+      ],
+      "anti_triggers": [
+        "Not needed if the site is performing well",
+        "If there are no known SEO issues or penalties"
+      ],
+      "dependencies": [
+        "Google Search Console access",
+        "Analytics access"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "systems-programming-rust-project",
+      "description": "This skill provides guidance for scaffolding production-ready Rust applications using Cargo tooling, proper module organization, testing, and configuration following Rust best practices.",
+      "path": "systems-programming-rust-project/SKILL.md",
+      "tags": [
+        "Rust",
+        "Cargo",
+        "Project Scaffolding",
+        "Module Organization",
+        "Testing"
+      ],
+      "trigger_conditions": [
+        "Working on rust project scaffolding tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for rust project scaffolding"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to rust project scaffolding",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "cargo"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "temporal-golang-pro",
+      "description": "Expert-level guide for building resilient, scalable, and deterministic distributed systems using the Temporal Go SDK. Covers durable execution, strict determinism, and enterprise-scale worker configuration.",
+      "path": "temporal-golang-pro/SKILL.md",
+      "tags": [
+        "Temporal",
+        "Go",
+        "Distributed Systems",
+        "Workflow",
+        "mTLS"
+      ],
+      "trigger_conditions": [
+        "Designing Distributed Systems",
+        "Implementing Complex Workflows",
+        "Optimizing Performance"
+      ],
+      "anti_triggers": [
+        "Using Temporal with other SDKs",
+        "The task is a simple request/response without durability or coordination needs"
+      ],
+      "dependencies": [
+        "Temporal Go SDK"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "typescript-expert",
+      "description": "A TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling.",
+      "path": "typescript-expert/SKILL.md",
+      "tags": [
+        "TypeScript",
+        "JavaScript",
+        "type-level programming",
+        "performance optimization",
+        "monorepo management",
+        "migration strategies",
+        "modern tooling"
+      ],
+      "trigger_conditions": [
+        "When the issue requires ultra-specific expertise in TypeScript or JavaScript",
+        "For analyzing project setup comprehensively and identifying specific problem categories"
+      ],
+      "anti_triggers": [
+        "For issues related to deep webpack/vite/rollup bundler internals",
+        "For complex ESM/CJS migration or circular dependency analysis"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "typescript-pro",
+      "description": "Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns.",
+      "path": "typescript-pro/SKILL.md",
+      "tags": [
+        "TypeScript",
+        "Generics",
+        "Advanced Types",
+        "Strict Type Safety",
+        "Enterprise Patterns"
+      ],
+      "trigger_conditions": [
+        "Designing TypeScript architectures or shared types",
+        "Solving complex typing",
+        "generics",
+        "or inference issues",
+        "Hardening type safety for production systems"
+      ],
+      "anti_triggers": [
+        "You only need JavaScript guidance",
+        "You cannot enforce TypeScript in the build pipeline",
+        "You need UI/UX design rather than type design"
+      ],
+      "dependencies": [
+        "TypeScript"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "uv-package-manager",
+      "description": "Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.",
+      "path": "uv-package-manager/SKILL.md",
+      "tags": [
+        "uv",
+        "Python",
+        "package manager",
+        "Rust",
+        "dependency resolution"
+      ],
+      "trigger_conditions": [
+        "Setting up new Python projects quickly",
+        "Managing Python dependencies faster than pip",
+        "Creating and managing virtual environments",
+        "Installing Python interpreters",
+        "Resolving dependency conflicts efficiently",
+        "Migrating from pip/pip-tools/poetry",
+        "Speeding up CI/CD pipelines",
+        "Managing monorepo Python projects",
+        "Working with lockfiles for reproducible builds",
+        "Optimizing Docker builds with Python dependencies"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to uv package manager",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Python",
+        "Rust"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

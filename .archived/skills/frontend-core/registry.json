@@ -1,0 +1,423 @@
+{
+  "category_id": "frontend-core",
+  "category_name": "Frontend Core",
+  "skills": [
+    {
+      "id": "ab-test-setup",
+      "description": "A structured guide for setting up A/B tests with mandatory gates for hypothesis, metrics, and execution readiness.",
+      "path": "ab-test-setup/SKILL.md",
+      "tags": [
+        "A/B testing",
+        "hypothesis validation",
+        "statistical rigor"
+      ],
+      "trigger_conditions": [
+        "When planning to conduct an A/B test"
+      ],
+      "anti_triggers": [
+        "When rushing the design or implementation of an A/B test"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "browser-extension-builder",
+      "description": "The Browser Extension Builder skill provides knowledge and guidance on developing browser extensions, including architecture, manifest v3, content scripts, background workers, popup interfaces, monetization, and publishing.",
+      "path": "browser-extension-builder/SKILL.md",
+      "tags": [
+        "browser extension",
+        "manifest v3",
+        "content script",
+        "background worker",
+        "popup interface"
+      ],
+      "trigger_conditions": [
+        "When starting a new browser extension",
+        "When building an extension for the Chrome Web Store"
+      ],
+      "anti_triggers": [
+        "Requesting all permissions",
+        "Heavy background processing"
+      ],
+      "dependencies": [
+        "Chrome Web Store"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "i18n-localization",
+      "description": "Internationalization and localization patterns. Detecting hardcoded strings, managing translations, locale files, RTL support.",
+      "path": "i18n-localization/SKILL.md",
+      "tags": [
+        "i18n",
+        "l10n",
+        "translation",
+        "locale",
+        "RTL"
+      ],
+      "trigger_conditions": [
+        "When working on a public web app or SaaS product that requires internationalization.",
+        "When planning for future expansion to new regions."
+      ],
+      "anti_triggers": [
+        "For internal tools or single-region apps where localization is not immediately necessary."
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "javascript-pro",
+      "description": "Master modern JavaScript with ES6+, async patterns, and Node.js APIs. Handles promises, event loops, and browser/Node compatibility.",
+      "path": "javascript-pro/SKILL.md",
+      "tags": [
+        "JavaScript",
+        "ES6+",
+        "async programming",
+        "Node.js",
+        "browser"
+      ],
+      "trigger_conditions": [
+        "Building modern JavaScript for Node.js or browsers",
+        "Debugging async behavior",
+        "event loops",
+        "or performance",
+        "Migrating legacy JS to modern ES standards"
+      ],
+      "anti_triggers": [
+        "You need TypeScript architecture guidance",
+        "You are working in a non-JS runtime",
+        "The task requires backend architecture decisions"
+      ],
+      "dependencies": [
+        "Node.js",
+        "browser"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "javascript-testing-patterns",
+      "description": "Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.",
+      "path": "javascript-testing-patterns/SKILL.md",
+      "tags": [
+        "javascript",
+        "testing",
+        "tdd",
+        "unit tests",
+        "integration tests"
+      ],
+      "trigger_conditions": [
+        "Setting up test infrastructure for new projects",
+        "Writing unit tests for functions and classes",
+        "Creating integration tests for APIs and services",
+        "Implementing end-to-end tests for user flows",
+        "Mocking external dependencies and APIs",
+        "Testing React",
+        "Vue",
+        "or other frontend components",
+        "Implementing test-driven development (TDD)",
+        "Setting up continuous testing in CI/CD pipelines"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to javascript testing patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "nodejs-best-practices",
+      "description": "Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture.",
+      "path": "nodejs-best-practices/SKILL.md",
+      "tags": [
+        "nodejs",
+        "async",
+        "security",
+        "architecture",
+        "decision-making"
+      ],
+      "trigger_conditions": [
+        "making Node.js architecture decisions",
+        "choosing frameworks",
+        "designing async patterns",
+        "applying security and deployment best practices"
+      ],
+      "anti_triggers": [
+        "using Express for new edge projects",
+        "using sync methods in production code",
+        "putting business logic in controllers",
+        "skipping input validation",
+        "hardcoding secrets",
+        "trusting external data without validation",
+        "blocking event loop with CPU work"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "progressive-web-app",
+      "description": "Build Progressive Web Apps (PWAs) with offline support, installability, and caching strategies. Trigger whenever the user mentions PWA, service workers, web app manifests, Workbox, 'add to home screen', or wants their web app to work offline, feel native, or be installable.",
+      "path": "progressive-web-app/SKILL.md",
+      "tags": [
+        "pwa",
+        "web-dev",
+        "service-worker",
+        "frontend",
+        "offline",
+        "caching"
+      ],
+      "trigger_conditions": [
+        "user mentions PWA",
+        "user asks about caching strategies",
+        "user wants their web app to work offline"
+      ],
+      "anti_triggers": [
+        "user is not interested in PWAs",
+        "user does not mention specific PWA features like service workers or manifests"
+      ],
+      "dependencies": [
+        "https",
+        "manifest.json",
+        "sw.js"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-best-practices",
+      "description": "A comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Use when writing new React components or Next.js pages, implementing data fetching (client or server-side), or reviewing code for performance issues.",
+      "path": "react-best-practices/SKILL.md",
+      "tags": [
+        "React",
+        "Next.js",
+        "Performance Optimization",
+        "Vercel"
+      ],
+      "trigger_conditions": [
+        "Writing new React components or Next.js pages",
+        "Implementing data fetching (client or server-side)",
+        "Reviewing code for performance issues"
+      ],
+      "anti_triggers": [
+        "When not dealing with React or Next.js applications",
+        "For general web development tasks unrelated to performance optimization"
+      ],
+      "dependencies": [
+        "React",
+        "Next.js"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-component-performance",
+      "description": "Diagnose slow React components and suggest targeted performance fixes.",
+      "path": "react-component-performance/SKILL.md",
+      "tags": [
+        "React",
+        "performance optimization",
+        "memoization",
+        "useCallback",
+        "useMemo"
+      ],
+      "trigger_conditions": [
+        "user asks to profile or improve a slow React component",
+        "need to reduce re-renders",
+        "list lag",
+        "or expensive render work in React UI"
+      ],
+      "anti_triggers": [
+        "not applicable for non-React components",
+        "when performance issues are not related to React"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-flow-architect",
+      "description": "Build production-ready ReactFlow applications with hierarchical navigation, performance optimization, and advanced state management.",
+      "path": "react-flow-architect/SKILL.md",
+      "tags": [
+        "ReactFlow",
+        "hierarchical navigation",
+        "performance optimization",
+        "state management",
+        "React",
+        "TypeScript"
+      ],
+      "trigger_conditions": [
+        "When building a complex graph-based application that requires hierarchical navigation and performance optimization."
+      ],
+      "anti_triggers": [
+        "For simple static graphs without dynamic interactions or state management."
+      ],
+      "dependencies": [
+        "ReactFlow",
+        "Dagre"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-nextjs-development",
+      "description": "A specialized workflow for building React and Next.js 14+ applications with modern patterns including App Router, Server Components, TypeScript, Tailwind CSS, and more.",
+      "path": "react-nextjs-development/SKILL.md",
+      "tags": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Server Components"
+      ],
+      "trigger_conditions": [
+        "Building new React applications",
+        "Creating Next.js 14+ projects with App Router",
+        "Implementing Server Components"
+      ],
+      "anti_triggers": [
+        "Legacy React applications",
+        "Non-Next.js projects"
+      ],
+      "dependencies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-state-management",
+      "description": "Master modern React state management with Redux Toolkit, Zustand, Jotai, and React Query. Use when setting up global state, managing server state, or choosing between state management solutions.",
+      "path": "react-state-management/SKILL.md",
+      "tags": [
+        "React",
+        "Redux Toolkit",
+        "Zustand",
+        "Jotai",
+        "React Query"
+      ],
+      "trigger_conditions": [
+        "Setting up global state management in a React app",
+        "Choosing between Redux Toolkit",
+        "Zustand",
+        "or Jotai",
+        "Managing server state with React Query or SWR"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to react state management",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "React"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "screen-reader-testing",
+      "description": "A practical guide to testing web applications with screen readers for comprehensive accessibility validation.",
+      "path": "screen-reader-testing/SKILL.md",
+      "tags": [
+        "screen reader",
+        "accessibility",
+        "ARIA",
+        "web application"
+      ],
+      "trigger_conditions": [
+        "Validating screen reader compatibility",
+        "Testing ARIA implementations",
+        "Debugging assistive technology issues",
+        "Verifying form accessibility",
+        "Testing dynamic content announcements",
+        "Ensuring navigation accessibility"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to screen reader testing",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "senior-frontend",
+      "description": "A comprehensive skill for frontend development using React, Next.js, TypeScript, and Tailwind CSS. It includes project scaffolding, component generation, bundle analysis, React patterns, Next.js optimization, and accessibility testing.",
+      "path": "senior-frontend/SKILL.md",
+      "tags": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Frontend Development"
+      ],
+      "trigger_conditions": [
+        "Scaffolding a new React or Next.js project with TypeScript and Tailwind CSS",
+        "Generating new components or custom hooks",
+        "Analyzing and optimizing bundle sizes for frontend applications"
+      ],
+      "anti_triggers": [
+        "Using for backend development tasks",
+        "For mobile app development"
+      ],
+      "dependencies": [
+        "python",
+        "npm"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "web-artifacts-builder",
+      "description": "A step-by-step guide to building frontend artifacts for claude.ai using React, TypeScript, and Vite.",
+      "path": "web-artifacts-builder/SKILL.md",
+      "tags": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Parcel",
+        "Tailwind CSS"
+      ],
+      "trigger_conditions": [
+        "When creating a new frontend project for claude.ai artifacts"
+      ],
+      "anti_triggers": [
+        "When avoiding excessive centered layouts",
+        "purple gradients",
+        "uniform rounded corners",
+        "and Inter font"
+      ],
+      "dependencies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Parcel",
+        "Tailwind CSS",
+        "shadcn/ui"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "web-performance-optimization",
+      "description": "Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance.",
+      "path": "web-performance-optimization/SKILL.md",
+      "tags": [
+        "web-performance",
+        "Core Web Vitals",
+        "bundle-size",
+        "caching",
+        "runtime-performance"
+      ],
+      "trigger_conditions": [
+        "website or app is loading slowly",
+        "optimizing for Core Web Vitals (LCP",
+        "FID",
+        "CLS)",
+        "reducing JavaScript bundle size"
+      ],
+      "anti_triggers": [
+        "don't optimize blindly - measure first",
+        "don't ignore mobile - test on real mobile devices and slow networks"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

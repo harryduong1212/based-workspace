@@ -1,0 +1,92 @@
+{
+  "category_id": "quality-code-review",
+  "category_name": "Quality Code Review",
+  "skills": [
+    {
+      "id": "address-github-comments",
+      "description": "Use when you need to address review or issue comments on an open GitHub Pull Request using the gh CLI.",
+      "path": "address-github-comments/SKILL.md",
+      "tags": [
+        "github",
+        "cli",
+        "pr",
+        "comments",
+        "review",
+        "issues"
+      ],
+      "trigger_conditions": [
+        "Addressing PR review comments",
+        "Responding to issue feedback"
+      ],
+      "anti_triggers": [
+        "Applying fixes without understanding context",
+        "Not verifying auth"
+      ],
+      "dependencies": [
+        "gh"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "codebase-cleanup-tech-debt",
+      "description": "A comprehensive guide for identifying, quantifying, and prioritizing technical debt in software projects, with actionable remediation plans and prevention strategies.",
+      "path": "codebase-cleanup-tech-debt/SKILL.md",
+      "tags": [
+        "technical debt",
+        "code quality",
+        "refactoring",
+        "testing",
+        "architecture"
+      ],
+      "trigger_conditions": [
+        "Working on technical debt analysis and remediation tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for technical debt analysis and remediation"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to technical debt analysis and remediation",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "$ARGUMENTS"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "comprehensive-review-full-review",
+      "description": "Comprehensive multi-dimensional code review using specialized review agents",
+      "path": "comprehensive-review-full-review/SKILL.md",
+      "tags": [
+        "code-review",
+        "comprehensive",
+        "specialized-agents",
+        "multi-phase",
+        "security",
+        "performance",
+        "testing",
+        "documentation",
+        "best-practices"
+      ],
+      "trigger_conditions": [
+        "Working on comprehensive review full review tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for comprehensive review full review"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to comprehensive review full review",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Task tool",
+        "SonarQube",
+        "CodeQL",
+        "Semgrep",
+        "Snyk/Trivy",
+        "GitLeaks"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

@@ -10,8 +10,7 @@
         "feature-deep-dive"
       ],
       "required_skills": [
-        "senior-architect-v2",
-        "workspace-analyzer"
+        "senior-architect-v2"
       ],
       "entry_point": null,
       "tags": [

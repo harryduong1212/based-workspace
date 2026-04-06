@@ -1,0 +1,199 @@
+{
+  "category_id": "ai-ml-prompting",
+  "category_name": "AI ML Prompting",
+  "skills": [
+    {
+      "id": "avoid-ai-writing",
+      "description": "Detects and fixes AI writing patterns (AI-isms) that make text sound machine-generated, covering 21 pattern categories with a 43-entry word/phrase replacement table.",
+      "path": "avoid-ai-writing/SKILL.md",
+      "tags": [
+        "ai-writing",
+        "content-audit",
+        "rewrite",
+        "pattern-detection",
+        "replacement-table"
+      ],
+      "trigger_conditions": [
+        "remove AI-isms",
+        "clean up AI writing",
+        "make content sound less like AI",
+        "auditing content drafted with AI before publishing",
+        "editing text that sounds machine-generated"
+      ],
+      "anti_triggers": [
+        "detecting AI-generated code",
+        "only prose"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "beautiful-prose",
+      "description": "A hard-edged writing style contract for producing timeless, forceful English prose without modern AI tics and filler.",
+      "path": "beautiful-prose/SKILL.md",
+      "tags": [
+        "prose",
+        "writing",
+        "style",
+        "clean",
+        "exact",
+        "concrete",
+        "AI-free"
+      ],
+      "trigger_conditions": [
+        "Users ask for prose or rewrites that must be clean",
+        "exact",
+        "concrete",
+        "and free of AI cadence",
+        "filler",
+        "or therapeutic tone."
+      ],
+      "anti_triggers": [
+        "Use when this skill should NOT be used."
+      ],
+      "dependencies": [
+        "n8n",
+        "atom8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "explain-like-socrates",
+      "description": "Explains concepts using Socratic-style dialogue, guiding users toward understanding through reflective reasoning and analogies.",
+      "path": "explain-like-socrates/SKILL.md",
+      "tags": [
+        "explain",
+        "socratic",
+        "dialogue",
+        "reasoning",
+        "analogies",
+        "conversational"
+      ],
+      "trigger_conditions": [
+        "user asks to explain a concept",
+        "user asks to teach how something works",
+        "user asks for help understanding a technical idea"
+      ],
+      "anti_triggers": [
+        "user asks for quick definitions and troubleshooting",
+        "user asks for installation instructions",
+        "user asks for configuration commands"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "llm-application-dev-prompt-optimize",
+      "description": "Expert guidance in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimization.",
+      "path": "llm-application-dev-prompt-optimize/SKILL.md",
+      "tags": [
+        "prompt engineering",
+        "LLM",
+        "constitutional AI",
+        "chain-of-thought reasoning",
+        "model-specific optimization"
+      ],
+      "trigger_conditions": [
+        "Working on prompt optimization tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for prompt optimization"
+      ],
+      "anti_triggers": [
+        "Task is unrelated to prompt optimization",
+        "Need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "ARGUMENTS"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "llm-structured-output",
+      "description": "Extract typed, validated data from LLM API responses using response_format, tool_use, and schema-constrained decoding across OpenAI, Anthropic, and Google APIs.",
+      "path": "llm-structured-output/SKILL.md",
+      "tags": [
+        "llm",
+        "structured-output",
+        "json-schema",
+        "tool-use",
+        "response-format",
+        "constrained-decoding"
+      ],
+      "trigger_conditions": [
+        "The user needs to extract structured data (JSON objects",
+        "arrays",
+        "enums) from an LLM response",
+        "The user is building a pipeline where LLM output feeds directly into code (database writes",
+        "API calls",
+        "UI rendering)",
+        "The user asks about response_format",
+        "json_mode",
+        "json_object",
+        "or json_schema in OpenAI"
+      ],
+      "anti_triggers": [
+        "The user wants free-form text generation (summaries",
+        "essays",
+        "chat)"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "prompt-caching",
+      "description": "A caching specialist who has reduced LLM costs by 90% through strategic caching at multiple levels: prompt prefixes, full responses, and semantic similarity matches.",
+      "path": "prompt-caching/SKILL.md",
+      "tags": [
+        "caching",
+        "LLM",
+        "prompt-prefixes",
+        "response-caching",
+        "semantic-similarity",
+        "cache-invalidation"
+      ],
+      "trigger_conditions": [
+        "Reducing LLM costs by 90%",
+        "Implementing systems for caching at multiple levels"
+      ],
+      "anti_triggers": [
+        "Caching with high temperature",
+        "No cache invalidation",
+        "Caching everything"
+      ],
+      "dependencies": [
+        "LLM",
+        "caching system"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "prompt-engineer",
+      "description": "Transforms raw user prompts into optimized prompts using established prompting frameworks.",
+      "path": "prompt-engineer/SKILL.md",
+      "tags": [
+        "prompt-engineering",
+        "optimization",
+        "frameworks",
+        "ai-enhancement"
+      ],
+      "trigger_conditions": [
+        "User provides a vague or generic prompt",
+        "User struggles to articulate a complex idea clearly",
+        "Prompt lacks structure",
+        "context",
+        "or specific requirements",
+        "Task requires step-by-step reasoning"
+      ],
+      "anti_triggers": [
+        "Assume information not provided",
+        "Explain framework selection"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

@@ -6,12 +6,14 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 import tags_generator
+import llm_utils
+import utils
 
 # Configuration
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 WORKFLOWS_DIR = ROOT_DIR / ".archived" / "workflows"
 STAGING_DIR = ROOT_DIR / ".archived" / "workflows_reorganized"
-WORKFLOWS_MD = ROOT_DIR / "WORKFLOWS.md"
+WORKFLOWS_MD = ROOT_DIR / "docs" / "WORKFLOWS.md"
 ROOT_REGISTRY_JSON = WORKFLOWS_DIR / "registry.json"
 
 def slugify(text):
@@ -28,7 +30,7 @@ def get_desc(file_path):
                 return desc_match.group(1).strip().strip("'\"")
         except:
             pass
-    return Path(file_path).stem.replace("-", " ").title()
+    return utils.format_label(Path(file_path).stem)
 
 def score_workflow(workflow_name, desc, category):
     text = f"{workflow_name.lower().replace('-', ' ')} {desc.lower()}"
@@ -74,7 +76,7 @@ def get_workflows_mapping():
             mapping[cat_name] = ids
     return mapping
 
-def generate_category_registry(cat_slug, cat_name, file_list, staging_path, original_content):
+def generate_category_registry(cat_slug, cat_name, file_list, staging_path, original_content, force_llm=False):
     registry = {
         "category_id": cat_slug,
         "category_name": cat_name,
@@ -93,11 +95,28 @@ def generate_category_registry(cat_slug, cat_name, file_list, staging_path, orig
             triggers = [slash.replace("/", "").replace("`", "")]
             description = desc
         
-        # Read the file for required skills matching
+        # Read the file for required skills matching and LLM expansion
         wf_path = Path(staging_path) / filename
         req_skills = []
+        tags = []
+        entry_point = None
         if wf_path.exists() and wf_path.is_file():
-            content = wf_path.read_text(encoding="utf-8")
+            content = wf_path.read_text(encoding="utf-8", errors="replace")
+            
+            if force_llm or not description:
+                print(f"    [LLM] Extracting triggers and metadata for {workflow_id}...")
+                try:
+                    llm_meta = llm_utils.generate_workflow_metadata(content)
+                    if llm_meta:
+                        print(f"    [LLM] Extracted metadata successfully.")
+                        description = llm_meta.get("description", description)
+                        if llm_meta.get("triggers"):
+                            triggers = llm_meta.get("triggers")
+                        tags = llm_meta.get("tags", [])
+                        entry_point = llm_meta.get("entry_point", entry_point)
+                except Exception as e:
+                    print(f"Failed LLM gen for {workflow_id}: {e}")
+
             # We assume root skills registry exists
             skills_dir = ROOT_DIR / ".archived" / "skills"
             if (skills_dir / "registry.json").exists():
@@ -123,8 +142,8 @@ def generate_category_registry(cat_slug, cat_name, file_list, staging_path, orig
             "path": filename,
             "triggers": triggers if triggers else [workflow_id],
             "required_skills": req_skills,
-            "entry_point": None,
-            "tags": []
+            "entry_point": entry_point,
+            "tags": tags
         })
     registry_file = Path(staging_path) / "registry.json"
     registry_file.write_text(json.dumps(registry, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -197,7 +216,7 @@ To add a new workflow:
     else:
         print("Error: Could not find ## 📂 Available Workflows marker in WORKFLOWS.md")
 
-def process_target(target_path):
+def process_target(target_path, force_llm=False):
     target = Path(target_path)
     if not target.exists() or not target.is_file() or target.suffix != ".md":
         print(f"Error: Target {target_path} is not a valid workflow file (must end in .md).")
@@ -205,6 +224,27 @@ def process_target(target_path):
 
     name = target.stem
     desc = get_desc(target)
+    
+    triggers = [name]
+    req_skills = []
+    tags = []
+    entry = None
+
+    if target.exists() and target.is_file():
+        content = target.read_text(encoding="utf-8", errors="replace")
+        if force_llm or not desc or desc == name.replace("-", " ").title():
+            print(f"  [LLM] Extracting triggers and metadata for {name}...")
+            try:
+                llm_meta = llm_utils.generate_workflow_metadata(content)
+                if llm_meta:
+                    print(f"  [LLM] Extracted metadata successfully.")
+                    desc = llm_meta.get("description", desc)
+                    if llm_meta.get("triggers"):
+                        triggers = llm_meta.get("triggers")
+                    tags = llm_meta.get("tags", [])
+                    entry = llm_meta.get("entry_point", None)
+            except Exception as e:
+                print(f"Failed LLM gen for {name}: {e}")
 
     # Need root registry for NLP scoring
     if not ROOT_REGISTRY_JSON.exists():
@@ -265,10 +305,10 @@ def process_target(target_path):
             "id": name,
             "description": desc,
             "path": f"{name}.md",
-            "triggers": [name],
+            "triggers": triggers,
             "required_skills": req_skills,
-            "entry_point": None,
-            "tags": []
+            "entry_point": entry,
+            "tags": tags
         })
         cat_reg["workflows"] = sorted(cat_reg["workflows"], key=lambda x: x.get("id", ""))
         cat_registry_path.write_text(json.dumps(cat_reg, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -276,7 +316,7 @@ def process_target(target_path):
     rebuild_workflows_md()
     print("Targeted ingestion complete.")
 
-def reorganize_full():
+def reorganize_full(force_llm=False):
     mapping = get_workflows_mapping()
     
     explicit_map = {
@@ -319,7 +359,7 @@ def reorganize_full():
         # However, for simplicity and since we slugify cat names, we'll just add it to a new section entry
         # But wait, the script expects cat_name, not cat_id as keys in mapping.
         # Let's find the cat_name for this cat_id from the root registry.
-        target_cat_name = "Custom Workflows" # Default fallback
+        target_cat_name = utils.format_label(target_cat_id)
         if ROOT_REGISTRY_JSON.exists():
             root_reg = json.loads(ROOT_REGISTRY_JSON.read_text(encoding="utf-8"))
             for cat in root_reg.get("categories", []):
@@ -355,7 +395,7 @@ def reorganize_full():
                 valid_files_in_cat.append(filename)
         
         if valid_files_in_cat:
-            generate_category_registry(cat_slug, cat_name, valid_files_in_cat, cat_staging_path, original_content)
+            generate_category_registry(cat_slug, cat_name, valid_files_in_cat, cat_staging_path, original_content, force_llm)
                 
     misc_path = STAGING_DIR / "miscellaneous"
     misc_files = []
@@ -367,7 +407,7 @@ def reorganize_full():
             misc_files.append(filename)
     
     if misc_files:
-        generate_category_registry("miscellaneous", "📦 Miscellaneous", misc_files, misc_path, original_content)
+        generate_category_registry("miscellaneous", "📦 Miscellaneous", misc_files, misc_path, original_content, force_llm)
 
     total_wf_files = sum(1 for _, _, files in os.walk(STAGING_DIR) for f in files if f.endswith(".md"))
 
@@ -388,6 +428,9 @@ def reorganize_full():
         shutil.copy2(WORKFLOWS_DIR / "registry.json", STAGING_DIR / "registry.json")
 
     final_backup = ROOT_DIR / "tmp" / "workflows_backup"
+    if not (ROOT_DIR / "tmp").exists():
+        (ROOT_DIR / "tmp").mkdir(parents=True, exist_ok=True)
+        
     if final_backup.exists(): shutil.rmtree(final_backup)
     
     os.rename(WORKFLOWS_DIR, final_backup)
@@ -398,17 +441,19 @@ def reorganize_full():
     
     # Automatically restore tags
     print("\nRunning Deep Tag Extraction...")
-    tags_generator.run_tag_extraction("workflows", argparse.Namespace(dry_run=False, category=None, type="workflows"))
+    tags_args = argparse.Namespace(dry_run=False, category=None, type="workflows", force_llm=force_llm)
+    tags_generator.run_tag_extraction("workflows", tags_args)
 
 def main():
-    parser = argparse.ArgumentParser(description="Reorganize workflows safely.")
-    parser.add_argument("--target", type=str, help="Path to a single workflow folder inside /tmp/ to ingest without sweeping.")
+    parser = argparse.ArgumentParser(description="Clean up and sync the workflows registry with the file system. Now supports AI-driven metadata generation via LM Studio/Ollama.")
+    parser.add_argument("--target", type=str, help="Path to a single workflow file inside /tmp/ to ingest and insert without reorganizing the whole ecosystem.")
+    parser.add_argument("--force-llm", action="store_true", help="Connect to LM Studio/Ollama to force-regenerate metadata (description, tags, triggers) for all processed workflows.")
     args = parser.parse_args()
     
     if args.target:
-        process_target(args.target)
+        process_target(args.target, args.force_llm)
     else:
-        reorganize_full()
+        reorganize_full(args.force_llm)
 
 if __name__ == "__main__":
     main()

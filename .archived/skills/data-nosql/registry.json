@@ -1,0 +1,31 @@
+{
+  "category_id": "data-nosql",
+  "category_name": "Data NoSQL",
+  "skills": [
+    {
+      "id": "nosql-expert",
+      "description": "Expert guidance for designing distributed NoSQL databases like Cassandra and DynamoDB, focusing on query-first modeling, single-table design, and avoiding hot partitions.",
+      "path": "nosql-expert/SKILL.md",
+      "tags": [
+        "NoSQL",
+        "Cassandra",
+        "DynamoDB",
+        "query-first",
+        "single-table"
+      ],
+      "trigger_conditions": [
+        "Designing for scale with distributed databases",
+        "Evaluating or using Cassandra",
+        "ScyllaDB",
+        "or DynamoDB",
+        "Troubleshooting performance issues in NoSQL systems"
+      ],
+      "anti_triggers": [
+        "Scatter-gather queries across partitions",
+        "Using low-cardinality partition keys that create hot partitions"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

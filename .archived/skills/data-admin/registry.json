@@ -1,0 +1,62 @@
+{
+  "category_id": "data-admin",
+  "category_name": "Data Admin",
+  "skills": [
+    {
+      "id": "local-db-migration",
+      "description": "Manages schema migrations and vector initialization for the based-workspace-postgres container.",
+      "path": "local-db-migration/SKILL.md",
+      "tags": [
+        "postgres",
+        "vector",
+        "migration",
+        "schema",
+        "connection"
+      ],
+      "trigger_conditions": [
+        "Initializing vector store",
+        "Managing database schema",
+        "Interacting with ai_memory database"
+      ],
+      "anti_triggers": [
+        "Modifying databases other than ai_memory",
+        "Targeting non-based-workspace-postgres container"
+      ],
+      "dependencies": [
+        "based-workspace-postgres"
+      ],
+      "mcp_tools": [
+        "postgres-memory"
+      ]
+    },
+    {
+      "id": "vector-database-engineer",
+      "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similarity search.",
+      "path": "vector-database-engineer/SKILL.md",
+      "tags": [
+        "vector-databases",
+        "embedding-strategies",
+        "semantic-search",
+        "rag-applications",
+        "recommendation-systems"
+      ],
+      "trigger_conditions": [
+        "Building RAG (Retrieval Augmented Generation) systems",
+        "Implementing semantic search over documents",
+        "Creating recommendation engines",
+        "Building image/audio similarity search",
+        "Optimizing vector search latency and recall",
+        "Scaling vector operations to millions of vectors"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to vector database engineer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "vector-databases",
+        "embedding-models"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "category_id": "automation-n8n",
+  "category_name": "Automation n8n",
+  "skills": [
+    {
+      "id": "n8n-atom-executor",
+      "description": "Executes n8n-atom automated workflows and integrates with the MCP inspector bridge.",
+      "path": "n8n-atom-executor/SKILL.md",
+      "tags": [
+        "n8n",
+        "atom",
+        "webhooks",
+        "mcp-inspector-atom8n",
+        "automation",
+        "orchestration"
+      ],
+      "trigger_conditions": [
+        "Triggering configured N8N webhooks.",
+        "Inspecting workflow executions via mcp-inspector-atom8n.",
+        "Deploying and orchestrating automation logic within the local stack."
+      ],
+      "anti_triggers": [
+        "Not applicable for standalone use cases outside n8n-atom ecosystem."
+      ],
+      "dependencies": [
+        "n8n",
+        "mcp-inspector-atom8n"
+      ],
+      "mcp_tools": [
+        "mcp-inspector-atom8n"
+      ]
+    },
+    {
+      "id": "n8n-code-javascript",
+      "description": "Expert guidance for writing JavaScript code in n8n Code nodes, covering best practices, essential rules, and common patterns.",
+      "path": "n8n-code-javascript/SKILL.md",
+      "tags": [
+        "JavaScript",
+        "n8n",
+        "Code Node",
+        "Data Processing",
+        "Webhook Handling"
+      ],
+      "trigger_conditions": [
+        "Need to write JavaScript in n8n using $input/$json/$node syntax",
+        "Making HTTP requests with $helpers",
+        "Working with dates using DateTime",
+        "Troubleshooting Code node errors",
+        "Choosing between Code node modes"
+      ],
+      "anti_triggers": [
+        "Simple field mapping or basic filtering",
+        "HTTP requests only",
+        "Basic conditionals"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "n8n-code-python",
+      "description": "Expert guidance for writing Python code in n8n Code nodes, including best practices, data access patterns, and return format requirements.",
+      "path": "n8n-code-python/SKILL.md",
+      "tags": [
+        "n8n",
+        "Python",
+        "Code Nodes",
+        "JavaScript",
+        "Data Transformation",
+        "Webhook Data"
+      ],
+      "trigger_conditions": [
+        "When working with Python in n8n Code nodes",
+        "For data transformations better suited to Python",
+        "When specific Python standard library functions are needed"
+      ],
+      "anti_triggers": [
+        "For 95% of use cases",
+        "prefer JavaScript over Python",
+        "When external libraries like requests",
+        "pandas",
+        "or numpy are required"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "n8n-expression-syntax",
+      "description": "A guide for writing correct n8n expressions in workflows, covering syntax, variables, and common pitfalls.",
+      "path": "n8n-expression-syntax/SKILL.md",
+      "tags": [
+        "n8n",
+        "expressions",
+        "workflows",
+        "webhooks"
+      ],
+      "trigger_conditions": [
+        "writing n8n expressions",
+        "accessing $json/$node variables",
+        "troubleshooting expression errors"
+      ],
+      "anti_triggers": [
+        "using Code nodes for JavaScript access",
+        "referencing webhook data incorrectly",
+        "using expressions in webhook paths or credentials"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "n8n-global-deploy",
+      "description": "Validates JSON output and pushes it as a workflow to an n8n instance.",
+      "path": "n8n-global-deploy/SKILL.md",
+      "tags": [
+        "n8n",
+        "workflow",
+        "deployment"
+      ],
+      "trigger_conditions": [
+        "When JSON output needs to be validated and deployed to n8n"
+      ],
+      "anti_triggers": [
+        "When deploying workflows without validating the JSON output"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "n8n-mcp-tools-expert",
+      "description": "Expert guide for using n8n-mcp MCP tools effectively, covering node discovery, configuration validation, and workflow management with detailed workflows, common patterns, and best practices.",
+      "path": "n8n-mcp-tools-expert/SKILL.md",
+      "tags": [
+        "n8n",
+        "mcp",
+        "node_discovery",
+        "configuration_validation",
+        "workflow_management"
+      ],
+      "trigger_conditions": [
+        "Searching for specific nodes by keyword",
+        "Validating configurations before deployment",
+        "Managing existing workflows iteratively"
+      ],
+      "anti_triggers": [
+        "Purely theoretical discussions without practical implementation details"
+      ],
+      "dependencies": [
+        "n8n",
+        "N8N_API_URL",
+        "N8N_API_KEY"
+      ],
+      "mcp_tools": [
+        "search_nodes",
+        "get_node",
+        "validate_node",
+        "validate_workflow",
+        "n8n_create_workflow",
+        "n8n_update_partial_workflow",
+        "n8n_deploy_template",
+        "tools_documentation",
+        "ai_agents_guide"
+      ]
+    },
+    {
+      "id": "n8n-node-configuration",
+      "description": "This skill provides expert guidance for operation-aware node configuration in n8n, focusing on property dependencies and progressive disclosure. It covers common configuration patterns by node type and offers a step-by-step workflow to configure nodes effectively.",
+      "path": "n8n-node-configuration/SKILL.md",
+      "tags": [
+        "n8n",
+        "node-configuration",
+        "property-dependencies",
+        "progressive-disclosure",
+        "validation"
+      ],
+      "trigger_conditions": [
+        "Starting new node configuration",
+        "Need to understand property dependencies",
+        "Looking for specific field in node configuration"
+      ],
+      "anti_triggers": [
+        "Purely theoretical and lacks practical implementation details"
+      ],
+      "dependencies": [
+        "n8n",
+        "get_node"
+      ],
+      "mcp_tools": [
+        "get_node"
+      ]
+    },
+    {
+      "id": "n8n-validation-expert",
+      "description": "Expert guide for interpreting and fixing n8n validation errors, emphasizing iterative validation, error severity levels, common error types, and best practices.",
+      "path": "n8n-validation-expert/SKILL.md",
+      "tags": [
+        "validation",
+        "n8n",
+        "errors",
+        "warnings",
+        "iterative",
+        "profiles"
+      ],
+      "trigger_conditions": [
+        "Workflow configuration needs to be validated",
+        "Pre-deployment validation required",
+        "AI-generated configurations need validation"
+      ],
+      "anti_triggers": [
+        "Skip validation before activation"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "n8n-workflow-patterns",
+      "description": "Proven architectural patterns for building n8n workflows, covering common use cases such as webhook processing, HTTP API integration, database operations, AI agent workflows, and scheduled tasks.",
+      "path": "n8n-workflow-patterns/SKILL.md",
+      "tags": [
+        "n8n",
+        "workflow",
+        "patterns",
+        "webhook",
+        "HTTP API",
+        "database",
+        "AI agent",
+        "scheduled"
+      ],
+      "trigger_conditions": [
+        "Receiving data from external systems",
+        "Building integrations with Slack commands",
+        "form submissions",
+        "GitHub webhooks",
+        "Need instant response to events"
+      ],
+      "anti_triggers": [
+        "Complex workflows when simple patterns suffice"
+      ],
+      "dependencies": [
+        "n8n",
+        "Postgres",
+        "MySQL",
+        "OpenAI",
+        "Slack"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

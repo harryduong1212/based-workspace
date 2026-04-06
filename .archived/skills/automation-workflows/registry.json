@@ -1,0 +1,105 @@
+{
+  "category_id": "automation-workflows",
+  "category_name": "Automation Workflows",
+  "skills": [
+    {
+      "id": "billing-automation",
+      "description": "Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation.",
+      "path": "billing-automation/SKILL.md",
+      "tags": [
+        "billing",
+        "recurring",
+        "invoice",
+        "dunning",
+        "proration",
+        "tax"
+      ],
+      "trigger_conditions": [
+        "Implementing SaaS subscription billing",
+        "Automating invoice generation and delivery",
+        "Managing failed payment recovery (dunning)",
+        "Calculating prorated charges for plan changes",
+        "Handling sales tax",
+        "VAT",
+        "and GST",
+        "Processing usage-based billing",
+        "Managing billing cycles and renewals"
+      ],
+      "anti_triggers": [
+        "You only need a one-off invoice or manual billing",
+        "The task is unrelated to billing or subscriptions"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "ml-pipeline-workflow",
+      "description": "Comprehensive end-to-end MLOps pipeline orchestration from data preparation through model deployment.",
+      "path": "ml-pipeline-workflow/SKILL.md",
+      "tags": [
+        "ml",
+        "pipeline",
+        "orchestration",
+        "data-preparation",
+        "model-training",
+        "model-validation",
+        "model-deployment"
+      ],
+      "trigger_conditions": [
+        "Building new ML pipelines from scratch",
+        "Designing workflow orchestration for ML systems",
+        "Implementing data → model → deployment automation",
+        "Setting up reproducible training workflows",
+        "Creating DAG-based ML orchestration",
+        "Integrating ML components into production systems"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to ml pipeline workflow",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Apache Airflow",
+        "Dagster",
+        "Kubeflow Pipelines",
+        "Prefect"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "workflow-automation",
+      "description": "You are a workflow automation architect who has seen both the promise and the pain of these platforms. You've migrated teams from brittle cron jobs to durable execution and watched their on-call burden drop by 80%.",
+      "path": "workflow-automation/SKILL.md",
+      "tags": [
+        "workflow-automation",
+        "workflow-orchestration",
+        "durable-execution",
+        "event-driven-workflows",
+        "step-functions",
+        "job-queues",
+        "background-jobs",
+        "scheduled-tasks"
+      ],
+      "trigger_conditions": [
+        "Different platforms make different tradeoffs.",
+        "n8n is accessible but sacrifices performance.",
+        "Temporal is correct but complex.",
+        "Inngest balances developer experience with reliability."
+      ],
+      "anti_triggers": [
+        "No Durable Execution for Payments",
+        "Monolithic Workflows",
+        "No Observability"
+      ],
+      "dependencies": [
+        "n8n",
+        "Temporal",
+        "Inngest",
+        "PostgreSQL"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

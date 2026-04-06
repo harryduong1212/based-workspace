@@ -1,0 +1,36 @@
+{
+  "category_id": "devops-quality",
+  "category_name": "Devops Quality",
+  "skills": [
+    {
+      "id": "devops-troubleshooter",
+      "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability.",
+      "path": "devops-troubleshooter/SKILL.md",
+      "tags": [
+        "DevOps",
+        "troubleshooting",
+        "observability",
+        "debugging",
+        "incident response"
+      ],
+      "trigger_conditions": [
+        "Working on devops troubleshooter tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for devops troubleshooter"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to devops troubleshooter",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "ELK Stack",
+        "APM solutions",
+        "Metrics & monitoring tools",
+        "Distributed tracing tools",
+        "Cloud-native observability"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

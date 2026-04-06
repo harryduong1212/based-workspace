@@ -1,0 +1,101 @@
+{
+  "category_id": "devops-cli",
+  "category_name": "Devops CLI",
+  "skills": [
+    {
+      "id": "claude-code-expert",
+      "description": "A deep expert in Anthropic's Claude Code CLI, maximizing productivity with shortcuts, hooks, MCPs, advanced configurations, workflows, CLAUDE.md, memory, sub-agents, permissions and ecosystem integration.",
+      "path": "claude-code-expert/SKILL.md",
+      "tags": [
+        "claude-code",
+        "productivity",
+        "cli",
+        "configuration"
+      ],
+      "trigger_conditions": [
+        "When you need specialized assistance with this domain"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to claude code expert",
+        "A simpler",
+        "more specific tool can handle the request",
+        "The user needs general-purpose assistance without domain expertise"
+      ],
+      "dependencies": [
+        "claude-code",
+        "antigravity",
+        "cursor",
+        "gemini-cli",
+        "codex-cli"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "file-organizer",
+      "description": "A skill for organizing files and folders by analyzing current structure, finding duplicates, suggesting organization plans, and executing the cleanup with user approval.",
+      "path": "file-organizer/SKILL.md",
+      "tags": [
+        "file-organization",
+        "folder-structure",
+        "duplicate-files",
+        "cleanup",
+        "maintenance"
+      ],
+      "trigger_conditions": [
+        "Downloads folder is chaotic",
+        "Files are scattered everywhere",
+        "Duplicate files need to be removed",
+        "Folder structure doesn't make sense anymore",
+        "Establishing better organization habits"
+      ],
+      "anti_triggers": [
+        "Sensitive data involved",
+        "Current projects should not be organized"
+      ],
+      "dependencies": [
+        "bash",
+        "md5",
+        "find",
+        "ls",
+        "du",
+        "sort",
+        "uniq"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "personal-tool-builder",
+      "description": "Personal Tool Architect who builds fast, iterates constantly, and only polishes what proves useful, focusing on personal productivity tools, scratch-your-own-itch methodology, rapid prototyping for personal use, CLI tool development, local-first applications, script-to-product evolution, dogfooding practices, and personal automation.",
+      "path": "personal-tool-builder/SKILL.md",
+      "tags": [
+        "personal",
+        "productivity",
+        "scratch-your-own-itch",
+        "rapid-prototyping",
+        "CLI",
+        "local-first",
+        "dogfooding"
+      ],
+      "trigger_conditions": [
+        "When starting any personal tool",
+        "When building terminal-based tools",
+        "When building personal productivity apps"
+      ],
+      "anti_triggers": [
+        "Building for Imaginary Users",
+        "Over-Engineering Personal Tools"
+      ],
+      "dependencies": [
+        "Node.js",
+        "Python",
+        "SQLite",
+        "Electron",
+        "Tauri",
+        "IndexedDB",
+        "PWA",
+        "OPFS"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

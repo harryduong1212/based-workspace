@@ -1,0 +1,70 @@
+{
+  "category_id": "automation-scraping",
+  "category_name": "Automation Scraping",
+  "skills": [
+    {
+      "id": "daily-news-report",
+      "description": "Scrapes content based on a preset URL list, filters high-quality technical information, and generates daily Markdown reports.",
+      "path": "daily-news-report/SKILL.md",
+      "tags": [
+        "web-scraping",
+        "news-aggregation",
+        "technical-report",
+        "markdown-generation"
+      ],
+      "trigger_conditions": [
+        "Daily generation of technical news reports",
+        "Need for up-to-date technical content aggregation"
+      ],
+      "anti_triggers": [
+        "General science content required",
+        "Marketing and promotional material needed"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "x-twitter-scraper",
+      "description": "The X (Twitter) Scraper skill provides access to Twitter data through the Xquik platform, allowing users to search for tweets, look up user profiles, extract engagement metrics, and perform bulk extractions using REST API or MCP server.",
+      "path": "x-twitter-scraper/SKILL.md",
+      "tags": [
+        "twitter",
+        "x-api",
+        "scraping",
+        "mcp",
+        "social-media",
+        "data-extraction",
+        "giveaway",
+        "monitoring",
+        "webhooks"
+      ],
+      "trigger_conditions": [
+        "User needs to search X/Twitter for tweets by keyword",
+        "hashtag",
+        "or user",
+        "User wants to look up a user profile (bio",
+        "follower counts",
+        "etc.)",
+        "User needs engagement metrics for a specific tweet (likes",
+        "retweets",
+        "views)",
+        "User wants to check if one account follows another"
+      ],
+      "anti_triggers": [
+        "User is looking for Facebook data"
+      ],
+      "dependencies": [
+        "npx",
+        "git",
+        "XQUIK_API_KEY"
+      ],
+      "mcp_tools": [
+        "xquik.com/mcp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "category_id": "data-pipelines",
+  "category_name": "Data Pipelines",
+  "skills": [
+    {
+      "id": "data-engineer",
+      "description": "A comprehensive skill for building scalable data pipelines, modern data warehouses, and real-time streaming architectures using tools like Apache Spark, dbt, Airflow, and cloud-native platforms.",
+      "path": "data-engineer/SKILL.md",
+      "tags": [
+        "data engineering",
+        "Apache Spark",
+        "dbt",
+        "Airflow",
+        "cloud-native"
+      ],
+      "trigger_conditions": [
+        "Designing batch or streaming data pipelines",
+        "Building data warehouses or lakehouse architectures",
+        "Implementing data quality",
+        "lineage",
+        "or governance"
+      ],
+      "anti_triggers": [
+        "You only need exploratory data analysis",
+        "You are doing ML model development without pipelines",
+        "You cannot access data sources or storage systems"
+      ],
+      "dependencies": [
+        "Apache Spark",
+        "dbt",
+        "Airflow"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "data-engineering-data-pipeline",
+      "description": "A comprehensive guide for designing, implementing, and optimizing scalable data pipelines using various tools and technologies.",
+      "path": "data-engineering-data-pipeline/SKILL.md",
+      "tags": [
+        "data pipeline",
+        "ETL",
+        "ELT",
+        "Lambda",
+        "Kappa",
+        "Lakehouse",
+        "batch processing",
+        "streaming data"
+      ],
+      "trigger_conditions": [
+        "Working on data pipeline architecture tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for data pipeline architecture"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to data pipeline architecture",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Airflow",
+        "Prefect",
+        "dbt",
+        "Delta Lake",
+        "Apache Iceberg"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "database",
+      "description": "A comprehensive database workflow bundle covering SQL, NoSQL, database design, migrations, optimization, and data engineering.",
+      "path": "database/SKILL.md",
+      "tags": [
+        "database",
+        "workflow",
+        "sql",
+        "nosql",
+        "data engineering"
+      ],
+      "trigger_conditions": [
+        "Designing database schemas",
+        "Implementing database migrations",
+        "Optimizing query performance",
+        "Setting up data pipelines",
+        "Managing database operations",
+        "Implementing data quality"
+      ],
+      "anti_triggers": [],
+      "dependencies": [
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

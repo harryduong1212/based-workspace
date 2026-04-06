@@ -1,0 +1,33 @@
+{
+  "category_id": "frontend-security",
+  "category_name": "Frontend Security",
+  "skills": [
+    {
+      "id": "frontend-security-coder",
+      "description": "Expert in secure frontend coding practices specializing in XSS prevention, output sanitization, and client-side security patterns.",
+      "path": "frontend-security-coder/SKILL.md",
+      "tags": [
+        "frontend",
+        "security",
+        "XSS",
+        "DOMPurify",
+        "CSP"
+      ],
+      "trigger_conditions": [
+        "Working on frontend security coder tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for frontend security coder"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to frontend security coder",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

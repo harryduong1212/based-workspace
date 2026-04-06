@@ -1,0 +1,147 @@
+{
+  "category_id": "productivity-office",
+  "category_name": "Productivity Office",
+  "skills": [
+    {
+      "id": "docx-official",
+      "description": "A comprehensive guide on creating, editing, and analyzing .docx files using various tools and workflows.",
+      "path": "docx-official/SKILL.md",
+      "tags": [
+        "docx",
+        "word",
+        "xml",
+        "pandoc",
+        "python",
+        "ooxml",
+        "redlining"
+      ],
+      "trigger_conditions": [
+        "User requests creation",
+        "editing",
+        "or analysis of .docx file contents",
+        "Need to read or edit text in a .docx file",
+        "Required to create a new Word document from scratch"
+      ],
+      "anti_triggers": [
+        "Simple text replacement without tracked changes"
+      ],
+      "dependencies": [
+        "pandoc",
+        "docx",
+        "LibreOffice",
+        "poppler-utils",
+        "defusedxml"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "latex-paper-conversion",
+      "description": "This skill automates the process of converting an academic paper written in LaTeX from one publisher's format to another by executing a structured multi-stage workflow, extracting content, mapping it to a new template, and resolving common compilation errors.",
+      "path": "latex-paper-conversion/SKILL.md",
+      "tags": [
+        "latex",
+        "conversion",
+        "academic-paper",
+        "template-mapping",
+        "pdflatex"
+      ],
+      "trigger_conditions": [
+        "User requests to convert an existing LaTeX paper to a new journal's format.",
+        "User provides an existing .tex file and a new template directory.",
+        "User mentions converting from format A to format B."
+      ],
+      "anti_triggers": [
+        "User does not provide the source LaTeX file or target template directory."
+      ],
+      "dependencies": [
+        "pdflatex",
+        "bibtex"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "obsidian-cli",
+      "description": "Use the Obsidian CLI to read, create, search, and manage vault content, or to develop and debug Obsidian plugins and themes from the command line.",
+      "path": "obsidian-cli/SKILL.md",
+      "tags": [
+        "obsidian",
+        "cli",
+        "command-line",
+        "vault",
+        "plugin",
+        "theme",
+        "development"
+      ],
+      "trigger_conditions": [
+        "Managing vault content through the Obsidian CLI",
+        "Developing or debugging Obsidian plugins and themes from the command line",
+        "Desiring shell-driven interaction with a running Obsidian app"
+      ],
+      "anti_triggers": [
+        "Lacking a running Obsidian instance"
+      ],
+      "dependencies": [
+        "Obsidian"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "pptx-official",
+      "description": "A user may ask you to create, edit, or analyze the contents of a .pptx file. A .pptx file is essentially a ZIP archive containing XML files and other resources that you can read or edit.",
+      "path": "pptx-official/SKILL.md",
+      "tags": [
+        "powerpoint",
+        "xml",
+        "ooxml",
+        "html2pptx",
+        "python"
+      ],
+      "trigger_conditions": [
+        "User requests creation",
+        "editing",
+        "or analysis of a PowerPoint presentation",
+        "Need to convert HTML slides to PowerPoint format",
+        "Working with raw XML files for complex formatting"
+      ],
+      "anti_triggers": [
+        "Using PowerPoint GUI for simple text edits"
+      ],
+      "dependencies": [
+        "python",
+        "ooxml/scripts/unpack.py",
+        "python -m markitdown",
+        "html2pptx.js",
+        "PptxGenJS"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "xlsx-official",
+      "description": "A comprehensive guide on creating, editing, and analyzing Excel files using Python libraries pandas and openpyxl, with emphasis on preserving formulas and ensuring dynamic updates.",
+      "path": "xlsx-official/SKILL.md",
+      "tags": [
+        "excel",
+        "pandas",
+        "openpyxl",
+        "python",
+        "data-analysis",
+        "formula-preservation",
+        "dynamic-updates"
+      ],
+      "trigger_conditions": [
+        "User requests creation or modification of Excel files",
+        "Data analysis is required for existing Excel files",
+        "Recalculating formulas in Excel files"
+      ],
+      "anti_triggers": [
+        "Hardcoding calculated values instead of using Excel formulas"
+      ],
+      "dependencies": [
+        "LibreOffice",
+        "pandas",
+        "openpyxl"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

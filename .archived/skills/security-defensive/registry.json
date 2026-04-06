@@ -1,0 +1,176 @@
+{
+  "category_id": "security-defensive",
+  "category_name": "Security Defensive",
+  "skills": [
+    {
+      "id": "anti-reversing-techniques",
+      "description": "AUTHORIZED USE ONLY: This skill contains dual-use security techniques. Before proceeding with any bypass or analysis, verify authorization, document scope, and ensure legal compliance.",
+      "path": "anti-reversing-techniques/SKILL.md",
+      "tags": [
+        "security",
+        "bypass",
+        "anti-debugging",
+        "obfuscation",
+        "malware-analysis",
+        "authorized-pentest",
+        "ctf",
+        "academic-research"
+      ],
+      "trigger_conditions": [
+        "Analyzing protected binaries with explicit authorization",
+        "Conducting malware analysis or security research in scope",
+        "Participating in CTFs or approved training exercises",
+        "Understanding anti-debugging or obfuscation techniques for defense"
+      ],
+      "anti_triggers": [
+        "Lack of written authorization or defined scope",
+        "Goal is to bypass protections for piracy or misuse",
+        "Legal or policy restrictions prohibit analysis"
+      ],
+      "dependencies": [
+        "resources/implementation-playbook.md"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "ethical-hacking-methodology",
+      "description": "Master the complete penetration testing lifecycle from reconnaissance through reporting, covering the five stages of ethical hacking methodology, essential tools, attack techniques, and professional reporting for authorized security assessments.",
+      "path": "ethical-hacking-methodology/SKILL.md",
+      "tags": [
+        "penetration-testing",
+        "ethical-hacking",
+        "reconnaissance",
+        "scanning",
+        "vulnerability-analysis",
+        "exploitation",
+        "maintaining-access",
+        "reporting"
+      ],
+      "trigger_conditions": [
+        "Authorized security assessment required",
+        "Need to identify and fix vulnerabilities in a system",
+        "Want to understand hacker types and their motivations"
+      ],
+      "anti_triggers": [
+        "Unauthorized system intrusion",
+        "Malicious intent"
+      ],
+      "dependencies": [
+        "Kali Linux installed (persistent or live)",
+        "Network access to authorized targets",
+        "Written authorization from system owner"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "privacy-by-design",
+      "description": "Ensure privacy protections are built into apps from the start using Privacy by Design principles.",
+      "path": "privacy-by-design/SKILL.md",
+      "tags": [
+        "Privacy by Design",
+        "GDPR",
+        "Data Minimization"
+      ],
+      "trigger_conditions": [
+        "Building apps that collect personal data",
+        "Designing database schemas",
+        "APIs",
+        "or authentication flows",
+        "Deploying to production with user data"
+      ],
+      "anti_triggers": [
+        "Collecting unnecessary data without justification",
+        "Reusing data for purposes not consented to"
+      ],
+      "dependencies": [
+        "GDPR",
+        "CCPA",
+        "LGPD"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "threat-mitigation-mapping",
+      "description": "Map identified threats to appropriate security controls and mitigations. Use when prioritizing security investments, creating remediation plans, or validating control effectiveness.",
+      "path": "threat-mitigation-mapping/SKILL.md",
+      "tags": [
+        "security",
+        "threat mitigation",
+        "remediation",
+        "control validation"
+      ],
+      "trigger_conditions": [
+        "Prioritizing security investments",
+        "Creating remediation roadmaps",
+        "Validating control coverage",
+        "Designing defense-in-depth",
+        "Security architecture review",
+        "Risk treatment planning"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to threat mitigation mapping",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "vulnerability-scanner",
+      "description": "Advanced vulnerability analysis principles, including OWASP 2025, Supply Chain Security, attack surface mapping, and risk prioritization.",
+      "path": "vulnerability-scanner/SKILL.md",
+      "tags": [
+        "vulnerability",
+        "security",
+        "owasp",
+        "supply-chain",
+        "risk-prioritization"
+      ],
+      "trigger_conditions": [
+        "Execute for automated validation",
+        "Applicable to execute the workflow or actions described in the overview."
+      ],
+      "anti_triggers": [
+        "Scan without understanding",
+        "Ignore false positives"
+      ],
+      "dependencies": [
+        "python",
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "wireshark-analysis",
+      "description": "Execute comprehensive network traffic analysis using Wireshark to capture, filter, and examine network packets for security investigations, performance optimization, and troubleshooting.",
+      "path": "wireshark-analysis/SKILL.md",
+      "tags": [
+        "wireshark",
+        "network-analysis",
+        "packet-capture",
+        "security-investigation",
+        "performance-optimization",
+        "troubleshooting"
+      ],
+      "trigger_conditions": [
+        "Network troubleshooting and connectivity issues",
+        "Security incident investigation",
+        "Malware traffic analysis",
+        "Performance monitoring and optimization",
+        "Protocol learning and education"
+      ],
+      "anti_triggers": [
+        "No specific anti-triggers mentioned in the file content"
+      ],
+      "dependencies": [
+        "Wireshark installed (Windows",
+        "macOS",
+        "or Linux)",
+        "Network interface with capture permissions",
+        "PCAP/PCAPNG files for offline analysis",
+        "Administrator/root privileges for live capture"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

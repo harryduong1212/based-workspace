@@ -118,8 +118,8 @@ Need to extend the workspace? Use these specialized creators:
 
 | Workflow | Command | Status | Description |
 |---|---|---|---|
-| [library](.archived/workflows/miscellaneous/library.md) | /library | ✅ Ready |  |
-| [nextjs-app](.archived/workflows/miscellaneous/nextjs-app.md) | /nextjs-app | ✅ Ready |  |
+| [library](.archived/workflows/miscellaneous/library.md) | /library | ✅ Ready | ✅ Ready |
+| [nextjs-app](.archived/workflows/miscellaneous/nextjs-app.md) | /nextjs-app | ✅ Ready | ✅ Ready |
 
 </details>
 

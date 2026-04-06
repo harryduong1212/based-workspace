@@ -1,328 +1,668 @@
 {
   "version": "1.0.0",
   "type": "skill_registry",
-  "last_updated": "2026-03-29T11:41:52.510078Z",
+  "last_updated": "2026-04-06T09:29:32.560595Z",
   "categories": [
     {
-      "category_id": "ai-llm-agent-development",
-      "category_name": "🤖 AI, LLM & Agent Development",
-      "registry_path": ".archived/skills/ai-llm-agent-development/registry.json",
-      "domain_tags": [
-        "ai",
+      "category_id": "ai-ml-agents",
+      "category_name": "Ai Ml Agents",
+      "registry_path": ".archived/skills/ai-ml-agents/registry.json",
+      "category_tags": [
+        "ai-agents",
         "llm",
-        "agents",
-        "rag",
-        "prompts",
+        "orchestration",
+        "prompt-engineering",
+        "evaluation",
+        "development",
+        "documentation"
+      ]
+    },
+    {
+      "category_id": "ai-ml-evaluation",
+      "category_name": "Ai Ml Evaluation",
+      "registry_path": ".archived/skills/ai-ml-evaluation/registry.json",
+      "category_tags": [
+        "evaluation",
+        "analysis",
+        "testing",
+        "metrics",
+        "ai",
+        "compliance"
+      ]
+    },
+    {
+      "category_id": "ai-ml-mcp",
+      "category_name": "Ai Ml Mcp",
+      "registry_path": ".archived/skills/ai-ml-mcp/registry.json",
+      "category_tags": [
+        "skill_management",
+        "tool_development",
+        "error_handling",
+        "code_quality",
+        "ai_agent_skills"
+      ]
+    },
+    {
+      "category_id": "ai-ml-memory",
+      "category_name": "Ai Ml Memory",
+      "registry_path": ".archived/skills/ai-ml-memory/registry.json",
+      "category_tags": [
+        "context_engineering",
+        "knowledge_extraction",
+        "ai_interactions",
+        "data_moat",
+        "retrieval_augmented_generation"
+      ]
+    },
+    {
+      "category_id": "ai-ml-prompting",
+      "category_name": "Ai Ml Prompting",
+      "registry_path": ".archived/skills/ai-ml-prompting/registry.json",
+      "category_tags": [
+        "AI Writing",
+        "Content Optimization",
+        "Prompt Engineering",
+        "Constrained Decoding",
+        "Semantic Similarity"
+      ]
+    },
+    {
+      "category_id": "ai-ml-science",
+      "category_name": "Ai Ml Science",
+      "registry_path": ".archived/skills/ai-ml-science/registry.json",
+      "category_tags": [
+        "data_science",
+        "scientific_computing",
+        "mathematics",
+        "software_engineering",
+        "astronomy",
+        "bioinformatics"
+      ]
+    },
+    {
+      "category_id": "automation-bots",
+      "category_name": "Automation Bots",
+      "registry_path": ".archived/skills/automation-bots/registry.json",
+      "category_tags": [
+        "bot-development",
+        "command-systems",
+        "user-interaction",
+        "payment-integration"
+      ]
+    },
+    {
+      "category_id": "automation-n8n",
+      "category_name": "Automation N8N",
+      "registry_path": ".archived/skills/automation-n8n/registry.json",
+      "category_tags": [
         "automation",
-        "intelligence"
+        "workflow",
+        "data_processing",
+        "webhook_handling",
+        "configuration_management"
       ]
     },
     {
-      "category_id": "frontend-development",
-      "category_name": "🌐 Frontend Development",
-      "registry_path": ".archived/skills/frontend-development/registry.json",
-      "domain_tags": [
-        "ui",
-        "react",
-        "browser",
-        "css",
-        "client-side",
-        "web",
-        "framework"
+      "category_id": "automation-scraping",
+      "category_name": "Automation Scraping",
+      "registry_path": ".archived/skills/automation-scraping/registry.json",
+      "category_tags": [
+        "web-scraping",
+        "data-aggregation",
+        "report-generation",
+        "api-integration",
+        "social-networks",
+        "monitoring"
       ]
     },
     {
-      "category_id": "backend-development",
-      "category_name": "⚙️ Backend Development",
-      "registry_path": ".archived/skills/backend-development/registry.json",
-      "domain_tags": [
-        "api",
-        "servers",
+      "category_id": "automation-workflows",
+      "category_name": "Automation Workflows",
+      "registry_path": ".archived/skills/automation-workflows/registry.json",
+      "category_tags": [
+        "billing",
+        "recurring",
+        "finance",
+        "ml",
+        "data",
+        "workflow",
+        "orchestration",
+        "automation"
+      ]
+    },
+    {
+      "category_id": "backend-api",
+      "category_name": "Backend Api",
+      "registry_path": ".archived/skills/backend-api/registry.json",
+      "category_tags": [
+        "API Development",
+        "Web Frameworks",
+        "Database Integration",
+        "Authentication & Security",
+        "Documentation & SDK"
+      ]
+    },
+    {
+      "category_id": "backend-arch",
+      "category_name": "Backend Arch",
+      "registry_path": ".archived/skills/backend-arch/registry.json",
+      "category_tags": [
+        "software development",
+        "architecture",
+        "security",
+        "performance",
+        "web technologies"
+      ]
+    },
+    {
+      "category_id": "backend-core",
+      "category_name": "Backend Core",
+      "registry_path": ".archived/skills/backend-core/registry.json",
+      "category_tags": [
+        "software development",
+        "performance optimization",
+        "bioinformatics",
+        "database management",
+        "functional programming"
+      ]
+    },
+    {
+      "category_id": "business-content",
+      "category_name": "Business Content",
+      "registry_path": ".archived/skills/business-content/registry.json",
+      "category_tags": [
+        "marketing",
+        "copywriting",
+        "conversion",
+        "seo",
+        "branding"
+      ]
+    },
+    {
+      "category_id": "business-health",
+      "category_name": "Business Health",
+      "registry_path": ".archived/skills/business-health/registry.json",
+      "category_tags": [
+        "self-improvement",
+        "goal-setting",
+        "personal-development",
+        "data-driven",
+        "trend-analysis",
+        "progress-tracking"
+      ]
+    },
+    {
+      "category_id": "business-product",
+      "category_name": "Business Product",
+      "registry_path": ".archived/skills/business-product/registry.json",
+      "category_tags": [
+        "product_management",
+        "analytics",
+        "market_research",
+        "strategy",
+        "discovery"
+      ]
+    },
+    {
+      "category_id": "business-seo",
+      "category_name": "Business Seo",
+      "registry_path": ".archived/skills/business-seo/registry.json",
+      "category_tags": [
+        "seo",
+        "content",
+        "ai",
+        "optimization",
+        "visuals"
+      ]
+    },
+    {
+      "category_id": "data-admin",
+      "category_name": "Data Admin",
+      "registry_path": ".archived/skills/data-admin/registry.json",
+      "category_tags": [
         "database",
-        "logic",
-        "backend",
-        "performance"
+        "search",
+        "machine-learning",
+        "data-modeling",
+        "knowledge-representation"
       ]
     },
     {
-      "category_id": "database",
-      "category_name": "🗄️ Database",
-      "registry_path": ".archived/skills/database/registry.json",
-      "domain_tags": [
-        "sql",
+      "category_id": "data-nosql",
+      "category_name": "Data Nosql",
+      "registry_path": ".archived/skills/data-nosql/registry.json",
+      "category_tags": [
+        "database",
         "nosql",
-        "indexing",
-        "storage",
-        "persistence",
-        "query"
+        "distributed",
+        "key-value",
+        "query-first",
+        "single-table"
       ]
     },
     {
-      "category_id": "mobile-development",
-      "category_name": "📱 Mobile Development",
-      "registry_path": ".archived/skills/mobile-development/registry.json",
-      "domain_tags": [
-        "ios",
-        "android",
-        "mobile-apps",
-        "flutter",
-        "react-native",
-        "app-store"
+      "category_id": "data-orm",
+      "category_name": "Data Orm",
+      "registry_path": ".archived/skills/data-orm/registry.json",
+      "category_tags": [
+        "database",
+        "data_modeling",
+        "project_management",
+        "media_processing",
+        "ai_generation"
       ]
     },
     {
-      "category_id": "security-penetration-testing",
-      "category_name": "🔒 Security & Penetration Testing",
-      "registry_path": ".archived/skills/security-penetration-testing/registry.json",
-      "domain_tags": [
-        "cybersecurity",
-        "pentesting",
-        "vulnerabilities",
-        "hardening",
-        "audit",
-        "encryption"
+      "category_id": "data-pipelines",
+      "category_name": "Data Pipelines",
+      "registry_path": ".archived/skills/data-pipelines/registry.json",
+      "category_tags": [
+        "data engineering",
+        "big data",
+        "ETL/ELT",
+        "cloud computing",
+        "data warehousing",
+        "data pipelines"
       ]
     },
     {
-      "category_id": "cloud-devops-infrastructure",
-      "category_name": "☁️ Cloud, DevOps & Infrastructure",
-      "registry_path": ".archived/skills/cloud-devops-infrastructure/registry.json",
-      "domain_tags": [
-        "ci-cd",
-        "kubernetes",
-        "docker",
-        "infrastructure",
-        "deployment",
-        "sre"
+      "category_id": "data-sql",
+      "category_name": "Data Sql",
+      "registry_path": ".archived/skills/data-sql/registry.json",
+      "category_tags": [
+        "database",
+        "SQL",
+        "data_management",
+        "performance_optimization",
+        "nutrition",
+        "query_optimization"
       ]
     },
     {
-      "category_id": "testing-quality",
-      "category_name": "🧪 Testing & Quality",
-      "registry_path": ".archived/skills/testing-quality/registry.json",
-      "domain_tags": [
-        "qa",
-        "unit-testing",
-        "integration",
+      "category_id": "design-apple-hig",
+      "category_name": "Design Apple Hig",
+      "registry_path": ".archived/skills/design-apple-hig/registry.json",
+      "category_tags": [
+        "User Interface",
+        "Accessibility",
+        "Design Principles",
+        "Input Methods",
+        "Privacy"
+      ]
+    },
+    {
+      "category_id": "design-core",
+      "category_name": "Design Core",
+      "registry_path": ".archived/skills/design-core/registry.json",
+      "category_tags": [
+        "art",
+        "aesthetics",
+        "creativity",
+        "expression",
+        "craftsmanship",
+        "inspiration"
+      ]
+    },
+    {
+      "category_id": "design-ux-ui",
+      "category_name": "Design Ux Ui",
+      "registry_path": ".archived/skills/design-ux-ui/registry.json",
+      "category_tags": [
+        "design",
+        "development",
+        "documentation",
+        "ux/ui",
+        "tools",
+        "process"
+      ]
+    },
+    {
+      "category_id": "design-visuals",
+      "category_name": "Design Visuals",
+      "registry_path": ".archived/skills/design-visuals/registry.json",
+      "category_tags": [
+        "design",
+        "web-development",
+        "frontend",
+        "UI/UX",
+        "static-assets",
+        "AI-assisted"
+      ]
+    },
+    {
+      "category_id": "devops-cicd",
+      "category_name": "Devops Cicd",
+      "registry_path": ".archived/skills/devops-cicd/registry.json",
+      "category_tags": [
+        "development",
         "automation",
-        "bugs",
-        "debugging"
+        "deployment",
+        "version_control",
+        "containerization"
       ]
     },
     {
-      "category_id": "programming-languages",
-      "category_name": "🔧 Programming Languages",
-      "registry_path": ".archived/skills/programming-languages/registry.json",
-      "domain_tags": [
-        "syntax",
-        "compilers",
-        "runtimes",
-        "logic",
-        "types",
-        "scripting"
+      "category_id": "devops-cli",
+      "category_name": "Devops Cli",
+      "registry_path": ".archived/skills/devops-cli/registry.json",
+      "category_tags": [
+        "productivity",
+        "cli",
+        "configuration",
+        "file-organization",
+        "maintenance",
+        "local-first"
       ]
     },
     {
-      "category_id": "design-ui-ux-creative",
-      "category_name": "🎨 Design, UI/UX & Creative",
-      "registry_path": ".archived/skills/design-ui-ux-creative/registry.json",
-      "domain_tags": [
-        "user-experience",
-        "interface",
-        "layouts",
-        "visual",
-        "mockup",
-        "prototyping"
+      "category_id": "devops-cloud",
+      "category_name": "Devops Cloud",
+      "registry_path": ".archived/skills/devops-cloud/registry.json",
+      "category_tags": [
+        "cloud_computing",
+        "infrastructure_as_code",
+        "devops",
+        "multi_cloud",
+        "cost_optimization"
+      ]
+    },
+    {
+      "category_id": "devops-containers",
+      "category_name": "Devops Containers",
+      "registry_path": ".archived/skills/devops-containers/registry.json",
+      "category_tags": [
+        "Cloud",
+        "DevOps",
+        "Containerization",
+        "Orchestration",
+        "CI/CD",
+        "Microservices"
+      ]
+    },
+    {
+      "category_id": "devops-iac",
+      "category_name": "Devops Iac",
+      "registry_path": ".archived/skills/devops-iac/registry.json",
+      "category_tags": [
+        "Cloud",
+        "Infrastructure as Code",
+        "DevOps",
+        "Containerization",
+        "Project Management"
+      ]
+    },
+    {
+      "category_id": "devops-os-scripting",
+      "category_name": "Devops Os Scripting",
+      "registry_path": ".archived/skills/devops-os-scripting/registry.json",
+      "category_tags": [
+        "devops",
+        "sysadmin",
+        "scripting",
+        "automation",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "category_id": "devops-quality",
+      "category_name": "Devops Quality",
+      "registry_path": ".archived/skills/devops-quality/registry.json",
+      "category_tags": [
+        "IT Operations",
+        "Infrastructure Management",
+        "Performance Monitoring",
+        "Problem Solving",
+        "Incident Resolution"
+      ]
+    },
+    {
+      "category_id": "documentation-planning",
+      "category_name": "Documentation Planning",
+      "registry_path": ".archived/skills/documentation-planning/registry.json",
+      "category_tags": [
+        "project_management",
+        "development_workflow",
+        "collaboration",
+        "documentation",
+        "software_development"
       ]
     },
     {
       "category_id": "documentation-writing",
-      "category_name": "📚 Documentation & Writing",
+      "category_name": "Documentation Writing",
       "registry_path": ".archived/skills/documentation-writing/registry.json",
-      "domain_tags": [
-        "technical-writing",
-        "api-docs",
-        "guides",
-        "knowledge-base",
-        "README"
+      "category_tags": [
+        "technical-documentation",
+        "development-guides",
+        "code-examples",
+        "project-management",
+        "learning-resources"
       ]
     },
     {
-      "category_id": "git-version-control",
-      "category_name": "🔀 Git & Version Control",
-      "registry_path": ".archived/skills/git-version-control/registry.json",
-      "domain_tags": [
-        "versioning",
-        "source-control",
-        "branching",
-        "merges",
-        "repository"
+      "category_id": "frontend-3d-anim",
+      "category_name": "Frontend 3D Anim",
+      "registry_path": ".archived/skills/frontend-3d-anim/registry.json",
+      "category_tags": [
+        "Web Development",
+        "Graphics & Design",
+        "Interactive Media",
+        "Programming Languages",
+        "User Experience (UX)",
+        "Front-end Technologies"
       ]
     },
     {
-      "category_id": "architecture-patterns",
-      "category_name": "🏗️ Architecture & Patterns",
-      "registry_path": ".archived/skills/architecture-patterns/registry.json",
-      "domain_tags": [
-        "design",
-        "clean-code",
-        "systems",
-        "scalability",
-        "maintenance",
-        "modularity"
+      "category_id": "frontend-core",
+      "category_name": "Frontend Core",
+      "registry_path": ".archived/skills/frontend-core/registry.json",
+      "category_tags": [
+        "web development",
+        "frontend",
+        "performance optimization",
+        "testing",
+        "react ecosystem"
       ]
     },
     {
-      "category_id": "data-ml-engineering",
-      "category_name": "📊 Data & ML Engineering",
-      "registry_path": ".archived/skills/data-ml-engineering/registry.json",
-      "domain_tags": [
-        "big-data",
-        "pipelines",
-        "analytics",
-        "modeling",
-        "airflow",
-        "ETL"
+      "category_id": "frontend-security",
+      "category_name": "Frontend Security",
+      "registry_path": ".archived/skills/frontend-security/registry.json",
+      "category_tags": [
+        "web_development",
+        "cybersecurity",
+        "content_security_policy",
+        "input_sanitization",
+        "cross_site_scripting_protection"
       ]
     },
     {
-      "category_id": "seo-growth",
-      "category_name": "🔎 SEO & Growth",
-      "registry_path": ".archived/skills/seo-growth/registry.json",
-      "domain_tags": [
-        "search-ranking",
-        "optimization",
-        "keywords",
-        "discoverability",
-        "traffic",
-        "SEM"
+      "category_id": "frontend-seo",
+      "category_name": "Frontend Seo",
+      "registry_path": ".archived/skills/frontend-seo/registry.json",
+      "category_tags": [
+        "SEO",
+        "Content Optimization",
+        "Technical SEO",
+        "Web Performance",
+        "Quality Standards"
       ]
     },
     {
-      "category_id": "business-product-marketing",
-      "category_name": "💰 Business, Product & Marketing",
-      "registry_path": ".archived/skills/business-product-marketing/registry.json",
-      "domain_tags": [
-        "strategy",
-        "product",
-        "growth",
-        "conversion",
-        "analytics",
-        "marketing"
+      "category_id": "frontend-ui",
+      "category_name": "Frontend Ui",
+      "registry_path": ".archived/skills/frontend-ui/registry.json",
+      "category_tags": [
+        "Web Development",
+        "UI/UX Design",
+        "Frontend Frameworks",
+        "Animation & Interactivity",
+        "Data Visualization"
       ]
     },
     {
-      "category_id": "saas-integrations-automations",
-      "category_name": "🔌 SaaS Integrations & Automations",
-      "registry_path": ".archived/skills/saas-integrations-automations/registry.json",
-      "domain_tags": [
-        "zapier",
-        "n8n",
-        "workato",
-        "middleware",
-        "third-party",
-        "api-connection"
+      "category_id": "mobile-gaming-debugging",
+      "category_name": "Mobile Gaming Debugging",
+      "registry_path": ".archived/skills/mobile-gaming-debugging/registry.json",
+      "category_tags": [
+        "mobile_app_development",
+        "software_build_tools",
+        "debugging_techniques",
+        "simulator_automation",
+        "ios_sdk",
+        "xcode_integration"
       ]
     },
     {
-      "category_id": "azure-sdks",
-      "category_name": "☁️ Azure SDKs",
-      "registry_path": ".archived/skills/azure-sdks/registry.json",
-      "domain_tags": [
-        "microsoft",
-        "azure",
-        "cloud",
-        "api",
-        "cloud-infrastructure",
-        "serverless"
+      "category_id": "mobile-gaming-gaming",
+      "category_name": "Mobile Gaming Gaming",
+      "registry_path": ".archived/skills/mobile-gaming-gaming/registry.json",
+      "category_tags": [
+        "Game Development",
+        "3D Rendering",
+        "Performance Optimization",
+        "Cross-Platform Deployment",
+        "Scripting Languages"
       ]
     },
     {
-      "category_id": "game-development",
-      "category_name": "🎮 Game Development",
-      "registry_path": ".archived/skills/game-development/registry.json",
-      "domain_tags": [
-        "engines",
-        "unity",
-        "unreal",
-        "sprites",
-        "mechanics",
-        "interactive"
+      "category_id": "mobile-gaming-mobile",
+      "category_name": "Mobile Gaming Mobile",
+      "registry_path": ".archived/skills/mobile-gaming-mobile/registry.json",
+      "category_tags": [
+        "game development",
+        "mobile development",
+        "UI/UX design",
+        "software engineering",
+        "networking",
+        "performance optimization"
       ]
     },
     {
-      "category_id": "workflow-automation-platforms",
-      "category_name": "🛠️ Workflow & Automation Platforms",
-      "registry_path": ".archived/skills/workflow-automation-platforms/registry.json",
-      "domain_tags": [
-        "orchestration",
-        "triggers",
-        "actions",
-        "low-code",
-        "integration-hub"
+      "category_id": "productivity-office",
+      "category_name": "Productivity Office",
+      "registry_path": ".archived/skills/productivity-office/registry.json",
+      "category_tags": [
+        "programming",
+        "document-processing",
+        "academic-tools",
+        "data-analysis",
+        "presentation-creation",
+        "file-conversion"
       ]
     },
     {
-      "category_id": "payments-billing",
-      "category_name": "💳 Payments & Billing",
-      "registry_path": ".archived/skills/payments-billing/registry.json",
-      "domain_tags": [
-        "stripe",
-        "fintech",
-        "transactions",
-        "merchant",
-        "subscriptions",
-        "billing"
+      "category_id": "quality-code-review",
+      "category_name": "Quality Code Review",
+      "registry_path": ".archived/skills/quality-code-review/registry.json",
+      "category_tags": [
+        "software development",
+        "quality assurance",
+        "code review",
+        "performance optimization",
+        "documentation",
+        "best practices"
       ]
     },
     {
-      "category_id": "blockchain-web3",
-      "category_name": "🌍 Blockchain & Web3",
-      "registry_path": ".archived/skills/blockchain-web3/registry.json",
-      "domain_tags": [
-        "crypto",
-        "ethereum",
-        "smart-contracts",
-        "decentralization",
-        "web3",
-        "tokens"
+      "category_id": "quality-debugging",
+      "category_name": "Quality Debugging",
+      "registry_path": ".archived/skills/quality-debugging/registry.json",
+      "category_tags": [
+        "software_development",
+        "problem_solving",
+        "technical_skills",
+        "analysis",
+        "optimization"
       ]
     },
     {
-      "category_id": "scientific-computing",
-      "category_name": "🧬 Scientific Computing",
-      "registry_path": ".archived/skills/scientific-computing/registry.json",
-      "domain_tags": [
-        "research",
-        "simulations",
-        "math",
-        "visualization",
-        "data-science",
-        "python"
+      "category_id": "quality-documentation",
+      "category_name": "Quality Documentation",
+      "registry_path": ".archived/skills/quality-documentation/registry.json",
+      "category_tags": [
+        "software_development",
+        "engineering",
+        "planning",
+        "testing",
+        "documentation",
+        "collaboration"
       ]
     },
     {
-      "category_id": "miscellaneous-other",
-      "category_name": "📦 Miscellaneous / Other",
-      "registry_path": ".archived/skills/miscellaneous-other/registry.json",
-      "domain_tags": [
-        "utils",
-        "tools",
-        "auxiliary",
-        "various",
-        "helpers"
+      "category_id": "quality-observability",
+      "category_name": "Quality Observability",
+      "registry_path": ".archived/skills/quality-observability/registry.json",
+      "category_tags": [
+        "observability",
+        "monitoring",
+        "incident-response",
+        "sre",
+        "performance-engineering",
+        "security-assessment"
       ]
     },
     {
-      "category_id": "custom-skills",
-      "category_name": "🎯 Custom Skills",
-      "registry_path": ".archived/skills/custom-skills/registry.json",
-      "domain_tags": [
-        "bespoke",
-        "extensions",
-        "customized",
-        "internal",
-        "proprietary"
+      "category_id": "quality-testing",
+      "category_name": "Quality Testing",
+      "registry_path": ".archived/skills/quality-testing/registry.json",
+      "category_tags": [
+        "Software Development",
+        "Testing & QA",
+        "Web Accessibility",
+        "Version Control",
+        "Security"
+      ]
+    },
+    {
+      "category_id": "security-compliance",
+      "category_name": "Security Compliance",
+      "registry_path": ".archived/skills/security-compliance/registry.json",
+      "category_tags": [
+        "regulatory-compliance",
+        "data-protection",
+        "privacy-laws",
+        "payment-security",
+        "encryption"
+      ]
+    },
+    {
+      "category_id": "security-defensive",
+      "category_name": "Security Defensive",
+      "registry_path": ".archived/skills/security-defensive/registry.json",
+      "category_tags": [
+        "cybersecurity",
+        "penetration-testing",
+        "vulnerability-assessment",
+        "malware-analysis",
+        "network-security",
+        "ethical-hacking"
+      ]
+    },
+    {
+      "category_id": "security-offensive",
+      "category_name": "Security Offensive",
+      "registry_path": ".archived/skills/security-offensive/registry.json",
+      "category_tags": [
+        "Web Security",
+        "Application Security",
+        "Vulnerability Assessment",
+        "Penetration Testing",
+        "Security Skills"
+      ]
+    },
+    {
+      "category_id": "security-testing",
+      "category_name": "Security Testing",
+      "registry_path": ".archived/skills/security-testing/registry.json",
+      "category_tags": [
+        "Security",
+        "Vulnerability Scanning",
+        "Penetration Testing",
+        "Network Analysis",
+        "Malware Detection",
+        "Compliance Auditing"
       ]
     }
   ]

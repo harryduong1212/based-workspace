@@ -1,0 +1,319 @@
+{
+  "category_id": "devops-iac",
+  "category_name": "Devops IaC",
+  "skills": [
+    {
+      "id": "deployment-procedures",
+      "description": "A comprehensive guide on safe production deployments, including decision-making principles, workflows, and rollback strategies.",
+      "path": "deployment-procedures/SKILL.md",
+      "tags": [
+        "deployment",
+        "production",
+        "rollback",
+        "verification"
+      ],
+      "trigger_conditions": [
+        "Need to deploy a new version of an application",
+        "Platform change requires deployment procedures"
+      ],
+      "anti_triggers": [
+        "Deploying on Fridays",
+        "Skipping staging environments"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "deployment-validation-config-validate",
+      "description": "This skill provides comprehensive tools for validating, testing, and securing application configurations across different environments.",
+      "path": "deployment-validation-config-validate/SKILL.md",
+      "tags": [
+        "configuration validation",
+        "JSON Schema",
+        "environment-specific rules",
+        "secure configurations"
+      ],
+      "trigger_conditions": [
+        "Working on configuration validation tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for configuration validation"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to configuration validation",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "python",
+        "typescript",
+        "node.js"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "gitops-workflow",
+      "description": "A comprehensive guide to implementing GitOps workflows with ArgoCD and Flux for automated Kubernetes deployments.",
+      "path": "gitops-workflow/SKILL.md",
+      "tags": [
+        "GitOps",
+        "ArgoCD",
+        "Flux",
+        "Kubernetes",
+        "Continuous Delivery"
+      ],
+      "trigger_conditions": [
+        "Set up GitOps for Kubernetes clusters",
+        "Automate application deployments from Git",
+        "Implement progressive delivery strategies"
+      ],
+      "anti_triggers": [
+        "You need a one-off manual deployment",
+        "You cannot manage cluster access or repo permissions",
+        "You are not deploying to Kubernetes"
+      ],
+      "dependencies": [
+        "kubectl",
+        "git"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "helm-chart-scaffolding",
+      "description": "Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications.",
+      "path": "helm-chart-scaffolding/SKILL.md",
+      "tags": [
+        "Helm",
+        "Kubernetes",
+        "chart management",
+        "deployment",
+        "templating"
+      ],
+      "trigger_conditions": [
+        "Create new Helm charts from scratch",
+        "Package Kubernetes applications for distribution",
+        "Manage multi-environment deployments with Helm"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to helm chart scaffolding",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "k8s-manifest-generator",
+      "description": "Step-by-step guidance for creating production-ready Kubernetes manifests including Deployments, Services, ConfigMaps, Secrets, and PersistentVolumeClaims.",
+      "path": "k8s-manifest-generator/SKILL.md",
+      "tags": [
+        "Kubernetes",
+        "manifests",
+        "Deployments",
+        "Services",
+        "ConfigMaps"
+      ],
+      "trigger_conditions": [
+        "Create new Kubernetes Deployment manifests",
+        "Define Service resources for network connectivity",
+        "Generate ConfigMap and Secret resources for configuration management",
+        "Create PersistentVolumeClaim manifests for stateful workloads"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to kubernetes manifest generator",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "k8s-security-policies",
+      "description": "Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and Pod Security Standards in Kubernetes.",
+      "path": "k8s-security-policies/SKILL.md",
+      "tags": [
+        "Kubernetes",
+        "NetworkPolicy",
+        "PodSecurityPolicy",
+        "RBAC",
+        "PodSecurityStandards"
+      ],
+      "trigger_conditions": [
+        "Implement network segmentation",
+        "Configure pod security standards",
+        "Set up RBAC for least-privilege access"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to kubernetes security policies",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Kubernetes"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "sred-project-organizer",
+      "description": "A skill to organize projects and their related documentation into the SRED format for submission, using Notion and Linear.",
+      "path": "sred-project-organizer/SKILL.md",
+      "tags": [
+        "SRED",
+        "Notion",
+        "Linear",
+        "Project Management"
+      ],
+      "trigger_conditions": [
+        "When a user needs to submit project documentation in the SRED format.",
+        "For organizing past year's work into a structured format."
+      ],
+      "anti_triggers": [
+        "When the user does not have access to Notion or Linear.",
+        "When the user is not working on projects that can be classified as SRED."
+      ],
+      "dependencies": [
+        "Notion",
+        "Linear"
+      ],
+      "mcp_tools": [
+        "notion-memory",
+        "linear-memory"
+      ]
+    },
+    {
+      "id": "sred-work-summary",
+      "description": "A skill to collect and organize work-related links from Github PRs, Notion docs, and Linear tickets into a private Notion document.",
+      "path": "sred-work-summary/SKILL.md",
+      "tags": [
+        "Github",
+        "Notion",
+        "Linear",
+        "MCP",
+        "Automation"
+      ],
+      "trigger_conditions": [
+        "Collecting work-related data for documentation",
+        "Grouping project links in a structured format"
+      ],
+      "anti_triggers": [
+        "Collecting personal information without user consent",
+        "Using unconnected tools or services"
+      ],
+      "dependencies": [
+        "Github",
+        "Notion",
+        "Linear"
+      ],
+      "mcp_tools": [
+        "notion-memory",
+        "linear-memory"
+      ]
+    },
+    {
+      "id": "terraform-aws-modules",
+      "description": "Terraform module creation for AWS — reusable modules, state management, and HCL best practices. Use when building or reviewing Terraform AWS infrastructure.",
+      "path": "terraform-aws-modules/SKILL.md",
+      "tags": [
+        "terraform",
+        "aws",
+        "module",
+        "state management",
+        "HCL"
+      ],
+      "trigger_conditions": [
+        "Creating reusable Terraform modules for AWS resources",
+        "Reviewing Terraform code for best practices and security",
+        "Designing remote state and workspace strategies"
+      ],
+      "anti_triggers": [
+        "The user needs AWS CDK or CloudFormation",
+        "not Terraform",
+        "The infrastructure is on a non-AWS provider"
+      ],
+      "dependencies": [
+        "terraform"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "terraform-module-library",
+      "description": "A library of production-ready Terraform modules for AWS, Azure, and GCP infrastructure.",
+      "path": "terraform-module-library/SKILL.md",
+      "tags": [
+        "terraform",
+        "aws",
+        "azure",
+        "gcp",
+        "infrastructure-as-code"
+      ],
+      "trigger_conditions": [
+        "Build reusable infrastructure components",
+        "Standardize cloud resource provisioning",
+        "Implement infrastructure as code best practices"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to terraform module library",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "terraform"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "terraform-skill",
+      "description": "Terraform infrastructure as code best practices, covering testing, modules, CI/CD, and production patterns.",
+      "path": "terraform-skill/SKILL.md",
+      "tags": [
+        "terraform",
+        "opentofu",
+        "IaC",
+        "best practices",
+        "testing",
+        "modules",
+        "CI/CD"
+      ],
+      "trigger_conditions": [
+        "Creating new Terraform or OpenTofu configurations or modules",
+        "Setting up testing infrastructure for IaC code",
+        "Deciding between testing approaches (validate",
+        "plan",
+        "frameworks)"
+      ],
+      "anti_triggers": [
+        "Basic Terraform/OpenTofu syntax questions",
+        "Provider-specific API reference"
+      ],
+      "dependencies": [
+        "terraform",
+        "opentofu"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "terraform-specialist",
+      "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns.",
+      "path": "terraform-specialist/SKILL.md",
+      "tags": [
+        "terraform",
+        "opentofu",
+        "iac",
+        "state management",
+        "enterprise infrastructure"
+      ],
+      "trigger_conditions": [
+        "Designing Terraform/OpenTofu modules or environments",
+        "Managing state backends",
+        "workspaces",
+        "or multi-cloud stacks",
+        "Implementing policy-as-code and CI/CD automation for IaC"
+      ],
+      "anti_triggers": [
+        "You only need a one-off manual infrastructure change",
+        "You are locked to a different IaC tool or platform",
+        "You cannot store or secure state remotely"
+      ],
+      "dependencies": [
+        "terraform",
+        "opentofu"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "category_id": "design-visuals",
+  "category_name": "Design Visuals",
+  "skills": [
+    {
+      "id": "favicon",
+      "description": "Generate a complete set of favicons from the source image at `$1` and update the project's HTML with the appropriate link tags.",
+      "path": "favicon/SKILL.md",
+      "tags": [
+        "favicon",
+        "image",
+        "static-assets",
+        "web-manifest",
+        "html-update"
+      ],
+      "trigger_conditions": [
+        "Need to generate favicons for a web project",
+        "Source image provided for favicon generation"
+      ],
+      "anti_triggers": [
+        "Favicon generation already complete and no changes needed"
+      ],
+      "dependencies": [
+        "ImageMagick",
+        "bash"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "iconsax-library",
+      "description": "Extensive icon library and AI-driven icon generation skill for premium UI/UX design.",
+      "path": "iconsax-library/SKILL.md",
+      "tags": [
+        "icons",
+        "library",
+        "AI",
+        "UI",
+        "UX",
+        "design"
+      ],
+      "trigger_conditions": [
+        "Designing or building highly crafted navigation menus",
+        "toolbars",
+        "and action buttons.",
+        "Need for an icon that is part of a cohesive",
+        "modern design system.",
+        "Generating a custom",
+        "perfectly styled icon using Iconsax AI when a unique concept is required."
+      ],
+      "anti_triggers": [
+        "Use of common",
+        "generic",
+        "or default browser/framework icons."
+      ],
+      "dependencies": [
+        "Iconsax",
+        "SVGs",
+        "web components"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "imagen",
+      "description": "AI image generation skill powered by Google Gemini that enables seamless visual content creation for UI placeholders, documentation, and design assets.",
+      "path": "imagen/SKILL.md",
+      "tags": [
+        "ai",
+        "image",
+        "generation",
+        "google-gemini",
+        "frontend",
+        "documentation",
+        "design"
+      ],
+      "trigger_conditions": [
+        "User requests image generation",
+        "Frontend development requires placeholder or actual images",
+        "Documentation needs illustrations or diagrams"
+      ],
+      "anti_triggers": [
+        "Real-time chat or voice communication"
+      ],
+      "dependencies": [
+        "GEMINI_API_KEY environment variable"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "magic-animator",
+      "description": "AI-powered animation tool for creating motion in logos, UI, icons, and social media assets.",
+      "path": "magic-animator/SKILL.md",
+      "tags": [
+        "ai",
+        "animation",
+        "motion",
+        "ux",
+        "ui"
+      ],
+      "trigger_conditions": [
+        "Adding life to a static logo or brand mark",
+        "Enhancing website/app UI with loaders",
+        "animated widgets",
+        "or smooth transitions",
+        "Animating icons or micro-interactions"
+      ],
+      "anti_triggers": [
+        "Using basic",
+        "linear animations",
+        "Creating chaotic or overly fast motion"
+      ],
+      "dependencies": [
+        "Magic Animator (https://magicanimator.com/)"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

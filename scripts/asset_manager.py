@@ -12,10 +12,14 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
 
 def print_help():
     print("usage: asset_manager.py {tags, reorganize_skills, reorganize_workflows} ...")
+    print("\nUnified interface for managing workspace assets. Now supports AI-driven metadata generation.")
     print("\nCommands:")
-    print("  tags                  Extract operational tags into registry for Skills/Workflows")
-    print("  reorganize_skills     Clean up and sync the skills registry with the file system")
-    print("  reorganize_workflows  Clean up and sync the workflows registry with the file system")
+    print("  tags                  Extract operational tags. Supports --force-llm for AI synthesis.")
+    print("  reorganize_skills     Sync skills with filesystem. Supports ingestion and AI metadata generation.")
+    print("  reorganize_workflows  Sync workflows with filesystem. Supports ingestion and AI metadata generation.")
+    print("\nCommon Flags (for subcommands):")
+    print("  --force-llm           Connect to LM Studio/Ollama to regenerate or synthesize metadata using AI.")
+    print("  --target <path>       Ingest and insert a single skill/workflow folder from /tmp/ without rebuilding the entire system.")
     print("\nRun a command with --help for its specific usage.")
 
 def main():

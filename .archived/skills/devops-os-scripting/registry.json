@@ -1,0 +1,185 @@
+{
+  "category_id": "devops-os-scripting",
+  "category_name": "Devops Os Scripting",
+  "skills": [
+    {
+      "id": "bash-defensive-patterns",
+      "description": "Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.",
+      "path": "bash-defensive-patterns/SKILL.md",
+      "tags": [
+        "bash",
+        "defensive programming",
+        "shell scripting",
+        "CI/CD",
+        "system administration"
+      ],
+      "trigger_conditions": [
+        "Writing production automation scripts",
+        "Building CI/CD pipeline scripts",
+        "Creating system administration utilities"
+      ],
+      "anti_triggers": [
+        "You need a single ad-hoc shell command",
+        "not a script",
+        "The target environment requires strict POSIX sh only"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "bash-linux",
+      "description": "Bash/Linux terminal patterns including essential commands, piping, error handling, scripting. Useful for macOS and Linux systems.",
+      "path": "bash-linux/SKILL.md",
+      "tags": [
+        "bash",
+        "linux",
+        "terminal",
+        "scripting",
+        "command-line"
+      ],
+      "trigger_conditions": [
+        "working on macOS or Linux systems",
+        "need to execute Bash/Linux commands"
+      ],
+      "anti_triggers": [
+        "not working on macOS or Linux systems",
+        "using PowerShell instead of Bash"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "bash-pro",
+      "description": "Master defensive Bash scripting for production automation, CI/CD pipelines, and system utilities with expert knowledge in safe, portable, and testable shell scripts.",
+      "path": "bash-pro/SKILL.md",
+      "tags": [
+        "bash",
+        "shell",
+        "automation",
+        "ci/cd",
+        "ops",
+        "production",
+        "security",
+        "portability",
+        "testing"
+      ],
+      "trigger_conditions": [
+        "Writing or reviewing Bash scripts for automation",
+        "CI/CD",
+        "or ops",
+        "Hardening shell scripts for safety and portability"
+      ],
+      "anti_triggers": [
+        "Need POSIX-only shell without Bash features",
+        "Task requires a higher-level language for complex logic"
+      ],
+      "dependencies": [
+        "bash",
+        "bats-core",
+        "shellcheck",
+        "shfmt",
+        "pre-commit",
+        "github-actions",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "bash-scripting",
+      "description": "Bash scripting workflow for creating production-ready shell scripts with defensive patterns, error handling, and testing.",
+      "path": "bash-scripting/SKILL.md",
+      "tags": [
+        "bash",
+        "scripting",
+        "automation",
+        "error-handling",
+        "testing"
+      ],
+      "trigger_conditions": [
+        "Creating automation scripts",
+        "Writing system administration tools",
+        "Building deployment scripts"
+      ],
+      "anti_triggers": [
+        "Developing simple one-liners",
+        "Quick and dirty scripts without proper testing"
+      ],
+      "dependencies": [
+        "bash",
+        "shellcheck",
+        "bats"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "linux-troubleshooting",
+      "description": "A detailed workflow for diagnosing and resolving Linux system issues, including performance problems, service failures, network issues, and resource constraints.",
+      "path": "linux-troubleshooting/SKILL.md",
+      "tags": [
+        "Linux",
+        "troubleshooting",
+        "performance",
+        "service",
+        "network"
+      ],
+      "trigger_conditions": [
+        "Diagnosing system performance issues",
+        "Troubleshooting service failures",
+        "Investigating network problems"
+      ],
+      "anti_triggers": [
+        "Resolving disk space issues (use disk management workflow)",
+        "Debugging application errors (use application debugging workflow)"
+      ],
+      "dependencies": [
+        "bash-linux"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "powershell-windows",
+      "description": "PowerShell Windows patterns focusing on critical pitfalls, operator syntax, error handling, and best practices.",
+      "path": "powershell-windows/SKILL.md",
+      "tags": [
+        "PowerShell",
+        "Windows",
+        "Scripting",
+        "Error Handling",
+        "Best Practices"
+      ],
+      "trigger_conditions": [
+        "When working with PowerShell scripts for Windows environments"
+      ],
+      "anti_triggers": [
+        "When writing scripts that do not require Windows-specific features or when using other scripting languages"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "windows-shell-reliability",
+      "description": "This skill provides best practices for running commands reliably on Windows via PowerShell and CMD, focusing on paths, encoding, and common binary pitfalls.",
+      "path": "windows-shell-reliability/SKILL.md",
+      "tags": [
+        "windows",
+        "shell",
+        "powershell",
+        "cmd",
+        "reliability",
+        "encoding",
+        "paths"
+      ],
+      "trigger_conditions": [
+        "Developing or debugging scripts and automation that run on Windows systems",
+        "Involving file paths",
+        "character encoding",
+        "or standard CLI tools"
+      ],
+      "anti_triggers": [
+        "Using CMD-only solutions without PowerShell"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

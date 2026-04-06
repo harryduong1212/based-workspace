@@ -1,0 +1,953 @@
+{
+  "category_id": "backend-arch",
+  "category_name": "Backend Arch",
+  "skills": [
+    {
+      "id": "architect-review",
+      "description": "A master software architect specializing in modern architecture patterns, clean architecture principles, and distributed systems design.",
+      "path": "architect-review/SKILL.md",
+      "tags": [
+        "architecture",
+        "design",
+        "scalability",
+        "resilience",
+        "maintainability"
+      ],
+      "trigger_conditions": [
+        "Reviewing system architecture or major design changes",
+        "Evaluating scalability",
+        "resilience",
+        "or maintainability impacts",
+        "Assessing architecture compliance with standards and patterns"
+      ],
+      "anti_triggers": [
+        "You need a small code review without architectural impact",
+        "The change is minor and local to a single module"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "auth-implementation-patterns",
+      "description": "Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices.",
+      "path": "auth-implementation-patterns/SKILL.md",
+      "tags": [
+        "authentication",
+        "authorization",
+        "security",
+        "REST",
+        "GraphQL"
+      ],
+      "trigger_conditions": [
+        "Implementing user authentication systems",
+        "Securing REST or GraphQL APIs",
+        "Adding OAuth2/social login or SSO",
+        "Designing session management or RBAC",
+        "Debugging authentication or authorization issues"
+      ],
+      "anti_triggers": [
+        "You only need UI copy or login page styling",
+        "The task is infrastructure-only without identity concerns",
+        "You cannot change auth policies or credential storage"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "backend-architect",
+      "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems.",
+      "path": "backend-architect/SKILL.md",
+      "tags": [
+        "backend",
+        "architecture",
+        "API",
+        "microservices",
+        "distributed systems"
+      ],
+      "trigger_conditions": [
+        "Designing new backend services or APIs",
+        "Defining service boundaries",
+        "data contracts",
+        "or integration patterns",
+        "Planning resilience",
+        "scaling",
+        "and observability"
+      ],
+      "anti_triggers": [
+        "You only need a code-level bug fix",
+        "You are working on small scripts without architectural concerns",
+        "You need frontend or UX guidance instead of backend architecture"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "backend-dev-guidelines",
+      "description": "A comprehensive guide for senior backend engineers on writing production-grade, maintainable, and observable backend systems using Node.js, Express, TypeScript, and microservices architecture.",
+      "path": "backend-dev-guidelines/SKILL.md",
+      "tags": [
+        "Node.js",
+        "Express",
+        "TypeScript",
+        "Microservices",
+        "Backend Engineering"
+      ],
+      "trigger_conditions": [
+        "Working on routes",
+        "controllers",
+        "services",
+        "repositories",
+        "Implementing Express middleware",
+        "Accessing Prisma database"
+      ],
+      "anti_triggers": [
+        "Business logic in routes",
+        "Skipping service layer"
+      ],
+      "dependencies": [
+        "Node.js",
+        "Express",
+        "TypeScript"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "binary-analysis-patterns",
+      "description": "Comprehensive patterns and techniques for analyzing compiled binaries, understanding assembly code, and reconstructing program logic.",
+      "path": "binary-analysis-patterns/SKILL.md",
+      "tags": [
+        "binary analysis",
+        "assembly",
+        "disassembly",
+        "control flow",
+        "data structures"
+      ],
+      "trigger_conditions": [
+        "Working on binary analysis patterns tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for binary analysis patterns"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to binary analysis patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": [
+        "ghidra",
+        "ida-pro"
+      ]
+    },
+    {
+      "id": "c4-architecture-c4-architecture",
+      "description": "Generate comprehensive C4 architecture documentation for an existing repository/codebase using a bottom-up analysis approach.",
+      "path": "c4-architecture-c4-architecture/SKILL.md",
+      "tags": [
+        "C4 Architecture",
+        "Code Documentation",
+        "Bottom-Up Analysis"
+      ],
+      "trigger_conditions": [
+        "Working on c4 architecture documentation workflow tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for c4 architecture documentation workflow"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to c4 architecture documentation workflow",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "chrome-extension-developer",
+      "description": "Expert in building Chrome Extensions using Manifest V3, focusing on modern architecture and production-ready security practices.",
+      "path": "chrome-extension-developer/SKILL.md",
+      "tags": [
+        "Chrome Extension",
+        "Manifest V3",
+        "Service Workers",
+        "Content Scripts",
+        "Cross-Context Communication"
+      ],
+      "trigger_conditions": [
+        "Designing and building new Chrome Extensions from scratch",
+        "Migrating extensions from Manifest V2 to Manifest V3",
+        "Implementing service workers",
+        "content scripts",
+        "or popup/options pages",
+        "Debugging cross-context communication (message passing)",
+        "Implementing extension-specific APIs"
+      ],
+      "anti_triggers": [
+        "Safari App Extensions",
+        "Developing for Firefox without the WebExtensions API",
+        "General web development that doesn't interact with extension APIs"
+      ],
+      "dependencies": [
+        "Manifest V3",
+        "Chrome Extension Developer Tools"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "code-refactoring-refactor-clean",
+      "description": "Refactor code to improve quality, maintainability, and performance using clean code principles, SOLID design patterns, and modern software engineering best practices.",
+      "path": "code-refactoring-refactor-clean/SKILL.md",
+      "tags": [
+        "code refactoring",
+        "SOLID",
+        "clean code"
+      ],
+      "trigger_conditions": [
+        "Refactoring tangled or hard-to-maintain code",
+        "Reducing duplication",
+        "complexity",
+        "or code smells",
+        "Improving testability and design consistency"
+      ],
+      "anti_triggers": [
+        "You only need a small one-line fix",
+        "Refactoring is prohibited due to change freeze",
+        "The request is for documentation only"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "codebase-cleanup-refactor-clean",
+      "description": "A code refactoring skill that helps improve the quality, maintainability, and performance of large codebases by applying clean code principles and SOLID design patterns.",
+      "path": "codebase-cleanup-refactor-clean/SKILL.md",
+      "tags": [
+        "code refactoring",
+        "SOLID",
+        "clean code",
+        "software engineering"
+      ],
+      "trigger_conditions": [
+        "Cleaning up large codebases with accumulated debt",
+        "Removing duplication and simplifying modules",
+        "Preparing a codebase for new feature work"
+      ],
+      "anti_triggers": [
+        "You only need a tiny targeted fix",
+        "Refactoring is blocked by policy or deadlines",
+        "The request is documentation-only"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "cqrs-implementation",
+      "description": "Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.",
+      "path": "cqrs-implementation/SKILL.md",
+      "tags": [
+        "CQRS",
+        "architecture",
+        "read-write-segregation",
+        "event-sourcing"
+      ],
+      "trigger_conditions": [
+        "Separating read and write concerns",
+        "Scaling reads independently from writes",
+        "Building event-sourced systems"
+      ],
+      "anti_triggers": [
+        "The domain is simple and CRUD is sufficient",
+        "You cannot operate separate read/write models",
+        "Strong immediate consistency is required everywhere"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "ddd-strategic-design",
+      "description": "Design DDD strategic artifacts including subdomains, bounded contexts, and ubiquitous language for complex business domains.",
+      "path": "ddd-strategic-design/SKILL.md",
+      "tags": [
+        "ddd",
+        "strategic-design",
+        "bounded-context",
+        "ubiquitous-language"
+      ],
+      "trigger_conditions": [
+        "Defining core",
+        "supporting",
+        "and generic subdomains",
+        "Splitting a monolith or service landscape by domain boundaries",
+        "Aligning teams and ownership with bounded contexts",
+        "Building a shared ubiquitous language with domain experts"
+      ],
+      "anti_triggers": [
+        "The domain model is stable and already well bounded",
+        "You need tactical code patterns only",
+        "The task is purely infrastructure or UI oriented"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "docs-architect",
+      "description": "Creates comprehensive technical documentation from existing codebases by analyzing architecture, design patterns, and implementation details.",
+      "path": "docs-architect/SKILL.md",
+      "tags": [
+        "technical writing",
+        "codebase analysis",
+        "documentation architecture"
+      ],
+      "trigger_conditions": [
+        "Working on docs architect tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for docs architect"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to docs architect",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "domain-driven-design",
+      "description": "Plan and route Domain-Driven Design work from strategic modeling to tactical implementation and evented architecture patterns.",
+      "path": "domain-driven-design/SKILL.md",
+      "tags": [
+        "ddd",
+        "domain",
+        "bounded-context",
+        "architecture"
+      ],
+      "trigger_conditions": [
+        "You need to model a complex business domain with explicit boundaries.",
+        "You want to decide whether full DDD is worth the added complexity.",
+        "You need to connect strategic design decisions to implementation patterns."
+      ],
+      "anti_triggers": [
+        "The problem is simple CRUD with low business complexity.",
+        "You only need localized bug fixes."
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "error-detective",
+      "description": "Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes.",
+      "path": "error-detective/SKILL.md",
+      "tags": [
+        "log analysis",
+        "error detection",
+        "stack trace",
+        "correlation",
+        "root cause"
+      ],
+      "trigger_conditions": [
+        "Working on error detective tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for error detective"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to error detective",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Elasticsearch",
+        "Splunk"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "event-sourcing-architect",
+      "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns.",
+      "path": "event-sourcing-architect/SKILL.md",
+      "tags": [
+        "event-sourcing",
+        "CQRS",
+        "event-driven-architecture",
+        "saga-orchestration",
+        "projection-building"
+      ],
+      "trigger_conditions": [
+        "Building systems requiring complete audit trails",
+        "Implementing complex business workflows with compensating actions",
+        "Designing systems needing temporal queries"
+      ],
+      "anti_triggers": [
+        "The domain is simple and CRUD is sufficient",
+        "You cannot support event store operations or projections"
+      ],
+      "dependencies": [],
+      "mcp_tools": [
+        "dbos-*"
+      ]
+    },
+    {
+      "id": "event-store-design",
+      "description": "Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.",
+      "path": "event-store-design/SKILL.md",
+      "tags": [
+        "event sourcing",
+        "event store",
+        "database design"
+      ],
+      "trigger_conditions": [
+        "Designing event sourcing infrastructure",
+        "Choosing between event store technologies",
+        "Implementing custom event stores"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to event store design",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "PostgreSQL",
+        "DynamoDB"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "framework-migration-code-migrate",
+      "description": "A code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generates comprehensive migration plans, automated scripts, and ensures smooth transitions with minimal disruption.",
+      "path": "framework-migration-code-migrate/SKILL.md",
+      "tags": [
+        "code migration",
+        "framework transition",
+        "language upgrade",
+        "platform shift"
+      ],
+      "trigger_conditions": [
+        "Working on code migration assistant tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for code migration assistant"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to code migration assistant",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "framework-migration-legacy-modernize",
+      "description": "Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through expert agent coordination.",
+      "path": "framework-migration-legacy-modernize/SKILL.md",
+      "tags": [
+        "legacy modernization",
+        "strangler fig",
+        "risk management"
+      ],
+      "trigger_conditions": [
+        "Working on legacy code modernization workflow tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for legacy code modernization workflow"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to legacy code modernization workflow",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": [
+        "postgres-memory",
+        "atom8n"
+      ]
+    },
+    {
+      "id": "full-stack-orchestration-full-stack-feature",
+      "description": "A comprehensive workflow for orchestrating full-stack feature development using an API-first approach, covering architecture design, implementation, testing, security, deployment, and observability.",
+      "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
+      "tags": [
+        "full-stack",
+        "orchestration",
+        "API-first",
+        "architecture",
+        "implementation",
+        "testing",
+        "security",
+        "deployment",
+        "observability"
+      ],
+      "trigger_conditions": [
+        "Working on full stack orchestration full stack feature tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for full stack orchestration full stack feature"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to full stack orchestration full stack feature",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Task tool",
+        "Docker",
+        "Kubernetes"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "graphql-architect",
+      "description": "Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems.",
+      "path": "graphql-architect/SKILL.md",
+      "tags": [
+        "GraphQL",
+        "Federation",
+        "Performance Optimization",
+        "Security",
+        "Enterprise Architecture"
+      ],
+      "trigger_conditions": [
+        "Working on graphql architect tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for graphql architect"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to graphql architect",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "kpi-dashboard-design",
+      "description": "Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions.",
+      "path": "kpi-dashboard-design/SKILL.md",
+      "tags": [
+        "KPI",
+        "dashboard",
+        "business intelligence",
+        "executive dashboard",
+        "sales",
+        "marketing",
+        "operations",
+        "finance"
+      ],
+      "trigger_conditions": [
+        "Designing executive dashboards",
+        "Selecting meaningful KPIs",
+        "Building real-time monitoring displays",
+        "Creating department-specific metrics views",
+        "Improving existing dashboard layouts",
+        "Establishing metric governance"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to kpi dashboard design",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "legacy-modernizer",
+      "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility.",
+      "path": "legacy-modernizer/SKILL.md",
+      "tags": [
+        "legacy modernization",
+        "framework migrations",
+        "database modernization"
+      ],
+      "trigger_conditions": [
+        "Working on legacy modernizer tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for legacy modernizer"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to legacy modernizer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "memory-safety-patterns",
+      "description": "Cross-language patterns for memory-safe programming including RAII, ownership, smart pointers, and resource management.",
+      "path": "memory-safety-patterns/SKILL.md",
+      "tags": [
+        "memory-safety",
+        "RAII",
+        "ownership",
+        "smart-pointers",
+        "resource-management",
+        "systems-code",
+        "debugging"
+      ],
+      "trigger_conditions": [
+        "Writing memory-safe systems code",
+        "Managing resources (files",
+        "sockets",
+        "memory)",
+        "Preventing use-after-free and leaks",
+        "Implementing RAII patterns",
+        "Choosing between languages for safety",
+        "Debugging memory issues"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to memory safety patterns"
+      ],
+      "dependencies": [
+        "Clarify goals",
+        "constraints",
+        "required inputs",
+        "Apply relevant best practices and validate outcomes",
+        "Provide actionable steps and verification"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "microservices-patterns",
+      "description": "Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.",
+      "path": "microservices-patterns/SKILL.md",
+      "tags": [
+        "microservices",
+        "service boundaries",
+        "inter-service communication",
+        "data management",
+        "resilience"
+      ],
+      "trigger_conditions": [
+        "Decomposing monoliths into microservices",
+        "Designing service boundaries and contracts",
+        "Implementing inter-service communication",
+        "Managing distributed data and transactions",
+        "Building resilient distributed systems",
+        "Implementing service discovery and load balancing",
+        "Designing event-driven architectures"
+      ],
+      "anti_triggers": [
+        "The system is small enough for a modular monolith",
+        "You need a quick prototype without distributed complexity",
+        "There is no operational support for distributed systems"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "monorepo-architect",
+      "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development.",
+      "path": "monorepo-architect/SKILL.md",
+      "tags": [
+        "monorepo",
+        "Nx",
+        "Turborepo",
+        "Bazel",
+        "Lerna"
+      ],
+      "trigger_conditions": [
+        "Setting up a new monorepo from scratch",
+        "Migrating from polyrepo to monorepo",
+        "Optimizing slow CI/CD pipelines",
+        "Sharing code between multiple applications",
+        "Managing dependencies across projects",
+        "Implementing consistent tooling across teams"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to monorepo architect",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "network-engineer",
+      "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
+      "path": "network-engineer/SKILL.md",
+      "tags": [
+        "network engineering",
+        "cloud networking",
+        "security",
+        "performance optimization"
+      ],
+      "trigger_conditions": [
+        "Working on network engineer tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for network engineer"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to network engineer",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "AWS",
+        "Azure",
+        "GCP"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "performance-engineer",
+      "description": "Expert performance engineer specializing in modern observability, application profiling, and system optimization.",
+      "path": "performance-engineer/SKILL.md",
+      "tags": [
+        "performance",
+        "observability",
+        "optimization",
+        "monitoring",
+        "scalability"
+      ],
+      "trigger_conditions": [
+        "Diagnosing performance bottlenecks",
+        "Designing load tests or capacity plans",
+        "Setting up observability and monitoring"
+      ],
+      "anti_triggers": [
+        "Feature development with no performance goals",
+        "Lack of access to metrics",
+        "traces",
+        "or profiling data"
+      ],
+      "dependencies": [
+        "OpenTelemetry",
+        "APM platforms",
+        "Metrics & monitoring tools"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "performance-optimizer",
+      "description": "Identifies and fixes performance bottlenecks in code, databases, and APIs. Measures before and after to prove improvements.",
+      "path": "performance-optimizer/SKILL.md",
+      "tags": [
+        "performance",
+        "optimization",
+        "code",
+        "database",
+        "api"
+      ],
+      "trigger_conditions": [
+        "App is slow or laggy",
+        "User complains about performance",
+        "Page load times are high"
+      ],
+      "anti_triggers": [
+        "Premature optimization",
+        "Micro-optimizations"
+      ],
+      "dependencies": [
+        "node.js",
+        "database"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "projection-patterns",
+      "description": "Build read models and projections from event streams. Use when implementing CQRS read sides, building materialized views, or optimizing query performance in event-sourced systems.",
+      "path": "projection-patterns/SKILL.md",
+      "tags": [
+        "CQRS",
+        "event sourcing",
+        "read models",
+        "materialized views",
+        "query optimization"
+      ],
+      "trigger_conditions": [
+        "Building CQRS read models",
+        "Creating materialized views from events",
+        "Optimizing query performance"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to projection patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "risk-metrics-calculation",
+      "description": "Calculate portfolio risk metrics including VaR, CVaR, Sharpe, Sortino, and drawdown analysis. Use when measuring portfolio risk, implementing risk limits, or building risk monitoring systems.",
+      "path": "risk-metrics-calculation/SKILL.md",
+      "tags": [
+        "risk management",
+        "portfolio analysis",
+        "VaR",
+        "CVaR",
+        "Sharpe ratio"
+      ],
+      "trigger_conditions": [
+        "Measuring portfolio risk",
+        "Implementing risk limits",
+        "Building risk dashboards",
+        "Calculating risk-adjusted returns",
+        "Setting position sizes",
+        "Regulatory reporting"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to risk metrics calculation",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "rust-async-patterns",
+      "description": "Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when building async Rust applications, implementing concurrent systems, or debugging async code.",
+      "path": "rust-async-patterns/SKILL.md",
+      "tags": [
+        "Rust",
+        "async",
+        "Tokio",
+        "concurrent",
+        "error handling"
+      ],
+      "trigger_conditions": [
+        "Building async Rust applications",
+        "Implementing concurrent network services",
+        "Using Tokio for async I/O"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to rust async patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Tokio"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "senior-architect",
+      "description": "A comprehensive toolkit for senior architects, providing automated scripts and best practices for architecture diagram generation, project analysis, and dependency management.",
+      "path": "senior-architect/SKILL.md",
+      "tags": [
+        "architecture",
+        "project management",
+        "dependency analysis"
+      ],
+      "trigger_conditions": [
+        "Need to generate an architecture diagram",
+        "Project needs optimization and analysis",
+        "Dependency issues need resolution"
+      ],
+      "anti_triggers": [
+        "Simple projects that do not require advanced tools",
+        "Basic architecture diagrams without specific requirements"
+      ],
+      "dependencies": [
+        "npm",
+        "pip",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "senior-architect-v2",
+      "description": "Expert system architect specializing in visualizing complex system interactions and translating business logic into technical workflows.",
+      "path": "senior-architect-v2/SKILL.md",
+      "tags": [
+        "system-architect",
+        "sequence-diagrams",
+        "flow-mapping",
+        "distributed-systems",
+        "mermaid"
+      ],
+      "trigger_conditions": [
+        "Mapping interaction flow between users",
+        "system components",
+        "and third-party services",
+        "Generating comprehensive sequence diagrams to visualize business logic",
+        "Identifying participating entities for a new feature",
+        "Analyzing cross-component dependencies"
+      ],
+      "anti_triggers": [
+        "Designing detailed database schemas",
+        "Defining API contracts"
+      ],
+      "dependencies": [
+        "Mermaid.js",
+        "Software Requirements Specification (SRS)",
+        "Database Schema"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "senior-fullstack",
+      "description": "A comprehensive toolkit for senior fullstack development with modern tools and best practices, including automated scripts for fullstack scaffolding, project analysis, and code quality checks.",
+      "path": "senior-fullstack/SKILL.md",
+      "tags": [
+        "fullstack",
+        "scaffolding",
+        "code-quality",
+        "best-practices"
+      ],
+      "trigger_conditions": [
+        "Need to quickly set up a new fullstack project",
+        "Want to analyze and optimize an existing project",
+        "Looking for tools to improve code quality"
+      ],
+      "anti_triggers": [
+        "Building a simple static website without backend"
+      ],
+      "dependencies": [
+        "npm",
+        "docker"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "software-architecture",
+      "description": "Guide for quality-focused software architecture, providing principles and best practices for clean code and domain-driven design.",
+      "path": "software-architecture/SKILL.md",
+      "tags": [
+        "software development",
+        "architecture",
+        "clean architecture",
+        "domain-driven design"
+      ],
+      "trigger_conditions": [
+        "users want to write code",
+        "design architecture",
+        "analyze code"
+      ],
+      "anti_triggers": [
+        "mixing business logic with UI components",
+        "database queries directly in controllers",
+        "lack of clear separation of concerns"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "workspace-analyzer",
+      "description": "Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code.",
+      "path": "workspace-analyzer/SKILL.md",
+      "tags": [
+        "architecture",
+        "analysis",
+        "investigation",
+        "codebase",
+        "redundancy",
+        "integrations"
+      ],
+      "trigger_conditions": [
+        "User asks to analyze, investigate, scan, or explain the current workspace or a specific repository.",
+        "User has just fetched or cloned a repository and wants to understand it.",
+        "User asks for a high-level overview of architecture, business logic, or directory structure.",
+        "User asks to identify technical debt, redundant code, or core dependencies within the current project."
+      ],
+      "anti_triggers": [
+        "User explicitly requests modifications or changes to the codebase during analysis."
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

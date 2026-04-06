@@ -1,0 +1,246 @@
+{
+  "category_id": "frontend-ui",
+  "category_name": "Frontend UI",
+  "skills": [
+    {
+      "id": "antigravity-design-expert",
+      "description": "A UI/UX skill focused on building highly interactive, spatial, and weightless web interfaces using GSAP and 3D CSS.",
+      "path": "antigravity-design-expert/SKILL.md",
+      "tags": [
+        "UI/UX",
+        "Antigravity Design",
+        "GSAP",
+        "3D CSS"
+      ],
+      "trigger_conditions": [
+        "When asked to build or generate UI components that require high interactivity and spatial depth."
+      ],
+      "anti_triggers": [
+        "When building interfaces that do not require advanced animations or spatial effects."
+      ],
+      "dependencies": [
+        "React / Next.js",
+        "Tailwind CSS",
+        "GSAP",
+        "ScrollTrigger",
+        "React Three Fiber"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "building-native-ui",
+      "description": "A comprehensive guide for building beautiful apps with Expo Router, covering fundamentals, styling, components, navigation, animations, patterns, and native tabs.",
+      "path": "building-native-ui/SKILL.md",
+      "tags": [
+        "Expo",
+        "React Native",
+        "UI Design",
+        "Navigation",
+        "Animations"
+      ],
+      "trigger_conditions": [
+        "When developing a new app using Expo Router",
+        "For developers looking to build cross-platform mobile applications"
+      ],
+      "anti_triggers": [
+        "When building a web application",
+        "When not using Expo Router for navigation"
+      ],
+      "dependencies": [
+        "npx expo"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "frontend-ui-dark-ts",
+      "description": "A modern dark-themed React UI system using Tailwind CSS and Framer Motion. Designed for dashboards, admin panels, and data-rich applications with glassmorphism effects and tasteful animations.",
+      "path": "frontend-ui-dark-ts/SKILL.md",
+      "tags": [
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "TypeScript",
+        "UI/UX",
+        "Dashboard",
+        "Admin Panel",
+        "Glassmorphism"
+      ],
+      "trigger_conditions": [
+        "Developing a modern web application with a dark theme",
+        "Creating a dashboard or admin panel",
+        "Adding animations and glassmorphism effects to a React app"
+      ],
+      "anti_triggers": [
+        "Using this skill for front-end development without Tailwind CSS or Framer Motion",
+        "For projects that do not require a dark theme"
+      ],
+      "dependencies": [
+        "npm",
+        "vite",
+        "typescript"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "landing-page-generator",
+      "description": "Generates high-converting Next.js/React landing pages with Tailwind CSS, using PAS, AIDA, and BAB frameworks for optimized copy/components.",
+      "path": "landing-page-generator/SKILL.md",
+      "tags": [
+        "nextjs",
+        "react",
+        "tailwind",
+        "landing-page",
+        "marketing"
+      ],
+      "trigger_conditions": [
+        "Product: [name]",
+        "Tagline: [one sentence value prop]",
+        "Target audience: [who they are]",
+        "Key pain point: [what problem you solve]",
+        "Key benefit: [primary outcome]",
+        "Pricing tiers: [free/pro/enterprise or describe]",
+        "Design style: dark-saas &#124; clean-minimal &#124; bold-startup &#124; enterprise",
+        "Copy framework: PAS &#124; AIDA &#124; BAB"
+      ],
+      "anti_triggers": [
+        "Landing page request without complete details",
+        "Incorrect design style or copy framework selection"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "mermaid-expert",
+      "description": "Create Mermaid diagrams for flowcharts, sequences, ERDs, and architectures. Masters syntax for all diagram types and styling.",
+      "path": "mermaid-expert/SKILL.md",
+      "tags": [
+        "mermaid",
+        "diagrams",
+        "flowcharts",
+        "ERD",
+        "architecture"
+      ],
+      "trigger_conditions": [
+        "Working on mermaid expert tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for mermaid expert"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to mermaid expert",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-ui-patterns",
+      "description": "Modern React UI patterns for loading states, error handling, and data fetching. Use when building UI components, handling async data, or managing UI states.",
+      "path": "react-ui-patterns/SKILL.md",
+      "tags": [
+        "React",
+        "UI Patterns",
+        "Async Data",
+        "Loading States",
+        "Error Handling"
+      ],
+      "trigger_conditions": [
+        "Building UI components",
+        "Handling async data",
+        "Managing UI states"
+      ],
+      "anti_triggers": [
+        "Showing stale UI",
+        "Swallowing errors silently",
+        "Not disabling buttons during operations"
+      ],
+      "dependencies": [
+        "React"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "remotion-best-practices",
+      "description": "Best practices for Remotion - Video creation in React",
+      "path": "remotion-best-practices/SKILL.md",
+      "tags": [
+        "remotion",
+        "video",
+        "react",
+        "animation",
+        "composition"
+      ],
+      "trigger_conditions": [
+        "Dealing with Remotion code"
+      ],
+      "anti_triggers": [
+        "Not dealing with Remotion code"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "web-design-guidelines",
+      "description": "Review files for compliance with Web Interface Guidelines.",
+      "path": "web-design-guidelines/SKILL.md",
+      "tags": [
+        "web design",
+        "code review",
+        "compliance"
+      ],
+      "trigger_conditions": [
+        "user requests file review",
+        "files need to be checked against guidelines"
+      ],
+      "anti_triggers": [
+        "general code debugging",
+        "non-web interface files"
+      ],
+      "dependencies": [
+        "WebFetch"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "web-scraper",
+      "description": "Web scraping skill that intelligently handles various data extraction scenarios, including pagination and multiple URLs.",
+      "path": "web-scraper/SKILL.md",
+      "tags": [
+        "web-scraping",
+        "data-extraction",
+        "automation",
+        "csv",
+        "json"
+      ],
+      "trigger_conditions": [
+        "When the user mentions 'scraper' or related topics",
+        "When the user mentions 'scraping' or related topics",
+        "When the user mentions 'extrair dados web' or related topics",
+        "When the user mentions 'web scraping' or related topics",
+        "When the user mentions 'raspar dados' or related topics",
+        "When the user mentions 'coletar dados site' or related topics"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to web scraper",
+        "A simpler",
+        "more specific tool can handle the request",
+        "The user needs general-purpose assistance without domain expertise"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
+      ],
+      "mcp_tools": [
+        "claude-code",
+        "antigravity",
+        "cursor",
+        "gemini-cli",
+        "codex-cli"
+      ]
+    }
+  ]
+}

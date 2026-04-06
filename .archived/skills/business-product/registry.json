@@ -1,0 +1,118 @@
+{
+  "category_id": "business-product",
+  "category_name": "Business Product",
+  "skills": [
+    {
+      "id": "analytics-product",
+      "description": "A skill that provides specialized assistance with analytics product, including PostHog, Mixpanel, events, funnels, cohorts, retention, north star metric, OKRs and product dashboards.",
+      "path": "analytics-product/SKILL.md",
+      "tags": [
+        "analytics",
+        "product",
+        "metrics",
+        "posthog",
+        "mixpanel"
+      ],
+      "trigger_conditions": [
+        "When you need specialized assistance with this domain"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to analytics product",
+        "A simpler",
+        "more specific tool can handle the request",
+        "The user needs general-purpose assistance without domain expertise"
+      ],
+      "dependencies": [
+        "Posthog"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "market-sizing-analysis",
+      "description": "Comprehensive market sizing methodologies for calculating Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM) for startup opportunities.",
+      "path": "market-sizing-analysis/SKILL.md",
+      "tags": [
+        "market-sizing",
+        "total-addressable-market",
+        "serviceable-available-market",
+        "serviceable-obtainable-market",
+        "startup-opportunities"
+      ],
+      "trigger_conditions": [
+        "Working on market sizing analysis tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for market sizing analysis"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to market sizing analysis",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "industry research reports",
+        "government statistics",
+        "public company filings and earnings",
+        "market research firms"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "product-manager-toolkit",
+      "description": "A comprehensive product management toolkit with essential tools and frameworks for discovery, prioritization, PRD creation, and execution.",
+      "path": "product-manager-toolkit/SKILL.md",
+      "tags": [
+        "product-management",
+        "discovery",
+        "prioritization",
+        "prd",
+        "customer-interviews",
+        "rice-framework"
+      ],
+      "trigger_conditions": [
+        "Need to prioritize a list of features",
+        "Conducting customer interviews for discovery",
+        "Creating a PRD (Product Requirements Document)",
+        "Executing product management workflows"
+      ],
+      "anti_triggers": [
+        "Purely theoretical discussions without practical implementation"
+      ],
+      "dependencies": [
+        "python",
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "senior-product-manager",
+      "description": "Act as a senior product manager for active software projects, providing decision-oriented product reviews grounded in current project artifacts and focusing on what to build next, why it matters, and what to defer.",
+      "path": "senior-product-manager/SKILL.md",
+      "tags": [
+        "product management",
+        "project assessment",
+        "feature prioritization",
+        "roadmap recommendations",
+        "decision memos",
+        "repository state",
+        "issues",
+        "current progress"
+      ],
+      "trigger_conditions": [
+        "User asks for project state assessment",
+        "User requests product tradeoff analysis",
+        "User seeks feature prioritization",
+        "User needs roadmap recommendations",
+        "User requires decision memos based on repository state",
+        "issues",
+        "and current progress"
+      ],
+      "anti_triggers": [
+        "Deep technical implementation plans or architecture-level design required",
+        "Detailed visual or interaction design recommendations needed"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}
