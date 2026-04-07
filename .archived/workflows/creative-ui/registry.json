@@ -1,6 +1,6 @@
 {
   "category_id": "creative-ui",
-  "category_name": "🎨 Creative & UI",
+  "category_name": "\ud83c\udfa8 Creative & UI",
   "workflows": [
     {
       "id": "dashboard-ui",
@@ -23,26 +23,6 @@
       ]
     },
     {
-      "id": "design-system",
-      "description": "Create and analyze design tokens",
-      "path": "design-system.md",
-      "triggers": [
-        "design-system"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "analyze",
-        "existing",
-        "tokens",
-        "components",
-        "guardrails",
-        "steps",
-        "understand",
-        "scope"
-      ]
-    },
-    {
       "id": "email-template",
       "description": "Design responsive emails",
       "path": "email-template.md",
@@ -60,26 +40,6 @@
         "test",
         "client",
         "outlook"
-      ]
-    },
-    {
-      "id": "landing-page",
-      "description": "Build landing pages (any stack)",
-      "path": "landing-page.md",
-      "triggers": [
-        "landing-page"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "html",
-        "css",
-        "page",
-        "react",
-        "vue",
-        "landing",
-        "stack",
-        "structure"
       ]
     }
   ]

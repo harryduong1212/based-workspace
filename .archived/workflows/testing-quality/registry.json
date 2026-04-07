@@ -1,6 +1,6 @@
 {
   "category_id": "testing-quality",
-  "category_name": "🧪 Testing & Quality",
+  "category_name": "\ud83e\uddea Testing & Quality",
   "workflows": [
     {
       "id": "code-review",
@@ -20,86 +20,6 @@
         "logic",
         "authentication",
         "guardrails"
-      ]
-    },
-    {
-      "id": "e2e-test",
-      "description": "End-to-end browser tests",
-      "path": "e2e-test.md",
-      "triggers": [
-        "e2e-test"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "test",
-        "playwright",
-        "cypress",
-        "e2e",
-        "detect",
-        "guardrails",
-        "steps",
-        "understand"
-      ]
-    },
-    {
-      "id": "playwright-test",
-      "description": "Browser automation tests with Playwright",
-      "path": "playwright-test.md",
-      "triggers": [
-        "playwright-test"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "playwright",
-        "test",
-        "css",
-        "selectors",
-        "tests",
-        "fill",
-        "submit",
-        "screenshot"
-      ]
-    },
-    {
-      "id": "test-coverage",
-      "description": "Improve test coverage for files",
-      "path": "test-coverage.md",
-      "triggers": [
-        "test-coverage"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "coverage",
-        "test",
-        "prioritize",
-        "understand",
-        "write",
-        "tests",
-        "guardrails",
-        "steps"
-      ]
-    },
-    {
-      "id": "unit-test",
-      "description": "Generate unit tests (detects testing framework)",
-      "path": "unit-test.md",
-      "triggers": [
-        "unit-test"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "test",
-        "mocking",
-        "testing",
-        "vitest",
-        "jest",
-        "unit",
-        "mocha",
-        "tests"
       ]
     }
   ]

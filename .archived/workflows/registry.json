@@ -1,33 +1,11 @@
 {
   "version": "1.0.0",
   "type": "workflow_registry",
-  "last_updated": "2026-03-29T16:11:36.584691Z",
+  "last_updated": "2026-04-07T08:09:44.690120Z",
   "categories": [
     {
-      "category_id": "accessibility",
-      "category_name": "♿ Accessibility",
-      "registry_path": ".archived/workflows/accessibility/registry.json",
-      "domain_tags": [
-        "automation",
-        "process",
-        "workflow",
-        "accessibility"
-      ]
-    },
-    {
-      "category_id": "ai-llm",
-      "category_name": "🤖 AI & LLM",
-      "registry_path": ".archived/workflows/ai-llm/registry.json",
-      "domain_tags": [
-        "automation",
-        "llm",
-        "workflow",
-        "process"
-      ]
-    },
-    {
       "category_id": "configuration",
-      "category_name": "⚙️ Configuration",
+      "category_name": "\u2699\ufe0f Configuration",
       "registry_path": ".archived/workflows/configuration/registry.json",
       "domain_tags": [
         "workflow",
@@ -38,7 +16,7 @@
     },
     {
       "category_id": "creative-ui",
-      "category_name": "🎨 Creative & UI",
+      "category_name": "\ud83c\udfa8 Creative & UI",
       "registry_path": ".archived/workflows/creative-ui/registry.json",
       "domain_tags": [
         "automation",
@@ -49,7 +27,7 @@
     },
     {
       "category_id": "custom-workflows",
-      "category_name": "🎯 Custom Workflows",
+      "category_name": "\ud83c\udfaf Custom Workflows",
       "registry_path": ".archived/workflows/custom-workflows/registry.json",
       "domain_tags": [
         "custom",
@@ -60,63 +38,8 @@
       ]
     },
     {
-      "category_id": "database",
-      "category_name": "🗄️ Database",
-      "registry_path": ".archived/workflows/database/registry.json",
-      "domain_tags": [
-        "automation",
-        "process",
-        "workflow",
-        "database"
-      ]
-    },
-    {
-      "category_id": "debugging",
-      "category_name": "🐛 Debugging",
-      "registry_path": ".archived/workflows/debugging/registry.json",
-      "domain_tags": [
-        "automation",
-        "debugging",
-        "workflow",
-        "process"
-      ]
-    },
-    {
-      "category_id": "deployment",
-      "category_name": "🚀 Deployment",
-      "registry_path": ".archived/workflows/deployment/registry.json",
-      "domain_tags": [
-        "automation",
-        "process",
-        "workflow",
-        "deployment"
-      ]
-    },
-    {
-      "category_id": "development",
-      "category_name": "🔧 Development",
-      "registry_path": ".archived/workflows/development/registry.json",
-      "domain_tags": [
-        "automation",
-        "process",
-        "workflow",
-        "development"
-      ]
-    },
-    {
-      "category_id": "documentation",
-      "category_name": "📚 Documentation",
-      "registry_path": ".archived/workflows/documentation/registry.json",
-      "domain_tags": [
-        "automation",
-        "documentation",
-        "workflow",
-        "process"
-      ]
-    },
-    {
       "category_id": "git-collaboration",
-      "category_name": "🔀 Git & Collaboration",
+      "category_name": "\ud83d\udd00 Git & Collaboration",
       "registry_path": ".archived/workflows/git-collaboration/registry.json",
       "domain_tags": [
         "git",
@@ -127,30 +50,8 @@
       ]
     },
     {
-      "category_id": "miscellaneous",
-      "category_name": "📦 Miscellaneous",
-      "registry_path": ".archived/workflows/miscellaneous/registry.json",
-      "domain_tags": [
-        "workflow",
-        "automation",
-        "process",
-        "miscellaneous"
-      ]
-    },
-    {
-      "category_id": "security",
-      "category_name": "🔒 Security",
-      "registry_path": ".archived/workflows/security/registry.json",
-      "domain_tags": [
-        "workflow",
-        "automation",
-        "process",
-        "security"
-      ]
-    },
-    {
       "category_id": "testing-quality",
-      "category_name": "🧪 Testing & Quality",
+      "category_name": "\ud83e\uddea Testing & Quality",
       "registry_path": ".archived/workflows/testing-quality/registry.json",
       "domain_tags": [
         "automation",

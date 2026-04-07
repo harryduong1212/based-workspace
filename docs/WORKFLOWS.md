@@ -44,16 +44,7 @@ Need to extend the workspace? Use these specialized creators:
 
 ---
 
-## 📂 Available Workflows (52)
-
-### ♿ Accessibility
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [accessibility-audit](.archived/workflows/accessibility/accessibility-audit.md) | /accessibility-audit | ✅ Ready | Perform comprehensive accessibility audit |
-
-</details>
+## 📂 Available Workflows (19)
 
 ### ⚙️ Configuration
 <details>
@@ -70,9 +61,7 @@ Need to extend the workspace? Use these specialized creators:
 | Workflow | Command | Status | Description |
 |---|---|---|---|
 | [dashboard-ui](.archived/workflows/creative-ui/dashboard-ui.md) | /dashboard-ui | ✅ Ready | Create admin dashboards (any stack) |
-| [design-system](.archived/workflows/creative-ui/design-system.md) | /design-system | ✅ Ready | Create and analyze design tokens |
 | [email-template](.archived/workflows/creative-ui/email-template.md) | /email-template | ✅ Ready | Design responsive emails |
-| [landing-page](.archived/workflows/creative-ui/landing-page.md) | /landing-page | ✅ Ready | Build landing pages (any stack) |
 
 </details>
 
@@ -92,37 +81,6 @@ Need to extend the workspace? Use these specialized creators:
 
 </details>
 
-### 🐛 Debugging
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [debug-error](.archived/workflows/debugging/debug-error.md) | /debug-error | ✅ Ready | Analyze errors and suggest fixes |
-| [debug-log](.archived/workflows/debugging/debug-log.md) | /debug-log | ✅ Ready | Add strategic logging/debugging |
-| [performance](.archived/workflows/debugging/performance.md) | /performance | ✅ Ready | Profile and optimize slow code |
-
-</details>
-
-### 📚 Documentation
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [api-docs](.archived/workflows/documentation/api-docs.md) | /api-docs | ✅ Ready | Generate API documentation (OpenAPI, JSDoc) |
-| [architecture](.archived/workflows/documentation/architecture.md) | /architecture | ✅ Ready | Create architecture diagrams (Mermaid, C4) |
-
-</details>
-
-### 📦 Miscellaneous
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [library](.archived/workflows/miscellaneous/library.md) | /library | ✅ Ready | ✅ Ready |
-| [nextjs-app](.archived/workflows/miscellaneous/nextjs-app.md) | /nextjs-app | ✅ Ready | ✅ Ready |
-
-</details>
-
 ### 🔀 Git & Collaboration
 <details>
 
@@ -135,62 +93,11 @@ Need to extend the workspace? Use these specialized creators:
 
 </details>
 
-### 🔒 Security
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [auth-implementation](.archived/workflows/security/auth-implementation.md) | /auth-implementation | ✅ Ready | Implement authentication patterns |
-| [dependency-check](.archived/workflows/security/dependency-check.md) | /dependency-check | ✅ Ready | Check for vulnerable dependencies |
-| [security-audit](.archived/workflows/security/security-audit.md) | /security-audit | ✅ Ready | Scan for vulnerabilities and secrets |
-
-</details>
-
-### 🔧 Development
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [cli-tool](.archived/workflows/development/cli-tool.md) | /cli-tool | ✅ Ready | Build command-line applications |
-| [migrate](.archived/workflows/development/migrate.md) | /migrate | ✅ Ready | Technology migrations (JS→TS, framework upgrades) |
-| [new-api](.archived/workflows/development/new-api.md) | /new-api | ✅ Ready | Create API endpoints (any backend) |
-| [new-component](.archived/workflows/development/new-component.md) | /new-component | ✅ Ready | Create reusable UI components (any framework) |
-| [new-feature](.archived/workflows/development/new-feature.md) | /new-feature | ✅ Ready | Full feature implementation from design to deployment |
-| [new-project](.archived/workflows/development/new-project.md) | /new-project | ✅ Ready | Scaffold any project (detects or asks for stack) |
-| [refactor](.archived/workflows/development/refactor.md) | /refactor | ✅ Ready | Improve code quality, extract, reduce duplication |
-
-</details>
-
-### 🗄️ Database
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [db-migrate](.archived/workflows/database/db-migrate.md) | /db-migrate | ✅ Ready | Create and run migrations |
-| [db-schema](.archived/workflows/database/db-schema.md) | /generate-db-schema | ✅ Ready | 🗄️ Transforms SRS into a finalized database schema and ERD |
-| [db-seed](.archived/workflows/database/db-seed.md) | /db-seed | ✅ Ready | Generate seed/test data |
-
-</details>
-
-### 🚀 Deployment
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [ci-cd](.archived/workflows/deployment/ci-cd.md) | /ci-cd | ✅ Ready | Set up CI/CD pipelines |
-| [deploy](.archived/workflows/deployment/deploy.md) | /deploy | ✅ Ready | Deploy to any platform (detects or configures) |
-| [docker](.archived/workflows/deployment/docker.md) | /docker | ✅ Ready | Containerize application |
-| [railway-deploy](.archived/workflows/deployment/railway-deploy.md) | /railway-deploy | ✅ Ready | Deploy to Railway |
-| [vercel-deploy](.archived/workflows/deployment/vercel-deploy.md) | /vercel-deploy | ✅ Ready | Deploy to Vercel |
-
-</details>
-
 ### 🤖 AI & LLM
 <details>
 
 | Workflow | Command | Status | Description |
 |---|---|---|---|
-| [ai-agent](.archived/workflows/ai-llm/ai-agent.md) | /ai-llm-ai-agent | ✅ Ready | ✅ Ready |
 | [prompt-engineering](.archived/workflows/ai-llm/prompt-engineering.md) | /ai-llm-prompt-engineering | ✅ Ready | ✅ Ready |
 | [rag-pipeline](.archived/workflows/ai-llm/rag-pipeline.md) | /ai-llm-rag-pipeline | ✅ Ready | ✅ Ready |
 | [workflow-creator](.archived/workflows/ai-llm/workflow-creator.md) | /workflow-creator | ✅ Ready | Create new antigravity workflows |
@@ -203,10 +110,6 @@ Need to extend the workspace? Use these specialized creators:
 | Workflow | Command | Status | Description |
 |---|---|---|---|
 | [code-review](.archived/workflows/testing-quality/code-review.md) | /code-review | ✅ Ready | Comprehensive code review |
-| [e2e-test](.archived/workflows/testing-quality/e2e-test.md) | /e2e-test | ✅ Ready | End-to-end browser tests |
-| [playwright-test](.archived/workflows/testing-quality/playwright-test.md) | /playwright-test | ✅ Ready | Browser automation tests with Playwright |
-| [test-coverage](.archived/workflows/testing-quality/test-coverage.md) | /test-coverage | ✅ Ready | Improve test coverage for files |
-| [unit-test](.archived/workflows/testing-quality/unit-test.md) | /unit-test | ✅ Ready | Generate unit tests (detects testing framework) |
 
 </details>
 

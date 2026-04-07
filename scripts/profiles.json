@@ -28,20 +28,7 @@
       ],
       "extends": [],
       "workflows": [
-        "api-docs",
-        "architecture",
         "code-review",
-        "debug-error",
-        "debug-log",
-        "performance",
-        "e2e-test",
-        "playwright-test",
-        "test-coverage",
-        "unit-test",
-        "new-project",
-        "new-feature",
-        "migrate",
-        "library",
         "feature-kickoff",
         "generate-feature-spec",
         "generate-db-schema",
@@ -76,12 +63,7 @@
         "prompt-engineer"
       ],
       "extends": [],
-      "workflows": [
-        "ai-agent",
-        "prompt-engineering",
-        "rag-pipeline",
-        "workflow-creator"
-      ]
+      "workflows": []
     },
     "n8n-automation-core": {
       "description": "Node-based visual automation, webhook processing, and scraping.",
@@ -129,9 +111,7 @@
       ],
       "extends": [],
       "workflows": [
-        "new-api",
         "generate-api-spec",
-        "refactor",
         "generate-sequence-diagram"
       ]
     },
@@ -153,9 +133,6 @@
       ],
       "extends": [],
       "workflows": [
-        "db-migrate",
-        "db-schema",
-        "db-seed",
         "generate-db-schema"
       ]
     },
@@ -177,12 +154,7 @@
       ],
       "extends": [],
       "workflows": [
-        "new-component",
         "dashboard-ui",
-        "landing-page",
-        "nextjs-app",
-        "accessibility-audit",
-        "design-system",
         "email-template"
       ]
     },
@@ -200,9 +172,7 @@
         "devops-troubleshooter"
       ],
       "extends": [],
-      "workflows": [
-        "ci-cd"
-      ]
+      "workflows": []
     },
     "devops-cloud-iac": {
       "description": "Cloud infrastructure, Terraform modules, and Kubernetes environments.",
@@ -227,12 +197,7 @@
         "k8s-manifest-generator"
       ],
       "extends": [],
-      "workflows": [
-        "deploy",
-        "docker",
-        "vercel-deploy",
-        "railway-deploy"
-      ]
+      "workflows": []
     },
     "devops-os": {
       "description": "System administration, Bash shell logic, and OS-level scripting.",
@@ -246,9 +211,7 @@
         "bash-linux"
       ],
       "extends": [],
-      "workflows": [
-        "cli-tool"
-      ]
+      "workflows": []
     },
     "devops-core": {
       "description": "Aggregated operations, infrastructure, and deployment capabilities.",
@@ -282,11 +245,7 @@
         "frontend-security-coder"
       ],
       "extends": [],
-      "workflows": [
-        "security-audit",
-        "auth-implementation",
-        "dependency-check"
-      ]
+      "workflows": []
     },
     "creator-pro": {
       "description": "Workspace Automation & AI Capability Engineer.",
