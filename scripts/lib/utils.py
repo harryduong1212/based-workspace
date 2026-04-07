@@ -6,8 +6,8 @@ import re
 SCRIPTS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(SCRIPTS_DIR)
 PROFILES_FILE = os.path.join(SCRIPTS_DIR, "profiles.json")
-SKILLS_MD = os.path.join(BASE_DIR, "SKILLS.md")
-WORKFLOWS_MD = os.path.join(BASE_DIR, "WORKFLOWS.md")
+SKILLS_MD = os.path.join(BASE_DIR, "docs", "SKILLS.md")
+WORKFLOWS_MD = os.path.join(BASE_DIR, "docs", "WORKFLOWS.md")
 TMP_DIR = os.path.join(BASE_DIR, "tmp")
 
 def load_json(file_path):
@@ -43,10 +43,10 @@ def get_root_ids(file_path, pattern):
     return ids
 
 def get_valid_skills():
-    return get_root_ids(SKILLS_MD, r"\| \[([a-zA-Z0-9_-]+)\]\(.archived/skills/")
+    return get_root_ids(SKILLS_MD, r"\| \[([a-zA-Z0-9_-]+)\]\(\.?\.?/?\.archived/skills/")
 
 def get_valid_workflows():
-    return get_root_ids(WORKFLOWS_MD, r"\| \[([a-zA-Z0-9_-]+)\]\(.archived/workflows/")
+    return get_root_ids(WORKFLOWS_MD, r"\| \[([a-zA-Z0-9_-]+)\]\(\.?\.?/?\.archived/workflows/")
 def format_label(text):
     """Standardizes casing for technical acronyms (e.g., Ai Ml -> AI ML, Api -> API)."""
     if not text:

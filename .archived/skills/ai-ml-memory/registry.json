@@ -3,45 +3,6 @@
   "category_name": "AI ML Memory",
   "skills": [
     {
-      "id": "bdistill-knowledge-extraction",
-      "description": "Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed.",
-      "path": "bdistill-knowledge-extraction/SKILL.md",
-      "tags": [
-        "ai",
-        "knowledge-extraction",
-        "domain-specific",
-        "data-moat",
-        "mcp",
-        "reference-data"
-      ],
-      "trigger_conditions": [
-        "When you need structured reference data on any domain (medical",
-        "legal",
-        "finance",
-        "cybersecurity)",
-        "When building lookup tables",
-        "Q&A datasets",
-        "or research corpora",
-        "When generating training data for traditional ML models (regression",
-        "classification — NOT competing LLMs)",
-        "When you want cross-model comparison on domain knowledge"
-      ],
-      "anti_triggers": [
-        "When extracting training data for other AI models"
-      ],
-      "dependencies": [
-        "pip",
-        "bdistill",
-        "Claude"
-      ],
-      "mcp_tools": [
-        "claude",
-        "cursor",
-        "codex",
-        "copilot"
-      ]
-    },
-    {
       "id": "context-driven-development",
       "description": "Guide for implementing and maintaining context as a managed artifact alongside code, enabling consistent AI interactions and team alignment through structured project documentation.",
       "path": "context-driven-development/SKILL.md",
@@ -158,36 +119,6 @@
       "mcp_tools": []
     },
     {
-      "id": "context-window-management",
-      "description": "Optimize LLM applications handling millions of conversations by managing context windows effectively, avoiding token limits and context rot.",
-      "path": "context-window-management/SKILL.md",
-      "tags": [
-        "context-engineering",
-        "context-summarization",
-        "context-trimming",
-        "context-routing",
-        "token-counting",
-        "context-prioritization"
-      ],
-      "trigger_conditions": [
-        "LLM applications handling millions of conversations",
-        "systems hit token limits",
-        "suffer context rot"
-      ],
-      "anti_triggers": [
-        "Naive Truncation",
-        "Ignoring Token Costs",
-        "One-Size-Fits-All"
-      ],
-      "dependencies": [
-        "rag-implementation",
-        "conversation-memory",
-        "prompt-caching",
-        "llm-npc-dialogue"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "hierarchical-agent-memory",
       "description": "Scoped CLAUDE.md memory system that reduces context token spend by creating directory-level context files, tracking savings via dashboard, and routing agents to the right sub-context.",
       "path": "hierarchical-agent-memory/SKILL.md",
@@ -217,37 +148,6 @@
       "mcp_tools": []
     },
     {
-      "id": "hybrid-search-implementation",
-      "description": "Combine vector similarity and keyword-based search to improve retrieval in RAG systems, search engines, or when recall is insufficient.",
-      "path": "hybrid-search-implementation/SKILL.md",
-      "tags": [
-        "hybrid",
-        "search",
-        "vector",
-        "keyword",
-        "RAG",
-        "recall"
-      ],
-      "trigger_conditions": [
-        "Building RAG systems with improved recall",
-        "Combining semantic understanding with exact matching",
-        "Handling queries with specific terms (names",
-        "codes)",
-        "Improving search for domain-specific vocabulary"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to hybrid search implementation"
-      ],
-      "dependencies": [
-        "Clarify goals",
-        "constraints",
-        "and required inputs",
-        "Apply relevant best practices and validate outcomes",
-        "Provide actionable steps and verification"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "rag-engineer",
       "description": "RAG Engineer bridges the gap between raw documents and LLM understanding, focusing on retrieval quality to determine generation quality.",
       "path": "rag-engineer/SKILL.md",
@@ -271,35 +171,6 @@
         "llm-fundamentals",
         "understanding-of-embeddings",
         "basic-nlp-concepts"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "rag-implementation",
-      "description": "RAG Implementation Workflow covering embedding selection, vector database setup, chunking strategies, retrieval optimization, and LLM integration.",
-      "path": "rag-implementation/SKILL.md",
-      "tags": [
-        "rag",
-        "embedding-selection",
-        "vector-database-setup",
-        "chunking-strategies",
-        "retrieval-optimization",
-        "llm-integration"
-      ],
-      "trigger_conditions": [
-        "Building RAG-powered applications",
-        "Implementing semantic search",
-        "Creating knowledge-grounded AI",
-        "Setting up document Q&A systems",
-        "Optimizing retrieval quality"
-      ],
-      "anti_triggers": [
-        "Low-latency",
-        "high-throughput applications"
-      ],
-      "dependencies": [
-        "Vector database",
-        "LLM provider"
       ],
       "mcp_tools": []
     },

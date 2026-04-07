@@ -1,12 +1,12 @@
 # based-workspace
 
-**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 1,300+ skills, 50+ workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
+**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 400+ skills, 50+ workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
 
 ## 🚀 Addressing AI Context Challenges
 
 Most AI coding assistants face challenges with context management—either having insufficient information about your specific domain or too much irrelevant data. This workspace addresses these issues through two primary mechanisms:
 
--   **Modular Context Management**: The **Inheritance Engine** (`workspace_manager.py`) symlinks specific subsets of specialized assets based on role-based profiles (e.g., `backend-dev`, `devops-ops`).
+-   **Modular Context Management**: The **Inheritance Engine** (`workspace_manager.py`) symlinks specific subsets of specialized assets based on role-based profiles (e.g., `backend-core`, `devops-core`).
 -   **Structured Workflows**: A suite of specialized CLIs and workflows helps automate repetitive tasks like registry maintenance, tagging, and dependency resolution.
 -   **Local Infrastructure**: Built-in containers for PostgreSQL (vector storage) and n8n (automation) provide a standard local backbone for integrated workflows.
 
@@ -14,7 +14,7 @@ Most AI coding assistants face challenges with context management—either havin
 
 ## Documentation Hub
 
-- **[SKILLS.md](docs/SKILLS.md)**: Browse 212+ curated **Base Skills** and 1,100+ archived modules.
+- **[SKILLS.md](docs/SKILLS.md)**: Browse 212+ curated **Base Skills** and 120+ archived modules.
 - **[WORKFLOWS.md](docs/WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
 - **[RULES.md](docs/RULES.md)**: Behavioral guardrails applied to every AI interaction.
 - **[MCP_GUIDE.md](docs/MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
@@ -155,17 +155,17 @@ python scripts/profile_manager.py stats
 
 **Load a task-focused backend context (~140 skills):**
 ```bash
-python scripts/workspace_manager.py --profile backend-dev
+python scripts/workspace_manager.py --profile backend-ops
 ```
 
-**Load an "Ultimate" full-stack context (~221 skills):**
+**Load an "Ultimate" system architect context (~230 skills):**
 ```bash
-python scripts/workspace_manager.py --profile backend-ultimate
+python scripts/workspace_manager.py --profile architect-ultimate
 ```
 
 **Switch to DevOps context to deploy:**
 ```bash
-python scripts/workspace_manager.py --profile devops-ops --clear
+python scripts/workspace_manager.py --profile devops-core --clear
 ```
 
 **Audit your profiles for broken links:**
@@ -271,7 +271,7 @@ based-workspace/
 │   └── workflows/                ←   Active slash-command workflows
 │       └── <workflow>/WORKFLOW.md
 │
-├── .archived/                    ← 🗃️ Library of 1,300+ available assets
+├── .archived/                    ← 🗃️ Library of 400+ available assets
 │   ├── skills/                   ←   Hierarchical expertise modules
 │   │   ├── <category>/
 │   │   │   └── <skill-name>/SKILL.md
@@ -303,7 +303,7 @@ based-workspace/
 ├── docs/                         ← 📚 Centralized documentation hub
 │   ├── n8n-atom/                 ←   n8n setup, architecture and CI/CD
 │   ├── RULES.md                  ←   Catalogue of active rules
-│   ├── SKILLS.md                 ←   Catalogue of all 1,300+ skills
+│   ├── SKILLS.md                 ←   Catalogue of all 400+ skills
 │   ├── WORKFLOWS.md              ←   Catalogue of all 50+ workflows
 │   ├── MCP_GUIDE.md              ←   Comprehensive guide for MCP servers
 │   └── ADVANCED_USAGE.md         ←   Advanced ecosystem customization

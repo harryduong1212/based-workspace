@@ -3,34 +3,6 @@
   "category_name": "AI ML MCP",
   "skills": [
     {
-      "id": "agent-tool-builder",
-      "description": "Expert in designing tools for the interface between LLMs and the outside world, focusing on clear schema design, error handling, and avoiding vague descriptions.",
-      "path": "agent-tool-builder/SKILL.md",
-      "tags": [
-        "agent-tools",
-        "function-calling",
-        "tool-schema-design",
-        "mcp-tools",
-        "tool-validation",
-        "tool-error-handling"
-      ],
-      "trigger_conditions": [
-        "Designing tools for LLMs",
-        "Creating clear JSON Schema",
-        "Guiding LLM tool usage with examples",
-        "Handling errors to help LLM recover"
-      ],
-      "anti_triggers": [
-        "Vague descriptions",
-        "Silent failures",
-        "Having too many tools"
-      ],
-      "dependencies": [
-        "JSON Schema"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "ai-native-cli",
       "description": "Design specification for building CLI tools that AI agents can safely use, covering structured JSON output, error handling, input contracts, safety guardrails, exit codes, and agent self-description.",
       "path": "ai-native-cli/SKILL.md",

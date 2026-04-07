@@ -17,12 +17,11 @@
 
 > **Source:** `terminal-environment.md`
 
-| # | Rule | Purpose |
-|---|---|---|
 | 1 | Use the syntax of the Primary Shell defined in metadata | OS compliance — avoid shell-specific aliases |
 | 2 | Probe command availability before complex chains | Safety — avoid broken execution |
 | 3 | Use the Container Engine defined in metadata | Container engine preference (Podman/Docker) |
 | 4 | Prefer `npx` or Python scripts for OS-dependent file operations | Cross-platform reliability |
+| 5 | Always use forward slashes (/) for path consistency | Path reliability across platforms |
 
 ---
 
@@ -42,6 +41,7 @@
 | 6 | Consult `.agents/WORKFLOWS.md` when a task matches a repeatable workflow | 📋 Workflow Reuse |
 | 7 | Always verify changes compile/lint/pass tests before reporting completion | ✅ Verification |
 | 8 | Use syntax appropriate for the Primary Shell of the current environment | 💻 Environment |
+| 9 | Store temporary agent files/logs natively in the `tmp/` root | 📂 File System |
 
 ---
 
@@ -58,4 +58,4 @@ Rules are enforced automatically on every interaction within this workspace.
 
 ---
 
-> **Total Active Rules:** 13 (4 global + 9 project)
+> **Total Active Rules:** 14 (5 global + 9 project)

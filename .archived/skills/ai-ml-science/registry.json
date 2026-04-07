@@ -30,32 +30,6 @@
       "mcp_tools": []
     },
     {
-      "id": "context-degradation",
-      "description": "Language models exhibit predictable degradation patterns as context length increases, impacting performance and reliability.",
-      "path": "context-degradation/SKILL.md",
-      "tags": [
-        "context degradation",
-        "language models",
-        "attention mechanisms",
-        "compaction",
-        "isolation"
-      ],
-      "trigger_conditions": [
-        "Agent performance degrades unexpectedly during long conversations",
-        "Debugging cases where agents produce incorrect or irrelevant outputs",
-        "Designing systems that must handle large contexts reliably"
-      ],
-      "anti_triggers": [
-        "Short context lengths where models perform well",
-        "Contexts without significant information overlap"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "deep-research",
       "description": "Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports.",
       "path": "deep-research/SKILL.md",

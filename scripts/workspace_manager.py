@@ -5,8 +5,8 @@ Workspace Context Manager
 Exclusive controller for the .agents/ skill/workflow symlink surface.
 
 Usage:
-    python scripts/workspace_manager.py --profile java-backend-dev
-    python scripts/workspace_manager.py --skills "java-pro,api-patterns,postgresql-optimization"
+    python scripts/workspace_manager.py --profile creator-pro
+    python scripts/workspace_manager.py --skills "n8n-workflow-patterns,api-patterns,postgresql-optimization"
 """
 
 from __future__ import annotations
@@ -115,8 +115,7 @@ def build_skill_index() -> dict[str, dict]:
                 "category_name": cat_name,
                 "description": skill.get("description", ""),
                 "abs_path": skill_dir,
-                "triggers": skill.get("triggers", []),
-                "tags": skill.get("tags", []),
+                "raw_skill_data": skill,
             }
 
     return index
@@ -357,14 +356,15 @@ def activate_skills(skill_ids: list[str], wipe_first: bool = False) -> None:
         for preserved in PRESERVED_DIRS:
             if (SKILLS_ACTIVE / preserved).exists():
                 entry = index.get(preserved)
-                registry_data["skills"].append({
-                    "id": preserved,
-                    "description": entry["description"] if entry else "Preserved workspace orchestrator",
-                    "path": f"{preserved}/SKILL.md",
-                    "root_category_id": entry["category_id"] if entry else "orchestration",
-                    "triggers": entry.get("triggers", []) if entry else [],
-                    "tags": entry.get("tags", []) if entry else []
-                })
+                if entry and "raw_skill_data" in entry:
+                    registry_data["skills"].append(dict(entry["raw_skill_data"]))
+                else:
+                    registry_data["skills"].append({
+                        "id": preserved,
+                        "description": "Preserved workspace orchestrator",
+                        "path": f"{preserved}/SKILL.md",
+                        "tags": []
+                    })
 
         with open(registry_path, "w", encoding="utf-8") as fh:
             json.dump(registry_data, fh, indent=2)
@@ -411,14 +411,15 @@ def activate_skills(skill_ids: list[str], wipe_first: bool = False) -> None:
         loaded.append({"id": sid, **entry})
 
         if sid not in existing_ids:
-            registry_data["skills"].append({
-                "id": sid,
-                "description": entry["description"],
-                "path": f"{sid}/SKILL.md",
-                "root_category_id": entry["category_id"],
-                "triggers": entry.get("triggers", []),
-                "tags": entry.get("tags", [])
-            })
+            if "raw_skill_data" in entry:
+                registry_data["skills"].append(dict(entry["raw_skill_data"]))
+            else:
+                registry_data["skills"].append({
+                    "id": sid,
+                    "description": entry["description"],
+                    "path": f"{sid}/SKILL.md",
+                    "tags": []
+                })
             existing_ids.add(sid)
 
     # Ensure preserved skills (like workspace-configurator) are in registry.
@@ -426,14 +427,15 @@ def activate_skills(skill_ids: list[str], wipe_first: bool = False) -> None:
         if preserved not in existing_ids and (SKILLS_ACTIVE / preserved).exists():
             # Try to get metadata from index or the folder itself.
             entry = index.get(preserved)
-            registry_data["skills"].append({
-                "id": preserved,
-                "description": entry["description"] if entry else "Preserved workspace orchestrator",
-                "path": f"{preserved}/SKILL.md",
-                "root_category_id": entry["category_id"] if entry else "orchestration",
-                "triggers": entry.get("triggers", []) if entry else [],
-                "tags": entry.get("tags", []) if entry else []
-            })
+            if entry and "raw_skill_data" in entry:
+                registry_data["skills"].append(dict(entry["raw_skill_data"]))
+            else:
+                registry_data["skills"].append({
+                    "id": preserved,
+                    "description": "Preserved workspace orchestrator",
+                    "path": f"{preserved}/SKILL.md",
+                    "tags": []
+                })
             existing_ids.add(preserved)
 
     with open(registry_path, "w", encoding="utf-8") as fh:
@@ -626,14 +628,19 @@ def main() -> None:
     except Exception:
         pass
     
-    profile_list = ", ".join(sorted(profiles_data.keys())) if profiles_data else "None found"
+    profile_descriptions = []
+    if profiles_data:
+        for name in sorted(profiles_data.keys()):
+            desc = profiles_data[name].get("description", "No description")
+            profile_descriptions.append(f"  {name:<25} : {desc}")
+    profile_list = "\n".join(profile_descriptions) if profile_descriptions else "  None found"
 
     parser = argparse.ArgumentParser(
         description="Workspace Context Manager — configure which skills and workflows are active.",
         epilog="Available Profiles:\n"
-        f"  {profile_list}\n\n"
+        f"{profile_list}\n\n"
         "Examples:\n"
-        "  python scripts/workspace_manager.py --profile java-backend-dev\n"
+        "  python scripts/workspace_manager.py --profile creator-pro\n"
         '  python scripts/workspace_manager.py --skills "n8n-workflow-patterns"\n'
         '  python scripts/workspace_manager.py --workflows "feature-kickoff"\n'
         "  python scripts/workspace_manager.py --clear\n",

@@ -28,36 +28,6 @@
       "mcp_tools": []
     },
     {
-      "id": "beautiful-prose",
-      "description": "A hard-edged writing style contract for producing timeless, forceful English prose without modern AI tics and filler.",
-      "path": "beautiful-prose/SKILL.md",
-      "tags": [
-        "prose",
-        "writing",
-        "style",
-        "clean",
-        "exact",
-        "concrete",
-        "AI-free"
-      ],
-      "trigger_conditions": [
-        "Users ask for prose or rewrites that must be clean",
-        "exact",
-        "concrete",
-        "and free of AI cadence",
-        "filler",
-        "or therapeutic tone."
-      ],
-      "anti_triggers": [
-        "Use when this skill should NOT be used."
-      ],
-      "dependencies": [
-        "n8n",
-        "atom8n"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "explain-like-socrates",
       "description": "Explains concepts using Socratic-style dialogue, guiding users toward understanding through reflective reasoning and analogies.",
       "path": "explain-like-socrates/SKILL.md",
@@ -105,68 +75,6 @@
       ],
       "dependencies": [
         "ARGUMENTS"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "llm-structured-output",
-      "description": "Extract typed, validated data from LLM API responses using response_format, tool_use, and schema-constrained decoding across OpenAI, Anthropic, and Google APIs.",
-      "path": "llm-structured-output/SKILL.md",
-      "tags": [
-        "llm",
-        "structured-output",
-        "json-schema",
-        "tool-use",
-        "response-format",
-        "constrained-decoding"
-      ],
-      "trigger_conditions": [
-        "The user needs to extract structured data (JSON objects",
-        "arrays",
-        "enums) from an LLM response",
-        "The user is building a pipeline where LLM output feeds directly into code (database writes",
-        "API calls",
-        "UI rendering)",
-        "The user asks about response_format",
-        "json_mode",
-        "json_object",
-        "or json_schema in OpenAI"
-      ],
-      "anti_triggers": [
-        "The user wants free-form text generation (summaries",
-        "essays",
-        "chat)"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "prompt-caching",
-      "description": "A caching specialist who has reduced LLM costs by 90% through strategic caching at multiple levels: prompt prefixes, full responses, and semantic similarity matches.",
-      "path": "prompt-caching/SKILL.md",
-      "tags": [
-        "caching",
-        "LLM",
-        "prompt-prefixes",
-        "response-caching",
-        "semantic-similarity",
-        "cache-invalidation"
-      ],
-      "trigger_conditions": [
-        "Reducing LLM costs by 90%",
-        "Implementing systems for caching at multiple levels"
-      ],
-      "anti_triggers": [
-        "Caching with high temperature",
-        "No cache invalidation",
-        "Caching everything"
-      ],
-      "dependencies": [
-        "LLM",
-        "caching system"
       ],
       "mcp_tools": []
     },

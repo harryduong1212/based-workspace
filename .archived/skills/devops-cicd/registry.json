@@ -156,29 +156,6 @@
         "kubernetes"
       ],
       "mcp_tools": []
-    },
-    {
-      "id": "gitlab-ci-patterns",
-      "description": "Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.",
-      "path": "gitlab-ci-patterns/SKILL.md",
-      "tags": [
-        "gitlab-ci",
-        "ci/cd",
-        "pipeline"
-      ],
-      "trigger_conditions": [
-        "Automate GitLab-based CI/CD",
-        "Implement multi-stage pipelines",
-        "Configure GitLab Runners"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to gitlab ci patterns",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "gitlab"
-      ],
-      "mcp_tools": []
     }
   ]
 }

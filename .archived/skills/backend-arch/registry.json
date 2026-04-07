@@ -201,30 +201,6 @@
       "mcp_tools": []
     },
     {
-      "id": "code-refactoring-refactor-clean",
-      "description": "Refactor code to improve quality, maintainability, and performance using clean code principles, SOLID design patterns, and modern software engineering best practices.",
-      "path": "code-refactoring-refactor-clean/SKILL.md",
-      "tags": [
-        "code refactoring",
-        "SOLID",
-        "clean code"
-      ],
-      "trigger_conditions": [
-        "Refactoring tangled or hard-to-maintain code",
-        "Reducing duplication",
-        "complexity",
-        "or code smells",
-        "Improving testability and design consistency"
-      ],
-      "anti_triggers": [
-        "You only need a small one-line fix",
-        "Refactoring is prohibited due to change freeze",
-        "The request is for documentation only"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
       "id": "codebase-cleanup-refactor-clean",
       "description": "A code refactoring skill that helps improve the quality, maintainability, and performance of large codebases by applying clean code principles and SOLID design patterns.",
       "path": "codebase-cleanup-refactor-clean/SKILL.md",
@@ -243,55 +219,6 @@
         "You only need a tiny targeted fix",
         "Refactoring is blocked by policy or deadlines",
         "The request is documentation-only"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "id": "cqrs-implementation",
-      "description": "Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.",
-      "path": "cqrs-implementation/SKILL.md",
-      "tags": [
-        "CQRS",
-        "architecture",
-        "read-write-segregation",
-        "event-sourcing"
-      ],
-      "trigger_conditions": [
-        "Separating read and write concerns",
-        "Scaling reads independently from writes",
-        "Building event-sourced systems"
-      ],
-      "anti_triggers": [
-        "The domain is simple and CRUD is sufficient",
-        "You cannot operate separate read/write models",
-        "Strong immediate consistency is required everywhere"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "id": "ddd-strategic-design",
-      "description": "Design DDD strategic artifacts including subdomains, bounded contexts, and ubiquitous language for complex business domains.",
-      "path": "ddd-strategic-design/SKILL.md",
-      "tags": [
-        "ddd",
-        "strategic-design",
-        "bounded-context",
-        "ubiquitous-language"
-      ],
-      "trigger_conditions": [
-        "Defining core",
-        "supporting",
-        "and generic subdomains",
-        "Splitting a monolith or service landscape by domain boundaries",
-        "Aligning teams and ownership with bounded contexts",
-        "Building a shared ubiquitous language with domain experts"
-      ],
-      "anti_triggers": [
-        "The domain model is stable and already well bounded",
-        "You need tactical code patterns only",
-        "The task is purely infrastructure or UI oriented"
       ],
       "dependencies": [],
       "mcp_tools": []
@@ -366,31 +293,6 @@
         "Splunk"
       ],
       "mcp_tools": []
-    },
-    {
-      "id": "event-sourcing-architect",
-      "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns.",
-      "path": "event-sourcing-architect/SKILL.md",
-      "tags": [
-        "event-sourcing",
-        "CQRS",
-        "event-driven-architecture",
-        "saga-orchestration",
-        "projection-building"
-      ],
-      "trigger_conditions": [
-        "Building systems requiring complete audit trails",
-        "Implementing complex business workflows with compensating actions",
-        "Designing systems needing temporal queries"
-      ],
-      "anti_triggers": [
-        "The domain is simple and CRUD is sufficient",
-        "You cannot support event store operations or projections"
-      ],
-      "dependencies": [],
-      "mcp_tools": [
-        "dbos-*"
-      ]
     },
     {
       "id": "event-store-design",
@@ -524,35 +426,6 @@
       "mcp_tools": []
     },
     {
-      "id": "kpi-dashboard-design",
-      "description": "Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions.",
-      "path": "kpi-dashboard-design/SKILL.md",
-      "tags": [
-        "KPI",
-        "dashboard",
-        "business intelligence",
-        "executive dashboard",
-        "sales",
-        "marketing",
-        "operations",
-        "finance"
-      ],
-      "trigger_conditions": [
-        "Designing executive dashboards",
-        "Selecting meaningful KPIs",
-        "Building real-time monitoring displays",
-        "Creating department-specific metrics views",
-        "Improving existing dashboard layouts",
-        "Establishing metric governance"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to kpi dashboard design",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
       "id": "legacy-modernizer",
       "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility.",
       "path": "legacy-modernizer/SKILL.md",
@@ -638,32 +511,6 @@
       "mcp_tools": []
     },
     {
-      "id": "monorepo-architect",
-      "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development.",
-      "path": "monorepo-architect/SKILL.md",
-      "tags": [
-        "monorepo",
-        "Nx",
-        "Turborepo",
-        "Bazel",
-        "Lerna"
-      ],
-      "trigger_conditions": [
-        "Setting up a new monorepo from scratch",
-        "Migrating from polyrepo to monorepo",
-        "Optimizing slow CI/CD pipelines",
-        "Sharing code between multiple applications",
-        "Managing dependencies across projects",
-        "Implementing consistent tooling across teams"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to monorepo architect",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
       "id": "network-engineer",
       "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
       "path": "network-engineer/SKILL.md",
@@ -716,32 +563,6 @@
         "OpenTelemetry",
         "APM platforms",
         "Metrics & monitoring tools"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "performance-optimizer",
-      "description": "Identifies and fixes performance bottlenecks in code, databases, and APIs. Measures before and after to prove improvements.",
-      "path": "performance-optimizer/SKILL.md",
-      "tags": [
-        "performance",
-        "optimization",
-        "code",
-        "database",
-        "api"
-      ],
-      "trigger_conditions": [
-        "App is slow or laggy",
-        "User complains about performance",
-        "Page load times are high"
-      ],
-      "anti_triggers": [
-        "Premature optimization",
-        "Micro-optimizations"
-      ],
-      "dependencies": [
-        "node.js",
-        "database"
       ],
       "mcp_tools": []
     },
@@ -919,34 +740,6 @@
         "lack of clear separation of concerns"
       ],
       "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "id": "workspace-analyzer",
-      "description": "Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code.",
-      "path": "workspace-analyzer/SKILL.md",
-      "tags": [
-        "architecture",
-        "analysis",
-        "investigation",
-        "codebase",
-        "redundancy",
-        "integrations"
-      ],
-      "trigger_conditions": [
-        "User asks to analyze, investigate, scan, or explain the current workspace or a specific repository.",
-        "User has just fetched or cloned a repository and wants to understand it.",
-        "User asks for a high-level overview of architecture, business logic, or directory structure.",
-        "User asks to identify technical debt, redundant code, or core dependencies within the current project."
-      ],
-      "anti_triggers": [
-        "User explicitly requests modifications or changes to the codebase during analysis."
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres",
-        "docker"
-      ],
       "mcp_tools": []
     }
   ]

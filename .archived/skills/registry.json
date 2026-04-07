@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "type": "skill_registry",
-  "last_updated": "2026-04-06T09:29:32.560595Z",
+  "last_updated": "2026-04-07T07:07:00.000000Z",
   "categories": [
     {
       "category_id": "ai-ml-agents",
@@ -651,19 +651,6 @@
         "Penetration Testing",
         "Security Skills"
       ]
-    },
-    {
-      "category_id": "security-testing",
-      "category_name": "Security Testing",
-      "registry_path": ".archived/skills/security-testing/registry.json",
-      "category_tags": [
-        "Security",
-        "Vulnerability Scanning",
-        "Penetration Testing",
-        "Network Analysis",
-        "Malware Detection",
-        "Compliance Auditing"
-      ]
     }
   ]
-}
+}

@@ -3,33 +3,6 @@
   "category_name": "Data Admin",
   "skills": [
     {
-      "id": "local-db-migration",
-      "description": "Manages schema migrations and vector initialization for the based-workspace-postgres container.",
-      "path": "local-db-migration/SKILL.md",
-      "tags": [
-        "postgres",
-        "vector",
-        "migration",
-        "schema",
-        "connection"
-      ],
-      "trigger_conditions": [
-        "Initializing vector store",
-        "Managing database schema",
-        "Interacting with ai_memory database"
-      ],
-      "anti_triggers": [
-        "Modifying databases other than ai_memory",
-        "Targeting non-based-workspace-postgres container"
-      ],
-      "dependencies": [
-        "based-workspace-postgres"
-      ],
-      "mcp_tools": [
-        "postgres-memory"
-      ]
-    },
-    {
       "id": "vector-database-engineer",
       "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similarity search.",
       "path": "vector-database-engineer/SKILL.md",

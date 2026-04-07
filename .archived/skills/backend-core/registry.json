@@ -329,55 +329,6 @@
       "mcp_tools": []
     },
     {
-      "id": "pdf-official",
-      "description": "A comprehensive guide on PDF processing using Python libraries and command-line tools. It covers merging, splitting, extracting text and tables, creating new PDFs, and more.",
-      "path": "pdf-official/SKILL.md",
-      "tags": [
-        "PDF",
-        "Python",
-        "Command-Line Tools",
-        "Text Extraction",
-        "Table Extraction"
-      ],
-      "trigger_conditions": [
-        "Need to process PDF files for data extraction or manipulation",
-        "Creating new PDF documents programmatically",
-        "Handling scanned PDFs with OCR"
-      ],
-      "anti_triggers": [
-        "Simple text editing tasks that do not involve PDF processing",
-        "Basic file operations unrelated to PDFs"
-      ],
-      "dependencies": [
-        "Python",
-        "poppler-utils",
-        "qpdf",
-        "pdftk"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "performance-profiling",
-      "description": "Performance profiling principles, including measurement, analysis, and optimization techniques.",
-      "path": "performance-profiling/SKILL.md",
-      "tags": [
-        "performance",
-        "profiling",
-        "optimization"
-      ],
-      "trigger_conditions": [
-        "development phase",
-        "CI/CD pipeline",
-        "production monitoring"
-      ],
-      "anti_triggers": [
-        "guessing at problems",
-        "micro-optimizing"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
       "id": "postgres-best-practices",
       "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
       "path": "postgres-best-practices/SKILL.md",
@@ -710,39 +661,6 @@
       ],
       "dependencies": [
         "TypeScript"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "uv-package-manager",
-      "description": "Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.",
-      "path": "uv-package-manager/SKILL.md",
-      "tags": [
-        "uv",
-        "Python",
-        "package manager",
-        "Rust",
-        "dependency resolution"
-      ],
-      "trigger_conditions": [
-        "Setting up new Python projects quickly",
-        "Managing Python dependencies faster than pip",
-        "Creating and managing virtual environments",
-        "Installing Python interpreters",
-        "Resolving dependency conflicts efficiently",
-        "Migrating from pip/pip-tools/poetry",
-        "Speeding up CI/CD pipelines",
-        "Managing monorepo Python projects",
-        "Working with lockfiles for reproducible builds",
-        "Optimizing Docker builds with Python dependencies"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to uv package manager",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "Python",
-        "Rust"
       ],
       "mcp_tools": []
     }

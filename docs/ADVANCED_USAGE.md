@@ -17,9 +17,9 @@ A standard AI editor has a fixed context. Most developers try to squeeze all the
 This causes **Hallucination** and **Context Dilution**. An AI acting as a DevOps engineer evaluates problems differently than an AI acting as a UI/UX designer. If you give an LLM both sets of rules at once, it compromises.
 
 ### The Sharded Capability Library
-Our workspace contains a massive partitioned library in `.archived/` holding over 1,300+ exact methodologies, rules, and workflows (skills). Instead of dumping this into the AI, we use **Profiles** to inject only what is explicitly needed.
+Our workspace contains a massive partitioned library in `.archived/` holding over 400+ exact methodologies, rules, and workflows (skills). Instead of dumping this into the AI, we use **Profiles** to inject only what is explicitly needed.
 
-- **How it works:** When you switch to a profile (e.g., `java-backend-sec-ops`), the workspace symlinks specific isolated shards of knowledge into the `.agents/skills/` directory. 
+- **How it works:** When you switch to a profile (e.g., `backend-sec`), the workspace symlinks specific isolated shards of knowledge into the `.agents/skills/` directory. 
 - **The Result:** The AI gains immediate, hyper-focused "muscle memory" for that precise domain. Unrelated disciplines are pruned from the context window, resulting in drastically higher intelligence per token.
 
 ### Contextual Sub-Roles
@@ -37,7 +37,7 @@ You never actually have to touch Python scripts to change your profile. The work
 ### The Flow
 1. **You speak naturally**: *"Hey, I need to do a deep security audit on this Express application."*
 2. **The AI intercepts**: The Agent detects the intent using its embedded `workspace-configurator` capability.
-3. **The AI executes against itself**: Behind the scenes, the AI executes a terminal command against `scripts/workspace_manager.py`, requesting the `backend-security` profile.
+3. **The AI executes against itself**: Behind the scenes, the AI executes a terminal command against `scripts/workspace_manager.py`, requesting the `security-core` profile.
 4. **Context shifts instantly**: The AI's `.agents/skills` folder flushes out existing generic coding rules, and fills up with penetration testing, OAuth, and cryptography patterns.
 5. **The Audit Begins**: The AI now begins the audit using the new brain it just gave itself.
 

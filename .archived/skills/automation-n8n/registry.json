@@ -3,34 +3,6 @@
   "category_name": "Automation n8n",
   "skills": [
     {
-      "id": "n8n-atom-executor",
-      "description": "Executes n8n-atom automated workflows and integrates with the MCP inspector bridge.",
-      "path": "n8n-atom-executor/SKILL.md",
-      "tags": [
-        "n8n",
-        "atom",
-        "webhooks",
-        "mcp-inspector-atom8n",
-        "automation",
-        "orchestration"
-      ],
-      "trigger_conditions": [
-        "Triggering configured N8N webhooks.",
-        "Inspecting workflow executions via mcp-inspector-atom8n.",
-        "Deploying and orchestrating automation logic within the local stack."
-      ],
-      "anti_triggers": [
-        "Not applicable for standalone use cases outside n8n-atom ecosystem."
-      ],
-      "dependencies": [
-        "n8n",
-        "mcp-inspector-atom8n"
-      ],
-      "mcp_tools": [
-        "mcp-inspector-atom8n"
-      ]
-    },
-    {
       "id": "n8n-code-javascript",
       "description": "Expert guidance for writing JavaScript code in n8n Code nodes, covering best practices, essential rules, and common patterns.",
       "path": "n8n-code-javascript/SKILL.md",
@@ -106,26 +78,6 @@
         "using Code nodes for JavaScript access",
         "referencing webhook data incorrectly",
         "using expressions in webhook paths or credentials"
-      ],
-      "dependencies": [
-        "n8n"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "n8n-global-deploy",
-      "description": "Validates JSON output and pushes it as a workflow to an n8n instance.",
-      "path": "n8n-global-deploy/SKILL.md",
-      "tags": [
-        "n8n",
-        "workflow",
-        "deployment"
-      ],
-      "trigger_conditions": [
-        "When JSON output needs to be validated and deployed to n8n"
-      ],
-      "anti_triggers": [
-        "When deploying workflows without validating the JSON output"
       ],
       "dependencies": [
         "n8n"

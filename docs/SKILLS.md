@@ -1,6 +1,6 @@
 # 🧠 Antigravity Skills
 
-**1,300+ specialized AI skills to give your coding agent domain expertise — automatically.**
+**400+ specialized AI skills to give your coding agent domain expertise — automatically.**
 
 > Sourced from [antigravity-awesome-skills](https://github.com/anthropics/awesome-claude-code-skills)
 
@@ -58,13 +58,10 @@ Each skill is organized for both human browsing and AI context:
 
 | Skill | Description |
 |---|---|
-| [agent-orchestration-multi-agent-optimize](../.archived/skills/ai-ml-agents/agent-orchestration-multi-agent-optimize/SKILL.md) | Optimize multi-agent systems through coordinated profiling, workload distribution, and cost-aware orchestration. Use for improving agent performance, throughput, or reliability. |
 | [agents-md](../.archived/skills/ai-ml-agents/agents-md/SKILL.md) | A skill for creating concise, research-backed AGENTS.md documentation to maintain agent instructions and best practices. |
 | [ai-engineer](../.archived/skills/ai-ml-agents/ai-engineer/SKILL.md) | Expert AI engineer specializing in production-grade LLM applications, generative AI systems, and intelligent agent architectures. |
 | [ai-engineering-toolkit](../.archived/skills/ai-ml-agents/ai-engineering-toolkit/SKILL.md) | A collection of 6 structured, expert-level workflows that turn your AI coding assistant into a senior AI engineering partner. |
-| [antigravity-skill-orchestrator](../.archived/skills/ai-ml-agents/antigravity-skill-orchestrator/SKILL.md) | A meta-skill that dynamically selects appropriate skills based on task complexity, tracks successful combinations using agent-memory-mcp, and prevents overuse of specialized skills for simple tasks. |
 | [brainstorming](../.archived/skills/ai-ml-agents/brainstorming/SKILL.md) | A structured approach to transforming vague ideas into validated designs through disciplined reasoning and collaboration, ensuring that no creative implementation occurs while this skill is active. |
-| [cc-skill-strategic-compact](../.archived/skills/ai-ml-agents/cc-skill-strategic-compact/SKILL.md) | A development skill from everything-claude-code, applicable for executing workflows or actions. |
 | [claude-code-guide](../.archived/skills/ai-ml-agents/claude-code-guide/SKILL.md) | A comprehensive guide for configuring and using Claude Code, an agentic coding tool, with best practices, configuration templates, and advanced usage patterns. |
 | [claude-settings-audit](../.archived/skills/ai-ml-agents/claude-settings-audit/SKILL.md) | Analyze a repository to generate recommended Claude Code settings.json permissions. Detects tech stack, build tools, and monorepo structure. |
 | [context7-auto-research](../.archived/skills/ai-ml-agents/context7-auto-research/SKILL.md) | Automatically fetch latest library/framework documentation for Claude Code via Context7 API. Use when you need up-to-date documentation for libraries and frameworks or asking about React, Next.js, Prisma, or any other popular library. |
@@ -75,17 +72,12 @@ Each skill is organized for both human browsing and AI context:
 | [langchain-architecture](../.archived/skills/ai-ml-agents/langchain-architecture/SKILL.md) | Master the LangChain framework for building sophisticated LLM applications with agents, chains, memory, and tool integration. |
 | [langgraph](../.archived/skills/ai-ml-agents/langgraph/SKILL.md) | You are an expert in building production-grade AI agents with LangGraph by structuring them as graphs, making the flow visible and debuggable. |
 | [last30days](../.archived/skills/ai-ml-agents/last30days/SKILL.md) | Research any topic from the last 30 days across Reddit, X, and the web, then synthesize copy-paste-ready prompts for the user's target tool. |
-| [llm-application-dev-ai-assistant](../.archived/skills/ai-ml-agents/llm-application-dev-ai-assistant/SKILL.md) | An expert in creating intelligent conversational interfaces, chatbots, and AI-powered applications with natural language understanding and context management. |
 | [llm-ops](../.archived/skills/ai-ml-agents/llm-ops/SKILL.md) | LLM Operations -- RAG, embeddings, vector databases, fine-tuning, prompt engineering advanced, LLM costs, quality evals and AI architectures for production. |
 | [mcp-builder](../.archived/skills/ai-ml-agents/mcp-builder/SKILL.md) | Create MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. The quality of an MCP server is measured by how well it enables LLMs to accomplish real-world tasks. |
 | [memory-systems](../.archived/skills/ai-ml-agents/memory-systems/SKILL.md) | Design short-term, long-term, and graph-based memory architectures to maintain entity consistency across conversations and enable reasoning over accumulated knowledge. |
 | [moyu](../.archived/skills/ai-ml-agents/moyu/SKILL.md) | An AI coding agent skill that enforces restraint and avoids over-engineering by only making changes explicitly requested by the user. |
 | [multi-agent-patterns](../.archived/skills/ai-ml-agents/multi-agent-patterns/SKILL.md) | This skill provides guidance on designing and implementing multi-agent systems, including patterns like supervisor/orchestrator, peer-to-peer/swarm, and hierarchical structures, with a focus on context isolation and effective coordination. |
 | [notebooklm](../.archived/skills/ai-ml-agents/notebooklm/SKILL.md) | Interact with Google NotebookLM to query documentation using Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes. |
-| [progressive-estimation](../.archived/skills/ai-ml-agents/progressive-estimation/SKILL.md) | Estimate AI-assisted and hybrid human+agent development work using research-backed formulas with PERT statistics, confidence bands, and calibration feedback loops. |
-| [pydantic-ai](../.archived/skills/ai-ml-agents/pydantic-ai/SKILL.md) | PydanticAI is a Python agent framework that brings type-safety and validation guarantees to LLM-based applications, supporting structured outputs, dependency injection, streamed responses, multi-turn conversations, and tool use across various providers. |
-| [skill-developer](../.archived/skills/ai-ml-agents/skill-developer/SKILL.md) | Comprehensive guide for creating and managing skills in Claude Code with auto-activation system, following Anthropic's official best practices including the 500-line rule and progressive disclosure pattern. |
-| [skill-router](../.archived/skills/ai-ml-agents/skill-router/SKILL.md) | A conversational skill that interviews users with targeted questions to determine their goal and recommends the best skill(s) from the installed library for their needs. |
 | [tool-design](../.archived/skills/ai-ml-agents/tool-design/SKILL.md) | Build tools that agents can use effectively, including architectural reduction patterns. |
 | [workspace-configurator](../.archived/skills/ai-ml-agents/workspace-configurator/SKILL.md) | Invisible orchestrator that configures the active workspace context based on the user's natural language intent. |
 
@@ -98,9 +90,7 @@ Each skill is organized for both human browsing and AI context:
 
 | Skill | Description |
 |---|---|
-| [advanced-evaluation](../.archived/skills/ai-ml-evaluation/advanced-evaluation/SKILL.md) | This skill covers production-grade techniques for evaluating LLM outputs using LLMs as judges, synthesizing research from academic papers, industry practices, and practical implementation experience into actionable patterns for building reliable evaluation systems. |
 | [analyze-project](../.archived/skills/ai-ml-evaluation/analyze-project/SKILL.md) | Forensic root cause analyzer for Antigravity sessions that classifies scope deltas, rework patterns, root causes, hotspots, and auto-improves prompts/health. |
-| [bdistill-behavioral-xray](../.archived/skills/ai-ml-evaluation/bdistill-behavioral-xray/SKILL.md) | Systematically probe an AI model's behavioral patterns and generate a visual report using bdistill's Behavioral X-Ray. The skill runs 30 carefully designed probe questions across 6 dimensions, auto-tags each response with behavioral metadata, and compiles results into a styled HTML report with radar charts and actionable insights. |
 | [langfuse](../.archived/skills/ai-ml-evaluation/langfuse/SKILL.md) | An expert in LLM observability and evaluation, focusing on traces, spans, and metrics for monitoring LLM applications. |
 | [llm-evaluation](../.archived/skills/ai-ml-evaluation/llm-evaluation/SKILL.md) | Master comprehensive evaluation strategies for LLM applications, from automated metrics to human evaluation and A/B testing. |
 
@@ -113,7 +103,6 @@ Each skill is organized for both human browsing and AI context:
 
 | Skill | Description |
 |---|---|
-| [agent-tool-builder](../.archived/skills/ai-ml-mcp/agent-tool-builder/SKILL.md) | Expert in designing tools for the interface between LLMs and the outside world, focusing on clear schema design, error handling, and avoiding vague descriptions. |
 | [ai-native-cli](../.archived/skills/ai-ml-mcp/ai-native-cli/SKILL.md) | Design specification for building CLI tools that AI agents can safely use, covering structured JSON output, error handling, input contracts, safety guardrails, exit codes, and agent self-description. |
 | [skill-check](../.archived/skills/ai-ml-mcp/skill-check/SKILL.md) | Validate SKILL.md files against the agentskills specification and Anthropic best practices, catching structural errors, semantic contradictions, naming anti-patterns, and quality gaps in a single read-only pass. |
 | [skill-creator](../.archived/skills/ai-ml-mcp/skill-creator/SKILL.md) | Automates the creation of new CLI skills following Anthropic's best practices with zero manual configuration, including brainstorming, template application, validation, and installation processes. |
@@ -131,16 +120,12 @@ Each skill is organized for both human browsing and AI context:
 
 | Skill | Description |
 |---|---|
-| [bdistill-knowledge-extraction](../.archived/skills/ai-ml-memory/bdistill-knowledge-extraction/SKILL.md) | Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed. |
 | [context-driven-development](../.archived/skills/ai-ml-memory/context-driven-development/SKILL.md) | Guide for implementing and maintaining context as a managed artifact alongside code, enabling consistent AI interactions and team alignment through structured project documentation. |
 | [context-fundamentals](../.archived/skills/ai-ml-memory/context-fundamentals/SKILL.md) | Context engineering fundamentals, including system prompts, tool definitions, retrieved documents, message history, and tool outputs. |
 | [context-manager](../.archived/skills/ai-ml-memory/context-manager/SKILL.md) | An elite AI context engineering specialist focused on dynamic context management, intelligent memory systems, and multi-agent workflow orchestration. |
 | [context-optimization](../.archived/skills/ai-ml-memory/context-optimization/SKILL.md) | Context optimization extends the effective capacity of limited context windows through strategic compression, masking, caching, and partitioning. |
-| [context-window-management](../.archived/skills/ai-ml-memory/context-window-management/SKILL.md) | Optimize LLM applications handling millions of conversations by managing context windows effectively, avoiding token limits and context rot. |
 | [hierarchical-agent-memory](../.archived/skills/ai-ml-memory/hierarchical-agent-memory/SKILL.md) | Scoped CLAUDE.md memory system that reduces context token spend by creating directory-level context files, tracking savings via dashboard, and routing agents to the right sub-context. |
-| [hybrid-search-implementation](../.archived/skills/ai-ml-memory/hybrid-search-implementation/SKILL.md) | Combine vector similarity and keyword-based search to improve retrieval in RAG systems, search engines, or when recall is insufficient. |
 | [rag-engineer](../.archived/skills/ai-ml-memory/rag-engineer/SKILL.md) | RAG Engineer bridges the gap between raw documents and LLM understanding, focusing on retrieval quality to determine generation quality. |
-| [rag-implementation](../.archived/skills/ai-ml-memory/rag-implementation/SKILL.md) | RAG Implementation Workflow covering embedding selection, vector database setup, chunking strategies, retrieval optimization, and LLM integration. |
 | [recallmax](../.archived/skills/ai-ml-memory/recallmax/SKILL.md) | RecallMax enhances AI agent memory capabilities by injecting large amounts of clean context, auto-summarizing conversations while preserving tone and intent, and compressing multi-turn histories into high-density token sequences. |
 
 </details>
@@ -153,11 +138,8 @@ Each skill is organized for both human browsing and AI context:
 | Skill | Description |
 |---|---|
 | [avoid-ai-writing](../.archived/skills/ai-ml-prompting/avoid-ai-writing/SKILL.md) | Detects and fixes AI writing patterns (AI-isms) that make text sound machine-generated, covering 21 pattern categories with a 43-entry word/phrase replacement table. |
-| [beautiful-prose](../.archived/skills/ai-ml-prompting/beautiful-prose/SKILL.md) | A hard-edged writing style contract for producing timeless, forceful English prose without modern AI tics and filler. |
 | [explain-like-socrates](../.archived/skills/ai-ml-prompting/explain-like-socrates/SKILL.md) | Explains concepts using Socratic-style dialogue, guiding users toward understanding through reflective reasoning and analogies. |
 | [llm-application-dev-prompt-optimize](../.archived/skills/ai-ml-prompting/llm-application-dev-prompt-optimize/SKILL.md) | Expert guidance in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimization. |
-| [llm-structured-output](../.archived/skills/ai-ml-prompting/llm-structured-output/SKILL.md) | Extract typed, validated data from LLM API responses using response_format, tool_use, and schema-constrained decoding across OpenAI, Anthropic, and Google APIs. |
-| [prompt-caching](../.archived/skills/ai-ml-prompting/prompt-caching/SKILL.md) | A caching specialist who has reduced LLM costs by 90% through strategic caching at multiple levels: prompt prefixes, full responses, and semantic similarity matches. |
 | [prompt-engineer](../.archived/skills/ai-ml-prompting/prompt-engineer/SKILL.md) | Transforms raw user prompts into optimized prompts using established prompting frameworks. |
 
 </details>
@@ -170,7 +152,6 @@ Each skill is organized for both human browsing and AI context:
 | Skill | Description |
 |---|---|
 | [astropy](../.archived/skills/ai-ml-science/astropy/SKILL.md) | Astropy is a Python package for astronomy, providing essential functionality for coordinate transformations, unit and quantity calculations, FITS file operations, cosmological calculations, precise time handling, tabular data manipulation, and astronomical image processing. |
-| [context-degradation](../.archived/skills/ai-ml-science/context-degradation/SKILL.md) | Language models exhibit predictable degradation patterns as context length increases, impacting performance and reliability. |
 | [deep-research](../.archived/skills/ai-ml-science/deep-research/SKILL.md) | Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports. |
 | [matplotlib](../.archived/skills/ai-ml-science/matplotlib/SKILL.md) | Matplotlib is Python's foundational visualization library for creating static, animated, and interactive plots. |
 | [plotly](../.archived/skills/ai-ml-science/plotly/SKILL.md) | Plotly is a Python library for creating interactive, publication-quality visualizations with over 40 chart types. It supports various APIs like Plotly Express and Graph Objects, and offers extensive customization options. |
@@ -199,11 +180,9 @@ Each skill is organized for both human browsing and AI context:
 
 | Skill | Description |
 |---|---|
-| [n8n-atom-executor](../.archived/skills/automation-n8n/n8n-atom-executor/SKILL.md) | Executes n8n-atom automated workflows and integrates with the MCP inspector bridge. |
 | [n8n-code-javascript](../.archived/skills/automation-n8n/n8n-code-javascript/SKILL.md) | Expert guidance for writing JavaScript code in n8n Code nodes, covering best practices, essential rules, and common patterns. |
 | [n8n-code-python](../.archived/skills/automation-n8n/n8n-code-python/SKILL.md) | Expert guidance for writing Python code in n8n Code nodes, including best practices, data access patterns, and return format requirements. |
 | [n8n-expression-syntax](../.archived/skills/automation-n8n/n8n-expression-syntax/SKILL.md) | A guide for writing correct n8n expressions in workflows, covering syntax, variables, and common pitfalls. |
-| [n8n-global-deploy](../.archived/skills/automation-n8n/n8n-global-deploy/SKILL.md) | Validates JSON output and pushes it as a workflow to an n8n instance. |
 | [n8n-mcp-tools-expert](../.archived/skills/automation-n8n/n8n-mcp-tools-expert/SKILL.md) | Expert guide for using n8n-mcp MCP tools effectively, covering node discovery, configuration validation, and workflow management with detailed workflows, common patterns, and best practices. |
 | [n8n-node-configuration](../.archived/skills/automation-n8n/n8n-node-configuration/SKILL.md) | This skill provides expert guidance for operation-aware node configuration in n8n, focusing on property dependencies and progressive disclosure. It covers common configuration patterns by node type and offers a step-by-step workflow to configure nodes effectively. |
 | [n8n-validation-expert](../.archived/skills/automation-n8n/n8n-validation-expert/SKILL.md) | Expert guide for interpreting and fixing n8n validation errors, emphasizing iterative validation, error severity levels, common error types, and best practices. |
@@ -231,8 +210,6 @@ Each skill is organized for both human browsing and AI context:
 | Skill | Description |
 |---|---|
 | [billing-automation](../.archived/skills/automation-workflows/billing-automation/SKILL.md) | Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation. |
-| [ml-pipeline-workflow](../.archived/skills/automation-workflows/ml-pipeline-workflow/SKILL.md) | Comprehensive end-to-end MLOps pipeline orchestration from data preparation through model deployment. |
-| [workflow-automation](../.archived/skills/automation-workflows/workflow-automation/SKILL.md) | You are a workflow automation architect who has seen both the promise and the pain of these platforms. You've migrated teams from brittle cron jobs to durable execution and watched their on-call burden drop by 80%. |
 
 </details>
 
@@ -273,27 +250,20 @@ Each skill is organized for both human browsing and AI context:
 | [binary-analysis-patterns](../.archived/skills/backend-arch/binary-analysis-patterns/SKILL.md) | Comprehensive patterns and techniques for analyzing compiled binaries, understanding assembly code, and reconstructing program logic. |
 | [c4-architecture-c4-architecture](../.archived/skills/backend-arch/c4-architecture-c4-architecture/SKILL.md) | Generate comprehensive C4 architecture documentation for an existing repository/codebase using a bottom-up analysis approach. |
 | [chrome-extension-developer](../.archived/skills/backend-arch/chrome-extension-developer/SKILL.md) | Expert in building Chrome Extensions using Manifest V3, focusing on modern architecture and production-ready security practices. |
-| [code-refactoring-refactor-clean](../.archived/skills/backend-arch/code-refactoring-refactor-clean/SKILL.md) | Refactor code to improve quality, maintainability, and performance using clean code principles, SOLID design patterns, and modern software engineering best practices. |
 | [codebase-cleanup-refactor-clean](../.archived/skills/backend-arch/codebase-cleanup-refactor-clean/SKILL.md) | A code refactoring skill that helps improve the quality, maintainability, and performance of large codebases by applying clean code principles and SOLID design patterns. |
-| [cqrs-implementation](../.archived/skills/backend-arch/cqrs-implementation/SKILL.md) | Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems. |
-| [ddd-strategic-design](../.archived/skills/backend-arch/ddd-strategic-design/SKILL.md) | Design DDD strategic artifacts including subdomains, bounded contexts, and ubiquitous language for complex business domains. |
 | [docs-architect](../.archived/skills/backend-arch/docs-architect/SKILL.md) | Creates comprehensive technical documentation from existing codebases by analyzing architecture, design patterns, and implementation details. |
 | [domain-driven-design](../.archived/skills/backend-arch/domain-driven-design/SKILL.md) | Plan and route Domain-Driven Design work from strategic modeling to tactical implementation and evented architecture patterns. |
 | [error-detective](../.archived/skills/backend-arch/error-detective/SKILL.md) | Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes. |
-| [event-sourcing-architect](../.archived/skills/backend-arch/event-sourcing-architect/SKILL.md) | Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. |
 | [event-store-design](../.archived/skills/backend-arch/event-store-design/SKILL.md) | Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns. |
 | [framework-migration-code-migrate](../.archived/skills/backend-arch/framework-migration-code-migrate/SKILL.md) | A code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generates comprehensive migration plans, automated scripts, and ensures smooth transitions with minimal disruption. |
 | [framework-migration-legacy-modernize](../.archived/skills/backend-arch/framework-migration-legacy-modernize/SKILL.md) | Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through expert agent coordination. |
 | [full-stack-orchestration-full-stack-feature](../.archived/skills/backend-arch/full-stack-orchestration-full-stack-feature/SKILL.md) | A comprehensive workflow for orchestrating full-stack feature development using an API-first approach, covering architecture design, implementation, testing, security, deployment, and observability. |
 | [graphql-architect](../.archived/skills/backend-arch/graphql-architect/SKILL.md) | Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems. |
-| [kpi-dashboard-design](../.archived/skills/backend-arch/kpi-dashboard-design/SKILL.md) | Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions. |
 | [legacy-modernizer](../.archived/skills/backend-arch/legacy-modernizer/SKILL.md) | Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. |
 | [memory-safety-patterns](../.archived/skills/backend-arch/memory-safety-patterns/SKILL.md) | Cross-language patterns for memory-safe programming including RAII, ownership, smart pointers, and resource management. |
 | [microservices-patterns](../.archived/skills/backend-arch/microservices-patterns/SKILL.md) | Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems. |
-| [monorepo-architect](../.archived/skills/backend-arch/monorepo-architect/SKILL.md) | Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. |
 | [network-engineer](../.archived/skills/backend-arch/network-engineer/SKILL.md) | Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. |
 | [performance-engineer](../.archived/skills/backend-arch/performance-engineer/SKILL.md) | Expert performance engineer specializing in modern observability, application profiling, and system optimization. |
-| [performance-optimizer](../.archived/skills/backend-arch/performance-optimizer/SKILL.md) | Identifies and fixes performance bottlenecks in code, databases, and APIs. Measures before and after to prove improvements. |
 | [projection-patterns](../.archived/skills/backend-arch/projection-patterns/SKILL.md) | Build read models and projections from event streams. Use when implementing CQRS read sides, building materialized views, or optimizing query performance in event-sourced systems. |
 | [risk-metrics-calculation](../.archived/skills/backend-arch/risk-metrics-calculation/SKILL.md) | Calculate portfolio risk metrics including VaR, CVaR, Sharpe, Sortino, and drawdown analysis. Use when measuring portfolio risk, implementing risk limits, or building risk monitoring systems. |
 | [rust-async-patterns](../.archived/skills/backend-arch/rust-async-patterns/SKILL.md) | Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when building async Rust applications, implementing concurrent systems, or debugging async code. |
@@ -301,7 +271,6 @@ Each skill is organized for both human browsing and AI context:
 | [senior-architect-v2](../.archived/skills/backend-arch/senior-architect-v2/SKILL.md) | Expert system architect specializing in visualizing complex system interactions and translating business logic into technical workflows. |
 | [senior-fullstack](../.archived/skills/backend-arch/senior-fullstack/SKILL.md) | A comprehensive toolkit for senior fullstack development with modern tools and best practices, including automated scripts for fullstack scaffolding, project analysis, and code quality checks. |
 | [software-architecture](../.archived/skills/backend-arch/software-architecture/SKILL.md) | Guide for quality-focused software architecture, providing principles and best practices for clean code and domain-driven design. |
-| [workspace-analyzer](../.archived/skills/backend-arch/workspace-analyzer/SKILL.md) | Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code. |
 
 </details>
 
@@ -324,8 +293,6 @@ Each skill is organized for both human browsing and AI context:
 | [grpc-golang](../.archived/skills/backend-core/grpc-golang/SKILL.md) | A comprehensive guide for designing and implementing production-grade gRPC services in Go, covering contract standardization with Buf, transport layer security via mTLS, and deep observability with OpenTelemetry interceptors. |
 | [java-pro](../.archived/skills/backend-core/java-pro/SKILL.md) | Master Java 21+ with modern features like virtual threads, pattern matching, and Spring Boot 3.x. Expert in the latest Java ecosystem including GraalVM, Project Loom, and cloud-native patterns. |
 | [nextjs-best-practices](../.archived/skills/backend-core/nextjs-best-practices/SKILL.md) | Next.js App Router principles including server components, data fetching, routing patterns, API routes, performance optimization, metadata, caching strategy, and server actions. |
-| [pdf-official](../.archived/skills/backend-core/pdf-official/SKILL.md) | A comprehensive guide on PDF processing using Python libraries and command-line tools. It covers merging, splitting, extracting text and tables, creating new PDFs, and more. |
-| [performance-profiling](../.archived/skills/backend-core/performance-profiling/SKILL.md) | Performance profiling principles, including measurement, analysis, and optimization techniques. |
 | [postgres-best-practices](../.archived/skills/backend-core/postgres-best-practices/SKILL.md) | Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations. |
 | [python-development-python-scaffold](../.archived/skills/backend-core/python-development-python-scaffold/SKILL.md) | A skill for generating complete production-ready Python project structures using modern tools like uv, FastAPI, Django, and type hints. |
 | [python-packaging](../.archived/skills/backend-core/python-packaging/SKILL.md) | Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI. |
@@ -339,7 +306,6 @@ Each skill is organized for both human browsing and AI context:
 | [temporal-golang-pro](../.archived/skills/backend-core/temporal-golang-pro/SKILL.md) | Expert-level guide for building resilient, scalable, and deterministic distributed systems using the Temporal Go SDK. Covers durable execution, strict determinism, and enterprise-scale worker configuration. |
 | [typescript-expert](../.archived/skills/backend-core/typescript-expert/SKILL.md) | A TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling. |
 | [typescript-pro](../.archived/skills/backend-core/typescript-pro/SKILL.md) | Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns. |
-| [uv-package-manager](../.archived/skills/backend-core/uv-package-manager/SKILL.md) | Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows. |
 
 </details>
 
@@ -415,7 +381,6 @@ Each skill is organized for both human browsing and AI context:
 
 | Skill | Description |
 |---|---|
-| [local-db-migration](../.archived/skills/data-admin/local-db-migration/SKILL.md) | Manages schema migrations and vector initialization for the based-workspace-postgres container. |
 | [vector-database-engineer](../.archived/skills/data-admin/vector-database-engineer/SKILL.md) | Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similarity search. |
 
 </details>
@@ -540,7 +505,6 @@ Each skill is organized for both human browsing and AI context:
 | [environment-setup-guide](../.archived/skills/devops-cicd/environment-setup-guide/SKILL.md) | Guide developers through setting up development environments with proper tools, dependencies, and configurations |
 | [git-advanced-workflows](../.archived/skills/devops-cicd/git-advanced-workflows/SKILL.md) | Master advanced Git techniques to maintain clean history, collaborate effectively, and recover from any situation with confidence. |
 | [github-actions-templates](../.archived/skills/devops-cicd/github-actions-templates/SKILL.md) | Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications. |
-| [gitlab-ci-patterns](../.archived/skills/devops-cicd/gitlab-ci-patterns/SKILL.md) | Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment. |
 
 </details>
 
@@ -800,7 +764,6 @@ Each skill is organized for both human browsing and AI context:
 |---|---|
 | [docx-official](../.archived/skills/productivity-office/docx-official/SKILL.md) | A comprehensive guide on creating, editing, and analyzing .docx files using various tools and workflows. |
 | [latex-paper-conversion](../.archived/skills/productivity-office/latex-paper-conversion/SKILL.md) | This skill automates the process of converting an academic paper written in LaTeX from one publisher's format to another by executing a structured multi-stage workflow, extracting content, mapping it to a new template, and resolving common compilation errors. |
-| [obsidian-cli](../.archived/skills/productivity-office/obsidian-cli/SKILL.md) | Use the Obsidian CLI to read, create, search, and manage vault content, or to develop and debug Obsidian plugins and themes from the command line. |
 | [pptx-official](../.archived/skills/productivity-office/pptx-official/SKILL.md) | A user may ask you to create, edit, or analyze the contents of a .pptx file. A .pptx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. |
 | [xlsx-official](../.archived/skills/productivity-office/xlsx-official/SKILL.md) | A comprehensive guide on creating, editing, and analyzing Excel files using Python libraries pandas and openpyxl, with emphasis on preserving formulas and ensuring dynamic updates. |
 
@@ -946,50 +909,3 @@ Each skill is organized for both human browsing and AI context:
 
 </details>
 
-### Security Testing
-
-<details>
-<summary><b>Security Testing (Click to expand)</b></summary>
-
-| Skill | Description |
-|---|---|
-| [scanning-tools](../.archived/skills/security-testing/scanning-tools/SKILL.md) | Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. |
-
-</details>
-
-## Finding Skills
-
-All skills live in `../.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
-
-**macOS / Linux:**
-```bash
-find ../.archived/skills -maxdepth 2 -not -path '*/.*' -type d | wc -l
-```
-
-**Windows (PowerShell 7):**
-```powershell
-Get-ChildItem -Path "../.archived\skills" -Recurse -Depth 1 -Directory -Exclude ".*" | Measure-Object
-```
-
-> **Total Installed Skills:**
-All skills live in `../../../.archived/skills/<category>/<skill-name>/SKILL.md`. To browse:
-
-**Bash / Zsh:**
-```bash
-ls -d ../../../.archived/skills/*/*/ | wc -l                  # Count
-ls -d ../../../.archived/skills/*/*react*/                    # Search
-```
-
-**Cross-platform (Node.js):**
-```bash
-npx -y glob "../../../.archived/skills/*/*/SKILL.md" | wc -l  # Count
-npx -y glob "../../../.archived/skills/*/*react*/SKILL.md"     # Search
-```
-
-Or just ask: *"Is there a skill for X?"*
-
----
-
-> **Total Installed Skills:** 376
->
-> **Source:** [antigravity-awesome-skills](https://github.com/anthropics/awesome-claude-code-skills)

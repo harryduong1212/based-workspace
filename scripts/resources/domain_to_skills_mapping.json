@@ -1,8 +1,6 @@
 {
   "ai-ml-agents": [
     "langchain-architecture",
-    "pydantic-ai",
-    "llm-application-dev-ai-assistant",
     "agents-md",
     "ai-engineer",
     "ai-engineering-toolkit",
@@ -10,17 +8,10 @@
     "langgraph",
     "last30days",
     "llm-ops",
-    "progressive-estimation",
     "filesystem-context",
     "moyu",
-    "skill-router",
     "workspace-configurator",
-    "cc-skill-continuous-learning",
-    "cc-skill-strategic-compact",
-    "antigravity-skill-orchestrator",
     "notebooklm",
-    "skill-developer",
-    "agent-orchestration-multi-agent-optimize",
     "mcp-builder",
     "claude-settings-audit",
     "multi-agent-patterns",
@@ -33,8 +24,6 @@
     "memory-systems"
   ],
   "ai-ml-evaluation": [
-    "advanced-evaluation",
-    "bdistill-behavioral-xray",
     "langfuse",
     "llm-evaluation",
     "analyze-project"
@@ -45,36 +34,27 @@
     "skill-scanner",
     "skill-seekers",
     "skill-writer",
-    "agent-tool-builder",
     "ai-native-cli",
     "skill-check"
   ],
   "ai-ml-memory": [
-    "bdistill-knowledge-extraction",
     "context-driven-development",
     "context-fundamentals",
     "context-manager",
     "hierarchical-agent-memory",
-    "hybrid-search-implementation",
     "rag-engineer",
-    "rag-implementation",
     "recallmax",
-    "context-optimization",
-    "context-window-management"
+    "context-optimization"
   ],
   "ai-ml-prompting": [
     "explain-like-socrates",
     "llm-application-dev-prompt-optimize",
     "avoid-ai-writing",
-    "beautiful-prose",
-    "llm-structured-output",
-    "prompt-engineer",
-    "prompt-caching"
+    "prompt-engineer"
   ],
   "ai-ml-science": [
     "astropy",
     "plotly",
-    "context-degradation",
     "deep-research",
     "matplotlib",
     "scanpy",
@@ -91,8 +71,6 @@
     "n8n-expression-syntax",
     "n8n-mcp-tools-expert",
     "n8n-node-configuration",
-    "n8n-atom-executor",
-    "n8n-global-deploy",
     "n8n-validation-expert",
     "n8n-workflow-patterns"
   ],
@@ -101,9 +79,7 @@
     "x-twitter-scraper"
   ],
   "automation-workflows": [
-    "billing-automation",
-    "ml-pipeline-workflow",
-    "workflow-automation"
+    "billing-automation"
   ],
   "backend-api": [
     "trpc-fullstack",
@@ -125,30 +101,23 @@
     "backend-dev-guidelines",
     "binary-analysis-patterns",
     "performance-engineer",
-    "performance-optimizer",
     "c4-architecture-c4-architecture",
     "architect-review",
-    "code-refactoring-refactor-clean",
     "codebase-cleanup-refactor-clean",
-    "ddd-strategic-design",
     "domain-driven-design",
     "error-detective",
-    "event-sourcing-architect",
     "event-store-design",
     "graphql-architect",
-    "kpi-dashboard-design",
     "rust-async-patterns",
     "senior-architect",
     "framework-migration-code-migrate",
     "framework-migration-legacy-modernize",
     "legacy-modernizer",
     "memory-safety-patterns",
-    "cqrs-implementation",
     "network-engineer",
     "auth-implementation-patterns",
     "docs-architect",
     "microservices-patterns",
-    "monorepo-architect",
     "software-architecture",
     "chrome-extension-developer",
     "senior-architect-v2",
@@ -164,7 +133,6 @@
     "database-migration",
     "database-optimizer",
     "golang-pro",
-    "performance-profiling",
     "python-pro",
     "receiving-code-review",
     "typescript-expert",
@@ -177,11 +145,9 @@
     "python-patterns",
     "rust-pro",
     "temporal-golang-pro",
-    "pdf-official",
     "fp-backend",
     "fp-data-transforms",
     "seo-audit",
-    "uv-package-manager",
     "python-performance-optimization",
     "python-packaging",
     "go-concurrency-patterns",
@@ -221,7 +187,6 @@
     "keyword-extractor"
   ],
   "data-admin": [
-    "local-db-migration",
     "vector-database-engineer"
   ],
   "data-nosql": [
@@ -271,7 +236,6 @@
   "devops-cicd": [
     "git-advanced-workflows",
     "github-actions-templates",
-    "gitlab-ci-patterns",
     "deployment-pipeline-design",
     "deployment-engineer",
     "environment-setup-guide"
@@ -331,8 +295,7 @@
     "wiki-page-writer",
     "wiki-changelog",
     "debrief-teacher",
-    "exhaustive-video-note-taker",
-    "workspace-analyzer"
+    "exhaustive-video-note-taker"
   ],
   "frontend-3d-anim": [
     "3d-web-experience",
@@ -399,7 +362,6 @@
   "productivity-office": [
     "latex-paper-conversion",
     "docx-official",
-    "obsidian-cli",
     "pptx-official",
     "xlsx-official"
   ],
@@ -479,7 +441,5 @@
     "privilege-escalation-methods",
     "attack-tree-construction"
   ],
-  "security-testing": [
-    "scanning-tools"
-  ]
+  "security-testing": []
 }

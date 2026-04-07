@@ -167,7 +167,7 @@
         "User asks for an onboarding guide or zero to hero path"
       ],
       "anti_triggers": [
-        "Small repos (≤10 files): Getting Started only"
+        "Small repos (\u226410 files): Getting Started only"
       ],
       "dependencies": [
         "n8n",
@@ -205,7 +205,7 @@
     },
     {
       "id": "wiki-onboarding",
-      "description": "Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase.",
+      "description": "Generate two complementary onboarding documents that together give any engineer \u2014 from newcomer to principal \u2014 a complete understanding of a codebase.",
       "path": "wiki-onboarding/SKILL.md",
       "tags": [
         "onboarding",
@@ -254,34 +254,6 @@
       "dependencies": [
         "VitePress",
         "Mermaid"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "workspace-analyzer",
-      "description": "Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code.",
-      "path": "workspace-analyzer/SKILL.md",
-      "tags": [
-        "architecture",
-        "analysis",
-        "investigation",
-        "codebase",
-        "redundancy",
-        "integrations"
-      ],
-      "trigger_conditions": [
-        "User asks to analyze, investigate, scan, or explain the current workspace or a specific repository.",
-        "User has just fetched or cloned a repository and wants to understand it.",
-        "User asks for a high-level overview of architecture, business logic, or directory structure.",
-        "User asks to identify technical debt, redundant code, or core dependencies within the current project."
-      ],
-      "anti_triggers": [
-        "User explicitly requests modifications or changes to the codebase during analysis."
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres",
-        "docker"
       ],
       "mcp_tools": []
     }

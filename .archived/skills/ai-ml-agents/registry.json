@@ -3,35 +3,6 @@
   "category_name": "AI ML Agents",
   "skills": [
     {
-      "id": "agent-orchestration-multi-agent-optimize",
-      "description": "Optimize multi-agent systems through coordinated profiling, workload distribution, and cost-aware orchestration. Use for improving agent performance, throughput, or reliability.",
-      "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
-      "tags": [
-        "multi-agent",
-        "performance optimization",
-        "orchestration",
-        "cost management"
-      ],
-      "trigger_conditions": [
-        "Improving multi-agent coordination",
-        "throughput",
-        "or latency",
-        "Profiling agent workflows to identify bottlenecks",
-        "Designing orchestration strategies for complex workflows"
-      ],
-      "anti_triggers": [
-        "Tuning a single agent prompt",
-        "No measurable metrics or evaluation data",
-        "Task unrelated to multi-agent orchestration"
-      ],
-      "dependencies": [
-        "Python",
-        "concurrent.futures",
-        "PriorityQueue"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "agents-md",
       "description": "A skill for creating concise, research-backed AGENTS.md documentation to maintain agent instructions and best practices.",
       "path": "agents-md/SKILL.md",
@@ -143,38 +114,6 @@
       "mcp_tools": []
     },
     {
-      "id": "antigravity-skill-orchestrator",
-      "description": "A meta-skill that dynamically selects appropriate skills based on task complexity, tracks successful combinations using agent-memory-mcp, and prevents overuse of specialized skills for simple tasks.",
-      "path": "antigravity-skill-orchestrator/SKILL.md",
-      "tags": [
-        "orchestration",
-        "meta-skill",
-        "agent-memory",
-        "task-evaluation"
-      ],
-      "trigger_conditions": [
-        "tackling a complex",
-        "multi-step problem that likely requires multiple domains of expertise",
-        "unsure which specific skills are best suited for a given user request",
-        "user explicitly asks to 'orchestrate'",
-        "'combine skills'",
-        "or 'use the best tools for the job' on a significant task"
-      ],
-      "anti_triggers": [
-        "simple issues (e.g.",
-        "small CSS fixes",
-        "simple script writing",
-        "renaming a variable)",
-        "creating new skills"
-      ],
-      "dependencies": [
-        "agent-memory-mcp"
-      ],
-      "mcp_tools": [
-        "agent-memory-mcp"
-      ]
-    },
-    {
       "id": "brainstorming",
       "description": "A structured approach to transforming vague ideas into validated designs through disciplined reasoning and collaboration, ensuring that no creative implementation occurs while this skill is active.",
       "path": "brainstorming/SKILL.md",
@@ -191,23 +130,6 @@
         "during the actual implementation phase",
         "for speculative features"
       ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "id": "cc-skill-strategic-compact",
-      "description": "A development skill from everything-claude-code, applicable for executing workflows or actions.",
-      "path": "cc-skill-strategic-compact/SKILL.md",
-      "tags": [
-        "development",
-        "skill",
-        "workflows",
-        "actions"
-      ],
-      "trigger_conditions": [
-        "Applicable for executing workflows or actions described in the overview."
-      ],
-      "anti_triggers": [],
       "dependencies": [],
       "mcp_tools": []
     },
@@ -487,32 +409,6 @@
       "mcp_tools": []
     },
     {
-      "id": "llm-application-dev-ai-assistant",
-      "description": "An expert in creating intelligent conversational interfaces, chatbots, and AI-powered applications with natural language understanding and context management.",
-      "path": "llm-application-dev-ai-assistant/SKILL.md",
-      "tags": [
-        "ai",
-        "chatbot",
-        "conversational interface",
-        "natural language processing",
-        "context management"
-      ],
-      "trigger_conditions": [
-        "Working on ai assistant development tasks or workflows",
-        "Needing guidance",
-        "best practices",
-        "or checklists for ai assistant development"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to ai assistant development",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "$ARGUMENTS"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "llm-ops",
       "description": "LLM Operations -- RAG, embeddings, vector databases, fine-tuning, prompt engineering advanced, LLM costs, quality evals and AI architectures for production.",
       "path": "llm-ops/SKILL.md",
@@ -671,120 +567,6 @@
         "n8n",
         "postgres",
         "docker"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "progressive-estimation",
-      "description": "Estimate AI-assisted and hybrid human+agent development work using research-backed formulas with PERT statistics, confidence bands, and calibration feedback loops.",
-      "path": "progressive-estimation/SKILL.md",
-      "tags": [
-        "estimation",
-        "project-management",
-        "pert",
-        "sprint-planning",
-        "ai-agents"
-      ],
-      "trigger_conditions": [
-        "Estimating development tasks where AI agents handle part of the work",
-        "Sprint planning with hybrid human+agent teams",
-        "Batch sizing a backlog (handles 5 or 500 issues)",
-        "Staffing and capacity planning with agent multipliers",
-        "Release date forecasting with confidence intervals"
-      ],
-      "anti_triggers": [
-        "Estimating tasks for a purely human-only team"
-      ],
-      "dependencies": [],
-      "mcp_tools": [
-        "claude"
-      ]
-    },
-    {
-      "id": "pydantic-ai",
-      "description": "PydanticAI is a Python agent framework that brings type-safety and validation guarantees to LLM-based applications, supporting structured outputs, dependency injection, streamed responses, multi-turn conversations, and tool use across various providers.",
-      "path": "pydantic-ai/SKILL.md",
-      "tags": [
-        "pydantic-ai",
-        "ai-agents",
-        "llm",
-        "openai",
-        "anthropic",
-        "gemini",
-        "tool-use",
-        "structured-output",
-        "python"
-      ],
-      "trigger_conditions": [
-        "Building Python AI agents that call tools and return structured data",
-        "Requiring validated",
-        "typed LLM outputs (not raw strings)",
-        "Need to write unit tests for agent logic without hitting a real LLM",
-        "Switching between LLM providers without rewriting agent code"
-      ],
-      "anti_triggers": [
-        "Purely theoretical and lacks practical implementation details"
-      ],
-      "dependencies": [
-        "pip",
-        "python"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "skill-developer",
-      "description": "Comprehensive guide for creating and managing skills in Claude Code with auto-activation system, following Anthropic's official best practices including the 500-line rule and progressive disclosure pattern.",
-      "path": "skill-developer/SKILL.md",
-      "tags": [
-        "Claude",
-        "skills",
-        "auto-activation",
-        "Anthropic",
-        "best-practices"
-      ],
-      "trigger_conditions": [
-        "Creating or adding skills",
-        "Modifying skill triggers or rules",
-        "Understanding how skill activation works",
-        "Debugging skill activation issues",
-        "Working with skill-rules.json",
-        "Hook system mechanics",
-        "Claude Code best practices",
-        "Progressive disclosure",
-        "YAML frontmatter",
-        "500-line rule"
-      ],
-      "anti_triggers": [
-        "General knowledge questions not related to skills or Claude Code",
-        "Non-technical queries"
-      ],
-      "dependencies": [
-        "npx",
-        "tsx"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "skill-router",
-      "description": "A conversational skill that interviews users with targeted questions to determine their goal and recommends the best skill(s) from the installed library for their needs.",
-      "path": "skill-router/SKILL.md",
-      "tags": [
-        "conversational",
-        "interview",
-        "recommendation",
-        "skill-routing"
-      ],
-      "trigger_conditions": [
-        "User says 'I don't know where to start' or 'which skill should I use'",
-        "User has a vague goal without a clear method",
-        "User asks 'what should I use for...' or 'I'm not sure how to approach this'"
-      ],
-      "anti_triggers": [
-        "User already knows exactly what they want and which skill to use"
-      ],
-      "dependencies": [
-        "n8n",
-        "Antigravity"
       ],
       "mcp_tools": []
     },

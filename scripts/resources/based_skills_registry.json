@@ -31,67 +31,6 @@
     {
       "domain": "ai-ml",
       "sub_domain": "agents",
-      "id": "pydantic-ai",
-      "description": "PydanticAI is a Python agent framework that brings type-safety and validation guarantees to LLM-based applications, supporting structured outputs, dependency injection, streamed responses, multi-turn conversations, and tool use across various providers.",
-      "path": "pydantic-ai/SKILL.md",
-      "tags": [
-        "pydantic-ai",
-        "ai-agents",
-        "llm",
-        "openai",
-        "anthropic",
-        "gemini",
-        "tool-use",
-        "structured-output",
-        "python"
-      ],
-      "trigger_conditions": [
-        "Building Python AI agents that call tools and return structured data",
-        "Requiring validated",
-        "typed LLM outputs (not raw strings)",
-        "Need to write unit tests for agent logic without hitting a real LLM",
-        "Switching between LLM providers without rewriting agent code"
-      ],
-      "anti_triggers": [
-        "Purely theoretical and lacks practical implementation details"
-      ],
-      "dependencies": [
-        "pip",
-        "python"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
-      "id": "llm-application-dev-ai-assistant",
-      "description": "An expert in creating intelligent conversational interfaces, chatbots, and AI-powered applications with natural language understanding and context management.",
-      "path": "llm-application-dev-ai-assistant/SKILL.md",
-      "tags": [
-        "ai",
-        "chatbot",
-        "conversational interface",
-        "natural language processing",
-        "context management"
-      ],
-      "trigger_conditions": [
-        "Working on ai assistant development tasks or workflows",
-        "Needing guidance",
-        "best practices",
-        "or checklists for ai assistant development"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to ai assistant development",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "$ARGUMENTS"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
       "id": "agents-md",
       "description": "A skill for creating concise, research-backed AGENTS.md documentation to maintain agent instructions and best practices.",
       "path": "agents-md/SKILL.md",
@@ -342,34 +281,6 @@
     {
       "domain": "ai-ml",
       "sub_domain": "agents",
-      "id": "progressive-estimation",
-      "description": "Estimate AI-assisted and hybrid human+agent development work using research-backed formulas with PERT statistics, confidence bands, and calibration feedback loops.",
-      "path": "progressive-estimation/SKILL.md",
-      "tags": [
-        "estimation",
-        "project-management",
-        "pert",
-        "sprint-planning",
-        "ai-agents"
-      ],
-      "trigger_conditions": [
-        "Estimating development tasks where AI agents handle part of the work",
-        "Sprint planning with hybrid human+agent teams",
-        "Batch sizing a backlog (handles 5 or 500 issues)",
-        "Staffing and capacity planning with agent multipliers",
-        "Release date forecasting with confidence intervals"
-      ],
-      "anti_triggers": [
-        "Estimating tasks for a purely human-only team"
-      ],
-      "dependencies": [],
-      "mcp_tools": [
-        "claude"
-      ]
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
       "id": "filesystem-context",
       "description": "Use filesystem context management to offload large outputs, persist state, and dynamically load skills.",
       "path": "filesystem-context/SKILL.md",
@@ -425,32 +336,6 @@
     {
       "domain": "ai-ml",
       "sub_domain": "agents",
-      "id": "skill-router",
-      "description": "A conversational skill that interviews users with targeted questions to determine their goal and recommends the best skill(s) from the installed library for their needs.",
-      "path": "skill-router/SKILL.md",
-      "tags": [
-        "conversational",
-        "interview",
-        "recommendation",
-        "skill-routing"
-      ],
-      "trigger_conditions": [
-        "User says 'I don't know where to start' or 'which skill should I use'",
-        "User has a vague goal without a clear method",
-        "User asks 'what should I use for...' or 'I'm not sure how to approach this'"
-      ],
-      "anti_triggers": [
-        "User already knows exactly what they want and which skill to use"
-      ],
-      "dependencies": [
-        "n8n",
-        "Antigravity"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
       "id": "workspace-configurator",
       "description": "Invisible orchestrator that configures the active workspace context based on the user's natural language intent.",
       "path": "workspace-configurator/SKILL.md",
@@ -479,116 +364,6 @@
         ".archived/skills/registry.json"
       ],
       "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
-      "id": "cc-skill-continuous-learning",
-      "description": "A development skill from everything-claude-code for continuous learning.",
-      "path": "cc-skill-continuous-learning/SKILL.md",
-      "tags": [
-        "development",
-        "skill",
-        "continuous-learning"
-      ],
-      "trigger_conditions": [
-        "Applicable to execute workflow or actions described in the overview."
-      ],
-      "anti_triggers": [],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
-      "id": "cc-skill-strategic-compact",
-      "description": "A development skill from everything-claude-code, applicable for executing workflows or actions.",
-      "path": "cc-skill-strategic-compact/SKILL.md",
-      "tags": [
-        "development",
-        "skill",
-        "workflows",
-        "actions"
-      ],
-      "trigger_conditions": [
-        "Applicable for executing workflows or actions described in the overview."
-      ],
-      "anti_triggers": [],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "evaluation",
-      "id": "advanced-evaluation",
-      "description": "This skill covers production-grade techniques for evaluating LLM outputs using LLMs as judges, synthesizing research from academic papers, industry practices, and practical implementation experience into actionable patterns for building reliable evaluation systems.",
-      "path": "advanced-evaluation/SKILL.md",
-      "tags": [
-        "evaluation",
-        "bias-mitigation",
-        "direct-scoring",
-        "pairwise-comparison",
-        "rubrics",
-        "metrics"
-      ],
-      "trigger_conditions": [
-        "user asks to implement LLM-as-judge",
-        "comparing model outputs",
-        "creating evaluation rubrics",
-        "mitigating evaluation bias",
-        "mentions direct scoring",
-        "pairwise comparison",
-        "position bias",
-        "evaluation pipelines",
-        "or automated quality assessment"
-      ],
-      "anti_triggers": [
-        "purely theoretical and lacks practical implementation details"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres",
-        "docker"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "evaluation",
-      "id": "bdistill-behavioral-xray",
-      "description": "Systematically probe an AI model's behavioral patterns and generate a visual report using bdistill's Behavioral X-Ray. The skill runs 30 carefully designed probe questions across 6 dimensions, auto-tags each response with behavioral metadata, and compiles results into a styled HTML report with radar charts and actionable insights.",
-      "path": "bdistill-behavioral-xray/SKILL.md",
-      "tags": [
-        "ai",
-        "testing",
-        "behavioral-analysis",
-        "model-evaluation",
-        "red-team",
-        "compliance",
-        "mcp"
-      ],
-      "trigger_conditions": [
-        "Use when you want to understand how your AI model actually behaves (not how it claims to)",
-        "Use when choosing between models for a specific task",
-        "Use when debugging unexpected refusals",
-        "hallucinations",
-        "or formatting issues",
-        "Use for compliance auditing — documenting model behavior at deployment boundaries",
-        "Use for red team assessments — systematic boundary mapping across safety dimensions"
-      ],
-      "anti_triggers": [
-        "Do not use adversarial knowledge extraction alongside behavioral probes for complete model profiling"
-      ],
-      "dependencies": [
-        "pip",
-        "bdistill"
-      ],
-      "mcp_tools": [
-        "claude",
-        "cursor",
-        "codex",
-        "copilot"
-      ]
     },
     {
       "domain": "ai-ml",
@@ -844,36 +619,6 @@
     {
       "domain": "ai-ml",
       "sub_domain": "mcp",
-      "id": "agent-tool-builder",
-      "description": "Expert in designing tools for the interface between LLMs and the outside world, focusing on clear schema design, error handling, and avoiding vague descriptions.",
-      "path": "agent-tool-builder/SKILL.md",
-      "tags": [
-        "agent-tools",
-        "function-calling",
-        "tool-schema-design",
-        "mcp-tools",
-        "tool-validation",
-        "tool-error-handling"
-      ],
-      "trigger_conditions": [
-        "Designing tools for LLMs",
-        "Creating clear JSON Schema",
-        "Guiding LLM tool usage with examples",
-        "Handling errors to help LLM recover"
-      ],
-      "anti_triggers": [
-        "Vague descriptions",
-        "Silent failures",
-        "Having too many tools"
-      ],
-      "dependencies": [
-        "JSON Schema"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "mcp",
       "id": "ai-native-cli",
       "description": "Design specification for building CLI tools that AI agents can safely use, covering structured JSON output, error handling, input contracts, safety guardrails, exit codes, and agent self-description.",
       "path": "ai-native-cli/SKILL.md",
@@ -934,47 +679,6 @@
         "Read Glob"
       ],
       "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "memory",
-      "id": "bdistill-knowledge-extraction",
-      "description": "Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed.",
-      "path": "bdistill-knowledge-extraction/SKILL.md",
-      "tags": [
-        "ai",
-        "knowledge-extraction",
-        "domain-specific",
-        "data-moat",
-        "mcp",
-        "reference-data"
-      ],
-      "trigger_conditions": [
-        "When you need structured reference data on any domain (medical",
-        "legal",
-        "finance",
-        "cybersecurity)",
-        "When building lookup tables",
-        "Q&A datasets",
-        "or research corpora",
-        "When generating training data for traditional ML models (regression",
-        "classification — NOT competing LLMs)",
-        "When you want cross-model comparison on domain knowledge"
-      ],
-      "anti_triggers": [
-        "When extracting training data for other AI models"
-      ],
-      "dependencies": [
-        "pip",
-        "bdistill",
-        "Claude"
-      ],
-      "mcp_tools": [
-        "claude",
-        "cursor",
-        "codex",
-        "copilot"
-      ]
     },
     {
       "domain": "ai-ml",
@@ -1101,39 +805,6 @@
     {
       "domain": "ai-ml",
       "sub_domain": "memory",
-      "id": "hybrid-search-implementation",
-      "description": "Combine vector similarity and keyword-based search to improve retrieval in RAG systems, search engines, or when recall is insufficient.",
-      "path": "hybrid-search-implementation/SKILL.md",
-      "tags": [
-        "hybrid",
-        "search",
-        "vector",
-        "keyword",
-        "RAG",
-        "recall"
-      ],
-      "trigger_conditions": [
-        "Building RAG systems with improved recall",
-        "Combining semantic understanding with exact matching",
-        "Handling queries with specific terms (names",
-        "codes)",
-        "Improving search for domain-specific vocabulary"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to hybrid search implementation"
-      ],
-      "dependencies": [
-        "Clarify goals",
-        "constraints",
-        "and required inputs",
-        "Apply relevant best practices and validate outcomes",
-        "Provide actionable steps and verification"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "memory",
       "id": "rag-engineer",
       "description": "RAG Engineer bridges the gap between raw documents and LLM understanding, focusing on retrieval quality to determine generation quality.",
       "path": "rag-engineer/SKILL.md",
@@ -1157,37 +828,6 @@
         "llm-fundamentals",
         "understanding-of-embeddings",
         "basic-nlp-concepts"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "memory",
-      "id": "rag-implementation",
-      "description": "RAG Implementation Workflow covering embedding selection, vector database setup, chunking strategies, retrieval optimization, and LLM integration.",
-      "path": "rag-implementation/SKILL.md",
-      "tags": [
-        "rag",
-        "embedding-selection",
-        "vector-database-setup",
-        "chunking-strategies",
-        "retrieval-optimization",
-        "llm-integration"
-      ],
-      "trigger_conditions": [
-        "Building RAG-powered applications",
-        "Implementing semantic search",
-        "Creating knowledge-grounded AI",
-        "Setting up document Q&A systems",
-        "Optimizing retrieval quality"
-      ],
-      "anti_triggers": [
-        "Low-latency",
-        "high-throughput applications"
-      ],
-      "dependencies": [
-        "Vector database",
-        "LLM provider"
       ],
       "mcp_tools": []
     },
@@ -1261,38 +901,6 @@
         "context-fundamentals",
         "context-degradation",
         "evaluation"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "memory",
-      "id": "context-window-management",
-      "description": "Optimize LLM applications handling millions of conversations by managing context windows effectively, avoiding token limits and context rot.",
-      "path": "context-window-management/SKILL.md",
-      "tags": [
-        "context-engineering",
-        "context-summarization",
-        "context-trimming",
-        "context-routing",
-        "token-counting",
-        "context-prioritization"
-      ],
-      "trigger_conditions": [
-        "LLM applications handling millions of conversations",
-        "systems hit token limits",
-        "suffer context rot"
-      ],
-      "anti_triggers": [
-        "Naive Truncation",
-        "Ignoring Token Costs",
-        "One-Size-Fits-All"
-      ],
-      "dependencies": [
-        "rag-implementation",
-        "conversation-memory",
-        "prompt-caching",
-        "llm-npc-dialogue"
       ],
       "mcp_tools": []
     },
@@ -1381,75 +989,6 @@
     {
       "domain": "ai-ml",
       "sub_domain": "prompting",
-      "id": "beautiful-prose",
-      "description": "A hard-edged writing style contract for producing timeless, forceful English prose without modern AI tics and filler.",
-      "path": "beautiful-prose/SKILL.md",
-      "tags": [
-        "prose",
-        "writing",
-        "style",
-        "clean",
-        "exact",
-        "concrete",
-        "AI-free"
-      ],
-      "trigger_conditions": [
-        "Users ask for prose or rewrites that must be clean",
-        "exact",
-        "concrete",
-        "and free of AI cadence",
-        "filler",
-        "or therapeutic tone."
-      ],
-      "anti_triggers": [
-        "Use when this skill should NOT be used."
-      ],
-      "dependencies": [
-        "n8n",
-        "atom8n"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "prompting",
-      "id": "llm-structured-output",
-      "description": "Extract typed, validated data from LLM API responses using response_format, tool_use, and schema-constrained decoding across OpenAI, Anthropic, and Google APIs.",
-      "path": "llm-structured-output/SKILL.md",
-      "tags": [
-        "llm",
-        "structured-output",
-        "json-schema",
-        "tool-use",
-        "response-format",
-        "constrained-decoding"
-      ],
-      "trigger_conditions": [
-        "The user needs to extract structured data (JSON objects",
-        "arrays",
-        "enums) from an LLM response",
-        "The user is building a pipeline where LLM output feeds directly into code (database writes",
-        "API calls",
-        "UI rendering)",
-        "The user asks about response_format",
-        "json_mode",
-        "json_object",
-        "or json_schema in OpenAI"
-      ],
-      "anti_triggers": [
-        "The user wants free-form text generation (summaries",
-        "essays",
-        "chat)"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "prompting",
       "id": "prompt-engineer",
       "description": "Transforms raw user prompts into optimized prompts using established prompting frameworks.",
       "path": "prompt-engineer/SKILL.md",
@@ -1476,69 +1015,6 @@
     },
     {
       "domain": "ai-ml",
-      "sub_domain": "prompting",
-      "id": "prompt-caching",
-      "description": "A caching specialist who has reduced LLM costs by 90% through strategic caching at multiple levels: prompt prefixes, full responses, and semantic similarity matches.",
-      "path": "prompt-caching/SKILL.md",
-      "tags": [
-        "caching",
-        "LLM",
-        "prompt-prefixes",
-        "response-caching",
-        "semantic-similarity",
-        "cache-invalidation"
-      ],
-      "trigger_conditions": [
-        "Reducing LLM costs by 90%",
-        "Implementing systems for caching at multiple levels"
-      ],
-      "anti_triggers": [
-        "Caching with high temperature",
-        "No cache invalidation",
-        "Caching everything"
-      ],
-      "dependencies": [
-        "LLM",
-        "caching system"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
-      "id": "antigravity-skill-orchestrator",
-      "description": "A meta-skill that dynamically selects appropriate skills based on task complexity, tracks successful combinations using agent-memory-mcp, and prevents overuse of specialized skills for simple tasks.",
-      "path": "antigravity-skill-orchestrator/SKILL.md",
-      "tags": [
-        "orchestration",
-        "meta-skill",
-        "agent-memory",
-        "task-evaluation"
-      ],
-      "trigger_conditions": [
-        "tackling a complex",
-        "multi-step problem that likely requires multiple domains of expertise",
-        "unsure which specific skills are best suited for a given user request",
-        "user explicitly asks to 'orchestrate'",
-        "'combine skills'",
-        "or 'use the best tools for the job' on a significant task"
-      ],
-      "anti_triggers": [
-        "simple issues (e.g.",
-        "small CSS fixes",
-        "simple script writing",
-        "renaming a variable)",
-        "creating new skills"
-      ],
-      "dependencies": [
-        "agent-memory-mcp"
-      ],
-      "mcp_tools": [
-        "agent-memory-mcp"
-      ]
-    },
-    {
-      "domain": "ai-ml",
       "sub_domain": "agents",
       "id": "notebooklm",
       "description": "Interact with Google NotebookLM to query documentation using Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.",
@@ -1560,72 +1036,6 @@
         "n8n",
         "postgres",
         "docker"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
-      "id": "skill-developer",
-      "description": "Comprehensive guide for creating and managing skills in Claude Code with auto-activation system, following Anthropic's official best practices including the 500-line rule and progressive disclosure pattern.",
-      "path": "skill-developer/SKILL.md",
-      "tags": [
-        "Claude",
-        "skills",
-        "auto-activation",
-        "Anthropic",
-        "best-practices"
-      ],
-      "trigger_conditions": [
-        "Creating or adding skills",
-        "Modifying skill triggers or rules",
-        "Understanding how skill activation works",
-        "Debugging skill activation issues",
-        "Working with skill-rules.json",
-        "Hook system mechanics",
-        "Claude Code best practices",
-        "Progressive disclosure",
-        "YAML frontmatter",
-        "500-line rule"
-      ],
-      "anti_triggers": [
-        "General knowledge questions not related to skills or Claude Code",
-        "Non-technical queries"
-      ],
-      "dependencies": [
-        "npx",
-        "tsx"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "agents",
-      "id": "agent-orchestration-multi-agent-optimize",
-      "description": "Optimize multi-agent systems through coordinated profiling, workload distribution, and cost-aware orchestration. Use for improving agent performance, throughput, or reliability.",
-      "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
-      "tags": [
-        "multi-agent",
-        "performance optimization",
-        "orchestration",
-        "cost management"
-      ],
-      "trigger_conditions": [
-        "Improving multi-agent coordination",
-        "throughput",
-        "or latency",
-        "Profiling agent workflows to identify bottlenecks",
-        "Designing orchestration strategies for complex workflows"
-      ],
-      "anti_triggers": [
-        "Tuning a single agent prompt",
-        "No measurable metrics or evaluation data",
-        "Task unrelated to multi-agent orchestration"
-      ],
-      "dependencies": [
-        "Python",
-        "concurrent.futures",
-        "PriorityQueue"
       ],
       "mcp_tools": []
     },
@@ -1960,34 +1370,6 @@
       "dependencies": [
         "uv pip install plotly",
         "kaleido (for image export)"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "ai-ml",
-      "sub_domain": "science",
-      "id": "context-degradation",
-      "description": "Language models exhibit predictable degradation patterns as context length increases, impacting performance and reliability.",
-      "path": "context-degradation/SKILL.md",
-      "tags": [
-        "context degradation",
-        "language models",
-        "attention mechanisms",
-        "compaction",
-        "isolation"
-      ],
-      "trigger_conditions": [
-        "Agent performance degrades unexpectedly during long conversations",
-        "Debugging cases where agents produce incorrect or irrelevant outputs",
-        "Designing systems that must handle large contexts reliably"
-      ],
-      "anti_triggers": [
-        "Short context lengths where models perform well",
-        "Contexts without significant information overlap"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres"
       ],
       "mcp_tools": []
     },
@@ -2353,58 +1735,6 @@
     {
       "domain": "automation",
       "sub_domain": "n8n",
-      "id": "n8n-atom-executor",
-      "description": "Executes n8n-atom automated workflows and integrates with the MCP inspector bridge.",
-      "path": "n8n-atom-executor/SKILL.md",
-      "tags": [
-        "n8n",
-        "atom",
-        "webhooks",
-        "mcp-inspector-atom8n",
-        "automation",
-        "orchestration"
-      ],
-      "trigger_conditions": [
-        "Triggering configured N8N webhooks.",
-        "Inspecting workflow executions via mcp-inspector-atom8n.",
-        "Deploying and orchestrating automation logic within the local stack."
-      ],
-      "anti_triggers": [
-        "Not applicable for standalone use cases outside n8n-atom ecosystem."
-      ],
-      "dependencies": [
-        "n8n",
-        "mcp-inspector-atom8n"
-      ],
-      "mcp_tools": [
-        "mcp-inspector-atom8n"
-      ]
-    },
-    {
-      "domain": "automation",
-      "sub_domain": "n8n",
-      "id": "n8n-global-deploy",
-      "description": "Validates JSON output and pushes it as a workflow to an n8n instance.",
-      "path": "n8n-global-deploy/SKILL.md",
-      "tags": [
-        "n8n",
-        "workflow",
-        "deployment"
-      ],
-      "trigger_conditions": [
-        "When JSON output needs to be validated and deployed to n8n"
-      ],
-      "anti_triggers": [
-        "When deploying workflows without validating the JSON output"
-      ],
-      "dependencies": [
-        "n8n"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "automation",
-      "sub_domain": "n8n",
       "id": "n8n-validation-expert",
       "description": "Expert guide for interpreting and fixing n8n validation errors, emphasizing iterative validation, error severity levels, common error types, and best practices.",
       "path": "n8n-validation-expert/SKILL.md",
@@ -2564,76 +1894,6 @@
       "dependencies": [
         "n8n",
         "postgres"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "automation",
-      "sub_domain": "workflows",
-      "id": "ml-pipeline-workflow",
-      "description": "Comprehensive end-to-end MLOps pipeline orchestration from data preparation through model deployment.",
-      "path": "ml-pipeline-workflow/SKILL.md",
-      "tags": [
-        "ml",
-        "pipeline",
-        "orchestration",
-        "data-preparation",
-        "model-training",
-        "model-validation",
-        "model-deployment"
-      ],
-      "trigger_conditions": [
-        "Building new ML pipelines from scratch",
-        "Designing workflow orchestration for ML systems",
-        "Implementing data → model → deployment automation",
-        "Setting up reproducible training workflows",
-        "Creating DAG-based ML orchestration",
-        "Integrating ML components into production systems"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to ml pipeline workflow",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "Apache Airflow",
-        "Dagster",
-        "Kubeflow Pipelines",
-        "Prefect"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "automation",
-      "sub_domain": "workflows",
-      "id": "workflow-automation",
-      "description": "You are a workflow automation architect who has seen both the promise and the pain of these platforms. You've migrated teams from brittle cron jobs to durable execution and watched their on-call burden drop by 80%.",
-      "path": "workflow-automation/SKILL.md",
-      "tags": [
-        "workflow-automation",
-        "workflow-orchestration",
-        "durable-execution",
-        "event-driven-workflows",
-        "step-functions",
-        "job-queues",
-        "background-jobs",
-        "scheduled-tasks"
-      ],
-      "trigger_conditions": [
-        "Different platforms make different tradeoffs.",
-        "n8n is accessible but sacrifices performance.",
-        "Temporal is correct but complex.",
-        "Inngest balances developer experience with reliability."
-      ],
-      "anti_triggers": [
-        "No Durable Execution for Payments",
-        "Monolithic Workflows",
-        "No Observability"
-      ],
-      "dependencies": [
-        "n8n",
-        "Temporal",
-        "Inngest",
-        "PostgreSQL"
       ],
       "mcp_tools": []
     },
@@ -2803,8 +2063,8 @@
         "Adding streaming responses to improve perceived latency"
       ],
       "anti_triggers": [
-        "Using `gemini-pro` for simple tasks — Flash is cheaper and faster",
-        "Sending large base64 images inline for files > 20MB — use File API instead"
+        "Using `gemini-pro` for simple tasks \u2014 Flash is cheaper and faster",
+        "Sending large base64 images inline for files > 20MB \u2014 use File API instead"
       ],
       "dependencies": [
         "Node.js",
@@ -3144,34 +2404,6 @@
     {
       "domain": "backend",
       "sub_domain": "arch",
-      "id": "performance-optimizer",
-      "description": "Identifies and fixes performance bottlenecks in code, databases, and APIs. Measures before and after to prove improvements.",
-      "path": "performance-optimizer/SKILL.md",
-      "tags": [
-        "performance",
-        "optimization",
-        "code",
-        "database",
-        "api"
-      ],
-      "trigger_conditions": [
-        "App is slow or laggy",
-        "User complains about performance",
-        "Page load times are high"
-      ],
-      "anti_triggers": [
-        "Premature optimization",
-        "Micro-optimizations"
-      ],
-      "dependencies": [
-        "node.js",
-        "database"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
       "id": "c4-architecture-c4-architecture",
       "description": "Generate comprehensive C4 architecture documentation for an existing repository/codebase using a bottom-up analysis approach.",
       "path": "c4-architecture-c4-architecture/SKILL.md",
@@ -3228,32 +2460,6 @@
     {
       "domain": "backend",
       "sub_domain": "arch",
-      "id": "code-refactoring-refactor-clean",
-      "description": "Refactor code to improve quality, maintainability, and performance using clean code principles, SOLID design patterns, and modern software engineering best practices.",
-      "path": "code-refactoring-refactor-clean/SKILL.md",
-      "tags": [
-        "code refactoring",
-        "SOLID",
-        "clean code"
-      ],
-      "trigger_conditions": [
-        "Refactoring tangled or hard-to-maintain code",
-        "Reducing duplication",
-        "complexity",
-        "or code smells",
-        "Improving testability and design consistency"
-      ],
-      "anti_triggers": [
-        "You only need a small one-line fix",
-        "Refactoring is prohibited due to change freeze",
-        "The request is for documentation only"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
       "id": "codebase-cleanup-refactor-clean",
       "description": "A code refactoring skill that helps improve the quality, maintainability, and performance of large codebases by applying clean code principles and SOLID design patterns.",
       "path": "codebase-cleanup-refactor-clean/SKILL.md",
@@ -3272,34 +2478,6 @@
         "You only need a tiny targeted fix",
         "Refactoring is blocked by policy or deadlines",
         "The request is documentation-only"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
-      "id": "ddd-strategic-design",
-      "description": "Design DDD strategic artifacts including subdomains, bounded contexts, and ubiquitous language for complex business domains.",
-      "path": "ddd-strategic-design/SKILL.md",
-      "tags": [
-        "ddd",
-        "strategic-design",
-        "bounded-context",
-        "ubiquitous-language"
-      ],
-      "trigger_conditions": [
-        "Defining core",
-        "supporting",
-        "and generic subdomains",
-        "Splitting a monolith or service landscape by domain boundaries",
-        "Aligning teams and ownership with bounded contexts",
-        "Building a shared ubiquitous language with domain experts"
-      ],
-      "anti_triggers": [
-        "The domain model is stable and already well bounded",
-        "You need tactical code patterns only",
-        "The task is purely infrastructure or UI oriented"
       ],
       "dependencies": [],
       "mcp_tools": []
@@ -3360,33 +2538,6 @@
     {
       "domain": "backend",
       "sub_domain": "arch",
-      "id": "event-sourcing-architect",
-      "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns.",
-      "path": "event-sourcing-architect/SKILL.md",
-      "tags": [
-        "event-sourcing",
-        "CQRS",
-        "event-driven-architecture",
-        "saga-orchestration",
-        "projection-building"
-      ],
-      "trigger_conditions": [
-        "Building systems requiring complete audit trails",
-        "Implementing complex business workflows with compensating actions",
-        "Designing systems needing temporal queries"
-      ],
-      "anti_triggers": [
-        "The domain is simple and CRUD is sufficient",
-        "You cannot support event store operations or projections"
-      ],
-      "dependencies": [],
-      "mcp_tools": [
-        "dbos-*"
-      ]
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
       "id": "event-store-design",
       "description": "Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.",
       "path": "event-store-design/SKILL.md",
@@ -3431,37 +2582,6 @@
       ],
       "anti_triggers": [
         "The task is unrelated to graphql architect",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
-      "id": "kpi-dashboard-design",
-      "description": "Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions.",
-      "path": "kpi-dashboard-design/SKILL.md",
-      "tags": [
-        "KPI",
-        "dashboard",
-        "business intelligence",
-        "executive dashboard",
-        "sales",
-        "marketing",
-        "operations",
-        "finance"
-      ],
-      "trigger_conditions": [
-        "Designing executive dashboards",
-        "Selecting meaningful KPIs",
-        "Building real-time monitoring displays",
-        "Creating department-specific metrics views",
-        "Improving existing dashboard layouts",
-        "Establishing metric governance"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to kpi dashboard design",
         "You need a different domain or tool outside this scope"
       ],
       "dependencies": [],
@@ -3640,31 +2760,6 @@
     {
       "domain": "backend",
       "sub_domain": "arch",
-      "id": "cqrs-implementation",
-      "description": "Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.",
-      "path": "cqrs-implementation/SKILL.md",
-      "tags": [
-        "CQRS",
-        "architecture",
-        "read-write-segregation",
-        "event-sourcing"
-      ],
-      "trigger_conditions": [
-        "Separating read and write concerns",
-        "Scaling reads independently from writes",
-        "Building event-sourced systems"
-      ],
-      "anti_triggers": [
-        "The domain is simple and CRUD is sufficient",
-        "You cannot operate separate read/write models",
-        "Strong immediate consistency is required everywhere"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
       "id": "network-engineer",
       "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
       "path": "network-engineer/SKILL.md",
@@ -3769,34 +2864,6 @@
         "The system is small enough for a modular monolith",
         "You need a quick prototype without distributed complexity",
         "There is no operational support for distributed systems"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "arch",
-      "id": "monorepo-architect",
-      "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development.",
-      "path": "monorepo-architect/SKILL.md",
-      "tags": [
-        "monorepo",
-        "Nx",
-        "Turborepo",
-        "Bazel",
-        "Lerna"
-      ],
-      "trigger_conditions": [
-        "Setting up a new monorepo from scratch",
-        "Migrating from polyrepo to monorepo",
-        "Optimizing slow CI/CD pipelines",
-        "Sharing code between multiple applications",
-        "Managing dependencies across projects",
-        "Implementing consistent tooling across teams"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to monorepo architect",
-        "You need a different domain or tool outside this scope"
       ],
       "dependencies": [],
       "mcp_tools": []
@@ -4186,29 +3253,6 @@
     {
       "domain": "backend",
       "sub_domain": "core",
-      "id": "performance-profiling",
-      "description": "Performance profiling principles, including measurement, analysis, and optimization techniques.",
-      "path": "performance-profiling/SKILL.md",
-      "tags": [
-        "performance",
-        "profiling",
-        "optimization"
-      ],
-      "trigger_conditions": [
-        "development phase",
-        "CI/CD pipeline",
-        "production monitoring"
-      ],
-      "anti_triggers": [
-        "guessing at problems",
-        "micro-optimizing"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "core",
       "id": "python-pro",
       "description": "Master Python 3.12+ development with advanced features, async programming, performance optimization, and production-ready practices using cutting-edge tools like uv, ruff, pydantic, and FastAPI.",
       "path": "python-pro/SKILL.md",
@@ -4549,36 +3593,6 @@
     {
       "domain": "backend",
       "sub_domain": "core",
-      "id": "pdf-official",
-      "description": "A comprehensive guide on PDF processing using Python libraries and command-line tools. It covers merging, splitting, extracting text and tables, creating new PDFs, and more.",
-      "path": "pdf-official/SKILL.md",
-      "tags": [
-        "PDF",
-        "Python",
-        "Command-Line Tools",
-        "Text Extraction",
-        "Table Extraction"
-      ],
-      "trigger_conditions": [
-        "Need to process PDF files for data extraction or manipulation",
-        "Creating new PDF documents programmatically",
-        "Handling scanned PDFs with OCR"
-      ],
-      "anti_triggers": [
-        "Simple text editing tasks that do not involve PDF processing",
-        "Basic file operations unrelated to PDFs"
-      ],
-      "dependencies": [
-        "Python",
-        "poppler-utils",
-        "qpdf",
-        "pdftk"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "core",
       "id": "fp-backend",
       "description": "A collection of functional programming patterns for Node.js/Deno backend development using fp-ts, ReaderTaskEither, and functional dependency injection.",
       "path": "fp-backend/SKILL.md",
@@ -4666,41 +3680,6 @@
       "dependencies": [
         "Google Search Console access",
         "Analytics access"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "backend",
-      "sub_domain": "core",
-      "id": "uv-package-manager",
-      "description": "Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.",
-      "path": "uv-package-manager/SKILL.md",
-      "tags": [
-        "uv",
-        "Python",
-        "package manager",
-        "Rust",
-        "dependency resolution"
-      ],
-      "trigger_conditions": [
-        "Setting up new Python projects quickly",
-        "Managing Python dependencies faster than pip",
-        "Creating and managing virtual environments",
-        "Installing Python interpreters",
-        "Resolving dependency conflicts efficiently",
-        "Migrating from pip/pip-tools/poetry",
-        "Speeding up CI/CD pipelines",
-        "Managing monorepo Python projects",
-        "Working with lockfiles for reproducible builds",
-        "Optimizing Docker builds with Python dependencies"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to uv package manager",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "Python",
-        "Rust"
       ],
       "mcp_tools": []
     },
@@ -5557,35 +4536,6 @@
         "n8n"
       ],
       "mcp_tools": []
-    },
-    {
-      "domain": "data",
-      "sub_domain": "admin",
-      "id": "local-db-migration",
-      "description": "Manages schema migrations and vector initialization for the based-workspace-postgres container.",
-      "path": "local-db-migration/SKILL.md",
-      "tags": [
-        "postgres",
-        "vector",
-        "migration",
-        "schema",
-        "connection"
-      ],
-      "trigger_conditions": [
-        "Initializing vector store",
-        "Managing database schema",
-        "Interacting with ai_memory database"
-      ],
-      "anti_triggers": [
-        "Modifying databases other than ai_memory",
-        "Targeting non-based-workspace-postgres container"
-      ],
-      "dependencies": [
-        "based-workspace-postgres"
-      ],
-      "mcp_tools": [
-        "postgres-memory"
-      ]
     },
     {
       "domain": "data",
@@ -6469,31 +5419,6 @@
     {
       "domain": "devops",
       "sub_domain": "cicd",
-      "id": "gitlab-ci-patterns",
-      "description": "Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.",
-      "path": "gitlab-ci-patterns/SKILL.md",
-      "tags": [
-        "gitlab-ci",
-        "ci/cd",
-        "pipeline"
-      ],
-      "trigger_conditions": [
-        "Automate GitLab-based CI/CD",
-        "Implement multi-stage pipelines",
-        "Configure GitLab Runners"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to gitlab ci patterns",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "gitlab"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "devops",
-      "sub_domain": "cicd",
       "id": "deployment-pipeline-design",
       "description": "Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.",
       "path": "deployment-pipeline-design/SKILL.md",
@@ -6816,10 +5741,10 @@
         "Kubernetes orchestration",
         "pods",
         "services",
-        "ingress → kubernetes-expert (future)",
-        "GitHub Actions CI/CD with containers → github-actions-expert",
-        "AWS ECS/Fargate or cloud-specific container services → devops-expert",
-        "Database containerization with complex persistence → database-expert"
+        "ingress \u2192 kubernetes-expert (future)",
+        "GitHub Actions CI/CD with containers \u2192 github-actions-expert",
+        "AWS ECS/Fargate or cloud-specific container services \u2192 devops-expert",
+        "Database containerization with complex persistence \u2192 database-expert"
       ],
       "dependencies": [
         "docker"
@@ -7036,7 +5961,7 @@
       "domain": "devops",
       "sub_domain": "iac",
       "id": "terraform-aws-modules",
-      "description": "Terraform module creation for AWS — reusable modules, state management, and HCL best practices. Use when building or reviewing Terraform AWS infrastructure.",
+      "description": "Terraform module creation for AWS \u2014 reusable modules, state management, and HCL best practices. Use when building or reviewing Terraform AWS infrastructure.",
       "path": "terraform-aws-modules/SKILL.md",
       "tags": [
         "terraform",
@@ -7636,7 +6561,7 @@
         "User asks for an onboarding guide or zero to hero path"
       ],
       "anti_triggers": [
-        "Small repos (≤10 files): Getting Started only"
+        "Small repos (\u226410 files): Getting Started only"
       ],
       "dependencies": [
         "n8n",
@@ -7649,7 +6574,7 @@
       "domain": "documentation",
       "sub_domain": "writing",
       "id": "wiki-onboarding",
-      "description": "Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase.",
+      "description": "Generate two complementary onboarding documents that together give any engineer \u2014 from newcomer to principal \u2014 a complete understanding of a codebase.",
       "path": "wiki-onboarding/SKILL.md",
       "tags": [
         "onboarding",
@@ -7791,36 +6716,6 @@
       "anti_triggers": [
         "Summarizing content without capturing all details",
         "Omitting any part of the input"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres",
-        "docker"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "documentation",
-      "sub_domain": "writing",
-      "id": "workspace-analyzer",
-      "description": "Architectural investigator that scans a repository to map the high-level architecture, identify the critical path, surface integrations, and flag redundant code.",
-      "path": "workspace-analyzer/SKILL.md",
-      "tags": [
-        "architecture",
-        "analysis",
-        "investigation",
-        "codebase",
-        "redundancy",
-        "integrations"
-      ],
-      "trigger_conditions": [
-        "User asks to analyze, investigate, scan, or explain the current workspace or a specific repository.",
-        "User has just fetched or cloned a repository and wants to understand it.",
-        "User asks for a high-level overview of architecture, business logic, or directory structure.",
-        "User asks to identify technical debt, redundant code, or core dependencies within the current project."
-      ],
-      "anti_triggers": [
-        "User explicitly requests modifications or changes to the codebase during analysis."
       ],
       "dependencies": [
         "n8n",
@@ -9163,34 +8058,6 @@
         "LibreOffice",
         "poppler-utils",
         "defusedxml"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "domain": "productivity",
-      "sub_domain": "office",
-      "id": "obsidian-cli",
-      "description": "Use the Obsidian CLI to read, create, search, and manage vault content, or to develop and debug Obsidian plugins and themes from the command line.",
-      "path": "obsidian-cli/SKILL.md",
-      "tags": [
-        "obsidian",
-        "cli",
-        "command-line",
-        "vault",
-        "plugin",
-        "theme",
-        "development"
-      ],
-      "trigger_conditions": [
-        "Managing vault content through the Obsidian CLI",
-        "Developing or debugging Obsidian plugins and themes from the command line",
-        "Desiring shell-driven interaction with a running Obsidian app"
-      ],
-      "anti_triggers": [
-        "Lacking a running Obsidian instance"
-      ],
-      "dependencies": [
-        "Obsidian"
       ],
       "mcp_tools": []
     },
@@ -11029,47 +9896,6 @@
         "The request is unrelated to security assessment or design"
       ],
       "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "domain": "security",
-      "sub_domain": "testing",
-      "id": "scanning-tools",
-      "description": "Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation.",
-      "path": "scanning-tools/SKILL.md",
-      "tags": [
-        "Nmap",
-        "Masscan",
-        "Nessus",
-        "OpenVAS",
-        "Burp Suite",
-        "OWASP ZAP",
-        "ClamAV",
-        "Metasploit",
-        "Prowler",
-        "ScoutSuite",
-        "Lynis",
-        "OpenSCAP"
-      ],
-      "trigger_conditions": [
-        "Network discovery and security auditing",
-        "Vulnerability assessment of systems",
-        "Web application testing for security flaws",
-        "Wireless network penetration testing",
-        "Malware detection and analysis",
-        "Cloud security assessment",
-        "Compliance validation with standards like PCI-DSS",
-        "HIPAA"
-      ],
-      "anti_triggers": [
-        "Unauthorized scanning of networks or systems without proper authorization",
-        "Using tools in a manner that violates legal or ethical guidelines"
-      ],
-      "dependencies": [
-        "Linux-based system (Kali Linux recommended)",
-        "Network access to target systems",
-        "Proper authorization for scanning activities"
-      ],
       "mcp_tools": []
     }
   ]

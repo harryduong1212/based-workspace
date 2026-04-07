@@ -1,917 +1,383 @@
 {
-  "version": "1.0.0",
-  "description": "Role-based profiles mapping to skill and workflow ID arrays for the workspace context manager.",
+  "version": "2.0.0",
+  "description": "Role-based profiles utilizing a strict DRY inheritance model to prevent context overflow. Default workflows are handled by the manager script.",
   "profiles": {
-    "base-core": {
-      "description": "Internal base suite for core capabilities.",
+    "workspace-foundation": {
+      "description": "The bedrock standard for planning, documentation, code review, and QA across all roles.",
       "skills": [
-        "agent-tool-builder",
-        "changelog-automation",
-        "clean-code",
-        "code-documentation-code-explain",
-        "code-documentation-doc-generate",
-        "code-review-excellence",
-        "code-reviewer",
+        "plan-writing",
+        "github-issue-creator",
         "concise-planning",
-        "development",
-        "doc-coauthoring",
-        "docs-architect",
-        "documentation",
-        "documentation-generation-doc-generate",
-        "documentation-templates",
-        "find-bugs",
-        "lint-and-validate",
-        "manifest",
-        "mermaid-expert",
-        "readme",
-        "reference-builder",
-        "screenshots",
-        "skill-developer",
-        "tdd-orchestrator",
-        "test-automator",
-        "test-driven-development",
-        "testing-qa",
-        "tool-design",
-        "tutorial-engineer",
-        "verification-before-completion",
+        "c4-context",
+        "api-documentation",
+        "c4-code",
         "wiki-architect",
-        "wiki-changelog",
         "wiki-onboarding",
         "wiki-page-writer",
+        "wiki-changelog",
+        "debrief-teacher",
+        "exhaustive-video-note-taker",
+        "codebase-cleanup-tech-debt",
+        "comprehensive-review-full-review",
+        "address-github-comments",
+        "debugging-strategies",
+        "ask-questions-if-underspecified",
+        "writing-plans",
         "wiki-qa",
-        "wiki-researcher",
-        "wiki-vitepress",
-        "workflow-automation"
+        "brainstorming"
       ],
+      "extends": [],
       "workflows": [
-        "git-commit-group-changes"
-      ]
-    },
-    "base-ai": {
-      "description": "Internal base suite for ai capabilities.",
-      "skills": [
-        "agent-evaluation",
-        "agent-memory-systems",
-        "ai-agent-development",
-        "ai-agents-architect",
-        "ai-engineer",
-        "ai-ml",
-        "ai-product",
-        "autonomous-agent-patterns",
-        "autonomous-agents",
-        "computer-use-agents",
-        "context-window-management",
-        "conversation-memory",
-        "crewai",
-        "embedding-strategies",
-        "evaluation",
-        "gemini-api-dev",
-        "hybrid-search-implementation",
-        "langfuse",
-        "langgraph",
-        "llm-app-patterns",
-        "llm-application-dev-ai-assistant",
-        "llm-application-dev-langchain-agent",
-        "llm-application-dev-prompt-optimize",
-        "llm-evaluation",
-        "machine-learning-ops-ml-pipeline",
-        "mcp-builder",
-        "ml-engineer",
-        "ml-pipeline-workflow",
-        "mlops-engineer",
-        "multi-agent-patterns",
-        "prompt-caching",
-        "prompt-engineer",
-        "prompt-engineering",
-        "rag-engineer",
-        "rag-implementation",
-        "similarity-search-patterns",
-        "vector-database-engineer",
-        "workflow-orchestration-patterns"
-      ],
-      "workflows": []
-    },
-    "base-dev": {
-      "description": "Internal base suite for dev capabilities.",
-      "skills": [
-        "api-design-principles",
-        "api-documentation-generator",
-        "api-documenter",
-        "api-testing-observability-api-mock",
-        "app-builder",
-        "backend-architect",
-        "backend-dev-guidelines",
-        "browser-automation",
-        "c4-architecture-c4-architecture",
-        "c4-code",
-        "c4-component",
-        "c4-container",
-        "c4-context",
-        "data-engineer",
-        "data-engineering-data-driven-feature",
-        "data-engineering-data-pipeline",
-        "database",
-        "database-admin",
-        "database-architect",
-        "database-cloud-optimization-cost-optimize",
-        "database-design",
-        "database-migration",
-        "database-migrations-sql-migrations",
-        "database-optimizer",
-        "dbos-python",
-        "dbt-transformation-patterns",
-        "distributed-tracing",
-        "docker-expert",
-        "e2e-testing-patterns",
-        "fastapi-pro",
-        "framework-migration-code-migrate",
-        "frontend-design",
-        "frontend-dev-guidelines",
-        "frontend-developer",
-        "javascript-testing-patterns",
-        "neon-postgres",
-        "nextjs-app-router-patterns",
-        "nodejs-backend-patterns",
-        "nosql-expert",
-        "openapi-spec-generation",
-        "performance-engineer",
-        "performance-profiling",
-        "playwright-skill",
-        "postgres-best-practices",
-        "postgresql",
-        "postmortem-writing",
-        "prisma-expert",
-        "python-testing-patterns",
-        "react-patterns",
-        "senior-fullstack",
-        "sql-optimization-patterns",
-        "tailwind-patterns",
-        "typescript-pro",
-        "unit-testing-test-generate",
-        "webapp-testing"
-      ],
-      "workflows": []
-    },
-    "base-infra-ops": {
-      "description": "Internal base suite for infra capabilities.",
-      "skills": [
-        "airflow-dag-patterns",
-        "aws-skills",
-        "azure-functions",
-        "cicd-automation-workflow-automate",
-        "cloud-architect",
-        "cloud-devops",
-        "cloud-penetration-testing",
-        "cost-optimization",
-        "data-quality-frameworks",
-        "datadog-automation",
-        "deployment-engineer",
-        "deployment-pipeline-design",
-        "environment-setup-guide",
-        "gcp-cloud-run",
-        "github-actions-templates",
-        "gitlab-ci-patterns",
-        "gitops-workflow",
-        "grafana-dashboards",
-        "helm-chart-scaffolding",
-        "hybrid-cloud-networking",
-        "incident-responder",
-        "incident-runbook-templates",
-        "k8s-manifest-generator",
-        "k8s-security-policies",
-        "kubernetes-architect",
-        "mtls-configuration",
-        "multi-cloud-architecture",
-        "observability-engineer",
-        "prometheus-configuration",
-        "sentry-automation",
-        "slo-implementation",
-        "terraform-module-library",
-        "terraform-skill",
-        "terraform-specialist",
-        "vercel-deployment"
-      ],
-      "workflows": []
-    },
-    "base-security": {
-      "description": "Internal base suite for security capabilities.",
-      "skills": [
-        "api-fuzzing-bug-bounty",
-        "api-security-best-practices",
-        "auth-implementation-patterns",
-        "aws-penetration-testing",
-        "broken-authentication",
-        "burp-suite-testing",
-        "ethical-hacking-methodology",
-        "file-path-traversal",
-        "idor-testing",
-        "metasploit-framework",
-        "pentest-checklist",
-        "pentest-commands",
-        "sast-configuration",
-        "scanning-tools",
-        "secrets-management",
-        "security-audit",
-        "security-auditor",
-        "security-scanning-security-dependencies",
-        "security-scanning-security-hardening",
-        "security-scanning-security-sast",
-        "shodan-reconnaissance",
-        "sql-injection-testing",
-        "top-web-vulnerabilities",
-        "vulnerability-scanner",
-        "wordpress",
-        "wordpress-penetration-testing",
-        "xss-html-injection"
-      ],
-      "workflows": []
-    },
-    "base-product-cro": {
-      "description": "Internal base suite for product capabilities.",
-      "skills": [
-        "ab-test-setup",
-        "analytics-tracking",
-        "billing-automation",
-        "copywriting",
-        "email-sequence",
-        "form-cro",
-        "marketing-psychology",
-        "onboarding-cro",
-        "page-cro",
-        "payment-integration",
-        "paywall-upgrade-cro",
-        "popup-cro",
-        "pricing-strategy",
-        "programmatic-seo",
-        "schema-markup",
-        "seo-audit",
-        "signup-flow-cro",
-        "stripe-integration",
-        "web-performance-optimization"
-      ],
-      "workflows": []
-    },
-    "workflow-pro": {
-      "description": "n8n automation & platform expert.",
-      "skills": [
-        "agent-tool-builder",
-        "n8n-code-javascript",
-        "n8n-code-python",
-        "n8n-expression-syntax",
-        "n8n-global-deploy",
-        "n8n-node-configuration",
-        "n8n-validation-expert",
-        "n8n-workflow-patterns",
-        "workflow-automation"
-      ],
-      "workflows": [
-        "debug-log",
-        "performance"
-      ],
-      "extends": []
-    },
-    "java-pro": {
-      "description": "Java & Backend specialist.",
-      "skills": [
-        "api-patterns",
-        "backend-architect",
-        "clean-code",
-        "database-optimizer",
-        "java-pro",
-        "playwright-java"
-      ],
-      "workflows": [
-        "debug-error",
-        "new-api",
-        "unit-test"
-      ],
-      "extends": []
-    },
-    "solution-architect": {
-      "description": "Distributed systems & patterns.",
-      "skills": [
-        "agent-tool-builder",
-        "architect-review",
-        "architecture-patterns",
-        "c4-component",
-        "c4-context",
-        "ddd-strategic-design",
-        "event-sourcing-architect",
-        "microservices-patterns",
-        "saga-orchestration",
-        "software-architecture",
-        "systematic-debugging",
-        "workflow-automation",
-        "workspace-analyzer"
-      ],
-      "workflows": [
+        "api-docs",
         "architecture",
-        "feature-deep-dive"
-      ],
-      "extends": []
-    },
-    "project-manager-pro": {
-      "description": "Technical leadership & requirements.",
-      "skills": [
-        "competitive-landscape",
-        "goal-analyzer",
-        "market-sizing-analysis",
-        "multi-agent-patterns",
-        "plan-writing",
-        "product-manager-toolkit",
-        "project-development",
-        "senior-it-ba-specialist",
-        "senior-product-manager",
-        "senior-architect-v2",
-        "startup-business-analyst-business-case",
-        "startup-financial-modeling",
-        "startup-metrics-framework",
-        "team-composition-analysis",
-        "tool-design",
-        "database-architect",
-        "backend-architect"
-      ],
-      "workflows": [
+        "code-review",
+        "debug-error",
+        "debug-log",
+        "performance",
+        "e2e-test",
+        "playwright-test",
+        "test-coverage",
+        "unit-test",
+        "new-project",
+        "new-feature",
+        "migrate",
+        "library",
         "feature-kickoff",
         "generate-feature-spec",
         "generate-db-schema",
         "generate-api-spec",
         "generate-sequence-diagram",
-        "prepare-test-environment",
-        "git-pr"
-      ],
-      "extends": []
+        "prepare-test-environment"
+      ]
     },
-    "frontend-pro": {
-      "description": "Design-driven web development.",
+    "ai-agent-core": {
+      "description": "Core capabilities for LLMs, agent orchestration, and context memory.",
       "skills": [
-        "astro",
-        "frontend-developer",
-        "javascript-pro",
-        "nextjs-app-router-patterns",
-        "react-patterns",
-        "shadcn",
-        "typescript-expert",
-        "ui-ux-pro-max",
-        "web-performance-optimization"
+        "langchain-architecture",
+        "agents-md",
+        "ai-engineer",
+        "ai-engineering-toolkit",
+        "langgraph",
+        "llm-ops",
+        "filesystem-context",
+        "workspace-configurator",
+        "mcp-builder",
+        "multi-agent-patterns",
+        "tool-design",
+        "embedding-strategies",
+        "memory-systems",
+        "skill-creator",
+        "skill-writer",
+        "ai-native-cli",
+        "hierarchical-agent-memory",
+        "rag-engineer",
+        "recallmax",
+        "context-optimization",
+        "prompt-engineer"
       ],
+      "extends": [],
       "workflows": [
+        "ai-agent",
+        "prompt-engineering",
+        "rag-pipeline",
+        "workflow-creator"
+      ]
+    },
+    "n8n-automation-core": {
+      "description": "Node-based visual automation, webhook processing, and scraping.",
+      "skills": [
+        "n8n-code-javascript",
+        "n8n-code-python",
+        "n8n-expression-syntax",
+        "n8n-mcp-tools-expert",
+        "n8n-node-configuration",
+        "n8n-validation-expert",
+        "n8n-workflow-patterns",
+        "telegram-bot-builder",
+        "daily-news-report",
+        "x-twitter-scraper",
+        "billing-automation"
+      ],
+      "extends": [],
+      "workflows": []
+    },
+    "backend-core": {
+      "description": "Server-side languages, API design, and system architecture.",
+      "skills": [
+        "trpc-fullstack",
+        "fastapi-pro",
+        "fastapi-router-py",
+        "fastapi-templates",
+        "python-fastapi-development",
+        "api-patterns",
+        "api-endpoint-builder",
+        "graphql",
+        "backend-architect",
+        "backend-dev-guidelines",
+        "c4-architecture-c4-architecture",
+        "architect-review",
+        "domain-driven-design",
+        "rust-async-patterns",
+        "senior-architect",
+        "microservices-patterns",
+        "software-architecture",
+        "python-pro",
+        "golang-pro",
+        "typescript-expert",
+        "rust-pro",
+        "java-pro"
+      ],
+      "extends": [],
+      "workflows": [
+        "new-api",
+        "generate-api-spec",
+        "refactor",
+        "generate-sequence-diagram"
+      ]
+    },
+    "data-core": {
+      "description": "Database administration, NoSQL, ORMs, and SQL optimization.",
+      "skills": [
+        "vector-database-engineer",
+        "nosql-expert",
+        "database-architect",
+        "database-design",
+        "database",
+        "data-engineer",
+        "data-engineering-data-pipeline",
+        "database-migrations-sql-migrations",
+        "postgresql",
+        "postgresql-optimization",
+        "sql-pro",
+        "sql-optimization-patterns"
+      ],
+      "extends": [],
+      "workflows": [
+        "db-migrate",
+        "db-schema",
+        "db-seed",
+        "generate-db-schema"
+      ]
+    },
+    "frontend-core": {
+      "description": "Client-side engineering, React/Next.js, UI patterns, and web performance.",
+      "skills": [
+        "javascript-pro",
+        "nodejs-best-practices",
+        "progressive-web-app",
+        "react-component-performance",
+        "react-nextjs-development",
+        "react-state-management",
+        "senior-frontend",
+        "web-performance-optimization",
+        "react-best-practices",
+        "building-native-ui",
+        "react-ui-patterns",
+        "frontend-ui-dark-ts"
+      ],
+      "extends": [],
+      "workflows": [
+        "new-component",
         "dashboard-ui",
         "landing-page",
-        "new-component"
-      ],
-      "extends": []
-    },
-    "seo-pro": {
-      "description": "Growth & search optimization.",
-      "skills": [
-        "ab-test-setup",
-        "analytics-tracking",
-        "copywriting",
-        "email-sequence",
-        "form-cro",
-        "onboarding-cro",
-        "page-cro",
-        "paywall-upgrade-cro",
-        "popup-cro",
-        "programmatic-seo",
-        "schema-markup",
-        "seo-audit",
-        "seo-authority-builder",
-        "seo-content",
-        "seo-content-writer",
-        "seo-geo",
-        "seo-keyword-strategist",
-        "seo-technical",
-        "signup-flow-cro"
-      ],
-      "workflows": [
+        "nextjs-app",
+        "accessibility-audit",
         "design-system",
-        "landing-page"
-      ],
-      "extends": []
+        "email-template"
+      ]
     },
-    "growth-marketing-pro": {
-      "description": "Data-Driven Marketing.",
+    "devops-ci-cd": {
+      "description": "Continuous Integration, pipeline automations, and CLI orchestrators.",
       "skills": [
-        "ab-test-setup",
-        "analytics-product",
-        "analytics-tracking",
-        "content-creator",
-        "copywriting",
-        "email-sequence",
-        "form-cro",
-        "growth-engine",
-        "marketing-psychology",
-        "monetization",
-        "onboarding-cro",
-        "page-cro",
-        "paywall-upgrade-cro",
-        "popup-cro",
-        "pricing-strategy",
-        "product-design",
-        "product-inventor",
-        "programmatic-seo",
-        "schema-markup",
-        "seo-audit",
-        "signup-flow-cro"
+        "git-advanced-workflows",
+        "github-actions-templates",
+        "deployment-pipeline-design",
+        "deployment-engineer",
+        "environment-setup-guide",
+        "personal-tool-builder",
+        "file-organizer",
+        "claude-code-expert",
+        "devops-troubleshooter"
       ],
+      "extends": [],
       "workflows": [
-        "email-template",
-        "landing-page"
+        "ci-cd"
+      ]
+    },
+    "devops-cloud-iac": {
+      "description": "Cloud infrastructure, Terraform modules, and Kubernetes environments.",
+      "skills": [
+        "cloud-devops",
+        "cloud-architect",
+        "database-cloud-optimization-cost-optimize",
+        "docker-expert",
+        "kubernetes-architect",
+        "kubernetes-deployment",
+        "deployment-validation-config-validate",
+        "gitops-workflow",
+        "k8s-security-policies",
+        "sred-project-organizer",
+        "sred-work-summary",
+        "terraform-aws-modules",
+        "terraform-module-library",
+        "terraform-skill",
+        "terraform-specialist",
+        "deployment-procedures",
+        "helm-chart-scaffolding",
+        "k8s-manifest-generator"
       ],
-      "extends": []
+      "extends": [],
+      "workflows": [
+        "deploy",
+        "docker",
+        "vercel-deploy",
+        "railway-deploy"
+      ]
+    },
+    "devops-os": {
+      "description": "System administration, Bash shell logic, and OS-level scripting.",
+      "skills": [
+        "bash-pro",
+        "windows-shell-reliability",
+        "bash-defensive-patterns",
+        "linux-troubleshooting",
+        "bash-scripting",
+        "powershell-windows",
+        "bash-linux"
+      ],
+      "extends": [],
+      "workflows": [
+        "cli-tool"
+      ]
+    },
+    "devops-core": {
+      "description": "Aggregated operations, infrastructure, and deployment capabilities.",
+      "skills": [],
+      "extends": [
+        "devops-ci-cd",
+        "devops-cloud-iac",
+        "devops-os"
+      ],
+      "workflows": []
+    },
+    "security-core": {
+      "description": "Defensive hardening, penetration testing, and compliance auditing.",
+      "skills": [
+        "pci-compliance",
+        "privacy-by-design",
+        "vulnerability-scanner",
+        "ethical-hacking-methodology",
+        "threat-mitigation-mapping",
+        "broken-authentication",
+        "sql-injection-testing",
+        "audit-skills",
+        "api-security-best-practices",
+        "codebase-audit-pre-push",
+        "codebase-cleanup-deps-audit",
+        "html-injection-testing",
+        "idor-testing",
+        "production-code-audit",
+        "security-audit",
+        "web-security-testing",
+        "frontend-security-coder"
+      ],
+      "extends": [],
+      "workflows": [
+        "security-audit",
+        "auth-implementation",
+        "dependency-check"
+      ]
     },
     "creator-pro": {
       "description": "Workspace Automation & AI Capability Engineer.",
-      "skills": [
-        "agent-tool-builder",
-        "build",
-        "mcp-builder",
-        "skill-creator",
-        "skill-installer",
-        "skill-sentinel",
-        "skill-writer",
-        "workspace-analyzer",
-        "workspace-configurator",
-        "debrief-teacher",
-        "exhaustive-video-note-taker"
-      ],
-      "workflows": [
-        "cli-tool",
-        "debug-error",
-        "git-commit",
-        "new-feature",
-        "refactor",
-        "workflow-creator"
-      ],
-      "extends": []
-    },
-    "backend-dev": {
-      "description": "Core Development context for backend.",
-      "skills": [
-        "api-endpoint-builder",
-        "api-patterns",
-        "error-handling-patterns",
-        "fastapi-router-py",
-        "fastapi-templates",
-        "nodejs-best-practices",
-        "pydantic-models-py",
-        "python-development-python-scaffold",
-        "python-fastapi-development",
-        "uv-package-manager"
-      ],
-      "workflows": [
-        "db-migrate",
-        "generate-api-spec",
-        "new-api"
-      ],
+      "skills": [],
       "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev"
-      ]
+        "workspace-foundation",
+        "ai-agent-core",
+        "n8n-automation-core"
+      ],
+      "workflows": []
     },
     "backend-ops": {
-      "description": "Infrastructure & Deployment context for backend.",
-      "skills": [
-        "api-endpoint-builder",
-        "api-patterns",
-        "error-handling-patterns",
-        "fastapi-router-py",
-        "fastapi-templates",
-        "nodejs-best-practices",
-        "pydantic-models-py",
-        "python-development-python-scaffold",
-        "python-fastapi-development",
-        "uv-package-manager"
-      ],
-      "workflows": [
-        "db-migrate",
-        "generate-api-spec",
-        "new-api"
-      ],
+      "description": "Infrastructure & Deployment context for backend engineering.",
+      "skills": [],
       "extends": [
-        "base-core",
-        "base-dev",
-        "base-infra-ops"
-      ]
+        "workspace-foundation",
+        "backend-core",
+        "data-core",
+        "devops-core"
+      ],
+      "workflows": []
     },
     "backend-sec": {
-      "description": "Security & Auditing context for backend.",
-      "skills": [
-        "api-endpoint-builder",
-        "api-patterns",
-        "error-handling-patterns",
-        "fastapi-router-py",
-        "fastapi-templates",
-        "nodejs-best-practices",
-        "pydantic-models-py",
-        "python-development-python-scaffold",
-        "python-fastapi-development",
-        "uv-package-manager"
-      ],
-      "workflows": [
-        "db-migrate",
-        "generate-api-spec",
-        "new-api"
-      ],
-      "extends": [
-        "base-core",
-        "base-dev",
-        "base-security"
-      ]
-    },
-    "backend-biz": {
-      "description": "Product & Growth context for backend.",
-      "skills": [
-        "api-endpoint-builder",
-        "api-patterns",
-        "error-handling-patterns",
-        "fastapi-router-py",
-        "fastapi-templates",
-        "nodejs-best-practices",
-        "pydantic-models-py",
-        "python-development-python-scaffold",
-        "python-fastapi-development",
-        "uv-package-manager"
-      ],
-      "workflows": [
-        "db-migrate",
-        "generate-api-spec",
-        "new-api"
-      ],
-      "extends": [
-        "base-core",
-        "base-dev",
-        "base-product-cro"
-      ]
-    },
-    "backend-ultimate": {
-      "description": "Full Context context for backend.",
-      "skills": [
-        "api-endpoint-builder",
-        "api-patterns",
-        "error-handling-patterns",
-        "fastapi-router-py",
-        "fastapi-templates",
-        "nodejs-best-practices",
-        "pydantic-models-py",
-        "python-development-python-scaffold",
-        "python-fastapi-development",
-        "uv-package-manager"
-      ],
-      "workflows": [
-        "db-migrate",
-        "generate-api-spec",
-        "new-api"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
-    },
-    "database-dev": {
-      "description": "Database Logic & AI context for database.",
-      "skills": [
-        "postgresql-optimization",
-        "sql-pro"
-      ],
-      "workflows": [
-        "db-migrate",
-        "db-schema",
-        "db-seed",
-        "generate-db-schema"
-      ],
-      "extends": [
-        "base-core",
-        "base-dev",
-        "base-ai"
-      ]
-    },
-    "database-ops": {
-      "description": "DB Infrastructure & Performance context for database.",
-      "skills": [
-        "postgresql-optimization",
-        "sql-pro"
-      ],
-      "workflows": [
-        "db-migrate",
-        "db-schema",
-        "db-seed",
-        "generate-db-schema"
-      ],
-      "extends": [
-        "base-core",
-        "base-dev",
-        "base-infra-ops"
-      ]
-    },
-    "database-ultimate": {
-      "description": "Full Context context for database.",
-      "skills": [
-        "postgresql-optimization",
-        "sql-pro"
-      ],
-      "workflows": [
-        "db-migrate",
-        "db-schema",
-        "db-seed",
-        "generate-db-schema"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
-    },
-    "devops-ops": {
-      "description": "Infrastructure Operations context for devops.",
-      "skills": [
-        "istio-traffic-management",
-        "kubernetes-deployment",
-        "linkerd-patterns",
-        "service-mesh-expert",
-        "terraform-infrastructure"
-      ],
-      "workflows": [
-        "ci-cd",
-        "deploy",
-        "docker"
-      ],
-      "extends": [
-        "base-core",
-        "base-infra-ops",
-        "base-dev"
-      ]
-    },
-    "devops-sec": {
-      "description": "SecOps Hardening context for devops.",
-      "skills": [
-        "istio-traffic-management",
-        "kubernetes-deployment",
-        "linkerd-patterns",
-        "service-mesh-expert",
-        "terraform-infrastructure"
-      ],
-      "workflows": [
-        "ci-cd",
-        "deploy",
-        "docker"
-      ],
-      "extends": [
-        "base-core",
-        "base-infra-ops",
-        "base-security"
-      ]
-    },
-    "devops-ultimate": {
-      "description": "Full Context context for devops.",
-      "skills": [
-        "istio-traffic-management",
-        "kubernetes-deployment",
-        "linkerd-patterns",
-        "service-mesh-expert",
-        "terraform-infrastructure"
-      ],
-      "workflows": [
-        "ci-cd",
-        "deploy",
-        "docker"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
-    },
-    "security-sec": {
-      "description": "Security Hardening context for security.",
-      "skills": [
-        "api-security-testing",
-        "html-injection-testing",
-        "sqlmap-database-pentesting",
-        "web-security-testing"
-      ],
-      "workflows": [
-        "dependency-check",
-        "env-config",
-        "security-audit"
-      ],
-      "extends": [
-        "base-core",
-        "base-security",
-        "base-infra-ops"
-      ]
-    },
-    "security-dev": {
-      "description": "Defensive Dev context for security.",
-      "skills": [
-        "api-security-testing",
-        "html-injection-testing",
-        "sqlmap-database-pentesting",
-        "web-security-testing"
-      ],
-      "workflows": [
-        "dependency-check",
-        "env-config",
-        "security-audit"
-      ],
-      "extends": [
-        "base-core",
-        "base-security",
-        "base-dev"
-      ]
-    },
-    "security-ultimate": {
-      "description": "Full Context context for security.",
-      "skills": [
-        "api-security-testing",
-        "html-injection-testing",
-        "sqlmap-database-pentesting",
-        "web-security-testing"
-      ],
-      "workflows": [
-        "dependency-check",
-        "env-config",
-        "security-audit"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
-    },
-    "qa-dev": {
-      "description": "Quality Dev (AI Tests) context for qa.",
-      "skills": [
-        "bug-hunter",
-        "e2e-testing",
-        "k6-load-testing",
-        "ui-visual-validator"
-      ],
-      "workflows": [
-        "e2e-test",
-        "playwright-test",
-        "test-coverage",
-        "unit-test"
-      ],
-      "extends": [
-        "base-core",
-        "base-dev",
-        "base-ai"
-      ]
-    },
-    "qa-ops": {
-      "description": "Load & Infrastructure Testing context for qa.",
-      "skills": [
-        "bug-hunter",
-        "e2e-testing",
-        "k6-load-testing",
-        "ui-visual-validator"
-      ],
-      "workflows": [
-        "e2e-test",
-        "playwright-test",
-        "test-coverage",
-        "unit-test"
-      ],
-      "extends": [
-        "base-core",
-        "base-dev",
-        "base-infra-ops"
-      ]
-    },
-    "qa-ultimate": {
-      "description": "Full Context context for qa.",
-      "skills": [
-        "bug-hunter",
-        "e2e-testing",
-        "k6-load-testing",
-        "ui-visual-validator"
-      ],
-      "workflows": [
-        "e2e-test",
-        "playwright-test",
-        "test-coverage",
-        "unit-test"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
-    },
-    "ai-dev": {
-      "description": "AI Intelligence Dev context for ai.",
+      "description": "Security & Auditing context for backend engineering.",
       "skills": [],
-      "workflows": [
-        "ai-agent",
-        "prompt-engineering",
-        "rag-pipeline"
-      ],
       "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev"
-      ]
+        "workspace-foundation",
+        "backend-core",
+        "data-core",
+        "security-core"
+      ],
+      "workflows": []
     },
-    "ai-ops": {
-      "description": "AI Ops & Deployment context for ai.",
+    "fullstack-pro": {
+      "description": "Comprehensive context for end-to-end application development.",
       "skills": [],
-      "workflows": [
-        "ai-agent",
-        "prompt-engineering",
-        "rag-pipeline"
-      ],
       "extends": [
-        "base-core",
-        "base-ai",
-        "base-infra-ops"
-      ]
+        "workspace-foundation",
+        "frontend-core",
+        "backend-core",
+        "data-core"
+      ],
+      "workflows": []
     },
-    "ai-ultimate": {
-      "description": "Full Context context for ai.",
+    "architect-ultimate": {
+      "description": "High-level system design encompassing all infrastructure and backend patterns.",
       "skills": [],
-      "workflows": [
-        "ai-agent",
-        "prompt-engineering",
-        "rag-pipeline"
-      ],
       "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
+        "workspace-foundation",
+        "backend-core",
+        "data-core",
+        "devops-core",
+        "security-core"
+      ],
+      "workflows": []
     },
-    "writer-core": {
-      "description": "AI Knowledge Management context for writer.",
+    "product-management-core": {
+      "description": "Product strategy, market analysis, analytics, and marketing context.",
       "skills": [
-        "api-documentation",
-        "writing-skills"
+        "product-manager-toolkit",
+        "senior-product-manager",
+        "analytics-product",
+        "market-sizing-analysis",
+        "product-marketing-context",
+        "competitor-alternatives",
+        "marketing-ideas",
+        "marketing-psychology"
       ],
-      "workflows": [
-        "api-docs",
-        "architecture"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai"
-      ]
+      "extends": [],
+      "workflows": []
     },
-    "writer-dev": {
-      "description": "Technical Docs Dev context for writer.",
+    "project-execution-core": {
+      "description": "Agile tracking, progressive estimation, IT business analysis, and reporting.",
       "skills": [
-        "api-documentation",
-        "writing-skills"
+        "linear",
+        "senior-it-ba-specialist",
+        "sred-project-organizer",
+        "sred-work-summary"
       ],
-      "workflows": [
-        "api-docs",
-        "architecture"
-      ],
-      "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev"
-      ]
+      "extends": [],
+      "workflows": []
     },
-    "writer-ultimate": {
-      "description": "Full Context context for writer.",
-      "skills": [
-        "api-documentation",
-        "writing-skills"
-      ],
-      "workflows": [
-        "api-docs",
-        "architecture"
-      ],
+    "project-manager-pro": {
+      "description": "Technical leadership contextualization, combining product strategy, agile execution, and foundational planning.",
+      "skills": [],
       "extends": [
-        "base-core",
-        "base-ai",
-        "base-dev",
-        "base-infra-ops",
-        "base-security",
-        "base-product-cro"
-      ]
+        "workspace-foundation",
+        "product-management-core",
+        "project-execution-core"
+      ],
+      "workflows": []
     }
   }
 }
