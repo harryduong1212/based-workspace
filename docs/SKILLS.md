@@ -1,6 +1,6 @@
 # 🧠 Antigravity Skills
 
-**400+ specialized AI skills to give your coding agent domain expertise — automatically.**
+**330+ specialized AI skills to give your coding agent domain expertise — automatically.**
 
 > Sourced from [antigravity-awesome-skills](https://github.com/anthropics/awesome-claude-code-skills)
 

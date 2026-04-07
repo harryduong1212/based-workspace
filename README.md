@@ -1,6 +1,6 @@
 # based-workspace
 
-**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 400+ skills, 50+ workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
+**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 330+ skills, 16 workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
 
 ## 🚀 Addressing AI Context Challenges
 
@@ -15,7 +15,7 @@ Most AI coding assistants face challenges with context management—either havin
 ## Documentation Hub
 
 - **[SKILLS.md](docs/SKILLS.md)**: Browse 212+ curated **Base Skills** and 120+ archived modules.
-- **[WORKFLOWS.md](docs/WORKFLOWS.md)**: Explore 50+ automations, now grouped by functional context.
+- **[WORKFLOWS.md](docs/WORKFLOWS.md)**: Explore 16 specialized automations, now grouped by functional context.
 - **[RULES.md](docs/RULES.md)**: Behavioral guardrails applied to every AI interaction.
 - **[MCP_GUIDE.md](docs/MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
 - **[N8N-ATOM SETUP](docs/n8n-atom/SETUP.md)**: Comprehensive guide for running n8n via quickstart or compiling from source.
@@ -271,7 +271,7 @@ based-workspace/
 │   └── workflows/                ←   Active slash-command workflows
 │       └── <workflow>/WORKFLOW.md
 │
-├── .archived/                    ← 🗃️ Library of 400+ available assets
+├── .archived/                    ← 🗃️ Library of 330+ available assets
 │   ├── skills/                   ←   Hierarchical expertise modules
 │   │   ├── <category>/
 │   │   │   └── <skill-name>/SKILL.md
@@ -303,8 +303,8 @@ based-workspace/
 ├── docs/                         ← 📚 Centralized documentation hub
 │   ├── n8n-atom/                 ←   n8n setup, architecture and CI/CD
 │   ├── RULES.md                  ←   Catalogue of active rules
-│   ├── SKILLS.md                 ←   Catalogue of all 400+ skills
-│   ├── WORKFLOWS.md              ←   Catalogue of all 50+ workflows
+│   ├── SKILLS.md                 ←   Catalogue of all 330+ skills
+│   ├── WORKFLOWS.md              ←   Catalogue of all 16 workflows
 │   ├── MCP_GUIDE.md              ←   Comprehensive guide for MCP servers
 │   └── ADVANCED_USAGE.md         ←   Advanced ecosystem customization
 └── README.md                     ← 📖 This file

@@ -12,10 +12,8 @@ Trigger any workflow by typing its slash command in the chat:
 
 | Feature | Commands |
 |---|---|
-| **Project Setup** | `/new-project`, `/new-component`, `/new-api` |
 | **Git Automation** | `/git-commit`, `/git-pr`, `/git-conflict` |
-| **Testing** | `/unit-test`, `/e2e-test`, `/playwright-test` |
-| **Deployment** | `/deploy`, `/docker`, `/railway-deploy` |
+| **Testing** | `/code-review` |
 
 ---
 
@@ -27,7 +25,6 @@ Need to extend the workspace? Use these specialized creators:
 
 | Tool | Command | Description |
 |---|---|---|
-| **Workflow Creator** | `/workflow-creator` | Build new multi-step developer workflows |
 | **Skill Creator** | `/skill-creator` | Create specialized expert knowledge modules |
 
 ---
@@ -44,7 +41,7 @@ Need to extend the workspace? Use these specialized creators:
 
 ---
 
-## 📂 Available Workflows (19)
+## 📂 Available Workflows (16)
 
 ### ⚙️ Configuration
 <details>
@@ -93,16 +90,6 @@ Need to extend the workspace? Use these specialized creators:
 
 </details>
 
-### 🤖 AI & LLM
-<details>
-
-| Workflow | Command | Status | Description |
-|---|---|---|---|
-| [prompt-engineering](.archived/workflows/ai-llm/prompt-engineering.md) | /ai-llm-prompt-engineering | ✅ Ready | ✅ Ready |
-| [rag-pipeline](.archived/workflows/ai-llm/rag-pipeline.md) | /ai-llm-rag-pipeline | ✅ Ready | ✅ Ready |
-| [workflow-creator](.archived/workflows/ai-llm/workflow-creator.md) | /workflow-creator | ✅ Ready | Create new antigravity workflows |
-
-</details>
 
 ### 🧪 Testing & Quality
 <details>
