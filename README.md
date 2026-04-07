@@ -292,11 +292,14 @@ based-workspace/
 │
 ├── scripts/
 │   ├── setup_env.py              ← 🛠️ Env initialization script
+│   ├── build_n8n_atom.py         ← 🐳 Docker building for n8n locally
 │   ├── workspace_manager.py      ← 🕹️ Active context controller (Symlink engine)
 │   ├── profile_manager.py        ← 📋 Role Context Manager (stats, audit, fix)
 │   ├── asset_manager.py          ← 🛠️ Registry & Tag Manager (tags, reorganize)
 │   ├── lib/                      ← 📦 Shared workspace utility library
+│   ├── resources/                ← 🗃️ Shared static resources for scripts
 │   ├── profiles.json             ← 📋 Modular role-based profile definitions
+│   ├── grep-mcp.js               ← 🔍 Local file semantic search MCP loader
 │   └── postgres-mcp.js           ← 🔑 Secure MCP credential loader
 │
 ├── .env                          ← 🤐 Active secrets (ignored by Git)
@@ -306,6 +309,7 @@ based-workspace/
 │   ├── SKILLS.md                 ←   Catalogue of all 330+ skills
 │   ├── WORKFLOWS.md              ←   Catalogue of all 16 workflows
 │   ├── MCP_GUIDE.md              ←   Comprehensive guide for MCP servers
+│   ├── LOCAL_AI_SETUP.md         ←   Setup guide for local AI models
 │   └── ADVANCED_USAGE.md         ←   Advanced ecosystem customization
 └── README.md                     ← 📖 This file
 ```

@@ -1,7 +1,7 @@
 # Project Context: based-workspace
 
 ## 1. Project Baseline
-`based-workspace` is a robust development environment engineered specifically to optimize context management for AI-assisted engineering. It solves the issue of context overflow—when AI coding tools have too much irrelevant data or lack specialized context—by supplying an orchestration layer of over 1,300 AI-configured skills and 50+ structured workflows. The project uses an Inheritance Engine (`workspace_manager.py`) to symlink subsets of these specialized assets dynamically based on role-oriented profiles. Additionally, the workspace includes built-in containerized infrastructure (PostgreSQL with `pgvector` and an n8n engine) to establish a standard baseline for intelligent integrated workflows across arbitrary project paths. 
+`based-workspace` is a robust development environment engineered specifically to optimize context management for AI-assisted engineering. It solves the issue of context overflow—when AI coding tools have too much irrelevant data or lack specialized context—by supplying an orchestration layer of 330+ AI-configured skills and 16 structured workflows. The project uses an Inheritance Engine (`workspace_manager.py`) to symlink subsets of these specialized assets dynamically based on role-oriented profiles. Additionally, the workspace includes built-in containerized infrastructure (PostgreSQL with `pgvector` and an n8n engine) to establish a standard baseline for intelligent integrated workflows across arbitrary project paths. 
 
 ## 2. High-Level Architecture & Guidelines
 - **Modular Context Symlinking**: AI assets (personas, rules, tools) reside centrally under `.archived/` and are selectively symlinked into the active `.agents/` footprint via profiling to keep context scope strict.
@@ -18,7 +18,7 @@
 - **State Management**: Docker volumes handle state persistence. `based-workspace-postgres-data` stores the pg_data and vector embeddings; `based-workspace-n8n-data` persists automation states, workflow schemas, and engine configs.
 
 ## 4. Automation & AI Integration (MCP/Agents)
-- **Agent Registry**: Skills are indexed efficiently via Machine-readable definitions like `registry.json` (such as `.archived/skills/*/registry.json` and active ones). The engine ships ~1,300 skills categorized across architectural domains (from APIs to TDD).
+- **Agent Registry**: Skills are indexed efficiently via Machine-readable definitions like `registry.json` (such as `.archived/skills/*/registry.json` and active ones). The engine ships 330+ skills categorized across architectural domains (from APIs to TDD).
 - **Automation Engine**: `n8n` acts as the underlying execution automation engine, driving repetitive processes (like `feature-kickoff` setups, registry maintenance, or `git-commit-group-changes` structuring).
 - **MCP Bridges**: The `.vscode/mcp.json` manage the tool communication layer for the IDE. Supported plugins include:
   - `postgres-memory`: A bridge mapping local LLM context against the `pgvector` container.
