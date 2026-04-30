@@ -1,0 +1,178 @@
+{
+  "main": {
+    "id": "1df1d0749e0a41f0",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a3fb1f4eb4ed2da",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "560e7075bba1052e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "21-day-sprint/week-1-core-engineering/day-01-arrays-and-jvm-internals.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "day-01-arrays-and-jvm-internals"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "03321b46c63456d9",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "d22740b1aab102c8",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "53f5d65cc8cfacf6",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "576e3459245fe653",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "a9c28a48672ef20e",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "All properties"
+        }
+      },
+      {
+        "id": "237b83d813b4a3f0",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "de0aa3423ea26230",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "c0c42c605144f159",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "21-day-sprint/week-1-core-engineering/day-01-arrays-and-jvm-internals.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": true,
+            "unlinkedCollapsed": false
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "3c4d7a14e3f3d1e3",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "21-day-sprint/week-1-core-engineering/day-01-arrays-and-jvm-internals.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "c96d0ce106b17e18",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "21-day-sprint/week-1-core-engineering/day-01-arrays-and-jvm-internals.md",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "560e7075bba1052e",
+  "lastOpenFiles": [
+    "21-day-sprint/week-1-core-engineering/day-02-linked-lists-and-concurrency.md",
+    "21-day-sprint/week-1-core-engineering/day-01-arrays-and-jvm-internals.md",
+    "java-21-study-guide/04-jvm/jvm-architecture.md",
+    "Untitled.md"
+  ]
+}

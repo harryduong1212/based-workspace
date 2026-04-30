@@ -1,0 +1,232 @@
+{
+  "orphaned_skills": [
+    {
+      "id": "agent-orchestration-multi-agent-optimize",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\agent-orchestration-multi-agent-optimize"
+    },
+    {
+      "id": "antigravity-skill-orchestrator",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\antigravity-skill-orchestrator"
+    },
+    {
+      "id": "cc-skill-strategic-compact",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\cc-skill-strategic-compact"
+    },
+    {
+      "id": "llm-application-dev-ai-assistant",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\llm-application-dev-ai-assistant"
+    },
+    {
+      "id": "progressive-estimation",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\progressive-estimation"
+    },
+    {
+      "id": "pydantic-ai",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\pydantic-ai"
+    },
+    {
+      "id": "skill-developer",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\skill-developer"
+    },
+    {
+      "id": "skill-router",
+      "category": "ai-ml-agents",
+      "path": ".archived\\skills\\ai-ml-agents\\skill-router"
+    },
+    {
+      "id": "advanced-evaluation",
+      "category": "ai-ml-evaluation",
+      "path": ".archived\\skills\\ai-ml-evaluation\\advanced-evaluation"
+    },
+    {
+      "id": "bdistill-behavioral-xray",
+      "category": "ai-ml-evaluation",
+      "path": ".archived\\skills\\ai-ml-evaluation\\bdistill-behavioral-xray"
+    },
+    {
+      "id": "agent-tool-builder",
+      "category": "ai-ml-mcp",
+      "path": ".archived\\skills\\ai-ml-mcp\\agent-tool-builder"
+    },
+    {
+      "id": "bdistill-knowledge-extraction",
+      "category": "ai-ml-memory",
+      "path": ".archived\\skills\\ai-ml-memory\\bdistill-knowledge-extraction"
+    },
+    {
+      "id": "context-window-management",
+      "category": "ai-ml-memory",
+      "path": ".archived\\skills\\ai-ml-memory\\context-window-management"
+    },
+    {
+      "id": "hybrid-search-implementation",
+      "category": "ai-ml-memory",
+      "path": ".archived\\skills\\ai-ml-memory\\hybrid-search-implementation"
+    },
+    {
+      "id": "rag-implementation",
+      "category": "ai-ml-memory",
+      "path": ".archived\\skills\\ai-ml-memory\\rag-implementation"
+    },
+    {
+      "id": "beautiful-prose",
+      "category": "ai-ml-prompting",
+      "path": ".archived\\skills\\ai-ml-prompting\\beautiful-prose"
+    },
+    {
+      "id": "llm-structured-output",
+      "category": "ai-ml-prompting",
+      "path": ".archived\\skills\\ai-ml-prompting\\llm-structured-output"
+    },
+    {
+      "id": "prompt-caching",
+      "category": "ai-ml-prompting",
+      "path": ".archived\\skills\\ai-ml-prompting\\prompt-caching"
+    },
+    {
+      "id": "context-degradation",
+      "category": "ai-ml-science",
+      "path": ".archived\\skills\\ai-ml-science\\context-degradation"
+    },
+    {
+      "id": "n8n-atom-executor",
+      "category": "automation-n8n",
+      "path": ".archived\\skills\\automation-n8n\\n8n-atom-executor"
+    },
+    {
+      "id": "n8n-global-deploy",
+      "category": "automation-n8n",
+      "path": ".archived\\skills\\automation-n8n\\n8n-global-deploy"
+    },
+    {
+      "id": "ml-pipeline-workflow",
+      "category": "automation-workflows",
+      "path": ".archived\\skills\\automation-workflows\\ml-pipeline-workflow"
+    },
+    {
+      "id": "workflow-automation",
+      "category": "automation-workflows",
+      "path": ".archived\\skills\\automation-workflows\\workflow-automation"
+    },
+    {
+      "id": "code-refactoring-refactor-clean",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\code-refactoring-refactor-clean"
+    },
+    {
+      "id": "cqrs-implementation",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\cqrs-implementation"
+    },
+    {
+      "id": "ddd-strategic-design",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\ddd-strategic-design"
+    },
+    {
+      "id": "event-sourcing-architect",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\event-sourcing-architect"
+    },
+    {
+      "id": "kpi-dashboard-design",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\kpi-dashboard-design"
+    },
+    {
+      "id": "monorepo-architect",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\monorepo-architect"
+    },
+    {
+      "id": "performance-optimizer",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\performance-optimizer"
+    },
+    {
+      "id": "workspace-analyzer",
+      "category": "backend-arch",
+      "path": ".archived\\skills\\backend-arch\\workspace-analyzer"
+    },
+    {
+      "id": "pdf-official",
+      "category": "backend-core",
+      "path": ".archived\\skills\\backend-core\\pdf-official"
+    },
+    {
+      "id": "performance-profiling",
+      "category": "backend-core",
+      "path": ".archived\\skills\\backend-core\\performance-profiling"
+    },
+    {
+      "id": "uv-package-manager",
+      "category": "backend-core",
+      "path": ".archived\\skills\\backend-core\\uv-package-manager"
+    },
+    {
+      "id": "local-db-migration",
+      "category": "data-admin",
+      "path": ".archived\\skills\\data-admin\\local-db-migration"
+    },
+    {
+      "id": "gitlab-ci-patterns",
+      "category": "devops-cicd",
+      "path": ".archived\\skills\\devops-cicd\\gitlab-ci-patterns"
+    },
+    {
+      "id": "obsidian-cli",
+      "category": "productivity-office",
+      "path": ".archived\\skills\\productivity-office\\obsidian-cli"
+    }
+  ],
+  "missing_categories": [
+    "security-testing"
+  ],
+  "found_in_profiles": {
+    "workspace-foundation": [
+      "workspace-analyzer"
+    ],
+    "ai-agent-core": [
+      "pydantic-ai",
+      "llm-application-dev-ai-assistant",
+      "progressive-estimation",
+      "agent-orchestration-multi-agent-optimize",
+      "agent-tool-builder",
+      "bdistill-knowledge-extraction",
+      "hybrid-search-implementation",
+      "rag-implementation",
+      "context-window-management",
+      "llm-structured-output",
+      "prompt-caching"
+    ],
+    "n8n-automation-core": [
+      "n8n-atom-executor",
+      "n8n-global-deploy",
+      "workflow-automation"
+    ],
+    "backend-core": [
+      "code-refactoring-refactor-clean",
+      "ddd-strategic-design",
+      "event-sourcing-architect",
+      "cqrs-implementation",
+      "monorepo-architect"
+    ],
+    "data-core": [
+      "local-db-migration"
+    ],
+    "devops-ci-cd": [
+      "gitlab-ci-patterns"
+    ],
+    "project-execution-core": [
+      "progressive-estimation",
+      "kpi-dashboard-design"
+    ]
+  }
+}
