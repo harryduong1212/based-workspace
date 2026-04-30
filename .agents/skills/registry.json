@@ -31,6 +31,45 @@
         ".archived/skills/registry.json"
       ],
       "mcp_tools": []
+    },
+    {
+      "id": "graphify-windows",
+      "description": "any input (code, docs, papers, images) → knowledge graph → clustered communities → HTML + JSON + audit report",
+      "path": "graphify-windows/SKILL.md",
+      "tags": [
+        "knowledge-graph",
+        "ast-extraction",
+        "semantic-extraction",
+        "community-detection",
+        "visualization",
+        "obsidian",
+        "neo4j"
+      ],
+      "trigger_conditions": [
+        "/graphify",
+        "User asks to build a graph of the current directory or workspace",
+        "User wants to understand the relationship or shortest path between concepts",
+        "User needs to extract architecture, god nodes, or surprising connections",
+        "User asks to explain a specific codebase node or module comprehensively",
+        "User adds a URL or document to the raw knowledge folder"
+      ],
+      "anti_triggers": [
+        "Minor, isolated code syntax questions",
+        "Standard file editing without requiring structural context"
+      ],
+      "dependencies": [
+        "python",
+        "graphifyy package"
+      ],
+      "mcp_tools": [
+        "query_graph",
+        "get_node",
+        "get_neighbors",
+        "get_community",
+        "god_nodes",
+        "graph_stats",
+        "shortest_path"
+      ]
     }
   ]
 }
