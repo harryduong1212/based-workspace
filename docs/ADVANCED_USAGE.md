@@ -1,5 +1,10 @@
 # Advanced Usage: The True Autonomous OS
 
+> **⚠️ Legacy doc.** This document describes the previous symlink/profile-based architecture. Some referenced scripts (`workspace_manager.py`, `asset_manager.py`, `profile_manager.py`, `profiles.json`) **no longer exist** — they were removed when the workspace migrated to a recipe-driven model. Read [PRODUCT_PLAN.md](PRODUCT_PLAN.md) for the current architecture and [RECIPE_SPEC.md](RECIPE_SPEC.md) for the recipe format. The infrastructure and MCP sections below are still accurate.
+
+---
+
+
 If you are just writing code and asking the AI for syntactical fixes, you are only scratching the surface of **based-workspace**. 
 
 This system is not simply an integration between an editor and an LLM; it is an **Autonomous AI Operating System**. The "Advanced" nature of this workspace is defined by three core capabilities:

@@ -1,7 +1,7 @@
 # Project Context: based-workspace
 
 ## 1. Project Baseline
-`based-workspace` is a robust development environment engineered specifically to optimize context management for AI-assisted engineering. It solves the issue of context overflow—when AI coding tools have too much irrelevant data or lack specialized context—by supplying an orchestration layer of 330+ AI-configured skills and 16 structured workflows. The project uses an Inheritance Engine (`workspace_manager.py`) to symlink subsets of these specialized assets dynamically based on role-oriented profiles. Additionally, the workspace includes built-in containerized infrastructure (PostgreSQL with `pgvector` and an n8n engine) to establish a standard baseline for intelligent integrated workflows across arbitrary project paths. 
+`based-workspace` is a development environment for AI-assisted engineering, organized around three user-facing concepts: **Recipes** (tasks invoked from chat or CLI), **Connectors** (declarations of external data sources like Jira, Bitbucket), and **Routines** (recipes wrapped in n8n cron schedules). It solves AI context bloat by keeping recipes self-contained and by treating `.archived/skills/` (159 active, 180 vaulted) as a *reference library* consulted when composing recipes, not as runtime context. Containerized infrastructure (PostgreSQL with `pgvector` + n8n) provides the embedding store and automation engine. Provider-specific bindings for Antigravity (`.agents/workflows/`) and Claude Code (`.claude/commands/`) are auto-generated from `recipes/`. See `docs/PRODUCT_PLAN.md` for the full architecture.
 
 ## 2. High-Level Architecture & Guidelines
 - **Modular Context Symlinking**: AI assets (personas, rules, tools) reside centrally under `.archived/` and are selectively symlinked into the active `.agents/` footprint via profiling to keep context scope strict.
@@ -18,7 +18,7 @@
 - **State Management**: Docker volumes handle state persistence. `based-workspace-postgres-data` stores the pg_data and vector embeddings; `based-workspace-n8n-data` persists automation states, workflow schemas, and engine configs.
 
 ## 4. Automation & AI Integration (MCP/Agents)
-- **Agent Registry**: Skills are indexed efficiently via Machine-readable definitions like `registry.json` (such as `.archived/skills/*/registry.json` and active ones). The engine ships 330+ skills categorized across architectural domains (from APIs to TDD).
+- **Agent Registry**: Skills are indexed efficiently via Machine-readable definitions like `registry.json` (such as `.archived/skills/*/registry.json` and active ones). The engine currently ships 159 active skills across 37 architectural domains (from APIs to TDD); an additional 180 skills are vaulted at `.archived/_vault/skills/` for reference.
 - **Automation Engine**: `n8n` acts as the underlying execution automation engine, driving repetitive processes (like `feature-kickoff` setups, registry maintenance, or `git-commit-group-changes` structuring).
 - **MCP Bridges**: The `.vscode/mcp.json` manage the tool communication layer for the IDE. Supported plugins include:
   - `postgres-memory`: A bridge mapping local LLM context against the `pgvector` container.
@@ -38,7 +38,7 @@
   1. Validate prerequisites (Node, Python, Podman, Git).
   2. Instantiate local configurations: `python scripts/setup_env.py` generates deterministic secure passwords, updates `.env`, and configures MCP bridging endpoints.
   3. Spin up orchestration: Leverage `podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build`.
-  4. Select active context: Use `python scripts/workspace_manager.py --profile <profile-name>`.
+  4. Browse available recipes: `python scripts/recipe_manager.py list`. Run one: `python scripts/recipe_manager.py run <id>`.
 
 ## 7. Known Edges & Dependencies
 1. **Missing Requisite Source Code Context in `core/docker-compose.yaml`**: Since the `external/` sub-repository (`n8n-atom` and `mcp-inspector-atom8n`) was recently removed in favor of GHCR remote images (and CI/CD pipelines), the builder references in `infrastructure/core/docker-compose.yaml` (e.g., `context: ../../external/n8n-atom/build_context`) exist but correctly link to removed folders. Developers executing source builds may hit absent submodules if relying exclusively on native builds locally unless using the Quickstart compose files or standard image pulls.

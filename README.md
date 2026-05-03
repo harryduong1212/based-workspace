@@ -1,20 +1,22 @@
 # based-workspace
 
-**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 330+ skills, 16 workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
+**based-workspace** is a development environment designed to provide a structured context for AI-assisted engineering. It provides an orchestration layer of 159 active skills (plus 180 vaulted for reference), 16 workflows, and local infrastructure (pgvector + n8n) to help you manage specialized AI assets across different projects.
+
+> A user-facing product layer — Recipes, Connectors, Routines — is being layered on top of this engine. See [docs/PRODUCT_PLAN.md](docs/PRODUCT_PLAN.md) for the design and current status.
 
 ## 🚀 Addressing AI Context Challenges
 
 Most AI coding assistants face challenges with context management—either having insufficient information about your specific domain or too much irrelevant data. This workspace addresses these issues through two primary mechanisms:
 
--   **Modular Context Management**: The **Inheritance Engine** (`workspace_manager.py`) symlinks specific subsets of specialized assets based on role-based profiles (e.g., `backend-core`, `devops-core`).
--   **Structured Workflows**: A suite of specialized CLIs and workflows helps automate repetitive tasks like registry maintenance, tagging, and dependency resolution.
+-   **Recipe-driven tasks**: Users invoke AI tasks through **Recipes** (`recipes/<id>.md`) — self-contained units that work in both Antigravity and Claude Code via auto-generated provider bindings.
+-   **Reference library**: `.archived/skills/` and `.archived/workflows/` are consulted when *composing* recipes — they're knowledge sources, not loaded as runtime context.
 -   **Local Infrastructure**: Built-in containers for PostgreSQL (vector storage) and n8n (automation) provide a standard local backbone for integrated workflows.
 
 ---
 
 ## Documentation Hub
 
-- **[SKILLS.md](docs/SKILLS.md)**: Browse 212+ curated **Base Skills** and 120+ archived modules.
+- **[SKILLS.md](docs/SKILLS.md)**: Browse the **Base Skills** catalog (159 active skills across 37 categories; 180 additional skills are vaulted at `.archived/_vault/skills/`).
 - **[WORKFLOWS.md](docs/WORKFLOWS.md)**: Explore 16 specialized automations, now grouped by functional context.
 - **[RULES.md](docs/RULES.md)**: Behavioral guardrails applied to every AI interaction.
 - **[MCP_GUIDE.md](docs/MCP_GUIDE.md)**: Securely configure and manage Model Context Protocol (MCP) servers.
@@ -25,7 +27,9 @@ Most AI coding assistants face challenges with context management—either havin
 The workspace includes scripts and workflows to streamline repetitive engineering tasks:
 - **`git-commit-group-changes`**: Groups uncommitted changes into logical units and generates conventional commit messages.
 - **`feature-kickoff`**: Generates a standard set of initial documentation (specs, API contracts, schemas) for new features.
-- **`workspace_manager.py`**: A CLI to manage your active context by symlinking required skills and workflows based on predefined role profiles.
+- **`recipe_manager.py`**: List, lint, sync, and run Recipes. Recipes are the user-facing unit of work.
+- **`sync_antigravity.py` / `sync_claude_code.py`**: Generate provider-specific bindings (`.agents/workflows/`, `.claude/commands/`) from `recipes/`.
+- **`validate.py`**: Run all integrity checks (recipe lint, registry sync, generated docs sync, provider sync, connector integrity).
 
 ---
 
@@ -144,33 +148,35 @@ The AI assistant will automatically pick up:
 > [!TIP]
 > If you don't use `grep_app`, you can disable it by adding an underscore to its name in `.vscode/mcp.json` (e.g., `"_grep_app"`). This prevents startup errors while keeping the configuration for future use.
 
-### 6. Manage Your Workspace Context
+### 6. Browse and Run Recipes
 
-Use the **Profile Manager CLI** to dynamically load the context you need.
-
-**List all profiles and their optimized weights:**
+**List available recipes:**
 ```bash
-python scripts/profile_manager.py stats
+python scripts/recipe_manager.py list
 ```
 
-**Load a task-focused backend context (~140 skills):**
+**Run a recipe (currently stubbed; real dispatchers pending):**
 ```bash
-python scripts/workspace_manager.py --profile backend-ops
+python scripts/recipe_manager.py run daily-briefing --dry-run
 ```
 
-**Load an "Ultimate" system architect context (~230 skills):**
+**Generate provider-specific bindings from `recipes/`:**
 ```bash
-python scripts/workspace_manager.py --profile architect-ultimate
+python scripts/sync_antigravity.py     # writes .agents/workflows/<id>.md
+python scripts/sync_claude_code.py     # writes .claude/commands/<id>.md
+python scripts/docs_generator.py       # writes docs/recipes/, docs/connectors/
 ```
 
-**Switch to DevOps context to deploy:**
+**Run all integrity checks (recipe lint, registries, generated docs):**
 ```bash
-python scripts/workspace_manager.py --profile devops-core --clear
+python scripts/validate.py
 ```
 
-**Audit your profiles for broken links:**
+**Manage the skill reference library (`.archived/skills/`):**
 ```bash
-python scripts/profile_manager.py audit
+python scripts/archive_manager.py prune-report           # report unused skills
+python scripts/archive_manager.py vault <skill-id>        # move out of registry
+python scripts/archive_manager.py unvault <skill-id>      # restore
 ```
 
 ---
@@ -271,7 +277,7 @@ based-workspace/
 │   └── workflows/                ←   Active slash-command workflows
 │       └── <workflow>/WORKFLOW.md
 │
-├── .archived/                    ← 🗃️ Library of 330+ available assets
+├── .archived/                    ← 🗃️ Library of available assets (159 active skills + 180 vaulted)
 │   ├── skills/                   ←   Hierarchical expertise modules
 │   │   ├── <category>/
 │   │   │   └── <skill-name>/SKILL.md
@@ -293,9 +299,12 @@ based-workspace/
 ├── scripts/
 │   ├── setup_env.py              ← 🛠️ Env initialization script
 │   ├── build_n8n_atom.py         ← 🐳 Docker building for n8n locally
-│   ├── workspace_manager.py      ← 🕹️ Active context controller (Symlink engine)
-│   ├── profile_manager.py        ← 📋 Role Context Manager (stats, audit, fix)
-│   ├── asset_manager.py          ← 🛠️ Registry & Tag Manager (tags, reorganize)
+│   ├── recipe_manager.py         ← 🧾 Recipe lifecycle (list/show/lint/sync/run)
+│   ├── docs_generator.py         ← 📚 Generate docs/recipes/, docs/connectors/
+│   ├── sync_antigravity.py       ← 🔌 Render recipes → .agents/workflows/
+│   ├── sync_claude_code.py       ← 🔌 Render recipes → .claude/commands/
+│   ├── validate.py               ← ✅ Umbrella integrity check
+│   ├── archive_manager.py        ← 🗃️ Skill library lifecycle (prune/vault)
 │   ├── lib/                      ← 📦 Shared workspace utility library
 │   ├── resources/                ← 🗃️ Shared static resources for scripts
 │   ├── profiles.json             ← 📋 Modular role-based profile definitions
@@ -306,7 +315,7 @@ based-workspace/
 ├── docs/                         ← 📚 Centralized documentation hub
 │   ├── n8n-atom/                 ←   n8n setup, architecture and CI/CD
 │   ├── RULES.md                  ←   Catalogue of active rules
-│   ├── SKILLS.md                 ←   Catalogue of all 330+ skills
+│   ├── SKILLS.md                 ←   Catalogue of active skills
 │   ├── WORKFLOWS.md              ←   Catalogue of all 16 workflows
 │   ├── MCP_GUIDE.md              ←   Comprehensive guide for MCP servers
 │   ├── LOCAL_AI_SETUP.md         ←   Setup guide for local AI models
