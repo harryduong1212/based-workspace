@@ -36,3 +36,14 @@ dist/
 .npm/
 
 # tmp and external
+tmp/
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude Code per-user settings (project-level settings.json is committed)
+.claude/settings.local.json
+
+# graphify scan output (build artifact)
+graphify-out/
