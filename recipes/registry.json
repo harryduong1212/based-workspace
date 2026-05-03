@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "type": "recipe_registry",
+  "recipes": [
+    {
+      "id": "daily-briefing",
+      "name": "Daily Briefing",
+      "description": "Morning summary of your Jira tickets and Bitbucket PRs.",
+      "audience": "both",
+      "status": "experimental",
+      "tags": [
+        "briefing",
+        "jira",
+        "bitbucket",
+        "daily"
+      ],
+      "path": "recipes/daily-briefing.md"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "type": "connector_registry",
+  "connectors": [
+    {
+      "id": "bitbucket",
+      "name": "Bitbucket",
+      "description": "Atlassian Bitbucket source code, pull requests, and reviews.",
+      "status": "experimental",
+      "provides": ["pull_requests", "repositories", "commits"],
+      "tags": ["atlassian", "scm", "code-review"],
+      "path": "connectors/bitbucket.md"
+    },
+    {
+      "id": "jira",
+      "name": "Jira",
+      "description": "Atlassian Jira issue tracking and project management.",
+      "status": "experimental",
+      "provides": ["issues", "projects", "comments"],
+      "tags": ["atlassian", "ticketing", "issue-tracking"],
+      "path": "connectors/jira.md"
+    }
+  ]
+}
