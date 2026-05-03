@@ -1,0 +1,60 @@
+{
+  "category_id": "frontend-3d-anim",
+  "category_name": "frontend-3d-anim",
+  "skills": [
+    {
+      "id": "3d-web-experience",
+      "description": "The 3D Web Experience skill focuses on bringing the third dimension to web applications, balancing visual impact with performance, and ensuring accessibility for users. It includes capabilities like Three.js implementation, React Three Fiber, WebGL optimization, and interactive 3D scenes.",
+      "path": "3d-web-experience/SKILL.md",
+      "tags": [
+        "Three.js",
+        "React Three Fiber",
+        "WebGL",
+        "3D models",
+        "Interactive 3D"
+      ],
+      "trigger_conditions": [
+        "When starting a 3D web project",
+        "Preparing 3D assets for the web",
+        "Integrating 3D with scroll effects"
+      ],
+      "anti_triggers": [
+        "Using 3D for its own sake",
+        "Creating desktop-only 3D experiences",
+        "Lacking a loading state"
+      ],
+      "dependencies": [
+        "React",
+        "Three.js",
+        "GLTF models"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fixing-motion-performance",
+      "description": "Audit and fix animation performance issues including layout thrashing, compositor properties, scroll-linked motion, and blur effects. Use when animations stutter, transitions jank, or reviewing CSS/JS animation performance.",
+      "path": "fixing-motion-performance/SKILL.md",
+      "tags": [
+        "animation",
+        "performance",
+        "CSS",
+        "JavaScript"
+      ],
+      "trigger_conditions": [
+        "adding or changing UI animations (CSS",
+        "WAAPI",
+        "Motion",
+        "rAF",
+        "GSAP)",
+        "refactoring janky interactions or transitions",
+        "implementing scroll-linked motion or reveal-on-scroll"
+      ],
+      "anti_triggers": [
+        "migrating animation libraries unless explicitly requested",
+        "animating layout continuously on large or meaningful surfaces"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

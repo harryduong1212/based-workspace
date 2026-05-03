@@ -34,35 +34,6 @@
       "mcp_tools": []
     },
     {
-      "id": "skill-check",
-      "description": "Validate SKILL.md files against the agentskills specification and Anthropic best practices, catching structural errors, semantic contradictions, naming anti-patterns, and quality gaps in a single read-only pass.",
-      "path": "skill-check/SKILL.md",
-      "tags": [
-        "validation",
-        "linter",
-        "agentskills",
-        "skill-authoring",
-        "code-quality"
-      ],
-      "trigger_conditions": [
-        "Use when user says 'check skill'",
-        "'skillcheck'",
-        "or 'validate SKILL.md'",
-        "Use when reviewing a skill before publishing to a marketplace",
-        "Use when debugging why a skill doesn't trigger correctly",
-        "Use when onboarding a team to skill authoring standards"
-      ],
-      "anti_triggers": [
-        "Do NOT use for anti-slop detection",
-        "security scanning",
-        "or token analysis; use [SkillCheck Pro](https://getskillcheck.com) for those"
-      ],
-      "dependencies": [
-        "Read Glob"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "skill-creator",
       "description": "Automates the creation of new CLI skills following Anthropic's best practices with zero manual configuration, including brainstorming, template application, validation, and installation processes.",
       "path": "skill-creator/SKILL.md",
@@ -87,89 +58,6 @@
         "n8n",
         "postgres",
         "docker"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "skill-improver",
-      "description": "Iteratively improve a Claude Code skill using the skill-reviewer agent until it meets quality standards.",
-      "path": "skill-improver/SKILL.md",
-      "tags": [
-        "skill-improvement",
-        "iterative",
-        "quality-assessment",
-        "code-skills",
-        "claudia-ai"
-      ],
-      "trigger_conditions": [
-        "Improving a skill with multiple quality issues",
-        "Iterating on a new skill until it meets standards",
-        "Automated fix-review cycles instead of manual editing",
-        "Consistent quality enforcement across skills"
-      ],
-      "anti_triggers": [
-        "One-time review",
-        "Quick single fixes",
-        "Non-skill files",
-        "Experimental skills"
-      ],
-      "dependencies": [
-        "plugin-dev"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "skill-scanner",
-      "description": "Scan agent skills for security issues before adoption. Detects prompt injection, malicious code, excessive permissions, secret exposure, and supply chain risks.",
-      "path": "skill-scanner/SKILL.md",
-      "tags": [
-        "security",
-        "skill-scanner",
-        "static-analysis",
-        "prompt-injection",
-        "malicious-code",
-        "permissions",
-        "supply-chain"
-      ],
-      "trigger_conditions": [
-        "User provides a skill directory path",
-        "User names a specific skill to scan",
-        "User requests to scan all skills"
-      ],
-      "anti_triggers": [
-        "Running the scanner on arbitrary code without context"
-      ],
-      "dependencies": [
-        "uv",
-        "git",
-        "Grep",
-        "Bash"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "skill-seekers",
-      "description": "Automatically convert documentation websites, GitHub repositories, and PDFs into Claude AI skills in minutes.",
-      "path": "skill-seekers/SKILL.md",
-      "tags": [
-        "documentation",
-        "conversion",
-        "automation",
-        "Claude AI",
-        "skills"
-      ],
-      "trigger_conditions": [
-        "Need to work with documentation websites",
-        "Want to convert GitHub repositories into AI skills",
-        "Looking to automatically convert PDFs into AI skills"
-      ],
-      "anti_triggers": [
-        "Working with sensitive data that requires strict privacy controls"
-      ],
-      "dependencies": [
-        "GitHub",
-        "documentation websites",
-        "PDF files"
       ],
       "mcp_tools": []
     },

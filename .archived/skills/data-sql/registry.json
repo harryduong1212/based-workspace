@@ -33,33 +33,6 @@
       "mcp_tools": []
     },
     {
-      "id": "food-database-query",
-      "description": "Food Database Query provides comprehensive nutritional information for various foods, including querying, comparing, recommending, and calculating auto-nutrition.",
-      "path": "food-database-query/SKILL.md",
-      "tags": [
-        "food",
-        "nutrition",
-        "database",
-        "query",
-        "comparison",
-        "recommendation",
-        "auto-nutrition"
-      ],
-      "trigger_conditions": [
-        "user requests food nutrition information",
-        "user wants to compare two foods",
-        "user needs nutritional recommendations based on health conditions"
-      ],
-      "anti_triggers": [
-        "user asks for unrelated information",
-        "user requests non-existent food data"
-      ],
-      "dependencies": [
-        "database"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "postgresql",
       "description": "A comprehensive guide to designing PostgreSQL schemas, covering data types, indexing, constraints, performance patterns, and advanced features.",
       "path": "postgresql/SKILL.md",

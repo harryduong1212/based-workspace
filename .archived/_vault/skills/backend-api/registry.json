@@ -1,0 +1,141 @@
+{
+  "category_id": "backend-api",
+  "category_name": "backend-api",
+  "skills": [
+    {
+      "id": "ad-creative",
+      "description": "Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when generating headlines, descriptions, primary text, or large sets of ad variations for testing and performance optimization.",
+      "path": "ad-creative/SKILL.md",
+      "tags": [
+        "ad creative",
+        "Google Ads",
+        "Meta",
+        "LinkedIn",
+        "TikTok"
+      ],
+      "trigger_conditions": [
+        "Use when generating or iterating paid ad copy at scale.",
+        "Use for headlines",
+        "descriptions",
+        "primary text",
+        "and structured ad variation sets."
+      ],
+      "anti_triggers": [
+        "Do not use when performance data should inform the next round of creative."
+      ],
+      "dependencies": [
+        "Google Ads",
+        "Meta Ads",
+        "LinkedIn Ads",
+        "TikTok Ads"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "api-documentation-generator",
+      "description": "Generate comprehensive, developer-friendly API documentation from code, including endpoints, parameters, examples, and best practices",
+      "path": "api-documentation-generator/SKILL.md",
+      "tags": [
+        "API",
+        "Documentation",
+        "REST",
+        "GraphQL",
+        "WebSocket"
+      ],
+      "trigger_conditions": [
+        "When you need to document a new API",
+        "When updating existing API documentation",
+        "When your API lacks clear documentation"
+      ],
+      "anti_triggers": [
+        "When the API is already well-documented",
+        "When the documentation is up-to-date with the codebase"
+      ],
+      "dependencies": [
+        "codebase"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "api-documenter",
+      "description": "Master API documentation with OpenAPI 3.1, AI-powered tools, and modern developer experience practices. Create interactive docs, generate SDKs, and build comprehensive developer portals.",
+      "path": "api-documenter/SKILL.md",
+      "tags": [
+        "api-documentation",
+        "openapi",
+        "sdk-generation",
+        "developer-portal",
+        "ai-assisted"
+      ],
+      "trigger_conditions": [
+        "Creating or updating OpenAPI/AsyncAPI specifications",
+        "Building developer portals",
+        "SDK docs",
+        "or onboarding flows",
+        "Improving API documentation quality and discoverability"
+      ],
+      "anti_triggers": [
+        "You only need a quick internal note or informal summary",
+        "The task is pure backend implementation without docs",
+        "There is no API surface or spec to document"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "gemini-api-integration",
+      "description": "This skill provides a comprehensive guide for integrating the Google Gemini API into various applications, covering setup, text generation, streaming, multimodal inputs, function calling, model selection, and best practices.",
+      "path": "gemini-api-integration/SKILL.md",
+      "tags": [
+        "Gemini API",
+        "Node.js",
+        "Python",
+        "Multimodal",
+        "Streaming"
+      ],
+      "trigger_conditions": [
+        "Setting up Gemini API for the first time in a Node.js or Python project",
+        "Implementing multimodal inputs (text + image/audio/video)",
+        "Adding streaming responses to improve perceived latency"
+      ],
+      "anti_triggers": [
+        "Using `gemini-pro` for simple tasks \u2014 Flash is cheaper and faster",
+        "Sending large base64 images inline for files > 20MB \u2014 use File API instead"
+      ],
+      "dependencies": [
+        "Node.js",
+        "Python"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "similarity-search-patterns",
+      "description": "Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.",
+      "path": "similarity-search-patterns/SKILL.md",
+      "tags": [
+        "similarity search",
+        "vector databases",
+        "semantic search",
+        "nearest neighbor queries",
+        "retrieval optimization"
+      ],
+      "trigger_conditions": [
+        "building semantic search systems",
+        "implementing RAG retrieval",
+        "creating recommendation engines",
+        "optimizing search latency",
+        "scaling to millions of vectors",
+        "combining semantic and keyword search"
+      ],
+      "anti_triggers": [
+        "the task is unrelated to similarity search patterns",
+        "you need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "category_id": "design-core",
+  "category_name": "design-core",
+  "skills": [
+    {
+      "id": "canvas-design",
+      "description": "These instructions guide the creation of design philosophies and their visual expression, emphasizing minimal text and expert craftsmanship.",
+      "path": "canvas-design/SKILL.md",
+      "tags": [
+        "design",
+        "philosophy",
+        "visual aesthetics",
+        "art movement",
+        "craftsmanship"
+      ],
+      "trigger_conditions": [
+        "Creating a design philosophy and expressing it visually",
+        "Generating artistic content based on a given aesthetic direction"
+      ],
+      "anti_triggers": [
+        "Creating simple layouts or templates",
+        "Outputting lengthy text explanations"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

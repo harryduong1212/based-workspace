@@ -1,0 +1,178 @@
+{
+  "category_id": "frontend-core",
+  "category_name": "frontend-core",
+  "skills": [
+    {
+      "id": "ab-test-setup",
+      "description": "A structured guide for setting up A/B tests with mandatory gates for hypothesis, metrics, and execution readiness.",
+      "path": "ab-test-setup/SKILL.md",
+      "tags": [
+        "A/B testing",
+        "hypothesis validation",
+        "statistical rigor"
+      ],
+      "trigger_conditions": [
+        "When planning to conduct an A/B test"
+      ],
+      "anti_triggers": [
+        "When rushing the design or implementation of an A/B test"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "browser-extension-builder",
+      "description": "The Browser Extension Builder skill provides knowledge and guidance on developing browser extensions, including architecture, manifest v3, content scripts, background workers, popup interfaces, monetization, and publishing.",
+      "path": "browser-extension-builder/SKILL.md",
+      "tags": [
+        "browser extension",
+        "manifest v3",
+        "content script",
+        "background worker",
+        "popup interface"
+      ],
+      "trigger_conditions": [
+        "When starting a new browser extension",
+        "When building an extension for the Chrome Web Store"
+      ],
+      "anti_triggers": [
+        "Requesting all permissions",
+        "Heavy background processing"
+      ],
+      "dependencies": [
+        "Chrome Web Store"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "i18n-localization",
+      "description": "Internationalization and localization patterns. Detecting hardcoded strings, managing translations, locale files, RTL support.",
+      "path": "i18n-localization/SKILL.md",
+      "tags": [
+        "i18n",
+        "l10n",
+        "translation",
+        "locale",
+        "RTL"
+      ],
+      "trigger_conditions": [
+        "When working on a public web app or SaaS product that requires internationalization.",
+        "When planning for future expansion to new regions."
+      ],
+      "anti_triggers": [
+        "For internal tools or single-region apps where localization is not immediately necessary."
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "javascript-testing-patterns",
+      "description": "Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.",
+      "path": "javascript-testing-patterns/SKILL.md",
+      "tags": [
+        "javascript",
+        "testing",
+        "tdd",
+        "unit tests",
+        "integration tests"
+      ],
+      "trigger_conditions": [
+        "Setting up test infrastructure for new projects",
+        "Writing unit tests for functions and classes",
+        "Creating integration tests for APIs and services",
+        "Implementing end-to-end tests for user flows",
+        "Mocking external dependencies and APIs",
+        "Testing React",
+        "Vue",
+        "or other frontend components",
+        "Implementing test-driven development (TDD)",
+        "Setting up continuous testing in CI/CD pipelines"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to javascript testing patterns",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "react-flow-architect",
+      "description": "Build production-ready ReactFlow applications with hierarchical navigation, performance optimization, and advanced state management.",
+      "path": "react-flow-architect/SKILL.md",
+      "tags": [
+        "ReactFlow",
+        "hierarchical navigation",
+        "performance optimization",
+        "state management",
+        "React",
+        "TypeScript"
+      ],
+      "trigger_conditions": [
+        "When building a complex graph-based application that requires hierarchical navigation and performance optimization."
+      ],
+      "anti_triggers": [
+        "For simple static graphs without dynamic interactions or state management."
+      ],
+      "dependencies": [
+        "ReactFlow",
+        "Dagre"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "screen-reader-testing",
+      "description": "A practical guide to testing web applications with screen readers for comprehensive accessibility validation.",
+      "path": "screen-reader-testing/SKILL.md",
+      "tags": [
+        "screen reader",
+        "accessibility",
+        "ARIA",
+        "web application"
+      ],
+      "trigger_conditions": [
+        "Validating screen reader compatibility",
+        "Testing ARIA implementations",
+        "Debugging assistive technology issues",
+        "Verifying form accessibility",
+        "Testing dynamic content announcements",
+        "Ensuring navigation accessibility"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to screen reader testing",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "web-artifacts-builder",
+      "description": "A step-by-step guide to building frontend artifacts for claude.ai using React, TypeScript, and Vite.",
+      "path": "web-artifacts-builder/SKILL.md",
+      "tags": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Parcel",
+        "Tailwind CSS"
+      ],
+      "trigger_conditions": [
+        "When creating a new frontend project for claude.ai artifacts"
+      ],
+      "anti_triggers": [
+        "When avoiding excessive centered layouts",
+        "purple gradients",
+        "uniform rounded corners",
+        "and Inter font"
+      ],
+      "dependencies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Parcel",
+        "Tailwind CSS",
+        "shadcn/ui"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

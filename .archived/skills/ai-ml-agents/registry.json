@@ -134,134 +134,6 @@
       "mcp_tools": []
     },
     {
-      "id": "claude-code-guide",
-      "description": "A comprehensive guide for configuring and using Claude Code, an agentic coding tool, with best practices, configuration templates, and advanced usage patterns.",
-      "path": "claude-code-guide/SKILL.md",
-      "tags": [
-        "Claude Code",
-        "agentic coding",
-        "configuration",
-        "best practices"
-      ],
-      "trigger_conditions": [
-        "When starting a new project",
-        "Before editing files",
-        "After editing files"
-      ],
-      "anti_triggers": [
-        "When the agent is stuck or behaving unexpectedly"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
-      "id": "claude-settings-audit",
-      "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Detects tech stack, build tools, and monorepo structure.",
-      "path": "claude-settings-audit/SKILL.md",
-      "tags": [
-        "claude",
-        "settings.json",
-        "permissions",
-        "tech stack",
-        "audit"
-      ],
-      "trigger_conditions": [
-        "Setting up a new project",
-        "Auditing existing settings",
-        "Determining read-only bash commands"
-      ],
-      "anti_triggers": [
-        "Modifying state with install",
-        "build",
-        "run",
-        "write",
-        "or delete commands",
-        "Including custom scripts that may have side effects",
-        "Using absolute paths or user-specific paths"
-      ],
-      "dependencies": [
-        "bash"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "context7-auto-research",
-      "description": "Automatically fetch latest library/framework documentation for Claude Code via Context7 API. Use when you need up-to-date documentation for libraries and frameworks or asking about React, Next.js, Prisma, or any other popular library.",
-      "path": "context7-auto-research/SKILL.md",
-      "tags": [
-        "Context7",
-        "API",
-        "Documentation",
-        "React",
-        "Next.js"
-      ],
-      "trigger_conditions": [
-        "When you need up-to-date documentation for libraries and frameworks",
-        "When asking about React",
-        "Next.js",
-        "Prisma",
-        "or any other popular library"
-      ],
-      "anti_triggers": [],
-      "dependencies": [
-        "npx skills add -g BenedictKing/context7-auto-research"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "devcontainer-setup",
-      "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes.",
-      "path": "devcontainer-setup/SKILL.md",
-      "tags": [
-        "devcontainer",
-        "Claude Code",
-        "language-specific tooling",
-        "persistent volumes"
-      ],
-      "trigger_conditions": [
-        "User asks to 'set up a devcontainer' or 'add devcontainer support'",
-        "User wants a sandboxed Claude Code development environment",
-        "User needs isolated development environments with persistent configuration"
-      ],
-      "anti_triggers": [
-        "User already has a devcontainer configuration and just needs modifications",
-        "User is asking about general Docker or container questions",
-        "User wants to deploy production containers (this is for development only)"
-      ],
-      "dependencies": [
-        "devcontainer"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "diary",
-      "description": "A context-preserving automated logger for multi-project development that summarizes progress, writes a daily dev log, and performs a daily review while keeping project contexts isolated and synced to Notion/Obsidian.",
-      "path": "diary/SKILL.md",
-      "tags": [
-        "diary",
-        "log",
-        "context",
-        "isolation",
-        "sync",
-        "notion",
-        "obsidian"
-      ],
-      "trigger_conditions": [
-        "Want to summarize progress",
-        "Need to write a daily dev log",
-        "Performing a daily review"
-      ],
-      "anti_triggers": [
-        "Mixing project contexts",
-        "Overwriting existing diary entries"
-      ],
-      "dependencies": [
-        "Notion",
-        "Obsidian"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "embedding-strategies",
       "description": "A guide to selecting and optimizing embedding models for vector search applications, including templates for OpenAI embeddings, local embeddings with Sentence Transformers, chunking strategies, domain-specific pipelines, and quality evaluation.",
       "path": "embedding-strategies/SKILL.md",
@@ -377,38 +249,6 @@
       "mcp_tools": []
     },
     {
-      "id": "last30days",
-      "description": "Research any topic from the last 30 days across Reddit, X, and the web, then synthesize copy-paste-ready prompts for the user's target tool.",
-      "path": "last30days/SKILL.md",
-      "tags": [
-        "research",
-        "prompting",
-        "recommendations",
-        "news",
-        "general",
-        "Reddit",
-        "X",
-        "WebSearch",
-        "API keys",
-        "synthesis"
-      ],
-      "trigger_conditions": [
-        "User wants to learn techniques and get copy-paste prompts",
-        "User wants a list of specific things people are mentioning",
-        "User wants current events and updates on a topic",
-        "User is curious about any topic and wants an understanding of what the community is saying"
-      ],
-      "anti_triggers": [
-        "User asks for generic advice or opinions instead of research-based insights"
-      ],
-      "dependencies": [
-        "Python",
-        "OpenAI API (optional)",
-        "xAI API (optional)"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "llm-ops",
       "description": "LLM Operations -- RAG, embeddings, vector databases, fine-tuning, prompt engineering advanced, LLM costs, quality evals and AI architectures for production.",
       "path": "llm-ops/SKILL.md",
@@ -498,28 +338,6 @@
       "mcp_tools": []
     },
     {
-      "id": "moyu",
-      "description": "An AI coding agent skill that enforces restraint and avoids over-engineering by only making changes explicitly requested by the user.",
-      "path": "moyu/SKILL.md",
-      "tags": [
-        "ai",
-        "coding",
-        "restraint",
-        "over-engineering",
-        "scope"
-      ],
-      "trigger_conditions": [
-        "User requests a specific change to code",
-        "AI agent feels urge to modify code beyond original request",
-        "Complex solution is proposed when simple one exists"
-      ],
-      "anti_triggers": [
-        "AI agent introduces unrequested abstractions or refactorings"
-      ],
-      "dependencies": [],
-      "mcp_tools": []
-    },
-    {
       "id": "multi-agent-patterns",
       "description": "This skill provides guidance on designing and implementing multi-agent systems, including patterns like supervisor/orchestrator, peer-to-peer/swarm, and hierarchical structures, with a focus on context isolation and effective coordination.",
       "path": "multi-agent-patterns/SKILL.md",
@@ -543,30 +361,6 @@
         "memory-systems",
         "tool-design",
         "context-optimization"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "notebooklm",
-      "description": "Interact with Google NotebookLM to query documentation using Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.",
-      "path": "notebooklm/SKILL.md",
-      "tags": [
-        "NotebookLM",
-        "Google Docs",
-        "Documentation Query"
-      ],
-      "trigger_conditions": [
-        "User mentions NotebookLM explicitly",
-        "Shares NotebookLM URL",
-        "Asks to query their notebooks/documentation"
-      ],
-      "anti_triggers": [
-        "General questions not related to specific documents or notebooks"
-      ],
-      "dependencies": [
-        "n8n",
-        "postgres",
-        "docker"
       ],
       "mcp_tools": []
     },

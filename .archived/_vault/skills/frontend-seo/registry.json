@@ -1,0 +1,112 @@
+{
+  "category_id": "frontend-seo",
+  "category_name": "frontend-seo",
+  "skills": [
+    {
+      "id": "seo-authority-builder",
+      "description": "Analyzes content for E-E-A-T signals and suggests improvements to build authority and trust.",
+      "path": "seo-authority-builder/SKILL.md",
+      "tags": [
+        "SEO",
+        "E-E-A-T",
+        "Content Analysis"
+      ],
+      "trigger_conditions": [
+        "Working on SEO authority builder tasks or workflows",
+        "Need guidance",
+        "best practices",
+        "or checklists for SEO authority builder"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to SEO authority builder",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-content-auditor",
+      "description": "Analyzes provided content for SEO optimization, focusing on E-E-A-T signals, readability, keyword usage, and structure.",
+      "path": "seo-content-auditor/SKILL.md",
+      "tags": [
+        "SEO",
+        "E-E-A-T",
+        "Readability",
+        "Keyword Optimization",
+        "Content Quality"
+      ],
+      "trigger_conditions": [
+        "Working on seo content auditor tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for seo content auditor"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to seo content auditor",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-fundamentals",
+      "description": "Core principles of SEO including E-E-A-T, Core Web Vitals, technical foundations, content quality, and how modern search engines evaluate pages.",
+      "path": "seo-fundamentals/SKILL.md",
+      "tags": [
+        "SEO",
+        "E-E-A-T",
+        "Core Web Vitals",
+        "technical SEO",
+        "content quality"
+      ],
+      "trigger_conditions": [
+        "When executing SEO strategy",
+        "When evaluating page quality",
+        "When optimizing for search engines"
+      ],
+      "anti_triggers": [
+        "When using unedited AI output",
+        "When publishing low-quality content"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "seo-technical",
+      "description": "Audit technical SEO across crawlability, indexability, security, URLs, mobile, Core Web Vitals, structured data, JavaScript rendering, and related platform signals like robots.txt and AI crawler access.",
+      "path": "seo-technical/SKILL.md",
+      "tags": [
+        "SEO",
+        "technical audit",
+        "robots.txt",
+        "Core Web Vitals",
+        "JavaScript"
+      ],
+      "trigger_conditions": [
+        "User wants a technical SEO review focused on crawlability",
+        "indexability",
+        "performance",
+        "or rendering",
+        "Auditing robots.txt",
+        "canonicalization",
+        "JavaScript SEO",
+        "Core Web Vitals",
+        "or AI crawler access",
+        "Task is infrastructure- and implementation-oriented rather than content-focused"
+      ],
+      "anti_triggers": [
+        "Content-focused SEO audit",
+        "Non-technical SEO concerns"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres"
+      ],
+      "mcp_tools": [
+        "on_page_instant_pages",
+        "on_page_lighthouse",
+        "domain_analytics_technologies_domain_technologies"
+      ]
+    }
+  ]
+}

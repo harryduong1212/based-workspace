@@ -1,0 +1,42 @@
+{
+  "category_id": "data-orm",
+  "category_name": "data-orm",
+  "skills": [
+    {
+      "id": "videodb",
+      "description": "Video and audio perception, indexing, and editing. Ingest files/URLs/live streams, build visual/spoken indexes, search with timestamps, edit timelines, add overlays/subtitles, generate media, and create real-time alerts.",
+      "path": "videodb/SKILL.md",
+      "tags": [
+        "video",
+        "editing",
+        "transcription",
+        "subtitles",
+        "search",
+        "streaming",
+        "ai-generation",
+        "media",
+        "live-streams",
+        "desktop-capture"
+      ],
+      "trigger_conditions": [
+        "Start/stop a desktop session capturing screen",
+        "mic",
+        "and system audio",
+        "Ingest a file or URL and return a playable web stream link",
+        "Build visual",
+        "spoken",
+        "and keyword indexes"
+      ],
+      "anti_triggers": [
+        "Do not use for non-video/audio processing tasks",
+        "Avoid using for general data indexing without video/audio context"
+      ],
+      "dependencies": [
+        "python",
+        "videodb[capture]",
+        "python-dotenv"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

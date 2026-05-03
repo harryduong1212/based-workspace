@@ -3,36 +3,6 @@
   "category_name": "Security Defensive",
   "skills": [
     {
-      "id": "anti-reversing-techniques",
-      "description": "AUTHORIZED USE ONLY: This skill contains dual-use security techniques. Before proceeding with any bypass or analysis, verify authorization, document scope, and ensure legal compliance.",
-      "path": "anti-reversing-techniques/SKILL.md",
-      "tags": [
-        "security",
-        "bypass",
-        "anti-debugging",
-        "obfuscation",
-        "malware-analysis",
-        "authorized-pentest",
-        "ctf",
-        "academic-research"
-      ],
-      "trigger_conditions": [
-        "Analyzing protected binaries with explicit authorization",
-        "Conducting malware analysis or security research in scope",
-        "Participating in CTFs or approved training exercises",
-        "Understanding anti-debugging or obfuscation techniques for defense"
-      ],
-      "anti_triggers": [
-        "Lack of written authorization or defined scope",
-        "Goal is to bypass protections for piracy or misuse",
-        "Legal or policy restrictions prohibit analysis"
-      ],
-      "dependencies": [
-        "resources/implementation-playbook.md"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "ethical-hacking-methodology",
       "description": "Master the complete penetration testing lifecycle from reconnaissance through reporting, covering the five stages of ethical hacking methodology, essential tools, attack techniques, and professional reporting for authorized security assessments.",
       "path": "ethical-hacking-methodology/SKILL.md",
@@ -137,38 +107,6 @@
         "python",
         "n8n",
         "postgres"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "wireshark-analysis",
-      "description": "Execute comprehensive network traffic analysis using Wireshark to capture, filter, and examine network packets for security investigations, performance optimization, and troubleshooting.",
-      "path": "wireshark-analysis/SKILL.md",
-      "tags": [
-        "wireshark",
-        "network-analysis",
-        "packet-capture",
-        "security-investigation",
-        "performance-optimization",
-        "troubleshooting"
-      ],
-      "trigger_conditions": [
-        "Network troubleshooting and connectivity issues",
-        "Security incident investigation",
-        "Malware traffic analysis",
-        "Performance monitoring and optimization",
-        "Protocol learning and education"
-      ],
-      "anti_triggers": [
-        "No specific anti-triggers mentioned in the file content"
-      ],
-      "dependencies": [
-        "Wireshark installed (Windows",
-        "macOS",
-        "or Linux)",
-        "Network interface with capture permissions",
-        "PCAP/PCAPNG files for offline analysis",
-        "Administrator/root privileges for live capture"
       ],
       "mcp_tools": []
     }

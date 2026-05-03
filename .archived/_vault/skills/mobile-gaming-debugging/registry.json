@@ -1,0 +1,43 @@
+{
+  "category_id": "mobile-gaming-debugging",
+  "category_name": "mobile-gaming-debugging",
+  "skills": [
+    {
+      "id": "ios-debugger-agent",
+      "description": "Debug an iOS project on a booted simulator using XcodeBuildMCP.",
+      "path": "ios-debugger-agent/SKILL.md",
+      "tags": [
+        "iOS",
+        "XcodeBuildMCP",
+        "simulator",
+        "debugging"
+      ],
+      "trigger_conditions": [
+        "When the user asks to run",
+        "debug",
+        "or inspect an iOS app on a simulator",
+        "When you need simulator UI interaction",
+        "screenshots",
+        "or runtime logs via XcodeBuildMCP"
+      ],
+      "anti_triggers": [
+        "If no booted simulator is available and automatic booting is not requested"
+      ],
+      "dependencies": [
+        "XcodeBuildMCP"
+      ],
+      "mcp_tools": [
+        "mcp__XcodeBuildMCP__list_sims",
+        "mcp__XcodeBuildMCP__session-set-defaults",
+        "mcp__XcodeBuildMCP__build_run_sim",
+        "mcp__XcodeBuildMCP__describe_ui",
+        "mcp__XcodeBuildMCP__tap",
+        "mcp__XcodeBuildMCP__type_text",
+        "mcp__XcodeBuildMCP__gesture",
+        "mcp__XcodeBuildMCP__screenshot",
+        "mcp__XcodeBuildMCP__start_sim_log_cap",
+        "mcp__XcodeBuildMCP__stop_sim_log_cap"
+      ]
+    }
+  ]
+}

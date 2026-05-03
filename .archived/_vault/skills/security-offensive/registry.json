@@ -1,0 +1,322 @@
+{
+  "category_id": "security-offensive",
+  "category_name": "security-offensive",
+  "skills": [
+    {
+      "id": "attack-tree-construction",
+      "description": "Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to stakeholders.",
+      "path": "attack-tree-construction/SKILL.md",
+      "tags": [
+        "attack tree",
+        "security risk assessment",
+        "defense gap analysis"
+      ],
+      "trigger_conditions": [
+        "Visualizing complex attack scenarios",
+        "Identifying defense gaps and priorities",
+        "Communicating risks to stakeholders",
+        "Planning defensive investments or test scopes"
+      ],
+      "anti_triggers": [
+        "You lack authorization or a defined scope to model the system",
+        "The task is a general risk review without attack-path modeling",
+        "The request is unrelated to security assessment or design"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "audit-context-building",
+      "description": "Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding.",
+      "path": "audit-context-building/SKILL.md",
+      "tags": [
+        "code analysis",
+        "context-building",
+        "vulnerability hunting"
+      ],
+      "trigger_conditions": [
+        "Deep comprehension is needed before bug or vulnerability discovery",
+        "Bottom-up understanding instead of high-level guessing is required"
+      ],
+      "anti_triggers": [
+        "Vulnerability findings",
+        "Fix recommendations",
+        "Exploit reasoning",
+        "Severity/impact rating"
+      ],
+      "dependencies": [
+        "n8n"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "cc-skill-security-review",
+      "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities.",
+      "path": "cc-skill-security-review/SKILL.md",
+      "tags": [
+        "security",
+        "authentication",
+        "authorization",
+        "input validation",
+        "SQL injection prevention"
+      ],
+      "trigger_conditions": [
+        "Implementing authentication or authorization",
+        "Handling user input or file uploads",
+        "Creating new API endpoints"
+      ],
+      "anti_triggers": [
+        "Working with public data without security measures",
+        "Storing sensitive data without encryption"
+      ],
+      "dependencies": [
+        "npm",
+        "dotenv"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "dependency-upgrade",
+      "description": "Master major dependency version upgrades, compatibility analysis, staged upgrade strategies, and comprehensive testing approaches.",
+      "path": "dependency-upgrade/SKILL.md",
+      "tags": [
+        "dependency management",
+        "semver",
+        "upgrade strategy",
+        "testing"
+      ],
+      "trigger_conditions": [
+        "Upgrading major framework versions",
+        "Updating security-vulnerable dependencies",
+        "Modernizing legacy dependencies"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to dependency upgrade",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "npm",
+        "yarn"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "differential-review",
+      "description": "Security-focused code review for PRs, commits, and diffs.",
+      "path": "differential-review/SKILL.md",
+      "tags": [
+        "security",
+        "code review",
+        "PRs",
+        "commits",
+        "diffs"
+      ],
+      "trigger_conditions": [
+        "risk-first approach",
+        "evidence-based findings",
+        "adaptive to codebase size"
+      ],
+      "anti_triggers": [
+        "small PRs",
+        "familiarity with codebase",
+        "skipping git history analysis"
+      ],
+      "dependencies": [
+        "git"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "file-path-traversal",
+      "description": "Identify and exploit file path traversal vulnerabilities by understanding traversal principles, identifying vulnerable parameters, testing basic and advanced techniques, bypassing filters, targeting specific files, automating with tools like Burp Suite, ffuf, and wfuzz, and implementing secure coding practices to prevent such vulnerabilities.",
+      "path": "file-path-traversal/SKILL.md",
+      "tags": [
+        "file path traversal",
+        "directory traversal",
+        "vulnerability assessment",
+        "web application security",
+        "pentesting",
+        "exploitation",
+        "secure coding"
+      ],
+      "trigger_conditions": [
+        "When testing web applications for potential file path traversal vulnerabilities",
+        "During security assessments or penetration tests to identify and exploit sensitive data exposure"
+      ],
+      "anti_triggers": [
+        "When dealing with user input that does not involve file paths",
+        "In scenarios where the application is designed to prevent directory traversal attacks"
+      ],
+      "dependencies": [
+        "Web browser with developer tools",
+        "Burp Suite or OWASP ZAP",
+        "cURL for testing payloads",
+        "Wordlists for automation",
+        "ffuf or wfuzz for fuzzing"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "find-bugs",
+      "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes.",
+      "path": "find-bugs/SKILL.md",
+      "tags": [
+        "code review",
+        "security",
+        "bug detection"
+      ],
+      "trigger_conditions": [
+        "asked to review changes",
+        "find bugs",
+        "security review",
+        "audit code on the current branch"
+      ],
+      "anti_triggers": [
+        "when no changes are made",
+        "when the task is unrelated to code review"
+      ],
+      "dependencies": [
+        "git",
+        "gh"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "fixing-metadata",
+      "description": "Audit and fix HTML metadata including page titles, meta descriptions, canonical URLs, Open Graph tags, Twitter cards, favicons, JSON-LD structured data, and robots directives. Use when adding or reviewing SEO and social metadata.",
+      "path": "fixing-metadata/SKILL.md",
+      "tags": [
+        "HTML",
+        "SEO",
+        "metadata",
+        "Open Graph",
+        "Twitter cards"
+      ],
+      "trigger_conditions": [
+        "adding or changing page titles",
+        "descriptions",
+        "canonical",
+        "robots",
+        "implementing Open Graph or Twitter card metadata",
+        "setting favicons",
+        "app icons",
+        "manifest",
+        "theme-color"
+      ],
+      "anti_triggers": [
+        "refactoring unrelated code",
+        "migrating frameworks or SEO libraries unless requested"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "gha-security-review",
+      "description": "Find exploitable vulnerabilities in GitHub Actions workflows, ensuring each finding includes a concrete exploitation scenario.",
+      "path": "gha-security-review/SKILL.md",
+      "tags": [
+        "GitHub Actions",
+        "security review",
+        "vulnerability assessment"
+      ],
+      "trigger_conditions": [
+        "pull_request_target",
+        "issue_comment with command parsing",
+        "${{ }} in run: blocks"
+      ],
+      "anti_triggers": [
+        "workflow_dispatch input injection",
+        "expression injection in push-only workflows on protected branches"
+      ],
+      "dependencies": [
+        "GitHub Actions"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "linux-privilege-escalation",
+      "description": "Execute systematic privilege escalation assessments on Linux systems to identify and exploit misconfigurations, vulnerable services, and security weaknesses that allow elevation from low-privilege user access to root-level control.",
+      "path": "linux-privilege-escalation/SKILL.md",
+      "tags": [
+        "Linux",
+        "Privilege Escalation",
+        "Security Assessment",
+        "Kernel Exploits",
+        "SUID Binaries",
+        "Cron Jobs"
+      ],
+      "trigger_conditions": [
+        "Low-privilege shell access to target Linux system",
+        "Network access for reverse shell connections (if needed)"
+      ],
+      "anti_triggers": [
+        "High-risk environments without proper authorization",
+        "Systems with advanced security measures like SELinux or AppArmor"
+      ],
+      "dependencies": [
+        "Linux environment",
+        "Basic understanding of Linux utilities and scripting",
+        "Knowledge of kernel versions and associated vulnerabilities"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "privilege-escalation-methods",
+      "description": "Provide comprehensive techniques for escalating privileges from a low-privileged user to root/administrator access on compromised Linux and Windows systems. Essential for penetration testing post-exploitation phase and red team operations.",
+      "path": "privilege-escalation-methods/SKILL.md",
+      "tags": [
+        "privilege escalation",
+        "penetration testing",
+        "Linux",
+        "Windows"
+      ],
+      "trigger_conditions": [
+        "low-privilege shell access on target system",
+        "compromised Linux or Windows system"
+      ],
+      "anti_triggers": [
+        "production systems without authorization",
+        "leaving persistence mechanisms without client approval"
+      ],
+      "dependencies": [
+        "Kali Linux",
+        "Mimikatz",
+        "PowerView",
+        "PowerUpSQL",
+        "Responder",
+        "Impacket",
+        "Rubeus"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "windows-privilege-escalation",
+      "description": "Provide systematic methodologies for discovering and exploiting privilege escalation vulnerabilities on Windows systems during penetration testing engagements.",
+      "path": "windows-privilege-escalation/SKILL.md",
+      "tags": [
+        "Windows",
+        "Privilege Escalation",
+        "Penetration Testing",
+        "Security",
+        "Exploitation"
+      ],
+      "trigger_conditions": [
+        "Initial Access as standard user on a Windows system",
+        "Need to escalate privileges from standard user to Administrator or SYSTEM"
+      ],
+      "anti_triggers": [
+        "Unauthorized access to systems",
+        "Attempting actions without proper authorization"
+      ],
+      "dependencies": [
+        "PowerShell",
+        "Windows Exploit Suggester",
+        "JuicyPotato",
+        "PrintSpoofer",
+        "RoguePotato",
+        "GodPotato"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "category_id": "business-content",
+  "category_name": "business-content",
+  "skills": [
+    {
+      "id": "copy-editing",
+      "description": "You are an expert copy editor specializing in marketing and conversion copy. Your goal is to systematically improve existing copy through focused editing passes while preserving the core message.",
+      "path": "copy-editing/SKILL.md",
+      "tags": [
+        "copy-editing",
+        "editing",
+        "marketing-copy",
+        "conversion-copy"
+      ],
+      "trigger_conditions": [
+        "Existing copy needs improvement",
+        "New page or product launch",
+        "Copy review as part of larger optimization effort"
+      ],
+      "anti_triggers": [
+        "Rewriting from scratch when preserving core message is possible"
+      ],
+      "dependencies": [
+        "copywriting",
+        "page-cro",
+        "marketing-psychology",
+        "ab-test-setup"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "copywriting",
+      "description": "Write rigorous, conversion-focused marketing copy for landing pages and emails. Enforces brief confirmation and strict no-fabrication rules.",
+      "path": "copywriting/SKILL.md",
+      "tags": [
+        "copywriting",
+        "marketing",
+        "conversion",
+        "clarity",
+        "credibility",
+        "action-oriented"
+      ],
+      "trigger_conditions": [
+        "Need to create landing page or email copy",
+        "Copy needs to be conversion-focused and action-oriented"
+      ],
+      "anti_triggers": [
+        "Fictionalizing data or testimonials",
+        "Using vague or hype-driven messaging"
+      ],
+      "dependencies": [
+        "Understanding of target audience",
+        "Knowledge of product or offer"
+      ],
+      "mcp_tools": []
+    }
+  ]
+}

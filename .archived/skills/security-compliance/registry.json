@@ -3,33 +3,6 @@
   "category_name": "Security Compliance",
   "skills": [
     {
-      "id": "legal-advisor",
-      "description": "Draft privacy policies, terms of service, disclaimers, and legal notices. Creates GDPR-compliant texts, cookie policies, and data processing agreements.",
-      "path": "legal-advisor/SKILL.md",
-      "tags": [
-        "legal",
-        "privacy",
-        "compliance",
-        "GDPR",
-        "CCPA",
-        "terms-of-service"
-      ],
-      "trigger_conditions": [
-        "Working on legal advisor tasks or workflows",
-        "Needing guidance",
-        "best practices",
-        "or checklists for legal advisor"
-      ],
-      "anti_triggers": [
-        "Task is unrelated to legal advisor",
-        "Need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "qualified attorney"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "pci-compliance",
       "description": "Master PCI DSS (Payment Card Industry Data Security Standard) compliance for secure payment processing and handling of cardholder data.",
       "path": "pci-compliance/SKILL.md",
