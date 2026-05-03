@@ -71,6 +71,7 @@ for (int right = 0; right < n; right++) {
 ## 2. Engineering Deep-Dive — Microservices Resilience
 
 **Read:** [resilience-and-patterns.md](../../java-21-study-guide/06-microservices/resilience-and-patterns.md)
+**Companion deep-dive (skim today, read in full when designing the capstone):** [saga-and-comms.md](../../java-21-study-guide/06-microservices/saga-and-comms.md) — sync vs async decision matrix, the production-grade Saga orchestrator (Postgres-state-machine), and the AI-specific "inference pipeline" Saga where one step is an LLM call.
 
 For an AI orchestrator role, *every external call is unreliable*: LLM providers go down, vector DBs throttle, embedding APIs rate-limit. Resilience4j + Outbox + Saga are the three patterns you'll mention in every system design round.
 

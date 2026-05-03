@@ -131,6 +131,9 @@ Use this when you want to find *where* a concept is studied.
 - **Garbage collection algorithms** → Day 1 ([04-jvm/garbage-collection](java-21-study-guide/04-jvm/garbage-collection.md))
 - **Virtual threads, structured concurrency, pinning** → Day 2 ([03-concurrency/multithreading](java-21-study-guide/03-concurrency/multithreading.md))
 - **Synchronization primitives** → Day 2 ([03-concurrency/synchronization](java-21-study-guide/03-concurrency/synchronization.md))
+- **OOP fundamentals, SOLID, equals/hashCode, composition** → bonus / pre-Day 1 brush-up ([01-core/oop-fundamentals](java-21-study-guide/01-core/oop-fundamentals.md))
+- **Sealed classes + Records + Pattern Matching for switch (the Java 21 trio)** → bonus ([01-core/sealed-classes](java-21-study-guide/01-core/sealed-classes.md), [01-core/records-and-pattern-matching](java-21-study-guide/01-core/records-and-pattern-matching.md))
+- **Streams API + Optional** → bonus / pre-Day 3 brush-up ([02-collections/streams-api](java-21-study-guide/02-collections/streams-api.md))
 
 ### Data layer
 - **JDBC, HikariCP, transactions, isolation** → Day 3 ([05-ecosystem/jdbc](java-21-study-guide/05-ecosystem/jdbc.md))
@@ -140,6 +143,7 @@ Use this when you want to find *where* a concept is studied.
 ### Spring
 - **IoC, AOP, bean lifecycle, `@Transactional` proxy trap** → Day 4 ([05-ecosystem/spring-framework](java-21-study-guide/05-ecosystem/spring-framework.md))
 - **Caching & messaging** → cross-week ([05-ecosystem/caching-and-messaging](java-21-study-guide/05-ecosystem/caching-and-messaging.md))
+- **Project Reactor & Spring WebFlux (when virtual threads aren't enough)** → bonus ([05-ecosystem/reactor-and-webflux](java-21-study-guide/05-ecosystem/reactor-and-webflux.md))
 
 ### Microservices
 - **Circuit breaker, bulkhead, choreography vs orchestration Saga, Outbox+CDC** → Day 5 ([06-microservices/resilience-and-patterns](java-21-study-guide/06-microservices/resilience-and-patterns.md))
@@ -170,6 +174,16 @@ Use this when you want to find *where* a concept is studied.
 ### System design & leadership
 - **5-step blueprint, BoE estimation, deep-dive trade-offs** → Day 13 ([10-system-design-leadership/system-design-blueprint](java-21-study-guide/10-system-design-leadership/system-design-blueprint.md))
 - **STAR framework, 8 must-have stories** → Day 17 + Day 19 ([10-system-design-leadership/behavioral-mastery](java-21-study-guide/10-system-design-leadership/behavioral-mastery.md))
+
+### Bonus deep-dives (not tied to a specific day)
+
+These docs cover material the 21 days don't have time to teach in depth. Read them when you need them; treat them as reference, not assignments.
+
+- [01-core/oop-fundamentals](java-21-study-guide/01-core/oop-fundamentals.md) — SOLID, equals/hashCode contract, composition over inheritance. Pre-Day 1 brush-up if you're rusty.
+- [01-core/sealed-classes](java-21-study-guide/01-core/sealed-classes.md) — Sealed types + exhaustive switch. Read alongside `records-and-pattern-matching` below.
+- [01-core/records-and-pattern-matching](java-21-study-guide/01-core/records-and-pattern-matching.md) — Records, pattern matching for `instanceof` and `switch`, text blocks. **High value for AI orchestrator code:** structured LLM output schemas (records + sealed), tool dispatch (pattern matching), prompt templates (text blocks).
+- [02-collections/streams-api](java-21-study-guide/02-collections/streams-api.md) — Streams, Collectors, Optional, parallel streams (and when virtual threads supersede them).
+- [05-ecosystem/reactor-and-webflux](java-21-study-guide/05-ecosystem/reactor-and-webflux.md) — Project Reactor + Spring WebFlux, with the honest 2025 take on when to pick reactive vs. virtual-thread + MVC. Read if you're going to defend a reactive choice in a system design round.
 
 ---
 

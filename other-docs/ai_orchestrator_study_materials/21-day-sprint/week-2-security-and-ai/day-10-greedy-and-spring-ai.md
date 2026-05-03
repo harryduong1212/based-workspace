@@ -68,6 +68,7 @@ graph LR
 ## 2. Engineering Deep-Dive — Spring AI & Tool Calling
 
 **Read:** [spring-ai-tools.md](../../java-21-study-guide/09-ai-orchestration/spring-ai-tools.md)
+**Companion deep-dive (read after the main):** [mcp-protocol.md](../../java-21-study-guide/09-ai-orchestration/mcp-protocol.md) — Model Context Protocol, the cross-process complement to Spring AI's in-process `@Tool`. Memorize the "when to pick MCP over `@Tool`" decision in §7.
 
 This is the **single most important read of the 21 days for the role**. Tool calling, prompt injection defense, and idempotency on probabilistic call sites are *the* AI orchestrator competencies.
 

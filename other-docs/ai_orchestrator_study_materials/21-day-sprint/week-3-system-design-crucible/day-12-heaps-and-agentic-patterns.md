@@ -82,6 +82,13 @@ graph LR
 ## 2. Engineering Deep-Dive — Agentic Patterns
 
 **Read:** [agentic-patterns.md](../../java-21-study-guide/09-ai-orchestration/agentic-patterns.md)
+**Companion deep-dives (this is the AI-orchestration "binge day" — read all four):**
+- [multi-agent-patterns.md](../../java-21-study-guide/09-ai-orchestration/multi-agent-patterns.md) — Supervisor / Hierarchical / Swarm / Plan-and-Execute beyond ReAct; the Spring AI Supervisor sketch + step-budget rules.
+- [agent-memory.md](../../java-21-study-guide/09-ai-orchestration/agent-memory.md) — short-term / long-term / episodic / procedural memory tiers, rolling-summary pattern, GDPR right-to-erasure design.
+- [cost-and-telemetry.md](../../java-21-study-guide/09-ai-orchestration/cost-and-telemetry.md) — token counting (jtokkit), TokenUsageEvent pipeline, prompt caching (Anthropic 90% / OpenAI 50%), per-tenant budgets.
+- [llm-streaming.md](../../java-21-study-guide/09-ai-orchestration/llm-streaming.md) — TTFT/ITL/TTLT, SSE vs WebSocket, virtual-thread + SseEmitter pattern, end-of-stream usage capture, cancellation propagation.
+
+> If 60 minutes is too short for all five docs, today is the day to **stretch the timebox to 90 minutes** — these are the topics interviewers fixate on for the role.
 
 This is the second-most-probed topic after Spring AI tools (Day 10). ReAct, n8n orchestration, and semantic caching are *the* triad you'll defend in any agent system design round.
 

@@ -97,7 +97,7 @@ Response handleRequest() throws ExecutionException, InterruptedException {
 ## 5. Virtual Threads Pitfall: ThreadLocal & Scoped Values
 
 When using Virtual Threads at scale (millions of concurrent threads), **`ThreadLocal`** and **`InheritableThreadLocal`** become dangerous:
-- Each virtual thread inherits a full copy of `InheritableThreadLocal` values, causing **extreme memory bloat** with millions of threads.
+	- Each virtual thread inherits a full copy of `InheritableThreadLocal` values, causing **extreme memory bloat** with millions of threads.
 - Libraries like SLF4J's MDC (used for Correlation IDs) use `ThreadLocal` internally, which may not propagate correctly across virtual thread boundaries.
 
 ### Scoped Values (Preview in Java 21)

@@ -104,6 +104,9 @@ Storing the full word at the terminal node (vs. a boolean `isEnd`) avoids recons
 ## 2. Engineering Deep-Dive — Advanced RAG with pgvector
 
 **Read:** [advanced-rag.md](../../java-21-study-guide/09-ai-orchestration/advanced-rag.md)
+**Companion deep-dives (skim today, deep-read during capstone work):**
+- [vector-db-tradeoffs.md](../../java-21-study-guide/09-ai-orchestration/vector-db-tradeoffs.md) — pgvector vs Pinecone vs Qdrant decision matrix, HNSW tuning knobs, embedding-dimension cost-perf, multi-tenancy patterns, the decision tree in §9.
+- [llm-evaluation.md](../../java-21-study-guide/09-ai-orchestration/llm-evaluation.md) — Ragas metrics (faithfulness / answer relevancy / context precision / context recall), LLM-as-judge calibration, CI integration. Without evals, every prompt change is "hope it doesn't break".
 
 For an AI orchestrator role, naïve RAG (chunk → embed → vector search → stuff into prompt) is a **junior pattern**. Senior interviews probe: *what fails in production, and how do you fix it?*
 
