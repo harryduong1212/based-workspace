@@ -1,0 +1,27 @@
+{
+  "theme": "dark",
+  "verbose": false,
+  "cleanupPeriodDays": 30,
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "paplay /usr/share/sounds/freedesktop/stereo/complete.oga 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(python *)",
+      "Read(*)",
+      "Write(*)"
+    ]
+  }
+}
