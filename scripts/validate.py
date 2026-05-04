@@ -126,6 +126,20 @@ def main():
     _run_check("Antigravity workflows sync", [py, "scripts/sync_antigravity.py", "--check"], results)
     _run_check("Claude Code commands sync", [py, "scripts/sync_claude_code.py", "--check"], results)
     _check_connectors(results)
+    _run_check(
+        "Context Bridge imports",
+        [
+            py,
+            "-c",
+            "import services.context_bridge.cli, "
+            "services.context_bridge.embedder, "
+            "services.context_bridge.store, "
+            "services.context_bridge.chunkers.sentence, "
+            "services.context_bridge.connectors.jira, "
+            "services.context_bridge.connectors.bitbucket",
+        ],
+        results,
+    )
 
     print()
     print("=" * 60)
