@@ -61,38 +61,6 @@
         "terraform"
       ],
       "mcp_tools": []
-    },
-    {
-      "id": "database-cloud-optimization-cost-optimize",
-      "description": "A cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyzes cloud spending, identifies savings opportunities, and implements cost-effective architectures across AWS, Azure, and GCP.",
-      "path": "database-cloud-optimization-cost-optimize/SKILL.md",
-      "tags": [
-        "cloud",
-        "cost optimization",
-        "AWS",
-        "Azure",
-        "GCP"
-      ],
-      "trigger_conditions": [
-        "Reducing cloud infrastructure spend while preserving performance",
-        "Rightsizing database instances or storage",
-        "Implementing cost controls",
-        "budgets",
-        "or tagging policies",
-        "Reviewing waste",
-        "idle resources",
-        "or overprovisioning"
-      ],
-      "anti_triggers": [
-        "You cannot access billing or resource data",
-        "The system is in active incident response",
-        "The request is unrelated to cost optimization"
-      ],
-      "dependencies": [
-        "billing data",
-        "resource data"
-      ],
-      "mcp_tools": []
     }
   ]
 }

@@ -3,6 +3,32 @@
   "category_name": "data-orm",
   "skills": [
     {
+      "id": "database-design",
+      "description": "Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.",
+      "path": "database-design/SKILL.md",
+      "tags": [
+        "database",
+        "schema",
+        "indexing",
+        "ORM",
+        "serverless"
+      ],
+      "trigger_conditions": [
+        "Need to design a database schema",
+        "Deciding on a database or ORM",
+        "Performance tuning of queries"
+      ],
+      "anti_triggers": [
+        "Defaulting to PostgreSQL for simple apps",
+        "Skipping indexing",
+        "Using SELECT * in production",
+        "Storing JSON when structured data is better",
+        "Ignoring N+1 queries"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    },
+    {
       "id": "videodb",
       "description": "Video and audio perception, indexing, and editing. Ingest files/URLs/live streams, build visual/spoken indexes, search with timestamps, edit timelines, add overlays/subtitles, generate media, and create real-time alerts.",
       "path": "videodb/SKILL.md",

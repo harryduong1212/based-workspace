@@ -64,32 +64,6 @@
         "Apache Iceberg"
       ],
       "mcp_tools": []
-    },
-    {
-      "id": "database",
-      "description": "A comprehensive database workflow bundle covering SQL, NoSQL, database design, migrations, optimization, and data engineering.",
-      "path": "database/SKILL.md",
-      "tags": [
-        "database",
-        "workflow",
-        "sql",
-        "nosql",
-        "data engineering"
-      ],
-      "trigger_conditions": [
-        "Designing database schemas",
-        "Implementing database migrations",
-        "Optimizing query performance",
-        "Setting up data pipelines",
-        "Managing database operations",
-        "Implementing data quality"
-      ],
-      "anti_triggers": [],
-      "dependencies": [
-        "postgres",
-        "docker"
-      ],
-      "mcp_tools": []
     }
   ]
 }
