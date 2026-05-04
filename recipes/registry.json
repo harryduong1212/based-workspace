@@ -15,6 +15,34 @@
         "daily"
       ],
       "path": "recipes/daily-briefing.md"
+    },
+    {
+      "id": "pr-review-prep",
+      "name": "PR Review Prep",
+      "description": "Generate a structured review brief for a Bitbucket pull request, with the linked ticket context and past reviewer feedback already pulled in.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "bitbucket",
+        "jira",
+        "code-review",
+        "pr"
+      ],
+      "path": "recipes/pr-review-prep.md"
+    },
+    {
+      "id": "ticket-to-feature",
+      "name": "Ticket to Feature",
+      "description": "Turn a Jira ticket into a feature spec, API sketch, and open-questions list using related context from past tickets and PRs.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "jira",
+        "bitbucket",
+        "feature-kickoff",
+        "planning"
+      ],
+      "path": "recipes/ticket-to-feature.md"
     }
   ]
 }

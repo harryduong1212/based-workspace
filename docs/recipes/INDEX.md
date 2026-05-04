@@ -24,4 +24,7 @@ See the [Recipe Spec](../RECIPE_SPEC.md) for how recipes are written.
 
 ## For technical users
 
-*(none yet)*
+| Recipe | Description | Status | Tags |
+|---|---|---|---|
+| [PR Review Prep](pr-review-prep.md) | Generate a structured review brief for a Bitbucket pull request, with the linked ticket context and past reviewer feedback already pulled in. | experimental | bitbucket, jira, code-review, pr |
+| [Ticket to Feature](ticket-to-feature.md) | Turn a Jira ticket into a feature spec, API sketch, and open-questions list using related context from past tickets and PRs. | experimental | jira, bitbucket, feature-kickoff, planning |
