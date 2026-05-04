@@ -62,58 +62,6 @@
       "mcp_tools": []
     },
     {
-      "id": "fastapi-pro",
-      "description": "This skill provides comprehensive guidance on building high-performance, async APIs using FastAPI, SQLAlchemy 2.0, and Pydantic V2, covering best practices, architecture patterns, and advanced features.",
-      "path": "fastapi-pro/SKILL.md",
-      "tags": [
-        "FastAPI",
-        "SQLAlchemy",
-        "Pydantic",
-        "async",
-        "microservices"
-      ],
-      "trigger_conditions": [
-        "Working on fastapi pro tasks or workflows",
-        "Needing guidance",
-        "best practices",
-        "or checklists for fastapi pro"
-      ],
-      "anti_triggers": [
-        "The task is unrelated to fastapi pro",
-        "You need a different domain or tool outside this scope"
-      ],
-      "dependencies": [
-        "FastAPI",
-        "SQLAlchemy",
-        "Pydantic"
-      ],
-      "mcp_tools": []
-    },
-    {
-      "id": "fastapi-router-py",
-      "description": "Create FastAPI routers following established patterns with proper authentication, response models, and HTTP status codes.",
-      "path": "fastapi-router-py/SKILL.md",
-      "tags": [
-        "FastAPI",
-        "Python",
-        "Authentication",
-        "Response Models",
-        "HTTP Status Codes"
-      ],
-      "trigger_conditions": [
-        "Developing a new API endpoint in FastAPI",
-        "Need to ensure proper authentication for an API"
-      ],
-      "anti_triggers": [
-        "Creating a simple GET request without authentication",
-        "Ignoring response models and HTTP status codes"
-      ],
-      "dependencies": [
-        "FastAPI"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "fastapi-templates",
       "description": "Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.",
       "path": "fastapi-templates/SKILL.md",
