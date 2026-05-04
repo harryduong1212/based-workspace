@@ -66,6 +66,35 @@
       "mcp_tools": []
     },
     {
+      "id": "javascript-pro",
+      "description": "Master modern JavaScript with ES6+, async patterns, and Node.js APIs. Handles promises, event loops, and browser/Node compatibility.",
+      "path": "javascript-pro/SKILL.md",
+      "tags": [
+        "JavaScript",
+        "ES6+",
+        "async programming",
+        "Node.js",
+        "browser"
+      ],
+      "trigger_conditions": [
+        "Building modern JavaScript for Node.js or browsers",
+        "Debugging async behavior",
+        "event loops",
+        "or performance",
+        "Migrating legacy JS to modern ES standards"
+      ],
+      "anti_triggers": [
+        "You need TypeScript architecture guidance",
+        "You are working in a non-JS runtime",
+        "The task requires backend architecture decisions"
+      ],
+      "dependencies": [
+        "Node.js",
+        "browser"
+      ],
+      "mcp_tools": []
+    },
+    {
       "id": "javascript-testing-patterns",
       "description": "Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.",
       "path": "javascript-testing-patterns/SKILL.md",

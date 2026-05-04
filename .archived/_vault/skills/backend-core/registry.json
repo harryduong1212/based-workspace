@@ -228,6 +228,33 @@
       "mcp_tools": []
     },
     {
+      "id": "golang-pro",
+      "description": "Master Go 1.21+ development with advanced concurrency, performance optimization, and production-ready microservices.",
+      "path": "golang-pro/SKILL.md",
+      "tags": [
+        "Go",
+        "concurrency",
+        "performance",
+        "microservices"
+      ],
+      "trigger_conditions": [
+        "Building Go services",
+        "CLIs",
+        "or microservices",
+        "Designing concurrency patterns and performance optimizations",
+        "Reviewing Go architecture and production readiness"
+      ],
+      "anti_triggers": [
+        "You need another language or runtime",
+        "You only need basic Go syntax explanations",
+        "You cannot change Go tooling or build configuration"
+      ],
+      "dependencies": [
+        "Go"
+      ],
+      "mcp_tools": []
+    },
+    {
       "id": "grpc-golang",
       "description": "A comprehensive guide for designing and implementing production-grade gRPC services in Go, covering contract standardization with Buf, transport layer security via mTLS, and deep observability with OpenTelemetry interceptors.",
       "path": "grpc-golang/SKILL.md",
@@ -250,6 +277,33 @@
       "dependencies": [
         "Go",
         "gRPC-Go"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "java-pro",
+      "description": "Master Java 21+ with modern features like virtual threads, pattern matching, and Spring Boot 3.x. Expert in the latest Java ecosystem including GraalVM, Project Loom, and cloud-native patterns.",
+      "path": "java-pro/SKILL.md",
+      "tags": [
+        "Java",
+        "Spring Boot",
+        "GraalVM",
+        "Project Loom",
+        "Virtual Threads"
+      ],
+      "trigger_conditions": [
+        "Working on java pro tasks or workflows",
+        "Needing guidance",
+        "best practices",
+        "or checklists for java pro"
+      ],
+      "anti_triggers": [
+        "The task is unrelated to java pro",
+        "You need a different domain or tool outside this scope"
+      ],
+      "dependencies": [
+        "Spring Boot",
+        "GraalVM"
       ],
       "mcp_tools": []
     },
@@ -398,6 +452,38 @@
       "mcp_tools": []
     },
     {
+      "id": "python-pro",
+      "description": "Master Python 3.12+ development with advanced features, async programming, performance optimization, and production-ready practices using cutting-edge tools like uv, ruff, pydantic, and FastAPI.",
+      "path": "python-pro/SKILL.md",
+      "tags": [
+        "Python",
+        "async",
+        "performance",
+        "production",
+        "uv",
+        "ruff",
+        "pydantic",
+        "FastAPI"
+      ],
+      "trigger_conditions": [
+        "Writing or reviewing Python 3.12+ codebases",
+        "Implementing async workflows or performance optimizations",
+        "Designing production-ready Python services or tooling"
+      ],
+      "anti_triggers": [
+        "You need guidance for a non-Python stack",
+        "You only need basic syntax tutoring",
+        "You cannot modify Python runtime or dependencies"
+      ],
+      "dependencies": [
+        "uv",
+        "ruff",
+        "pydantic",
+        "FastAPI"
+      ],
+      "mcp_tools": []
+    },
+    {
       "id": "receiving-code-review",
       "description": "A structured approach for receiving and responding to code review feedback, emphasizing technical evaluation over emotional reactions.",
       "path": "receiving-code-review/SKILL.md",
@@ -414,6 +500,36 @@
         "blind implementation without verification"
       ],
       "dependencies": [],
+      "mcp_tools": []
+    },
+    {
+      "id": "rust-pro",
+      "description": "Master Rust 1.75+ with modern async patterns, advanced type system features, and production-ready systems programming.",
+      "path": "rust-pro/SKILL.md",
+      "tags": [
+        "Rust",
+        "async",
+        "type system",
+        "systems programming",
+        "production ready"
+      ],
+      "trigger_conditions": [
+        "Building Rust services",
+        "libraries",
+        "or systems tooling",
+        "Solving ownership",
+        "lifetime",
+        "or async design issues",
+        "Optimizing performance with memory safety guarantees"
+      ],
+      "anti_triggers": [
+        "You need a quick script or dynamic runtime",
+        "You only need basic Rust syntax",
+        "You cannot introduce Rust into the stack"
+      ],
+      "dependencies": [
+        "Rust"
+      ],
       "mcp_tools": []
     },
     {

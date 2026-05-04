@@ -3,35 +3,6 @@
   "category_name": "Frontend Core",
   "skills": [
     {
-      "id": "javascript-pro",
-      "description": "Master modern JavaScript with ES6+, async patterns, and Node.js APIs. Handles promises, event loops, and browser/Node compatibility.",
-      "path": "javascript-pro/SKILL.md",
-      "tags": [
-        "JavaScript",
-        "ES6+",
-        "async programming",
-        "Node.js",
-        "browser"
-      ],
-      "trigger_conditions": [
-        "Building modern JavaScript for Node.js or browsers",
-        "Debugging async behavior",
-        "event loops",
-        "or performance",
-        "Migrating legacy JS to modern ES standards"
-      ],
-      "anti_triggers": [
-        "You need TypeScript architecture guidance",
-        "You are working in a non-JS runtime",
-        "The task requires backend architecture decisions"
-      ],
-      "dependencies": [
-        "Node.js",
-        "browser"
-      ],
-      "mcp_tools": []
-    },
-    {
       "id": "nodejs-best-practices",
       "description": "Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture.",
       "path": "nodejs-best-practices/SKILL.md",
