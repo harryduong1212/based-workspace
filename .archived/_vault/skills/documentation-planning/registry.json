@@ -1,0 +1,27 @@
+{
+  "category_id": "documentation-planning",
+  "category_name": "documentation-planning",
+  "skills": [
+    {
+      "id": "concise-planning",
+      "description": "Use when a user asks for a plan for a coding task, to generate a clear, actionable, and atomic checklist.",
+      "path": "concise-planning/SKILL.md",
+      "tags": [
+        "planning",
+        "checklist",
+        "atomic",
+        "actionable",
+        "user-request"
+      ],
+      "trigger_conditions": [
+        "User requests a plan for a coding task"
+      ],
+      "anti_triggers": [
+        "Requests that cannot be turned into an atomic",
+        "actionable plan"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
+    }
+  ]
+}

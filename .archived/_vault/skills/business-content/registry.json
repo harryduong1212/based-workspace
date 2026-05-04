@@ -3,6 +3,33 @@
   "category_name": "business-content",
   "skills": [
     {
+      "id": "competitor-alternatives",
+      "description": "Create effective competitor comparison and alternative pages that rank for competitive search terms, provide genuine value to evaluators, and position your product effectively.",
+      "path": "competitor-alternatives/SKILL.md",
+      "tags": [
+        "competitor-comparison",
+        "alternative-pages",
+        "seo-traffic",
+        "sales-enablement",
+        "conversion",
+        "brand-positioning"
+      ],
+      "trigger_conditions": [
+        "User is actively looking to switch from a specific competitor",
+        "User is researching options early in their journey",
+        "User wants a direct comparison between your product and a specific competitor"
+      ],
+      "anti_triggers": [
+        "The file lacks detailed competitor research or real customer quotes"
+      ],
+      "dependencies": [
+        "SEO knowledge",
+        "Competitor research skills",
+        "Copywriting abilities"
+      ],
+      "mcp_tools": []
+    },
+    {
       "id": "copy-editing",
       "description": "You are an expert copy editor specializing in marketing and conversion copy. Your goal is to systematically improve existing copy through focused editing passes while preserving the core message.",
       "path": "copy-editing/SKILL.md",
@@ -51,6 +78,90 @@
       "dependencies": [
         "Understanding of target audience",
         "Knowledge of product or offer"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "marketing-ideas",
+      "description": "A skill that provides proven marketing strategies and growth ideas for SaaS and software products, prioritized using a marketing feasibility scoring system.",
+      "path": "marketing-ideas/SKILL.md",
+      "tags": [
+        "marketing",
+        "feasibility",
+        "scoring",
+        "ideas",
+        "strategies",
+        "SaaS"
+      ],
+      "trigger_conditions": [
+        "User asks for marketing ideas",
+        "Need to select",
+        "score and prioritize marketing ideas"
+      ],
+      "anti_triggers": [
+        "Dumping long lists of ideas without scoring"
+      ],
+      "dependencies": [
+        "SEO expertise",
+        "Content templates",
+        "Engineering support"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "marketing-psychology",
+      "description": "Apply behavioral science and mental models to marketing decisions, prioritized using a psychological leverage and feasibility scoring system.",
+      "path": "marketing-psychology/SKILL.md",
+      "tags": [
+        "marketing",
+        "psychology",
+        "behavioral-science",
+        "mental-models",
+        "plfs",
+        "ethics"
+      ],
+      "trigger_conditions": [
+        "User asks for psychology",
+        "persuasion",
+        "or behavioral insight"
+      ],
+      "anti_triggers": [
+        "No bias encyclopedias",
+        "No manipulation"
+      ],
+      "dependencies": [
+        "Behavioral science knowledge",
+        "Marketing decision-making skills"
+      ],
+      "mcp_tools": []
+    },
+    {
+      "id": "product-marketing-context",
+      "description": "Create or update a reusable product marketing context document with positioning, audience, ICP, use cases, and messaging. Use at the start of a project to avoid repeating core marketing context across tasks.",
+      "path": "product-marketing-context/SKILL.md",
+      "tags": [
+        "product",
+        "marketing",
+        "context",
+        "positioning",
+        "audience"
+      ],
+      "trigger_conditions": [
+        "Use when creating a reusable product",
+        "audience",
+        "and positioning context file.",
+        "Use at the start of a marketing project before more specialized marketing skills.",
+        "Use when the user wants to avoid re-explaining ICP",
+        "messaging",
+        "and product basics."
+      ],
+      "anti_triggers": [
+        "Use for individual task-level marketing tasks"
+      ],
+      "dependencies": [
+        "n8n",
+        "postgres",
+        "docker"
       ],
       "mcp_tools": []
     }

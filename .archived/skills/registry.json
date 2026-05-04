@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "type": "skill_registry",
-  "last_updated": "2026-05-04T08:10:56.000000Z",
+  "last_updated": "2026-05-04T08:27:27.000000Z",
   "categories": [
     {
       "category_id": "ai-ml-agents",
@@ -15,19 +15,6 @@
         "evaluation",
         "development",
         "documentation"
-      ]
-    },
-    {
-      "category_id": "ai-ml-evaluation",
-      "category_name": "Ai Ml Evaluation",
-      "registry_path": ".archived/skills/ai-ml-evaluation/registry.json",
-      "category_tags": [
-        "evaluation",
-        "analysis",
-        "testing",
-        "metrics",
-        "ai",
-        "compliance"
       ]
     },
     {
@@ -55,42 +42,6 @@
       ]
     },
     {
-      "category_id": "ai-ml-prompting",
-      "category_name": "Ai Ml Prompting",
-      "registry_path": ".archived/skills/ai-ml-prompting/registry.json",
-      "category_tags": [
-        "AI Writing",
-        "Content Optimization",
-        "Prompt Engineering",
-        "Constrained Decoding",
-        "Semantic Similarity"
-      ]
-    },
-    {
-      "category_id": "ai-ml-science",
-      "category_name": "Ai Ml Science",
-      "registry_path": ".archived/skills/ai-ml-science/registry.json",
-      "category_tags": [
-        "data_science",
-        "scientific_computing",
-        "mathematics",
-        "software_engineering",
-        "astronomy",
-        "bioinformatics"
-      ]
-    },
-    {
-      "category_id": "automation-bots",
-      "category_name": "Automation Bots",
-      "registry_path": ".archived/skills/automation-bots/registry.json",
-      "category_tags": [
-        "bot-development",
-        "command-systems",
-        "user-interaction",
-        "payment-integration"
-      ]
-    },
-    {
       "category_id": "automation-n8n",
       "category_name": "Automation N8N",
       "registry_path": ".archived/skills/automation-n8n/registry.json",
@@ -113,21 +64,6 @@
         "api-integration",
         "social-networks",
         "monitoring"
-      ]
-    },
-    {
-      "category_id": "automation-workflows",
-      "category_name": "Automation Workflows",
-      "registry_path": ".archived/skills/automation-workflows/registry.json",
-      "category_tags": [
-        "billing",
-        "recurring",
-        "finance",
-        "ml",
-        "data",
-        "workflow",
-        "orchestration",
-        "automation"
       ]
     },
     {
@@ -164,55 +100,6 @@
         "bioinformatics",
         "database management",
         "functional programming"
-      ]
-    },
-    {
-      "category_id": "business-content",
-      "category_name": "Business Content",
-      "registry_path": ".archived/skills/business-content/registry.json",
-      "category_tags": [
-        "marketing",
-        "copywriting",
-        "conversion",
-        "seo",
-        "branding"
-      ]
-    },
-    {
-      "category_id": "business-health",
-      "category_name": "Business Health",
-      "registry_path": ".archived/skills/business-health/registry.json",
-      "category_tags": [
-        "self-improvement",
-        "goal-setting",
-        "personal-development",
-        "data-driven",
-        "trend-analysis",
-        "progress-tracking"
-      ]
-    },
-    {
-      "category_id": "business-product",
-      "category_name": "Business Product",
-      "registry_path": ".archived/skills/business-product/registry.json",
-      "category_tags": [
-        "product_management",
-        "analytics",
-        "market_research",
-        "strategy",
-        "discovery"
-      ]
-    },
-    {
-      "category_id": "business-seo",
-      "category_name": "Business Seo",
-      "registry_path": ".archived/skills/business-seo/registry.json",
-      "category_tags": [
-        "seo",
-        "content",
-        "ai",
-        "optimization",
-        "visuals"
       ]
     },
     {
@@ -276,57 +163,6 @@
         "performance_optimization",
         "nutrition",
         "query_optimization"
-      ]
-    },
-    {
-      "category_id": "design-apple-hig",
-      "category_name": "Design Apple Hig",
-      "registry_path": ".archived/skills/design-apple-hig/registry.json",
-      "category_tags": [
-        "User Interface",
-        "Accessibility",
-        "Design Principles",
-        "Input Methods",
-        "Privacy"
-      ]
-    },
-    {
-      "category_id": "design-core",
-      "category_name": "Design Core",
-      "registry_path": ".archived/skills/design-core/registry.json",
-      "category_tags": [
-        "art",
-        "aesthetics",
-        "creativity",
-        "expression",
-        "craftsmanship",
-        "inspiration"
-      ]
-    },
-    {
-      "category_id": "design-ux-ui",
-      "category_name": "Design Ux Ui",
-      "registry_path": ".archived/skills/design-ux-ui/registry.json",
-      "category_tags": [
-        "design",
-        "development",
-        "documentation",
-        "ux/ui",
-        "tools",
-        "process"
-      ]
-    },
-    {
-      "category_id": "design-visuals",
-      "category_name": "Design Visuals",
-      "registry_path": ".archived/skills/design-visuals/registry.json",
-      "category_tags": [
-        "design",
-        "web-development",
-        "frontend",
-        "UI/UX",
-        "static-assets",
-        "AI-assisted"
       ]
     },
     {
@@ -405,18 +241,6 @@
       ]
     },
     {
-      "category_id": "devops-quality",
-      "category_name": "Devops Quality",
-      "registry_path": ".archived/skills/devops-quality/registry.json",
-      "category_tags": [
-        "IT Operations",
-        "Infrastructure Management",
-        "Performance Monitoring",
-        "Problem Solving",
-        "Incident Resolution"
-      ]
-    },
-    {
       "category_id": "documentation-planning",
       "category_name": "Documentation Planning",
       "registry_path": ".archived/skills/documentation-planning/registry.json",
@@ -438,19 +262,6 @@
         "code-examples",
         "project-management",
         "learning-resources"
-      ]
-    },
-    {
-      "category_id": "frontend-3d-anim",
-      "category_name": "Frontend 3D Anim",
-      "registry_path": ".archived/skills/frontend-3d-anim/registry.json",
-      "category_tags": [
-        "Web Development",
-        "Graphics & Design",
-        "Interactive Media",
-        "Programming Languages",
-        "User Experience (UX)",
-        "Front-end Technologies"
       ]
     },
     {
@@ -478,18 +289,6 @@
       ]
     },
     {
-      "category_id": "frontend-seo",
-      "category_name": "Frontend Seo",
-      "registry_path": ".archived/skills/frontend-seo/registry.json",
-      "category_tags": [
-        "SEO",
-        "Content Optimization",
-        "Technical SEO",
-        "Web Performance",
-        "Quality Standards"
-      ]
-    },
-    {
       "category_id": "frontend-ui",
       "category_name": "Frontend Ui",
       "registry_path": ".archived/skills/frontend-ui/registry.json",
@@ -499,57 +298,6 @@
         "Frontend Frameworks",
         "Animation & Interactivity",
         "Data Visualization"
-      ]
-    },
-    {
-      "category_id": "mobile-gaming-debugging",
-      "category_name": "Mobile Gaming Debugging",
-      "registry_path": ".archived/skills/mobile-gaming-debugging/registry.json",
-      "category_tags": [
-        "mobile_app_development",
-        "software_build_tools",
-        "debugging_techniques",
-        "simulator_automation",
-        "ios_sdk",
-        "xcode_integration"
-      ]
-    },
-    {
-      "category_id": "mobile-gaming-gaming",
-      "category_name": "Mobile Gaming Gaming",
-      "registry_path": ".archived/skills/mobile-gaming-gaming/registry.json",
-      "category_tags": [
-        "Game Development",
-        "3D Rendering",
-        "Performance Optimization",
-        "Cross-Platform Deployment",
-        "Scripting Languages"
-      ]
-    },
-    {
-      "category_id": "mobile-gaming-mobile",
-      "category_name": "Mobile Gaming Mobile",
-      "registry_path": ".archived/skills/mobile-gaming-mobile/registry.json",
-      "category_tags": [
-        "game development",
-        "mobile development",
-        "UI/UX design",
-        "software engineering",
-        "networking",
-        "performance optimization"
-      ]
-    },
-    {
-      "category_id": "productivity-office",
-      "category_name": "Productivity Office",
-      "registry_path": ".archived/skills/productivity-office/registry.json",
-      "category_tags": [
-        "programming",
-        "document-processing",
-        "academic-tools",
-        "data-analysis",
-        "presentation-creation",
-        "file-conversion"
       ]
     },
     {
@@ -566,18 +314,6 @@
       ]
     },
     {
-      "category_id": "quality-debugging",
-      "category_name": "Quality Debugging",
-      "registry_path": ".archived/skills/quality-debugging/registry.json",
-      "category_tags": [
-        "software_development",
-        "problem_solving",
-        "technical_skills",
-        "analysis",
-        "optimization"
-      ]
-    },
-    {
       "category_id": "quality-documentation",
       "category_name": "Quality Documentation",
       "registry_path": ".archived/skills/quality-documentation/registry.json",
@@ -591,19 +327,6 @@
       ]
     },
     {
-      "category_id": "quality-observability",
-      "category_name": "Quality Observability",
-      "registry_path": ".archived/skills/quality-observability/registry.json",
-      "category_tags": [
-        "observability",
-        "monitoring",
-        "incident-response",
-        "sre",
-        "performance-engineering",
-        "security-assessment"
-      ]
-    },
-    {
       "category_id": "quality-testing",
       "category_name": "Quality Testing",
       "registry_path": ".archived/skills/quality-testing/registry.json",
@@ -613,18 +336,6 @@
         "Web Accessibility",
         "Version Control",
         "Security"
-      ]
-    },
-    {
-      "category_id": "security-compliance",
-      "category_name": "Security Compliance",
-      "registry_path": ".archived/skills/security-compliance/registry.json",
-      "category_tags": [
-        "regulatory-compliance",
-        "data-protection",
-        "privacy-laws",
-        "payment-security",
-        "encryption"
       ]
     },
     {

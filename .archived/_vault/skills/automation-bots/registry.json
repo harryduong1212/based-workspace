@@ -1,6 +1,6 @@
 {
   "category_id": "automation-bots",
-  "category_name": "Automation Bots",
+  "category_name": "automation-bots",
   "skills": [
     {
       "id": "telegram-bot-builder",
