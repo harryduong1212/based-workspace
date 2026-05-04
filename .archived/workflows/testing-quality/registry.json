@@ -1,26 +1,5 @@
 {
   "category_id": "testing-quality",
   "category_name": "\ud83e\uddea Testing & Quality",
-  "workflows": [
-    {
-      "id": "code-review",
-      "description": "Comprehensive code review",
-      "path": "code-review.md",
-      "triggers": [
-        "code-review"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "review",
-        "linting",
-        "validation",
-        "severity",
-        "security",
-        "logic",
-        "authentication",
-        "guardrails"
-      ]
-    }
-  ]
+  "workflows": []
 }

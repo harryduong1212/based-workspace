@@ -3,6 +3,19 @@
   "type": "recipe_registry",
   "recipes": [
     {
+      "id": "code-review",
+      "name": "Code Review",
+      "description": "Run a multi-dimensional code review (security, bugs, architecture, tests, readability, performance) over the current branch's diff or a specified file set.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "code-review",
+        "quality",
+        "security"
+      ],
+      "path": "recipes/code-review.md"
+    },
+    {
       "id": "daily-briefing",
       "name": "Daily Briefing",
       "description": "Morning summary of your Jira tickets and Bitbucket PRs.",
