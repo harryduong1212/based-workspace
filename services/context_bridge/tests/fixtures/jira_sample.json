@@ -1,0 +1,39 @@
+{
+  "issues": [
+    {
+      "key": "PROJ-412",
+      "fields": {
+        "summary": "API rate limiting for public endpoints",
+        "description": "We need per-tenant rate limiting on the gateway to prevent the noisy-neighbor incidents that hit prod last quarter (see PROJ-381). Token-bucket per tenant; default budget configurable per tier.",
+        "status": {"name": "In Progress"},
+        "assignee": {"displayName": "Alice"},
+        "comment": {
+          "comments": [
+            {"author": {"displayName": "Bob"}, "body": "Should we use Redis or in-process LRU? Redis matches PR #287's choice."},
+            {"author": {"displayName": "Alice"}, "body": "Going with Redis — matches our existing infra."}
+          ]
+        }
+      }
+    },
+    {
+      "key": "PROJ-381",
+      "fields": {
+        "summary": "Postmortem: noisy-neighbor incident 2025-12",
+        "description": "One tenant's batch job consumed 80% of API capacity for 4 hours. Root cause: no rate limiting at the gateway layer. Action items: implement per-tenant limits (PROJ-412).",
+        "status": {"name": "Done"},
+        "assignee": {"displayName": "Alice"},
+        "comment": {"comments": []}
+      }
+    },
+    {
+      "key": "PROJ-419",
+      "fields": {
+        "summary": "Audit log retention — remove session token storage",
+        "description": "Legal flagged that we store session tokens in the audit log indefinitely. Need to either redact at write time or rewrite the auth middleware to not log tokens at all.",
+        "status": {"name": "In Progress"},
+        "assignee": {"displayName": "Carol"},
+        "comment": {"comments": []}
+      }
+    }
+  ]
+}

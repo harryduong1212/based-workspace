@@ -1,0 +1,23 @@
+{
+  "values": [
+    {
+      "id": 287,
+      "title": "Migrate auth middleware off session-token storage",
+      "description": "Implements PROJ-419. Replaces the session-token lookup with a JWT verification path. Adds Redis-backed revocation list. Migration drops the session_tokens table.",
+      "state": "OPEN",
+      "author": {"display_name": "Carol"},
+      "links": {"self": [{"href": "https://bitbucket.example.com/api/2.0/repositories/team/repo/pullrequests/287"}]},
+      "destination": {"branch": {"name": "main"}},
+      "source": {"branch": {"name": "feat/auth-middleware-jwt"}}
+    },
+    {
+      "id": 251,
+      "title": "Hotfix: Redis lookup timeout in token-validation path",
+      "description": "Adds a 200ms timeout to the Redis lookup that authentication middleware does on every request. Fixes the prod outage from 2026-01-14.",
+      "state": "MERGED",
+      "author": {"display_name": "Bob"},
+      "destination": {"branch": {"name": "main"}},
+      "source": {"branch": {"name": "fix/redis-timeout"}}
+    }
+  ]
+}
