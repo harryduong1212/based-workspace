@@ -15,17 +15,6 @@
       ]
     },
     {
-      "category_id": "creative-ui",
-      "category_name": "\ud83c\udfa8 Creative & UI",
-      "registry_path": ".archived/workflows/creative-ui/registry.json",
-      "domain_tags": [
-        "automation",
-        "creative",
-        "process",
-        "workflow"
-      ]
-    },
-    {
       "category_id": "custom-workflows",
       "category_name": "\ud83c\udfaf Custom Workflows",
       "registry_path": ".archived/workflows/custom-workflows/registry.json",
