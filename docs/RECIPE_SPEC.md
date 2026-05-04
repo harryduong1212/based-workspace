@@ -1,4 +1,4 @@
-# Recipe Spec v0.1
+# Recipe Spec v0.2
 
 A **Recipe** is the user-facing unit of work in based-workspace. It packages a profile of skills, optional n8n workflows, MCP servers, and external data connectors behind a plain-English description so non-technical and technical users can run it the same way.
 
@@ -79,6 +79,7 @@ Supported `type` values: `string`, `number`, `bool`, `markdown`, `json`.
 execution:
   type: prompt | workflow | agent
   entrypoint: <type-specific>
+  model: <provider/model id>     # optional; default resolved by the runner
 ```
 
 | Type | Entrypoint | What runs |
@@ -86,6 +87,8 @@ execution:
 | `prompt` | none — `## Prompt` section in body is the entrypoint | One AI call with `requires_skills` loaded into context. |
 | `workflow` | path to `.n8n` file | n8n executes the workflow via webhook; runner returns the result. |
 | `agent` | none — `## Agent` section in body is the entrypoint | AI agent with `requires_skills` loaded and `requires_mcp` available as tools. |
+
+`model` is provider-agnostic. The runner picks a default when omitted; recipes that need a specific capability (long context, tool use, cheap drafting) can pin one. Examples: `claude-opus-4-7`, `claude-sonnet-4-6`, `gemini-2.5-pro`, `ollama/llama3.1:70b`. Ignored when `execution.type` is `workflow`.
 
 ---
 
@@ -114,15 +117,18 @@ This body is the catalog page. The published doc at `docs/recipes/<id>.md` is ge
 
 ## Runner behavior
 
-`recipe run <id>` is a **transient profile activation**:
+`recipe run <id>`:
 
-1. Load and validate the recipe.
-2. Snapshot the current `.agents/skills/` and `.agents/workflows/` symlinks.
-3. Replace the working set with the recipe's `requires_skills` and `requires_workflows`.
-4. Execute per `execution.type`.
-5. Restore the snapshot.
+1. Load and validate the recipe (same checks as `recipe lint`).
+2. Resolve `requires_skills` against the skill registry; their bodies are loaded into the AI call's context for `prompt` and `agent` execution types.
+3. Substitute `{input.X}` placeholders in the `## Prompt` or `## Agent` body from `--input k=v` pairs.
+4. Dispatch per `execution.type`:
+   - `prompt` — one AI call, model from `execution.model` or runner default.
+   - `workflow` — POST to the n8n workflow at `execution.entrypoint`; return the response.
+   - `agent` — AI agent loop with `requires_skills` in context and `requires_mcp` exposed as tools.
+5. Stream output to stdout; honor `--dry-run` by printing the assembled prompt without calling the model.
 
-Provider-specific bindings (Antigravity workflows at `.agents/workflows/`, Claude Code slash commands at `.claude/commands/`) are auto-generated from each recipe by `scripts/sync_antigravity.py` and `scripts/sync_claude_code.py`. Edit the recipe at `recipes/<id>.md` and re-run the sync — never edit the generated artifacts directly.
+There is no symlink mutation, no snapshot, no persistent activation — every run is independent. Provider-specific bindings (Antigravity workflows at `.agents/workflows/`, Claude Code slash commands at `.claude/commands/`) are auto-generated from each recipe by `scripts/sync_antigravity.py` and `scripts/sync_claude_code.py`. Edit the recipe at `recipes/<id>.md` and re-run the sync — never edit the generated artifacts directly.
 
 ---
 
@@ -134,10 +140,9 @@ The CLI is `python scripts/recipe_manager.py`:
 |---|---|
 | `recipe list [--audience X] [--tag X]` | Catalog. |
 | `recipe show <id>` | Print the user-facing block. |
-| `recipe run <id> [--input k=v]...` | Transient run. |
-| `recipe activate <id>` | Persistent activation. |
+| `recipe run <id> [--input k=v]... [--dry-run]` | Execute one run per `execution.type`. |
 | `recipe lint [<id>]` | Resolve every reference. |
-| `recipe sync` | Regenerate `recipes/registry.json`. |
+| `recipe sync [--check]` | Regenerate `recipes/registry.json`. |
 
 ---
 
@@ -156,7 +161,7 @@ For `status: stable` recipes, all of the following must hold:
 
 For `status: experimental` recipes, missing connectors and a missing `execution.entrypoint` file are **warnings**, not errors. This lets a recipe be committed before the machinery it depends on exists.
 
-For `status: deprecated` recipes, lint passes but `recipe run` and `recipe activate` print a deprecation notice.
+For `status: deprecated` recipes, lint passes but `recipe run` prints a deprecation notice.
 
 ---
 

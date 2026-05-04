@@ -123,6 +123,11 @@ def lint_recipe(path, fm, body, parse_err, valid_skills, valid_workflows, valid_
     if etype not in VALID_EXEC_TYPES:
         errors.append(f"execution.type must be one of {sorted(VALID_EXEC_TYPES)}; got {etype!r}")
 
+    if "model" in execu:
+        model = execu["model"]
+        if not isinstance(model, str) or not model.strip():
+            errors.append("execution.model must be a non-empty string when set")
+
     if etype == "prompt" and not re.search(r"^##\s+Prompt\s*$", body or "", re.MULTILINE):
         errors.append("execution.type=prompt requires a '## Prompt' section in the body")
     if etype == "agent" and not re.search(r"^##\s+Agent\s*$", body or "", re.MULTILINE):
