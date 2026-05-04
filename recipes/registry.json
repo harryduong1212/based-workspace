@@ -30,6 +30,19 @@
       "path": "recipes/daily-briefing.md"
     },
     {
+      "id": "git-commit",
+      "name": "Git Commit",
+      "description": "Group staged changes into logical commits and draft Conventional Commits messages, ready to apply.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "git",
+        "commit",
+        "conventional-commits"
+      ],
+      "path": "recipes/git-commit.md"
+    },
+    {
       "id": "git-pr",
       "name": "Git PR Description",
       "description": "Draft a pull request title and description from the current branch's commits and diff against a target branch.",

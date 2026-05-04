@@ -3,26 +3,6 @@
   "category_name": "🔀 Git & Collaboration",
   "workflows": [
     {
-      "id": "git-commit",
-      "description": "Generate conventional commits from staged changes",
-      "path": "git-commit.md",
-      "triggers": [
-        "git-commit"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "commit",
-        "git",
-        "add",
-        "staged",
-        "changes",
-        "determine",
-        "identify",
-        "scope"
-      ]
-    },
-    {
       "id": "git-conflict",
       "description": "Help resolve merge conflicts",
       "path": "git-conflict.md",
