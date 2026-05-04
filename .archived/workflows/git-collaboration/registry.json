@@ -43,26 +43,6 @@
       ]
     },
     {
-      "id": "git-pr",
-      "description": "Create comprehensive PR descriptions",
-      "path": "git-pr.md",
-      "triggers": [
-        "git-pr"
-      ],
-      "required_skills": [],
-      "entry_point": null,
-      "tags": [
-        "changes",
-        "git",
-        "analyze",
-        "content",
-        "guardrails",
-        "steps",
-        "understand",
-        "context"
-      ]
-    },
-    {
       "id": "git-rebase",
       "description": "Interactive rebase assistance",
       "path": "git-rebase.md",

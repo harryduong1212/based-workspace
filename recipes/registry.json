@@ -17,6 +17,19 @@
       "path": "recipes/daily-briefing.md"
     },
     {
+      "id": "git-pr",
+      "name": "Git PR Description",
+      "description": "Draft a pull request title and description from the current branch's commits and diff against a target branch.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "git",
+        "pr",
+        "code-review"
+      ],
+      "path": "recipes/git-pr.md"
+    },
+    {
       "id": "pr-review-prep",
       "name": "PR Review Prep",
       "description": "Generate a structured review brief for a Bitbucket pull request, with the linked ticket context and past reviewer feedback already pulled in.",
