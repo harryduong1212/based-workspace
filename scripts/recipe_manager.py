@@ -201,6 +201,94 @@ def cmd_show(args):
         print(f"Recipe not found: {args.id}")
         sys.exit(1)
     print(target.read_text(encoding="utf-8"))
+    if getattr(args, "resolve", False):
+        fm, _body = parse_recipe(target)
+        _print_recipe_resolution(fm)
+
+
+def _resolve_skill_meta():
+    out = {}
+    if not SKILLS_REGISTRY.exists():
+        return out
+    root = utils.load_json(str(SKILLS_REGISTRY))
+    for cat in root.get("categories", []):
+        cat_path = ROOT_DIR / cat.get("registry_path", "")
+        if not cat_path.exists():
+            continue
+        cat_data = utils.load_json(str(cat_path))
+        for skill in cat_data.get("skills", []):
+            sid = skill.get("id") or skill.get("skill_id")
+            if sid:
+                out[sid] = {
+                    "description": skill.get("description", ""),
+                    "path": skill.get("path", ""),
+                    "category": cat.get("category_id", ""),
+                }
+    return out
+
+
+def _resolve_connector_meta():
+    out = {}
+    cdir = ROOT_DIR / "connectors"
+    if not cdir.exists():
+        return out
+    for path in sorted(cdir.glob("*.md")):
+        m = FRONTMATTER_RE.match(path.read_text(encoding="utf-8"))
+        if not m:
+            continue
+        fm = yaml.safe_load(m.group(1)) or {}
+        cid = fm.get("id")
+        if cid:
+            out[cid] = {
+                "description": fm.get("description", ""),
+                "auth_type": fm.get("auth_type", ""),
+                "requires_env": fm.get("requires_env") or [],
+            }
+    return out
+
+
+def _print_recipe_resolution(fm):
+    print()
+    print("=== Resolution ===")
+
+    skills = fm.get("requires_skills") or []
+    skill_meta = _resolve_skill_meta() if skills else {}
+    print(f"\nrequires_skills ({len(skills)}):")
+    if not skills:
+        print("  (none)")
+    for sid in skills:
+        meta = skill_meta.get(sid)
+        if meta:
+            print(f"  {sid}")
+            print(f"    desc: {meta['description']}")
+            print(f"    file: .archived/skills/{meta['category']}/{meta['path']}")
+        else:
+            print(f"  {sid}  -- MISSING from skills registry")
+
+    conns = fm.get("requires_connectors") or []
+    conn_meta = _resolve_connector_meta() if conns else {}
+    print(f"\nrequires_connectors ({len(conns)}):")
+    if not conns:
+        print("  (none)")
+    for cid in conns:
+        meta = conn_meta.get(cid)
+        if meta:
+            env = ", ".join(meta["requires_env"]) or "(none)"
+            print(f"  {cid}")
+            print(f"    auth: {meta['auth_type']}")
+            print(f"    desc: {meta['description']}")
+            print(f"    env:  {env}")
+        else:
+            print(f"  {cid}  -- MISSING from connectors/")
+
+    mcps = fm.get("requires_mcp") or []
+    mcp_servers = collect_mcp_servers() if mcps else set()
+    print(f"\nrequires_mcp ({len(mcps)}):")
+    if not mcps:
+        print("  (none)")
+    for srv in mcps:
+        mark = "" if srv in mcp_servers else "  -- NOT in .vscode/mcp.json"
+        print(f"  {srv}{mark}")
 
 
 def _load_recipe_or_die(recipe_id):
@@ -395,6 +483,7 @@ def main():
 
     p_show = sub.add_parser("show", help="Print a recipe file")
     p_show.add_argument("id")
+    p_show.add_argument("--resolve", action="store_true", help="Also print referenced skills, connectors, and MCP servers with metadata")
 
     p_lint = sub.add_parser("lint", help="Validate recipe references")
     p_lint.add_argument("id", nargs="?")
