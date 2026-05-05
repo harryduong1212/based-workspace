@@ -304,16 +304,32 @@ def _load_recipe_or_die(recipe_id):
     return fm, body
 
 
-_SECTION_RE = re.compile(r"^##\s+(?P<title>.+?)\s*$\n(?P<body>.*?)(?=^##\s|\Z)", re.MULTILINE | re.DOTALL)
-
-
 def _extract_section(body, title):
+    """Return the body of the `## <title>` section, ignoring `##` lines inside fenced code blocks."""
     if not body:
         return None
-    for m in _SECTION_RE.finditer(body):
-        if m.group("title").strip().lower() == title.lower():
-            return m.group("body").strip()
-    return None
+    target = title.strip().lower()
+    in_section = False
+    in_fence = False
+    collected = []
+    for line in body.split("\n"):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            if in_section:
+                collected.append(line)
+            continue
+        if not in_fence and line.startswith("## "):
+            heading = line[3:].strip().lower()
+            if in_section:
+                break
+            if heading == target:
+                in_section = True
+                continue
+        if in_section:
+            collected.append(line)
+    if not collected:
+        return None
+    return "\n".join(collected).strip()
 
 
 def _execute_recipe(fm, body, inputs):
@@ -469,6 +485,21 @@ def _audit_text(text, label, declared_input_names):
     return findings
 
 
+def _audit_warnings(fm, body_section, label_prefix):
+    warnings = []
+    declared = [(i.get("name") or "").strip() for i in (fm.get("inputs") or []) if i.get("name")]
+    if declared:
+        referenced = {m.group("name") for m in re.finditer(r"\{input\.(?P<name>[a-zA-Z_][a-zA-Z0-9_]*)\}", body_section or "")}
+        for name in declared:
+            if name and name not in referenced:
+                warnings.append(f"{label_prefix}: input '{name}' declared but never substituted via {{input.{name}}} — drift or assumed-injected-by-connector")
+    if body_section:
+        line_count = body_section.count("\n") + 1
+        if line_count > 300:
+            warnings.append(f"{label_prefix}: section is {line_count} lines (>300) — may dominate the dispatcher cache window")
+    return warnings
+
+
 def _resolve_skill_path(skill_id):
     if not SKILLS_REGISTRY.exists():
         return None
@@ -486,7 +517,8 @@ def _resolve_skill_path(skill_id):
 
 
 def cmd_audit(args):
-    total = 0
+    total_errors = 0
+    total_warnings = 0
     any_recipe = False
     for path, fm, body, err in load_all_recipes():
         rid = (fm or {}).get("id") or path.stem
@@ -501,36 +533,42 @@ def cmd_audit(args):
             continue
 
         declared = {(i.get("name") or "").strip() for i in (fm.get("inputs") or []) if i.get("name")}
-        findings = []
+        errors = []
+        warnings = []
 
         section_title = "Prompt" if execu.get("type") == "prompt" else "Agent"
         section_body = _extract_section(body, section_title) or ""
-        findings += _audit_text(section_body, f"body {section_title}", declared)
+        errors += _audit_text(section_body, f"body {section_title}", declared)
+        warnings += _audit_warnings(fm, section_body, f"body {section_title}")
 
         for sid in fm.get("requires_skills") or []:
             skill_path = _resolve_skill_path(sid)
             if not skill_path or not skill_path.exists():
-                findings.append(f"skill {sid}: file not found at expected location")
+                errors.append(f"skill {sid}: file not found at expected location")
                 continue
             content = skill_path.read_text(encoding="utf-8")
             m = FRONTMATTER_RE.match(content)
             skill_body = m.group(2) if m else content
-            findings += _audit_text(skill_body, f"skill {sid}", declared)
+            errors += _audit_text(skill_body, f"skill {sid}", declared)
 
-        if not findings:
+        if not errors and not warnings:
             print(f"OK    {rid}")
         else:
-            for f in findings:
-                print(f"ERR   {rid}: {f}")
-            total += len(findings)
+            for e in errors:
+                print(f"ERR   {rid}: {e}")
+            for w in warnings:
+                print(f"WARN  {rid}: {w}")
+            total_errors += len(errors)
+            total_warnings += len(warnings)
 
     if not any_recipe:
         print(f"Recipe not found: {args.id}" if args.id else "(no recipes)")
         sys.exit(1 if args.id else 0)
 
     print()
-    print(f"Total: {total} finding(s).")
-    sys.exit(1 if total else 0)
+    print(f"Total: {total_errors} error(s), {total_warnings} warning(s).")
+    if total_errors or (args.strict and total_warnings):
+        sys.exit(1)
 
 
 def cmd_sync(args):
@@ -587,6 +625,7 @@ def main():
 
     p_audit = sub.add_parser("audit", help="Audit recipe + referenced skill bodies for dispatcher-incompatible patterns")
     p_audit.add_argument("id", nargs="?")
+    p_audit.add_argument("--strict", action="store_true", help="Treat warnings as errors (exit non-zero on any finding)")
 
     p_sync = sub.add_parser("sync", help="Regenerate recipes/registry.json")
     p_sync.add_argument("--check", action="store_true", help="Verify registry matches current recipes")
