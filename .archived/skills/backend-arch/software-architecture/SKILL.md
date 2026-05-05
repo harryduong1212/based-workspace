@@ -77,8 +77,5 @@ This skill provides guidance for quality focused software development and archit
 - Keep functions focused and under 50 lines when possible
 - Keep files focused and under 200 lines of code when possible
 
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
 ## Used by recipes
 - `ticket-to-feature`

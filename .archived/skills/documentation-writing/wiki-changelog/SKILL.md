@@ -28,9 +28,6 @@ Generate structured changelogs from git history.
 - Use project terminology from README
 - Highlight breaking changes prominently with migration notes
 
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
 ## Used by recipes
 - `git-pr`
 - `release-notes`
