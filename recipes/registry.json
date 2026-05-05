@@ -30,6 +30,19 @@
       "path": "recipes/daily-briefing.md"
     },
     {
+      "id": "env-config",
+      "name": "Environment Config Audit",
+      "description": "Audit and tighten the project's environment-variable setup \u2014 .env hygiene, .env.example completeness, validation on startup, and CI/CD secret handling.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "env",
+        "secrets",
+        "configuration"
+      ],
+      "path": "recipes/env-config.md"
+    },
+    {
       "id": "git-commit",
       "name": "Git Commit",
       "description": "Group staged changes into logical commits and draft Conventional Commits messages, ready to apply.",
@@ -41,6 +54,19 @@
         "conventional-commits"
       ],
       "path": "recipes/git-commit.md"
+    },
+    {
+      "id": "git-conflict",
+      "name": "Git Conflict Helper",
+      "description": "Walk through every active merge conflict, explain both sides, and propose a resolution per file \u2014 without applying it until the user confirms.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "git",
+        "merge",
+        "conflict"
+      ],
+      "path": "recipes/git-conflict.md"
     },
     {
       "id": "git-pr",
@@ -56,6 +82,19 @@
       "path": "recipes/git-pr.md"
     },
     {
+      "id": "git-rebase",
+      "name": "Git Rebase Plan",
+      "description": "Plan an interactive rebase \u2014 propose the pick/squash/reword/drop sequence and the exact commands, with a backup branch first.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "git",
+        "rebase",
+        "history"
+      ],
+      "path": "recipes/git-rebase.md"
+    },
+    {
       "id": "pr-review-prep",
       "name": "PR Review Prep",
       "description": "Generate a structured review brief for a Bitbucket pull request, with the linked ticket context and past reviewer feedback already pulled in.",
@@ -68,6 +107,19 @@
         "pr"
       ],
       "path": "recipes/pr-review-prep.md"
+    },
+    {
+      "id": "test-env-prep",
+      "name": "Test Environment Prep",
+      "description": "Scaffold a test environment for a feature \u2014 mock data fixtures, environment-config docs, and empty test files matching the framework already in use.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "testing",
+        "scaffolding",
+        "fixtures"
+      ],
+      "path": "recipes/test-env-prep.md"
     },
     {
       "id": "ticket-to-feature",
