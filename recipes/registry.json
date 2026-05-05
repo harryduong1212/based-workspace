@@ -109,6 +109,19 @@
       "path": "recipes/pr-review-prep.md"
     },
     {
+      "id": "release-notes",
+      "name": "Release Notes",
+      "description": "Generate release notes for a tag-to-tag (or tag-to-HEAD) range \u2014 classified into Features, Fixes, Breaking changes, and the rest, ready to paste into GitHub/GitLab.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "release",
+        "changelog",
+        "git"
+      ],
+      "path": "recipes/release-notes.md"
+    },
+    {
       "id": "test-env-prep",
       "name": "Test Environment Prep",
       "description": "Scaffold a test environment for a feature \u2014 mock data fixtures, environment-config docs, and empty test files matching the framework already in use.",
