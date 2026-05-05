@@ -80,7 +80,7 @@ A future check (not yet implemented): a `stable` recipe that requires an `experi
 - `connectors/<id>.md` — connector declarations
 - `connectors/registry.json` — connector index
 - `n8n-workflows/connectors/<id>.n8n` — recommended location for ingest workflows
-- `services/context_bridge/` — reserved for the Python embedding service (not yet built)
+- `services/context_bridge/` — Python embedding service (Phase F.0 scaffold landed; F.1+ wires Postgres + pgvector)
 
 ---
 

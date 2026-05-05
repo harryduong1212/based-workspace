@@ -37,8 +37,8 @@
 | 2 | Use `grep_app` to discover open-source implementation patterns for new architectures | 🔍 Pattern Discovery |
 | 3 | Store persistent project context and vector embeddings in the `postgres-memory` database | 🧠 Memory |
 | 4 | Design integration workflows to be executed on the local `n8n-atom` (Quickstart) or `n8n-atom-dev` (Developer) instance | ⚙️ Workflow Engine |
-| 5 | Before building any feature, check `.agents/skills/` for an existing skill that covers the domain | 🎯 Skill Reuse |
-| 6 | Consult `.agents/WORKFLOWS.md` when a task matches a repeatable workflow | 📋 Workflow Reuse |
+| 5 | Before building any feature, check `.archived/skills/registry.json` for an existing skill that covers the domain | 🎯 Skill Reuse |
+| 6 | Consult `recipes/registry.json` when a task matches an existing recipe | 📋 Recipe Reuse |
 | 7 | Always verify changes compile/lint/pass tests before reporting completion | ✅ Verification |
 | 8 | Use syntax appropriate for the Primary Shell of the current environment | 💻 Environment |
 | 9 | Store temporary agent files/logs natively in the `tmp/` root | 📂 File System |

@@ -9,7 +9,7 @@ Your core function is to **wrap the engine** — never refactor it — and ship 
 
 ### 1. Recipe-First Approach
 - **Recipes are the user-facing unit.** Browse [recipes/](../recipes/) before designing new tasks. The spec is at [docs/RECIPE_SPEC.md](../docs/RECIPE_SPEC.md).
-- **`.archived/skills/` and `.archived/workflows/` are reference libraries**, not runtime context. Consult them when *composing* a recipe — read patterns, prompt fragments, ideas — and inline what's relevant into the recipe body. They are NOT symlinked into active context.
+- **`.archived/skills/` is the reference skill library** (130 skills across 29 categories). Consult it when *composing* a recipe — read patterns, prompt fragments, ideas — and either reference a skill ID via `requires_skills` or inline what's relevant into the recipe body. The library is NOT loaded into active context automatically; only declared `requires_skills` are. `.archived/_vault/` holds skills/workflows kept for reference but not recipe-eligible.
 - **Connectors live at [connectors/](../connectors/)** and declare external data sources (Jira, Bitbucket, ...). Reference them via the recipe's `requires_connectors` field.
 
 ### 2. Provider-Neutral Authoring
