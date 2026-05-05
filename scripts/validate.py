@@ -142,6 +142,11 @@ def main():
         ],
         results,
     )
+    _run_check(
+        "Recipe runtime tests",
+        [py, "-m", "unittest", "services.recipe_runtime.tests.test_assembler"],
+        results,
+    )
 
     print()
     print("=" * 60)
