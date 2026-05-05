@@ -69,8 +69,13 @@ def main():
         results,
     )
     _run_check(
-        "Recipe manager tests",
-        [py, "-m", "unittest", "scripts.tests.test_recipe_manager"],
+        "Scripts package tests",
+        [
+            py, "-m", "unittest",
+            "scripts.tests.test_recipe_manager",
+            "scripts.tests.test_connector_manager",
+            "scripts.tests.test_cross_link",
+        ],
         results,
     )
 
