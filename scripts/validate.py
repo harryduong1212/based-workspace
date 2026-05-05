@@ -127,7 +127,7 @@ def main():
     _run_check("Claude Code commands sync", [py, "scripts/sync_claude_code.py", "--check"], results)
     _check_connectors(results)
     _run_check(
-        "Context Bridge imports",
+        "Service package imports",
         [
             py,
             "-c",
@@ -136,7 +136,9 @@ def main():
             "services.context_bridge.store, "
             "services.context_bridge.chunkers.sentence, "
             "services.context_bridge.connectors.jira, "
-            "services.context_bridge.connectors.bitbucket",
+            "services.context_bridge.connectors.bitbucket, "
+            "services.recipe_runtime.dispatcher, "
+            "services.recipe_runtime.prompt_assembler",
         ],
         results,
     )
