@@ -436,6 +436,103 @@ def cmd_lint(args):
     sys.exit(1 if total_errors else 0)
 
 
+_BARE_PLACEHOLDER_RE = re.compile(r"(?<!@)\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
+_FENCED_BLOCK_RE = re.compile(r"```.*?```", re.DOTALL)
+_BOILERPLATE_STUB = "This skill is applicable to execute the workflow or actions described in the overview"
+_CC_PATTERNS = (
+    ("Task tool", "Claude-Code-specific"),
+    ("subagent_type=", "Claude-Code-specific"),
+)
+
+
+def _strip_fenced_blocks(text):
+    return _FENCED_BLOCK_RE.sub("", text or "")
+
+
+def _audit_text(text, label, declared_input_names):
+    findings = []
+    stripped = _strip_fenced_blocks(text)
+    for m in _BARE_PLACEHOLDER_RE.finditer(stripped):
+        name = m.group(1)
+        if name == "input":
+            continue
+        line_no = stripped.count("\n", 0, m.start()) + 1
+        if name in declared_input_names:
+            findings.append(f"{label} line ~{line_no}: bare placeholder {{{name}}} should be {{input.{name}}}")
+        else:
+            findings.append(f"{label} line ~{line_no}: stray placeholder-shaped token {{{name}}} (not an input; remove or quote)")
+    for needle, why in _CC_PATTERNS:
+        if needle in (text or ""):
+            findings.append(f"{label}: contains '{needle}' ({why})")
+    if _BOILERPLATE_STUB in (text or ""):
+        findings.append(f"{label}: contains boilerplate '## When to Use' stub footer (remove)")
+    return findings
+
+
+def _resolve_skill_path(skill_id):
+    if not SKILLS_REGISTRY.exists():
+        return None
+    root = utils.load_json(str(SKILLS_REGISTRY))
+    for cat in root.get("categories", []):
+        cat_reg = ROOT_DIR / cat.get("registry_path", "")
+        if not cat_reg.exists():
+            continue
+        cat_data = utils.load_json(str(cat_reg))
+        for skill in cat_data.get("skills", []):
+            sid = skill.get("id") or skill.get("skill_id")
+            if sid == skill_id:
+                return cat_reg.parent / skill.get("path", "")
+    return None
+
+
+def cmd_audit(args):
+    total = 0
+    any_recipe = False
+    for path, fm, body, err in load_all_recipes():
+        rid = (fm or {}).get("id") or path.stem
+        if args.id and rid != args.id:
+            continue
+        any_recipe = True
+        if err or not fm:
+            print(f"SKIP  {rid}: {err or 'parse failure'}")
+            continue
+        execu = fm.get("execution") or {}
+        if execu.get("type") not in ("prompt", "agent"):
+            continue
+
+        declared = {(i.get("name") or "").strip() for i in (fm.get("inputs") or []) if i.get("name")}
+        findings = []
+
+        section_title = "Prompt" if execu.get("type") == "prompt" else "Agent"
+        section_body = _extract_section(body, section_title) or ""
+        findings += _audit_text(section_body, f"body {section_title}", declared)
+
+        for sid in fm.get("requires_skills") or []:
+            skill_path = _resolve_skill_path(sid)
+            if not skill_path or not skill_path.exists():
+                findings.append(f"skill {sid}: file not found at expected location")
+                continue
+            content = skill_path.read_text(encoding="utf-8")
+            m = FRONTMATTER_RE.match(content)
+            skill_body = m.group(2) if m else content
+            findings += _audit_text(skill_body, f"skill {sid}", declared)
+
+        if not findings:
+            print(f"OK    {rid}")
+        else:
+            for f in findings:
+                print(f"ERR   {rid}: {f}")
+            total += len(findings)
+
+    if not any_recipe:
+        print(f"Recipe not found: {args.id}" if args.id else "(no recipes)")
+        sys.exit(1 if args.id else 0)
+
+    print()
+    print(f"Total: {total} finding(s).")
+    sys.exit(1 if total else 0)
+
+
 def cmd_sync(args):
     entries = []
     for path, fm, _body, err in load_all_recipes():
@@ -488,6 +585,9 @@ def main():
     p_lint = sub.add_parser("lint", help="Validate recipe references")
     p_lint.add_argument("id", nargs="?")
 
+    p_audit = sub.add_parser("audit", help="Audit recipe + referenced skill bodies for dispatcher-incompatible patterns")
+    p_audit.add_argument("id", nargs="?")
+
     p_sync = sub.add_parser("sync", help="Regenerate recipes/registry.json")
     p_sync.add_argument("--check", action="store_true", help="Verify registry matches current recipes")
 
@@ -504,6 +604,8 @@ def main():
         cmd_show(args)
     elif args.cmd == "lint":
         cmd_lint(args)
+    elif args.cmd == "audit":
+        cmd_audit(args)
     elif args.cmd == "sync":
         cmd_sync(args)
     elif args.cmd == "run":

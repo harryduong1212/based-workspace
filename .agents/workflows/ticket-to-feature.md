@@ -57,9 +57,9 @@ You are the Chief Orchestrator for a feature-kickoff pipeline. Your input is a J
 ### Phase 2 — Synthesis
 Apply the loaded skills (`backend-architect`, `software-architecture`, `plan-writing`):
 
-- **Feature spec** — SRS-style: goal, scope (in/out), constraints, success criteria. Write at `.docs/specs/{ticket_key}_srs.md`.
-- **API sketch** — endpoints, request/response shapes, status codes, headers. Write at `.docs/api/{ticket_key}_api.md`.
-- **Open questions** — unresolved decisions blocking implementation, each tagged with the stakeholder who should resolve it. Write at `.docs/specs/{ticket_key}_questions.md`.
+- **Feature spec** — SRS-style: goal, scope (in/out), constraints, success criteria. Write at `.docs/specs/{input.ticket_key}_srs.md`.
+- **API sketch** — endpoints, request/response shapes, status codes, headers. Write at `.docs/api/{input.ticket_key}_api.md`.
+- **Open questions** — unresolved decisions blocking implementation, each tagged with the stakeholder who should resolve it. Write at `.docs/specs/{input.ticket_key}_questions.md`.
 
 ### Phase 3 — Review checkpoint
 Pause and display all three artifacts. Wait for the user to type `Approve`, `Edit`, or `Reject` before continuing.

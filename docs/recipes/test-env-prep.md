@@ -71,7 +71,7 @@ Pause and present the plan. Wait for the user to type `Approve`, `Edit`, or `Rej
 After approval:
 1. Write fixture files with realistic synthetic data — never real production data, never real PII patterns. Use `Faker`-style values.
 2. Write empty test files. Each test function has a clear name and a `# TODO: <one-line intent>` body — no asserts that will pass vacuously.
-3. Write `.docs/tests/{feature_slug}_setup.md` with the env-setup recipe.
+3. Write `.docs/tests/<feature_slug>_setup.md` (where `<feature_slug>` is the slugified form of `{input.feature}` — e.g., `auth/oauth-pkce` → `auth_oauth_pkce`) with the env-setup recipe.
 4. Output the final file list, line counts, and a "Next" line pointing at the first TODO to fill.
 
 ### Constraints

@@ -39,6 +39,7 @@ def main():
     py = sys.executable
 
     _run_check("Recipe lint", [py, "scripts/recipe_manager.py", "lint"], results)
+    _run_check("Recipe audit", [py, "scripts/recipe_manager.py", "audit"], results)
     _run_check("Recipe registry sync", [py, "scripts/recipe_manager.py", "sync", "--check"], results)
     _run_check("Generated docs sync", [py, "scripts/docs_generator.py", "--check"], results)
     _run_check("Antigravity workflows sync", [py, "scripts/sync_antigravity.py", "--check"], results)
