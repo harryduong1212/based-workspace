@@ -110,6 +110,49 @@ def cmd_show(args):
         print(f"Connector not found: {args.id}")
         sys.exit(1)
     print(target.read_text(encoding="utf-8"))
+    if getattr(args, "resolve", False):
+        _print_resolution(args.id)
+
+
+def _print_resolution(connector_id):
+    recipes_dir = ROOT_DIR / "recipes"
+    if not recipes_dir.exists():
+        print("\n=== Resolution ===\n(no recipes directory)")
+        return
+
+    using = []
+    for path in sorted(recipes_dir.glob("*.md")):
+        m = FRONTMATTER_RE.match(path.read_text(encoding="utf-8"))
+        if not m:
+            continue
+        fm = yaml.safe_load(m.group(1)) or {}
+        if connector_id in (fm.get("requires_connectors") or []):
+            using.append(fm)
+
+    print()
+    print("=== Resolution ===")
+    if not using:
+        print(f"No recipes reference '{connector_id}'.")
+        return
+
+    print(f"\nUsed by {len(using)} recipe(s):")
+    agg_skills, agg_conns, agg_mcp = set(), set(), set()
+    for fm in using:
+        skills = fm.get("requires_skills") or []
+        conns = [c for c in (fm.get("requires_connectors") or []) if c != connector_id]
+        mcp = fm.get("requires_mcp") or []
+        print(f"\n  {fm.get('id')}")
+        print(f"    skills:     {', '.join(skills) if skills else '(none)'}")
+        print(f"    connectors: {', '.join(conns) if conns else '(none)'}")
+        print(f"    mcp:        {', '.join(mcp) if mcp else '(none)'}")
+        agg_skills.update(skills)
+        agg_conns.update(conns)
+        agg_mcp.update(mcp)
+
+    print("\nAggregated dependencies across these recipes:")
+    print(f"  skills ({len(agg_skills)}):     {', '.join(sorted(agg_skills)) or '(none)'}")
+    print(f"  other connectors ({len(agg_conns)}): {', '.join(sorted(agg_conns)) or '(none)'}")
+    print(f"  mcp servers ({len(agg_mcp)}): {', '.join(sorted(agg_mcp)) or '(none)'}")
 
 
 def cmd_lint(args):
@@ -218,6 +261,7 @@ def main():
 
     p_show = sub.add_parser("show", help="Print a connector file")
     p_show.add_argument("id")
+    p_show.add_argument("--resolve", action="store_true", help="Also print recipes using this connector and aggregated dependencies")
 
     p_lint = sub.add_parser("lint", help="Validate connector files and registry")
     p_lint.add_argument("id", nargs="?")
