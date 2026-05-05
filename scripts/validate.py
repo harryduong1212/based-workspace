@@ -45,6 +45,7 @@ def main():
     _run_check("Claude Code commands sync", [py, "scripts/sync_claude_code.py", "--check"], results)
     _run_check("Connector lint", [py, "scripts/connector_manager.py", "lint"], results)
     _run_check("Connector registry sync", [py, "scripts/connector_manager.py", "sync", "--check"], results)
+    _run_check("Cross-link backrefs sync", [py, "scripts/cross_link.py", "--check"], results)
     _run_check(
         "Service package imports",
         [

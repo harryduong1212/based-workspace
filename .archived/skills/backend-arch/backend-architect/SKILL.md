@@ -327,3 +327,6 @@ When designing architecture, provide:
 - Deployment strategy and rollout plan
 - Testing strategy for services and integrations
 - Documentation of trade-offs and alternatives considered
+
+## Used by recipes
+- `ticket-to-feature`

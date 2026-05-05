@@ -35,3 +35,6 @@ To generate a project debrief:
 
 ## Keywords
 debrief, post-mortem, mentor, teacher, project review, decision-making, learning, tradeoffs, architecture, retrospective
+
+## Used by recipes
+- `daily-briefing`

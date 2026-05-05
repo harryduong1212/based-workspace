@@ -151,3 +151,6 @@ One sentence: What are we building/fixing?
 - Adding a feature
 - Fixing a bug (if complex)
 - Refactoring multiple files
+
+## Used by recipes
+- `ticket-to-feature`

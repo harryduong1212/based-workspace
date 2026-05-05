@@ -50,5 +50,5 @@ Connects to Atlassian Jira (Cloud or Server) to pull issues, projects, and comme
 
 ## Used by recipes
 - `daily-briefing`
-- `ticket-to-feature`
 - `pr-review-prep`
+- `ticket-to-feature`

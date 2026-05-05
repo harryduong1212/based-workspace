@@ -147,3 +147,7 @@ Review is considered successful when:
 - Team has clear prioritized action plan for remediation
 
 Target: $ARGUMENTS
+
+## Used by recipes
+- `code-review`
+- `pr-review-prep`
