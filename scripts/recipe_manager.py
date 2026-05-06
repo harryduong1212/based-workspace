@@ -10,7 +10,9 @@ from pathlib import Path
 import yaml
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import utils
+from services.recipe_runtime import dispatcher, prompt_assembler
 
 ROOT_DIR = Path(utils.BASE_DIR)
 RECIPES_DIR = ROOT_DIR / "recipes"
@@ -332,27 +334,57 @@ def _extract_section(body, title):
     return "\n".join(collected).strip()
 
 
-def _execute_recipe(fm, body, inputs):
+def _load_skill_bodies(skill_ids):
+    bodies = []
+    for sid in skill_ids or []:
+        sp = _resolve_skill_path(sid)
+        if not sp or not sp.exists():
+            print(f"  WARN: skill body unavailable for {sid!r} — skipping")
+            continue
+        content = sp.read_text(encoding="utf-8")
+        m = FRONTMATTER_RE.match(content)
+        bodies.append((m.group(2) if m else content).strip())
+    return bodies
+
+
+def _execute_recipe(fm, body, inputs, *, dry_run=False):
     execu = fm.get("execution") or {}
     etype = execu.get("type")
     bar = "=" * 60
     print()
     print(bar)
-    print(f"  EXECUTE  {fm.get('id')}  type={etype}")
+    print(f"  EXECUTE  {fm.get('id')}  type={etype}{'  (dry-run)' if dry_run else ''}")
     if inputs:
         print(f"  inputs:  {inputs}")
     print(bar)
 
     if etype == "prompt":
         prompt = _extract_section(body, "Prompt")
-        if prompt:
-            preview = prompt[:300] + ("..." if len(prompt) > 300 else "")
-            print("[STUB] Would invoke a single AI call with the loaded skills as context.")
-            print("       Prompt preview:")
+        if not prompt:
+            print("No '## Prompt' section in body — nothing to invoke.")
+            print(bar)
+            return
+        envelope = prompt_assembler.assemble(fm, prompt, inputs)
+        skill_bodies = _load_skill_bodies(envelope["skill_ids"])
+        if dry_run:
+            sys_bytes = sum(len(s) for s in skill_bodies)
+            user_msg = envelope["user_message"]
+            print(f"  model        : {envelope['model'] or '(falls back to RECIPE_DEFAULT_MODEL)'}")
+            print(f"  skills       : {len(skill_bodies)} loaded "
+                  f"({', '.join(envelope['skill_ids']) or 'none'})")
+            print(f"  system bytes : {sys_bytes}")
+            print(f"  substituted  : {envelope['substitutions'] or '(none)'}")
+            print(f"  user message :")
+            preview = user_msg if len(user_msg) <= 400 else user_msg[:400] + "..."
             for line in preview.splitlines():
-                print(f"         | {line}")
+                print(f"    | {line}")
         else:
-            print("[STUB] No '## Prompt' section in body — nothing to invoke.")
+            try:
+                dispatcher.dispatch_prompt(envelope, skill_bodies=skill_bodies)
+            except Exception as e:
+                print(f"  ERROR: {e}")
+                print(bar)
+                sys.exit(1)
 
     elif etype == "workflow":
         entrypoint = execu.get("entrypoint", "")
@@ -404,10 +436,7 @@ def cmd_run(args):
             sys.exit(0)
 
     print(f"Running recipe: {fm.get('id')}")
-    _execute_recipe(fm, body, inputs)
-    if args.dry_run:
-        print()
-        print("(dry-run)")
+    _execute_recipe(fm, body, inputs, dry_run=args.dry_run)
 
 
 def cmd_lint(args):

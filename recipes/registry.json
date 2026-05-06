@@ -135,6 +135,18 @@
       "path": "recipes/test-env-prep.md"
     },
     {
+      "id": "test-prompt",
+      "name": "E1 dispatcher smoke test",
+      "description": "Minimal prompt recipe used by validate.py to confirm dispatch_prompt is wired (no [STUB]) and to sanity-check the local LLM endpoint.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "test",
+        "infra"
+      ],
+      "path": "recipes/test-prompt.md"
+    },
+    {
       "id": "ticket-to-feature",
       "name": "Ticket to Feature",
       "description": "Turn a Jira ticket into a feature spec, API sketch, and open-questions list using related context from past tickets and PRs.",

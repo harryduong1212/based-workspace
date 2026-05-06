@@ -65,7 +65,16 @@ def main():
     )
     _run_check(
         "Recipe runtime tests",
-        [py, "-m", "unittest", "services.recipe_runtime.tests.test_assembler"],
+        [
+            py, "-m", "unittest",
+            "services.recipe_runtime.tests.test_assembler",
+            "services.recipe_runtime.tests.test_dispatcher",
+        ],
+        results,
+    )
+    _run_check(
+        "Recipe dispatcher dry-run smoke",
+        [py, "scripts/recipe_dispatcher_smoke.py"],
         results,
     )
     _run_check(
