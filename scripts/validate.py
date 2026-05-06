@@ -84,6 +84,7 @@ def main():
             "services.context_bridge.tests.test_smoke",
             "services.context_bridge.tests.test_store",
             "services.context_bridge.tests.test_store_integration",
+            "services.context_bridge.tests.test_cli",
         ],
         results,
     )

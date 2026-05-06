@@ -1,20 +1,30 @@
-"""Context Bridge CLI — Phase F scaffold.
+"""Context Bridge CLI.
 
 Subcommands:
     init-schema    Create the documents table and pgvector extension.
     ingest         Ingest a fixture or live connector source.
     search         Semantic search over ingested content.
-
-Status: SCAFFOLD. Subcommand bodies are not yet wired to real Postgres or
-the embedder. They print intended action and exit with code 2 (NotImplementedError-equivalent)
-so callers see a clear "not yet implemented" signal rather than silent success.
 """
+from __future__ import annotations
+
 import argparse
+import json
 import sys
+from pathlib import Path
+
+from services.context_bridge.chunkers.sentence import chunk
+from services.context_bridge.connectors import bitbucket, jira
+from services.context_bridge.embedder import Embedder
+from services.context_bridge.store import Document, VectorStore
+
+
+_ADAPTERS = {
+    "jira": jira.adapt,
+    "bitbucket": bitbucket.adapt,
+}
 
 
 def cmd_init_schema(args):
-    from services.context_bridge.store import VectorStore
     try:
         with VectorStore() as vs:
             vs.init_schema()
@@ -24,17 +34,77 @@ def cmd_init_schema(args):
     print("init-schema OK — pgvector extension + documents table + indexes ready.")
 
 
+def _build_docs(
+    payload: dict,
+    connector: str,
+    *,
+    target_tokens: int,
+    embedder: Embedder,
+    adapter=None,
+) -> list[Document]:
+    """Pure pipeline: payload → list[Document]. No IO, no DB.
+
+    Calls the embedder once per source_id with all chunks for that record,
+    so each issue/PR is one round-trip rather than one round-trip per chunk.
+    """
+    adapt_fn = adapter if adapter is not None else _ADAPTERS[connector]
+    docs: list[Document] = []
+    for source_id, content, metadata in adapt_fn(payload):
+        chunks = chunk(content, target_tokens=target_tokens)
+        if not chunks:
+            continue
+        embeddings = embedder.embed(chunks)
+        for idx, (text, vec) in enumerate(zip(chunks, embeddings)):
+            docs.append(
+                Document(
+                    source=connector,
+                    source_id=source_id,
+                    chunk_idx=idx,
+                    content=text,
+                    embedding=vec,
+                    metadata=metadata,
+                )
+            )
+    return docs
+
+
 def cmd_ingest(args):
-    print(f"[F.0 SCAFFOLD] ingest would:")
-    print(f"  source:  {args.connector}")
-    print(f"  fixture: {args.fixture}")
-    print(f"  1. Load fixture JSON")
-    print(f"  2. Pass each record through the connector adapter")
-    print(f"  3. Chunk content (sentence-aware default)")
-    print(f"  4. Embed via sentence-transformers (bge-small-en-v1.5)")
-    print(f"  5. Upsert into documents on (source, source_id, chunk_idx)")
-    print("Run F.2 to wire this up.")
-    sys.exit(2)
+    if not args.fixture:
+        print("ingest currently requires --fixture (live connector mode is not yet wired).")
+        sys.exit(2)
+    fixture_path = Path(args.fixture)
+    if not fixture_path.exists():
+        print(f"ingest FAILED: fixture not found: {fixture_path}")
+        sys.exit(1)
+
+    payload = json.loads(fixture_path.read_text(encoding="utf-8"))
+    embedder = Embedder()
+    try:
+        docs = _build_docs(
+            payload,
+            args.connector,
+            target_tokens=args.target_tokens,
+            embedder=embedder,
+        )
+    except NotImplementedError as e:
+        print(f"ingest FAILED: {e}")
+        sys.exit(2)
+    except Exception as e:
+        print(f"ingest FAILED: {e}")
+        sys.exit(1)
+
+    if not docs:
+        print("ingest OK — 0 chunks (no content in payload).")
+        return
+
+    distinct_ids = len({(d.source, d.source_id) for d in docs})
+    try:
+        with VectorStore() as vs:
+            n = vs.upsert(docs)
+    except Exception as e:
+        print(f"ingest FAILED at upsert: {e}")
+        sys.exit(1)
+    print(f"ingest OK — {n} chunks across {distinct_ids} source_ids written.")
 
 
 def cmd_search(args):
@@ -58,6 +128,12 @@ def main():
     p_ing = sub.add_parser("ingest", help="Ingest a connector source")
     p_ing.add_argument("--connector", required=True, choices=["jira", "bitbucket"])
     p_ing.add_argument("--fixture", help="Path to a JSON fixture (development mode)")
+    p_ing.add_argument(
+        "--target-tokens",
+        type=int,
+        default=512,
+        help="Target chunk size in tokens (default 512).",
+    )
     p_ing.set_defaults(func=cmd_ingest)
 
     p_sea = sub.add_parser("search", help="Semantic search over ingested content")
