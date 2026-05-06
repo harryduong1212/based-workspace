@@ -14,12 +14,14 @@ import sys
 
 
 def cmd_init_schema(args):
-    print("[F.0 SCAFFOLD] init-schema would:")
-    print("  1. Connect to Postgres via env (POSTGRES_USER/PASSWORD/DB/PORT)")
-    print("  2. CREATE EXTENSION IF NOT EXISTS vector")
-    print(f"  3. Apply schema from services/context_bridge/sql/0001_documents.sql")
-    print("Run F.1 to wire this up.")
-    sys.exit(2)
+    from services.context_bridge.store import VectorStore
+    try:
+        with VectorStore() as vs:
+            vs.init_schema()
+    except Exception as e:
+        print(f"init-schema FAILED: {e}")
+        sys.exit(1)
+    print("init-schema OK — pgvector extension + documents table + indexes ready.")
 
 
 def cmd_ingest(args):

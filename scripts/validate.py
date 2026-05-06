@@ -78,6 +78,16 @@ def main():
         results,
     )
     _run_check(
+        "Context bridge tests",
+        [
+            py, "-m", "unittest",
+            "services.context_bridge.tests.test_smoke",
+            "services.context_bridge.tests.test_store",
+            "services.context_bridge.tests.test_store_integration",
+        ],
+        results,
+    )
+    _run_check(
         "Scripts package tests",
         [
             py, "-m", "unittest",
