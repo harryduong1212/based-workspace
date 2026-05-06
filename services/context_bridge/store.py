@@ -1,9 +1,10 @@
 """VectorStore — Postgres + pgvector backend for the Context Bridge.
 
-Phase F.1 wires `init_schema`. F.2 wires `upsert`, F.3 wires `search`.
+Phase F.1 wires `init_schema` and F.2 wires `upsert`. F.3 wires `search`.
 """
 from __future__ import annotations
 
+import json
 import os
 from dataclasses import dataclass
 from pathlib import Path
@@ -22,6 +23,15 @@ class Document:
     content: str
     embedding: list[float]
     metadata: dict
+
+
+def _vector_literal(embedding: list[float]) -> str:
+    """Format a Python list as a pgvector text literal: `[v1,v2,...]`.
+
+    pgvector parses this on the server when cast `::vector`, so we don't
+    need the `pgvector` Python package as a dependency.
+    """
+    return "[" + ",".join(repr(float(x)) for x in embedding) + "]"
 
 
 def _build_dsn_from_env() -> str:
@@ -75,7 +85,50 @@ class VectorStore:
         conn.commit()
 
     def upsert(self, docs: list[Document]) -> int:
-        raise NotImplementedError("VectorStore.upsert not yet wired (Phase F.2)")
+        """Replace all chunks for each (source, source_id) group, then insert.
+
+        Single transaction. Re-ingesting fewer chunks for the same source_id
+        deletes the stale higher-index rows automatically — the unique
+        constraint on (source, source_id, chunk_idx) is belt-and-braces.
+        Empty input is a no-op (returns 0, no DB calls).
+        """
+        if not docs:
+            return 0
+
+        groups: dict[tuple[str, str], list[Document]] = {}
+        for d in docs:
+            groups.setdefault((d.source, d.source_id), []).append(d)
+
+        conn = self.connect()
+        inserted = 0
+        with conn.transaction():
+            with conn.cursor() as cur:
+                for (source, source_id), group in groups.items():
+                    cur.execute(
+                        "DELETE FROM documents WHERE source = %s AND source_id = %s",
+                        (source, source_id),
+                    )
+                    rows = [
+                        (
+                            d.source,
+                            d.source_id,
+                            d.chunk_idx,
+                            d.content,
+                            _vector_literal(d.embedding),
+                            json.dumps(d.metadata or {}),
+                        )
+                        for d in group
+                    ]
+                    cur.executemany(
+                        """
+                        INSERT INTO documents
+                            (source, source_id, chunk_idx, content, embedding, metadata)
+                        VALUES (%s, %s, %s, %s, %s::vector, %s::jsonb)
+                        """,
+                        rows,
+                    )
+                    inserted += len(group)
+        return inserted
 
     def search(self, query_embedding: list[float], k: int = 5) -> list[tuple[Document, float]]:
         raise NotImplementedError("VectorStore.search not yet wired (Phase F.3)")

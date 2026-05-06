@@ -7,7 +7,12 @@ import os
 import unittest
 from unittest import mock
 
-from services.context_bridge.store import VectorStore, _build_dsn_from_env
+from services.context_bridge.store import (
+    Document,
+    VectorStore,
+    _build_dsn_from_env,
+    _vector_literal,
+)
 
 
 class _PgEnvScope:
@@ -141,6 +146,124 @@ class InitSchemaUnitTest(unittest.TestCase):
             self.assertIn("CREATE TABLE IF NOT EXISTS documents", sql)
             self.assertIn("ivfflat", sql)
             fake_conn.commit.assert_called_once()
+
+
+class VectorLiteralTest(unittest.TestCase):
+    def test_formats_floats_into_pgvector_text(self):
+        self.assertEqual(_vector_literal([0.1, 0.2, 0.3]), "[0.1,0.2,0.3]")
+
+    def test_coerces_ints_to_float(self):
+        self.assertEqual(_vector_literal([1, 2, 3]), "[1.0,2.0,3.0]")
+
+    def test_empty_embedding(self):
+        self.assertEqual(_vector_literal([]), "[]")
+
+
+def _doc(source="jira", source_id="ABC-1", chunk_idx=0, content="c", embedding=None, metadata=None):
+    return Document(
+        source=source,
+        source_id=source_id,
+        chunk_idx=chunk_idx,
+        content=content,
+        embedding=embedding if embedding is not None else [0.0, 0.1, 0.2],
+        metadata=metadata or {},
+    )
+
+
+def _mock_conn():
+    """psycopg.connect mock that supports cursor() and transaction() context managers."""
+    fake_conn = mock.MagicMock()
+    fake_conn.closed = False
+    fake_cur = mock.MagicMock()
+    fake_conn.cursor.return_value.__enter__.return_value = fake_cur
+    return fake_conn, fake_cur
+
+
+class UpsertUnitTest(unittest.TestCase):
+    """upsert: deterministic delete-then-insert per (source, source_id) group."""
+
+    def test_empty_input_is_noop(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            self.assertEqual(vs.upsert([]), 0)
+            m.assert_not_called()
+
+    def test_returns_total_doc_count(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, _ = _mock_conn()
+            m.return_value = fake_conn
+            n = vs.upsert([_doc(chunk_idx=0), _doc(chunk_idx=1), _doc(chunk_idx=2)])
+            self.assertEqual(n, 3)
+
+    def test_groups_by_source_and_source_id(self):
+        """Two source_ids → two DELETEs and two executemany calls."""
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = _mock_conn()
+            m.return_value = fake_conn
+            vs.upsert([
+                _doc(source_id="A-1", chunk_idx=0),
+                _doc(source_id="A-1", chunk_idx=1),
+                _doc(source_id="B-2", chunk_idx=0),
+            ])
+            delete_calls = [c for c in fake_cur.execute.call_args_list if "DELETE" in c.args[0]]
+            self.assertEqual(len(delete_calls), 2)
+            self.assertEqual(fake_cur.executemany.call_count, 2)
+
+    def test_delete_runs_before_insert_within_group(self):
+        """For a given (source, source_id), DELETE must be issued before INSERT."""
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = _mock_conn()
+            ordered: list[str] = []
+            fake_cur.execute.side_effect = lambda sql, *a, **kw: ordered.append(("execute", sql.strip()[:6]))
+            fake_cur.executemany.side_effect = lambda sql, *a, **kw: ordered.append(("executemany", sql.strip()[:6]))
+            m.return_value = fake_conn
+            vs.upsert([_doc(source_id="A-1", chunk_idx=0), _doc(source_id="A-1", chunk_idx=1)])
+            kinds = [k for k, _ in ordered]
+            self.assertEqual(kinds[0], "execute")
+            self.assertEqual(kinds[1], "executemany")
+
+    def test_runs_inside_one_transaction(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, _ = _mock_conn()
+            m.return_value = fake_conn
+            vs.upsert([_doc(), _doc(source_id="B-2")])
+            fake_conn.transaction.assert_called_once()
+
+    def test_embedding_serialized_as_pgvector_literal(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = _mock_conn()
+            m.return_value = fake_conn
+            vs.upsert([_doc(embedding=[0.5, -0.25, 0.0])])
+            args, _ = fake_cur.executemany.call_args
+            rows = args[1]
+            self.assertEqual(rows[0][4], "[0.5,-0.25,0.0]")
+
+    def test_metadata_serialized_as_json(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = _mock_conn()
+            m.return_value = fake_conn
+            vs.upsert([_doc(metadata={"status": "Open", "assignee": "alice"})])
+            args, _ = fake_cur.executemany.call_args
+            rows = args[1]
+            import json as _json
+            self.assertEqual(_json.loads(rows[0][5]), {"status": "Open", "assignee": "alice"})
+
+    def test_none_metadata_becomes_empty_object(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = _mock_conn()
+            m.return_value = fake_conn
+            d = _doc()
+            d.metadata = None
+            vs.upsert([d])
+            args, _ = fake_cur.executemany.call_args
+            self.assertEqual(args[1][0][5], "{}")
 
 
 if __name__ == "__main__":

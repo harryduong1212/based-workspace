@@ -7,7 +7,7 @@ import unittest
 
 import psycopg
 
-from services.context_bridge.store import VectorStore, _build_dsn_from_env
+from services.context_bridge.store import Document, VectorStore, _build_dsn_from_env
 
 
 def _postgres_reachable() -> bool:
@@ -86,6 +86,93 @@ class InitSchemaIntegrationTest(unittest.TestCase):
                 vs.init_schema()
         rows = self._query("SELECT COUNT(*) FROM documents")
         self.assertGreaterEqual(rows[0][0], 0)
+
+
+def _doc(source_id: str, chunk_idx: int, *, content: str = "x", meta: dict | None = None) -> Document:
+    """Build a Document with a deterministic 384-dim embedding."""
+    embedding = [0.0] * 384
+    embedding[0] = float(chunk_idx)
+    return Document(
+        source="jira",
+        source_id=source_id,
+        chunk_idx=chunk_idx,
+        content=content,
+        embedding=embedding,
+        metadata=meta or {"summary": content},
+    )
+
+
+@unittest.skipUnless(_postgres_reachable(), SKIP_REASON)
+class UpsertIntegrationTest(unittest.TestCase):
+    """Live-Postgres tests for upsert: row counts, idempotency, replacement."""
+
+    SOURCE_IDS = ("ITEST-1", "ITEST-2")
+
+    def setUp(self):
+        self.vs = VectorStore()
+        self.vs.init_schema()
+        with self.vs.connect().cursor() as cur:
+            cur.execute(
+                "DELETE FROM documents WHERE source = 'jira' AND source_id = ANY(%s)",
+                (list(self.SOURCE_IDS),),
+            )
+        self.vs.connect().commit()
+
+    def tearDown(self):
+        with self.vs.connect().cursor() as cur:
+            cur.execute(
+                "DELETE FROM documents WHERE source = 'jira' AND source_id = ANY(%s)",
+                (list(self.SOURCE_IDS),),
+            )
+        self.vs.connect().commit()
+        self.vs.close()
+
+    def _count(self, source_id: str) -> int:
+        with self.vs.connect().cursor() as cur:
+            cur.execute(
+                "SELECT COUNT(*) FROM documents WHERE source = 'jira' AND source_id = %s",
+                (source_id,),
+            )
+            return cur.fetchone()[0]
+
+    def test_upsert_inserts_chunks_and_returns_count(self):
+        n = self.vs.upsert([_doc("ITEST-1", 0), _doc("ITEST-1", 1), _doc("ITEST-1", 2)])
+        self.assertEqual(n, 3)
+        self.assertEqual(self._count("ITEST-1"), 3)
+
+    def test_re_upsert_smaller_replaces_old(self):
+        """Stale higher-index chunks must be deleted on re-ingest."""
+        self.vs.upsert([_doc("ITEST-1", i) for i in range(3)])
+        self.assertEqual(self._count("ITEST-1"), 3)
+        self.vs.upsert([_doc("ITEST-1", 0, content="new"), _doc("ITEST-1", 1, content="new")])
+        self.assertEqual(self._count("ITEST-1"), 2)
+
+    def test_re_upsert_larger_replaces_old(self):
+        self.vs.upsert([_doc("ITEST-1", i) for i in range(2)])
+        self.vs.upsert([_doc("ITEST-1", i) for i in range(4)])
+        self.assertEqual(self._count("ITEST-1"), 4)
+
+    def test_upsert_does_not_touch_other_source_ids(self):
+        self.vs.upsert([_doc("ITEST-1", 0), _doc("ITEST-2", 0), _doc("ITEST-2", 1)])
+        # Re-upsert ITEST-1 with one chunk; ITEST-2 must remain untouched.
+        self.vs.upsert([_doc("ITEST-1", 0, content="updated")])
+        self.assertEqual(self._count("ITEST-1"), 1)
+        self.assertEqual(self._count("ITEST-2"), 2)
+
+    def test_upsert_persists_metadata_and_embedding(self):
+        self.vs.upsert([_doc("ITEST-1", 0, content="hello", meta={"status": "Open"})])
+        with self.vs.connect().cursor() as cur:
+            cur.execute(
+                """
+                SELECT content, metadata, embedding::text
+                FROM documents WHERE source = 'jira' AND source_id = %s
+                """,
+                ("ITEST-1",),
+            )
+            row = cur.fetchone()
+        self.assertEqual(row[0], "hello")
+        self.assertEqual(row[1], {"status": "Open"})
+        self.assertTrue(row[2].startswith("[0,"))
 
 
 if __name__ == "__main__":
