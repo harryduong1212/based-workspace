@@ -1,0 +1,38 @@
+# Reproducible llama-swap + llama.cpp Vulkan image.
+#
+# Bundles the same release artifacts we verified on the host (b9037 +
+# llama-swap v211), so the container behaves identically. Vulkan runtime
+# libs are present so the same binary supports CPU-only, Radeon iGPU, and
+# RTX dGPU offload — flip via flags in config.yaml.
+
+FROM docker.io/debian:bookworm-slim
+
+ARG LLAMA_CPP_VERSION=b9037
+ARG LLAMA_SWAP_VERSION=211
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ca-certificates curl libvulkan1 libgomp1 mesa-vulkan-drivers \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL -o /tmp/llama.tar.gz \
+        "https://github.com/ggml-org/llama.cpp/releases/download/${LLAMA_CPP_VERSION}/llama-${LLAMA_CPP_VERSION}-bin-ubuntu-vulkan-x64.tar.gz" \
+    && mkdir -p /opt/llama.cpp \
+    && tar -xzf /tmp/llama.tar.gz -C /opt/llama.cpp --strip-components=1 \
+    && rm /tmp/llama.tar.gz \
+    && ln -s /opt/llama.cpp/llama-server /usr/local/bin/llama-server \
+    && ln -s /opt/llama.cpp/llama-cli    /usr/local/bin/llama-cli
+
+RUN curl -fsSL -o /tmp/llama-swap.tar.gz \
+        "https://github.com/mostlygeek/llama-swap/releases/download/v${LLAMA_SWAP_VERSION}/llama-swap_${LLAMA_SWAP_VERSION}_linux_amd64.tar.gz" \
+    && tar -xzf /tmp/llama-swap.tar.gz -C /usr/local/bin/ llama-swap \
+    && rm /tmp/llama-swap.tar.gz \
+    && chmod +x /usr/local/bin/llama-swap
+
+ENV LD_LIBRARY_PATH=/opt/llama.cpp
+
+EXPOSE 8080
+
+ENTRYPOINT ["/usr/local/bin/llama-swap", \
+            "-config", "/etc/llama-swap/config.yaml", \
+            "-listen", "0.0.0.0:8080", \
+            "-watch-config"]

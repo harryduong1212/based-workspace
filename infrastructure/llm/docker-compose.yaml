@@ -1,0 +1,38 @@
+name: infrastructure-llm
+
+# llama-swap + llama.cpp Vulkan, OpenAI-compatible endpoint at
+# http://127.0.0.1:11434/v1, hot-swapping by `model` field.
+#
+# The `based-workspace-net` network is created by infrastructure/core, so
+# bring Postgres up first:
+#   podman compose -f infrastructure/core/docker-compose.yaml up -d based-workspace-postgres
+#   podman compose -f infrastructure/llm/docker-compose.yaml up -d --build
+
+services:
+  llama-swap:
+    image: based-workspace/llama-swap:vulkan
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: based-workspace-llama-swap
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11434:8080"
+    volumes:
+      # SELinux relabel: `:z` (shared label). Avoid `:Z` here — podman-compose
+      # copies single-file bind mounts when applying a private label, which
+      # breaks `-watch-config` (host edits never reach the container).
+      - ${HOME}/models:/models:ro,z
+      - ./config.yaml:/etc/llama-swap/config.yaml:ro,z
+    networks:
+      - based-workspace-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/v1/models > /dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  based-workspace-net:
+    external: true
+    name: based-workspace-net

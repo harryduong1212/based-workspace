@@ -1,0 +1,49 @@
+# llama-swap config (in-container paths).
+#
+# Default profile is CPU-only. To switch backends, edit a model's `cmd` and
+# `podman compose -f infrastructure/llm/docker-compose.yaml restart` (or
+# rely on -watch-config; the file is mounted RO so edit on the host).
+#
+# CPU only (default)        : -t 16 (no -ngl)
+# Radeon 890M iGPU offload  : -ngl 99 --device Vulkan0   (works without reboot)
+# RTX 4060 dGPU offload     : -ngl 99 --device Vulkan0|1 (after re-enabling 4060 + reboot;
+#                                                         verify ordering with `vulkaninfo --summary`)
+#
+# `${PORT}` is allocated fresh per spawn by llama-swap.
+# Models are bind-mounted at /models (read-only).
+
+healthCheckTimeout: 120
+
+models:
+  "gemma-3-4b":
+    cmd: |
+      /usr/local/bin/llama-server
+      -m /models/gemma-3-4b-it-Q4_K_M.gguf
+      --host 127.0.0.1 --port ${PORT}
+      -c 8192 -t 16
+      --jinja
+    proxy: "http://127.0.0.1:${PORT}"
+    ttl: 600
+
+  "gemma-3-12b":
+    cmd: |
+      /usr/local/bin/llama-server
+      -m /models/gemma-3-12b-it-Q4_K_M.gguf
+      --host 127.0.0.1 --port ${PORT}
+      -c 4096 -t 16
+      --jinja
+    proxy: "http://127.0.0.1:${PORT}"
+    ttl: 600
+
+  # Retrieval embedder for the Context Bridge (Phase F).
+  # Pooling=cls matches BGE's recommended setup; --embeddings switches
+  # llama-server to embedding mode (no chat completions on this slot).
+  "bge-small-en-v1.5":
+    cmd: |
+      /usr/local/bin/llama-server
+      -m /models/bge-small-en-v1.5-f16.gguf
+      --host 127.0.0.1 --port ${PORT}
+      --embeddings --pooling cls
+      -c 512 -t 8
+    proxy: "http://127.0.0.1:${PORT}"
+    ttl: 600
