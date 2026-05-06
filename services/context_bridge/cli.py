@@ -108,14 +108,36 @@ def cmd_ingest(args):
 
 
 def cmd_search(args):
-    print(f"[F.0 SCAFFOLD] search would:")
-    print(f"  query: {args.query!r}")
-    print(f"  k:     {args.k}")
-    print(f"  1. Embed the query")
-    print(f"  2. SELECT ... ORDER BY embedding <-> $1 LIMIT $k")
-    print(f"  3. Print ranked results")
-    print("Run F.3 to wire this up.")
-    sys.exit(2)
+    embedder = Embedder()
+    try:
+        [query_embedding] = embedder.embed([args.query])
+    except Exception as e:
+        print(f"search FAILED at embedder: {e}")
+        sys.exit(1)
+
+    try:
+        with VectorStore() as vs:
+            results = vs.search(query_embedding, k=args.k, source=args.source)
+    except Exception as e:
+        print(f"search FAILED at store: {e}")
+        sys.exit(1)
+
+    if not results:
+        print(f"search: no matches for {args.query!r}.")
+        return
+
+    print(f"search: {args.query!r} (k={args.k}{', source=' + args.source if args.source else ''})\n")
+    for i, (doc, distance) in enumerate(results, start=1):
+        summary = (doc.metadata or {}).get("summary") or ""
+        preview = doc.content.replace("\n", " ").strip()
+        if len(preview) > 140:
+            preview = preview[:140] + "..."
+        head = f"  {i}. [{doc.source}/{doc.source_id} #{doc.chunk_idx}]  ({distance:.4f})"
+        if summary:
+            head += f"  {summary}"
+        print(head)
+        if preview:
+            print(f"       {preview}")
 
 
 def main():
@@ -139,6 +161,12 @@ def main():
     p_sea = sub.add_parser("search", help="Semantic search over ingested content")
     p_sea.add_argument("query")
     p_sea.add_argument("-k", type=int, default=5)
+    p_sea.add_argument(
+        "--source",
+        choices=["jira", "bitbucket"],
+        default=None,
+        help="Restrict results to one connector (default: all).",
+    )
     p_sea.set_defaults(func=cmd_search)
 
     args = p.parse_args()

@@ -175,5 +175,70 @@ class UpsertIntegrationTest(unittest.TestCase):
         self.assertTrue(row[2].startswith("[0,"))
 
 
+@unittest.skipUnless(_postgres_reachable(), SKIP_REASON)
+class SearchIntegrationTest(unittest.TestCase):
+    """Live-Postgres tests for search: ranking, k, source filter."""
+
+    SOURCE_IDS = ("STEST-1", "STEST-2", "STEST-3", "STEST-BB-1")
+
+    def _crafted_embedding(self, axis: int) -> list[float]:
+        """384-dim one-hot at `axis`. Cosine distance is minimized when
+        the query points along the same axis."""
+        v = [0.0] * 384
+        v[axis] = 1.0
+        return v
+
+    def setUp(self):
+        self.vs = VectorStore()
+        self.vs.init_schema()
+        self._cleanup()
+        # Seed three jira docs along axes 0/1/2, plus one bitbucket doc on axis 0.
+        self.vs.upsert([
+            Document("jira", "STEST-1", 0, "axis-0 doc", self._crafted_embedding(0), {"summary": "A"}),
+            Document("jira", "STEST-2", 0, "axis-1 doc", self._crafted_embedding(1), {"summary": "B"}),
+            Document("jira", "STEST-3", 0, "axis-2 doc", self._crafted_embedding(2), {"summary": "C"}),
+            Document("bitbucket", "STEST-BB-1", 0, "bb axis-0", self._crafted_embedding(0), {"summary": "D"}),
+        ])
+
+    def tearDown(self):
+        self._cleanup()
+        self.vs.close()
+
+    def _cleanup(self):
+        with self.vs.connect().cursor() as cur:
+            cur.execute(
+                "DELETE FROM documents WHERE source_id = ANY(%s)",
+                (list(self.SOURCE_IDS),),
+            )
+        self.vs.connect().commit()
+
+    def test_top_result_is_axis_aligned(self):
+        results = self.vs.search(self._crafted_embedding(1), k=3)
+        self.assertGreater(len(results), 0)
+        top_doc, top_dist = results[0]
+        self.assertEqual(top_doc.source_id, "STEST-2")
+        # axis-1 vs axis-1 is a perfect match — cosine distance ≈ 0.
+        self.assertAlmostEqual(top_dist, 0.0, places=4)
+
+    def test_results_ordered_by_ascending_distance(self):
+        results = self.vs.search(self._crafted_embedding(0), k=4)
+        distances = [d for _, d in results]
+        self.assertEqual(distances, sorted(distances))
+
+    def test_k_caps_result_count(self):
+        results = self.vs.search(self._crafted_embedding(0), k=2)
+        self.assertEqual(len(results), 2)
+
+    def test_source_filter_excludes_other_connectors(self):
+        results = self.vs.search(self._crafted_embedding(0), k=10, source="jira")
+        self.assertTrue(all(d.source == "jira" for d, _ in results))
+
+    def test_no_source_filter_returns_all_connectors(self):
+        results = self.vs.search(self._crafted_embedding(0), k=10)
+        sources = {d.source for d, _ in results}
+        self.assertIn("jira", sources)
+        self.assertIn("bitbucket", sources)
+
+
 if __name__ == "__main__":
     unittest.main()

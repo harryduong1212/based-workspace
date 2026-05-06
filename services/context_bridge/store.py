@@ -1,6 +1,6 @@
 """VectorStore — Postgres + pgvector backend for the Context Bridge.
 
-Phase F.1 wires `init_schema` and F.2 wires `upsert`. F.3 wires `search`.
+Phase F.1 wires `init_schema`, F.2 wires `upsert`, F.3 wires `search`.
 """
 from __future__ import annotations
 
@@ -130,5 +130,54 @@ class VectorStore:
                     inserted += len(group)
         return inserted
 
-    def search(self, query_embedding: list[float], k: int = 5) -> list[tuple[Document, float]]:
-        raise NotImplementedError("VectorStore.search not yet wired (Phase F.3)")
+    def search(
+        self,
+        query_embedding: list[float],
+        k: int = 5,
+        *,
+        source: str | None = None,
+    ) -> list[tuple["Document", float]]:
+        """Return the top-k closest chunks by pgvector cosine distance.
+
+        Distances are pgvector `<=>` (cosine distance, range [0, 2]; smaller
+        is more similar). The returned `Document.embedding` is `[]` — we
+        don't pay to round-trip 384 floats per row to the caller.
+
+        Empty query_embedding short-circuits to []. `source` filters to one
+        connector (e.g. "jira") and is None by default.
+        """
+        if not query_embedding:
+            return []
+        vec_lit = _vector_literal(query_embedding)
+        params = {"v": vec_lit, "k": k}
+        where = ""
+        if source is not None:
+            where = "WHERE source = %(source)s"
+            params["source"] = source
+        sql = f"""
+            SELECT source, source_id, chunk_idx, content, metadata,
+                   embedding <=> %(v)s::vector AS distance
+            FROM documents
+            {where}
+            ORDER BY embedding <=> %(v)s::vector
+            LIMIT %(k)s
+        """
+        conn = self.connect()
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            rows = cur.fetchall()
+        conn.commit()
+        return [
+            (
+                Document(
+                    source=r[0],
+                    source_id=r[1],
+                    chunk_idx=r[2],
+                    content=r[3],
+                    embedding=[],
+                    metadata=r[4] or {},
+                ),
+                float(r[5]),
+            )
+            for r in rows
+        ]

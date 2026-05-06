@@ -266,5 +266,91 @@ class UpsertUnitTest(unittest.TestCase):
             self.assertEqual(args[1][0][5], "{}")
 
 
+class SearchUnitTest(unittest.TestCase):
+    """search: SQL shape, parameter binding, result mapping."""
+
+    def _setup(self, rows):
+        fake_conn, fake_cur = _mock_conn()
+        fake_cur.fetchall.return_value = rows
+        return fake_conn, fake_cur
+
+    def test_empty_query_short_circuits_to_empty_list(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            self.assertEqual(vs.search([]), [])
+            m.assert_not_called()
+
+    def test_executes_with_vector_literal_and_k(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = self._setup([])
+            m.return_value = fake_conn
+            vs.search([0.1, 0.2, 0.3], k=7)
+            args, _ = fake_cur.execute.call_args
+            sql, params = args[0], args[1]
+            self.assertEqual(params["v"], "[0.1,0.2,0.3]")
+            self.assertEqual(params["k"], 7)
+            self.assertIn("ORDER BY embedding <=> %(v)s::vector", sql)
+            self.assertIn("LIMIT %(k)s", sql)
+
+    def test_default_k_is_5(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = self._setup([])
+            m.return_value = fake_conn
+            vs.search([0.1, 0.2])
+            self.assertEqual(fake_cur.execute.call_args.args[1]["k"], 5)
+
+    def test_no_source_filter_omits_where_clause(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = self._setup([])
+            m.return_value = fake_conn
+            vs.search([0.1])
+            sql, params = fake_cur.execute.call_args.args
+            self.assertNotIn("WHERE", sql)
+            self.assertNotIn("source", params)
+
+    def test_source_filter_adds_where_and_param(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, fake_cur = self._setup([])
+            m.return_value = fake_conn
+            vs.search([0.1], source="jira")
+            sql, params = fake_cur.execute.call_args.args
+            self.assertIn("WHERE source = %(source)s", sql)
+            self.assertEqual(params["source"], "jira")
+
+    def test_returns_documents_paired_with_distances(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, _ = self._setup([
+                ("jira", "PROJ-1", 0, "first", {"summary": "A"}, 0.12),
+                ("jira", "PROJ-2", 1, "second", {"summary": "B"}, 0.34),
+            ])
+            m.return_value = fake_conn
+            results = vs.search([0.1, 0.2], k=2)
+            self.assertEqual(len(results), 2)
+            d1, dist1 = results[0]
+            self.assertEqual(d1.source, "jira")
+            self.assertEqual(d1.source_id, "PROJ-1")
+            self.assertEqual(d1.chunk_idx, 0)
+            self.assertEqual(d1.content, "first")
+            self.assertEqual(d1.metadata, {"summary": "A"})
+            self.assertEqual(d1.embedding, [])  # not round-tripped
+            self.assertAlmostEqual(dist1, 0.12)
+            self.assertAlmostEqual(results[1][1], 0.34)
+
+    def test_null_metadata_becomes_empty_dict(self):
+        vs = VectorStore(dsn="postgresql://x@h/d")
+        with mock.patch("services.context_bridge.store.psycopg.connect") as m:
+            fake_conn, _ = self._setup([
+                ("jira", "PROJ-1", 0, "x", None, 0.1),
+            ])
+            m.return_value = fake_conn
+            results = vs.search([0.1])
+            self.assertEqual(results[0][0].metadata, {})
+
+
 if __name__ == "__main__":
     unittest.main()
