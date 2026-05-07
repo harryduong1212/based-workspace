@@ -2,12 +2,17 @@
 fenced-block handling, the bug surfaced by the audit warnings layer,
 and the _audit_text / _audit_warnings audit primitives."""
 
+import io
+import sys
+import tempfile
 import unittest
+from pathlib import Path
 
 from scripts.recipe_manager import (
     _extract_section,
     _audit_text,
     _audit_warnings,
+    _parse_input_file_pairs,
 )
 
 
@@ -261,6 +266,66 @@ class AuditWarningsTest(unittest.TestCase):
         fm = {"inputs": [{"name": ""}, {"name": "real"}]}
         body = "use {input.real}"
         self.assertEqual(_audit_warnings(fm, body, "body Agent"), [])
+
+
+class ParseInputFilePairsTest(unittest.TestCase):
+    def test_empty_pairs_returns_empty_dict(self):
+        self.assertEqual(_parse_input_file_pairs(None), {})
+        self.assertEqual(_parse_input_file_pairs([]), {})
+
+    def test_reads_file_into_input_value(self):
+        with tempfile.NamedTemporaryFile("w", suffix=".patch", delete=False, encoding="utf-8") as f:
+            f.write("--- a/foo\n+++ b/foo\n@@ -1 +1 @@\n-old\n+new\n")
+            path = f.name
+        try:
+            result = _parse_input_file_pairs([f"diff={path}"])
+            self.assertEqual(set(result), {"diff"})
+            self.assertIn("+new", result["diff"])
+            self.assertIn("--- a/foo", result["diff"])
+        finally:
+            Path(path).unlink()
+
+    def test_reads_stdin_when_path_is_dash(self):
+        original = sys.stdin
+        sys.stdin = io.StringIO("piped content\nline 2\n")
+        try:
+            result = _parse_input_file_pairs(["diff=-"])
+        finally:
+            sys.stdin = original
+        self.assertEqual(result, {"diff": "piped content\nline 2\n"})
+
+    def test_missing_equals_exits(self):
+        with self.assertRaises(SystemExit) as cm:
+            _parse_input_file_pairs(["no_equals_here"])
+        self.assertEqual(cm.exception.code, 2)
+
+    def test_unreadable_path_exits(self):
+        with self.assertRaises(SystemExit) as cm:
+            _parse_input_file_pairs(["diff=/nonexistent/path/does/not/exist.patch"])
+        self.assertEqual(cm.exception.code, 2)
+
+    def test_multiple_pairs_merge(self):
+        with tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8") as f1, \
+             tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8") as f2:
+            f1.write("first")
+            f2.write("second")
+            p1, p2 = f1.name, f2.name
+        try:
+            result = _parse_input_file_pairs([f"a={p1}", f"b={p2}"])
+            self.assertEqual(result, {"a": "first", "b": "second"})
+        finally:
+            Path(p1).unlink()
+            Path(p2).unlink()
+
+    def test_strips_whitespace_around_key(self):
+        with tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8") as f:
+            f.write("body")
+            path = f.name
+        try:
+            result = _parse_input_file_pairs([f"  diff  ={path}"])
+            self.assertEqual(result, {"diff": "body"})
+        finally:
+            Path(path).unlink()
 
 
 if __name__ == "__main__":

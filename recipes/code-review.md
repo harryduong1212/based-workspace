@@ -36,6 +36,10 @@ inputs:
     type: string
     required: false
     description: Optional emphasis (e.g., "security", "performance", "tests"). When omitted, all dimensions are weighted equally.
+  - name: diff
+    type: string
+    required: false
+    description: Raw diff or file contents to review, inlined into the prompt. Typically supplied via `--input-file diff=<path>` (e.g., `git diff main..HEAD > /tmp/d.patch`). When empty, the recipe assumes a harness has the diff in context.
 
 outputs:
   - name: review
@@ -59,9 +63,10 @@ Engineers who want a structured second-pass on changes before opening a PR, and 
 ## How to run
 - **In Antigravity or Claude Code:** say *"review my changes"* or run the `/code-review` slash command.
 - **CLI:**
-  - Branch diff: `python scripts/recipe_manager.py run code-review --input target_branch=main`
-  - Scoped: `python scripts/recipe_manager.py run code-review --input paths="src/auth/ src/api/"`
-  - With focus: `python scripts/recipe_manager.py run code-review --input focus=security`
+  - Branch diff: `git diff main..HEAD > /tmp/d.patch && python scripts/recipe_manager.py run code-review --input target_branch=main --input-file diff=/tmp/d.patch`
+  - Scoped: `python scripts/recipe_manager.py run code-review --input paths="src/auth/ src/api/" --input-file diff=/tmp/d.patch`
+  - With focus: `python scripts/recipe_manager.py run code-review --input focus=security --input-file diff=/tmp/d.patch`
+  - Stdin: `git diff main..HEAD | python scripts/recipe_manager.py run code-review --input-file diff=-`
 
 ## Example output
 
@@ -86,10 +91,17 @@ You are a senior code reviewer. Produce a structured review of the supplied diff
 
 ### Inputs
 
-- The diff or file contents to review (provided in context).
 - `{input.target_branch}` — branch to diff against, when reviewing a branch; otherwise empty.
 - `{input.paths}` — explicit file/dir scope, when not reviewing a branch; otherwise empty.
 - `{input.focus}` — optional emphasis dimension; when set, weight findings in that dimension first but still cover the others.
+
+### Diff or file contents to review
+
+```
+{input.diff}
+```
+
+If the block above is empty, your harness should have the diff in context already; otherwise treat the block as the authoritative input and ignore claims about other files.
 
 ### Output structure
 

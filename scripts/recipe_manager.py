@@ -425,9 +425,30 @@ def _parse_input_pairs(pairs):
     return out
 
 
+def _parse_input_file_pairs(pairs):
+    """Each `key=path` reads `path` and binds its full text to `key`.
+
+    `path=-` reads from stdin. Later `--input key=...` wins on conflict (parsed second).
+    """
+    out = {}
+    for p in pairs or []:
+        if "=" not in p:
+            print(f"Invalid --input-file value (expected key=path): {p}")
+            sys.exit(2)
+        k, path = p.split("=", 1)
+        try:
+            content = sys.stdin.read() if path == "-" else Path(path).read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as e:
+            print(f"--input-file {k}: cannot read {path}: {e}")
+            sys.exit(2)
+        out[k.strip()] = content
+    return out
+
+
 def cmd_run(args):
     fm, body = _load_recipe_or_die(args.id)
-    inputs = _parse_input_pairs(args.input)
+    inputs = _parse_input_file_pairs(args.input_file)
+    inputs.update(_parse_input_pairs(args.input))
 
     if fm.get("requires_human_review") and not args.dry_run:
         resp = input(f"Recipe '{fm.get('id')}' has requires_human_review=true. Proceed? [y/N] ").strip().lower()
@@ -662,6 +683,11 @@ def main():
     p_run = sub.add_parser("run", help="Run a recipe (executes per execution.type; currently stubbed)")
     p_run.add_argument("id")
     p_run.add_argument("--input", action="append", help="key=value pair, can be repeated")
+    p_run.add_argument(
+        "--input-file",
+        action="append",
+        help="key=path; binds the file contents to the input key. Use path=- for stdin. Repeatable.",
+    )
     p_run.add_argument("--dry-run", action="store_true", help="Show execution plan without invoking real dispatchers")
 
     args = parser.parse_args()
