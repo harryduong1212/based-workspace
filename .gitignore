@@ -45,5 +45,8 @@ __pycache__/
 # Claude Code per-user settings (project-level settings.json is committed)
 .claude/settings.local.json
 
+# MCP client config — paths are machine-local. Copy from .mcp.example.json.
+.mcp.json
+
 # graphify scan output (build artifact)
 graphify-out/

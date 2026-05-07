@@ -1,0 +1,19 @@
+{
+  "_comment": "Copy to .mcp.json and edit machine-specific paths. .mcp.json is gitignored because it contains absolute, machine-local command paths.",
+  "mcpServers": {
+    "context-bridge": {
+      "command": "python3",
+      "args": ["-m", "services.context_bridge_mcp"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "POSTGRES_HOST": "localhost",
+        "POSTGRES_PORT": "5432",
+        "POSTGRES_DB": "ai_memory",
+        "POSTGRES_USER": "admin",
+        "POSTGRES_PASSWORD": "set-from-.env",
+        "OPENAI_API_BASE": "http://localhost:11434/v1",
+        "OPENAI_API_KEY": "local-no-auth"
+      }
+    }
+  }
+}

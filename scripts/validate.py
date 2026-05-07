@@ -87,7 +87,13 @@ def main():
             "services.context_bridge.tests.test_cli",
             "services.context_bridge.tests.test_connectors",
             "services.context_bridge.tests.test_round_trip",
+            "services.context_bridge_mcp.tests.test_server",
         ],
+        results,
+    )
+    _run_check(
+        "Context bridge MCP smoke",
+        [py, "scripts/context_bridge_mcp_smoke.py"],
         results,
     )
     _run_check(

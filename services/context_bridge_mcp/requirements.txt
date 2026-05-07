@@ -1,0 +1,2 @@
+mcp>=1.0
+# Plus the context_bridge service deps — see services/context_bridge/requirements.txt.
