@@ -20,6 +20,7 @@ desktop.ini
 # Logs
 *.log
 *.txt
+!services/**/requirements.txt
 logs/
 
 # Java & Spring Boot Build
