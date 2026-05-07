@@ -9,8 +9,7 @@ cost: low
 requires_human_review: false
 tags: [bitbucket, jira, code-review, pr]
 
-requires_skills:
-  - comprehensive-review-full-review
+requires_skills: []
 requires_workflows: []
 requires_connectors:
   - bitbucket

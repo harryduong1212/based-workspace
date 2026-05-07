@@ -85,4 +85,3 @@ The review is good when:
 
 ## Used by recipes
 - `code-review`
-- `pr-review-prep`

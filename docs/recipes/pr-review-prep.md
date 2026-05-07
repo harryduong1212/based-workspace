@@ -8,7 +8,6 @@
 |---|---|
 | **Tags** | bitbucket, jira, code-review, pr |
 | **Requires data from** | bitbucket, jira |
-| **Skills loaded** | `comprehensive-review-full-review` |
 | **Triggers** | CLI: `pr-review-prep` · Chat: "prep review for PR-NNN", "review brief for PR NNN" |
 
 ---
