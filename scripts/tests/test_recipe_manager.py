@@ -12,6 +12,7 @@ from scripts.recipe_manager import (
     _extract_section,
     _audit_text,
     _audit_warnings,
+    _format_inputs_preview,
     _parse_input_file_pairs,
 )
 
@@ -326,6 +327,38 @@ class ParseInputFilePairsTest(unittest.TestCase):
             self.assertEqual(result, {"diff": "body"})
         finally:
             Path(path).unlink()
+
+
+class FormatInputsPreviewTest(unittest.TestCase):
+    def test_empty_dict_returns_curlies(self):
+        self.assertEqual(_format_inputs_preview({}), "{}")
+        self.assertEqual(_format_inputs_preview(None), "{}")
+
+    def test_short_value_passes_through(self):
+        out = _format_inputs_preview({"focus": "security"})
+        self.assertEqual(out, "{'focus': 'security'}")
+
+    def test_long_value_is_truncated_with_count_suffix(self):
+        long = "x" * 1000
+        out = _format_inputs_preview({"diff": long}, max_chars=50)
+        self.assertIn("(+950 more chars)", out)
+        self.assertLess(len(out), 200)
+
+    def test_newlines_are_rendered_as_literal_backslash_n(self):
+        out = _format_inputs_preview({"diff": "line1\nline2\nline3"})
+        self.assertNotIn("\n", out)
+        self.assertIn("line1\\nline2\\nline3", out)
+
+    def test_multiple_keys_preserved(self):
+        out = _format_inputs_preview({"focus": "security", "paths": "src/"})
+        self.assertIn("'focus': 'security'", out)
+        self.assertIn("'paths': 'src/'", out)
+
+    def test_does_not_truncate_when_under_limit(self):
+        v = "y" * 119
+        out = _format_inputs_preview({"k": v})
+        self.assertNotIn("more chars", out)
+        self.assertIn(v, out)
 
 
 if __name__ == "__main__":

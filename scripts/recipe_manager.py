@@ -347,6 +347,28 @@ def _load_skill_bodies(skill_ids):
     return bodies
 
 
+_INPUT_VALUE_PREVIEW_CHARS = 120
+
+
+def _format_inputs_preview(inputs, *, max_chars=_INPUT_VALUE_PREVIEW_CHARS):
+    """Render an inputs dict for stdout without dumping multi-KB blobs.
+
+    Each value is truncated to `max_chars` and a `+N more chars` suffix
+    is appended when truncation occurred. `repr()` keeps each value
+    single-line by escaping any embedded newlines.
+    """
+    if not inputs:
+        return "{}"
+    parts = []
+    for k, v in inputs.items():
+        s = str(v)
+        if len(s) > max_chars:
+            extra = len(s) - max_chars
+            s = s[:max_chars] + f"... (+{extra} more chars)"
+        parts.append(f"{k!r}: {s!r}")
+    return "{" + ", ".join(parts) + "}"
+
+
 def _execute_recipe(fm, body, inputs, *, dry_run=False):
     execu = fm.get("execution") or {}
     etype = execu.get("type")
@@ -355,7 +377,7 @@ def _execute_recipe(fm, body, inputs, *, dry_run=False):
     print(bar)
     print(f"  EXECUTE  {fm.get('id')}  type={etype}{'  (dry-run)' if dry_run else ''}")
     if inputs:
-        print(f"  inputs:  {inputs}")
+        print(f"  inputs:  {_format_inputs_preview(inputs)}")
     print(bar)
 
     if etype == "prompt":
@@ -373,7 +395,8 @@ def _execute_recipe(fm, body, inputs, *, dry_run=False):
             print(f"  skills       : {len(skill_bodies)} loaded "
                   f"({', '.join(envelope['skill_ids']) or 'none'})")
             print(f"  system bytes : {sys_bytes}")
-            print(f"  substituted  : {envelope['substitutions'] or '(none)'}")
+            substitutions = envelope["substitutions"]
+            print(f"  substituted  : {_format_inputs_preview(substitutions) if substitutions else '(none)'}")
             print(f"  user message :")
             preview = user_msg if len(user_msg) <= 400 else user_msg[:400] + "..."
             for line in preview.splitlines():
