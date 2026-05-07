@@ -17,11 +17,14 @@ CREATE TABLE IF NOT EXISTS documents (
     UNIQUE (source, source_id, chunk_idx)
 );
 
--- IVF flat index for cosine distance — adequate up to ~100k rows.
--- Switch to HNSW once corpus grows past ~1M.
-CREATE INDEX IF NOT EXISTS documents_embedding_ivfflat
-    ON documents USING ivfflat (embedding vector_cosine_ops)
-    WITH (lists = 100);
+-- No vector index for now: ivfflat needs `lists ≈ rows / 1000` and
+-- centroids trained on representative data. With a tiny MVP corpus and
+-- `lists = 100`, default `probes = 1` only scans 1/100th of the index
+-- and silently returns 0 rows. Seq-scan over a few thousand 384-dim
+-- rows is microseconds. Switch to HNSW (or rebuild ivfflat with
+-- calibrated `lists` after data exists) when the corpus grows past
+-- ~10k rows. Drops the prior bad index if it exists.
+DROP INDEX IF EXISTS documents_embedding_ivfflat;
 
 CREATE INDEX IF NOT EXISTS documents_source_idx ON documents (source);
 CREATE INDEX IF NOT EXISTS documents_metadata_gin ON documents USING gin (metadata);

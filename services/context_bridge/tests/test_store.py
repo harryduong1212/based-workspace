@@ -144,7 +144,10 @@ class InitSchemaUnitTest(unittest.TestCase):
             sql = args[0]
             self.assertIn("CREATE EXTENSION IF NOT EXISTS vector", sql)
             self.assertIn("CREATE TABLE IF NOT EXISTS documents", sql)
-            self.assertIn("ivfflat", sql)
+            # No ivfflat index at MVP scale — centroids on too-little data
+            # silently zeroes recall. Verify we do NOT recreate it.
+            self.assertNotIn("CREATE INDEX IF NOT EXISTS documents_embedding_ivfflat", sql)
+            self.assertIn("DROP INDEX IF EXISTS documents_embedding_ivfflat", sql)
             fake_conn.commit.assert_called_once()
 
 

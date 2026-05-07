@@ -70,14 +70,16 @@ class InitSchemaIntegrationTest(unittest.TestCase):
         cols = sorted(r[0] for r in rows)
         self.assertEqual(cols, ["chunk_idx", "source", "source_id"])
 
-    def test_ivfflat_index_present(self):
+    def test_ivfflat_index_absent(self):
+        """init_schema must drop the prior ivfflat index — at MVP scale its
+        default probes=1 silently zeroes recall."""
         rows = self._query(
             """
             SELECT indexname FROM pg_indexes
             WHERE tablename = 'documents' AND indexname = 'documents_embedding_ivfflat'
             """
         )
-        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(rows), 0)
 
     def test_init_schema_is_idempotent(self):
         # Calling again on an already-initialized DB must not raise or churn data.
