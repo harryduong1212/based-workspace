@@ -128,7 +128,8 @@ def cmd_search(args):
 
     print(f"search: {args.query!r} (k={args.k}{', source=' + args.source if args.source else ''})\n")
     for i, (doc, distance) in enumerate(results, start=1):
-        summary = (doc.metadata or {}).get("summary") or ""
+        meta = doc.metadata or {}
+        summary = meta.get("summary") or meta.get("title") or ""
         preview = doc.content.replace("\n", " ").strip()
         if len(preview) > 140:
             preview = preview[:140] + "..."
