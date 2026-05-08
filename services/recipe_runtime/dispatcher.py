@@ -2,26 +2,25 @@
 
 Three execution.types map to three dispatch functions:
 
-    prompt    → dispatch_prompt    (Phase E1 — wired, OpenAI-compatible HTTP)
+    prompt    → dispatch_prompt    (Phase E1 — wired, multi-provider)
     workflow  → dispatch_workflow  (Phase E2 / Phase H; n8n)
     agent     → dispatch_agent     (Phase E3)
 
-dispatch_prompt is provider-agnostic at the wire level: it speaks the OpenAI
-chat-completions REST shape, which llama-swap, llama.cpp, Ollama, vLLM,
-LM Studio, and many cloud gateways all expose. Anthropic / Gemini get added
-later as alternative HTTP transports.
+dispatch_prompt routes via the provider registry in `providers/`. Recipes
+declare a model as either a bare id (`gemma-3-4b` → defaults to the local
+provider) or a `provider/model_id` ref (`anthropic/claude-opus-4-7`,
+`gemini/gemini-2.0-flash`). Adding a new provider = one module in
+`providers/` plus a registry entry.
 """
 from __future__ import annotations
 
-import json
 import os
 import sys
-import urllib.request
-import urllib.error
+
+from .providers import get_provider, parse_model_ref
+from .providers.local import _post_openai_chat
 
 
-DEFAULT_BASE_URL = "http://localhost:11434/v1"
-DEFAULT_API_KEY = "local-no-auth"
 DEFAULT_MAX_TOKENS = 4096
 DEFAULT_TEMPERATURE = 0.2
 
@@ -39,34 +38,77 @@ def dispatch_prompt(
     out=None,
     http_post=None,
 ) -> str:
-    """Send the assembled envelope to an OpenAI-compatible /chat/completions endpoint.
+    """Send the assembled envelope to the resolved provider.
 
     Resolution precedence:
       model    : envelope["model"]  > default_model  > $RECIPE_DEFAULT_MODEL
-      base_url : arg                > $OPENAI_API_BASE > DEFAULT_BASE_URL
-      api_key  : arg                > $OPENAI_API_KEY  > DEFAULT_API_KEY
+      provider : everything before the first '/' in the resolved model id;
+                 bare ids default to the `local` provider.
 
-    Returns the assistant's full text response. Streams to `out` (default
-    sys.stdout) when `stream=True`.
+    `base_url` and `api_key` only apply to the `local` provider (and to the
+    `http_post` injection seam used in tests). Other providers read their
+    own credentials from the environment (`GEMINI_API_KEY`, `ANTHROPIC_API_KEY`).
 
-    `http_post` is an injection seam for tests: a callable
-    (base_url, api_key, payload, *, out, stream) -> str.
+    `http_post` is preserved for unit tests and bypasses the provider
+    registry — when supplied, the call goes straight through with the
+    OpenAI-shape payload.
     """
-    base_url = (base_url or os.environ.get("OPENAI_API_BASE") or DEFAULT_BASE_URL).rstrip("/")
-    api_key = api_key or os.environ.get("OPENAI_API_KEY") or DEFAULT_API_KEY
-    model = (
+    out = sys.stdout if out is None else out
+
+    raw_model = (
         envelope.get("model")
         or default_model
         or os.environ.get("RECIPE_DEFAULT_MODEL")
     )
-    if not model:
+    if not raw_model:
         raise ValueError(
             "no model resolvable: set execution.model in the recipe, "
             "pass default_model, or set RECIPE_DEFAULT_MODEL in the environment"
         )
 
-    out = sys.stdout if out is None else out
+    provider_name, model_id = parse_model_ref(raw_model)
+    messages = _build_messages(envelope, skill_bodies)
 
+    # Test injection seam: bypass provider registry, send OpenAI-shape payload
+    # to the supplied transport. Used by services.recipe_runtime.tests.
+    if http_post is not None:
+        resolved_base = (base_url or os.environ.get("OPENAI_API_BASE") or "http://localhost:11434/v1").rstrip("/")
+        resolved_key = api_key or os.environ.get("OPENAI_API_KEY") or "local-no-auth"
+        payload = {
+            "model": model_id,
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "stream": bool(stream),
+        }
+        return http_post(resolved_base, resolved_key, payload, out=out, stream=stream)
+
+    # Local provider honors explicit base_url/api_key overrides for parity
+    # with the pre-refactor signature; other providers ignore them.
+    if provider_name == "local" and (base_url or api_key):
+        return _post_openai_chat(
+            base_url=(base_url or os.environ.get("LLAMA_SWAP_URL") or os.environ.get("OPENAI_API_BASE") or "http://localhost:11434/v1").rstrip("/"),
+            api_key=api_key or os.environ.get("OPENAI_API_KEY") or "local-no-auth",
+            messages=messages,
+            model=model_id,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            stream=stream,
+            out=out,
+        )
+
+    provider = get_provider(provider_name)
+    return provider.dispatch_chat(
+        messages,
+        model_id,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        stream=stream,
+        out=out,
+    )
+
+
+def _build_messages(envelope: dict, skill_bodies: list[str] | None) -> list[dict]:
     system_parts: list[str] = []
     for sb in skill_bodies or []:
         sb = (sb or "").strip()
@@ -81,72 +123,7 @@ def dispatch_prompt(
     if system_message:
         messages.append({"role": "system", "content": system_message})
     messages.append({"role": "user", "content": envelope.get("user_message", "") or ""})
-
-    payload = {
-        "model": model,
-        "messages": messages,
-        "max_tokens": max_tokens,
-        "temperature": temperature,
-        "stream": bool(stream),
-    }
-
-    poster = http_post if http_post is not None else _http_post
-    return poster(base_url, api_key, payload, out=out, stream=stream)
-
-
-def _http_post(base_url: str, api_key: str, payload: dict, *, out, stream: bool) -> str:
-    """Default HTTP transport. Stdlib only; SSE-streams when stream=True."""
-    url = base_url + "/chat/completions"
-    body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=body,
-        method="POST",
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}",
-            "Accept": "text/event-stream" if stream else "application/json",
-        },
-    )
-    try:
-        resp = urllib.request.urlopen(req, timeout=600)
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode("utf-8", errors="replace")[:500]
-        raise RuntimeError(f"LLM endpoint returned {e.code}: {detail}") from e
-    except urllib.error.URLError as e:
-        raise RuntimeError(f"LLM endpoint unreachable at {url}: {e.reason}") from e
-
-    if not stream:
-        data = json.loads(resp.read().decode("utf-8"))
-        text = data["choices"][0]["message"]["content"]
-        out.write(text)
-        if not text.endswith("\n"):
-            out.write("\n")
-        out.flush()
-        return text
-
-    chunks: list[str] = []
-    with resp:
-        for raw in resp:
-            line = raw.decode("utf-8", errors="replace").rstrip("\n").rstrip("\r")
-            if not line.startswith("data:"):
-                continue
-            data_str = line[len("data:"):].strip()
-            if not data_str or data_str == "[DONE]":
-                continue
-            try:
-                event = json.loads(data_str)
-            except json.JSONDecodeError:
-                continue
-            for choice in event.get("choices", []):
-                piece = (choice.get("delta") or {}).get("content")
-                if piece:
-                    chunks.append(piece)
-                    out.write(piece)
-                    out.flush()
-    out.write("\n")
-    out.flush()
-    return "".join(chunks)
+    return messages
 
 
 def dispatch_workflow(fm: dict, inputs: dict) -> str:
