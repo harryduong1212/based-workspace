@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}{{ recipe.name }}{% endblock %}
+
+{% block head_extra %}
+<style>
+  .recipe-header { margin-bottom: 0.5rem; }
+  .recipe-header .crumbs { font-size: 0.85rem; margin-bottom: 0.25rem; }
+  .tab-strip { display: flex; gap: 0; border-bottom: 1px solid var(--pico-muted-border-color); margin-bottom: 1.25rem; }
+  .tab-strip a, .tab-strip span.disabled {
+    padding: 0.55rem 1.05rem;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-top-left-radius: 0.4rem;
+    border-top-right-radius: 0.4rem;
+    text-decoration: none;
+    color: var(--pico-muted-color);
+    margin-bottom: -1px;
+  }
+  .tab-strip a.active {
+    border-color: var(--pico-muted-border-color);
+    background: var(--pico-card-background-color);
+    color: var(--pico-color);
+    font-weight: 600;
+  }
+  .tab-strip span.disabled { color: var(--pico-muted-color); cursor: not-allowed; }
+  .tab-strip a:hover:not(.active) { background: var(--pico-muted-border-color); }
+  .detail-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 1000px) { .detail-grid { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); } }
+  .meta-card { background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: 0.4rem; padding: 0.85rem 1rem; }
+  .meta-card h4 { margin-top: 0; font-size: 0.95rem; }
+  .meta-card dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 0.85rem; }
+  .meta-card dt { font-weight: 600; color: var(--pico-muted-color); font-size: 0.85rem; }
+  .meta-card dd { margin: 0; word-break: break-word; }
+  .body-rendered h1, .body-rendered h2, .body-rendered h3 { margin-top: 1.4rem; }
+  .body-rendered code { font-size: 0.92em; }
+  .body-rendered pre { padding: 0.75rem 1rem; overflow-x: auto; }
+  .body-rendered table { border-collapse: collapse; }
+  .body-rendered table th, .body-rendered table td { border: 1px solid var(--pico-muted-border-color); padding: 0.4rem 0.6rem; }
+  .placeholder { padding: 2rem; text-align: center; color: var(--pico-muted-color); border: 1px dashed var(--pico-muted-border-color); border-radius: 0.4rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="recipe-header">
+  <div class="crumbs"><a href="/">← all recipes</a></div>
+  <hgroup>
+    <h2>{{ recipe.name }}</h2>
+    <p>{{ recipe.description or '(no description)' }}</p>
+  </hgroup>
+  <div class="meta">
+    <span class="pill {% if status == 'stable' %}ok{% elif status == 'experimental' %}warn{% else %}muted{% endif %}">{{ status or 'unknown' }}</span>
+    <span class="pill muted">{{ execution_type }}</span>
+    {% if execution_model %}<span class="pill muted">{{ execution_model }}</span>{% endif %}
+    {% for t in tags %}<span class="pill">{{ t }}</span>{% endfor %}
+  </div>
+</header>
+
+<nav class="tab-strip">
+  <a href="/recipes/{{ recipe.id }}" class="{% if active_tab == 'overview' %}active{% endif %}">Overview</a>
+  <a href="/recipes/{{ recipe.id }}/run" class="{% if active_tab == 'run' %}active{% endif %}">Run</a>
+  <a href="/recipes/{{ recipe.id }}/edit" class="{% if active_tab == 'edit' %}active{% endif %}">Edit</a>
+</nav>
+
+<div class="detail-grid">
+  <article>
+    {% block tab_content %}{% endblock %}
+  </article>
+
+  <aside>
+    <div class="meta-card">
+      <h4>Frontmatter</h4>
+      <dl>
+        <dt>id</dt><dd><code>{{ recipe.id }}</code></dd>
+        {% if version %}<dt>version</dt><dd>{{ version }}</dd>{% endif %}
+        {% if audience %}<dt>audience</dt><dd>{{ audience }}</dd>{% endif %}
+        {% if cost %}<dt>cost</dt><dd>{{ cost }}</dd>{% endif %}
+        <dt>execution</dt><dd>{{ execution_type }}{% if execution_model %} → <code>{{ execution_model }}</code>{% endif %}</dd>
+        {% if requires_skills %}<dt>skills</dt><dd>{% for s in requires_skills %}<code>{{ s }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if requires_connectors %}<dt>connectors</dt><dd>{% for c in requires_connectors %}<a href="/connectors/{{ c }}"><code>{{ c }}</code></a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if requires_workflows %}<dt>workflows</dt><dd>{% for w in requires_workflows %}<code>{{ w }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if requires_mcp %}<dt>mcp</dt><dd>{% for m in requires_mcp %}<code>{{ m }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if requires_env %}<dt>env</dt><dd>{% for e in requires_env %}<code>{{ e }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if triggers %}
+        <dt>triggers</dt><dd>
+          {% if triggers.get('cli') %}<div>cli: <code>{{ triggers.cli }}</code></div>{% endif %}
+          {% if triggers.get('chat') %}<div>chat: {% for c in triggers.chat %}<code>{{ c }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</div>{% endif %}
+        </dd>
+        {% endif %}
+      </dl>
+    </div>
+
+    {% if inputs %}
+    <div class="meta-card" style="margin-top: 1rem;">
+      <h4>Inputs</h4>
+      <dl>
+        {% for inp in inputs %}
+        <dt><code>{{ inp.name }}</code>{% if inp.required %} *{% endif %}</dt>
+        <dd>{{ inp.description or '—' }}{% if inp.type %} <small>({{ inp.type }})</small>{% endif %}</dd>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endif %}
+
+    {% if outputs %}
+    <div class="meta-card" style="margin-top: 1rem;">
+      <h4>Outputs</h4>
+      <dl>
+        {% for out in outputs %}
+        <dt><code>{{ out.name }}</code></dt>
+        <dd>{{ out.description or '—' }}{% if out.type %} <small>({{ out.type }})</small>{% endif %}</dd>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endif %}
+
+    <div class="meta-card" style="margin-top: 1rem;">
+      <h4>File</h4>
+      <p style="margin:0;"><code>{{ relative_path }}</code></p>
+    </div>
+  </aside>
+</div>
+{% endblock %}

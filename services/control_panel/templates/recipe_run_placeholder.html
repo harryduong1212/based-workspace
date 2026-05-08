@@ -1,0 +1,9 @@
+{% extends "recipe_detail.html" %}
+{% block tab_content %}
+<div class="placeholder">
+  <p><strong>Run is coming in Phase B3.</strong></p>
+  <p>This tab will let you fill in the recipe's inputs, pick a provider/model, and stream the dispatcher output live.</p>
+  <p>For now, run from the CLI:</p>
+  <pre><code>python scripts/recipe_manager.py run {{ recipe.id }}</code></pre>
+</div>
+{% endblock %}

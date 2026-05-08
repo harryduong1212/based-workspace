@@ -47,6 +47,34 @@ class DashboardSmokeTest(unittest.TestCase):
         self.assertIn("llama-swap", resp.text)
         self.assertIn("postgres", resp.text)
 
+    def test_recipe_overview_renders_body_as_html(self):
+        resp = self.client.get("/recipes/code-review")
+        self.assertEqual(resp.status_code, 200)
+        # Headings in the body should become <h2>/<h3> after markdown render.
+        self.assertRegex(resp.text, r"<h[23][^>]*>.*What this does")
+        # Frontmatter sidebar should surface the id and execution type.
+        self.assertIn("<code>code-review</code>", resp.text)
+        self.assertIn("prompt", resp.text)
+
+    def test_recipe_overview_active_tab(self):
+        resp = self.client.get("/recipes/code-review")
+        # Active tab marker is the `class="active"` attribute on Overview.
+        self.assertRegex(resp.text, r'href="/recipes/code-review"\s+class="\s*active\s*"')
+
+    def test_recipe_run_placeholder(self):
+        resp = self.client.get("/recipes/code-review/run")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Phase B3", resp.text)
+
+    def test_recipe_edit_placeholder(self):
+        resp = self.client.get("/recipes/code-review/edit")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Phase B4", resp.text)
+
+    def test_recipe_404_for_unknown_id(self):
+        resp = self.client.get("/recipes/does-not-exist-xyz")
+        self.assertEqual(resp.status_code, 404)
+
 
 @unittest.skipUnless(_HAS_FASTAPI, "fastapi not installed")
 class ConfigDefaultsTest(unittest.TestCase):
