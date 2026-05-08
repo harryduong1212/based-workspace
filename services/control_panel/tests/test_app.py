@@ -61,10 +61,20 @@ class DashboardSmokeTest(unittest.TestCase):
         # Active tab marker is the `class="active"` attribute on Overview.
         self.assertRegex(resp.text, r'href="/recipes/code-review"\s+class="\s*active\s*"')
 
-    def test_recipe_run_placeholder(self):
+    def test_recipe_run_form_renders_inputs_and_providers(self):
         resp = self.client.get("/recipes/code-review/run")
         self.assertEqual(resp.status_code, 200)
-        self.assertIn("Phase B3", resp.text)
+        # Form action posts back to the same URL.
+        self.assertIn('action="/recipes/code-review/run"', resp.text)
+        # Each declared input renders as <textarea name="input__X">.
+        self.assertIn('name="input__diff"', resp.text)
+        self.assertIn('name="input__target_branch"', resp.text)
+        # Provider dropdown contains the three known providers.
+        self.assertIn('name="model_ref"', resp.text)
+        self.assertIn("anthropic/", resp.text)
+        self.assertIn("gemini/", resp.text)
+        # Free-text override always present.
+        self.assertIn('name="model_override"', resp.text)
 
     def test_recipe_edit_placeholder(self):
         resp = self.client.get("/recipes/code-review/edit")
@@ -74,6 +84,138 @@ class DashboardSmokeTest(unittest.TestCase):
     def test_recipe_404_for_unknown_id(self):
         resp = self.client.get("/recipes/does-not-exist-xyz")
         self.assertEqual(resp.status_code, 404)
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class RunFlowTest(unittest.TestCase):
+    """End-to-end run flow with the dispatcher monkeypatched to a fake provider."""
+
+    @classmethod
+    def setUpClass(cls):
+        import io
+        from fastapi.testclient import TestClient
+
+        from services.control_panel import runs as runs_mod
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        # Replace the worker's dispatch_prompt with a deterministic fake that
+        # writes three chunks to the sink. Avoids any real network call.
+        original_start = runs_mod.start_run
+        cls._original_start = original_start
+
+        def fake_start(cfg, recipe_id, fm, body, inputs, model_ref):
+            run = original_start.__wrapped__(cfg, recipe_id, fm, body, inputs, model_ref) \
+                if hasattr(original_start, "__wrapped__") else None
+            del run
+
+            import threading
+            import uuid
+            from datetime import datetime, timezone
+            from services.control_panel.runs import Run, _ChunkSink, _runs, _runs_lock
+
+            r = Run(
+                id=uuid.uuid4().hex[:12],
+                recipe_id=recipe_id,
+                model_ref=model_ref or "fake/model",
+                inputs=dict(inputs),
+                started_at=datetime.now(timezone.utc),
+            )
+            with _runs_lock:
+                _runs[r.id] = r
+
+            def worker():
+                try:
+                    sink = _ChunkSink(r)
+                    sink.write("hello ")
+                    sink.write("world")
+                    r.status = "done"
+                except Exception as e:  # pragma: no cover
+                    r.error = str(e)
+                    r.status = "error"
+                finally:
+                    r._queue.put(None)
+                    r._done.set()
+
+            threading.Thread(target=worker, daemon=True).start()
+            return r
+
+        runs_mod.start_run = fake_start
+
+        # Reimport app to pick up new start_run binding via the module-level reference.
+        # create_app captures `start_run` from runs_mod at call time, but the route
+        # closure captured the function object — so we need to also patch the app's
+        # imported binding. Patch the bound name in app's module too.
+        from services.control_panel import app as app_mod
+        cls._app_original_start = app_mod.start_run
+        app_mod.start_run = fake_start
+
+        cfg = Config.from_env()
+        cls.client = TestClient(create_app(cfg))
+
+    @classmethod
+    def tearDownClass(cls):
+        from services.control_panel import app as app_mod
+        from services.control_panel import runs as runs_mod
+        app_mod.start_run = cls._app_original_start
+        runs_mod.start_run = cls._original_start
+
+    def test_post_run_redirects_to_run_view(self):
+        resp = self.client.post(
+            "/recipes/code-review/run",
+            data={"model_ref": "anthropic/claude-haiku-4-5-20251001", "input__target_branch": "main"},
+            follow_redirects=False,
+        )
+        self.assertEqual(resp.status_code, 303)
+        self.assertRegex(resp.headers["location"], r"^/runs/[a-f0-9]{12}$")
+
+    def test_run_view_renders_status_pill(self):
+        resp = self.client.post(
+            "/recipes/code-review/run",
+            data={"model_ref": "anthropic/claude-haiku-4-5-20251001"},
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("run-output", resp.text)
+        self.assertIn("run-status", resp.text)
+
+    def test_sse_stream_emits_chunks_and_done_event(self):
+        from services.control_panel.runs import get_run
+
+        resp = self.client.post(
+            "/recipes/code-review/run",
+            data={"model_ref": "anthropic/claude-haiku-4-5-20251001"},
+            follow_redirects=False,
+        )
+        run_id = resp.headers["location"].rsplit("/", 1)[-1]
+        # Wait until the worker has finished writing its 2 chunks + sentinel.
+        run = get_run(run_id)
+        self.assertIsNotNone(run)
+        run._done.wait(timeout=5)
+
+        with self.client.stream("GET", f"/api/runs/{run_id}/stream") as r:
+            self.assertEqual(r.status_code, 200)
+            self.assertIn("text/event-stream", r.headers["content-type"])
+            body = "".join(r.iter_text())
+
+        self.assertIn("event: chunk", body)
+        self.assertIn("event: done", body)
+        self.assertIn("hello ", body)
+        self.assertIn("world", body)
+
+    def test_model_override_wins(self):
+        from services.control_panel.runs import get_run
+
+        resp = self.client.post(
+            "/recipes/code-review/run",
+            data={
+                "model_ref": "anthropic/claude-opus-4-7",
+                "model_override": "local/qwen2.5-coder-14b",
+            },
+            follow_redirects=False,
+        )
+        run_id = resp.headers["location"].rsplit("/", 1)[-1]
+        self.assertEqual(get_run(run_id).model_ref, "local/qwen2.5-coder-14b")
 
 
 @unittest.skipUnless(_HAS_FASTAPI, "fastapi not installed")

@@ -10,14 +10,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+import json
+
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 
 from .config import Config
 from .health import all_checks
+from .provider_options import default_model_ref, list_provider_options
 from .recipes_index import get_recipe, load_connectors, load_recipes
 from .render import render_markdown
+from .runs import get_run, start_run, stream_chunks
 
 
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
@@ -109,7 +113,52 @@ def create_app(cfg: Config | None = None) -> FastAPI:
             raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
         fm, _body, path = result
         ctx = _build_recipe_context(cfg, fm, path, active_tab="run")
-        return templates.TemplateResponse(request=request, name="recipe_run_placeholder.html", context=ctx)
+        recipe_default = fm.get("execution", {}).get("model")
+        opts = list_provider_options(recipe_default)
+        ctx["provider_options"] = opts
+        ctx["default_model"] = default_model_ref(opts, recipe_default)
+        return templates.TemplateResponse(request=request, name="recipe_run.html", context=ctx)
+
+    @app.post("/recipes/{recipe_id}/run")
+    async def recipe_run_submit(request: Request, recipe_id: str) -> RedirectResponse:
+        result = get_recipe(cfg, recipe_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
+        fm, body, _path = result
+        form = await request.form()
+        override = str(form.get("model_override") or "").strip()
+        model_ref = override or str(form.get("model_ref") or "").strip()
+        inputs: dict[str, str] = {}
+        for key, value in form.multi_items():
+            if key.startswith("input__"):
+                inputs[key[len("input__"):]] = str(value)
+        run = start_run(cfg, recipe_id, fm, body, inputs, model_ref)
+        return RedirectResponse(url=f"/runs/{run.id}", status_code=303)
+
+    @app.get("/runs/{run_id}", response_class=HTMLResponse)
+    def run_view(request: Request, run_id: str) -> HTMLResponse:
+        run = get_run(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail=f"run not found: {run_id}")
+        return templates.TemplateResponse(request=request, name="run_view.html", context={"run": run})
+
+    @app.get("/api/runs/{run_id}/stream")
+    def run_stream(run_id: str) -> StreamingResponse:
+        run = get_run(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail=f"run not found: {run_id}")
+
+        def _iter():
+            for chunk in stream_chunks(run):
+                yield f"event: chunk\ndata: {json.dumps(chunk)}\n\n"
+            payload = {"status": run.status, "error": run.error}
+            yield f"event: done\ndata: {json.dumps(payload)}\n\n"
+
+        return StreamingResponse(
+            _iter(),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+        )
 
     @app.get("/recipes/{recipe_id}/edit", response_class=HTMLResponse)
     def recipe_edit(request: Request, recipe_id: str) -> HTMLResponse:

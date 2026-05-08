@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Run · {{ run.recipe_id }}{% endblock %}
+{% block content %}
+<header>
+  <div class="crumbs"><a href="/recipes/{{ run.recipe_id }}">← {{ run.recipe_id }}</a></div>
+  <hgroup>
+    <h2>Run · {{ run.recipe_id }}</h2>
+    <p>Model: <code>{{ run.model_ref }}</code> · Started: {{ run.started_at.isoformat(timespec='seconds') }} · Run ID: <code>{{ run.id }}</code></p>
+  </hgroup>
+</header>
+
+<div id="status-line">
+  <span class="pill {% if run.status == 'done' %}ok{% elif run.status == 'error' %}err{% else %}warn{% endif %}" id="run-status">{{ run.status }}</span>
+</div>
+
+<article id="output-card">
+  <pre id="run-output" style="margin:0;white-space:pre-wrap;word-break:break-word;min-height:6rem;">{{ run.output }}</pre>
+</article>
+
+{% if run.error %}
+<article style="background: var(--pico-form-element-invalid-background-color); border: 1px solid var(--pico-form-element-invalid-border-color); margin-top: 1rem;">
+  <strong>Error:</strong> <pre style="margin:0;white-space:pre-wrap;">{{ run.error }}</pre>
+</article>
+{% endif %}
+
+<details style="margin-top: 1.5rem;">
+  <summary>Inputs</summary>
+  <dl>
+    {% for k, v in run.inputs.items() %}
+    <dt><code>{{ k }}</code></dt>
+    <dd><pre style="margin:0;white-space:pre-wrap;font-size:0.85rem;">{{ v }}</pre></dd>
+    {% endfor %}
+  </dl>
+</details>
+
+{% if run.status == 'running' %}
+<script>
+(function () {
+  const out = document.getElementById('run-output');
+  const status = document.getElementById('run-status');
+  const sse = new EventSource("/api/runs/{{ run.id }}/stream");
+
+  sse.addEventListener('chunk', (e) => {
+    try {
+      const piece = JSON.parse(e.data);
+      out.textContent += piece;
+      window.scrollTo(0, document.body.scrollHeight);
+    } catch (err) { /* ignore malformed event */ }
+  });
+
+  sse.addEventListener('done', (e) => {
+    sse.close();
+    let payload = {};
+    try { payload = JSON.parse(e.data); } catch (err) {}
+    status.className = 'pill ' + (payload.status === 'error' ? 'err' : 'ok');
+    status.textContent = payload.status || 'done';
+    if (payload.error) {
+      const err = document.createElement('article');
+      err.style.cssText = 'margin-top:1rem;background:var(--pico-form-element-invalid-background-color);border:1px solid var(--pico-form-element-invalid-border-color);';
+      err.innerHTML = '<strong>Error:</strong> <pre style="margin:0;white-space:pre-wrap;"></pre>';
+      err.querySelector('pre').textContent = payload.error;
+      document.getElementById('output-card').after(err);
+    }
+  });
+
+  sse.onerror = () => { /* let the browser auto-retry; don't toggle status */ };
+})();
+</script>
+{% endif %}
+{% endblock %}

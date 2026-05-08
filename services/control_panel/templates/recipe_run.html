@@ -1,0 +1,62 @@
+{% extends "recipe_detail.html" %}
+{% block tab_content %}
+<form method="post" action="/recipes/{{ recipe.id }}/run" class="run-form">
+  {% if not provider_options | selectattr('available') | list %}
+  <article class="warning">
+    <strong>No providers available.</strong>
+    Set at least one of <code>LLAMA_SWAP_URL</code> (with a running daemon),
+    <code>GEMINI_API_KEY</code>, or <code>ANTHROPIC_API_KEY</code> in your <code>.env</code>.
+  </article>
+  {% endif %}
+
+  <label for="model_ref">
+    Provider / model
+    <select name="model_ref" id="model_ref">
+      {% for opt in provider_options %}
+        {% if opt.models %}
+        <optgroup label="{{ opt.provider }}{% if not opt.available %} (no key set){% endif %}"{% if not opt.available %} disabled{% endif %}>
+          {% for m in opt.models %}
+            {% set ref = opt.provider ~ '/' ~ m %}
+            <option value="{{ ref }}"{% if ref == default_model %} selected{% endif %}>{{ m }}</option>
+          {% endfor %}
+        </optgroup>
+        {% elif opt.provider == 'local' %}
+        <optgroup label="local (daemon offline — set RECIPE_DEFAULT_MODEL or override below)" disabled>
+          <option value="" disabled>—</option>
+        </optgroup>
+        {% endif %}
+      {% endfor %}
+    </select>
+    <small>The recipe declares <code>{{ execution_model or '(none)' }}</code>. Pick from the dropdown, or type any <code>provider/model</code> below to override.</small>
+  </label>
+
+  <label for="model_override">
+    Or model id (free-text override)
+    <input type="text" name="model_override" id="model_override"
+           placeholder="e.g. local/qwen2.5-coder-14b · anthropic/claude-opus-4-7 · gemini/gemini-2.0-flash">
+    <small>When non-empty this wins over the dropdown. Bare ids (no <code>/</code>) default to the local provider.</small>
+  </label>
+
+  {% if inputs %}
+    {% for inp in inputs %}
+    <label for="input__{{ inp.name }}">
+      {{ inp.name }}{% if inp.required %} *{% endif %}
+      <textarea name="input__{{ inp.name }}" id="input__{{ inp.name }}" rows="3"
+                placeholder="{{ inp.description or '' }}"
+                {% if inp.required %}required{% endif %}></textarea>
+      {% if inp.description %}<small>{{ inp.description }}</small>{% endif %}
+    </label>
+    {% endfor %}
+  {% else %}
+    <p><em>This recipe declares no inputs.</em></p>
+  {% endif %}
+
+  <button type="submit">Run</button>
+</form>
+
+<style>
+  .run-form label { display: block; margin-bottom: 1rem; }
+  .run-form textarea { font-family: var(--pico-font-family-monospace); font-size: 0.9rem; }
+  .run-form .warning { background: var(--pico-form-element-invalid-background-color); border: 1px solid var(--pico-form-element-invalid-border-color); padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 0.4rem; }
+</style>
+{% endblock %}
