@@ -76,10 +76,14 @@ class DashboardSmokeTest(unittest.TestCase):
         # Free-text override always present.
         self.assertIn('name="model_override"', resp.text)
 
-    def test_recipe_edit_placeholder(self):
+    def test_recipe_edit_loads_raw_content_into_editor(self):
         resp = self.client.get("/recipes/code-review/edit")
         self.assertEqual(resp.status_code, 200)
-        self.assertIn("Phase B4", resp.text)
+        # The frontmatter delimiter should appear inside the textarea body.
+        self.assertIn("id: code-review", resp.text)
+        self.assertIn('id="cm_editor"', resp.text)
+        # CodeMirror script is included.
+        self.assertIn("codemirror.min.js", resp.text)
 
     def test_recipe_404_for_unknown_id(self):
         resp = self.client.get("/recipes/does-not-exist-xyz")
@@ -216,6 +220,164 @@ class RunFlowTest(unittest.TestCase):
         )
         run_id = resp.headers["location"].rsplit("/", 1)[-1]
         self.assertEqual(get_run(run_id).model_ref, "local/qwen2.5-coder-14b")
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class EditFlowTest(unittest.TestCase):
+    """Edit-save flow against a tmpdir-backed Config so real recipes are untouched."""
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        from pathlib import Path
+
+        from fastapi.testclient import TestClient
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        cls.tmpdir = tempfile.mkdtemp(prefix="cp_edit_test_")
+        root = Path(cls.tmpdir)
+        (root / "recipes").mkdir()
+        (root / "connectors").mkdir()
+        (root / "services").mkdir()
+        (root / "scripts").mkdir()
+
+        # A minimal valid recipe.
+        cls.recipe_path = root / "recipes" / "demo.md"
+        cls.recipe_path.write_text(
+            "---\n"
+            "id: demo\n"
+            "name: Demo\n"
+            "description: tmp recipe used by EditFlowTest.\n"
+            "audience: tech\n"
+            "version: 0.1.0\n"
+            "status: experimental\n"
+            "tags: []\n"
+            "requires_skills: []\n"
+            "requires_workflows: []\n"
+            "requires_connectors: []\n"
+            "requires_mcp: []\n"
+            "requires_env: []\n"
+            "execution:\n"
+            "  type: prompt\n"
+            "---\n"
+            "## Prompt\n\nhello\n",
+            encoding="utf-8",
+        )
+
+        # Stub out the audit subprocess — recipe_manager.py isn't in the tmp tree.
+        from services.control_panel import recipe_writer as rw
+
+        cls._orig_audit = rw._audit_recipe
+        rw._audit_recipe = lambda cfg, recipe_id: []
+
+        cfg = Config(
+            workspace_root=root,
+            recipes_dir=root / "recipes",
+            connectors_dir=root / "connectors",
+            services_dir=root / "services",
+            host="127.0.0.1",
+            port=0,
+            reload=False,
+            llama_swap_url="http://localhost:11434/v1",
+        )
+        cls.cfg = cfg
+        cls.client = TestClient(create_app(cfg))
+
+    @classmethod
+    def tearDownClass(cls):
+        import shutil
+        from services.control_panel import recipe_writer as rw
+
+        rw._audit_recipe = cls._orig_audit
+        shutil.rmtree(cls.tmpdir, ignore_errors=True)
+
+    def test_save_writes_file(self):
+        new_body = self.recipe_path.read_text(encoding="utf-8").replace("hello", "hello world")
+        resp = self.client.post("/recipes/demo/edit", data={"content": new_body})
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Saved", resp.text)
+        self.assertIn("hello world", self.recipe_path.read_text(encoding="utf-8"))
+
+    def test_save_rejects_broken_yaml(self):
+        before = self.recipe_path.read_text(encoding="utf-8")
+        broken = "---\nid: [unclosed\n---\nbody\n"
+        resp = self.client.post("/recipes/demo/edit", data={"content": broken})
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Save failed", resp.text)
+        self.assertIn("frontmatter", resp.text)
+        # File untouched.
+        self.assertEqual(self.recipe_path.read_text(encoding="utf-8"), before)
+
+    def test_save_rejects_id_mismatch(self):
+        before = self.recipe_path.read_text(encoding="utf-8")
+        # Same recipe but with a different `id:` in frontmatter.
+        munged = before.replace("id: demo", "id: not-demo")
+        resp = self.client.post("/recipes/demo/edit", data={"content": munged})
+        self.assertIn("Save failed", resp.text)
+        # The apostrophe gets HTML-escaped by Jinja; match against either form.
+        self.assertRegex(resp.text, r"doesn(?:'|&#39;)t match")
+        self.assertEqual(self.recipe_path.read_text(encoding="utf-8"), before)
+
+    def test_save_404_for_unknown_recipe(self):
+        resp = self.client.post("/recipes/no-such-recipe/edit", data={"content": "..."})
+        self.assertEqual(resp.status_code, 404)
+
+
+class RecipeWriterUnitTest(unittest.TestCase):
+    """Direct unit tests for recipe_writer — no FastAPI involvement."""
+
+    def setUp(self):
+        import tempfile
+        from pathlib import Path
+        from services.control_panel.config import Config
+
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_writer_test_")
+        root = Path(self.tmpdir)
+        (root / "recipes").mkdir()
+        self.cfg = Config(
+            workspace_root=root,
+            recipes_dir=root / "recipes",
+            connectors_dir=root / "connectors",
+            services_dir=root / "services",
+            host="127.0.0.1",
+            port=0,
+            reload=False,
+            llama_swap_url="",
+        )
+
+        from services.control_panel import recipe_writer as rw
+        self._orig = rw._audit_recipe
+        rw._audit_recipe = lambda cfg, recipe_id: []
+
+    def tearDown(self):
+        import shutil
+        from services.control_panel import recipe_writer as rw
+        rw._audit_recipe = self._orig
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_atomic_write_does_not_leak_tempfile_on_success(self):
+        from services.control_panel.recipe_writer import write_recipe
+
+        result = write_recipe(self.cfg, "ok", "---\nid: ok\n---\nbody\n")
+        self.assertTrue(result.ok)
+        # Only the final file should exist — no leftover dotfiles.
+        files = sorted(p.name for p in self.cfg.recipes_dir.iterdir())
+        self.assertEqual(files, ["ok.md"])
+
+    def test_invalid_id_rejected(self):
+        from services.control_panel.recipe_writer import write_recipe
+
+        result = write_recipe(self.cfg, "../etc/passwd", "---\nid: x\n---\n")
+        self.assertFalse(result.ok)
+        self.assertIn("invalid recipe id", result.message)
+
+    def test_missing_frontmatter_rejected(self):
+        from services.control_panel.recipe_writer import write_recipe
+
+        result = write_recipe(self.cfg, "x", "no frontmatter here")
+        self.assertFalse(result.ok)
+        self.assertIn("frontmatter", result.message)
 
 
 @unittest.skipUnless(_HAS_FASTAPI, "fastapi not installed")

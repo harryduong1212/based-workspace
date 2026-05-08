@@ -1,0 +1,17 @@
+{% if not ok %}
+<div class="err">
+  <strong>Save failed.</strong>
+  <pre>{{ message }}</pre>
+</div>
+{% elif warnings %}
+<div class="warn">
+  <strong>Saved with audit warnings.</strong>
+  <pre>{% for w in warnings %}{{ w }}
+{% endfor %}</pre>
+</div>
+{% else %}
+<div class="ok">
+  <strong>Saved.</strong>
+  <pre>{{ message }}</pre>
+</div>
+{% endif %}

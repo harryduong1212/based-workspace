@@ -1,0 +1,49 @@
+{% extends "recipe_detail.html" %}
+
+{% block head_extra %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/lib/codemirror.min.css">
+<style>
+  .CodeMirror { height: 65vh; border: 1px solid var(--pico-muted-border-color); border-radius: 0.4rem; font-size: 0.92rem; }
+  .edit-actions { display: flex; gap: 0.75rem; align-items: center; margin-top: 1rem; }
+  .save-result { margin-top: 1rem; }
+  .save-result .ok { background: rgba(28, 110, 58, 0.15); border-left: 3px solid #1c6e3a; padding: 0.6rem 0.85rem; border-radius: 0.3rem; }
+  .save-result .warn { background: rgba(184, 107, 0, 0.15); border-left: 3px solid #b86b00; padding: 0.6rem 0.85rem; border-radius: 0.3rem; }
+  .save-result .err { background: rgba(168, 48, 42, 0.15); border-left: 3px solid #a8302a; padding: 0.6rem 0.85rem; border-radius: 0.3rem; }
+  .save-result pre { margin: 0.4rem 0 0 0; white-space: pre-wrap; font-size: 0.85rem; }
+</style>
+{% endblock %}
+
+{% block tab_content %}
+<form hx-post="/recipes/{{ recipe.id }}/edit" hx-target="#save-result" hx-swap="innerHTML"
+      onsubmit="document.getElementById('content_field').value = window.__cm_editor.getValue();">
+  <textarea name="content" id="content_field" style="display:none;">{{ raw_content }}</textarea>
+  <textarea id="cm_editor" style="width:100%;">{{ raw_content }}</textarea>
+  <div class="edit-actions">
+    <button type="submit">Save</button>
+    <small>Refuses to save if YAML frontmatter is malformed. Audit warnings are reported but don't block.</small>
+  </div>
+</form>
+
+<div id="save-result" class="save-result"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/yaml/yaml.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/markdown/markdown.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/yaml-frontmatter/yaml-frontmatter.min.js"></script>
+<script>
+(function () {
+  const ta = document.getElementById('cm_editor');
+  if (!ta) return;
+  window.__cm_editor = CodeMirror.fromTextArea(ta, {
+    mode: { name: 'yaml-frontmatter', base: 'markdown' },
+    lineNumbers: true,
+    lineWrapping: true,
+    indentUnit: 2,
+    tabSize: 2,
+  });
+})();
+</script>
+{% endblock %}

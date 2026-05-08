@@ -19,6 +19,7 @@ from fastapi.templating import Jinja2Templates
 from .config import Config
 from .health import all_checks
 from .provider_options import default_model_ref, list_provider_options
+from .recipe_writer import write_recipe
 from .recipes_index import get_recipe, load_connectors, load_recipes
 from .render import render_markdown
 from .runs import get_run, start_run, stream_chunks
@@ -167,6 +168,20 @@ def create_app(cfg: Config | None = None) -> FastAPI:
             raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
         fm, _body, path = result
         ctx = _build_recipe_context(cfg, fm, path, active_tab="edit")
-        return templates.TemplateResponse(request=request, name="recipe_edit_placeholder.html", context=ctx)
+        ctx["raw_content"] = path.read_text(encoding="utf-8")
+        return templates.TemplateResponse(request=request, name="recipe_edit.html", context=ctx)
+
+    @app.post("/recipes/{recipe_id}/edit", response_class=HTMLResponse)
+    async def recipe_edit_save(request: Request, recipe_id: str) -> HTMLResponse:
+        if get_recipe(cfg, recipe_id) is None:
+            raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
+        form = await request.form()
+        content = str(form.get("content") or "")
+        result = write_recipe(cfg, recipe_id, content)
+        return templates.TemplateResponse(
+            request=request,
+            name="_save_result.html",
+            context={"ok": result.ok, "message": result.message, "warnings": result.warnings},
+        )
 
     return app
