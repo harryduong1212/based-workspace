@@ -10,7 +10,10 @@
 
 <div class="grid-2col">
   <section>
-    <h3>Recipes</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:0.5rem;">
+      <h3 style="margin:0;">Recipes</h3>
+      <a href="/recipes/new" role="button" class="contrast" style="padding:0.3rem 0.75rem;font-size:0.85rem;">+ New recipe</a>
+    </div>
     {% if recipes %}
     <ul class="card-list">
       {% for r in recipes %}

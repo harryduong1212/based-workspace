@@ -19,6 +19,7 @@ from fastapi.templating import Jinja2Templates
 from .config import Config
 from .health import all_checks
 from .provider_options import default_model_ref, list_provider_options
+from .recipe_skeleton import SUPPORTED_EXECUTION_TYPES, build_skeleton
 from .recipe_writer import write_recipe
 from .recipes_index import get_recipe, load_connectors, load_recipes
 from .render import render_markdown
@@ -96,6 +97,59 @@ def create_app(cfg: Config | None = None) -> FastAPI:
             name="_health_fragment.html",
             context={"statuses": statuses},
         )
+
+    @app.get("/recipes/new", response_class=HTMLResponse)
+    def recipe_new_form(request: Request) -> HTMLResponse:
+        return templates.TemplateResponse(
+            request=request,
+            name="recipe_new.html",
+            context={"values": {}, "error": None},
+        )
+
+    @app.post("/recipes/new")
+    async def recipe_new_submit(request: Request):
+        form = await request.form()
+        values = {
+            "id": str(form.get("id") or "").strip(),
+            "name": str(form.get("name") or "").strip(),
+            "description": str(form.get("description") or "").strip(),
+            "audience": str(form.get("audience") or "tech").strip(),
+            "execution_type": str(form.get("execution_type") or "prompt").strip(),
+            "tags": str(form.get("tags") or "").strip(),
+        }
+
+        def _render_form(error: str) -> HTMLResponse:
+            return templates.TemplateResponse(
+                request=request,
+                name="recipe_new.html",
+                context={"values": values, "error": error},
+                status_code=400,
+            )
+
+        if not values["id"]:
+            return _render_form("id is required")
+        if values["execution_type"] not in SUPPORTED_EXECUTION_TYPES:
+            return _render_form(f"execution_type must be one of {SUPPORTED_EXECUTION_TYPES}")
+        if (cfg.recipes_dir / f"{values['id']}.md").exists():
+            return _render_form(f"recipe {values['id']!r} already exists")
+
+        tags = [t.strip() for t in values["tags"].split(",") if t.strip()]
+        try:
+            content = build_skeleton(
+                recipe_id=values["id"],
+                name=values["name"] or values["id"],
+                description=values["description"] or "TODO: describe what this recipe does.",
+                audience=values["audience"] or "tech",
+                tags=tags,
+                execution_type=values["execution_type"],
+            )
+        except ValueError as e:
+            return _render_form(str(e))
+
+        result = write_recipe(cfg, values["id"], content)
+        if not result.ok:
+            return _render_form(result.message)
+        return RedirectResponse(url=f"/recipes/{values['id']}/edit", status_code=303)
 
     @app.get("/recipes/{recipe_id}", response_class=HTMLResponse)
     def recipe_overview(request: Request, recipe_id: str) -> HTMLResponse:

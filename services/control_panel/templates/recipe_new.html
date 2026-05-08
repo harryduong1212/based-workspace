@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}New recipe{% endblock %}
+{% block content %}
+<header>
+  <div class="crumbs"><a href="/">← all recipes</a></div>
+  <hgroup>
+    <h2>New recipe</h2>
+    <p>The form below scaffolds a recipe with valid frontmatter and TODO-marked body sections. You'll land in the editor right after.</p>
+  </hgroup>
+</header>
+
+{% if error %}
+<article class="err-card">
+  <strong>Couldn't create:</strong> {{ error }}
+</article>
+{% endif %}
+
+<form method="post" action="/recipes/new" class="new-form">
+  <label>id *
+    <input type="text" name="id" value="{{ values.id or '' }}" required
+           pattern="[a-zA-Z0-9][a-zA-Z0-9_-]*"
+           placeholder="kebab-case-id">
+    <small>Lowercase letters, digits, dash, underscore. Becomes the file name.</small>
+  </label>
+
+  <label>name *
+    <input type="text" name="name" value="{{ values.name or '' }}" required
+           placeholder="Human-readable Title">
+  </label>
+
+  <label>description *
+    <textarea name="description" rows="2" required
+              placeholder="One sentence on what this recipe does and the moment it's useful.">{{ values.description or '' }}</textarea>
+  </label>
+
+  <label>audience
+    <select name="audience">
+      <option value="tech" {% if values.audience == 'tech' or not values.audience %}selected{% endif %}>tech</option>
+      <option value="ops" {% if values.audience == 'ops' %}selected{% endif %}>ops</option>
+      <option value="exec" {% if values.audience == 'exec' %}selected{% endif %}>exec</option>
+    </select>
+  </label>
+
+  <fieldset>
+    <legend>execution type *</legend>
+    <label><input type="radio" name="execution_type" value="prompt"
+                  {% if values.execution_type == 'prompt' or not values.execution_type %}checked{% endif %}> prompt — single LLM call</label>
+    <label><input type="radio" name="execution_type" value="agent"
+                  {% if values.execution_type == 'agent' %}checked{% endif %}> agent — multi-step LLM loop with tools</label>
+    <label><input type="radio" name="execution_type" value="workflow"
+                  {% if values.execution_type == 'workflow' %}checked{% endif %}> workflow — n8n orchestration</label>
+  </fieldset>
+
+  <label>tags
+    <input type="text" name="tags" value="{{ values.tags or '' }}"
+           placeholder="comma, separated, tags">
+    <small>Optional. Comma-separated.</small>
+  </label>
+
+  <button type="submit">Create &amp; open editor</button>
+</form>
+
+<style>
+  .new-form label, .new-form fieldset { display: block; margin-bottom: 1rem; }
+  .new-form fieldset { border: 1px solid var(--pico-muted-border-color); padding: 0.75rem 1rem; border-radius: 0.4rem; }
+  .new-form fieldset label { font-weight: normal; margin-bottom: 0.35rem; }
+  .err-card { background: var(--pico-form-element-invalid-background-color); border: 1px solid var(--pico-form-element-invalid-border-color); padding: 0.75rem 1rem; border-radius: 0.4rem; margin-bottom: 1rem; }
+</style>
+{% endblock %}

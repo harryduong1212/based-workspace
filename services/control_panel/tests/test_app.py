@@ -323,6 +323,97 @@ class EditFlowTest(unittest.TestCase):
         resp = self.client.post("/recipes/no-such-recipe/edit", data={"content": "..."})
         self.assertEqual(resp.status_code, 404)
 
+    def test_new_form_renders(self):
+        resp = self.client.get("/recipes/new")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('action="/recipes/new"', resp.text)
+        self.assertIn('name="execution_type"', resp.text)
+
+    def test_new_recipe_creates_file_and_redirects_to_edit(self):
+        resp = self.client.post(
+            "/recipes/new",
+            data={
+                "id": "fresh-recipe",
+                "name": "Fresh",
+                "description": "A brand-new recipe scaffolded by B5.",
+                "audience": "tech",
+                "execution_type": "prompt",
+                "tags": "demo, b5",
+            },
+            follow_redirects=False,
+        )
+        self.assertEqual(resp.status_code, 303)
+        self.assertEqual(resp.headers["location"], "/recipes/fresh-recipe/edit")
+        target = self.cfg.recipes_dir / "fresh-recipe.md"
+        self.assertTrue(target.exists())
+        body = target.read_text(encoding="utf-8")
+        self.assertIn("id: fresh-recipe", body)
+        self.assertIn("type: prompt", body)
+        self.assertIn("- demo", body)
+
+    def test_new_recipe_rejects_duplicate_id(self):
+        # First create succeeds.
+        self.client.post(
+            "/recipes/new",
+            data={"id": "dupe", "name": "x", "description": "x", "audience": "tech", "execution_type": "prompt"},
+            follow_redirects=False,
+        )
+        # Second fails with 400 + form re-rendered.
+        resp = self.client.post(
+            "/recipes/new",
+            data={"id": "dupe", "name": "y", "description": "y", "audience": "tech", "execution_type": "prompt"},
+            follow_redirects=False,
+        )
+        self.assertEqual(resp.status_code, 400)
+        self.assertIn("already exists", resp.text)
+        # Form re-rendered with submitted values intact.
+        self.assertIn('value="dupe"', resp.text)
+
+    def test_new_recipe_rejects_invalid_execution_type(self):
+        resp = self.client.post(
+            "/recipes/new",
+            data={"id": "bad-type", "name": "x", "description": "x", "execution_type": "freeform"},
+            follow_redirects=False,
+        )
+        self.assertEqual(resp.status_code, 400)
+        self.assertIn("execution_type", resp.text)
+
+
+class RecipeSkeletonUnitTest(unittest.TestCase):
+    """Direct tests for build_skeleton — no FastAPI involvement."""
+
+    def test_prompt_skeleton_parses_as_yaml_frontmatter(self):
+        from services.control_panel.recipe_skeleton import build_skeleton
+
+        content = build_skeleton(
+            recipe_id="x",
+            name="X",
+            description="d",
+            audience="tech",
+            tags=["a", "b"],
+            execution_type="prompt",
+        )
+        self.assertTrue(content.startswith("---\n"))
+        self.assertIn("\n---\n", content[4:])
+        self.assertIn("## Prompt", content)
+        self.assertIn("- a", content)
+
+    def test_agent_and_workflow_have_correct_section(self):
+        from services.control_panel.recipe_skeleton import build_skeleton
+
+        agent = build_skeleton(recipe_id="a", name="A", description="d", audience="tech", tags=[], execution_type="agent")
+        self.assertIn("## Agent", agent)
+        self.assertNotIn("## Prompt", agent)
+
+        wf = build_skeleton(recipe_id="w", name="W", description="d", audience="tech", tags=[], execution_type="workflow")
+        self.assertIn("## Workflow", wf)
+
+    def test_unsupported_execution_type_raises(self):
+        from services.control_panel.recipe_skeleton import build_skeleton
+
+        with self.assertRaises(ValueError):
+            build_skeleton(recipe_id="x", name="X", description="d", audience="tech", tags=[], execution_type="freeform")
+
 
 class RecipeWriterUnitTest(unittest.TestCase):
     """Direct unit tests for recipe_writer — no FastAPI involvement."""
