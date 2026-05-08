@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Control Panel{% endblock %} — based-workspace</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <style>
+    :root { --pico-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+    body { padding-bottom: 4rem; }
+    nav.app-nav { border-bottom: 1px solid var(--pico-muted-border-color); padding-block: 0.6rem; margin-bottom: 1.5rem; }
+    nav.app-nav .brand { font-weight: 600; }
+    nav.app-nav ul { margin: 0; }
+    .pill { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.78rem; line-height: 1.5; background: var(--pico-secondary-background); color: var(--pico-secondary-inverse); }
+    .pill.ok { background: #1c6e3a; color: #fff; }
+    .pill.warn { background: #b86b00; color: #fff; }
+    .pill.err { background: #a8302a; color: #fff; }
+    .pill.muted { background: var(--pico-muted-color); color: var(--pico-background-color); }
+    .grid-2col { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .grid-2col { grid-template-columns: 1fr 1fr; } }
+    .card-list { list-style: none; padding: 0; margin: 0; }
+    .card-list li { padding: 0.75rem 0.85rem; border: 1px solid var(--pico-muted-border-color); border-radius: 0.4rem; margin-bottom: 0.5rem; }
+    .card-list li a { display: block; text-decoration: none; }
+    .card-list .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.35rem; font-size: 0.85rem; color: var(--pico-muted-color); }
+    footer.health { position: fixed; left: 0; right: 0; bottom: 0; background: var(--pico-card-background-color); border-top: 1px solid var(--pico-muted-border-color); padding: 0.55rem 1rem; font-size: 0.85rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    footer.health .label { font-weight: 600; }
+    .recipe-tags { display: inline-flex; gap: 0.35rem; flex-wrap: wrap; }
+  </style>
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <nav class="app-nav container">
+    <ul>
+      <li class="brand"><a href="/">based-workspace · control panel</a></li>
+    </ul>
+    <ul>
+      <li><a href="/">Recipes &amp; Connectors</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="health" hx-get="/api/health" hx-trigger="load, every 30s" hx-swap="innerHTML">
+    <span class="label">System:</span>
+    <span class="muted pill">checking…</span>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

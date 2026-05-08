@@ -1,0 +1,7 @@
+<span class="label">System:</span>
+{% for status in statuses %}
+  <span class="pill {{ 'ok' if status.ok else 'err' }}" title="{{ status.detail }}">
+    {{ status.name }}{% if status.ok %} ✓{% else %} ✗{% endif %}
+  </span>
+{% endfor %}
+<span class="pill muted">refreshed</span>

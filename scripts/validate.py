@@ -59,7 +59,11 @@ def main():
             "services.context_bridge.connectors.jira, "
             "services.context_bridge.connectors.bitbucket, "
             "services.recipe_runtime.dispatcher, "
-            "services.recipe_runtime.prompt_assembler",
+            "services.recipe_runtime.prompt_assembler, "
+            "services.recipe_runtime.providers, "
+            "services.control_panel.config, "
+            "services.control_panel.recipes_index, "
+            "services.control_panel.health",
         ],
         results,
     )
@@ -69,7 +73,13 @@ def main():
             py, "-m", "unittest",
             "services.recipe_runtime.tests.test_assembler",
             "services.recipe_runtime.tests.test_dispatcher",
+            "services.recipe_runtime.tests.test_providers",
         ],
+        results,
+    )
+    _run_check(
+        "Control panel tests",
+        [py, "-m", "unittest", "services.control_panel.tests.test_app"],
         results,
     )
     _run_check(

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Recipes &amp; Connectors{% endblock %}
+{% block content %}
+<header>
+  <hgroup>
+    <h2>Recipes &amp; Connectors</h2>
+    <p>{{ recipes|length }} recipe{{ '' if recipes|length == 1 else 's' }} · {{ connectors|length }} connector{{ '' if connectors|length == 1 else 's' }}</p>
+  </hgroup>
+</header>
+
+<div class="grid-2col">
+  <section>
+    <h3>Recipes</h3>
+    {% if recipes %}
+    <ul class="card-list">
+      {% for r in recipes %}
+      <li>
+        <a href="/recipes/{{ r.id }}">
+          <strong>{{ r.name }}</strong>
+          {% if r.description %}<div>{{ r.description }}</div>{% endif %}
+          <div class="meta">
+            <span class="pill {% if r.status == 'stable' %}ok{% elif r.status == 'experimental' %}warn{% else %}muted{% endif %}">{{ r.status or 'unknown' }}</span>
+            <span class="pill muted">{{ r.execution_type }}</span>
+            {% if r.execution_model %}<span class="pill muted">{{ r.execution_model }}</span>{% endif %}
+            {% if r.tags %}<span class="recipe-tags">{% for t in r.tags %}<span class="pill">{{ t }}</span>{% endfor %}</span>{% endif %}
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p><em>No recipes found in <code>{{ recipes_dir }}</code>.</em></p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h3>Connectors</h3>
+    {% if connectors %}
+    <ul class="card-list">
+      {% for c in connectors %}
+      <li>
+        <a href="/connectors/{{ c.id }}">
+          <strong>{{ c.name }}</strong>
+          {% if c.description %}<div>{{ c.description }}</div>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p><em>No connectors found in <code>{{ connectors_dir }}</code>.</em></p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
