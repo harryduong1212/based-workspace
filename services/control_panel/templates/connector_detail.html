@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}{{ connector.name }} (connector){% endblock %}
+
+{% block head_extra %}
+<style>
+  .recipe-header { margin-bottom: 0.5rem; }
+  .recipe-header .crumbs { font-size: 0.85rem; margin-bottom: 0.25rem; }
+  .detail-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 1000px) { .detail-grid { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); } }
+  .meta-card { background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: 0.4rem; padding: 0.85rem 1rem; }
+  .meta-card h4 { margin-top: 0; font-size: 0.95rem; }
+  .meta-card dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 0.85rem; }
+  .meta-card dt { font-weight: 600; color: var(--pico-muted-color); font-size: 0.85rem; }
+  .meta-card dd { margin: 0; word-break: break-word; }
+  .body-rendered h1, .body-rendered h2, .body-rendered h3 { margin-top: 1.4rem; }
+  .body-rendered code { font-size: 0.92em; }
+  .body-rendered pre { padding: 0.75rem 1rem; overflow-x: auto; }
+  .test-result { margin-top: 0.75rem; }
+  .test-result .ok { color: #1c6e3a; }
+  .test-result .err { color: #a8302a; }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="recipe-header">
+  <div class="crumbs"><a href="/">← all connectors</a></div>
+  <hgroup>
+    <h2>{{ connector.name }} <small style="color: var(--pico-muted-color); font-weight: normal;">(connector)</small></h2>
+    <p>{{ connector.description or '(no description)' }}</p>
+  </hgroup>
+  <div class="meta">
+    <span class="pill {% if status == 'stable' %}ok{% elif status == 'experimental' %}warn{% else %}muted{% endif %}">{{ status or 'unknown' }}</span>
+    {% if auth_type %}<span class="pill muted">{{ auth_type }}</span>{% endif %}
+    {% for t in tags %}<span class="pill">{{ t }}</span>{% endfor %}
+  </div>
+</header>
+
+<div class="detail-grid">
+  <article>
+    <div class="body-rendered">
+      {{ rendered_body | safe }}
+    </div>
+  </article>
+
+  <aside>
+    <div class="meta-card">
+      <h4>Frontmatter</h4>
+      <dl>
+        <dt>id</dt><dd><code>{{ connector.id }}</code></dd>
+        {% if auth_type %}<dt>auth</dt><dd>{{ auth_type }}</dd>{% endif %}
+        {% if provides %}<dt>provides</dt><dd>{% for p in provides %}<code>{{ p }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if embed_collection %}<dt>embed</dt><dd><code>{{ embed_collection }}</code></dd>{% endif %}
+        {% if n8n_workflow %}<dt>n8n</dt><dd><code>{{ n8n_workflow }}</code></dd>{% endif %}
+      </dl>
+    </div>
+
+    {% if requires_env %}
+    <div class="meta-card" style="margin-top: 1rem;">
+      <h4>Environment</h4>
+      <dl>
+        {% for e in requires_env %}
+        <dt><code>{{ e }}</code></dt>
+        <dd>
+          {% if env_status[e] %}
+          <span class="pill ok">set</span>
+          {% else %}
+          <span class="pill err">missing</span>
+          {% endif %}
+        </dd>
+        {% endfor %}
+      </dl>
+      <button hx-post="/connectors/{{ connector.id }}/test"
+              hx-target="#test-result"
+              hx-swap="innerHTML"
+              style="margin-top: 0.75rem; width: 100%;">
+        Test connection
+      </button>
+      <div id="test-result" class="test-result"></div>
+    </div>
+    {% endif %}
+
+    <div class="meta-card" style="margin-top: 1rem;">
+      <h4>File</h4>
+      <p style="margin:0;"><code>{{ relative_path }}</code></p>
+    </div>
+  </aside>
+</div>
+{% endblock %}

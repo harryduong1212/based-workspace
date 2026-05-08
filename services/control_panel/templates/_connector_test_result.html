@@ -1,0 +1,6 @@
+{% if result.all_present %}
+<p class="ok"><strong>All required env vars are set.</strong> Live API probe still requires the connector adapter (deferred — wire when explicitly opted in).</p>
+{% else %}
+<p class="err"><strong>Missing env vars:</strong> {% for m in result.missing %}<code>{{ m }}</code>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+<p style="margin:0;"><small>Add these to your <code>.env</code> and reload.</small></p>
+{% endif %}

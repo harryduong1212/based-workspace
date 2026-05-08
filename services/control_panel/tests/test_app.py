@@ -40,6 +40,54 @@ class DashboardSmokeTest(unittest.TestCase):
         self.assertIn("bitbucket", resp.text)
         self.assertIn("jira", resp.text)
 
+    def test_connector_detail_renders_body_and_env_status(self):
+        resp = self.client.get("/connectors/jira")
+        self.assertEqual(resp.status_code, 200)
+        # Frontmatter sidebar fields surface.
+        self.assertIn("<code>jira</code>", resp.text)
+        self.assertIn("api_token", resp.text)
+        # Required env vars are listed with status pills.
+        self.assertIn("JIRA_BASE_URL", resp.text)
+        self.assertIn("JIRA_EMAIL", resp.text)
+        self.assertIn("JIRA_API_TOKEN", resp.text)
+        # Test-connection button is present.
+        self.assertIn('hx-post="/connectors/jira/test"', resp.text)
+
+    def test_connector_404_for_unknown_id(self):
+        resp = self.client.get("/connectors/no-such-connector")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_connector_test_endpoint_reports_missing_envs(self):
+        import os as _os
+        # Snapshot and clear all three Jira env vars to force missing.
+        keys = ("JIRA_BASE_URL", "JIRA_EMAIL", "JIRA_API_TOKEN")
+        saved = {k: _os.environ.pop(k, None) for k in keys}
+        try:
+            resp = self.client.post("/connectors/jira/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Missing env vars", resp.text)
+            self.assertIn("JIRA_BASE_URL", resp.text)
+        finally:
+            for k, v in saved.items():
+                if v is not None:
+                    _os.environ[k] = v
+
+    def test_connector_test_endpoint_reports_all_present(self):
+        import os as _os
+        keys = ("JIRA_BASE_URL", "JIRA_EMAIL", "JIRA_API_TOKEN")
+        saved = {k: _os.environ.pop(k, None) for k in keys}
+        for k in keys:
+            _os.environ[k] = "x"
+        try:
+            resp = self.client.post("/connectors/jira/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("All required env vars are set", resp.text)
+        finally:
+            for k, v in saved.items():
+                _os.environ.pop(k, None)
+                if v is not None:
+                    _os.environ[k] = v
+
     def test_health_endpoint_renders_html_fragment(self):
         resp = self.client.get("/api/health")
         self.assertEqual(resp.status_code, 200)

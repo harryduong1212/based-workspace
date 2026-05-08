@@ -11,17 +11,19 @@ from pathlib import Path
 from typing import Any
 
 import json
+import os
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 
 from .config import Config
+from .connector_check import check_connector_env
 from .health import all_checks
 from .provider_options import default_model_ref, list_provider_options
 from .recipe_skeleton import SUPPORTED_EXECUTION_TYPES, build_skeleton
 from .recipe_writer import write_recipe
-from .recipes_index import get_recipe, load_connectors, load_recipes
+from .recipes_index import get_connector, get_recipe, load_connectors, load_recipes
 from .render import render_markdown
 from .runs import get_run, start_run, stream_chunks
 
@@ -31,6 +33,13 @@ TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 
 @dataclass(frozen=True)
 class _RecipeRef:
+    id: str
+    name: str
+    description: str
+
+
+@dataclass(frozen=True)
+class _ConnectorRef:
     id: str
     name: str
     description: str
@@ -196,6 +205,50 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         if run is None:
             raise HTTPException(status_code=404, detail=f"run not found: {run_id}")
         return templates.TemplateResponse(request=request, name="run_view.html", context={"run": run})
+
+    @app.get("/connectors/{connector_id}", response_class=HTMLResponse)
+    def connector_detail(request: Request, connector_id: str) -> HTMLResponse:
+        result = get_connector(cfg, connector_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail=f"connector not found: {connector_id}")
+        fm, body, path = result
+        try:
+            rel = path.relative_to(cfg.workspace_root)
+        except ValueError:
+            rel = path
+        requires_env = list(fm.get("requires_env") or [])
+        env_status = {v: bool(os.environ.get(v)) for v in requires_env}
+        ctx = {
+            "connector": _ConnectorRef(
+                id=str(fm.get("id") or path.stem),
+                name=str(fm.get("name") or fm.get("id") or path.stem),
+                description=str(fm.get("description") or ""),
+            ),
+            "status": fm.get("status") or "",
+            "auth_type": fm.get("auth_type") or "",
+            "tags": list(fm.get("tags") or []),
+            "provides": list(fm.get("provides") or []),
+            "embed_collection": fm.get("embed_collection") or "",
+            "n8n_workflow": fm.get("n8n_workflow") or "",
+            "requires_env": requires_env,
+            "env_status": env_status,
+            "relative_path": str(rel).replace("\\", "/"),
+            "rendered_body": render_markdown(body),
+        }
+        return templates.TemplateResponse(request=request, name="connector_detail.html", context=ctx)
+
+    @app.post("/connectors/{connector_id}/test", response_class=HTMLResponse)
+    def connector_test(request: Request, connector_id: str) -> HTMLResponse:
+        result = get_connector(cfg, connector_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail=f"connector not found: {connector_id}")
+        fm, _body, _path = result
+        check = check_connector_env(connector_id, list(fm.get("requires_env") or []))
+        return templates.TemplateResponse(
+            request=request,
+            name="_connector_test_result.html",
+            context={"result": check},
+        )
 
     @app.get("/api/runs/{run_id}/stream")
     def run_stream(run_id: str) -> StreamingResponse:

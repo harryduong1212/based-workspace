@@ -31,11 +31,16 @@ shows providers whose required env vars are set.
 ## Phase status
 
 - [x] B1 — dashboard (browse recipes/connectors, system health footer)
-- [ ] B2 — recipe detail (Overview tab, rendered body)
-- [ ] B3 — run flow (form, provider/model dropdown, SSE-streamed output)
-- [ ] B4 — edit flow (CodeMirror + audit-on-save)
-- [ ] B5 — create flow (form → templated skeleton → edit)
-- [ ] B6 — connector detail + test-connection
+- [x] B2 — recipe detail (Overview tab with rendered body + frontmatter sidebar)
+- [x] B3 — run flow (form generated from `inputs:`, provider/model dropdown
+  with free-text override, SSE-streamed output)
+- [x] B4 — edit flow (CodeMirror 5 with `yaml-frontmatter` mode, atomic
+  write, audit subprocess on save)
+- [x] B5 — create flow (form → templated skeleton via `yaml.safe_dump`
+  → redirect to /edit)
+- [x] B6 — connector detail (rendered body, env-var status pills,
+  "test connection" button — checks `requires_env` is set; live API
+  probes are deferred per `feedback-defer-external-connectors`)
 
 ## Tests
 
