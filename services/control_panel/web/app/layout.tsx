@@ -21,8 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen">
-            <aside className="hidden md:flex md:flex-col w-64 shrink-0 border-r bg-card/60 backdrop-blur">
-              <Link href="/" className="flex items-center gap-2.5 px-5 h-14 border-b">
+            <aside className="hidden md:flex md:flex-col w-64 shrink-0 border-r bg-muted/30">
+              <Link href="/" className="flex items-center gap-2.5 px-5 h-14 border-b border-border/50 hover:bg-muted/50 transition-colors">
                 <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-sm">
                   <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
                     <path d="M10 2 2 6l8 4 8-4-8-4Zm0 6.4L2 4.4v8l8 4 8-4v-8l-8 4Z" />
@@ -39,19 +39,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <SidebarNav />
               <SidebarRecentRuns />
 
-              <div className="px-5 py-3 border-t text-[10px] text-muted-foreground flex items-center justify-between">
+              <div className="px-5 py-3 border-t border-border/50 text-[10px] text-muted-foreground flex items-center justify-between bg-muted/10">
                 <span>v0.2 · next.js</span>
                 <span className="text-[9px] uppercase tracking-wider">local</span>
               </div>
             </aside>
 
             <div className="flex-1 flex flex-col min-w-0">
-              <header className="sticky top-0 z-10 h-14 bg-background/70 backdrop-blur border-b px-4 sm:px-6 flex items-center gap-4">
-                <div className="flex-1 min-w-0 truncate text-sm text-muted-foreground" />
+              {/* Transparent Floating Header for Utility Icons */}
+              <header className="absolute top-0 right-0 z-10 h-14 px-4 sm:px-6 flex items-center gap-3">
                 <HealthIndicator />
                 <ThemeToggle />
               </header>
-              <main className="flex-1 overflow-x-hidden">
+              <main className="flex-1 overflow-x-hidden pt-10">
                 <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8">{children}</div>
               </main>
             </div>

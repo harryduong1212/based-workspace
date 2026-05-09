@@ -11,6 +11,7 @@ automatically render its outcome on the next click of the Test button.
 """
 from __future__ import annotations
 
+import base64
 import imaplib
 import json
 import os
@@ -113,9 +114,84 @@ def _probe_github() -> ProbeOutcome:
         return ProbeOutcome(ok=False, message=f"Timed out after {_HTTP_TIMEOUT_SECONDS:.0f}s contacting api.github.com.")
 
 
+def _probe_jira() -> ProbeOutcome:
+    base_url = os.environ.get("JIRA_BASE_URL", "").strip().rstrip("/")
+    email = os.environ.get("JIRA_EMAIL", "").strip()
+    token = os.environ.get("JIRA_API_TOKEN", "").strip()
+    if not base_url or not email or not token:
+        return ProbeOutcome(ok=False, message="JIRA_BASE_URL / JIRA_EMAIL / JIRA_API_TOKEN not set in process env.")
+
+    auth_str = f"{email}:{token}"
+    auth_b64 = base64.b64encode(auth_str.encode("utf-8")).decode("ascii")
+
+    req = urllib.request.Request(
+        f"{base_url}/rest/api/3/myself",
+        headers={
+            "Authorization": f"Basic {auth_b64}",
+            "Accept": "application/json",
+            "User-Agent": _USER_AGENT,
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=_HTTP_TIMEOUT_SECONDS) as resp:
+            payload = json.loads(resp.read().decode("utf-8", errors="replace"))
+        display_name = payload.get("displayName") or email
+        return ProbeOutcome(ok=True, message=f"Jira authenticated successfully as {display_name}.")
+    except urllib.error.HTTPError as e:
+        body = ""
+        try:
+            body = e.read().decode("utf-8", errors="replace")
+        except Exception:
+            pass
+        return ProbeOutcome(ok=False, message=f"Jira returned HTTP {e.code}: {body or e.reason}")
+    except urllib.error.URLError as e:
+        reason = e.reason if isinstance(e.reason, str) else str(e.reason)
+        return ProbeOutcome(ok=False, message=f"Network error: {reason}")
+    except (socket.timeout, TimeoutError):
+        return ProbeOutcome(ok=False, message=f"Timed out after {_HTTP_TIMEOUT_SECONDS:.0f}s contacting Jira.")
+
+
+def _probe_bitbucket() -> ProbeOutcome:
+    username = os.environ.get("BITBUCKET_USERNAME", "").strip()
+    password = os.environ.get("BITBUCKET_APP_PASSWORD", "").strip()
+    if not username or not password:
+        return ProbeOutcome(ok=False, message="BITBUCKET_USERNAME / BITBUCKET_APP_PASSWORD not set in process env.")
+
+    auth_str = f"{username}:{password}"
+    auth_b64 = base64.b64encode(auth_str.encode("utf-8")).decode("ascii")
+
+    req = urllib.request.Request(
+        "https://api.bitbucket.org/2.0/user",
+        headers={
+            "Authorization": f"Basic {auth_b64}",
+            "Accept": "application/json",
+            "User-Agent": _USER_AGENT,
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=_HTTP_TIMEOUT_SECONDS) as resp:
+            payload = json.loads(resp.read().decode("utf-8", errors="replace"))
+        display_name = payload.get("display_name") or username
+        return ProbeOutcome(ok=True, message=f"Bitbucket authenticated successfully as {display_name}.")
+    except urllib.error.HTTPError as e:
+        body = ""
+        try:
+            body = e.read().decode("utf-8", errors="replace")
+        except Exception:
+            pass
+        return ProbeOutcome(ok=False, message=f"Bitbucket returned HTTP {e.code}: {body or e.reason}")
+    except urllib.error.URLError as e:
+        reason = e.reason if isinstance(e.reason, str) else str(e.reason)
+        return ProbeOutcome(ok=False, message=f"Network error: {reason}")
+    except (socket.timeout, TimeoutError):
+        return ProbeOutcome(ok=False, message=f"Timed out after {_HTTP_TIMEOUT_SECONDS:.0f}s contacting Bitbucket.")
+
+
 PROBES: dict[str, Callable[[], ProbeOutcome]] = {
     "gmail": _probe_gmail,
     "github": _probe_github,
+    "jira": _probe_jira,
+    "bitbucket": _probe_bitbucket,
 }
 
 

@@ -45,7 +45,7 @@ export function RecipeCard({ recipe }: { recipe: RecipeSummary }) {
           {recipe.tags.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-3">
               {recipe.tags.slice(0, 4).map((t) => (
-                <Badge key={t} variant="outline" className="text-[10px] font-normal">
+                <Badge key={t} variant="secondary" className="text-[10px] font-normal hover:bg-secondary/60 transition-colors">
                   {t}
                 </Badge>
               ))}

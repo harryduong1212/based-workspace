@@ -48,6 +48,18 @@ _SCHEMA = [
         PRIMARY KEY (recipe_id, input_name)
     )
     """,
+    """
+    CREATE TABLE IF NOT EXISTS routines (
+        id          TEXT PRIMARY KEY,
+        recipe_id   TEXT NOT NULL,
+        model_ref   TEXT NOT NULL,
+        inputs_json TEXT NOT NULL,
+        schedule    TEXT NOT NULL,
+        enabled     INTEGER NOT NULL DEFAULT 1,
+        created_at  TEXT NOT NULL,
+        updated_at  TEXT NOT NULL
+    )
+    """,
 ]
 
 
@@ -67,6 +79,17 @@ class RunRow:
     output: str
     started_at: datetime
     ended_at: datetime | None
+
+@dataclass(frozen=True)
+class RoutineRow:
+    id: str
+    recipe_id: str
+    model_ref: str
+    inputs: dict[str, str]
+    schedule: str
+    enabled: bool
+    created_at: datetime
+    updated_at: datetime
 
 
 def _resolve_path(workspace_root: Path) -> Path:
@@ -149,6 +172,18 @@ def _row_to_run(row: sqlite3.Row) -> RunRow:
         ended_at=_parse_iso(row["ended_at"]),
     )
 
+def _row_to_routine(row: sqlite3.Row) -> RoutineRow:
+    return RoutineRow(
+        id=row["id"],
+        recipe_id=row["recipe_id"],
+        model_ref=row["model_ref"],
+        inputs=json.loads(row["inputs_json"]) if row["inputs_json"] else {},
+        schedule=row["schedule"],
+        enabled=bool(row["enabled"]),
+        created_at=datetime.fromisoformat(row["created_at"]),
+        updated_at=datetime.fromisoformat(row["updated_at"]),
+    )
+
 
 def insert_run(
     *,
@@ -222,3 +257,42 @@ def get_recipe_inputs(recipe_id: str) -> dict[str, str]:
             (recipe_id,),
         ).fetchall()
     return {r["input_name"]: r["value"] for r in rows}
+
+def upsert_routine(
+    *,
+    id: str,
+    recipe_id: str,
+    model_ref: str,
+    inputs: dict[str, str],
+    schedule: str,
+    enabled: bool,
+) -> None:
+    now = _now_iso()
+    with _cursor() as cur:
+        # Check if exists
+        exists = cur.execute("SELECT 1 FROM routines WHERE id=?", (id,)).fetchone()
+        if exists:
+            cur.execute(
+                "UPDATE routines SET recipe_id=?, model_ref=?, inputs_json=?, schedule=?, enabled=?, updated_at=? WHERE id=?",
+                (recipe_id, model_ref, json.dumps(inputs), schedule, 1 if enabled else 0, now, id)
+            )
+        else:
+            cur.execute(
+                "INSERT INTO routines (id, recipe_id, model_ref, inputs_json, schedule, enabled, created_at, updated_at) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                (id, recipe_id, model_ref, json.dumps(inputs), schedule, 1 if enabled else 0, now, now)
+            )
+
+def get_routine(id: str) -> RoutineRow | None:
+    with _cursor() as cur:
+        row = cur.execute("SELECT * FROM routines WHERE id=?", (id,)).fetchone()
+    return _row_to_routine(row) if row else None
+
+def list_routines() -> list[RoutineRow]:
+    with _cursor() as cur:
+        rows = cur.execute("SELECT * FROM routines ORDER BY created_at DESC").fetchall()
+    return [_row_to_routine(r) for r in rows]
+
+def delete_routine(id: str) -> None:
+    with _cursor() as cur:
+        cur.execute("DELETE FROM routines WHERE id=?", (id,))

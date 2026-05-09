@@ -16,8 +16,10 @@ import os
 from typing import Any
 
 from fastapi import APIRouter, HTTPException, Request
+import uuid
 
 from . import db
+from . import scheduler
 from .config import Config
 from .connector_check import check_connector_env
 from .connector_probes import has_probe, run_probe
@@ -103,6 +105,64 @@ def create_api_router() -> APIRouter:
             "outputs": list(fm.get("outputs") or []),
             "rendered_body": render_markdown(body),
             "relative_path": str(rel).replace("\\", "/"),
+            "raw_content": path.read_text(encoding="utf-8"),
+        }
+
+    @router.post("/recipes/new")
+    async def recipe_new_submit(request: Request) -> dict[str, Any]:
+        from .recipe_skeleton import SUPPORTED_EXECUTION_TYPES, build_skeleton
+        from .recipe_writer import write_recipe
+        cfg = _cfg(request)
+        
+        req_json = await request.json()
+        values = {
+            "id": str(req_json.get("id") or "").strip(),
+            "name": str(req_json.get("name") or "").strip(),
+            "description": str(req_json.get("description") or "").strip(),
+            "audience": str(req_json.get("audience") or "tech").strip(),
+            "execution_type": str(req_json.get("execution_type") or "prompt").strip(),
+            "tags": str(req_json.get("tags") or "").strip(),
+        }
+
+        if not values["id"]:
+            raise HTTPException(status_code=400, detail="id is required")
+        if values["execution_type"] not in SUPPORTED_EXECUTION_TYPES:
+            raise HTTPException(status_code=400, detail=f"execution_type must be one of {SUPPORTED_EXECUTION_TYPES}")
+        if (cfg.recipes_dir / f"{values['id']}.md").exists():
+            raise HTTPException(status_code=400, detail=f"recipe {values['id']!r} already exists")
+
+        tags = [t.strip() for t in values["tags"].split(",") if t.strip()]
+        try:
+            content = build_skeleton(
+                recipe_id=values["id"],
+                name=values["name"] or values["id"],
+                description=values["description"] or "TODO: describe what this recipe does.",
+                audience=values["audience"] or "tech",
+                tags=tags,
+                execution_type=values["execution_type"],
+            )
+        except ValueError as e:
+            raise HTTPException(status_code=400, detail=str(e))
+
+        result = write_recipe(cfg, values["id"], content)
+        if not result.ok:
+            raise HTTPException(status_code=400, detail=result.message)
+        return {"id": values["id"]}
+
+    @router.post("/recipes/{recipe_id}/edit")
+    async def recipe_edit_save(request: Request, recipe_id: str) -> dict[str, Any]:
+        from .recipe_writer import write_recipe
+        cfg = _cfg(request)
+        if get_recipe(cfg, recipe_id) is None:
+            raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
+            
+        req_json = await request.json()
+        content = str(req_json.get("content") or "")
+        result = write_recipe(cfg, recipe_id, content)
+        return {
+            "ok": result.ok,
+            "message": result.message,
+            "warnings": result.warnings,
         }
 
     @router.get("/connectors/{connector_id}")
@@ -199,6 +259,66 @@ def create_api_router() -> APIRouter:
             for r in rows
         ]
 
+    @router.get("/routines")
+    def list_routines(request: Request) -> list[dict[str, Any]]:
+        del request
+        rows = db.list_routines()
+        return [
+            {
+                "id": r.id,
+                "recipe_id": r.recipe_id,
+                "model_ref": r.model_ref,
+                "inputs": r.inputs,
+                "schedule": r.schedule,
+                "enabled": r.enabled,
+                "created_at": r.created_at.isoformat(timespec="seconds"),
+                "updated_at": r.updated_at.isoformat(timespec="seconds"),
+            }
+            for r in rows
+        ]
+
+    @router.post("/routines")
+    async def save_routine(request: Request) -> dict[str, Any]:
+        cfg = _cfg(request)
+        req_json = await request.json()
+        
+        routine_id = str(req_json.get("id") or "").strip() or uuid.uuid4().hex[:12]
+        recipe_id = str(req_json.get("recipe_id") or "").strip()
+        model_ref = str(req_json.get("model_ref") or "").strip()
+        schedule = str(req_json.get("schedule") or "").strip()
+        enabled = bool(req_json.get("enabled", True))
+        inputs = req_json.get("inputs") or {}
+        
+        if not recipe_id or not schedule:
+            raise HTTPException(status_code=400, detail="recipe_id and schedule are required")
+            
+        try:
+            from apscheduler.triggers.cron import CronTrigger
+            CronTrigger.from_crontab(schedule)
+        except ValueError as e:
+            raise HTTPException(status_code=400, detail=f"Invalid cron schedule: {e}")
+            
+        if get_recipe(cfg, recipe_id) is None:
+            raise HTTPException(status_code=400, detail=f"recipe not found: {recipe_id}")
+            
+        db.upsert_routine(
+            id=routine_id,
+            recipe_id=recipe_id,
+            model_ref=model_ref,
+            inputs=inputs,
+            schedule=schedule,
+            enabled=enabled,
+        )
+        scheduler.sync_routine(cfg, routine_id)
+        return {"id": routine_id}
+
+    @router.delete("/routines/{routine_id}")
+    def delete_routine(request: Request, routine_id: str) -> dict[str, Any]:
+        cfg = _cfg(request)
+        db.delete_routine(routine_id)
+        scheduler.sync_routine(cfg, routine_id)
+        return {"ok": True}
+
     @router.get("/runs/{run_id}")
     def get_run(request: Request, run_id: str) -> dict[str, Any]:
         del request
@@ -223,6 +343,36 @@ def create_api_router() -> APIRouter:
         if get_recipe(cfg, recipe_id) is None:
             raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
         return db.get_recipe_inputs(recipe_id)
+
+    @router.get("/providers")
+    def list_providers(request: Request, recipe_default: str | None = None) -> dict[str, Any]:
+        from .provider_options import list_provider_options, default_model_ref
+        opts = list_provider_options(recipe_default)
+        return {
+            "options": [
+                {"provider": o.provider, "models": o.models, "available": o.available}
+                for o in opts
+            ],
+            "default_model": default_model_ref(opts, recipe_default)
+        }
+
+    @router.post("/recipes/{recipe_id}/run")
+    async def recipe_run_submit(request: Request, recipe_id: str) -> dict[str, Any]:
+        from .runs import start_run
+        cfg = _cfg(request)
+        result = get_recipe(cfg, recipe_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
+        fm, body, _path = result
+        
+        req_json = await request.json()
+        model_ref = str(req_json.get("model_ref") or "").strip()
+        inputs = req_json.get("inputs") or {}
+        if not isinstance(inputs, dict):
+            raise HTTPException(status_code=400, detail="`inputs` must be a dictionary")
+            
+        run = start_run(cfg, recipe_id, fm, body, {str(k): str(v) for k, v in inputs.items()}, model_ref)
+        return {"id": run.id}
 
     @router.post("/connectors/{connector_id}/test")
     def connector_test(request: Request, connector_id: str) -> dict[str, Any]:

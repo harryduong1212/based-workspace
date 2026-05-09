@@ -13,14 +13,9 @@ const config: NextConfig = {
   // one-by-one as each section gets a real Next.js page.
   async rewrites() {
     return {
-      beforeFiles: [
-        { source: "/recipes/new", destination: `${FASTAPI_BASE}/recipes/new` },
-      ],
+      beforeFiles: [],
       afterFiles: [
         { source: "/api/:path*", destination: `${FASTAPI_BASE}/api/:path*` },
-        { source: "/recipes/:id/run", destination: `${FASTAPI_BASE}/recipes/:id/run` },
-        { source: "/recipes/:id/edit", destination: `${FASTAPI_BASE}/recipes/:id/edit` },
-        { source: "/runs/:path*", destination: `${FASTAPI_BASE}/runs/:path*` },
       ],
       fallback: [],
     };

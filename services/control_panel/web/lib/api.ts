@@ -71,6 +71,7 @@ export type RecipeDetail = {
   outputs: RecipeOutput[];
   rendered_body: string;
   relative_path: string;
+  raw_content?: string;
 };
 
 export type ConnectorDetail = {
@@ -122,6 +123,32 @@ export type RunDetail = RunSummary & {
   output: string;
 };
 
+export type ProviderOption = {
+  provider: string;
+  models: string[];
+  available: boolean;
+};
+
+export type ProvidersResponse = {
+  options: ProviderOption[];
+  default_model: string;
+};
+
+export type RunResponse = {
+  id: string;
+};
+
+export type Routine = {
+  id: string;
+  recipe_id: string;
+  model_ref: string;
+  inputs: Record<string, string>;
+  schedule: string;
+  enabled: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
 async function getJson<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url(path), {
     ...init,
@@ -156,4 +183,40 @@ export const api = {
     return getJson<RunSummary[]>(`/api/v1/runs${qs ? `?${qs}` : ""}`);
   },
   run: (id: string) => getJson<RunDetail>(`/api/v1/runs/${id}`),
+  providers: (recipe_default?: string) => {
+    const q = new URLSearchParams();
+    if (recipe_default) q.set("recipe_default", recipe_default);
+    const qs = q.toString();
+    return getJson<ProvidersResponse>(`/api/v1/providers${qs ? `?${qs}` : ""}`);
+  },
+  lastInputs: (id: string) => getJson<Record<string, string>>(`/api/v1/recipes/${id}/last-inputs`),
+  startRun: (id: string, model_ref: string, inputs: Record<string, string>) =>
+    getJson<RunResponse>(`/api/v1/recipes/${id}/run`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ model_ref, inputs }),
+    }),
+  createRecipe: (data: Record<string, string>) =>
+    getJson<{ id: string }>(`/api/v1/recipes/new`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }),
+  saveRecipe: (id: string, content: string) =>
+    getJson<{ ok: boolean; message: string; warnings: string[] }>(`/api/v1/recipes/${id}/edit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content }),
+    }),
+  routines: () => getJson<Routine[]>("/api/v1/routines"),
+  saveRoutine: (routine: Partial<Routine> & { recipe_id: string; schedule: string }) =>
+    getJson<{ id: string }>("/api/v1/routines", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(routine),
+    }),
+  deleteRoutine: (id: string) =>
+    getJson<{ ok: boolean }>(`/api/v1/routines/${id}`, {
+      method: "DELETE",
+    }),
 };

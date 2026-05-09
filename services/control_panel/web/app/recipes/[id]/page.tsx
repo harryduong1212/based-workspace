@@ -4,7 +4,7 @@ import { ChevronLeft } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { RecipeTabs } from "@/components/recipe-tabs";
+import { RecipeActions } from "@/components/recipe-actions";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -53,7 +53,9 @@ export default async function RecipeOverviewPage({
         </div>
       </div>
 
-      <RecipeTabs recipeId={recipe.id} active="overview" />
+      <div className="mt-6">
+        <RecipeActions recipeId={recipe.id} />
+      </div>
 
       <div className="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] gap-6">
         <article
