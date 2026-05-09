@@ -1,17 +1,17 @@
 {% extends "recipe_detail.html" %}
 {% block tab_content %}
-<form method="post" action="/recipes/{{ recipe.id }}/run" class="run-form">
+<form method="post" action="/recipes/{{ recipe.id }}/run" class="space-y-5">
   {% if not provider_options | selectattr('available') | list %}
-  <article class="warning">
-    <strong>No providers available.</strong>
-    Set at least one of <code>LLAMA_SWAP_URL</code> (with a running daemon),
-    <code>GEMINI_API_KEY</code>, or <code>ANTHROPIC_API_KEY</code> in your <code>.env</code>.
-  </article>
+  <div class="rounded-md border border-amber-300 bg-amber-50 dark:border-amber-700 dark:bg-amber-500/10 p-4 text-sm">
+    <p class="font-medium text-amber-800 dark:text-amber-200">No providers available.</p>
+    <p class="text-amber-700 dark:text-amber-300/80 mt-1">Set at least one of <code class="font-mono">LLAMA_SWAP_URL</code> (with a running daemon), <code class="font-mono">GEMINI_API_KEY</code>, or <code class="font-mono">ANTHROPIC_API_KEY</code> in your <code class="font-mono">.env</code>.</p>
+  </div>
   {% endif %}
 
-  <label for="model_ref">
-    Provider / model
-    <select name="model_ref" id="model_ref">
+  <div>
+    <label for="model_ref" class="block text-sm font-medium mb-1.5">Provider / model</label>
+    <select name="model_ref" id="model_ref"
+            class="block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
       {% for opt in provider_options %}
         {% if opt.models %}
         <optgroup label="{{ opt.provider }}{% if not opt.available %} (no key set){% endif %}"{% if not opt.available %} disabled{% endif %}>
@@ -27,36 +27,47 @@
         {% endif %}
       {% endfor %}
     </select>
-    <small>The recipe declares <code>{{ execution_model or '(none)' }}</code>. Pick from the dropdown, or type any <code>provider/model</code> below to override.</small>
-  </label>
+    <p class="mt-1 text-xs text-zinc-500">Recipe declares <code class="font-mono">{{ execution_model or '(none)' }}</code>. Pick from the list, or type any <code class="font-mono">provider/model</code> below to override.</p>
+  </div>
 
-  <label for="model_override">
-    Or model id (free-text override)
+  <div>
+    <label for="model_override" class="block text-sm font-medium mb-1.5">Or model id (free-text override)</label>
     <input type="text" name="model_override" id="model_override"
-           placeholder="e.g. local/qwen2.5-coder-14b · anthropic/claude-opus-4-7 · gemini/gemini-2.0-flash">
-    <small>When non-empty this wins over the dropdown. Bare ids (no <code>/</code>) default to the local provider.</small>
-  </label>
+           placeholder="local/qwen2.5-coder-14b · anthropic/claude-opus-4-7 · gemini/gemini-2.0-flash"
+           class="block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm font-mono shadow-sm placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-indigo-500">
+    <p class="mt-1 text-xs text-zinc-500">When non-empty this wins over the dropdown. Bare ids (no <code class="font-mono">/</code>) default to the local provider.</p>
+  </div>
 
   {% if inputs %}
-    {% for inp in inputs %}
-    <label for="input__{{ inp.name }}">
-      {{ inp.name }}{% if inp.required %} *{% endif %}
-      <textarea name="input__{{ inp.name }}" id="input__{{ inp.name }}" rows="3"
-                placeholder="{{ inp.description or '' }}"
-                {% if inp.required %}required{% endif %}></textarea>
-      {% if inp.description %}<small>{{ inp.description }}</small>{% endif %}
-    </label>
-    {% endfor %}
+    <div class="space-y-4">
+      {% for inp in inputs %}
+      <div>
+        <label for="input__{{ inp.name }}" class="block text-sm font-medium mb-1.5">
+          {{ inp.name }}{% if inp.required %} <span class="text-rose-500">*</span>{% endif %}
+          {% if inp.type %}<span class="ml-1 text-xs font-normal text-zinc-400">({{ inp.type }})</span>{% endif %}
+        </label>
+        <textarea name="input__{{ inp.name }}" id="input__{{ inp.name }}" rows="3"
+                  placeholder="{{ inp.description or '' }}"
+                  {% if inp.required %}required{% endif %}
+                  class="block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm font-mono shadow-sm placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-indigo-500">{{ (last_inputs or {}).get(inp.name, '') }}</textarea>
+        {% if inp.description %}
+          <p class="mt-1 text-xs text-zinc-500">{{ inp.description }}{% if (last_inputs or {}).get(inp.name) %} <span class="text-zinc-400">· prefilled from your last run</span>{% endif %}</p>
+        {% elif (last_inputs or {}).get(inp.name) %}
+          <p class="mt-1 text-xs text-zinc-400">prefilled from your last run</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
   {% else %}
-    <p><em>This recipe declares no inputs.</em></p>
+    <p class="text-sm text-zinc-500 italic">This recipe declares no inputs.</p>
   {% endif %}
 
-  <button type="submit">Run</button>
+  <div class="pt-2">
+    <button type="submit"
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium shadow-sm">
+      <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+      Run
+    </button>
+  </div>
 </form>
-
-<style>
-  .run-form label { display: block; margin-bottom: 1rem; }
-  .run-form textarea { font-family: var(--pico-font-family-monospace); font-size: 0.9rem; }
-  .run-form .warning { background: var(--pico-form-element-invalid-background-color); border: 1px solid var(--pico-form-element-invalid-border-color); padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 0.4rem; }
-</style>
 {% endblock %}

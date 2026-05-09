@@ -1,34 +1,62 @@
 {% extends "base.html" %}
 {% block title %}Run · {{ run.recipe_id }}{% endblock %}
-{% block content %}
-<header>
-  <div class="crumbs"><a href="/recipes/{{ run.recipe_id }}">← {{ run.recipe_id }}</a></div>
-  <hgroup>
-    <h2>Run · {{ run.recipe_id }}</h2>
-    <p>Model: <code>{{ run.model_ref }}</code> · Started: {{ run.started_at.isoformat(timespec='seconds') }} · Run ID: <code>{{ run.id }}</code></p>
-  </hgroup>
-</header>
+{% block breadcrumb %}
+<a href="/" class="hover:text-zinc-700 dark:hover:text-zinc-300">Recipes</a>
+<span class="mx-1.5 text-zinc-400">/</span>
+<a href="/recipes/{{ run.recipe_id }}" class="hover:text-zinc-700 dark:hover:text-zinc-300">{{ run.recipe_id }}</a>
+<span class="mx-1.5 text-zinc-400">/</span>
+<span class="text-zinc-700 dark:text-zinc-300 font-medium">run</span>
+{% endblock %}
 
-<div id="status-line">
-  <span class="pill {% if run.status == 'done' %}ok{% elif run.status == 'error' %}err{% else %}warn{% endif %}" id="run-status">{{ run.status }}</span>
+{% block content %}
+<div class="mb-5">
+  <div class="flex items-center gap-3">
+    <h1 class="text-2xl font-semibold tracking-tight">Run · {{ run.recipe_id }}</h1>
+    <span id="run-status"
+          class="inline-flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full font-medium ring-1 ring-inset
+                 {% if run.status == 'done' %}bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/30
+                 {% elif run.status == 'error' %}bg-rose-50 text-rose-700 ring-rose-600/20 dark:bg-rose-500/10 dark:text-rose-300 dark:ring-rose-500/30
+                 {% else %}bg-amber-50 text-amber-700 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30{% endif %}">
+      {% if run.status == 'running' %}<span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse"></span>{% endif %}
+      {{ run.status }}
+    </span>
+  </div>
+  <p class="text-sm text-zinc-500 mt-1">
+    Model: <code class="font-mono">{{ run.model_ref }}</code>
+    · Started: <span class="font-mono">{{ run.started_at.isoformat(timespec='seconds') }}</span>
+    · Run ID: <code class="font-mono">{{ run.id }}</code>
+  </p>
 </div>
 
-<article id="output-card">
-  <pre id="run-output" style="margin:0;white-space:pre-wrap;word-break:break-word;min-height:6rem;">{{ run.output }}</pre>
-</article>
+<div id="output-card" class="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-900 dark:bg-zinc-950 text-zinc-100 shadow-sm">
+  <div class="px-4 py-2 border-b border-zinc-800 flex items-center gap-2 text-xs text-zinc-400">
+    <span class="flex gap-1">
+      <span class="h-2.5 w-2.5 rounded-full bg-rose-500/70"></span>
+      <span class="h-2.5 w-2.5 rounded-full bg-amber-500/70"></span>
+      <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/70"></span>
+    </span>
+    <span class="ml-2">output</span>
+  </div>
+  <pre id="run-output" class="p-4 m-0 text-sm leading-relaxed whitespace-pre-wrap break-words font-mono min-h-[8rem] max-h-[70vh] overflow-y-auto">{{ run.output }}</pre>
+</div>
 
 {% if run.error %}
-<article style="background: var(--pico-form-element-invalid-background-color); border: 1px solid var(--pico-form-element-invalid-border-color); margin-top: 1rem;">
-  <strong>Error:</strong> <pre style="margin:0;white-space:pre-wrap;">{{ run.error }}</pre>
-</article>
+<div class="mt-4 rounded-md border border-rose-300 bg-rose-50 dark:border-rose-700 dark:bg-rose-500/10 p-4 text-sm">
+  <p class="font-medium text-rose-800 dark:text-rose-200">Error</p>
+  <pre class="mt-1 whitespace-pre-wrap text-rose-700 dark:text-rose-300/90 font-mono text-xs">{{ run.error }}</pre>
+</div>
 {% endif %}
 
-<details style="margin-top: 1.5rem;">
-  <summary>Inputs</summary>
-  <dl>
+<details class="mt-6 group">
+  <summary class="cursor-pointer text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 select-none">
+    <span class="inline-block transition group-open:rotate-90">▸</span> Inputs
+  </summary>
+  <dl class="mt-3 space-y-3">
     {% for k, v in run.inputs.items() %}
-    <dt><code>{{ k }}</code></dt>
-    <dd><pre style="margin:0;white-space:pre-wrap;font-size:0.85rem;">{{ v }}</pre></dd>
+    <div class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-3">
+      <dt class="text-xs font-semibold text-zinc-500 mb-1"><code class="font-mono">{{ k }}</code></dt>
+      <dd><pre class="m-0 whitespace-pre-wrap text-xs font-mono text-zinc-700 dark:text-zinc-300">{{ v }}</pre></dd>
+    </div>
     {% endfor %}
   </dl>
 </details>
@@ -44,26 +72,29 @@
     try {
       const piece = JSON.parse(e.data);
       out.textContent += piece;
-      window.scrollTo(0, document.body.scrollHeight);
-    } catch (err) { /* ignore malformed event */ }
+      out.scrollTop = out.scrollHeight;
+    } catch (err) { /* ignore */ }
   });
 
   sse.addEventListener('done', (e) => {
     sse.close();
     let payload = {};
     try { payload = JSON.parse(e.data); } catch (err) {}
-    status.className = 'pill ' + (payload.status === 'error' ? 'err' : 'ok');
+    const ok = payload.status !== 'error';
+    status.className = 'inline-flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full font-medium ring-1 ring-inset ' +
+      (ok ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/30'
+          : 'bg-rose-50 text-rose-700 ring-rose-600/20 dark:bg-rose-500/10 dark:text-rose-300 dark:ring-rose-500/30');
     status.textContent = payload.status || 'done';
     if (payload.error) {
-      const err = document.createElement('article');
-      err.style.cssText = 'margin-top:1rem;background:var(--pico-form-element-invalid-background-color);border:1px solid var(--pico-form-element-invalid-border-color);';
-      err.innerHTML = '<strong>Error:</strong> <pre style="margin:0;white-space:pre-wrap;"></pre>';
+      const err = document.createElement('div');
+      err.className = 'mt-4 rounded-md border border-rose-300 bg-rose-50 dark:border-rose-700 dark:bg-rose-500/10 p-4 text-sm';
+      err.innerHTML = '<p class="font-medium text-rose-800 dark:text-rose-200">Error</p><pre class="mt-1 whitespace-pre-wrap text-rose-700 dark:text-rose-300/90 font-mono text-xs"></pre>';
       err.querySelector('pre').textContent = payload.error;
       document.getElementById('output-card').after(err);
     }
   });
 
-  sse.onerror = () => { /* let the browser auto-retry; don't toggle status */ };
+  sse.onerror = () => { /* let the browser auto-retry */ };
 })();
 </script>
 {% endif %}

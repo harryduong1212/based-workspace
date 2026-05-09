@@ -1,10 +1,13 @@
-"""In-memory run registry + threaded dispatch.
+"""Run registry — SQLite-backed for durability across restarts, with an
+in-memory cache for active streaming.
 
 Each "run" is a single call to `dispatch_prompt`. The dispatcher writes
 streamed chunks to a `_ChunkSink` which forwards them to a queue; the SSE
-endpoint pulls from the queue. Run state is kept in a process-local dict —
-the panel is single-user / localhost so this is fine; switch to Redis or a
-DB if we ever multi-tenant.
+endpoint pulls from the queue. Active-run state lives in a process-local
+dict; on completion the row is finalized in SQLite (`db.finish_run`).
+After a server restart, `get_run` hydrates rows from SQLite into read-only
+Run objects (`_persisted_only=True`) so the SSE stream replays the saved
+output as a single chunk.
 
 Threading model:
   - One worker thread per run, daemon=True so the process can exit cleanly.
@@ -20,9 +23,9 @@ import threading
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any, Iterator
 
+from . import db
 from .config import Config
 
 
@@ -33,9 +36,11 @@ class Run:
     model_ref: str
     inputs: dict[str, str]
     started_at: datetime
-    status: str = "running"  # running | done | error
+    status: str = "running"  # running | done | error | abandoned
     output: str = ""
     error: str | None = None
+    ended_at: datetime | None = None
+    _persisted_only: bool = False
     _queue: "queue.Queue[str | None]" = field(default_factory=queue.Queue)
     _lock: threading.Lock = field(default_factory=threading.Lock)
     _done: threading.Event = field(default_factory=threading.Event)
@@ -87,6 +92,14 @@ def start_run(
         inputs=dict(inputs),
         started_at=datetime.now(timezone.utc),
     )
+    db.insert_run(
+        run_id=run.id,
+        recipe_id=recipe_id,
+        model_ref=model_ref,
+        inputs=dict(inputs),
+        started_at=run.started_at,
+    )
+    db.save_recipe_inputs(recipe_id, dict(inputs))
     with _runs_lock:
         _runs[run.id] = run
 
@@ -117,6 +130,16 @@ def start_run(
             run.error = f"{type(e).__name__}: {e}"
             run.status = "error"
         finally:
+            run.ended_at = datetime.now(timezone.utc)
+            try:
+                db.finish_run(
+                    run_id=run.id,
+                    status=run.status,
+                    output=run.output,
+                    error=run.error,
+                )
+            except Exception:
+                pass  # never let persistence break the streaming finalization
             run._queue.put(None)
             run._done.set()
 
@@ -125,12 +148,40 @@ def start_run(
 
 
 def get_run(run_id: str) -> Run | None:
+    """Return a Run for `run_id`. Active runs come from the in-memory cache;
+    older runs are hydrated from SQLite as read-only objects."""
     with _runs_lock:
-        return _runs.get(run_id)
+        cached = _runs.get(run_id)
+    if cached is not None:
+        return cached
+    row = db.get_run_row(run_id)
+    if row is None:
+        return None
+    run = Run(
+        id=row.id,
+        recipe_id=row.recipe_id,
+        model_ref=row.model_ref,
+        inputs=dict(row.inputs),
+        started_at=row.started_at,
+        status=row.status,
+        output=row.output,
+        error=row.error,
+        ended_at=row.ended_at,
+        _persisted_only=True,
+    )
+    run._done.set()
+    return run
 
 
 def stream_chunks(run: Run) -> Iterator[str]:
-    """Yield chunks as they arrive; stop when the sentinel arrives."""
+    """Yield chunks as they arrive; stop when the sentinel arrives.
+
+    For runs hydrated from the DB (`_persisted_only`), replay the full saved
+    output as a single chunk and return — there's no live queue to drain."""
+    if run._persisted_only:
+        if run.output:
+            yield run.output
+        return
     while True:
         chunk = run._queue.get()
         if chunk is None:

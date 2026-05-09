@@ -1,13 +1,13 @@
 ---
 id: daily-briefing
 name: Daily Briefing
-description: Morning summary of your Jira tickets and Bitbucket PRs.
+description: Morning summary of your Jira tickets, Bitbucket PRs, and Gmail inbox.
 audience: both
 version: 0.1.0
 status: experimental
 cost: low
 requires_human_review: false
-tags: [briefing, jira, bitbucket, daily]
+tags: [briefing, jira, bitbucket, gmail, daily]
 
 requires_skills:
   - debrief-teacher
@@ -15,6 +15,7 @@ requires_workflows: []
 requires_connectors:
   - jira
   - bitbucket
+  - gmail
 requires_mcp:
   - postgres-memory
 requires_env:
@@ -45,15 +46,16 @@ execution:
 ---
 
 ## What this does
-Pulls your open Jira tickets and pending Bitbucket pull requests, summarizes what's blocking and what's next, and delivers the result to your inbox or chat. Runs every morning at 8am, or on demand.
+Pulls your open Jira tickets, pending Bitbucket pull requests, and unread/important Gmail threads, then summarizes what's blocking and what's next. Runs every morning at 8am, or on demand.
 
 ## Who it's for
-Anyone who starts the day reconciling tickets and reviews across multiple tools. No technical setup beyond connecting your Jira and Bitbucket accounts once.
+Anyone who starts the day reconciling tickets, reviews, and email across multiple tools. No technical setup beyond connecting your Jira, Bitbucket, and Gmail accounts once.
 
 ## What you need
 - A Jira account (cloud or server)
 - A Bitbucket account
-- One-time setup: `python scripts/setup_env.py` to store credentials
+- A Gmail account with 2FA + an app password
+- One-time setup: `python scripts/setup_env.py` to store credentials, or use the Control Panel's per-connector env editor
 
 ## How to run
 - **In Antigravity or Claude:** say *"morning briefing"* or *"daily summary"*.

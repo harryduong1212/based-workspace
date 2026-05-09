@@ -1,17 +1,17 @@
 {% if not ok %}
-<div class="err">
-  <strong>Save failed.</strong>
-  <pre>{{ message }}</pre>
+<div class="rounded-md border border-rose-300 bg-rose-50 dark:border-rose-700 dark:bg-rose-500/10 p-4 err">
+  <p class="font-medium text-rose-800 dark:text-rose-200">Save failed.</p>
+  <pre class="mt-1 whitespace-pre-wrap text-xs font-mono text-rose-700 dark:text-rose-300/90">{{ message }}</pre>
 </div>
 {% elif warnings %}
-<div class="warn">
-  <strong>Saved with audit warnings.</strong>
-  <pre>{% for w in warnings %}{{ w }}
+<div class="rounded-md border border-amber-300 bg-amber-50 dark:border-amber-700 dark:bg-amber-500/10 p-4 warn">
+  <p class="font-medium text-amber-800 dark:text-amber-200">Saved with audit warnings.</p>
+  <pre class="mt-1 whitespace-pre-wrap text-xs font-mono text-amber-800/90 dark:text-amber-200/90">{% for w in warnings %}{{ w }}
 {% endfor %}</pre>
 </div>
 {% else %}
-<div class="ok">
-  <strong>Saved.</strong>
-  <pre>{{ message }}</pre>
+<div class="rounded-md border border-emerald-300 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-500/10 p-4 ok">
+  <p class="font-medium text-emerald-800 dark:text-emerald-200">Saved.</p>
+  <pre class="mt-1 whitespace-pre-wrap text-xs font-mono text-emerald-700 dark:text-emerald-300/90">{{ message }}</pre>
 </div>
 {% endif %}

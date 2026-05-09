@@ -1,87 +1,85 @@
 {% extends "base.html" %}
 {% block title %}{{ connector.name }} (connector){% endblock %}
-
-{% block head_extra %}
-<style>
-  .recipe-header { margin-bottom: 0.5rem; }
-  .recipe-header .crumbs { font-size: 0.85rem; margin-bottom: 0.25rem; }
-  .detail-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
-  @media (min-width: 1000px) { .detail-grid { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); } }
-  .meta-card { background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: 0.4rem; padding: 0.85rem 1rem; }
-  .meta-card h4 { margin-top: 0; font-size: 0.95rem; }
-  .meta-card dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 0.85rem; }
-  .meta-card dt { font-weight: 600; color: var(--pico-muted-color); font-size: 0.85rem; }
-  .meta-card dd { margin: 0; word-break: break-word; }
-  .body-rendered h1, .body-rendered h2, .body-rendered h3 { margin-top: 1.4rem; }
-  .body-rendered code { font-size: 0.92em; }
-  .body-rendered pre { padding: 0.75rem 1rem; overflow-x: auto; }
-  .test-result { margin-top: 0.75rem; }
-  .test-result .ok { color: #1c6e3a; }
-  .test-result .err { color: #a8302a; }
-</style>
+{% block breadcrumb %}
+<a href="/" class="hover:text-zinc-700 dark:hover:text-zinc-300">Connectors</a>
+<span class="mx-1.5 text-zinc-400">/</span>
+<span class="text-zinc-700 dark:text-zinc-300 font-medium truncate">{{ connector.id }}</span>
 {% endblock %}
 
-{% block content %}
-<header class="recipe-header">
-  <div class="crumbs"><a href="/">← all connectors</a></div>
-  <hgroup>
-    <h2>{{ connector.name }} <small style="color: var(--pico-muted-color); font-weight: normal;">(connector)</small></h2>
-    <p>{{ connector.description or '(no description)' }}</p>
-  </hgroup>
-  <div class="meta">
-    <span class="pill {% if status == 'stable' %}ok{% elif status == 'experimental' %}warn{% else %}muted{% endif %}">{{ status or 'unknown' }}</span>
-    {% if auth_type %}<span class="pill muted">{{ auth_type }}</span>{% endif %}
-    {% for t in tags %}<span class="pill">{{ t }}</span>{% endfor %}
-  </div>
-</header>
+{% macro pill(text, kind='default') -%}
+  {%- set palette = {
+    'ok':       'bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/30',
+    'warn':     'bg-amber-50 text-amber-700 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30',
+    'err':      'bg-rose-50 text-rose-700 ring-rose-600/20 dark:bg-rose-500/10 dark:text-rose-300 dark:ring-rose-500/30',
+    'tag':      'bg-indigo-50 text-indigo-700 ring-indigo-600/20 dark:bg-indigo-500/10 dark:text-indigo-300 dark:ring-indigo-500/30',
+    'kind':     'bg-violet-50 text-violet-700 ring-violet-600/20 dark:bg-violet-500/10 dark:text-violet-300 dark:ring-violet-500/30',
+    'default':  'bg-zinc-100 text-zinc-700 ring-zinc-600/20 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700',
+  } -%}
+  <span class="inline-flex items-center px-2 py-0.5 text-[11px] rounded-full font-medium ring-1 ring-inset {{ palette[kind] }}">{{ text }}</span>
+{%- endmacro %}
 
-<div class="detail-grid">
-  <article>
-    <div class="body-rendered">
-      {{ rendered_body | safe }}
-    </div>
+{% block content %}
+<div class="mb-6">
+  <div class="flex items-baseline gap-2">
+    <h1 class="text-2xl font-semibold tracking-tight">{{ connector.name }}</h1>
+    <span class="text-sm text-zinc-400">connector</span>
+  </div>
+  <p class="text-sm text-zinc-500 mt-1">{{ connector.description or '(no description)' }}</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    {{ pill(status or 'unknown', 'ok' if status == 'stable' else ('warn' if status == 'experimental' else 'default')) }}
+    {% if auth_type %}{{ pill(auth_type, 'kind') }}{% endif %}
+    {% for t in tags %}{{ pill(t, 'tag') }}{% endfor %}
+  </div>
+</div>
+
+<div class="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] gap-6">
+  <article class="min-w-0 prose prose-zinc dark:prose-invert max-w-none">
+    {{ rendered_body | safe }}
   </article>
 
-  <aside>
-    <div class="meta-card">
-      <h4>Frontmatter</h4>
-      <dl>
-        <dt>id</dt><dd><code>{{ connector.id }}</code></dd>
-        {% if auth_type %}<dt>auth</dt><dd>{{ auth_type }}</dd>{% endif %}
-        {% if provides %}<dt>provides</dt><dd>{% for p in provides %}<code>{{ p }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
-        {% if embed_collection %}<dt>embed</dt><dd><code>{{ embed_collection }}</code></dd>{% endif %}
-        {% if n8n_workflow %}<dt>n8n</dt><dd><code>{{ n8n_workflow }}</code></dd>{% endif %}
+  <aside class="space-y-4">
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4">
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">Frontmatter</h4>
+      <dl class="grid grid-cols-[max-content_1fr] gap-x-3 gap-y-2 text-sm">
+        <dt class="text-zinc-500">id</dt><dd><code class="font-mono text-xs">{{ connector.id }}</code></dd>
+        {% if auth_type %}<dt class="text-zinc-500">auth</dt><dd>{{ auth_type }}</dd>{% endif %}
+        {% if provides %}<dt class="text-zinc-500">provides</dt><dd>{% for p in provides %}<code class="font-mono text-xs">{{ p }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+        {% if embed_collection %}<dt class="text-zinc-500">embed</dt><dd><code class="font-mono text-xs">{{ embed_collection }}</code></dd>{% endif %}
+        {% if n8n_workflow %}<dt class="text-zinc-500">n8n</dt><dd><code class="font-mono text-xs">{{ n8n_workflow }}</code></dd>{% endif %}
       </dl>
     </div>
 
     {% if requires_env %}
-    <div class="meta-card" style="margin-top: 1rem;">
-      <h4>Environment</h4>
-      <dl>
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4">
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">Environment</h4>
+      <dl class="space-y-2 text-sm">
         {% for e in requires_env %}
-        <dt><code>{{ e }}</code></dt>
-        <dd>
-          {% if env_status[e] %}
-          <span class="pill ok">set</span>
-          {% else %}
-          <span class="pill err">missing</span>
-          {% endif %}
-        </dd>
+        <div class="flex items-center justify-between gap-2">
+          <code class="font-mono text-xs">{{ e }}</code>
+          {% if env_status[e] %}{{ pill('set', 'ok') }}{% else %}{{ pill('missing', 'err') }}{% endif %}
+        </div>
         {% endfor %}
       </dl>
-      <button hx-post="/connectors/{{ connector.id }}/test"
-              hx-target="#test-result"
-              hx-swap="innerHTML"
-              style="margin-top: 0.75rem; width: 100%;">
-        Test connection
-      </button>
-      <div id="test-result" class="test-result"></div>
+      <div class="mt-3 grid grid-cols-2 gap-2">
+        <button hx-post="/connectors/{{ connector.id }}/test"
+                hx-target="#test-result"
+                hx-swap="innerHTML"
+                class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-sm font-medium ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700">
+          Test
+        </button>
+        <a href="/connectors/{{ connector.id }}/env"
+           data-slide-over data-title="Edit env · {{ connector.id }}"
+           class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium shadow-sm">
+          Set env
+        </a>
+      </div>
+      <div id="test-result" class="mt-3 text-sm"></div>
     </div>
     {% endif %}
 
-    <div class="meta-card" style="margin-top: 1rem;">
-      <h4>File</h4>
-      <p style="margin:0;"><code>{{ relative_path }}</code></p>
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4">
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-2">File</h4>
+      <code class="font-mono text-xs text-zinc-600 dark:text-zinc-400 break-all">{{ relative_path }}</code>
     </div>
   </aside>
 </div>

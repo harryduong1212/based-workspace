@@ -16,7 +16,7 @@ See the [Recipe Spec](../RECIPE_SPEC.md) for how recipes are written.
 
 | Recipe | Description | Status | Tags |
 |---|---|---|---|
-| [Daily Briefing](daily-briefing.md) | Morning summary of your Jira tickets and Bitbucket PRs. | experimental | briefing, jira, bitbucket, daily |
+| [Daily Briefing](daily-briefing.md) | Morning summary of your Jira tickets, Bitbucket PRs, and Gmail inbox. | experimental | briefing, jira, bitbucket, gmail, daily |
 
 ## For non-technical users
 

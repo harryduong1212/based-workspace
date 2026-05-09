@@ -18,13 +18,14 @@
     {
       "id": "daily-briefing",
       "name": "Daily Briefing",
-      "description": "Morning summary of your Jira tickets and Bitbucket PRs.",
+      "description": "Morning summary of your Jira tickets, Bitbucket PRs, and Gmail inbox.",
       "audience": "both",
       "status": "experimental",
       "tags": [
         "briefing",
         "jira",
         "bitbucket",
+        "gmail",
         "daily"
       ],
       "path": "recipes/daily-briefing.md"

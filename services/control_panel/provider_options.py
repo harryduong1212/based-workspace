@@ -43,11 +43,31 @@ def list_provider_options(recipe_default: str | None = None) -> list[ProviderOpt
     return opts
 
 
+_LOCAL_PREFERRED_DGPU = "gemma-3-12b"
+_LOCAL_PREFERRED_CPU = "gemma-3-4b"
+
+
+def _local_default(models: list[str]) -> str | None:
+    """Pick the best gemma for local based on dGPU presence; fall back to first
+    chat-capable model in the list (skipping known embedding-only ids)."""
+    from .gpu_detect import has_active_dgpu
+
+    preferred = _LOCAL_PREFERRED_DGPU if has_active_dgpu() else _LOCAL_PREFERRED_CPU
+    if preferred in models:
+        return preferred
+    fallback_blocklist = {"bge-small-en-v1.5"}
+    for m in models:
+        if m not in fallback_blocklist:
+            return m
+    return None
+
+
 def default_model_ref(opts: list[ProviderOption], recipe_default: str | None) -> str:
     """Pick a sensible pre-selection for the <select>.
 
-    Order: recipe's declared model > first available provider's first model >
-    `local/` (with no model — user must override).
+    Order: recipe's declared model > local-preferred (gemma-3-12b on dGPU,
+    gemma-3-4b otherwise) when local is available > first available provider's
+    first model > `local/` (with no model — user must override).
     """
     if recipe_default:
         from services.recipe_runtime.providers import parse_model_ref
@@ -57,6 +77,12 @@ def default_model_ref(opts: list[ProviderOption], recipe_default: str | None) ->
             pass
         else:
             return f"{provider}/{model}"
+
+    for o in opts:
+        if o.provider == "local" and o.available and o.models:
+            picked = _local_default(o.models)
+            if picked:
+                return f"local/{picked}"
 
     for o in opts:
         if o.available and o.models:

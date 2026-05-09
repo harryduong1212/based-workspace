@@ -17,8 +17,11 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 
+from .api import create_api_router
 from .config import Config
 from .connector_check import check_connector_env
+from .connector_probes import has_probe, run_probe
+from .env_writer import filter_to_allowed, update_env_file
 from .health import all_checks
 from .provider_options import default_model_ref, list_provider_options
 from .recipe_skeleton import SUPPORTED_EXECUTION_TYPES, build_skeleton
@@ -29,6 +32,35 @@ from .runs import get_run, start_run, stream_chunks
 
 
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
+
+# Hosts trusted for `.env` writes — same-machine only by policy. Public binds
+# (Docker port-forward, 0.0.0.0) get the env editor disabled.
+_LOCAL_HOSTS = {"127.0.0.1", "localhost", "::1"}
+
+
+def _build_env_form_context(cfg: Config, fm: dict[str, Any], **extra: Any) -> dict[str, Any]:
+    requires_env = list(fm.get("requires_env") or [])
+    env_status = {v: bool(os.environ.get(v)) for v in requires_env}
+    connector_id = str(fm.get("id") or "")
+    connector_name = str(fm.get("name") or connector_id)
+    env_path = cfg.workspace_root / ".env"
+    try:
+        env_path_relative = str(env_path.relative_to(cfg.workspace_root))
+    except ValueError:
+        env_path_relative = str(env_path)
+    ctx: dict[str, Any] = {
+        "connector": _ConnectorRef(id=connector_id, name=connector_name, description=str(fm.get("description") or "")),
+        "requires_env": requires_env,
+        "env_status": env_status,
+        "env_path_relative": env_path_relative,
+        "host": cfg.host,
+        "safe_to_write": cfg.host in _LOCAL_HOSTS,
+        "save_message": None,
+        "save_ok": False,
+        "saved_keys": [],
+    }
+    ctx.update(extra)
+    return ctx
 
 
 @dataclass(frozen=True)
@@ -82,6 +114,10 @@ def create_app(cfg: Config | None = None) -> FastAPI:
     templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
     app = FastAPI(title="based-workspace control panel")
     app.state.cfg = cfg
+    # Initialize SQLite — must run before any route can call into runs/db.
+    from . import db as _db
+    _db.init(cfg.workspace_root)
+    app.include_router(create_api_router())
 
     @app.get("/", response_class=HTMLResponse)
     def dashboard(request: Request) -> HTMLResponse:
@@ -172,6 +208,7 @@ def create_app(cfg: Config | None = None) -> FastAPI:
 
     @app.get("/recipes/{recipe_id}/run", response_class=HTMLResponse)
     def recipe_run(request: Request, recipe_id: str) -> HTMLResponse:
+        from . import db as _db
         result = get_recipe(cfg, recipe_id)
         if result is None:
             raise HTTPException(status_code=404, detail=f"recipe not found: {recipe_id}")
@@ -181,6 +218,7 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         opts = list_provider_options(recipe_default)
         ctx["provider_options"] = opts
         ctx["default_model"] = default_model_ref(opts, recipe_default)
+        ctx["last_inputs"] = _db.get_recipe_inputs(recipe_id)
         return templates.TemplateResponse(request=request, name="recipe_run.html", context=ctx)
 
     @app.post("/recipes/{recipe_id}/run")
@@ -237,6 +275,61 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         }
         return templates.TemplateResponse(request=request, name="connector_detail.html", context=ctx)
 
+    @app.get("/connectors/{connector_id}/env", response_class=HTMLResponse)
+    def connector_env_form(request: Request, connector_id: str) -> HTMLResponse:
+        result = get_connector(cfg, connector_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail=f"connector not found: {connector_id}")
+        fm, _body, _path = result
+        ctx = _build_env_form_context(cfg, fm)
+        return templates.TemplateResponse(request=request, name="connector_env_edit.html", context=ctx)
+
+    @app.post("/connectors/{connector_id}/env", response_class=HTMLResponse)
+    async def connector_env_save(request: Request, connector_id: str) -> HTMLResponse:
+        result = get_connector(cfg, connector_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail=f"connector not found: {connector_id}")
+        fm, _body, _path = result
+        if cfg.host not in _LOCAL_HOSTS:
+            ctx = _build_env_form_context(
+                cfg, fm,
+                save_message="Refused: env editing is only allowed on a local bind.",
+                save_ok=False,
+            )
+            return templates.TemplateResponse(request=request, name="_connector_env_form.html", context=ctx)
+
+        form = await request.form()
+        requires_env = list(fm.get("requires_env") or [])
+        proposed: dict[str, str] = {}
+        for var in requires_env:
+            value = str(form.get(f"env__{var}") or "")
+            if value:
+                proposed[var] = value
+        updates = filter_to_allowed(proposed, requires_env)
+
+        save_ok = True
+        saved_keys: list[str] = []
+        if updates:
+            try:
+                update_env_file(cfg.workspace_root / ".env", updates)
+                for k, v in updates.items():
+                    os.environ[k] = v
+                saved_keys = sorted(updates.keys())
+                save_message = f"Saved {len(saved_keys)} variable{'' if len(saved_keys) == 1 else 's'} to .env."
+            except OSError as e:
+                save_ok = False
+                save_message = f"Write failed: {e}"
+        else:
+            save_message = "Nothing to save — all fields were empty."
+
+        ctx = _build_env_form_context(
+            cfg, fm,
+            save_message=save_message,
+            save_ok=save_ok,
+            saved_keys=saved_keys,
+        )
+        return templates.TemplateResponse(request=request, name="_connector_env_form.html", context=ctx)
+
     @app.post("/connectors/{connector_id}/test", response_class=HTMLResponse)
     def connector_test(request: Request, connector_id: str) -> HTMLResponse:
         result = get_connector(cfg, connector_id)
@@ -244,10 +337,17 @@ def create_app(cfg: Config | None = None) -> FastAPI:
             raise HTTPException(status_code=404, detail=f"connector not found: {connector_id}")
         fm, _body, _path = result
         check = check_connector_env(connector_id, list(fm.get("requires_env") or []))
+        # Only run the live probe once env presence passes — no point hitting
+        # the network if we already know creds are missing.
+        probe = run_probe(connector_id) if check.all_present else None
         return templates.TemplateResponse(
             request=request,
             name="_connector_test_result.html",
-            context={"result": check},
+            context={
+                "result": check,
+                "probe": probe,
+                "probe_registered": has_probe(connector_id),
+            },
         )
 
     @app.get("/api/runs/{run_id}/stream")

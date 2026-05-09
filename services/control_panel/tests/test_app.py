@@ -39,12 +39,14 @@ class DashboardSmokeTest(unittest.TestCase):
         resp = self.client.get("/")
         self.assertIn("bitbucket", resp.text)
         self.assertIn("jira", resp.text)
+        self.assertIn("gmail", resp.text)
+        self.assertIn("github", resp.text)
 
     def test_connector_detail_renders_body_and_env_status(self):
         resp = self.client.get("/connectors/jira")
         self.assertEqual(resp.status_code, 200)
         # Frontmatter sidebar fields surface.
-        self.assertIn("<code>jira</code>", resp.text)
+        self.assertRegex(resp.text, r"<code[^>]*>jira</code>")
         self.assertIn("api_token", resp.text)
         # Required env vars are listed with status pills.
         self.assertIn("JIRA_BASE_URL", resp.text)
@@ -52,6 +54,23 @@ class DashboardSmokeTest(unittest.TestCase):
         self.assertIn("JIRA_API_TOKEN", resp.text)
         # Test-connection button is present.
         self.assertIn('hx-post="/connectors/jira/test"', resp.text)
+
+    def test_connector_detail_renders_gmail_with_basic_auth_and_env(self):
+        resp = self.client.get("/connectors/gmail")
+        self.assertEqual(resp.status_code, 200)
+        self.assertRegex(resp.text, r"<code[^>]*>gmail</code>")
+        self.assertIn("basic", resp.text)
+        self.assertIn("GMAIL_ADDRESS", resp.text)
+        self.assertIn("GMAIL_APP_PASSWORD", resp.text)
+        self.assertIn('hx-post="/connectors/gmail/test"', resp.text)
+
+    def test_connector_detail_renders_github_with_api_token_and_env(self):
+        resp = self.client.get("/connectors/github")
+        self.assertEqual(resp.status_code, 200)
+        self.assertRegex(resp.text, r"<code[^>]*>github</code>")
+        self.assertIn("api_token", resp.text)
+        self.assertIn("GITHUB_TOKEN", resp.text)
+        self.assertIn('hx-post="/connectors/github/test"', resp.text)
 
     def test_connector_404_for_unknown_id(self):
         resp = self.client.get("/connectors/no-such-connector")
@@ -81,10 +100,131 @@ class DashboardSmokeTest(unittest.TestCase):
         try:
             resp = self.client.post("/connectors/jira/test")
             self.assertEqual(resp.status_code, 200)
+            # Jira has no live probe registered → still shows the env-only success.
             self.assertIn("All required env vars are set", resp.text)
+            self.assertIn("deferred", resp.text)
         finally:
             for k, v in saved.items():
                 _os.environ.pop(k, None)
+                if v is not None:
+                    _os.environ[k] = v
+
+    def test_connector_test_endpoint_runs_live_probe_for_gmail(self):
+        """Gmail has a registered probe — when env is set, the probe runs and
+        its outcome (success here, monkey-patched to avoid network) renders."""
+        import os as _os
+        from services.control_panel import connector_probes as cp
+
+        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
+        saved_env = {k: _os.environ.pop(k, None) for k in keys}
+        _os.environ["GMAIL_ADDRESS"] = "tester@gmail.com"
+        _os.environ["GMAIL_APP_PASSWORD"] = "abcdabcdabcdabcd"
+        original_probe = cp.PROBES["gmail"]
+        cp.PROBES["gmail"] = lambda: cp.ProbeOutcome(
+            ok=True, message="IMAP login succeeded for tester@gmail.com."
+        )
+        try:
+            resp = self.client.post("/connectors/gmail/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Live connection succeeded", resp.text)
+            self.assertIn("tester@gmail.com", resp.text)
+        finally:
+            cp.PROBES["gmail"] = original_probe
+            for k, v in saved_env.items():
+                _os.environ.pop(k, None)
+                if v is not None:
+                    _os.environ[k] = v
+
+    def test_connector_test_endpoint_reports_live_probe_failure(self):
+        import os as _os
+        from services.control_panel import connector_probes as cp
+
+        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
+        saved_env = {k: _os.environ.pop(k, None) for k in keys}
+        _os.environ["GMAIL_ADDRESS"] = "tester@gmail.com"
+        _os.environ["GMAIL_APP_PASSWORD"] = "wrong"
+        original_probe = cp.PROBES["gmail"]
+        cp.PROBES["gmail"] = lambda: cp.ProbeOutcome(
+            ok=False, message="IMAP login rejected: [AUTHENTICATIONFAILED] Invalid credentials"
+        )
+        try:
+            resp = self.client.post("/connectors/gmail/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Live connection failed", resp.text)
+            self.assertIn("AUTHENTICATIONFAILED", resp.text)
+        finally:
+            cp.PROBES["gmail"] = original_probe
+            for k, v in saved_env.items():
+                _os.environ.pop(k, None)
+                if v is not None:
+                    _os.environ[k] = v
+
+    def test_connector_test_endpoint_runs_live_probe_for_github(self):
+        import os as _os
+        from services.control_panel import connector_probes as cp
+
+        saved = _os.environ.pop("GITHUB_TOKEN", None)
+        _os.environ["GITHUB_TOKEN"] = "ghp_fake_token"
+        original_probe = cp.PROBES["github"]
+        cp.PROBES["github"] = lambda: cp.ProbeOutcome(
+            ok=True, message="GitHub /user authenticated as octocat."
+        )
+        try:
+            resp = self.client.post("/connectors/github/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Live connection succeeded", resp.text)
+            self.assertIn("octocat", resp.text)
+        finally:
+            cp.PROBES["github"] = original_probe
+            _os.environ.pop("GITHUB_TOKEN", None)
+            if saved is not None:
+                _os.environ["GITHUB_TOKEN"] = saved
+
+    def test_connector_test_endpoint_reports_github_bad_credentials(self):
+        import os as _os
+        from services.control_panel import connector_probes as cp
+
+        saved = _os.environ.pop("GITHUB_TOKEN", None)
+        _os.environ["GITHUB_TOKEN"] = "ghp_invalid"
+        original_probe = cp.PROBES["github"]
+        cp.PROBES["github"] = lambda: cp.ProbeOutcome(
+            ok=False, message="GitHub /user returned HTTP 401: Bad credentials"
+        )
+        try:
+            resp = self.client.post("/connectors/github/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Live connection failed", resp.text)
+            self.assertIn("Bad credentials", resp.text)
+        finally:
+            cp.PROBES["github"] = original_probe
+            _os.environ.pop("GITHUB_TOKEN", None)
+            if saved is not None:
+                _os.environ["GITHUB_TOKEN"] = saved
+
+    def test_connector_test_endpoint_skips_probe_when_env_missing(self):
+        """If env vars are missing, the route must NOT invoke the live probe
+        (no point hitting the network when we know creds aren't configured)."""
+        import os as _os
+        from services.control_panel import connector_probes as cp
+
+        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
+        saved_env = {k: _os.environ.pop(k, None) for k in keys}
+        original_probe = cp.PROBES["gmail"]
+        called: list[bool] = []
+
+        def _tripwire() -> cp.ProbeOutcome:
+            called.append(True)
+            return cp.ProbeOutcome(ok=False, message="should not be called")
+
+        cp.PROBES["gmail"] = _tripwire
+        try:
+            resp = self.client.post("/connectors/gmail/test")
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Missing env vars", resp.text)
+            self.assertEqual(called, [], "live probe was called even though env was missing")
+        finally:
+            cp.PROBES["gmail"] = original_probe
+            for k, v in saved_env.items():
                 if v is not None:
                     _os.environ[k] = v
 
@@ -101,13 +241,16 @@ class DashboardSmokeTest(unittest.TestCase):
         # Headings in the body should become <h2>/<h3> after markdown render.
         self.assertRegex(resp.text, r"<h[23][^>]*>.*What this does")
         # Frontmatter sidebar should surface the id and execution type.
-        self.assertIn("<code>code-review</code>", resp.text)
+        self.assertRegex(resp.text, r"<code[^>]*>code-review</code>")
         self.assertIn("prompt", resp.text)
 
     def test_recipe_overview_active_tab(self):
         resp = self.client.get("/recipes/code-review")
-        # Active tab marker is the `class="active"` attribute on Overview.
-        self.assertRegex(resp.text, r'href="/recipes/code-review"\s+class="\s*active\s*"')
+        # Active tab marker is an `active` token in the className list on Overview.
+        self.assertRegex(
+            resp.text,
+            r'href="/recipes/code-review"\s+class="[^"]*\bactive\b[^"]*"',
+        )
 
     def test_recipe_run_form_renders_inputs_and_providers(self):
         resp = self.client.get("/recipes/code-review/run")
@@ -519,6 +662,181 @@ class RecipeWriterUnitTest(unittest.TestCase):
         self.assertIn("frontmatter", result.message)
 
 
+class EnvWriterUnitTest(unittest.TestCase):
+    """Direct unit tests for env_writer — no FastAPI involvement."""
+
+    def setUp(self):
+        import tempfile
+        from pathlib import Path
+
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_env_test_")
+        self.env_path = Path(self.tmpdir) / ".env"
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_write_to_empty_creates_file(self):
+        from services.control_panel.env_writer import update_env_file, read_env_values
+
+        update_env_file(self.env_path, {"FOO": "bar", "BAZ": "qux"})
+        values = read_env_values(self.env_path)
+        self.assertEqual(values, {"FOO": "bar", "BAZ": "qux"})
+
+    def test_update_preserves_unrelated_lines_and_comments(self):
+        from services.control_panel.env_writer import update_env_file
+
+        self.env_path.write_text(
+            "# header comment\nFOO=old\n\n# section\nKEEP=intact\n",
+            encoding="utf-8",
+        )
+        update_env_file(self.env_path, {"FOO": "new"})
+        text = self.env_path.read_text(encoding="utf-8")
+        self.assertIn("# header comment", text)
+        self.assertIn("# section", text)
+        self.assertIn("KEEP=intact", text)
+        self.assertIn("FOO=new", text)
+        self.assertNotIn("FOO=old", text)
+
+    def test_quoting_of_values_with_whitespace_or_hash(self):
+        from services.control_panel.env_writer import update_env_file, read_env_values
+
+        update_env_file(self.env_path, {"WS": "has spaces", "HASH": "a#b", "PLAIN": "simple"})
+        values = read_env_values(self.env_path)
+        self.assertEqual(values["WS"], "has spaces")
+        self.assertEqual(values["HASH"], "a#b")
+        # Plain values aren't wrapped in quotes.
+        text = self.env_path.read_text(encoding="utf-8")
+        self.assertIn("PLAIN=simple\n", text)
+
+    def test_filter_to_allowed_drops_unknown_keys(self):
+        from services.control_panel.env_writer import filter_to_allowed
+
+        filtered = filter_to_allowed(
+            {"GOOD": "1", "BAD": "2", "ALSO_GOOD": "3"},
+            allowed=["GOOD", "ALSO_GOOD"],
+        )
+        self.assertEqual(filtered, {"GOOD": "1", "ALSO_GOOD": "3"})
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class ConnectorEnvFlowTest(unittest.TestCase):
+    """Round-trip test for the env editor route — writes through to a tmp .env."""
+
+    def setUp(self):
+        import os
+        import tempfile
+        from pathlib import Path
+        from fastapi.testclient import TestClient
+
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        # Point WORKSPACE_ROOT at a tmpdir that mirrors the real workspace's
+        # connectors/ + recipes/, so we can test against a real fixture but
+        # write to a sandboxed .env.
+        real_root = Config.from_env().workspace_root
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_env_route_")
+        root = Path(self.tmpdir)
+        (root / "connectors").symlink_to(real_root / "connectors", target_is_directory=True)
+        (root / "recipes").symlink_to(real_root / "recipes", target_is_directory=True)
+        (root / "services").symlink_to(real_root / "services", target_is_directory=True)
+        self.cfg = Config(
+            workspace_root=root,
+            recipes_dir=root / "recipes",
+            connectors_dir=root / "connectors",
+            services_dir=root / "services",
+            host="127.0.0.1",
+            port=0,
+            reload=False,
+            llama_swap_url="",
+        )
+        self._snapshot_env = os.environ.copy()
+        self.client = TestClient(create_app(self.cfg))
+
+    def tearDown(self):
+        import os
+        import shutil
+        os.environ.clear()
+        os.environ.update(self._snapshot_env)
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_env_form_has_native_action_and_method_fallback(self):
+        """If htmx fails to wire up (e.g. dynamically injected content not
+        processed), the <form> must still POST natively to the right URL —
+        otherwise the browser falls back to GET on the page URL and the
+        password ends up in the access log. Regression guard for that."""
+        resp = self.client.get("/connectors/gmail/env")
+        self.assertEqual(resp.status_code, 200)
+        self.assertRegex(
+            resp.text,
+            r'<form[^>]+action="/connectors/gmail/env"[^>]+method="post"',
+        )
+
+    def test_get_form_renders_with_disabled_inputs_for_unknown_host(self):
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        # Bind to a non-local host → form should render but inputs disabled.
+        cfg = Config(**{**self.cfg.__dict__, "host": "0.0.0.0"})
+        from fastapi.testclient import TestClient
+        client = TestClient(create_app(cfg))
+        resp = client.get("/connectors/jira/env")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Disabled:", resp.text)
+        self.assertRegex(resp.text, r'<input[^>]*name="env__JIRA_BASE_URL"[^>]*\bdisabled\b')
+
+    def test_post_writes_env_and_updates_process_environ(self):
+        import os
+        from services.control_panel.env_writer import read_env_values
+
+        resp = self.client.post(
+            "/connectors/jira/env",
+            data={
+                "env__JIRA_BASE_URL": "https://example.atlassian.net",
+                "env__JIRA_EMAIL": "tester@example.com",
+                "env__JIRA_API_TOKEN": "tok-secret-123",
+            },
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Saved 3 variables", resp.text)
+        # File written.
+        env_file = self.cfg.workspace_root / ".env"
+        self.assertTrue(env_file.exists())
+        values = read_env_values(env_file)
+        self.assertEqual(values["JIRA_BASE_URL"], "https://example.atlassian.net")
+        self.assertEqual(values["JIRA_EMAIL"], "tester@example.com")
+        self.assertEqual(values["JIRA_API_TOKEN"], "tok-secret-123")
+        # Process env updated so status pills refresh without restart.
+        self.assertEqual(os.environ["JIRA_BASE_URL"], "https://example.atlassian.net")
+
+    def test_post_ignores_keys_outside_requires_env(self):
+        from services.control_panel.env_writer import read_env_values
+
+        resp = self.client.post(
+            "/connectors/jira/env",
+            data={
+                "env__JIRA_BASE_URL": "https://x.atlassian.net",
+                "env__SOMETHING_ELSE": "should-not-write",
+            },
+        )
+        self.assertEqual(resp.status_code, 200)
+        env_file = self.cfg.workspace_root / ".env"
+        values = read_env_values(env_file)
+        self.assertIn("JIRA_BASE_URL", values)
+        self.assertNotIn("SOMETHING_ELSE", values)
+
+    def test_post_with_all_empty_inputs_is_a_noop(self):
+        resp = self.client.post(
+            "/connectors/jira/env",
+            data={"env__JIRA_BASE_URL": "", "env__JIRA_EMAIL": "", "env__JIRA_API_TOKEN": ""},
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Nothing to save", resp.text)
+        # File not created — nothing was written.
+        self.assertFalse((self.cfg.workspace_root / ".env").exists())
+
+
 @unittest.skipUnless(_HAS_FASTAPI, "fastapi not installed")
 class ConfigDefaultsTest(unittest.TestCase):
     def test_workspace_root_resolves(self):
@@ -537,6 +855,442 @@ class ConfigDefaultsTest(unittest.TestCase):
         # just that they're sane.
         self.assertIsInstance(cfg.host, str)
         self.assertGreater(cfg.port, 0)
+
+
+class ConnectorProbeUnitTest(unittest.TestCase):
+    """Probe module is pure stdlib — exercise it without any FastAPI deps."""
+
+    def test_gmail_probe_returns_failure_when_env_missing(self):
+        import os as _os
+        from services.control_panel.connector_probes import PROBES
+
+        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
+        saved = {k: _os.environ.pop(k, None) for k in keys}
+        try:
+            outcome = PROBES["gmail"]()
+            self.assertFalse(outcome.ok)
+            self.assertIn("GMAIL_ADDRESS", outcome.message)
+        finally:
+            for k, v in saved.items():
+                if v is not None:
+                    _os.environ[k] = v
+
+    def test_run_probe_returns_none_for_unregistered(self):
+        from services.control_panel.connector_probes import run_probe, has_probe
+
+        self.assertFalse(has_probe("nonexistent-connector"))
+        self.assertIsNone(run_probe("nonexistent-connector"))
+
+    def test_has_probe_true_for_gmail(self):
+        from services.control_panel.connector_probes import has_probe
+
+        self.assertTrue(has_probe("gmail"))
+
+    def test_has_probe_true_for_github(self):
+        from services.control_panel.connector_probes import has_probe
+
+        self.assertTrue(has_probe("github"))
+
+    def test_github_probe_returns_failure_when_token_missing(self):
+        import os as _os
+        from services.control_panel.connector_probes import PROBES
+
+        saved = _os.environ.pop("GITHUB_TOKEN", None)
+        try:
+            outcome = PROBES["github"]()
+            self.assertFalse(outcome.ok)
+            self.assertIn("GITHUB_TOKEN", outcome.message)
+        finally:
+            if saved is not None:
+                _os.environ["GITHUB_TOKEN"] = saved
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiTest(unittest.TestCase):
+    """`/api/v1/*` JSON routes consumed by the Next.js frontend."""
+
+    @classmethod
+    def setUpClass(cls):
+        from fastapi.testclient import TestClient
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        cls.cfg = Config.from_env()
+        cls.client = TestClient(create_app(cls.cfg))
+
+    def test_dashboard_returns_recipes_and_connectors(self):
+        resp = self.client.get("/api/v1/dashboard")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertIn("recipes", data)
+        self.assertIn("connectors", data)
+        recipe_ids = {r["id"] for r in data["recipes"]}
+        connector_ids = {c["id"] for c in data["connectors"]}
+        self.assertIn("code-review", recipe_ids)
+        self.assertIn("gmail", connector_ids)
+        self.assertIn("github", connector_ids)
+        # Recipes carry the fields the UI cards render.
+        sample = next(r for r in data["recipes"] if r["id"] == "code-review")
+        self.assertIn("name", sample)
+        self.assertIn("execution_type", sample)
+
+    def test_health_returns_array_of_status_objects(self):
+        resp = self.client.get("/api/v1/health")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertIsInstance(data, list)
+        names = {item["name"] for item in data}
+        self.assertIn("llama-swap", names)
+        self.assertIn("postgres", names)
+        for item in data:
+            self.assertIn("ok", item)
+            self.assertIn("detail", item)
+
+    def test_recipe_detail_returns_full_shape(self):
+        resp = self.client.get("/api/v1/recipes/code-review")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["id"], "code-review")
+        self.assertIn("rendered_body", data)
+        self.assertIn("<", data["rendered_body"])
+        self.assertIsInstance(data["inputs"], list)
+        self.assertIsInstance(data["requires_skills"], list)
+        self.assertIn("execution_type", data)
+
+    def test_recipe_detail_404_for_unknown(self):
+        resp = self.client.get("/api/v1/recipes/no-such-recipe")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_connector_detail_returns_full_shape(self):
+        resp = self.client.get("/api/v1/connectors/gmail")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["id"], "gmail")
+        self.assertEqual(data["auth_type"], "basic")
+        self.assertTrue(data["probe_registered"])
+        env_names = {e["name"] for e in data["requires_env"]}
+        self.assertEqual(env_names, {"GMAIL_ADDRESS", "GMAIL_APP_PASSWORD"})
+        # rendered_body should be HTML, not raw markdown.
+        self.assertIn("<", data["rendered_body"])
+
+    def test_connector_detail_404_for_unknown(self):
+        resp = self.client.get("/api/v1/connectors/no-such")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_connector_test_json_returns_env_and_probe_outcome(self):
+        import os as _os
+        from services.control_panel import connector_probes as cp
+
+        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
+        saved = {k: _os.environ.pop(k, None) for k in keys}
+        _os.environ["GMAIL_ADDRESS"] = "tester@gmail.com"
+        _os.environ["GMAIL_APP_PASSWORD"] = "abcdabcdabcdabcd"
+        original_probe = cp.PROBES["gmail"]
+        cp.PROBES["gmail"] = lambda: cp.ProbeOutcome(ok=True, message="IMAP login succeeded for tester@gmail.com.")
+        try:
+            resp = self.client.post("/api/v1/connectors/gmail/test")
+            self.assertEqual(resp.status_code, 200)
+            data = resp.json()
+            self.assertTrue(data["env_check"]["all_present"])
+            self.assertEqual(data["env_check"]["missing"], [])
+            self.assertIsNotNone(data["probe"])
+            self.assertTrue(data["probe"]["ok"])
+            self.assertIn("tester@gmail.com", data["probe"]["message"])
+            self.assertTrue(data["probe_registered"])
+        finally:
+            cp.PROBES["gmail"] = original_probe
+            for k, v in saved.items():
+                _os.environ.pop(k, None)
+                if v is not None:
+                    _os.environ[k] = v
+
+    def test_connector_test_json_skips_probe_when_env_missing(self):
+        import os as _os
+
+        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
+        saved = {k: _os.environ.pop(k, None) for k in keys}
+        try:
+            resp = self.client.post("/api/v1/connectors/gmail/test")
+            self.assertEqual(resp.status_code, 200)
+            data = resp.json()
+            self.assertFalse(data["env_check"]["all_present"])
+            self.assertEqual(set(data["env_check"]["missing"]), set(keys))
+            self.assertIsNone(data["probe"])
+        finally:
+            for k, v in saved.items():
+                if v is not None:
+                    _os.environ[k] = v
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiEnvSaveTest(unittest.TestCase):
+    """Round-trip the JSON env editor against a tmpdir-backed Config."""
+
+    def setUp(self):
+        import os
+        import tempfile
+        from pathlib import Path
+        from fastapi.testclient import TestClient
+
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        real_root = Config.from_env().workspace_root
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_api_env_")
+        root = Path(self.tmpdir)
+        (root / "connectors").symlink_to(real_root / "connectors", target_is_directory=True)
+        (root / "recipes").symlink_to(real_root / "recipes", target_is_directory=True)
+        (root / "services").symlink_to(real_root / "services", target_is_directory=True)
+        self.cfg = Config(
+            workspace_root=root,
+            recipes_dir=root / "recipes",
+            connectors_dir=root / "connectors",
+            services_dir=root / "services",
+            host="127.0.0.1",
+            port=0,
+            reload=False,
+            llama_swap_url="",
+        )
+        self._snapshot_env = os.environ.copy()
+        self.client = TestClient(create_app(self.cfg))
+
+    def tearDown(self):
+        import os
+        import shutil
+        os.environ.clear()
+        os.environ.update(self._snapshot_env)
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_post_env_writes_only_allowed_keys_and_returns_saved(self):
+        from services.control_panel.env_writer import read_env_values
+
+        resp = self.client.post(
+            "/api/v1/connectors/gmail/env",
+            json={
+                "values": {
+                    "GMAIL_ADDRESS": "tester@gmail.com",
+                    "GMAIL_APP_PASSWORD": "abcdabcdabcdabcd",
+                    "EVIL_KEY": "should-not-write",
+                }
+            },
+        )
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertTrue(data["ok"])
+        self.assertEqual(set(data["saved_keys"]), {"GMAIL_ADDRESS", "GMAIL_APP_PASSWORD"})
+        values = read_env_values(self.cfg.workspace_root / ".env")
+        self.assertEqual(values["GMAIL_ADDRESS"], "tester@gmail.com")
+        self.assertNotIn("EVIL_KEY", values)
+
+    def test_post_env_empty_values_is_a_noop(self):
+        resp = self.client.post(
+            "/api/v1/connectors/gmail/env",
+            json={"values": {"GMAIL_ADDRESS": "", "GMAIL_APP_PASSWORD": ""}},
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json()["saved_keys"], [])
+        self.assertFalse((self.cfg.workspace_root / ".env").exists())
+
+    def test_post_env_rejected_for_non_local_bind(self):
+        from fastapi.testclient import TestClient
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        cfg = Config(**{**self.cfg.__dict__, "host": "0.0.0.0"})
+        client = TestClient(create_app(cfg))
+        resp = client.post(
+            "/api/v1/connectors/gmail/env",
+            json={"values": {"GMAIL_ADDRESS": "tester@gmail.com"}},
+        )
+        self.assertEqual(resp.status_code, 403)
+
+
+class DbUnitTest(unittest.TestCase):
+    """Direct unit tests for the SQLite layer — no FastAPI needed."""
+
+    def setUp(self):
+        import tempfile
+        from pathlib import Path
+        from services.control_panel import db
+
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_db_")
+        db.close()
+        db.init(Path(self.tmpdir))
+
+    def tearDown(self):
+        import shutil
+        from services.control_panel import db
+        db.close()
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_insert_then_finish_run_round_trip(self):
+        from datetime import datetime, timezone
+        from services.control_panel import db
+
+        db.insert_run(
+            run_id="abc123def456",
+            recipe_id="code-review",
+            model_ref="anthropic/claude-haiku-4-5",
+            inputs={"target_branch": "main"},
+            started_at=datetime(2026, 5, 9, 10, 0, tzinfo=timezone.utc),
+        )
+        row = db.get_run_row("abc123def456")
+        self.assertIsNotNone(row)
+        self.assertEqual(row.status, "running")
+        self.assertEqual(row.inputs, {"target_branch": "main"})
+
+        db.finish_run(run_id="abc123def456", status="done", output="hello world", error=None)
+        row = db.get_run_row("abc123def456")
+        self.assertEqual(row.status, "done")
+        self.assertEqual(row.output, "hello world")
+        self.assertIsNotNone(row.ended_at)
+
+    def test_recent_runs_orders_by_started_desc_and_filters_by_recipe(self):
+        from datetime import datetime, timezone, timedelta
+        from services.control_panel import db
+
+        base = datetime(2026, 5, 9, 10, 0, tzinfo=timezone.utc)
+        for i, recipe in enumerate(["code-review", "daily-briefing", "code-review"]):
+            db.insert_run(
+                run_id=f"run{i:08x}",
+                recipe_id=recipe,
+                model_ref="x",
+                inputs={},
+                started_at=base + timedelta(minutes=i),
+            )
+        all_runs = db.recent_runs(limit=10)
+        self.assertEqual([r.id for r in all_runs], ["run00000002", "run00000001", "run00000000"])
+        cr = db.recent_runs(recipe_id="code-review")
+        self.assertEqual([r.recipe_id for r in cr], ["code-review", "code-review"])
+
+    def test_recipe_inputs_upsert_and_clear_on_empty(self):
+        from services.control_panel import db
+
+        db.save_recipe_inputs("code-review", {"target_branch": "main", "diff": "x"})
+        self.assertEqual(
+            db.get_recipe_inputs("code-review"),
+            {"target_branch": "main", "diff": "x"},
+        )
+        # Updating one and clearing another.
+        db.save_recipe_inputs("code-review", {"target_branch": "feat/y", "diff": ""})
+        self.assertEqual(db.get_recipe_inputs("code-review"), {"target_branch": "feat/y"})
+
+    def test_init_marks_orphaned_running_rows_as_abandoned(self):
+        import tempfile
+        from datetime import datetime, timezone
+        from pathlib import Path
+        from services.control_panel import db
+
+        # Use a fresh tmpdir for this test so the abandonment runs once.
+        db.close()
+        d = tempfile.mkdtemp(prefix="cp_db_orphan_")
+        db.init(Path(d))
+        db.insert_run(
+            run_id="orphan01",
+            recipe_id="code-review",
+            model_ref="x",
+            inputs={},
+            started_at=datetime.now(timezone.utc),
+        )
+        # Simulate a server restart by closing and re-initing.
+        db.close()
+        db.init(Path(d))
+        row = db.get_run_row("orphan01")
+        self.assertEqual(row.status, "abandoned")
+        self.assertIsNotNone(row.ended_at)
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiRunsTest(unittest.TestCase):
+    """`/api/v1/runs*` and `/api/v1/recipes/{id}/last-inputs`."""
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        from pathlib import Path
+        from datetime import datetime, timezone
+        from fastapi.testclient import TestClient
+
+        from services.control_panel import db
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        # Sandbox the DB by using a tmpdir as workspace_root, but symlink in
+        # the real recipes/connectors so get_recipe still resolves.
+        real_root = Config.from_env().workspace_root
+        cls.tmpdir = tempfile.mkdtemp(prefix="cp_runs_api_")
+        root = Path(cls.tmpdir)
+        (root / "recipes").symlink_to(real_root / "recipes", target_is_directory=True)
+        (root / "connectors").symlink_to(real_root / "connectors", target_is_directory=True)
+        (root / "services").symlink_to(real_root / "services", target_is_directory=True)
+        cls.cfg = Config(
+            workspace_root=root,
+            recipes_dir=root / "recipes",
+            connectors_dir=root / "connectors",
+            services_dir=root / "services",
+            host="127.0.0.1", port=0, reload=False, llama_swap_url="",
+        )
+        cls.client = TestClient(create_app(cls.cfg))
+
+        # Seed two runs directly via the db module so tests don't need to
+        # actually invoke the dispatcher.
+        db.insert_run(
+            run_id="seedrun0001", recipe_id="code-review", model_ref="anthropic/claude-haiku-4-5",
+            inputs={"target_branch": "main"},
+            started_at=datetime(2026, 5, 9, 10, 0, tzinfo=timezone.utc),
+        )
+        db.finish_run(run_id="seedrun0001", status="done", output="seeded output", error=None)
+        db.insert_run(
+            run_id="seedrun0002", recipe_id="daily-briefing", model_ref="local/qwen2.5",
+            inputs={"focus_project": "PROJ"},
+            started_at=datetime(2026, 5, 9, 10, 5, tzinfo=timezone.utc),
+        )
+        db.finish_run(run_id="seedrun0002", status="error", output="", error="boom")
+
+    @classmethod
+    def tearDownClass(cls):
+        import shutil
+        from services.control_panel import db
+        db.close()
+        shutil.rmtree(cls.tmpdir, ignore_errors=True)
+
+    def test_list_runs_returns_recent_first(self):
+        resp = self.client.get("/api/v1/runs?limit=10")
+        self.assertEqual(resp.status_code, 200)
+        runs = resp.json()
+        ids = [r["id"] for r in runs]
+        self.assertEqual(ids[:2], ["seedrun0002", "seedrun0001"])
+        first = next(r for r in runs if r["id"] == "seedrun0002")
+        self.assertEqual(first["status"], "error")
+        self.assertEqual(first["error"], "boom")
+
+    def test_list_runs_filters_by_recipe(self):
+        resp = self.client.get("/api/v1/runs?recipe_id=code-review")
+        self.assertEqual(resp.status_code, 200)
+        recipes = {r["recipe_id"] for r in resp.json()}
+        self.assertEqual(recipes, {"code-review"})
+
+    def test_get_run_returns_full_output_and_inputs(self):
+        resp = self.client.get("/api/v1/runs/seedrun0001")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["output"], "seeded output")
+        self.assertEqual(data["inputs"], {"target_branch": "main"})
+
+    def test_get_run_404_for_unknown(self):
+        resp = self.client.get("/api/v1/runs/nope")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_last_inputs_round_trip(self):
+        from services.control_panel import db
+        db.save_recipe_inputs("code-review", {"target_branch": "feat/x", "diff": "..."})
+        resp = self.client.get("/api/v1/recipes/code-review/last-inputs")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json(), {"target_branch": "feat/x", "diff": "..."})
+
+    def test_last_inputs_404_for_unknown_recipe(self):
+        resp = self.client.get("/api/v1/recipes/no-such/last-inputs")
+        self.assertEqual(resp.status_code, 404)
 
 
 class IndexLoadersStdlibOnlyTest(unittest.TestCase):
@@ -560,6 +1314,8 @@ class IndexLoadersStdlibOnlyTest(unittest.TestCase):
         ids = {c.id for c in connectors}
         self.assertIn("bitbucket", ids)
         self.assertIn("jira", ids)
+        self.assertIn("gmail", ids)
+        self.assertIn("github", ids)
 
     def test_get_recipe_by_id(self):
         from services.control_panel.config import Config
