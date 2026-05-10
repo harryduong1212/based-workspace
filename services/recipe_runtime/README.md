@@ -4,18 +4,18 @@ Python package that owns the `execution.type` dispatch for recipes. Replaces the
 
 ## Status
 
-**Phase E0 — scaffold.** Dispatcher functions raise `NotImplementedError`. The provider-agnostic prompt assembler is real (substitution + envelope structure).
+**Phase E1/E2 — wired.** `dispatch_prompt` and `dispatch_workflow` are real. `dispatch_agent` is the remaining stub.
 
-Next phases:
-- **E1** — wire `dispatch_prompt` against the chosen LLM provider with the two-cache-breakpoint design below.
-- **E2** — wire `dispatch_workflow` to POST n8n webhooks (overlaps with Phase H).
-- **E3** — wire `dispatch_agent` with skill loading and MCP tool exposure.
+- **E1** — `dispatch_prompt` routes via the provider registry in `providers/`. Multi-provider: `local` (llama-swap / OpenAI-compatible), `anthropic`, `gemini`. Cache strategy with two breakpoints is designed but not yet provider-implemented.
+- **E2/H** — `dispatch_workflow` POSTs to n8n webhooks via `urllib`. Supports sync and async (callback) modes. The callback receiver lives in `services/control_panel/api.py` at `POST /api/v1/n8n/callback/{run_id}`.
+- **E3** — `dispatch_agent` — **not yet wired**. Will implement the agent loop with skill loading and MCP tool exposure.
 
 ## Layout
 
     services/recipe_runtime/
-        dispatcher.py          # dispatch_{prompt,workflow,agent} — currently stubs
+        dispatcher.py          # dispatch_{prompt,workflow,agent}
         prompt_assembler.py    # substitute_inputs + assemble — real, provider-agnostic
+        providers/             # provider registry + per-provider modules
         README.md              # this file
 
 ## Cache strategy (Phase E1)
