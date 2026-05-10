@@ -42,7 +42,7 @@ outputs:
 
 execution:
   type: workflow
-  entrypoint: n8n-workflows/daily-briefing.n8n
+  entrypoint: n8n-workflows/connectors/daily-briefing.n8n
 ---
 
 ## What this does

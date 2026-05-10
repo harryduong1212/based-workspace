@@ -104,44 +104,62 @@ def start_run(
         _runs[run.id] = run
 
     def _worker() -> None:
+        is_async_workflow = False
         try:
             from scripts import recipe_manager as rm  # type: ignore
-            from services.recipe_runtime.dispatcher import dispatch_prompt
+            from services.recipe_runtime.dispatcher import dispatch_prompt, dispatch_workflow
             from services.recipe_runtime.prompt_assembler import assemble
 
-            prompt_section = (
-                rm._extract_section(body, "Prompt")
-                or rm._extract_section(body, "Agent")
-                or body
-            )
-            envelope = assemble(fm, prompt_section, inputs)
-            if model_ref:
-                envelope["model"] = model_ref
+            execution_type = fm.get("execution", {}).get("type", "prompt")
+            
+            if execution_type == "workflow":
+                inputs_with_run_id = dict(inputs)
+                inputs_with_run_id["_run_id"] = run.id
+                result = dispatch_workflow(fm, inputs_with_run_id)
+                
+                is_async_workflow = fm.get("execution", {}).get("async", False)
+                if is_async_workflow:
+                    db.update_run_n8n_id(run.id, result)
+                else:
+                    with run._lock:
+                        run.output = result
+                    run.status = "done"
+            else:
+                prompt_section = (
+                    rm._extract_section(body, "Prompt")
+                    or rm._extract_section(body, "Agent")
+                    or body
+                )
+                envelope = assemble(fm, prompt_section, inputs)
+                if model_ref:
+                    envelope["model"] = model_ref
 
-            skill_bodies = rm._load_skill_bodies(envelope.get("skill_ids") or [])
-            dispatch_prompt(
-                envelope,
-                skill_bodies=skill_bodies,
-                out=_ChunkSink(run),
-                stream=True,
-            )
-            run.status = "done"
+                skill_bodies = rm._load_skill_bodies(envelope.get("skill_ids") or [])
+                dispatch_prompt(
+                    envelope,
+                    skill_bodies=skill_bodies,
+                    out=_ChunkSink(run),
+                    stream=True,
+                )
+                run.status = "done"
         except Exception as e:  # noqa: BLE001 — surface anything to the UI
             run.error = f"{type(e).__name__}: {e}"
             run.status = "error"
+            is_async_workflow = False  # If it failed to dispatch, it's not pending anymore
         finally:
-            run.ended_at = datetime.now(timezone.utc)
-            try:
-                db.finish_run(
-                    run_id=run.id,
-                    status=run.status,
-                    output=run.output,
-                    error=run.error,
-                )
-            except Exception:
-                pass  # never let persistence break the streaming finalization
-            run._queue.put(None)
-            run._done.set()
+            if not is_async_workflow:
+                run.ended_at = datetime.now(timezone.utc)
+                try:
+                    db.finish_run(
+                        run_id=run.id,
+                        status=run.status,
+                        output=run.output,
+                        error=run.error,
+                    )
+                except Exception:
+                    pass  # never let persistence break the streaming finalization
+                run._queue.put(None)
+                run._done.set()
 
     threading.Thread(target=_worker, name=f"run-{run.id}", daemon=True).start()
     return run

@@ -14,8 +14,11 @@ provider) or a `provider/model_id` ref (`anthropic/claude-opus-4-7`,
 """
 from __future__ import annotations
 
+import json
 import os
 import sys
+import urllib.error
+import urllib.request
 
 from .providers import get_provider, parse_model_ref
 from .providers.local import _post_openai_chat
@@ -128,7 +131,40 @@ def _build_messages(envelope: dict, skill_bodies: list[str] | None) -> list[dict
 
 def dispatch_workflow(fm: dict, inputs: dict) -> str:
     """POST to the n8n webhook at execution.entrypoint. Phase E2 / Phase H."""
-    raise NotImplementedError("dispatch_workflow not yet wired (Phase E2/H — pending n8n)")
+    base_url = os.environ.get("N8N_WEBHOOK_BASE", "http://localhost:5678").rstrip("/")
+    api_key = os.environ.get("N8N_API_KEY")
+    
+    entrypoint = fm.get("execution", {}).get("entrypoint", "")
+    if entrypoint.endswith(".n8n"):
+        path = "webhook/" + os.path.basename(entrypoint)[:-4]
+    else:
+        path = "webhook/" + entrypoint.lstrip("/")
+        
+    url = f"{base_url}/{path}"
+    payload = json.dumps({"inputs": inputs, "recipe": fm}).encode("utf-8")
+    
+    req = urllib.request.Request(url, data=payload, method="POST")
+    req.add_header("Content-Type", "application/json")
+    if api_key:
+        req.add_header("Authorization", f"Bearer {api_key}")
+        
+    is_async = fm.get("execution", {}).get("async", False)
+    
+    try:
+        with urllib.request.urlopen(req, timeout=30) as response:
+            body = response.read().decode("utf-8")
+            if is_async:
+                try:
+                    data = json.loads(body)
+                    return data.get("executionId", "pending")
+                except json.JSONDecodeError:
+                    return "pending"
+            return body
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8")
+        raise RuntimeError(f"n8n workflow failed ({e.code}): {error_body}") from e
+    except urllib.error.URLError as e:
+        raise RuntimeError(f"n8n connection failed: {e.reason}") from e
 
 
 def dispatch_agent(fm: dict, agent_body: str, inputs: dict) -> str:

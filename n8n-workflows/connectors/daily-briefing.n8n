@@ -1,0 +1,142 @@
+{
+  "name": "Daily Briefing Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daily-briefing",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.JIRA_BASE_URL }}/rest/api/3/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth"
+      },
+      "id": "2",
+      "name": "Jira",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 100]
+    },
+    {
+      "parameters": {
+        "url": "https://api.bitbucket.org/2.0/repositories/{{ $env.BITBUCKET_USERNAME }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth"
+      },
+      "id": "3",
+      "name": "Bitbucket",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://gmail.googleapis.com/gmail/v1/users/me/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth"
+      },
+      "id": "4",
+      "name": "Gmail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 500]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "mergeByPosition"
+      },
+      "id": "5",
+      "name": "Aggregator",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-opus-20240229",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Summarize the following tickets, PRs, and emails: {{ $json }}"
+            }
+          ]
+        }
+      },
+      "id": "6",
+      "name": "Anthropic",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8765/api/v1/n8n/callback/{{ $('Webhook Trigger').item.json.body.inputs._run_id }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "output",
+              "value": "={{ $json.message.content[0].text || 'Summary completed' }}"
+            }
+          ]
+        }
+      },
+      "id": "7",
+      "name": "HTTP Response",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1050, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          { "node": "Jira", "type": "main", "index": 0 },
+          { "node": "Bitbucket", "type": "main", "index": 0 },
+          { "node": "Gmail", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Jira": {
+      "main": [
+        [ { "node": "Aggregator", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Bitbucket": {
+      "main": [
+        [ { "node": "Aggregator", "type": "main", "index": 1 } ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [ { "node": "Aggregator", "type": "main", "index": 2 } ]
+      ]
+    },
+    "Aggregator": {
+      "main": [
+        [ { "node": "Anthropic", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Anthropic": {
+      "main": [
+        [ { "node": "HTTP Response", "type": "main", "index": 0 } ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

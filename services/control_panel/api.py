@@ -319,6 +319,34 @@ def create_api_router() -> APIRouter:
         scheduler.sync_routine(cfg, routine_id)
         return {"ok": True}
 
+    @router.post("/n8n/callback/{run_id}")
+    async def n8n_callback(request: Request, run_id: str) -> dict[str, Any]:
+        host_header = request.headers.get("host", "").split(":")[0]
+        if host_header not in _LOCAL_HOSTS:
+            raise HTTPException(status_code=403, detail="callback restricted to localhost")
+            
+        req_json = await request.json()
+        output = req_json.get("output", "")
+        error = req_json.get("error")
+        status = "error" if error else "done"
+        
+        db.finish_run(run_id=run_id, status=status, output=output, error=error)
+        
+        # update the in-memory run if it's active
+        from .runs import get_run
+        run = get_run(run_id)
+        if run and not run._persisted_only:
+            with run._lock:
+                run.output = output
+            run.error = error
+            run.status = status
+            run.ended_at = db._parse_iso(db._now_iso())
+            run._queue.put(output)
+            run._queue.put(None)
+            run._done.set()
+            
+        return {"ok": True}
+
     @router.get("/runs/{run_id}")
     def get_run(request: Request, run_id: str) -> dict[str, Any]:
         del request

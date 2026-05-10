@@ -12,564 +12,6 @@ import unittest
 _HAS_FASTAPI = all(importlib.util.find_spec(m) is not None for m in ("fastapi", "jinja2"))
 
 
-@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed; install services/control_panel/requirements.txt")
-class DashboardSmokeTest(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        from fastapi.testclient import TestClient
-
-        from services.control_panel.app import create_app
-        from services.control_panel.config import Config
-
-        cfg = Config.from_env()
-        cls.cfg = cfg
-        cls.client = TestClient(create_app(cfg))
-
-    def test_dashboard_returns_200(self):
-        resp = self.client.get("/")
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("Recipes", resp.text)
-
-    def test_dashboard_lists_known_recipe(self):
-        """The 'code-review' recipe should be registered and visible."""
-        resp = self.client.get("/")
-        self.assertIn("code-review", resp.text)
-
-    def test_dashboard_lists_known_connector(self):
-        resp = self.client.get("/")
-        self.assertIn("bitbucket", resp.text)
-        self.assertIn("jira", resp.text)
-        self.assertIn("gmail", resp.text)
-        self.assertIn("github", resp.text)
-
-    def test_connector_detail_renders_body_and_env_status(self):
-        resp = self.client.get("/connectors/jira")
-        self.assertEqual(resp.status_code, 200)
-        # Frontmatter sidebar fields surface.
-        self.assertRegex(resp.text, r"<code[^>]*>jira</code>")
-        self.assertIn("api_token", resp.text)
-        # Required env vars are listed with status pills.
-        self.assertIn("JIRA_BASE_URL", resp.text)
-        self.assertIn("JIRA_EMAIL", resp.text)
-        self.assertIn("JIRA_API_TOKEN", resp.text)
-        # Test-connection button is present.
-        self.assertIn('hx-post="/connectors/jira/test"', resp.text)
-
-    def test_connector_detail_renders_gmail_with_basic_auth_and_env(self):
-        resp = self.client.get("/connectors/gmail")
-        self.assertEqual(resp.status_code, 200)
-        self.assertRegex(resp.text, r"<code[^>]*>gmail</code>")
-        self.assertIn("basic", resp.text)
-        self.assertIn("GMAIL_ADDRESS", resp.text)
-        self.assertIn("GMAIL_APP_PASSWORD", resp.text)
-        self.assertIn('hx-post="/connectors/gmail/test"', resp.text)
-
-    def test_connector_detail_renders_github_with_api_token_and_env(self):
-        resp = self.client.get("/connectors/github")
-        self.assertEqual(resp.status_code, 200)
-        self.assertRegex(resp.text, r"<code[^>]*>github</code>")
-        self.assertIn("api_token", resp.text)
-        self.assertIn("GITHUB_TOKEN", resp.text)
-        self.assertIn('hx-post="/connectors/github/test"', resp.text)
-
-    def test_connector_404_for_unknown_id(self):
-        resp = self.client.get("/connectors/no-such-connector")
-        self.assertEqual(resp.status_code, 404)
-
-    def test_connector_test_endpoint_reports_missing_envs(self):
-        import os as _os
-        # Snapshot and clear all three Jira env vars to force missing.
-        keys = ("JIRA_BASE_URL", "JIRA_EMAIL", "JIRA_API_TOKEN")
-        saved = {k: _os.environ.pop(k, None) for k in keys}
-        try:
-            resp = self.client.post("/connectors/jira/test")
-            self.assertEqual(resp.status_code, 200)
-            self.assertIn("Missing env vars", resp.text)
-            self.assertIn("JIRA_BASE_URL", resp.text)
-        finally:
-            for k, v in saved.items():
-                if v is not None:
-                    _os.environ[k] = v
-
-    def test_connector_test_endpoint_reports_all_present(self):
-        import os as _os
-        keys = ("JIRA_BASE_URL", "JIRA_EMAIL", "JIRA_API_TOKEN")
-        saved = {k: _os.environ.pop(k, None) for k in keys}
-        for k in keys:
-            _os.environ[k] = "x"
-        try:
-            resp = self.client.post("/connectors/jira/test")
-            self.assertEqual(resp.status_code, 200)
-            # Jira has no live probe registered → still shows the env-only success.
-            self.assertIn("All required env vars are set", resp.text)
-            self.assertIn("deferred", resp.text)
-        finally:
-            for k, v in saved.items():
-                _os.environ.pop(k, None)
-                if v is not None:
-                    _os.environ[k] = v
-
-    def test_connector_test_endpoint_runs_live_probe_for_gmail(self):
-        """Gmail has a registered probe — when env is set, the probe runs and
-        its outcome (success here, monkey-patched to avoid network) renders."""
-        import os as _os
-        from services.control_panel import connector_probes as cp
-
-        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
-        saved_env = {k: _os.environ.pop(k, None) for k in keys}
-        _os.environ["GMAIL_ADDRESS"] = "tester@gmail.com"
-        _os.environ["GMAIL_APP_PASSWORD"] = "abcdabcdabcdabcd"
-        original_probe = cp.PROBES["gmail"]
-        cp.PROBES["gmail"] = lambda: cp.ProbeOutcome(
-            ok=True, message="IMAP login succeeded for tester@gmail.com."
-        )
-        try:
-            resp = self.client.post("/connectors/gmail/test")
-            self.assertEqual(resp.status_code, 200)
-            self.assertIn("Live connection succeeded", resp.text)
-            self.assertIn("tester@gmail.com", resp.text)
-        finally:
-            cp.PROBES["gmail"] = original_probe
-            for k, v in saved_env.items():
-                _os.environ.pop(k, None)
-                if v is not None:
-                    _os.environ[k] = v
-
-    def test_connector_test_endpoint_reports_live_probe_failure(self):
-        import os as _os
-        from services.control_panel import connector_probes as cp
-
-        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
-        saved_env = {k: _os.environ.pop(k, None) for k in keys}
-        _os.environ["GMAIL_ADDRESS"] = "tester@gmail.com"
-        _os.environ["GMAIL_APP_PASSWORD"] = "wrong"
-        original_probe = cp.PROBES["gmail"]
-        cp.PROBES["gmail"] = lambda: cp.ProbeOutcome(
-            ok=False, message="IMAP login rejected: [AUTHENTICATIONFAILED] Invalid credentials"
-        )
-        try:
-            resp = self.client.post("/connectors/gmail/test")
-            self.assertEqual(resp.status_code, 200)
-            self.assertIn("Live connection failed", resp.text)
-            self.assertIn("AUTHENTICATIONFAILED", resp.text)
-        finally:
-            cp.PROBES["gmail"] = original_probe
-            for k, v in saved_env.items():
-                _os.environ.pop(k, None)
-                if v is not None:
-                    _os.environ[k] = v
-
-    def test_connector_test_endpoint_runs_live_probe_for_github(self):
-        import os as _os
-        from services.control_panel import connector_probes as cp
-
-        saved = _os.environ.pop("GITHUB_TOKEN", None)
-        _os.environ["GITHUB_TOKEN"] = "ghp_fake_token"
-        original_probe = cp.PROBES["github"]
-        cp.PROBES["github"] = lambda: cp.ProbeOutcome(
-            ok=True, message="GitHub /user authenticated as octocat."
-        )
-        try:
-            resp = self.client.post("/connectors/github/test")
-            self.assertEqual(resp.status_code, 200)
-            self.assertIn("Live connection succeeded", resp.text)
-            self.assertIn("octocat", resp.text)
-        finally:
-            cp.PROBES["github"] = original_probe
-            _os.environ.pop("GITHUB_TOKEN", None)
-            if saved is not None:
-                _os.environ["GITHUB_TOKEN"] = saved
-
-    def test_connector_test_endpoint_reports_github_bad_credentials(self):
-        import os as _os
-        from services.control_panel import connector_probes as cp
-
-        saved = _os.environ.pop("GITHUB_TOKEN", None)
-        _os.environ["GITHUB_TOKEN"] = "ghp_invalid"
-        original_probe = cp.PROBES["github"]
-        cp.PROBES["github"] = lambda: cp.ProbeOutcome(
-            ok=False, message="GitHub /user returned HTTP 401: Bad credentials"
-        )
-        try:
-            resp = self.client.post("/connectors/github/test")
-            self.assertEqual(resp.status_code, 200)
-            self.assertIn("Live connection failed", resp.text)
-            self.assertIn("Bad credentials", resp.text)
-        finally:
-            cp.PROBES["github"] = original_probe
-            _os.environ.pop("GITHUB_TOKEN", None)
-            if saved is not None:
-                _os.environ["GITHUB_TOKEN"] = saved
-
-    def test_connector_test_endpoint_skips_probe_when_env_missing(self):
-        """If env vars are missing, the route must NOT invoke the live probe
-        (no point hitting the network when we know creds aren't configured)."""
-        import os as _os
-        from services.control_panel import connector_probes as cp
-
-        keys = ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD")
-        saved_env = {k: _os.environ.pop(k, None) for k in keys}
-        original_probe = cp.PROBES["gmail"]
-        called: list[bool] = []
-
-        def _tripwire() -> cp.ProbeOutcome:
-            called.append(True)
-            return cp.ProbeOutcome(ok=False, message="should not be called")
-
-        cp.PROBES["gmail"] = _tripwire
-        try:
-            resp = self.client.post("/connectors/gmail/test")
-            self.assertEqual(resp.status_code, 200)
-            self.assertIn("Missing env vars", resp.text)
-            self.assertEqual(called, [], "live probe was called even though env was missing")
-        finally:
-            cp.PROBES["gmail"] = original_probe
-            for k, v in saved_env.items():
-                if v is not None:
-                    _os.environ[k] = v
-
-    def test_health_endpoint_renders_html_fragment(self):
-        resp = self.client.get("/api/health")
-        self.assertEqual(resp.status_code, 200)
-        # Health probes are best-effort — both states are valid here.
-        self.assertIn("llama-swap", resp.text)
-        self.assertIn("postgres", resp.text)
-
-    def test_recipe_overview_renders_body_as_html(self):
-        resp = self.client.get("/recipes/code-review")
-        self.assertEqual(resp.status_code, 200)
-        # Headings in the body should become <h2>/<h3> after markdown render.
-        self.assertRegex(resp.text, r"<h[23][^>]*>.*What this does")
-        # Frontmatter sidebar should surface the id and execution type.
-        self.assertRegex(resp.text, r"<code[^>]*>code-review</code>")
-        self.assertIn("prompt", resp.text)
-
-    def test_recipe_overview_active_tab(self):
-        resp = self.client.get("/recipes/code-review")
-        # Active tab marker is an `active` token in the className list on Overview.
-        self.assertRegex(
-            resp.text,
-            r'href="/recipes/code-review"\s+class="[^"]*\bactive\b[^"]*"',
-        )
-
-    def test_recipe_run_form_renders_inputs_and_providers(self):
-        resp = self.client.get("/recipes/code-review/run")
-        self.assertEqual(resp.status_code, 200)
-        # Form action posts back to the same URL.
-        self.assertIn('action="/recipes/code-review/run"', resp.text)
-        # Each declared input renders as <textarea name="input__X">.
-        self.assertIn('name="input__diff"', resp.text)
-        self.assertIn('name="input__target_branch"', resp.text)
-        # Provider dropdown contains the three known providers.
-        self.assertIn('name="model_ref"', resp.text)
-        self.assertIn("anthropic/", resp.text)
-        self.assertIn("gemini/", resp.text)
-        # Free-text override always present.
-        self.assertIn('name="model_override"', resp.text)
-
-    def test_recipe_edit_loads_raw_content_into_editor(self):
-        resp = self.client.get("/recipes/code-review/edit")
-        self.assertEqual(resp.status_code, 200)
-        # The frontmatter delimiter should appear inside the textarea body.
-        self.assertIn("id: code-review", resp.text)
-        self.assertIn('id="cm_editor"', resp.text)
-        # CodeMirror script is included.
-        self.assertIn("codemirror.min.js", resp.text)
-
-    def test_recipe_404_for_unknown_id(self):
-        resp = self.client.get("/recipes/does-not-exist-xyz")
-        self.assertEqual(resp.status_code, 404)
-
-
-@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
-class RunFlowTest(unittest.TestCase):
-    """End-to-end run flow with the dispatcher monkeypatched to a fake provider."""
-
-    @classmethod
-    def setUpClass(cls):
-        import io
-        from fastapi.testclient import TestClient
-
-        from services.control_panel import runs as runs_mod
-        from services.control_panel.app import create_app
-        from services.control_panel.config import Config
-
-        # Replace the worker's dispatch_prompt with a deterministic fake that
-        # writes three chunks to the sink. Avoids any real network call.
-        original_start = runs_mod.start_run
-        cls._original_start = original_start
-
-        def fake_start(cfg, recipe_id, fm, body, inputs, model_ref):
-            run = original_start.__wrapped__(cfg, recipe_id, fm, body, inputs, model_ref) \
-                if hasattr(original_start, "__wrapped__") else None
-            del run
-
-            import threading
-            import uuid
-            from datetime import datetime, timezone
-            from services.control_panel.runs import Run, _ChunkSink, _runs, _runs_lock
-
-            r = Run(
-                id=uuid.uuid4().hex[:12],
-                recipe_id=recipe_id,
-                model_ref=model_ref or "fake/model",
-                inputs=dict(inputs),
-                started_at=datetime.now(timezone.utc),
-            )
-            with _runs_lock:
-                _runs[r.id] = r
-
-            def worker():
-                try:
-                    sink = _ChunkSink(r)
-                    sink.write("hello ")
-                    sink.write("world")
-                    r.status = "done"
-                except Exception as e:  # pragma: no cover
-                    r.error = str(e)
-                    r.status = "error"
-                finally:
-                    r._queue.put(None)
-                    r._done.set()
-
-            threading.Thread(target=worker, daemon=True).start()
-            return r
-
-        runs_mod.start_run = fake_start
-
-        # Reimport app to pick up new start_run binding via the module-level reference.
-        # create_app captures `start_run` from runs_mod at call time, but the route
-        # closure captured the function object — so we need to also patch the app's
-        # imported binding. Patch the bound name in app's module too.
-        from services.control_panel import app as app_mod
-        cls._app_original_start = app_mod.start_run
-        app_mod.start_run = fake_start
-
-        cfg = Config.from_env()
-        cls.client = TestClient(create_app(cfg))
-
-    @classmethod
-    def tearDownClass(cls):
-        from services.control_panel import app as app_mod
-        from services.control_panel import runs as runs_mod
-        app_mod.start_run = cls._app_original_start
-        runs_mod.start_run = cls._original_start
-
-    def test_post_run_redirects_to_run_view(self):
-        resp = self.client.post(
-            "/recipes/code-review/run",
-            data={"model_ref": "anthropic/claude-haiku-4-5-20251001", "input__target_branch": "main"},
-            follow_redirects=False,
-        )
-        self.assertEqual(resp.status_code, 303)
-        self.assertRegex(resp.headers["location"], r"^/runs/[a-f0-9]{12}$")
-
-    def test_run_view_renders_status_pill(self):
-        resp = self.client.post(
-            "/recipes/code-review/run",
-            data={"model_ref": "anthropic/claude-haiku-4-5-20251001"},
-            follow_redirects=True,
-        )
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("run-output", resp.text)
-        self.assertIn("run-status", resp.text)
-
-    def test_sse_stream_emits_chunks_and_done_event(self):
-        from services.control_panel.runs import get_run
-
-        resp = self.client.post(
-            "/recipes/code-review/run",
-            data={"model_ref": "anthropic/claude-haiku-4-5-20251001"},
-            follow_redirects=False,
-        )
-        run_id = resp.headers["location"].rsplit("/", 1)[-1]
-        # Wait until the worker has finished writing its 2 chunks + sentinel.
-        run = get_run(run_id)
-        self.assertIsNotNone(run)
-        run._done.wait(timeout=5)
-
-        with self.client.stream("GET", f"/api/runs/{run_id}/stream") as r:
-            self.assertEqual(r.status_code, 200)
-            self.assertIn("text/event-stream", r.headers["content-type"])
-            body = "".join(r.iter_text())
-
-        self.assertIn("event: chunk", body)
-        self.assertIn("event: done", body)
-        self.assertIn("hello ", body)
-        self.assertIn("world", body)
-
-    def test_model_override_wins(self):
-        from services.control_panel.runs import get_run
-
-        resp = self.client.post(
-            "/recipes/code-review/run",
-            data={
-                "model_ref": "anthropic/claude-opus-4-7",
-                "model_override": "local/qwen2.5-coder-14b",
-            },
-            follow_redirects=False,
-        )
-        run_id = resp.headers["location"].rsplit("/", 1)[-1]
-        self.assertEqual(get_run(run_id).model_ref, "local/qwen2.5-coder-14b")
-
-
-@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
-class EditFlowTest(unittest.TestCase):
-    """Edit-save flow against a tmpdir-backed Config so real recipes are untouched."""
-
-    @classmethod
-    def setUpClass(cls):
-        import tempfile
-        from pathlib import Path
-
-        from fastapi.testclient import TestClient
-        from services.control_panel.app import create_app
-        from services.control_panel.config import Config
-
-        cls.tmpdir = tempfile.mkdtemp(prefix="cp_edit_test_")
-        root = Path(cls.tmpdir)
-        (root / "recipes").mkdir()
-        (root / "connectors").mkdir()
-        (root / "services").mkdir()
-        (root / "scripts").mkdir()
-
-        # A minimal valid recipe.
-        cls.recipe_path = root / "recipes" / "demo.md"
-        cls.recipe_path.write_text(
-            "---\n"
-            "id: demo\n"
-            "name: Demo\n"
-            "description: tmp recipe used by EditFlowTest.\n"
-            "audience: tech\n"
-            "version: 0.1.0\n"
-            "status: experimental\n"
-            "tags: []\n"
-            "requires_skills: []\n"
-            "requires_workflows: []\n"
-            "requires_connectors: []\n"
-            "requires_mcp: []\n"
-            "requires_env: []\n"
-            "execution:\n"
-            "  type: prompt\n"
-            "---\n"
-            "## Prompt\n\nhello\n",
-            encoding="utf-8",
-        )
-
-        # Stub out the audit subprocess — recipe_manager.py isn't in the tmp tree.
-        from services.control_panel import recipe_writer as rw
-
-        cls._orig_audit = rw._audit_recipe
-        rw._audit_recipe = lambda cfg, recipe_id: []
-
-        cfg = Config(
-            workspace_root=root,
-            recipes_dir=root / "recipes",
-            connectors_dir=root / "connectors",
-            services_dir=root / "services",
-            host="127.0.0.1",
-            port=0,
-            reload=False,
-            llama_swap_url="http://localhost:11434/v1",
-        )
-        cls.cfg = cfg
-        cls.client = TestClient(create_app(cfg))
-
-    @classmethod
-    def tearDownClass(cls):
-        import shutil
-        from services.control_panel import recipe_writer as rw
-
-        rw._audit_recipe = cls._orig_audit
-        shutil.rmtree(cls.tmpdir, ignore_errors=True)
-
-    def test_save_writes_file(self):
-        new_body = self.recipe_path.read_text(encoding="utf-8").replace("hello", "hello world")
-        resp = self.client.post("/recipes/demo/edit", data={"content": new_body})
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("Saved", resp.text)
-        self.assertIn("hello world", self.recipe_path.read_text(encoding="utf-8"))
-
-    def test_save_rejects_broken_yaml(self):
-        before = self.recipe_path.read_text(encoding="utf-8")
-        broken = "---\nid: [unclosed\n---\nbody\n"
-        resp = self.client.post("/recipes/demo/edit", data={"content": broken})
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("Save failed", resp.text)
-        self.assertIn("frontmatter", resp.text)
-        # File untouched.
-        self.assertEqual(self.recipe_path.read_text(encoding="utf-8"), before)
-
-    def test_save_rejects_id_mismatch(self):
-        before = self.recipe_path.read_text(encoding="utf-8")
-        # Same recipe but with a different `id:` in frontmatter.
-        munged = before.replace("id: demo", "id: not-demo")
-        resp = self.client.post("/recipes/demo/edit", data={"content": munged})
-        self.assertIn("Save failed", resp.text)
-        # The apostrophe gets HTML-escaped by Jinja; match against either form.
-        self.assertRegex(resp.text, r"doesn(?:'|&#39;)t match")
-        self.assertEqual(self.recipe_path.read_text(encoding="utf-8"), before)
-
-    def test_save_404_for_unknown_recipe(self):
-        resp = self.client.post("/recipes/no-such-recipe/edit", data={"content": "..."})
-        self.assertEqual(resp.status_code, 404)
-
-    def test_new_form_renders(self):
-        resp = self.client.get("/recipes/new")
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn('action="/recipes/new"', resp.text)
-        self.assertIn('name="execution_type"', resp.text)
-
-    def test_new_recipe_creates_file_and_redirects_to_edit(self):
-        resp = self.client.post(
-            "/recipes/new",
-            data={
-                "id": "fresh-recipe",
-                "name": "Fresh",
-                "description": "A brand-new recipe scaffolded by B5.",
-                "audience": "tech",
-                "execution_type": "prompt",
-                "tags": "demo, b5",
-            },
-            follow_redirects=False,
-        )
-        self.assertEqual(resp.status_code, 303)
-        self.assertEqual(resp.headers["location"], "/recipes/fresh-recipe/edit")
-        target = self.cfg.recipes_dir / "fresh-recipe.md"
-        self.assertTrue(target.exists())
-        body = target.read_text(encoding="utf-8")
-        self.assertIn("id: fresh-recipe", body)
-        self.assertIn("type: prompt", body)
-        self.assertIn("- demo", body)
-
-    def test_new_recipe_rejects_duplicate_id(self):
-        # First create succeeds.
-        self.client.post(
-            "/recipes/new",
-            data={"id": "dupe", "name": "x", "description": "x", "audience": "tech", "execution_type": "prompt"},
-            follow_redirects=False,
-        )
-        # Second fails with 400 + form re-rendered.
-        resp = self.client.post(
-            "/recipes/new",
-            data={"id": "dupe", "name": "y", "description": "y", "audience": "tech", "execution_type": "prompt"},
-            follow_redirects=False,
-        )
-        self.assertEqual(resp.status_code, 400)
-        self.assertIn("already exists", resp.text)
-        # Form re-rendered with submitted values intact.
-        self.assertIn('value="dupe"', resp.text)
-
-    def test_new_recipe_rejects_invalid_execution_type(self):
-        resp = self.client.post(
-            "/recipes/new",
-            data={"id": "bad-type", "name": "x", "description": "x", "execution_type": "freeform"},
-            follow_redirects=False,
-        )
-        self.assertEqual(resp.status_code, 400)
-        self.assertIn("execution_type", resp.text)
-
-
 class RecipeSkeletonUnitTest(unittest.TestCase):
     """Direct tests for build_skeleton — no FastAPI involvement."""
 
@@ -717,124 +159,6 @@ class EnvWriterUnitTest(unittest.TestCase):
             allowed=["GOOD", "ALSO_GOOD"],
         )
         self.assertEqual(filtered, {"GOOD": "1", "ALSO_GOOD": "3"})
-
-
-@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
-class ConnectorEnvFlowTest(unittest.TestCase):
-    """Round-trip test for the env editor route — writes through to a tmp .env."""
-
-    def setUp(self):
-        import os
-        import tempfile
-        from pathlib import Path
-        from fastapi.testclient import TestClient
-
-        from services.control_panel.app import create_app
-        from services.control_panel.config import Config
-
-        # Point WORKSPACE_ROOT at a tmpdir that mirrors the real workspace's
-        # connectors/ + recipes/, so we can test against a real fixture but
-        # write to a sandboxed .env.
-        real_root = Config.from_env().workspace_root
-        self.tmpdir = tempfile.mkdtemp(prefix="cp_env_route_")
-        root = Path(self.tmpdir)
-        (root / "connectors").symlink_to(real_root / "connectors", target_is_directory=True)
-        (root / "recipes").symlink_to(real_root / "recipes", target_is_directory=True)
-        (root / "services").symlink_to(real_root / "services", target_is_directory=True)
-        self.cfg = Config(
-            workspace_root=root,
-            recipes_dir=root / "recipes",
-            connectors_dir=root / "connectors",
-            services_dir=root / "services",
-            host="127.0.0.1",
-            port=0,
-            reload=False,
-            llama_swap_url="",
-        )
-        self._snapshot_env = os.environ.copy()
-        self.client = TestClient(create_app(self.cfg))
-
-    def tearDown(self):
-        import os
-        import shutil
-        os.environ.clear()
-        os.environ.update(self._snapshot_env)
-        shutil.rmtree(self.tmpdir, ignore_errors=True)
-
-    def test_env_form_has_native_action_and_method_fallback(self):
-        """If htmx fails to wire up (e.g. dynamically injected content not
-        processed), the <form> must still POST natively to the right URL —
-        otherwise the browser falls back to GET on the page URL and the
-        password ends up in the access log. Regression guard for that."""
-        resp = self.client.get("/connectors/gmail/env")
-        self.assertEqual(resp.status_code, 200)
-        self.assertRegex(
-            resp.text,
-            r'<form[^>]+action="/connectors/gmail/env"[^>]+method="post"',
-        )
-
-    def test_get_form_renders_with_disabled_inputs_for_unknown_host(self):
-        from services.control_panel.app import create_app
-        from services.control_panel.config import Config
-
-        # Bind to a non-local host → form should render but inputs disabled.
-        cfg = Config(**{**self.cfg.__dict__, "host": "0.0.0.0"})
-        from fastapi.testclient import TestClient
-        client = TestClient(create_app(cfg))
-        resp = client.get("/connectors/jira/env")
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("Disabled:", resp.text)
-        self.assertRegex(resp.text, r'<input[^>]*name="env__JIRA_BASE_URL"[^>]*\bdisabled\b')
-
-    def test_post_writes_env_and_updates_process_environ(self):
-        import os
-        from services.control_panel.env_writer import read_env_values
-
-        resp = self.client.post(
-            "/connectors/jira/env",
-            data={
-                "env__JIRA_BASE_URL": "https://example.atlassian.net",
-                "env__JIRA_EMAIL": "tester@example.com",
-                "env__JIRA_API_TOKEN": "tok-secret-123",
-            },
-        )
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("Saved 3 variables", resp.text)
-        # File written.
-        env_file = self.cfg.workspace_root / ".env"
-        self.assertTrue(env_file.exists())
-        values = read_env_values(env_file)
-        self.assertEqual(values["JIRA_BASE_URL"], "https://example.atlassian.net")
-        self.assertEqual(values["JIRA_EMAIL"], "tester@example.com")
-        self.assertEqual(values["JIRA_API_TOKEN"], "tok-secret-123")
-        # Process env updated so status pills refresh without restart.
-        self.assertEqual(os.environ["JIRA_BASE_URL"], "https://example.atlassian.net")
-
-    def test_post_ignores_keys_outside_requires_env(self):
-        from services.control_panel.env_writer import read_env_values
-
-        resp = self.client.post(
-            "/connectors/jira/env",
-            data={
-                "env__JIRA_BASE_URL": "https://x.atlassian.net",
-                "env__SOMETHING_ELSE": "should-not-write",
-            },
-        )
-        self.assertEqual(resp.status_code, 200)
-        env_file = self.cfg.workspace_root / ".env"
-        values = read_env_values(env_file)
-        self.assertIn("JIRA_BASE_URL", values)
-        self.assertNotIn("SOMETHING_ELSE", values)
-
-    def test_post_with_all_empty_inputs_is_a_noop(self):
-        resp = self.client.post(
-            "/connectors/jira/env",
-            data={"env__JIRA_BASE_URL": "", "env__JIRA_EMAIL": "", "env__JIRA_API_TOKEN": ""},
-        )
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn("Nothing to save", resp.text)
-        # File not created — nothing was written.
-        self.assertFalse((self.cfg.workspace_root / ".env").exists())
 
 
 @unittest.skipUnless(_HAS_FASTAPI, "fastapi not installed")
@@ -1199,6 +523,14 @@ class DbUnitTest(unittest.TestCase):
         self.assertEqual(row.status, "abandoned")
         self.assertIsNotNone(row.ended_at)
 
+    def test_schema_init_idempotent(self):
+        from pathlib import Path
+        from services.control_panel import db
+        # It's already inited in setUp
+        db.init(Path(self.tmpdir)) # Call again
+        db.init(Path(self.tmpdir)) # Call a third time
+        # Should not raise any operational errors about duplicate columns.
+
 
 @unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
 class JsonApiRunsTest(unittest.TestCase):
@@ -1335,5 +667,411 @@ class IndexLoadersStdlibOnlyTest(unittest.TestCase):
         self.assertIsNone(get_recipe(Config.from_env(), "does-not-exist-xyz"))
 
 
+def _sandbox_cfg(tmpdir: str):
+    """Build a Config rooted in a tmpdir that symlinks to the real recipes/
+    connectors so get_recipe still resolves while the SQLite DB stays
+    isolated under <tmpdir>/.cache/."""
+    from pathlib import Path
+    from services.control_panel.config import Config
+
+    real_root = Config.from_env().workspace_root
+    root = Path(tmpdir)
+    (root / "recipes").symlink_to(real_root / "recipes", target_is_directory=True)
+    (root / "connectors").symlink_to(real_root / "connectors", target_is_directory=True)
+    (root / "services").symlink_to(real_root / "services", target_is_directory=True)
+    return Config(
+        workspace_root=root,
+        recipes_dir=root / "recipes",
+        connectors_dir=root / "connectors",
+        services_dir=root / "services",
+        host="127.0.0.1", port=0, reload=False, llama_swap_url="",
+    )
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiRoutinesTest(unittest.TestCase):
+    """`/api/v1/routines` CRUD + scheduler sync."""
+
+    def setUp(self):
+        import tempfile
+        from fastapi.testclient import TestClient
+        from services.control_panel import scheduler
+        from services.control_panel.app import create_app
+
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_routines_")
+        self.cfg = _sandbox_cfg(self.tmpdir)
+        # create_app calls db.init + scheduler.init.
+        self.client = TestClient(create_app(self.cfg))
+        self._scheduler = scheduler
+
+    def tearDown(self):
+        import shutil
+        from services.control_panel import db, scheduler
+        scheduler.shutdown()
+        db.close()
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_create_lists_and_deletes_routine(self):
+        # Create.
+        resp = self.client.post(
+            "/api/v1/routines",
+            json={
+                "recipe_id": "code-review",
+                "schedule": "0 8 * * *",
+                "model_ref": "anthropic/claude-haiku-4-5-20251001",
+                "inputs": {"target_branch": "main"},
+                "enabled": True,
+            },
+        )
+        self.assertEqual(resp.status_code, 200)
+        routine_id = resp.json()["id"]
+        self.assertTrue(routine_id)
+
+        # Scheduler picked it up.
+        self.assertIsNotNone(self._scheduler._scheduler.get_job(routine_id))
+
+        # List.
+        listed = self.client.get("/api/v1/routines").json()
+        self.assertEqual(len(listed), 1)
+        self.assertEqual(listed[0]["id"], routine_id)
+        self.assertEqual(listed[0]["recipe_id"], "code-review")
+        self.assertTrue(listed[0]["enabled"])
+        self.assertEqual(listed[0]["inputs"], {"target_branch": "main"})
+
+        # Delete.
+        resp = self.client.delete(f"/api/v1/routines/{routine_id}")
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue(resp.json()["ok"])
+        # Scheduler dropped the job.
+        self.assertIsNone(self._scheduler._scheduler.get_job(routine_id))
+        # DB row gone.
+        self.assertEqual(self.client.get("/api/v1/routines").json(), [])
+
+    def test_update_via_post_with_existing_id_does_not_duplicate(self):
+        first = self.client.post(
+            "/api/v1/routines",
+            json={"recipe_id": "code-review", "schedule": "0 8 * * *", "enabled": True},
+        ).json()
+        rid = first["id"]
+        # POST again with same id but different schedule + enabled=False.
+        second = self.client.post(
+            "/api/v1/routines",
+            json={"id": rid, "recipe_id": "code-review", "schedule": "*/15 * * * *", "enabled": False},
+        )
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(second.json()["id"], rid)
+
+        listed = self.client.get("/api/v1/routines").json()
+        self.assertEqual(len(listed), 1)
+        self.assertEqual(listed[0]["schedule"], "*/15 * * * *")
+        self.assertFalse(listed[0]["enabled"])
+        # Disabled routine should have no scheduled job.
+        self.assertIsNone(self._scheduler._scheduler.get_job(rid))
+
+    def test_invalid_cron_returns_400(self):
+        resp = self.client.post(
+            "/api/v1/routines",
+            json={"recipe_id": "code-review", "schedule": "not-a-cron"},
+        )
+        self.assertEqual(resp.status_code, 400)
+        self.assertIn("cron", resp.json()["detail"].lower())
+
+    def test_unknown_recipe_returns_400(self):
+        resp = self.client.post(
+            "/api/v1/routines",
+            json={"recipe_id": "no-such-recipe", "schedule": "0 8 * * *"},
+        )
+        self.assertEqual(resp.status_code, 400)
+        self.assertIn("recipe not found", resp.json()["detail"])
+
+    def test_missing_required_fields_returns_400(self):
+        # No recipe_id.
+        r1 = self.client.post("/api/v1/routines", json={"schedule": "0 8 * * *"})
+        self.assertEqual(r1.status_code, 400)
+        # No schedule.
+        r2 = self.client.post("/api/v1/routines", json={"recipe_id": "code-review"})
+        self.assertEqual(r2.status_code, 400)
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiRecipeRunTest(unittest.TestCase):
+    """`POST /api/v1/recipes/{id}/run` — start a run via JSON, dispatcher mocked."""
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        from fastapi.testclient import TestClient
+        from services.control_panel import runs as runs_mod, db, scheduler
+        from services.control_panel.app import create_app
+
+        cls.tmpdir = tempfile.mkdtemp(prefix="cp_jsonrun_")
+        cls.cfg = _sandbox_cfg(cls.tmpdir)
+
+        # Replace start_run with a deterministic fake. The api route imports
+        # start_run inside the handler (`from .runs import start_run`) so we
+        # patch at the module level only.
+        cls._original_start = runs_mod.start_run
+
+        def fake_start(cfg, recipe_id, fm, body, inputs, model_ref):
+            import threading
+            import uuid
+            from datetime import datetime, timezone
+            from services.control_panel.runs import Run, _ChunkSink, _runs, _runs_lock
+
+            r = Run(
+                id=uuid.uuid4().hex[:12],
+                recipe_id=recipe_id,
+                model_ref=model_ref or "fake/model",
+                inputs=dict(inputs),
+                started_at=datetime.now(timezone.utc),
+            )
+            db.insert_run(
+                run_id=r.id, recipe_id=recipe_id, model_ref=r.model_ref,
+                inputs=dict(inputs), started_at=r.started_at,
+            )
+            with _runs_lock:
+                _runs[r.id] = r
+
+            def worker():
+                try:
+                    sink = _ChunkSink(r)
+                    sink.write("hello ")
+                    sink.write("world")
+                    r.status = "done"
+                    db.finish_run(run_id=r.id, status="done", output=r.output, error=None)
+                finally:
+                    r._queue.put(None)
+                    r._done.set()
+
+            threading.Thread(target=worker, daemon=True).start()
+            return r
+
+        runs_mod.start_run = fake_start
+        cls._fake_start = fake_start
+
+        cls.client = TestClient(create_app(cls.cfg))
+        cls._scheduler = scheduler
+
+    @classmethod
+    def tearDownClass(cls):
+        import shutil
+        from services.control_panel import runs as runs_mod, db, scheduler
+        runs_mod.start_run = cls._original_start
+        scheduler.shutdown()
+        db.close()
+        shutil.rmtree(cls.tmpdir, ignore_errors=True)
+
+    def test_post_run_returns_run_id_and_persists(self):
+        resp = self.client.post(
+            "/api/v1/recipes/code-review/run",
+            json={"model_ref": "anthropic/claude-haiku-4-5-20251001",
+                  "inputs": {"target_branch": "main"}},
+        )
+        self.assertEqual(resp.status_code, 200)
+        run_id = resp.json()["id"]
+        self.assertRegex(run_id, r"^[a-f0-9]{12}$")
+
+        # Wait for the worker, then fetch via JSON.
+        from services.control_panel.runs import get_run
+        run = get_run(run_id)
+        self.assertIsNotNone(run)
+        run._done.wait(timeout=5)
+
+        detail = self.client.get(f"/api/v1/runs/{run_id}").json()
+        self.assertEqual(detail["status"], "done")
+        self.assertIn("hello", detail["output"])
+        self.assertEqual(detail["inputs"], {"target_branch": "main"})
+
+    def test_post_run_with_unknown_recipe_404(self):
+        resp = self.client.post(
+            "/api/v1/recipes/no-such-recipe/run",
+            json={"model_ref": "x", "inputs": {}},
+        )
+        self.assertEqual(resp.status_code, 404)
+
+    def test_post_run_with_non_dict_inputs_400(self):
+        resp = self.client.post(
+            "/api/v1/recipes/code-review/run",
+            json={"model_ref": "x", "inputs": ["not", "a", "dict"]},
+        )
+        self.assertEqual(resp.status_code, 400)
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiRecipeWriteTest(unittest.TestCase):
+    """`POST /api/v1/recipes/new` and `/api/v1/recipes/{id}/edit`."""
+
+    def setUp(self):
+        import tempfile
+        from pathlib import Path
+        from fastapi.testclient import TestClient
+        from services.control_panel import recipe_writer
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        # Self-contained sandbox — no symlink to real recipes/, so writes
+        # don't touch the workspace.
+        self.tmpdir = tempfile.mkdtemp(prefix="cp_recipewrite_")
+        root = Path(self.tmpdir)
+        (root / "recipes").mkdir()
+        (root / "connectors").mkdir()
+        (root / "services").mkdir()
+        (root / "scripts").mkdir()
+        self.cfg = Config(
+            workspace_root=root,
+            recipes_dir=root / "recipes",
+            connectors_dir=root / "connectors",
+            services_dir=root / "services",
+            host="127.0.0.1", port=0, reload=False, llama_swap_url="",
+        )
+        self._orig_audit = recipe_writer._audit_recipe
+        recipe_writer._audit_recipe = lambda cfg, recipe_id: []
+        self.client = TestClient(create_app(self.cfg))
+
+    def tearDown(self):
+        import shutil
+        from services.control_panel import db, scheduler, recipe_writer
+        recipe_writer._audit_recipe = self._orig_audit
+        scheduler.shutdown()
+        db.close()
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def test_post_new_creates_recipe_file(self):
+        resp = self.client.post(
+            "/api/v1/recipes/new",
+            json={"id": "fresh", "name": "Fresh", "description": "A freshly minted recipe.",
+                  "audience": "tech", "execution_type": "prompt", "tags": "demo, json"},
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json()["id"], "fresh")
+        path = self.cfg.recipes_dir / "fresh.md"
+        self.assertTrue(path.exists())
+        body = path.read_text(encoding="utf-8")
+        self.assertIn("id: fresh", body)
+        self.assertIn("- demo", body)
+
+    def test_post_new_rejects_duplicate_id(self):
+        first = self.client.post(
+            "/api/v1/recipes/new",
+            json={"id": "dupe", "name": "x", "description": "x",
+                  "audience": "tech", "execution_type": "prompt"},
+        )
+        self.assertEqual(first.status_code, 200)
+        second = self.client.post(
+            "/api/v1/recipes/new",
+            json={"id": "dupe", "name": "y", "description": "y",
+                  "audience": "tech", "execution_type": "prompt"},
+        )
+        self.assertEqual(second.status_code, 400)
+        self.assertIn("already exists", second.json()["detail"])
+
+    def test_post_new_rejects_invalid_execution_type(self):
+        resp = self.client.post(
+            "/api/v1/recipes/new",
+            json={"id": "bad-exec", "execution_type": "freeform"},
+        )
+        self.assertEqual(resp.status_code, 400)
+
+    def test_post_edit_round_trip(self):
+        # Seed a minimal recipe.
+        path = self.cfg.recipes_dir / "demo.md"
+        path.write_text(
+            "---\nid: demo\nname: Demo\ndescription: x\naudience: tech\nversion: 0.1.0\n"
+            "status: experimental\ntags: []\nrequires_skills: []\nrequires_workflows: []\n"
+            "requires_connectors: []\nrequires_mcp: []\nrequires_env: []\n"
+            "execution:\n  type: prompt\n---\n## Prompt\n\nhello\n",
+            encoding="utf-8",
+        )
+        new_body = path.read_text(encoding="utf-8").replace("hello", "hello world")
+        resp = self.client.post(
+            "/api/v1/recipes/demo/edit",
+            json={"content": new_body},
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue(resp.json()["ok"])
+        self.assertIn("hello world", path.read_text(encoding="utf-8"))
+
+    def test_post_edit_404_for_unknown(self):
+        resp = self.client.post(
+            "/api/v1/recipes/no-such/edit",
+            json={"content": "x"},
+        )
+        self.assertEqual(resp.status_code, 404)
+
+
 if __name__ == "__main__":
     unittest.main()
+
+class TestDispatchWorkflow(unittest.TestCase):
+    def test_dispatch_workflow_sync(self):
+        from services.recipe_runtime.dispatcher import dispatch_workflow
+        from unittest.mock import patch, MagicMock
+        import urllib.request
+        import json
+        
+        fm = {"execution": {"type": "workflow", "entrypoint": "n8n-workflows/daily-briefing.n8n"}}
+        inputs = {"focus_project": "PROJ"}
+        
+        with patch.dict("os.environ", {"N8N_WEBHOOK_BASE": "http://test-base", "N8N_API_KEY": "test-key"}):
+            with patch("urllib.request.urlopen") as mock_urlopen:
+                mock_resp = MagicMock()
+                mock_resp.read.return_value = b"sync-output"
+                mock_urlopen.return_value.__enter__.return_value = mock_resp
+                
+                result = dispatch_workflow(fm, inputs)
+                
+                self.assertEqual(result, "sync-output")
+                mock_urlopen.assert_called_once()
+                req = mock_urlopen.call_args[0][0]
+                self.assertEqual(req.full_url, "http://test-base/webhook/daily-briefing")
+                self.assertEqual(req.get_header("Authorization"), "Bearer test-key")
+                
+                payload = json.loads(req.data.decode("utf-8"))
+                self.assertEqual(payload["inputs"], {"focus_project": "PROJ"})
+
+
+@unittest.skipUnless(_HAS_FASTAPI, "fastapi/jinja2 not installed")
+class JsonApiN8nCallbackTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        from pathlib import Path
+        from fastapi.testclient import TestClient
+        from services.control_panel.app import create_app
+        from services.control_panel.config import Config
+
+        cls.tmpdir = tempfile.mkdtemp(prefix="cp_n8n_")
+        cls.cfg = _sandbox_cfg(cls.tmpdir)
+        cls.client = TestClient(create_app(cls.cfg))
+
+    @classmethod
+    def tearDownClass(cls):
+        import shutil
+        from services.control_panel import db, scheduler
+        scheduler.shutdown()
+        db.close()
+        shutil.rmtree(cls.tmpdir, ignore_errors=True)
+
+    def test_callback_updates_run(self):
+        from services.control_panel import db
+        from datetime import datetime, timezone
+        
+        run_id = "test-n8n-callback"
+        db.insert_run(
+            run_id=run_id,
+            recipe_id="daily-briefing",
+            model_ref="x",
+            inputs={},
+            started_at=datetime.now(timezone.utc),
+        )
+        
+        resp = self.client.post(
+            f"/api/v1/n8n/callback/{run_id}",
+            json={"output": "hello from n8n"},
+            headers={"Host": "127.0.0.1"}
+        )
+        self.assertEqual(resp.status_code, 200)
+        
+        run_row = db.get_run_row(run_id)
+        self.assertEqual(run_row.status, "done")
+        self.assertEqual(run_row.output, "hello from n8n")

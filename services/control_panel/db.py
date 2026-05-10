@@ -79,6 +79,7 @@ class RunRow:
     output: str
     started_at: datetime
     ended_at: datetime | None
+    n8n_execution_id: str | None = None
 
 @dataclass(frozen=True)
 class RoutineRow:
@@ -116,6 +117,12 @@ def init(workspace_root: Path) -> None:
         conn.execute("PRAGMA synchronous=NORMAL")
         for stmt in _SCHEMA:
             conn.execute(stmt)
+            
+        try:
+            conn.execute("ALTER TABLE runs ADD COLUMN n8n_execution_id TEXT")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
+            
         _conn = conn
         _db_path = path
         # Mark any runs left in 'running' state by a previous process as
@@ -170,6 +177,7 @@ def _row_to_run(row: sqlite3.Row) -> RunRow:
         output=row["output"] or "",
         started_at=datetime.fromisoformat(row["started_at"]),
         ended_at=_parse_iso(row["ended_at"]),
+        n8n_execution_id=row["n8n_execution_id"] if "n8n_execution_id" in row.keys() else None,
     )
 
 def _row_to_routine(row: sqlite3.Row) -> RoutineRow:
@@ -206,6 +214,13 @@ def finish_run(*, run_id: str, status: str, output: str, error: str | None) -> N
         cur.execute(
             "UPDATE runs SET status=?, output=?, error=?, ended_at=? WHERE id=?",
             (status, output, error, _now_iso(), run_id),
+        )
+
+def update_run_n8n_id(run_id: str, n8n_id: str) -> None:
+    with _cursor() as cur:
+        cur.execute(
+            "UPDATE runs SET n8n_execution_id=? WHERE id=?",
+            (n8n_id, run_id),
         )
 
 
