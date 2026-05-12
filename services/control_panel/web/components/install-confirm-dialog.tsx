@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AlertTriangle,
   Box,
@@ -11,6 +11,7 @@ import {
   Network,
   Plug,
   Terminal,
+  XCircle,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -35,9 +36,12 @@ type Props = {
   installInputs?: Record<string, unknown>;
   /** Trigger button — caller supplies it so it can be styled per context. */
   trigger: React.ReactNode;
-  /** Called after install resolves (success OR failure). UI refresh is the parent's job. */
+  /** Called after the install job finishes. The job's final result dict is
+   * forwarded so the parent can decide whether to refresh / show errors. */
   onInstalled?: (result: FeatureActionResult) => void;
 };
+
+type Phase = "preview" | "streaming" | "done";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   print_command: Terminal,
@@ -61,52 +65,115 @@ function sideEffectIcon(kind: string) {
 
 export function InstallConfirmDialog({ feature, installInputs, trigger, onInstalled }: Props) {
   const [open, setOpen] = useState(false);
+  const [phase, setPhase] = useState<Phase>("preview");
   const [preview, setPreview] = useState<FeaturePreview | null>(null);
   const [previewError, setPreviewError] = useState<string | null>(null);
   const [previewing, setPreviewing] = useState(false);
-  const [installing, setInstalling] = useState(false);
 
+  const [log, setLog] = useState<string>("");
+  const [finalStatus, setFinalStatus] = useState<"done" | "error" | null>(null);
+  const [finalResult, setFinalResult] = useState<FeatureActionResult | null>(null);
+  const [finalError, setFinalError] = useState<string | null>(null);
+  const sseRef = useRef<EventSource | null>(null);
+  const logRef = useRef<HTMLPreElement | null>(null);
+
+  // Reset everything when the dialog closes — but only after closing animation.
   useEffect(() => {
-    if (!open) {
-      // Reset state when the dialog closes so reopening always re-fetches.
+    if (open) return;
+    sseRef.current?.close();
+    sseRef.current = null;
+    const t = setTimeout(() => {
+      setPhase("preview");
       setPreview(null);
       setPreviewError(null);
-      return;
-    }
+      setLog("");
+      setFinalStatus(null);
+      setFinalResult(null);
+      setFinalError(null);
+    }, 200);
+    return () => clearTimeout(t);
+  }, [open]);
+
+  // Auto-scroll the log to the bottom as new chunks arrive.
+  useEffect(() => {
+    if (phase !== "streaming" && phase !== "done") return;
+    const el = logRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [log, phase]);
+
+  // Fetch preview when entering the preview phase.
+  useEffect(() => {
+    if (!open || phase !== "preview") return;
     let cancelled = false;
     setPreviewing(true);
     api
       .previewFeature(feature.kind, feature.id, installInputs)
       .then((p) => {
-        if (cancelled) return;
-        setPreview(p);
+        if (!cancelled) setPreview(p);
       })
       .catch((e) => {
-        if (cancelled) return;
-        setPreviewError(e instanceof Error ? e.message : String(e));
+        if (!cancelled) setPreviewError(e instanceof Error ? e.message : String(e));
       })
       .finally(() => {
-        if (cancelled) return;
-        setPreviewing(false);
+        if (!cancelled) setPreviewing(false);
       });
     return () => {
       cancelled = true;
     };
-  }, [open, feature.kind, feature.id, installInputs]);
+  }, [open, phase, feature.kind, feature.id, installInputs]);
 
   const blocked = (preview?.unmet_prereqs?.length ?? 0) > 0;
   const wouldBeNoop = preview?.would_be_noop === true;
 
   const onConfirm = async () => {
-    setInstalling(true);
     try {
-      const r = await api.installFeature(feature.kind, feature.id, installInputs);
-      onInstalled?.(r);
-      setOpen(false);
+      const start = await api.installFeature(feature.kind, feature.id, installInputs);
+      setPhase("streaming");
+      // Open SSE stream against the job_id.
+      const url = `/api/v1/features/install/${start.job_id}/stream`;
+      const es = new EventSource(url);
+      sseRef.current = es;
+      es.addEventListener("chunk", (ev) => {
+        try {
+          const text = JSON.parse((ev as MessageEvent).data) as string;
+          setLog((prev) => prev + text);
+        } catch {
+          // Ignore malformed frames; the next done frame still finalizes state.
+        }
+      });
+      es.addEventListener("done", (ev) => {
+        try {
+          const payload = JSON.parse((ev as MessageEvent).data) as {
+            status: "done" | "error";
+            error: string | null;
+            result: FeatureActionResult | null;
+          };
+          setFinalStatus(payload.status);
+          setFinalError(payload.error);
+          setFinalResult(payload.result);
+          if (payload.result) onInstalled?.(payload.result);
+        } catch (e) {
+          setFinalStatus("error");
+          setFinalError(e instanceof Error ? e.message : String(e));
+        } finally {
+          setPhase("done");
+          es.close();
+          sseRef.current = null;
+        }
+      });
+      es.addEventListener("error", () => {
+        // Browser fires `error` on normal stream close too — only treat it as
+        // an actual failure if we haven't yet reached the `done` frame.
+        if (phase === "streaming") {
+          setFinalStatus("error");
+          setFinalError("stream interrupted");
+          setPhase("done");
+          es.close();
+          sseRef.current = null;
+        }
+      });
     } catch (e) {
       setPreviewError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setInstalling(false);
     }
   };
 
@@ -115,61 +182,148 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
       <div onClick={() => setOpen(true)} className="inline-flex">
         {trigger}
       </div>
-      <DialogContent className="sm:max-w-xl">
+      <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Install {feature.name}</DialogTitle>
+          <DialogTitle>
+            {phase === "preview" && `Install ${feature.name}`}
+            {phase === "streaming" && `Installing ${feature.name}…`}
+            {phase === "done" && (finalStatus === "done" ? "Install complete" : "Install failed")}
+          </DialogTitle>
           <DialogDescription>
-            Review what this install will do before confirming. Nothing has changed yet.
+            {phase === "preview" &&
+              "Review what this install will do before confirming. Nothing has changed yet."}
+            {phase === "streaming" && "Live log from the install job. Closing the dialog does not abort the job."}
+            {phase === "done" &&
+              (finalStatus === "done"
+                ? "All done. You can close this dialog."
+                : "Install reported an error. Check the log below for details.")}
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4">
-          {previewing && (
-            <div className="flex items-center gap-2 text-sm text-muted-foreground py-4">
-              <Loader2 className="h-4 w-4 animate-spin" /> Generating preview…
-            </div>
-          )}
+        {phase === "preview" && (
+          <PreviewBody
+            previewing={previewing}
+            preview={preview}
+            previewError={previewError}
+            blocked={blocked}
+            wouldBeNoop={wouldBeNoop}
+          />
+        )}
 
-          {previewError && (
-            <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
-              <div className="font-medium">Preview failed</div>
-              <pre className="text-xs mt-1 whitespace-pre-wrap break-all">{previewError}</pre>
-            </div>
-          )}
-
-          {preview && !preview.ok && (
-            <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
-              <div className="font-medium">Cannot preview</div>
-              <pre className="text-xs mt-1 whitespace-pre-wrap break-all">
-                {preview.error ?? "(no error)"}
-              </pre>
-            </div>
-          )}
-
-          {preview?.ok && (
-            <>
-              <SideEffectsList items={preview.side_effects ?? []} noop={wouldBeNoop} />
-              <WarningsList items={preview.warnings ?? []} blocked={blocked} />
-            </>
-          )}
-        </div>
+        {(phase === "streaming" || phase === "done") && (
+          <LogViewer ref={logRef} log={log} status={finalStatus} error={finalError} />
+        )}
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)} disabled={installing}>
-            Cancel
-          </Button>
-          <Button
-            onClick={onConfirm}
-            disabled={installing || previewing || blocked || !preview?.ok}
-          >
-            {installing ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
-            {wouldBeNoop ? "Re-run anyway" : blocked ? "Install (blocked)" : "Confirm install"}
-          </Button>
+          {phase === "preview" && (
+            <>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button
+                onClick={onConfirm}
+                disabled={previewing || blocked || !preview?.ok}
+              >
+                {wouldBeNoop ? "Re-run anyway" : blocked ? "Install (blocked)" : "Confirm install"}
+              </Button>
+            </>
+          )}
+          {phase === "streaming" && (
+            <Button variant="outline" onClick={() => setOpen(false)}>
+              Hide (job keeps running)
+            </Button>
+          )}
+          {phase === "done" && (
+            <Button onClick={() => setOpen(false)}>Close</Button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>
   );
 }
+
+function PreviewBody({
+  previewing,
+  preview,
+  previewError,
+  blocked,
+  wouldBeNoop,
+}: {
+  previewing: boolean;
+  preview: FeaturePreview | null;
+  previewError: string | null;
+  blocked: boolean;
+  wouldBeNoop: boolean;
+}) {
+  return (
+    <div className="space-y-4">
+      {previewing && (
+        <div className="flex items-center gap-2 text-sm text-muted-foreground py-4">
+          <Loader2 className="h-4 w-4 animate-spin" /> Generating preview…
+        </div>
+      )}
+
+      {previewError && (
+        <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
+          <div className="font-medium">Preview failed</div>
+          <pre className="text-xs mt-1 whitespace-pre-wrap break-all">{previewError}</pre>
+        </div>
+      )}
+
+      {preview && !preview.ok && (
+        <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
+          <div className="font-medium">Cannot preview</div>
+          <pre className="text-xs mt-1 whitespace-pre-wrap break-all">
+            {preview.error ?? "(no error)"}
+          </pre>
+        </div>
+      )}
+
+      {preview?.ok && (
+        <>
+          <SideEffectsList items={preview.side_effects ?? []} noop={wouldBeNoop} />
+          <WarningsList items={preview.warnings ?? []} blocked={blocked} />
+        </>
+      )}
+    </div>
+  );
+}
+
+const LogViewer = ({
+  ref,
+  log,
+  status,
+  error,
+}: {
+  ref: React.Ref<HTMLPreElement>;
+  log: string;
+  status: "done" | "error" | null;
+  error: string | null;
+}) => (
+  <div className="space-y-3">
+    <pre
+      ref={ref}
+      className="rounded-md border bg-black/80 text-green-300 p-3 text-[11px] font-mono max-h-80 overflow-auto whitespace-pre-wrap break-all leading-relaxed"
+    >
+      {log || "(waiting for first chunk…)"}
+    </pre>
+    {status === "done" && (
+      <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-3 text-sm flex items-start gap-2">
+        <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" />
+        <span>Install finished successfully.</span>
+      </div>
+    )}
+    {status === "error" && (
+      <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm flex items-start gap-2">
+        <XCircle className="h-4 w-4 mt-0.5 shrink-0" />
+        <div className="space-y-1">
+          <div className="font-medium">Install failed</div>
+          {error && <pre className="text-xs whitespace-pre-wrap break-all">{error}</pre>}
+        </div>
+      </div>
+    )}
+  </div>
+);
 
 function SideEffectsList({ items, noop }: { items: FeatureSideEffect[]; noop: boolean }) {
   if (noop) {

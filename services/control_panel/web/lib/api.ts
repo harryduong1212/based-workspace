@@ -199,6 +199,23 @@ export type FeaturePreview = {
   unmet_prereqs?: string[];
 };
 
+export type InstallJobStart = {
+  ok: boolean;
+  job_id: string;
+};
+
+export type InstallJobStatus = {
+  id: string;
+  kind: string;
+  feature_id: string;
+  status: "running" | "done" | "error";
+  started_at: string;
+  ended_at: string | null;
+  output: string;
+  error: string | null;
+  result: FeatureActionResult | null;
+};
+
 export type Routine = {
   id: string;
   recipe_id: string;
@@ -284,11 +301,13 @@ export const api = {
   feature: (kind: FeatureKind, id: string) =>
     getJson<FeatureDetail>(`/api/v1/features/${kind}/${id}`),
   installFeature: (kind: FeatureKind, id: string, inputs?: Record<string, unknown>) =>
-    getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/install`, {
+    getJson<InstallJobStart>(`/api/v1/features/${kind}/${id}/install`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(inputs ?? {}),
     }),
+  installJobStatus: (job_id: string) =>
+    getJson<InstallJobStatus>(`/api/v1/features/install/${job_id}`),
   uninstallFeature: (kind: FeatureKind, id: string) =>
     getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/uninstall`, {
       method: "POST",
