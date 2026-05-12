@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Boxes, LayoutGrid, Network, Play, Clock } from "lucide-react";
+import { Boxes, LayoutGrid, Network, Play, Clock, Package } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/", label: "Overview", icon: LayoutGrid },
+  { href: "/features", label: "Features", icon: Package },
   { href: "/recipes", label: "Recipes", icon: Boxes },
   { href: "/connectors", label: "Connectors", icon: Network },
   { href: "/routines", label: "Routines", icon: Clock },

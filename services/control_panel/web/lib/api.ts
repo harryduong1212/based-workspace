@@ -138,6 +138,51 @@ export type RunResponse = {
   id: string;
 };
 
+// ---- features (install/uninstall/verify wizard) ---------------------------
+
+export type FeatureKind = "system" | "container" | "mcp" | "recipe" | "connector";
+
+export type FeatureStatus =
+  | "available"
+  | "installed"
+  | "partial"
+  | "error"
+  | "unavailable"
+  | "unknown";
+
+export type Feature = {
+  id: string;
+  kind: FeatureKind;
+  name: string;
+  description: string;
+  status: FeatureStatus;
+  requires: string[];
+  detail: Record<string, unknown>;
+};
+
+export type FeaturesList = { features: Feature[]; kinds: FeatureKind[] };
+
+export type FeatureDetail = { feature: Feature; unmet_prereqs: string[] };
+
+export type FeatureActionResult = {
+  ok: boolean;
+  noop?: boolean;
+  error?: string;
+  command?: string;
+  message?: string;
+  feature?: Feature;
+  unmet_prereqs?: string[];
+  // Connector-specific
+  wrote_keys?: string[];
+  rejected?: string[];
+  cleared?: string[];
+  kept_shared?: string[];
+  // System / T2 extras
+  kind?: string;
+  distro?: string;
+  stdout?: string;
+};
+
 export type Routine = {
   id: string;
   recipe_id: string;
@@ -218,5 +263,22 @@ export const api = {
   deleteRoutine: (id: string) =>
     getJson<{ ok: boolean }>(`/api/v1/routines/${id}`, {
       method: "DELETE",
+    }),
+  features: () => getJson<FeaturesList>("/api/v1/features"),
+  feature: (kind: FeatureKind, id: string) =>
+    getJson<FeatureDetail>(`/api/v1/features/${kind}/${id}`),
+  installFeature: (kind: FeatureKind, id: string, inputs?: Record<string, unknown>) =>
+    getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/install`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(inputs ?? {}),
+    }),
+  uninstallFeature: (kind: FeatureKind, id: string) =>
+    getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/uninstall`, {
+      method: "POST",
+    }),
+  verifyFeature: (kind: FeatureKind, id: string) =>
+    getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/verify`, {
+      method: "POST",
     }),
 };
