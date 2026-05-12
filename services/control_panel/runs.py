@@ -23,10 +23,48 @@ import threading
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any, Iterator
+from pathlib import Path
+from typing import Any, Callable, Iterator
 
 from . import db
 from .config import Config
+from .env_writer import read_env_values
+
+
+# Minimum env-value length to be considered a redaction target. Below this,
+# false-positive risk is too high (e.g. POSTGRES_PORT=5432 should not cause
+# every "5432" in output to get scrubbed).
+_REDACT_MIN_LEN = 8
+
+
+def _build_redactor(env_path: Path) -> Callable[[str], str]:
+    """Build a redactor that scrubs any .env value from streamed output.
+
+    Reads .env once at run start. Sorts values by length DESC so longer
+    secrets redact before any substring. Values shorter than 8 chars are
+    skipped to avoid scrubbing common literals like ports and booleans.
+    Returns the identity function when .env is missing or has nothing
+    worth redacting.
+    """
+    if not env_path.exists():
+        return lambda s: s
+    values = read_env_values(env_path)
+    items = sorted(
+        ((k, v) for k, v in values.items() if v and len(v) >= _REDACT_MIN_LEN),
+        key=lambda kv: -len(kv[1]),
+    )
+    if not items:
+        return lambda s: s
+
+    def _redact(s: str) -> str:
+        if not s:
+            return s
+        for key, val in items:
+            if val in s:
+                s = s.replace(val, f"[REDACTED:{key}]")
+        return s
+
+    return _redact
 
 
 @dataclass
@@ -51,14 +89,21 @@ _runs_lock = threading.Lock()
 
 
 class _ChunkSink:
-    """File-like that fans chunks to the run's queue while accumulating output."""
+    """File-like that fans chunks to the run's queue while accumulating output.
 
-    def __init__(self, run: Run):
+    The optional `redactor` is applied to every chunk before persistence
+    and streaming — so any env-value that leaks into LLM output or workflow
+    response never lands in SQLite or the SSE stream verbatim.
+    """
+
+    def __init__(self, run: Run, redactor: Callable[[str], str] | None = None):
         self.run = run
+        self._redact = redactor or (lambda s: s)
 
     def write(self, s: str) -> int:
         if not s:
             return 0
+        s = self._redact(s)
         with self.run._lock:
             self.run.output += s
         self.run._queue.put(s)
@@ -103,6 +148,10 @@ def start_run(
     with _runs_lock:
         _runs[run.id] = run
 
+    # Build the redactor once per run so .env values never reach SQLite or
+    # the SSE stream verbatim (G2 in the security-posture memory).
+    redactor = _build_redactor(Path(cfg.workspace_root) / ".env")
+
     def _worker() -> None:
         is_async_workflow = False
         try:
@@ -126,7 +175,7 @@ def start_run(
                     db.update_run_n8n_id(run.id, result)
                 else:
                     with run._lock:
-                        run.output = result
+                        run.output = redactor(result)
                     run.status = "done"
             elif execution_type == "agent":
                 agent_section = (
@@ -145,7 +194,7 @@ def start_run(
                     inputs,
                     workspace_root=str(cfg.workspace_root),
                     skill_bodies=skill_bodies,
-                    out=_ChunkSink(run),
+                    out=_ChunkSink(run, redactor=redactor),
                 )
                 run.status = "done"
             else:
@@ -162,7 +211,7 @@ def start_run(
                 dispatch_prompt(
                     envelope,
                     skill_bodies=skill_bodies,
-                    out=_ChunkSink(run),
+                    out=_ChunkSink(run, redactor=redactor),
                     stream=True,
                 )
                 run.status = "done"
