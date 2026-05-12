@@ -219,6 +219,146 @@ def _resolve_atom8n_webhook_url(
     return f"{base_url}/webhook/{workflow_id}/{encoded_node}/{node_path}"
 
 
-def dispatch_agent(fm: dict, agent_body: str, inputs: dict) -> str:
-    """Agent loop with skills + MCP tools. Phase E3."""
-    raise NotImplementedError("dispatch_agent not yet wired (Phase E3)")
+ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1"
+ANTHROPIC_VERSION = "2023-06-01"
+MAX_AGENT_ITERATIONS = 10
+
+
+def dispatch_agent(
+    fm: dict,
+    agent_body: str,
+    inputs: dict,
+    *,
+    workspace_root: str | None = None,
+    skill_bodies: list[str] | None = None,
+    max_tokens: int = 4096,
+    out=None,
+    http_post=None,
+) -> str:
+    """Multi-turn agent loop against Anthropic's Messages API.
+
+    Loop: send (system + history + tool catalog) → if response carries
+    tool_use blocks, invoke each, append tool_results to history, continue.
+    Stops on `stop_reason == "end_turn"`, no tool_use blocks, or
+    MAX_AGENT_ITERATIONS — whichever comes first.
+
+    Anthropic-only for now. Provider abstraction will come when a second
+    tool-use-capable provider matters (Gemini tool_calls have different
+    semantics; not worth the layer until needed).
+
+    `http_post` is an injection seam for tests: when supplied it replaces
+    the urllib call and receives `(url, headers, payload) -> response_dict`.
+    """
+    import sys as _sys
+    out = _sys.stdout if out is None else out
+
+    raw_model = (fm.get("execution") or {}).get("model") or os.environ.get(
+        "RECIPE_DEFAULT_MODEL"
+    )
+    if not raw_model:
+        raise ValueError("no model resolvable for agent dispatch")
+    provider_name, model_id = parse_model_ref(raw_model)
+    if provider_name != "anthropic":
+        raise NotImplementedError(
+            f"dispatch_agent currently supports anthropic only; got provider {provider_name!r}"
+        )
+
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key and http_post is None:
+        raise RuntimeError("ANTHROPIC_API_KEY not set in environment")
+
+    from .prompt_assembler import substitute_inputs
+    from .agent_tools import get_tool_catalog, invoke_tool
+
+    system_parts = [sb.strip() for sb in (skill_bodies or []) if sb and sb.strip()]
+    user_message, _applied = substitute_inputs(agent_body or "", inputs)
+    tools = get_tool_catalog(fm, workspace_root=workspace_root)
+
+    messages: list[dict] = [{"role": "user", "content": user_message}]
+    accumulated: list[str] = []
+
+    for _ in range(MAX_AGENT_ITERATIONS):
+        payload = {
+            "model": model_id,
+            "max_tokens": max_tokens,
+            # Snapshot the history so the captured payload doesn't reflect
+            # later mutations from the same iteration (matters for testing
+            # and for any http_post that retains the request).
+            "messages": list(messages),
+        }
+        if system_parts:
+            payload["system"] = "\n\n".join(system_parts)
+        if tools:
+            payload["tools"] = tools
+
+        response = _anthropic_messages(
+            api_key=api_key,
+            payload=payload,
+            http_post=http_post,
+        )
+
+        # Mirror the full assistant message back into history (tool_use blocks
+        # included) — Anthropic requires this for tool_result correlation.
+        messages.append({"role": "assistant", "content": response.get("content") or []})
+
+        tool_uses: list[dict] = []
+        for block in response.get("content") or []:
+            btype = block.get("type")
+            if btype == "text":
+                text = block.get("text") or ""
+                if text:
+                    accumulated.append(text)
+                    try:
+                        out.write(text)
+                        out.flush()
+                    except Exception:
+                        pass
+            elif btype == "tool_use":
+                tool_uses.append(block)
+
+        if response.get("stop_reason") == "end_turn" or not tool_uses:
+            break
+
+        tool_results = []
+        for tu in tool_uses:
+            try:
+                result = invoke_tool(
+                    tu.get("name") or "",
+                    tu.get("input") or {},
+                    workspace_root=workspace_root,
+                )
+            except Exception as e:  # noqa: BLE001 — surface error to the agent
+                result = f"error: {type(e).__name__}: {e}"
+            tool_results.append(
+                {"type": "tool_result", "tool_use_id": tu.get("id"), "content": result}
+            )
+        messages.append({"role": "user", "content": tool_results})
+
+    return "".join(accumulated)
+
+
+def _anthropic_messages(*, api_key: str | None, payload: dict, http_post=None) -> dict:
+    """POST to Anthropic Messages API. Returns the parsed JSON response.
+
+    If `http_post` is supplied (tests), we delegate. Otherwise this uses
+    stdlib HTTP to keep the runtime SDK-free (same pattern as the existing
+    Anthropic provider for prompt dispatch).
+    """
+    if http_post is not None:
+        return http_post(payload)
+
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        f"{ANTHROPIC_BASE_URL}/messages",
+        data=body,
+        method="POST",
+    )
+    req.add_header("x-api-key", api_key or "")
+    req.add_header("anthropic-version", ANTHROPIC_VERSION)
+    req.add_header("content-type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"anthropic messages failed ({e.code}): {error_body}") from e

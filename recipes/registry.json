@@ -123,6 +123,19 @@
       "path": "recipes/release-notes.md"
     },
     {
+      "id": "smoke-agent",
+      "name": "Smoke Agent",
+      "description": "End-to-end smoke test for dispatch_agent \u2014 invokes one built-in tool, returns a one-liner.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "smoke",
+        "dispatcher",
+        "agent"
+      ],
+      "path": "recipes/smoke-agent.md"
+    },
+    {
       "id": "smoke-echo",
       "name": "Smoke Echo",
       "description": "End-to-end smoke test for the workflow-dispatch path. Webhook \u2192 callback round-trip with no external creds.",

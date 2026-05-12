@@ -107,16 +107,20 @@ def start_run(
         is_async_workflow = False
         try:
             from scripts import recipe_manager as rm  # type: ignore
-            from services.recipe_runtime.dispatcher import dispatch_prompt, dispatch_workflow
+            from services.recipe_runtime.dispatcher import (
+                dispatch_agent,
+                dispatch_prompt,
+                dispatch_workflow,
+            )
             from services.recipe_runtime.prompt_assembler import assemble
 
             execution_type = fm.get("execution", {}).get("type", "prompt")
-            
+
             if execution_type == "workflow":
                 inputs_with_run_id = dict(inputs)
                 inputs_with_run_id["_run_id"] = run.id
                 result = dispatch_workflow(fm, inputs_with_run_id, workspace_root=str(cfg.workspace_root))
-                
+
                 is_async_workflow = fm.get("execution", {}).get("async", False)
                 if is_async_workflow:
                     db.update_run_n8n_id(run.id, result)
@@ -124,6 +128,26 @@ def start_run(
                     with run._lock:
                         run.output = result
                     run.status = "done"
+            elif execution_type == "agent":
+                agent_section = (
+                    rm._extract_section(body, "Agent")
+                    or rm._extract_section(body, "Prompt")
+                    or body
+                )
+                skill_ids = list(fm.get("requires_skills") or [])
+                skill_bodies = rm._load_skill_bodies(skill_ids)
+                # Honor model_ref override from the UI/Routine layer.
+                if model_ref:
+                    fm = {**fm, "execution": {**(fm.get("execution") or {}), "model": model_ref}}
+                dispatch_agent(
+                    fm,
+                    agent_section,
+                    inputs,
+                    workspace_root=str(cfg.workspace_root),
+                    skill_bodies=skill_bodies,
+                    out=_ChunkSink(run),
+                )
+                run.status = "done"
             else:
                 prompt_section = (
                     rm._extract_section(body, "Prompt")
