@@ -67,14 +67,25 @@ python scripts/build_n8n_atom.py --check
 ```
 
 ### 3. Launching
-You must generate database credentials first, and pass the `.env` file into compose so variables interpolate correctly:
+
+The `infrastructure/core/` compose now pulls the upstream `docker.io/atom8n/n8n:fork` image directly — no local n8n build step is needed. (Mode 2's `build_n8n_atom.py --all` is still useful for compiling the MCP Inspector from the submodule; see "Optional: MCP Inspector" below.)
 
 ```bash
-# 1. Generate secrets (creates .env)
-python scripts/setup_env.py
+# 1. Set up secrets (one-time). The script PRINTS to stdout — paste into .env yourself.
+cp .env.example .env
+./scripts/gen_secrets.sh
+./scripts/install-git-hooks.sh    # gitleaks pre-commit, blocks accidental secret commits
 
-# 2. Start the Dev runtime
-podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
+# 2. Start Postgres + n8n.
+podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
+```
+
+After n8n is healthy, browse to http://localhost:5678, complete owner setup (one-time), then **Settings → API → Create API Key**. Paste that value into `.env` as `N8N_API_KEY` and (separately) into the `atom8n.n8n-atom-v3` Antigravity extension's settings sidebar — the extension does **not** read `.env`.
+
+**Optional: MCP Inspector** runs host-native (not via compose) per the [upstream readme](https://github.com/khanh-atom/cp-inspector-atom8n):
+
+```bash
+./scripts/mcp-inspector.sh start    # http://localhost:6274
 ```
 
 ---
@@ -132,13 +143,17 @@ This section serves as a step-by-step tutorial to validating the full developmen
 ```bash
 git clone --recurse-submodules https://github.com/harryduong1212/based-workspace.git
 cd based-workspace
-python scripts/setup_env.py
+cp .env.example .env
+./scripts/gen_secrets.sh          # prints randoms — paste into .env
+./scripts/install-git-hooks.sh    # gitleaks pre-commit secret scanner
 ```
 
-### Stage 3: Build & Launch
+### Stage 3: Launch
 ```bash
-python scripts/build_n8n_atom.py --all
-podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
+podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
+# Optional: build + start the MCP Inspector (host-native, not via compose)
+python scripts/build_n8n_atom.py --mcp
+./scripts/mcp-inspector.sh start
 ```
 
 ### Stage 4: Verify Health
@@ -161,12 +176,40 @@ podman compose --env-file .env -f infrastructure/n8n-quickstart/docker-compose.q
 ```
 
 ### Password authentication failed for user "admin"
-If you run `scripts/setup_env.py` again, it generates a new PostgreSQL password. However, if your database volume (`infrastructure-core_based-workspace-postgres-data`) was already created with the *old* password, n8n will crash loop.
+Postgres only reads `POSTGRES_PASSWORD` from env on the first boot of an empty volume. If you rotate the value in `.env` after that, the DB role still has the old password — n8n will fail to connect with the new one.
 
-**Fix:** Delete the persistent volume to restart fresh:
+**Fix A (lossless — preserves Context Bridge data):** `ALTER USER` inside the running container.
+```bash
+set -a && source .env && set +a
+podman exec -i -e NEW="$POSTGRES_PASSWORD" -e POSTGRES_USER -e POSTGRES_DB \
+  based-workspace-postgres sh -c \
+  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -v ON_ERROR_STOP=1 <<SQL
+\set newpw `echo "$NEW"`
+ALTER USER "'"$POSTGRES_USER"'" WITH PASSWORD :'\''newpw'\'';
+SQL'
+podman restart n8n-atom-dev
+```
+
+**Fix B (destructive — wipes all data in the volume):**
 ```bash
 podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom down -v
 podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
+```
+
+### Mismatching encryption keys
+Symptom: `Error: Mismatching encryption keys. The encryption key in the settings file /home/node/.n8n/config does not match the N8N_ENCRYPTION_KEY env var.`
+
+n8n caches its encryption key in `/home/node/.n8n/config` inside the volume on first boot. If `.env`'s `N8N_ENCRYPTION_KEY` changes (or was previously unset and just got added), the two no longer match.
+
+**Fix:** Overwrite the volume's `config` file to match `.env` (acceptable if no credentials are stored in n8n yet; otherwise restore the *original* key in `.env` instead so stored credentials remain decryptable):
+
+```bash
+set -a && source .env && set +a
+podman stop n8n-atom-dev >/dev/null
+podman run --rm -v infrastructure-core_based-workspace-n8n-data:/d \
+  -e KEY="$N8N_ENCRYPTION_KEY" \
+  alpine sh -c 'printf "{\n\t\"encryptionKey\": \"%s\"\n}\n" "$KEY" > /d/config && chown 1000:1000 /d/config'
+podman start n8n-atom-dev
 ```
 
 ### Container fails to start due to OOM

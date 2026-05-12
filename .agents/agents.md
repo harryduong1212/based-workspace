@@ -30,7 +30,7 @@ Your core function is to **wrap the engine** — never refactor it — and ship 
 
 ## Essential Workspace Scripts
 Do not invent raw bash for tasks that have dedicated tooling:
-- **Configure Env/Secrets:** `python scripts/setup_env.py`
+- **Configure Env/Secrets:** `cp .env.example .env`, then `./scripts/gen_secrets.sh` (prints randomizable values — paste into `.env`). Install secret-scanning pre-commit hook: `./scripts/install-git-hooks.sh`.
 - **Recipe lifecycle:** `python scripts/recipe_manager.py {list,show,lint,sync,run}`
 - **Generate user docs from sources:** `python scripts/docs_generator.py`
 - **Provider bindings:** `python scripts/sync_antigravity.py` / `python scripts/sync_claude_code.py`

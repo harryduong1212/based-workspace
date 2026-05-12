@@ -11,10 +11,10 @@
 
 ## 3. Infrastructure & Deployment
 - **Core Services**:
-  - **`based-workspace-postgres`**: PostgreSQL 16 packed with `pgvector` serving on port `5432`. It forms the backbone for AI memory storage and acts as the relational database engine for n8n.
-  - **`n8n-atom` (`n8n-atom-dev`)**: An n8n automation workflow engine serving on port `5678`. It executes custom automations and exposes workflow webhooks.
-  - **`mcp-inspector-dev`**: Tooling for configuring and inspecting Model Context Protocol (MCP) interactions locally, typically operating on ports `6274`/`6277`.
-- **Orchestration**: Infrastructure is spun up via Docker/Podman compose configurations. Specifically, `infrastructure/core/docker-compose.yaml` (developer source build mode) triggers the full stack, while `infrastructure/n8n-quickstart/docker-compose.quickstart.yaml` can be used for streamlined baseline activation.
+  - **`based-workspace-postgres`**: PostgreSQL 16 with `pgvector`, published on the host port set by `${POSTGRES_PORT}` in `.env` (default `5432`; container-internal stays `5432`). It serves as the relational backbone for both n8n state and Context Bridge embeddings.
+  - **`n8n-atom-dev`**: n8n on port `5678`, pulled from `docker.io/atom8n/n8n:fork` (no source build). Uses the shared Postgres above for storage and `N8N_ENCRYPTION_KEY` from `.env` for credential encryption.
+  - **MCP Inspector**: Runs **host-native** via `./scripts/mcp-inspector.sh start` (ports `6274`/`6277`) so it can read host-side IDE configs at `~/.cursor/mcp.json`, `~/.gemini/antigravity/mcp_config.json`. The compose `mcp-inspector` profile is preserved as a containerized fallback only.
+- **Orchestration**: `podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d` is the canonical command. The legacy `infrastructure/n8n-quickstart/docker-compose.quickstart.yaml` exists but hardcodes credentials and does not share the workspace Postgres.
 - **State Management**: Docker volumes handle state persistence. `based-workspace-postgres-data` stores the pg_data and vector embeddings; `based-workspace-n8n-data` persists automation states, workflow schemas, and engine configs.
 
 ## 4. Automation & AI Integration (MCP/Agents)
@@ -36,11 +36,17 @@
 - **Languages/Frameworks**: Node.js 18+ (core ecosystem requirements and CLI), Python 3.x (scripts runtime), Podman/Docker (container engines), and PowerShell 7.
 - **Bootstrapping**:
   1. Validate prerequisites (Node, Python, Podman, Git).
-  2. Instantiate local configurations: `python scripts/setup_env.py` generates deterministic secure passwords, updates `.env`, and configures MCP bridging endpoints.
-  3. Spin up orchestration: Leverage `podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build`.
-  4. Browse available recipes: `python scripts/recipe_manager.py list`. Run one: `python scripts/recipe_manager.py run <id>`.
+  2. Configure secrets:
+     - `cp .env.example .env` (template covers every in-use key with comments + paste-from-URL hints).
+     - `./scripts/gen_secrets.sh` prints fresh `POSTGRES_PASSWORD` and `N8N_ENCRYPTION_KEY` to stdout for paste-into-`.env`.
+     - `./scripts/install-git-hooks.sh` installs gitleaks + a pre-commit hook that blocks staged secrets.
+     - `N8N_API_KEY` is paste-from-source only: create it in the n8n UI (Settings → API → Create API Key) after owner setup.
+  3. Spin up orchestration: `podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d`.
+  4. (Optional) Start the host-native MCP Inspector: `./scripts/mcp-inspector.sh start`.
+  5. Browse available recipes: `python scripts/recipe_manager.py list`. Run one: `python scripts/recipe_manager.py run <id>`.
 
 ## 7. Known Edges & Dependencies
-1. **Missing Requisite Source Code Context in `core/docker-compose.yaml`**: Since the `external/` sub-repository (`n8n-atom` and `mcp-inspector-atom8n`) was recently removed in favor of GHCR remote images (and CI/CD pipelines), the builder references in `infrastructure/core/docker-compose.yaml` (e.g., `context: ../../external/n8n-atom/build_context`) exist but correctly link to removed folders. Developers executing source builds may hit absent submodules if relying exclusively on native builds locally unless using the Quickstart compose files or standard image pulls.
-2. **Environment Variable Generation**: Using Git tracking requires strictly enforcing `.gitignore` bounds around `.env` and `.agents/` logic overrides because `scripts/setup_env.py` mutates local variables securely.
+1. **`infrastructure/core/` n8n image is pulled, not built**: the compose pulls `docker.io/atom8n/n8n:fork`. The build path via `external/n8n-atom/build_context/` is intentionally absent from the repo. Run `python scripts/build_n8n_atom.py --mcp` only when you want to recompile the **MCP Inspector** from the `external/mcp-inspector-atom8n/` submodule.
+2. **Postgres password rotation pitfall**: Postgres init only reads `POSTGRES_PASSWORD` on the first boot of an empty volume. Rotating the env value later does not update the DB role — n8n will fail to connect with the new password. Either delete the volume (`down -v`) or `ALTER USER` inside the running container.
 3. **Implicit Container Engines**: Workspace instructions default strictly to Podman mechanics unless an end-user intervenes via manually mutating `terminal-environment.md`.
+4. **Antigravity n8n extension API key**: `atom8n.n8n-atom-v3` stores its API key in Antigravity's per-user state (separate from `.env`). Paste the value into the extension's settings sidebar after creating it in the n8n UI; the value in `.env` is for server-side consumers (Control Panel, MCP Inspector), not the IDE extension.

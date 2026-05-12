@@ -24,7 +24,7 @@ Connects to Atlassian Bitbucket to pull pull requests, repository metadata, and 
 *(Partial — Context Bridge scaffold is in place, ingestion pending Phase F.2.)*
 
 1. Create a Bitbucket app password at <https://bitbucket.org/account/settings/app-passwords/> with `repository:read` and `pullrequest:read` scopes.
-2. Add the following to your `.env` file (or run `python scripts/setup_env.py`):
+2. Add the following to your `.env` file (template lives in `.env.example`):
    ```
    BITBUCKET_WORKSPACE=your-workspace
    BITBUCKET_USERNAME=your-username

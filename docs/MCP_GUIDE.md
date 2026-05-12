@@ -17,10 +17,15 @@ In this workspace, MCP servers are used to:
 ---
 
 ## 2. Where is it Configured?
-All workspace-level MCP servers are defined in a single file:  
-👉 **`.vscode/mcp.json`**
 
-Whenever you add or modify a server in this file, your AI coding assistant will parse the JSON, start the defined scripts in the background, and inject their tools into the AI's context.
+There are two MCP config files in this workspace, read by different clients:
+
+| File | Read by | Tracked in git? |
+|---|---|---|
+| `.vscode/mcp.json` | Antigravity / VS Code / Cursor (IDE-side MCP) | **Yes** — must not contain inline secrets |
+| `.mcp.json` (repo root) | Claude Code (CLI-side MCP) | **No** — gitignored. A committed `.mcp.json.example` shows the template |
+
+Whenever you add or modify a server in either file, the corresponding client parses the JSON, starts the defined scripts in the background, and injects their tools into the AI's context.
 
 ---
 
@@ -41,23 +46,41 @@ By default, the `@modelcontextprotocol/server-postgres` package accepts a databa
 If you commit your `mcp.json` file to Git with this configuration, your database password is automatically exposed.
 
 **The "Based Workspace" Pattern (Secure):**
-We utilize dynamic `.env` loader scripts saved in the `scripts/` directory.
 
-1. `setup_env.py` places a `.env` file containing the password in the workspace root.
-2. `scripts/postgres-mcp.js` securely reads `.env` at runtime to construct the `postgresql://` string in memory.
-3. `mcp.json` simply points to the wrapper node script without exposing any secrets:
+There are two equivalent ways to source `.env` at MCP-server-spawn time, depending on the server's runtime:
+
+**A. Generic shell wrapper (recommended for any command):**
+
+[`scripts/with-env.sh`](../scripts/with-env.sh) sources `.env` from the workspace root, then `exec`'s its arguments. The MCP config simply prepends it:
+
+```json
+{
+  "context-bridge": {
+    "command": "./scripts/with-env.sh",
+    "args": ["python3", "-m", "services.context_bridge_mcp"],
+    "cwd": "/path/to/based-workspace"
+  }
+}
+```
+
+The MCP server reads `POSTGRES_PASSWORD` etc. from `os.environ`, populated by the wrapper. No inline secrets, no per-server JS wrapper.
+
+**B. Per-server Node wrapper (legacy — for the upstream `@modelcontextprotocol/server-postgres`):**
+
+[`scripts/postgres-mcp.js`](../scripts/postgres-mcp.js) reads `.env` and constructs a `postgresql://` DSN, then `spawn`'s the upstream package. Use this only when the upstream package needs the secret in the *argv* (not env) and the generic wrapper can't help.
 
 ```json
 {
   "postgres-memory": {
     "command": "node",
-    "args": [
-      "scripts/postgres-mcp.js"
-    ]
+    "args": ["scripts/postgres-mcp.js"]
   }
 }
 ```
-*Always use wrapper scripts for any MCP servers that require passwords or API Keys (e.g. Supabase, AWS, etc.).*
+
+*Always use wrapper scripts for any MCP servers that require passwords or API Keys.*
+
+**Secret-scanning at commit time:** install gitleaks + a pre-commit hook with `./scripts/install-git-hooks.sh`. Even with the wrapper pattern, this catches accidental staging of `.env`, `.mcp.json`, or hardcoded keys in any other file.
 
 ---
 

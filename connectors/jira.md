@@ -24,7 +24,7 @@ Connects to Atlassian Jira (Cloud or Server) to pull issues, projects, and comme
 *(Partial — Context Bridge scaffold is in place, ingestion pending Phase F.2.)*
 
 1. Create a Jira API token at <https://id.atlassian.com/manage-profile/security/api-tokens>.
-2. Add the following to your `.env` file (or run `python scripts/setup_env.py`):
+2. Add the following to your `.env` file (template lives in `.env.example`):
    ```
    JIRA_BASE_URL=https://your-org.atlassian.net
    JIRA_EMAIL=you@example.com

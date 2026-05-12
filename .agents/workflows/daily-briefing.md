@@ -22,7 +22,7 @@ Anyone who starts the day reconciling tickets, reviews, and email across multipl
 - A Jira account (cloud or server)
 - A Bitbucket account
 - A Gmail account with 2FA + an app password
-- One-time setup: `python scripts/setup_env.py` to store credentials, or use the Control Panel's per-connector env editor
+- One-time setup: copy `.env.example` → `.env` and fill in `JIRA_*`, `BITBUCKET_*`, `GMAIL_*` (use `./scripts/gen_secrets.sh` for randomizable values), or use the Control Panel's per-connector env editor
 
 ## How to run
 - **In Antigravity or Claude:** say *"morning briefing"* or *"daily summary"*.

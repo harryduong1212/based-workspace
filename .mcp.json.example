@@ -1,0 +1,14 @@
+{
+  "_comment": "Copy to .mcp.json and adjust paths. .mcp.json is gitignored. Secrets come from .env via scripts/with-env.sh; do NOT add inline `env:` blocks here.",
+  "mcpServers": {
+    "notebooklm": {
+      "command": "/home/harry/.local/bin/notebooklm-mcp",
+      "args": []
+    },
+    "context-bridge": {
+      "command": "./scripts/with-env.sh",
+      "args": ["python3", "-m", "services.context_bridge_mcp"],
+      "cwd": "/home/harry/Workspace/Personal/Vibe/based-workspace"
+    }
+  }
+}

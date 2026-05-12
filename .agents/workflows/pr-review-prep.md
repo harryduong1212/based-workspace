@@ -18,7 +18,7 @@ Pulls the PR diff, its linked Jira ticket, and similar past PRs, then produces a
 Reviewers who want to walk into a PR with the context loaded — what the ticket asked for, what concerns reviewers raised on similar past changes — instead of reading three tabs in parallel.
 
 ## What you need
-- A Bitbucket account and API token (one-time setup: `python scripts/setup_env.py`).
+- A Bitbucket account and API token (one-time setup: copy `.env.example` → `.env`, fill `BITBUCKET_USERNAME` / `BITBUCKET_APP_PASSWORD`).
 - A Jira account if the PR is linked to a ticket.
 - The Context Bridge running (Phase F) for the "similar past PRs" lookup; without it, the brief works from the PR diff and ticket only.
 

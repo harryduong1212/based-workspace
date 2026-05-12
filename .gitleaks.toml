@@ -1,0 +1,40 @@
+# gitleaks config — extends the upstream default ruleset.
+# Default rules: https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+#
+# We allowlist:
+#   - placeholder values shipped in .env.example / docs
+#   - the .archived/ vault (legacy code referencing var names, not values)
+#   - variable-name string literals (e.g., "OPENAI_API_KEY" used as a dict key)
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Project allowlist"
+
+paths = [
+  '''\.env\.example$''',
+  '''\.mcp\.json\.example$''',
+  '''\.archived/''',
+  '''external/''',
+  '''\.git/''',
+  '''node_modules/''',
+  # gitignored — can't be staged, so safe to silence in full scans
+  '''^\.env$''',
+  '''^\.mcp\.json$''',
+  '''services/control_panel/web/\.next/''',
+]
+
+regexes = [
+  # placeholder literals
+  '''change-me''',
+  '''local-no-auth''',
+  '''paste-from-''',
+  '''<your-[a-z0-9_-]+>''',
+]
+
+# Allow .env.example KEY=<blank> lines — committed template
+stopwords = [
+  "example",
+  "placeholder",
+]

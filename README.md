@@ -90,49 +90,55 @@ cd based-workspace
 
 ### 3. Configure Environment & Secrets
 
-This workspace uses a secure, automated setup to manage your local database passwords and environment variables without leaking them to Git.
+`.env` at the repo root is the single source of truth for secrets and is gitignored. Bootstrap is three steps:
 
 ```bash
-# Generate your personal .env file and configure MCP servers
-python scripts/setup_env.py
+cp .env.example .env                  # template with all keys + paste-from URLs
+./scripts/gen_secrets.sh              # prints fresh randoms — paste into .env
+./scripts/install-git-hooks.sh        # installs gitleaks + pre-commit hook
 ```
 
-This script:
-- Generates a secure, random password for your local PostgreSQL.
-- Creates a `.env` file at the root (ignored by Git).
-- Synchronizes `.vscode/mcp.json` to use a secure loader script.
+`gen_secrets.sh` prints to stdout only — it never writes `.env` automatically, so it can't clobber existing values.
+
+- **Auto-generatable** (printed by the script): `POSTGRES_PASSWORD`, `N8N_ENCRYPTION_KEY` (this last one is critical — losing it breaks every credential stored in n8n).
+- **Paste from source** (URLs in `.env.example`): `N8N_API_KEY` (from the n8n UI after owner setup), `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `JIRA_*`, `BITBUCKET_*`, `GMAIL_APP_PASSWORD`.
+
+MCP servers read `.env` via `./scripts/with-env.sh`. The local `.mcp.json` is gitignored; `.mcp.json.example` is the committed template.
 
 ### 4. Start Infrastructure
 
-Choose the command for your container engine:
+The canonical setup uses [`infrastructure/core/docker-compose.yaml`](infrastructure/core/docker-compose.yaml) with `.env` providing every credential and `POSTGRES_PORT` (publish port — defaults to 5432; set to a free value if port 5432 is occupied by another Postgres). The n8n image is pulled as `docker.io/atom8n/n8n:fork` — no local build step is needed.
 
 **Podman:**
 ```bash
-# Developer Mode (Build from source)
-python scripts/build_n8n_atom.py --all
-podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
+podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
 
-# User Mode (Quickstart)
-podman compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
+# MCP Inspector runs host-native (see below). The `mcp-inspector` compose profile
+# is preserved for the containerized fallback only:
+#   podman compose --env-file .env -f infrastructure/core/docker-compose.yaml \
+#                  --profile n8n-atom --profile mcp-inspector up -d
 ```
 
 **Docker:**
 ```bash
-# Developer Mode (Build from source)
-python scripts/build_n8n_atom.py --all
-docker compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d --build
-
-# User Mode (Quickstart)
-docker compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml up -d
+docker compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
 ```
 
 This starts:
-- `based-workspace-postgres` — PostgreSQL 16 + pgvector on port **5432** (AI Memory + n8n)
-- `n8n-atom` — n8n workflow automation on port **5678** (Quickstart)
-- `n8n-atom-dev` — n8n workflow automation on port **5678** (Developer Mode)
+- `based-workspace-postgres` — PostgreSQL 16 + pgvector on the host port set by `${POSTGRES_PORT}` (default 5432; container-internal stays 5432).
+- `n8n-atom-dev` — n8n workflow automation on port **5678** (image `atom8n/n8n:fork`, Postgres-backed).
+
+The optional MCP Inspector runs **host-native** (not via compose) per the [upstream readme](https://github.com/khanh-atom/mcp-inspector-atom8n):
+
+```bash
+./scripts/mcp-inspector.sh start   # http://localhost:6274
+./scripts/mcp-inspector.sh stop
+```
+
+Running on host (rather than in a container) lets the inspector read your IDE's MCP profiles at `~/.cursor/mcp.json`, `~/.gemini/antigravity/mcp_config.json`, etc.
 
 > [!TIP]
-> Always run `setup_env.py` **before** starting your containers for the first time or whenever you want to rotate your passwords.
+> If your `.env` rotates `POSTGRES_PASSWORD` **after** Postgres has been initialized once, the password in the volume is already baked in — n8n will fail to connect with the new one. Either delete the volume (`down -v`) or `ALTER USER` inside the running container.
 
 ### 5. Open in your AI coding tool
 
@@ -143,7 +149,7 @@ The AI assistant will automatically pick up:
 - Agent persona from `.agents/agents.md` 
 - Skills from `.agents/skills/`
 - Workflows from `.agents/workflows/`
-- MCP servers from `.vscode/mcp.json` (running securely via `scripts/postgres-mcp.js`)
+- MCP servers from `.vscode/mcp.json` (IDE-side) and `.mcp.json` (Claude Code), both using wrapper scripts that source `.env` so secrets never appear inline
 
 > [!TIP]
 > If you don't use `grep_app`, you can disable it by adding an underscore to its name in `.vscode/mcp.json` (e.g., `"_grep_app"`). This prevents startup errors while keeping the configuration for future use.
@@ -297,8 +303,11 @@ based-workspace/
 │       └── docker-compose.yaml   ← 🤖 Local AI inference + automatic model pull
 │
 ├── scripts/
-│   ├── setup_env.py              ← 🛠️ Env initialization script
-│   ├── build_n8n_atom.py         ← 🐳 Docker building for n8n locally
+│   ├── gen_secrets.sh            ← 🔐 Print fresh randoms for .env (POSTGRES_PASSWORD, N8N_ENCRYPTION_KEY)
+│   ├── with-env.sh               ← 🔐 Source .env then exec — used by .mcp.json wrappers
+│   ├── install-git-hooks.sh      ← 🔐 Install gitleaks + pre-commit hook
+│   ├── mcp-inspector.sh          ← 🔍 Host-native MCP Inspector lifecycle (start/stop/status)
+│   ├── build_n8n_atom.py         ← 🐳 Build MCP Inspector from external/ submodule
 │   ├── recipe_manager.py         ← 🧾 Recipe lifecycle (list/show/lint/sync/run)
 │   ├── docs_generator.py         ← 📚 Generate docs/recipes/, docs/connectors/
 │   ├── sync_antigravity.py       ← 🔌 Render recipes → .agents/workflows/

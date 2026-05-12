@@ -18,7 +18,7 @@ Pulls the Jira ticket plus its comments, linked PRs, and similar past tickets, t
 Engineers, tech leads, and product folks who want a fast first pass at scoping a ticket without manually piecing together context from Jira, Bitbucket, and prior work.
 
 ## What you need
-- A Jira account and API token (one-time setup: `python scripts/setup_env.py`).
+- A Jira account and API token (one-time setup: copy `.env.example` → `.env`, fill `JIRA_BASE_URL` / `JIRA_EMAIL` / `JIRA_API_TOKEN`).
 - A Bitbucket account if the ticket has linked PRs.
 - The Context Bridge running locally (Phase F) — without it, the agent works only from the ticket itself, not historical context.
 
