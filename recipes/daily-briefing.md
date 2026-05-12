@@ -17,7 +17,7 @@ requires_connectors:
   - bitbucket
   - gmail
 requires_mcp:
-  - postgres-memory
+  - memory
 requires_env:
   - JIRA_BASE_URL
 

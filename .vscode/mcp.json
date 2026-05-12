@@ -15,10 +15,12 @@
       ],
       "disabled": true
     },
-    "postgres-memory": {
-      "command": "node",
+    "memory": {
+      "command": "./scripts/with-env.sh",
       "args": [
-        "scripts/postgres-mcp.js"
+        "python3",
+        "-m",
+        "services.memory_mcp"
       ],
       "disabled": true
     },

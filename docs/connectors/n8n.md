@@ -24,4 +24,4 @@ Connects to an n8n instance to execute workflow-based recipes (e.g. `daily-brief
    ```
 
 ## Used by recipes
-_(none — not referenced by any recipe.)_
+- `smoke-echo`

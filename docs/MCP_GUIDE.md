@@ -55,15 +55,15 @@ There are two equivalent ways to source `.env` at MCP-server-spawn time, dependi
 
 ```json
 {
-  "context-bridge": {
+  "memory": {
     "command": "./scripts/with-env.sh",
-    "args": ["python3", "-m", "services.context_bridge_mcp"],
+    "args": ["python3", "-m", "services.memory_mcp"],
     "cwd": "/path/to/based-workspace"
   }
 }
 ```
 
-The MCP server reads `POSTGRES_PASSWORD` etc. from `os.environ`, populated by the wrapper. No inline secrets, no per-server JS wrapper.
+The MCP server reads `QDRANT_HOST`, `MEMORY_LLM_BASE`, etc. from `os.environ`, populated by the wrapper. No inline secrets, no per-server JS wrapper.
 
 **B. Per-server Node wrapper (legacy — for the upstream `@modelcontextprotocol/server-postgres`):**
 

@@ -26,18 +26,13 @@ Connects to Atlassian Jira (Cloud or Server) to pull issues, projects, and comme
    JIRA_EMAIL=you@example.com
    JIRA_API_TOKEN=<paste token>
    ```
-3. *(Phase F.1+)* Initialize the Context Bridge schema:
-   ```
-   pip install -r services/context_bridge/requirements.txt
-   python -m services.context_bridge.cli init-schema
-   ```
-4. *(Phase F.2+)* Ingest a Jira fixture (development mode):
-   ```
-   python -m services.context_bridge.cli ingest --connector jira \
-     --fixture services/context_bridge/tests/fixtures/jira_sample.json
-   ```
-5. *(Phase H)* Import the n8n workflow at `n8n-workflows/connectors/jira.n8n` for live ingestion.
-6. Verify: `python scripts/recipe_manager.py run daily-briefing --dry-run`.
+3. Install the `memory` MCP feature from the Control Panel Features page (or
+   manually: `pip install -r services/memory_mcp/requirements.txt` and bring up
+   the Qdrant container — `podman compose --profile qdrant up -d`). Ingest of
+   Jira issues happens through the `memory` MCP's `add_memory` tool.
+4. *(optional)* Import the n8n workflow at `n8n-workflows/connectors/jira.n8n`
+   for scheduled bulk ingestion via n8n.
+5. Verify: `python scripts/recipe_manager.py run daily-briefing --dry-run`.
 
 ## Data shapes
 - **issues** — `{ id, key, summary, status, assignee, priority, labels, created, updated, description, project_key }`

@@ -99,9 +99,27 @@ services:
     networks:
       - based-workspace-net
 
+  # Vector store for the `memory` MCP (mem0 backend). Activates under the
+  # `qdrant` profile so users who never install the memory feature don't
+  # pay the container cost.
+  qdrant:
+    image: docker.io/qdrant/qdrant:v1.13.0
+    container_name: based-workspace-qdrant
+    restart: unless-stopped
+    profiles:
+      - "qdrant"
+    ports:
+      - "${QDRANT_PORT:-6333}:6333"
+      - "${QDRANT_GRPC_PORT:-6334}:6334"
+    volumes:
+      - based-workspace-qdrant-data:/qdrant/storage
+    networks:
+      - based-workspace-net
+
 volumes:
   based-workspace-postgres-data:
   based-workspace-n8n-data:
+  based-workspace-qdrant-data:
 
 networks:
   based-workspace-net:

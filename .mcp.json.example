@@ -5,9 +5,9 @@
       "command": "/home/harry/.local/bin/notebooklm-mcp",
       "args": []
     },
-    "context-bridge": {
+    "memory": {
       "command": "./scripts/with-env.sh",
-      "args": ["python3", "-m", "services.context_bridge_mcp"],
+      "args": ["python3", "-m", "services.memory_mcp"],
       "cwd": "/home/harry/Workspace/Personal/Vibe/based-workspace"
     }
   }

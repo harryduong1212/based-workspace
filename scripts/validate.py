@@ -52,18 +52,14 @@ def main():
         [
             py,
             "-c",
-            "import services.context_bridge.cli, "
-            "services.context_bridge.embedder, "
-            "services.context_bridge.store, "
-            "services.context_bridge.chunkers.sentence, "
-            "services.context_bridge.connectors.jira, "
-            "services.context_bridge.connectors.bitbucket, "
-            "services.recipe_runtime.dispatcher, "
+            "import services.recipe_runtime.dispatcher, "
             "services.recipe_runtime.prompt_assembler, "
             "services.recipe_runtime.providers, "
+            "services.recipe_runtime.agent_tools, "
             "services.control_panel.config, "
             "services.control_panel.recipes_index, "
-            "services.control_panel.health",
+            "services.control_panel.health, "
+            "services.control_panel.features",
         ],
         results,
     )
@@ -79,7 +75,19 @@ def main():
     )
     _run_check(
         "Control panel tests",
-        [py, "-m", "unittest", "services.control_panel.tests.test_app"],
+        [
+            py, "-m", "unittest",
+            "services.control_panel.tests.test_app",
+            "services.control_panel.tests.test_features_base",
+            "services.control_panel.tests.test_features_system",
+            "services.control_panel.tests.test_features_container",
+            "services.control_panel.tests.test_features_mcp",
+            "services.control_panel.tests.test_features_recipe",
+            "services.control_panel.tests.test_features_connector",
+            "services.control_panel.tests.test_features_registry",
+            "services.control_panel.tests.test_features_api",
+            "services.control_panel.tests.test_bootstrap_script",
+        ],
         results,
     )
     _run_check(
@@ -88,22 +96,8 @@ def main():
         results,
     )
     _run_check(
-        "Context bridge tests",
-        [
-            py, "-m", "unittest",
-            "services.context_bridge.tests.test_smoke",
-            "services.context_bridge.tests.test_store",
-            "services.context_bridge.tests.test_store_integration",
-            "services.context_bridge.tests.test_cli",
-            "services.context_bridge.tests.test_connectors",
-            "services.context_bridge.tests.test_round_trip",
-            "services.context_bridge_mcp.tests.test_server",
-        ],
-        results,
-    )
-    _run_check(
-        "Context bridge MCP smoke",
-        [py, "scripts/context_bridge_mcp_smoke.py"],
+        "Memory MCP tests",
+        [py, "-m", "unittest", "services.memory_mcp.tests.test_server"],
         results,
     )
     _run_check(
