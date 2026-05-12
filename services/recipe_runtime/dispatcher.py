@@ -129,27 +129,42 @@ def _build_messages(envelope: dict, skill_bodies: list[str] | None) -> list[dict
     return messages
 
 
-def dispatch_workflow(fm: dict, inputs: dict) -> str:
-    """POST to the n8n webhook at execution.entrypoint. Phase E2 / Phase H."""
+def dispatch_workflow(fm: dict, inputs: dict, workspace_root: str | None = None) -> str:
+    """POST to the n8n webhook at execution.entrypoint. Phase E2 / Phase H.
+
+    URL resolution:
+      - If we can read the .n8n file (workspace_root provided) AND N8N_API_KEY is set,
+        we look the workflow up in n8n by name and build the atom8n-fork URL:
+        `{base}/webhook/{workflow_id}/{node_name_lowercased_double_encoded}/{path}`.
+      - Otherwise we fall back to upstream n8n's convention `{base}/webhook/{path}`.
+    """
     base_url = os.environ.get("N8N_WEBHOOK_BASE", "http://localhost:5678").rstrip("/")
     api_key = os.environ.get("N8N_API_KEY")
-    
     entrypoint = fm.get("execution", {}).get("entrypoint", "")
-    if entrypoint.endswith(".n8n"):
-        path = "webhook/" + os.path.basename(entrypoint)[:-4]
-    else:
-        path = "webhook/" + entrypoint.lstrip("/")
-        
-    url = f"{base_url}/{path}"
+
+    url = None
+    if workspace_root and api_key and entrypoint.endswith(".n8n"):
+        try:
+            url = _resolve_atom8n_webhook_url(workspace_root, entrypoint, base_url, api_key)
+        except Exception:
+            url = None  # fall through to upstream convention
+
+    if url is None:
+        path_seg = (
+            os.path.basename(entrypoint)[:-4]
+            if entrypoint.endswith(".n8n")
+            else entrypoint.lstrip("/")
+        )
+        url = f"{base_url}/webhook/{path_seg}"
+
     payload = json.dumps({"inputs": inputs, "recipe": fm}).encode("utf-8")
-    
     req = urllib.request.Request(url, data=payload, method="POST")
     req.add_header("Content-Type", "application/json")
     if api_key:
         req.add_header("Authorization", f"Bearer {api_key}")
-        
+
     is_async = fm.get("execution", {}).get("async", False)
-    
+
     try:
         with urllib.request.urlopen(req, timeout=30) as response:
             body = response.read().decode("utf-8")
@@ -165,6 +180,43 @@ def dispatch_workflow(fm: dict, inputs: dict) -> str:
         raise RuntimeError(f"n8n workflow failed ({e.code}): {error_body}") from e
     except urllib.error.URLError as e:
         raise RuntimeError(f"n8n connection failed: {e.reason}") from e
+
+
+def _resolve_atom8n_webhook_url(
+    workspace_root: str, entrypoint: str, base_url: str, api_key: str
+) -> str | None:
+    """Read the local .n8n file + ask n8n's public API for the workflow id, then
+    build the atom8n fork's webhook URL. The node-name segment is double-encoded
+    so n8n's HTTP layer decodes once to match the value stored in webhook_entity
+    (e.g., `webhook%20trigger`). Returns None if anything can't be resolved."""
+    from pathlib import Path
+    from urllib.parse import quote as urlquote
+
+    wf_path = Path(workspace_root) / entrypoint
+    if not wf_path.is_file():
+        return None
+    wf_def = json.loads(wf_path.read_text(encoding="utf-8"))
+    wf_name = wf_def.get("name")
+    nodes = wf_def.get("nodes") or []
+    webhook_node = next(
+        (n for n in nodes if (n.get("type") or "").endswith("webhook")), None
+    )
+    if not (wf_name and webhook_node):
+        return None
+    node_name = webhook_node.get("name") or ""
+    node_path = (webhook_node.get("parameters") or {}).get("path") or ""
+
+    req = urllib.request.Request(f"{base_url}/api/v1/workflows")
+    req.add_header("X-N8N-API-KEY", api_key)
+    with urllib.request.urlopen(req, timeout=10) as resp:
+        wfs = json.loads(resp.read().decode("utf-8")).get("data", [])
+    match = next((w for w in wfs if w.get("name") == wf_name), None)
+    if not match:
+        return None
+    workflow_id = match.get("id")
+
+    encoded_node = urlquote(node_name.lower(), safe="").replace("%", "%25")
+    return f"{base_url}/webhook/{workflow_id}/{encoded_node}/{node_path}"
 
 
 def dispatch_agent(fm: dict, agent_body: str, inputs: dict) -> str:

@@ -115,7 +115,7 @@ def start_run(
             if execution_type == "workflow":
                 inputs_with_run_id = dict(inputs)
                 inputs_with_run_id["_run_id"] = run.id
-                result = dispatch_workflow(fm, inputs_with_run_id)
+                result = dispatch_workflow(fm, inputs_with_run_id, workspace_root=str(cfg.workspace_root))
                 
                 is_async_workflow = fm.get("execution", {}).get("async", False)
                 if is_async_workflow:

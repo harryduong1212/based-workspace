@@ -999,33 +999,29 @@ class JsonApiRecipeWriteTest(unittest.TestCase):
         self.assertEqual(resp.status_code, 404)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 class TestDispatchWorkflow(unittest.TestCase):
     def test_dispatch_workflow_sync(self):
         from services.recipe_runtime.dispatcher import dispatch_workflow
         from unittest.mock import patch, MagicMock
-        import urllib.request
         import json
-        
+
         fm = {"execution": {"type": "workflow", "entrypoint": "n8n-workflows/daily-briefing.n8n"}}
         inputs = {"focus_project": "PROJ"}
-        
+
         with patch.dict("os.environ", {"N8N_WEBHOOK_BASE": "http://test-base", "N8N_API_KEY": "test-key"}):
             with patch("urllib.request.urlopen") as mock_urlopen:
                 mock_resp = MagicMock()
                 mock_resp.read.return_value = b"sync-output"
                 mock_urlopen.return_value.__enter__.return_value = mock_resp
-                
+
                 result = dispatch_workflow(fm, inputs)
-                
+
                 self.assertEqual(result, "sync-output")
                 mock_urlopen.assert_called_once()
                 req = mock_urlopen.call_args[0][0]
                 self.assertEqual(req.full_url, "http://test-base/webhook/daily-briefing")
                 self.assertEqual(req.get_header("Authorization"), "Bearer test-key")
-                
+
                 payload = json.loads(req.data.decode("utf-8"))
                 self.assertEqual(payload["inputs"], {"focus_project": "PROJ"})
 
@@ -1035,14 +1031,14 @@ class JsonApiN8nCallbackTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import tempfile
-        from pathlib import Path
         from fastapi.testclient import TestClient
         from services.control_panel.app import create_app
-        from services.control_panel.config import Config
 
         cls.tmpdir = tempfile.mkdtemp(prefix="cp_n8n_")
         cls.cfg = _sandbox_cfg(cls.tmpdir)
-        cls.client = TestClient(create_app(cls.cfg))
+        # client=("127.0.0.1", ...) so request.client.host matches the localhost
+        # check in /api/v1/n8n/callback (TestClient defaults to "testclient").
+        cls.client = TestClient(create_app(cls.cfg), client=("127.0.0.1", 50000))
 
     @classmethod
     def tearDownClass(cls):
@@ -1052,11 +1048,9 @@ class JsonApiN8nCallbackTest(unittest.TestCase):
         db.close()
         shutil.rmtree(cls.tmpdir, ignore_errors=True)
 
-    def test_callback_updates_run(self):
+    def _seed_running_run(self, run_id: str) -> None:
         from services.control_panel import db
         from datetime import datetime, timezone
-        
-        run_id = "test-n8n-callback"
         db.insert_run(
             run_id=run_id,
             recipe_id="daily-briefing",
@@ -1064,14 +1058,76 @@ class JsonApiN8nCallbackTest(unittest.TestCase):
             inputs={},
             started_at=datetime.now(timezone.utc),
         )
-        
+
+    def test_callback_updates_run(self):
+        from services.control_panel import db
+        run_id = "test-n8n-callback"
+        self._seed_running_run(run_id)
+
         resp = self.client.post(
             f"/api/v1/n8n/callback/{run_id}",
             json={"output": "hello from n8n"},
-            headers={"Host": "127.0.0.1"}
         )
         self.assertEqual(resp.status_code, 200)
-        
+
         run_row = db.get_run_row(run_id)
         self.assertEqual(run_row.status, "done")
         self.assertEqual(run_row.output, "hello from n8n")
+
+    def test_callback_idempotent_on_retry(self):
+        """A retried callback must NOT overwrite the finalized run."""
+        from services.control_panel import db
+        run_id = "test-n8n-retry"
+        self._seed_running_run(run_id)
+
+        first = self.client.post(
+            f"/api/v1/n8n/callback/{run_id}",
+            json={"output": "first"},
+        )
+        self.assertEqual(first.status_code, 200)
+        self.assertFalse(first.json().get("noop"))
+
+        second = self.client.post(
+            f"/api/v1/n8n/callback/{run_id}",
+            json={"output": "second-should-be-ignored"},
+        )
+        self.assertEqual(second.status_code, 200)
+        self.assertTrue(second.json().get("noop"))
+
+        row = db.get_run_row(run_id)
+        self.assertEqual(row.output, "first")
+
+    def test_callback_404_for_unknown_run(self):
+        resp = self.client.post(
+            "/api/v1/n8n/callback/does-not-exist",
+            json={"output": "x"},
+        )
+        self.assertEqual(resp.status_code, 404)
+
+    def test_callback_rejects_non_localhost_client(self):
+        """Request from a non-loopback peer must be rejected before any DB work."""
+        from fastapi.testclient import TestClient
+        from services.control_panel.app import create_app
+
+        run_id = "test-n8n-non-local"
+        self._seed_running_run(run_id)
+        # Spoof the Host header to "127.0.0.1" — the old (broken) check trusted
+        # this. With the fix, the peer IP is what matters; this should 403.
+        # 8.8.8.8 is a real public address (Python's ipaddress flags some
+        # documentation ranges like 203.0.113.0/24 as is_private — avoid those).
+        remote_client = TestClient(create_app(self.cfg), client=("8.8.8.8", 12345))
+        resp = remote_client.post(
+            f"/api/v1/n8n/callback/{run_id}",
+            json={"output": "should-not-apply"},
+            headers={"Host": "127.0.0.1"},
+        )
+        self.assertEqual(resp.status_code, 403)
+
+        from services.control_panel import db
+        row = db.get_run_row(run_id)
+        self.assertEqual(row.status, "running")
+        self.assertEqual(row.output, "")
+
+
+if __name__ == "__main__":
+    unittest.main()

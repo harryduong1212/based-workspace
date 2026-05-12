@@ -43,6 +43,7 @@ outputs:
 execution:
   type: workflow
   entrypoint: n8n-workflows/connectors/daily-briefing.n8n
+  async: true
 ---
 
 ## What this does

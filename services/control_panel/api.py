@@ -32,6 +32,20 @@ from .render import render_markdown
 _LOCAL_HOSTS = {"127.0.0.1", "localhost", "::1"}
 
 
+def _is_trusted_callback_peer(peer: str) -> bool:
+    """Return True when the peer IP is loopback or RFC 1918 / link-local — the
+    legitimate origins for an n8n container talking to the host. We do NOT trust
+    the Host header (client-controllable); only the actual TCP peer."""
+    if peer in _LOCAL_HOSTS:
+        return True
+    try:
+        import ipaddress
+        ip = ipaddress.ip_address(peer)
+        return ip.is_private or ip.is_loopback or ip.is_link_local
+    except (ValueError, ImportError):
+        return False
+
+
 def _cfg(request: Request) -> Config:
     return request.app.state.cfg
 
@@ -321,18 +335,31 @@ def create_api_router() -> APIRouter:
 
     @router.post("/n8n/callback/{run_id}")
     async def n8n_callback(request: Request, run_id: str) -> dict[str, Any]:
-        host_header = request.headers.get("host", "").split(":")[0]
-        if host_header not in _LOCAL_HOSTS:
-            raise HTTPException(status_code=403, detail="callback restricted to localhost")
-            
+        # Use the underlying TCP peer — the Host header is client-controllable.
+        # We accept loopback + RFC 1918 / link-local so an n8n container on a
+        # docker/podman bridge can reach the host (peer IP is the container's
+        # bridge address, e.g. 10.x.y.z).
+        client_host = request.client.host if request.client else ""
+        if not _is_trusted_callback_peer(client_host):
+            raise HTTPException(status_code=403, detail="callback restricted to private networks")
+
+        # Idempotency: n8n retries a callback if it doesn't see a 2xx. Without this
+        # guard a retry would overwrite a finished run (or worse, stomp on a hydrated
+        # _persisted_only=True Run that lacks a live queue).
+        existing = db.get_run_row(run_id)
+        if existing is None:
+            raise HTTPException(status_code=404, detail=f"run not found: {run_id}")
+        if existing.status != "running":
+            return {"ok": True, "noop": True}
+
         req_json = await request.json()
         output = req_json.get("output", "")
         error = req_json.get("error")
         status = "error" if error else "done"
-        
+
         db.finish_run(run_id=run_id, status=status, output=output, error=error)
-        
-        # update the in-memory run if it's active
+
+        # Update the in-memory run if it's still live in this process.
         from .runs import get_run
         run = get_run(run_id)
         if run and not run._persisted_only:
@@ -344,7 +371,7 @@ def create_api_router() -> APIRouter:
             run._queue.put(output)
             run._queue.put(None)
             run._done.set()
-            
+
         return {"ok": True}
 
     @router.get("/runs/{run_id}")
