@@ -17,6 +17,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { FeatureStatusBadge } from "@/components/feature-status-badge";
+import { InstallConfirmDialog } from "@/components/install-confirm-dialog";
 import type { Feature, FeatureKind } from "@/lib/api";
 import { api } from "@/lib/api";
 
@@ -62,19 +63,30 @@ export function InfraStatusWidget({ initial }: { initial: Feature[] }) {
     });
   };
 
-  const onAction = (kind: FeatureKind, id: string, action: "install" | "uninstall") => {
+  const onUninstall = (kind: FeatureKind, id: string) => {
     setErrorMsg(null);
     setActingId(id);
     startTransition(async () => {
       try {
-        if (action === "install") await api.installFeature(kind, id);
-        else await api.uninstallFeature(kind, id);
+        await api.uninstallFeature(kind, id);
         await refetch();
         router.refresh();
       } catch (e) {
         setErrorMsg(e instanceof Error ? e.message : String(e));
       } finally {
         setActingId(null);
+      }
+    });
+  };
+
+  const onInstalled = async () => {
+    setErrorMsg(null);
+    startTransition(async () => {
+      try {
+        await refetch();
+        router.refresh();
+      } catch (e) {
+        setErrorMsg(e instanceof Error ? e.message : String(e));
       }
     });
   };
@@ -138,7 +150,7 @@ export function InfraStatusWidget({ initial }: { initial: Feature[] }) {
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => onAction("container", f.id, "uninstall")}
+                    onClick={() => onUninstall("container", f.id)}
                     disabled={pending}
                     className="h-7 text-xs flex-1"
                   >
@@ -150,19 +162,24 @@ export function InfraStatusWidget({ initial }: { initial: Feature[] }) {
                     Stop
                   </Button>
                 ) : (
-                  <Button
-                    size="sm"
-                    onClick={() => onAction("container", f.id, "install")}
-                    disabled={pending}
-                    className="h-7 text-xs flex-1"
-                  >
-                    {acting ? (
-                      <Loader2 className="h-3 w-3 animate-spin" />
-                    ) : (
-                      <Power className="h-3 w-3" />
-                    )}
-                    Start
-                  </Button>
+                  <InstallConfirmDialog
+                    feature={f}
+                    onInstalled={() => onInstalled()}
+                    trigger={
+                      <Button
+                        size="sm"
+                        disabled={pending}
+                        className="h-7 text-xs flex-1"
+                      >
+                        {acting ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : (
+                          <Power className="h-3 w-3" />
+                        )}
+                        Start
+                      </Button>
+                    }
+                  />
                 )}
                 <Button asChild size="sm" variant="ghost" className="h-7 text-xs px-2">
                   <Link href={`/features/container/${f.id}`}>Details</Link>

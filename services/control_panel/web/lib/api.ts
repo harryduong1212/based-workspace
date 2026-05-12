@@ -183,6 +183,22 @@ export type FeatureActionResult = {
   stdout?: string;
 };
 
+export type FeatureSideEffect = {
+  kind: string;
+  summary: string;
+  detail: string;
+};
+
+export type FeaturePreview = {
+  ok: boolean;
+  error?: string;
+  feature?: Feature;
+  would_be_noop?: boolean;
+  side_effects?: FeatureSideEffect[];
+  warnings?: string[];
+  unmet_prereqs?: string[];
+};
+
 export type Routine = {
   id: string;
   recipe_id: string;
@@ -280,5 +296,11 @@ export const api = {
   verifyFeature: (kind: FeatureKind, id: string) =>
     getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/verify`, {
       method: "POST",
+    }),
+  previewFeature: (kind: FeatureKind, id: string, inputs?: Record<string, unknown>) =>
+    getJson<FeaturePreview>(`/api/v1/features/${kind}/${id}/preview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(inputs ?? {}),
     }),
 };

@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import { CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { InstallConfirmDialog } from "@/components/install-confirm-dialog";
 import { api, type Feature, type FeatureActionResult } from "@/lib/api";
 
 type Props = {
@@ -41,18 +42,25 @@ export function FeatureActionButtons({
     });
   };
 
+  const handleInstalled = (result: FeatureActionResult) => {
+    setLastResult(result);
+    router.refresh();
+  };
+
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
-        <Button
-          onClick={() =>
-            runAction(() => api.installFeature(feature.kind, feature.id, installInputs))
+        <InstallConfirmDialog
+          feature={feature}
+          installInputs={installInputs}
+          onInstalled={handleInstalled}
+          trigger={
+            <Button disabled={pending || blockedByPrereqs}>
+              {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
+              Install
+            </Button>
           }
-          disabled={pending || blockedByPrereqs}
-        >
-          {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
-          Install
-        </Button>
+        />
         {allowUninstall && (
           <Button
             variant="outline"

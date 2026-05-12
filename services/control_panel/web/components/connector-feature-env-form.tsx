@@ -1,13 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { api, type Feature, type FeatureActionResult } from "@/lib/api";
+import { InstallConfirmDialog } from "@/components/install-confirm-dialog";
+import { type Feature, type FeatureActionResult } from "@/lib/api";
 
 /**
  * Per-connector env input form. Reads requires_env / env_present /
@@ -21,10 +22,8 @@ import { api, type Feature, type FeatureActionResult } from "@/lib/api";
  */
 export function ConnectorFeatureEnvForm({ feature }: { feature: Feature }) {
   const router = useRouter();
-  const [pending, startTransition] = useTransition();
   const [values, setValues] = useState<Record<string, string>>({});
   const [result, setResult] = useState<FeatureActionResult | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   const requiresEnv = (feature.detail.requires_env as string[] | undefined) ?? [];
   const envPresent = new Set((feature.detail.env_present as string[] | undefined) ?? []);
@@ -38,22 +37,16 @@ export function ConnectorFeatureEnvForm({ feature }: { feature: Feature }) {
     );
   }
 
-  const onSubmit = () => {
-    const filled: Record<string, string> = {};
-    for (const [k, v] of Object.entries(values)) {
-      if (v && v.trim() !== "") filled[k] = v;
-    }
-    setError(null);
-    startTransition(async () => {
-      try {
-        const r = await api.installFeature(feature.kind, feature.id, { env: filled });
-        setResult(r);
-        if (r.ok) setValues({});
-        router.refresh();
-      } catch (e) {
-        setError(e instanceof Error ? e.message : String(e));
-      }
-    });
+  const filled: Record<string, string> = {};
+  for (const [k, v] of Object.entries(values)) {
+    if (v && v.trim() !== "") filled[k] = v;
+  }
+  const nothingFilled = Object.keys(filled).length === 0;
+
+  const handleInstalled = (r: FeatureActionResult) => {
+    setResult(r);
+    if (r.ok) setValues({});
+    router.refresh();
   };
 
   return (
@@ -83,7 +76,6 @@ export function ConnectorFeatureEnvForm({ feature }: { feature: Feature }) {
                 placeholder={isSet ? "(leave blank to keep current)" : "paste value"}
                 value={values[key] ?? ""}
                 onChange={(e) => setValues({ ...values, [key]: e.target.value })}
-                disabled={pending}
               />
             </div>
           );
@@ -91,20 +83,16 @@ export function ConnectorFeatureEnvForm({ feature }: { feature: Feature }) {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button onClick={onSubmit} disabled={pending || Object.values(values).every((v) => !v)}>
-          {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
-          Save to .env
-        </Button>
+        <InstallConfirmDialog
+          feature={feature}
+          installInputs={{ env: filled }}
+          onInstalled={handleInstalled}
+          trigger={<Button disabled={nothingFilled}>Save to .env</Button>}
+        />
         <p className="text-[11px] text-muted-foreground">
-          Values are written to <code>.env</code> via env_writer and are never echoed back.
+          Values are written to <code>.env</code> via env_writer and never echoed back.
         </p>
       </div>
-
-      {error && (
-        <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
-          <pre className="text-xs whitespace-pre-wrap break-all">{error}</pre>
-        </div>
-      )}
 
       {result && result.ok && (
         <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-3 text-sm">
