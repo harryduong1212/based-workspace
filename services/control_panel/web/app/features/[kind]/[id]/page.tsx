@@ -2,11 +2,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CollapsibleSection } from "@/components/collapsible-section";
+import { ConnectorFeatureEnvForm } from "@/components/connector-feature-env-form";
+import { ConnectorTestButton } from "@/components/connector-test-button";
 import { FeatureActionButtons } from "@/components/feature-action-buttons";
 import { FeatureStatusBadge } from "@/components/feature-status-badge";
-import { ConnectorFeatureEnvForm } from "@/components/connector-feature-env-form";
-import { api, type FeatureKind } from "@/lib/api";
+import { api, type ConnectorDetail, type FeatureKind } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +29,19 @@ export default async function FeatureDetailPage(props: {
   }
 
   const { feature, unmet_prereqs } = data;
+
+  // For connectors, also fetch the rich legacy detail (rendered markdown body,
+  // frontmatter metadata, live-probe registration) so we can absorb the old
+  // /connectors page into this one without losing context.
+  let connectorDetail: ConnectorDetail | null = null;
+  if (feature.kind === "connector") {
+    try {
+      connectorDetail = await api.connector(feature.id);
+    } catch {
+      // Missing connector markdown / parse error — the rest of the page still
+      // renders. The Details card below will surface the parse failure.
+    }
+  }
 
   return (
     <div className="space-y-6 max-w-3xl">
@@ -81,6 +97,10 @@ export default async function FeatureDetailPage(props: {
             <ConnectorFeatureEnvForm feature={feature} />
           </CardContent>
         </Card>
+      )}
+
+      {feature.kind === "connector" && connectorDetail && (
+        <ConnectorRichDetail detail={connectorDetail} />
       )}
 
       <Card>
@@ -190,5 +210,69 @@ function Row({ label, value, mono }: { label: string; value: string; mono?: bool
       </div>
       <div className={mono ? "font-mono text-xs break-all" : "text-sm"}>{value}</div>
     </div>
+  );
+}
+
+function ConnectorRichDetail({ detail }: { detail: ConnectorDetail }) {
+  return (
+    <>
+      {(detail.auth_type || detail.provides.length > 0 || detail.tags.length > 0
+        || detail.embed_collection || detail.n8n_workflow) && (
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base">Metadata</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex flex-wrap gap-1.5">
+              {detail.auth_type && <Badge variant="info">{detail.auth_type}</Badge>}
+              {detail.tags.map((t) => (
+                <Badge key={t} variant="outline">{t}</Badge>
+              ))}
+            </div>
+            {detail.provides.length > 0 && (
+              <Row label="Provides" value={detail.provides.join(", ")} mono />
+            )}
+            {detail.embed_collection && (
+              <Row label="Embed collection" value={detail.embed_collection} mono />
+            )}
+            {detail.n8n_workflow && (
+              <Row label="n8n workflow" value={detail.n8n_workflow} mono />
+            )}
+            <Row label="File" value={detail.relative_path} mono />
+          </CardContent>
+        </Card>
+      )}
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base">Live check</CardTitle>
+          <CardDescription>
+            Runs the connector&apos;s registered probe against the live API using the env vars in <code>.env</code>.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ConnectorTestButton connectorId={detail.id} />
+        </CardContent>
+      </Card>
+
+      {detail.rendered_body && (
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base">Documentation</CardTitle>
+            <CardDescription>
+              The connector&apos;s setup notes from <code>{detail.relative_path}</code>.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <CollapsibleSection previewMaxHeight={220} expandLabel="Show full docs" collapseLabel="Show less">
+              <article
+                className="prose-body"
+                dangerouslySetInnerHTML={{ __html: detail.rendered_body }}
+              />
+            </CollapsibleSection>
+          </CardContent>
+        </Card>
+      )}
+    </>
   );
 }
