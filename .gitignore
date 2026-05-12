@@ -2,6 +2,11 @@ node_modules/
 dist/
 .n8n/
 
+# Control Panel SQLite runtime (run history, recipe-inputs cache, scheduler
+# state). Grows per-run; can leak secrets if a user pasted one into an input
+# field or an LLM echoed one in its output. NEVER commit.
+.cache/
+
 # Secrets
 .env
 .env.*
