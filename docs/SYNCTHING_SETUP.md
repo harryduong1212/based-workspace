@@ -47,7 +47,7 @@ ai_orchestrator_study_materials/
 | What | URL / Location |
 |------|----------------|
 | Syncthing Web UI (Laptop) | http://127.0.0.1:8384/ |
-| Syncthing API Key | `ExPzAkMHESUAHsHWHMXL6qR4buD6snWA` |
+| Syncthing API Key | `<your-syncthing-api-key>` |
 | Config file (Laptop) | `~/.local/state/syncthing/config.xml` |
 | Systemd service | `syncthing.service` (user-level) |
 
@@ -81,7 +81,7 @@ Syncthing watches for file changes automatically (via `fsWatcherEnabled`), but i
 ```bash
 # Via API
 curl -s -X POST \
-  -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+  -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/db/scan?folder=study-materials
 
 # Or just open the Web UI and click "Rescan All"
@@ -90,14 +90,14 @@ curl -s -X POST \
 ### Check Folder Sync Status
 
 ```bash
-curl -s -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+curl -s -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/db/status?folder=study-materials | python3 -m json.tool
 ```
 
 ### Check Device Connection
 
 ```bash
-curl -s -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+curl -s -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/system/connections | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
@@ -115,7 +115,7 @@ If you want to sync a new folder (e.g., a new study topic):
 ```bash
 # 1. Add the folder via API
 curl -s -X POST \
-  -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+  -H "X-API-Key: <your-syncthing-api-key>" \
   -H "Content-Type: application/json" \
   -d '{
     "id": "my-new-folder",
@@ -214,7 +214,7 @@ The folder is not shared with the device. Fix via API:
 
 ```bash
 # 1. Get current folder config
-curl -s -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+curl -s -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/config/folders/study-materials > /tmp/fc.json
 
 # 2. Add device to folder
@@ -230,13 +230,13 @@ print('Done')
 
 # 3. Apply
 curl -s -X PUT \
-  -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+  -H "X-API-Key: <your-syncthing-api-key>" \
   -H "Content-Type: application/json" \
   -d @/tmp/fc.json \
   http://127.0.0.1:8384/rest/config/folders/study-materials
 
 # 4. Restart to re-announce
-curl -s -X POST -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+curl -s -X POST -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/system/restart
 ```
 
@@ -251,11 +251,11 @@ curl -s -X POST -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
 
 ```bash
 # Check for errors
-curl -s -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+curl -s -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/system/error | python3 -m json.tool
 
 # Check folder errors
-curl -s -H "X-API-Key: ExPzAkMHESUAHsHWHMXL6qR4buD6snWA" \
+curl -s -H "X-API-Key: <your-syncthing-api-key>" \
   http://127.0.0.1:8384/rest/folder/errors?folder=study-materials | python3 -m json.tool
 ```
 
@@ -284,5 +284,5 @@ rm -rf ~/.local/state/syncthing/
 
 - Syncthing uses **TLS encryption** for all connections — data is encrypted in transit
 - Device pairing requires **mutual acceptance** — both sides must approve
-- The API key (`ExPzAkMHESUAHsHWHMXL6qR4buD6snWA`) is local-only (bound to `127.0.0.1`)
+- The API key (`<your-syncthing-api-key>`) is local-only (bound to `127.0.0.1`)
 - Consider setting a **Web UI password** at http://127.0.0.1:8384/ → Actions → Settings → GUI
