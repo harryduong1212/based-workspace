@@ -268,71 +268,78 @@ def dispatch_agent(
         raise RuntimeError("ANTHROPIC_API_KEY not set in environment")
 
     from .prompt_assembler import substitute_inputs
-    from .agent_tools import get_tool_catalog, invoke_tool
+    from .agent_tools import build_tool_runtime
 
     system_parts = [sb.strip() for sb in (skill_bodies or []) if sb and sb.strip()]
     user_message, _applied = substitute_inputs(agent_body or "", inputs)
-    tools = get_tool_catalog(fm, workspace_root=workspace_root)
 
     messages: list[dict] = [{"role": "user", "content": user_message}]
     accumulated: list[str] = []
 
-    for _ in range(MAX_AGENT_ITERATIONS):
-        payload = {
-            "model": model_id,
-            "max_tokens": max_tokens,
-            # Snapshot the history so the captured payload doesn't reflect
-            # later mutations from the same iteration (matters for testing
-            # and for any http_post that retains the request).
-            "messages": list(messages),
-        }
-        if system_parts:
-            payload["system"] = "\n\n".join(system_parts)
-        if tools:
-            payload["tools"] = tools
+    with build_tool_runtime(fm, workspace_root=workspace_root) as runtime:
+        tools = runtime.definitions
 
-        response = _anthropic_messages(
-            api_key=api_key,
-            payload=payload,
-            http_post=http_post,
-        )
+        for _ in range(MAX_AGENT_ITERATIONS):
+            payload = {
+                "model": model_id,
+                "max_tokens": max_tokens,
+                # Snapshot the history so the captured payload doesn't reflect
+                # later mutations from the same iteration (matters for testing
+                # and for any http_post that retains the request).
+                "messages": list(messages),
+            }
+            if system_parts:
+                payload["system"] = "\n\n".join(system_parts)
+            if tools:
+                payload["tools"] = tools
 
-        # Mirror the full assistant message back into history (tool_use blocks
-        # included) — Anthropic requires this for tool_result correlation.
-        messages.append({"role": "assistant", "content": response.get("content") or []})
-
-        tool_uses: list[dict] = []
-        for block in response.get("content") or []:
-            btype = block.get("type")
-            if btype == "text":
-                text = block.get("text") or ""
-                if text:
-                    accumulated.append(text)
-                    try:
-                        out.write(text)
-                        out.flush()
-                    except Exception:
-                        pass
-            elif btype == "tool_use":
-                tool_uses.append(block)
-
-        if response.get("stop_reason") == "end_turn" or not tool_uses:
-            break
-
-        tool_results = []
-        for tu in tool_uses:
-            try:
-                result = invoke_tool(
-                    tu.get("name") or "",
-                    tu.get("input") or {},
-                    workspace_root=workspace_root,
-                )
-            except Exception as e:  # noqa: BLE001 — surface error to the agent
-                result = f"error: {type(e).__name__}: {e}"
-            tool_results.append(
-                {"type": "tool_result", "tool_use_id": tu.get("id"), "content": result}
+            response = _anthropic_messages(
+                api_key=api_key,
+                payload=payload,
+                http_post=http_post,
             )
-        messages.append({"role": "user", "content": tool_results})
+
+            # Mirror the full assistant message back into history (tool_use
+            # blocks included) — Anthropic requires this for tool_result
+            # correlation.
+            messages.append(
+                {"role": "assistant", "content": response.get("content") or []}
+            )
+
+            tool_uses: list[dict] = []
+            for block in response.get("content") or []:
+                btype = block.get("type")
+                if btype == "text":
+                    text = block.get("text") or ""
+                    if text:
+                        accumulated.append(text)
+                        try:
+                            out.write(text)
+                            out.flush()
+                        except Exception:
+                            pass
+                elif btype == "tool_use":
+                    tool_uses.append(block)
+
+            if response.get("stop_reason") == "end_turn" or not tool_uses:
+                break
+
+            tool_results = []
+            for tu in tool_uses:
+                try:
+                    result = runtime.invoke(
+                        tu.get("name") or "", tu.get("input") or {}
+                    )
+                except Exception as e:  # noqa: BLE001 — surface error to the agent
+                    result = f"error: {type(e).__name__}: {e}"
+                tool_results.append(
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": tu.get("id"),
+                        "content": result,
+                    }
+                )
+            messages.append({"role": "user", "content": tool_results})
 
     return "".join(accumulated)
 
