@@ -98,7 +98,17 @@ class MCPFeatureHandler:
 
     # ---- detection ---------------------------------------------------
 
-    def _build(self, server_id: str, example: dict[str, Any] | None, installed: dict[str, Any] | None) -> Feature:
+    def _build(
+        self,
+        server_id: str,
+        example: dict[str, Any] | None,
+        installed: dict[str, Any] | None,
+        *,
+        probe: bool = True,
+    ) -> Feature:
+        """Build a Feature. `probe=False` skips the (expensive) spawn smoke
+        and reports configured presence only — used by `list()` so loading
+        the page doesn't fork an MCP server per installed entry."""
         config = installed or example or {}
         detail: dict[str, Any] = {
             "command": config.get("command"),
@@ -106,9 +116,14 @@ class MCPFeatureHandler:
             "cwd": config.get("cwd"),
             "in_example": example is not None,
             "in_installed": installed is not None,
+            "probed": probe,
         }
         if installed is None:
             status = FeatureStatus.AVAILABLE
+        elif not probe:
+            # Configured-only signal: treat as installed (the user explicitly added it);
+            # if config is broken, /verify on the detail page surfaces it.
+            status = FeatureStatus.INSTALLED
         else:
             ok, err = self._probe(server_id, installed)
             if ok:
@@ -130,17 +145,20 @@ class MCPFeatureHandler:
     # ---- handler protocol --------------------------------------------
 
     def list(self) -> list[Feature]:
+        """Fast listing — no spawn-probes. Status is "configured present" only;
+        the detail page (`get`) and `verify` action do the real smoke."""
         example = self._example_servers()
         installed = self._installed_servers()
         ids = sorted(set(example.keys()) | set(installed.keys()))
-        return [self._build(i, example.get(i), installed.get(i)) for i in ids]
+        return [self._build(i, example.get(i), installed.get(i), probe=False) for i in ids]
 
     def get(self, feature_id: str) -> Feature | None:
+        """Full status — runs spawn-probe if installed. Slow but accurate."""
         example = self._example_servers().get(feature_id)
         installed = self._installed_servers().get(feature_id)
         if example is None and installed is None:
             return None
-        return self._build(feature_id, example, installed)
+        return self._build(feature_id, example, installed, probe=True)
 
     # ---- install / uninstall -----------------------------------------
 

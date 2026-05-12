@@ -19,11 +19,13 @@ Public surface — re-exported from this package:
 from __future__ import annotations
 
 from .base import Feature, FeatureHandler, FeatureKind, FeatureStatus, load_catalog
+from .registry import FeatureRegistry
 
 __all__ = [
     "Feature",
     "FeatureHandler",
     "FeatureKind",
     "FeatureStatus",
+    "FeatureRegistry",
     "load_catalog",
 ]

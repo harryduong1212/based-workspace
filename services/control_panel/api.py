@@ -450,4 +450,64 @@ def create_api_router() -> APIRouter:
             "probe_registered": has_probe(connector_id),
         }
 
+    # ---- features (the install/uninstall/verify page) ------------------
+
+    def _registry(request: Request):
+        from .features import FeatureRegistry
+
+        return FeatureRegistry(_cfg(request).workspace_root)
+
+    def _kind_or_404(kind: str):
+        from .features import FeatureKind
+
+        try:
+            return FeatureKind(kind)
+        except ValueError:
+            raise HTTPException(status_code=404, detail=f"unknown feature kind {kind!r}")
+
+    @router.get("/features")
+    def features_list(request: Request):
+        registry = _registry(request)
+        features = registry.all_features()
+        return {
+            "features": [f.to_dict() for f in features],
+            "kinds": [k.value for k in registry.kinds()],
+        }
+
+    @router.get("/features/{kind}/{feature_id}")
+    def features_get(request: Request, kind: str, feature_id: str):
+        k = _kind_or_404(kind)
+        registry = _registry(request)
+        feature = registry.get(k, feature_id)
+        if feature is None:
+            raise HTTPException(status_code=404, detail=f"feature {feature_id!r} not found in {kind}")
+        return {
+            "feature": feature.to_dict(),
+            "unmet_prereqs": registry.unmet_prereqs(feature),
+        }
+
+    @router.post("/features/{kind}/{feature_id}/install")
+    async def features_install(request: Request, kind: str, feature_id: str):
+        k = _kind_or_404(kind)
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        if not isinstance(body, dict):
+            raise HTTPException(status_code=400, detail="body must be a JSON object")
+        registry = _registry(request)
+        return registry.install(k, feature_id, body)
+
+    @router.post("/features/{kind}/{feature_id}/uninstall")
+    def features_uninstall(request: Request, kind: str, feature_id: str):
+        k = _kind_or_404(kind)
+        registry = _registry(request)
+        return registry.uninstall(k, feature_id)
+
+    @router.post("/features/{kind}/{feature_id}/verify")
+    def features_verify(request: Request, kind: str, feature_id: str):
+        k = _kind_or_404(kind)
+        registry = _registry(request)
+        return registry.verify(k, feature_id)
+
     return router
