@@ -1,0 +1,152 @@
+# Static catalog for Tier 1 (host binaries) and Tier 2 (podman-compose
+# services). Tier 3 — MCP / Recipe / Connector — is auto-discovered from
+# `.mcp.json.example`, `recipes/`, and `connectors/registry.json`, so it
+# does NOT appear here.
+#
+# Format
+# ------
+# system.<id>:
+#   name        — UI label
+#   description — one-line explanation
+#   detect:
+#     command       — binary to look up on PATH (`command -v`)
+#     version_flag  — flag printing version, e.g. "--version" (optional)
+#     min_version   — semver-ish minimum, used by handler parser (optional)
+#   install_hint:
+#     fedora      — exact command to print (NEVER auto-run; user pastes it)
+#     debian      — same, optional
+#     arch        — same, optional
+#
+# container.<id>:
+#   name              — UI label
+#   description       — one-line explanation
+#   compose_file      — path relative to repo root
+#   compose_service   — service name as declared in the compose file
+#   profile           — compose profile name (omit for default-active services)
+#   health:
+#     type           — "http" | "exec"
+#     url            — for http: full URL to GET; healthy iff 2xx
+#     command        — for exec: argv list, run via `podman exec`; healthy iff exit 0
+#   requires         — list of feature ids (any kind) that must be INSTALLED first
+
+system:
+  podman:
+    name: Podman
+    description: Rootless OCI container runtime — runs every infrastructure service.
+    detect:
+      command: podman
+      version_flag: --version
+      min_version: "4.0"
+    install_hint:
+      fedora: "sudo dnf install -y podman podman-compose"
+      debian: "sudo apt install -y podman podman-compose"
+      arch: "sudo pacman -S --noconfirm podman podman-compose"
+
+  python:
+    name: Python 3.11+
+    description: Required runtime for Control Panel and the recipe dispatcher.
+    detect:
+      command: python3
+      version_flag: --version
+      min_version: "3.11"
+    install_hint:
+      fedora: "sudo dnf install -y python3.11"
+      debian: "sudo apt install -y python3.11 python3.11-venv"
+      arch: "sudo pacman -S --noconfirm python"
+
+  node:
+    name: Node.js 20+
+    description: Required for the Next.js Control Panel UI and the MCP Inspector.
+    detect:
+      command: node
+      version_flag: --version
+      min_version: "20.0"
+    install_hint:
+      fedora: "sudo dnf install -y nodejs"
+      debian: "sudo apt install -y nodejs npm"
+      arch: "sudo pacman -S --noconfirm nodejs npm"
+
+  git:
+    name: Git
+    description: Version control. Usually pre-installed.
+    detect:
+      command: git
+      version_flag: --version
+      min_version: "2.30"
+    install_hint:
+      fedora: "sudo dnf install -y git"
+      debian: "sudo apt install -y git"
+      arch: "sudo pacman -S --noconfirm git"
+
+  git-hooks:
+    name: Git hooks (gitleaks pre-commit)
+    description: Blocks commits containing secrets. Installed via the repo's helper script.
+    detect:
+      command: gitleaks
+      version_flag: version
+      min_version: "8.0"
+    install_hint:
+      fedora: "bash scripts/install-git-hooks.sh"
+      debian: "bash scripts/install-git-hooks.sh"
+      arch: "bash scripts/install-git-hooks.sh"
+    requires:
+      - git
+
+container:
+  postgres:
+    name: PostgreSQL (based-workspace)
+    description: Backing database for n8n workflows.
+    compose_file: infrastructure/core/docker-compose.yaml
+    compose_service: based-workspace-postgres
+    health:
+      type: exec
+      command: ["pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
+    requires:
+      - podman
+
+  n8n:
+    name: n8n (atom8n fork)
+    description: Workflow automation engine. Powers workflow-type recipes.
+    compose_file: infrastructure/core/docker-compose.yaml
+    compose_service: n8n-atom
+    profile: n8n-atom
+    health:
+      type: http
+      url: "http://localhost:5678/healthz"
+    requires:
+      - podman
+      - postgres
+
+  qdrant:
+    name: Qdrant
+    description: Vector store for the memory MCP (mem0 backend). Added by the mem0 migration.
+    compose_file: infrastructure/core/docker-compose.yaml
+    compose_service: qdrant
+    profile: qdrant
+    health:
+      type: http
+      url: "http://localhost:6333/healthz"
+    requires:
+      - podman
+
+  llama-swap:
+    name: llama-swap
+    description: Local OpenAI-compatible LLM endpoint (Gemma + bge-small).
+    compose_file: infrastructure/llm/docker-compose.yaml
+    compose_service: llama-swap
+    health:
+      type: http
+      url: "http://localhost:8083/v1/models"
+    requires:
+      - podman
+
+  mcp-inspector:
+    name: MCP Inspector
+    description: Optional dev tool — host-native via the repo's helper script (not a podman service).
+    compose_file: ""
+    compose_service: ""
+    health:
+      type: http
+      url: "http://localhost:5273"
+    requires:
+      - node
