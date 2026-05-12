@@ -70,20 +70,41 @@ class FeaturesApiTest(unittest.TestCase):
         self.assertEqual(resp.status_code, 404)
 
     def test_install_system_feature_is_print_or_noop(self):
-        """System install never runs sudo — always returns kind=print_command or noop."""
+        """System install never runs sudo — kicks off a job whose result is
+        either noop (already installed) or carries kind=print_command."""
+        import time
+
         body = self.client.get("/api/v1/features").json()
         sys_feature = next(f for f in body["features"] if f["kind"] == "system")
         resp = self.client.post(
             f"/api/v1/features/system/{sys_feature['id']}/install", json={}
         )
         self.assertEqual(resp.status_code, 200)
-        data = resp.json()
-        if data.get("ok"):
-            # Either it's already installed (noop) or it's a print-command response.
+        start = resp.json()
+        self.assertTrue(start["ok"])
+        self.assertIn("job_id", start)
+        job_id = start["job_id"]
+
+        # Poll the job status — should converge to done quickly (system install
+        # is print-only, no subprocess to wait on).
+        for _ in range(50):  # up to ~5s
+            jr = self.client.get(f"/api/v1/features/install/{job_id}").json()
+            if jr["status"] in ("done", "error"):
+                break
+            time.sleep(0.1)
+        else:
+            self.fail("install job never finished")
+
+        result = jr["result"]
+        if result.get("ok"):
             self.assertTrue(
-                data.get("noop") or data.get("kind") == "print_command",
-                f"unexpected install response shape: {data}",
+                result.get("noop") or result.get("kind") == "print_command",
+                f"unexpected install result shape: {result}",
             )
+
+    def test_install_job_status_404_when_unknown(self):
+        resp = self.client.get("/api/v1/features/install/does-not-exist")
+        self.assertEqual(resp.status_code, 404)
 
     def test_install_with_non_object_body_400s(self):
         body = self.client.get("/api/v1/features").json()

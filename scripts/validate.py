@@ -86,6 +86,7 @@ def main():
             "services.control_panel.tests.test_features_connector",
             "services.control_panel.tests.test_features_registry",
             "services.control_panel.tests.test_features_api",
+            "services.control_panel.tests.test_features_install_jobs",
             "services.control_panel.tests.test_bootstrap_script",
             "services.control_panel.tests.test_runs_redaction",
         ],

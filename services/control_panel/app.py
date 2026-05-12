@@ -11,6 +11,8 @@ from fastapi.responses import StreamingResponse
 
 from .api import create_api_router
 from .config import Config
+from .features.install_jobs import get_job as get_install_job
+from .features.install_jobs import stream_chunks as stream_install_chunks
 from .runs import get_run, stream_chunks
 
 
@@ -39,6 +41,31 @@ def create_app(cfg: Config | None = None) -> FastAPI:
             for chunk in stream_chunks(run):
                 yield f"event: chunk\ndata: {json.dumps(chunk)}\n\n"
             payload = {"status": run.status, "error": run.error}
+            yield f"event: done\ndata: {json.dumps(payload)}\n\n"
+
+        return StreamingResponse(
+            _iter(),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+        )
+
+    @app.get("/api/v1/features/install/{job_id}/stream")
+    def install_stream(job_id: str) -> StreamingResponse:
+        """SSE stream of install-job log chunks. The terminal `done` event
+        carries the final job status + result dict so the UI can stop
+        streaming and render the outcome without a follow-up GET."""
+        job = get_install_job(job_id)
+        if job is None:
+            raise HTTPException(status_code=404, detail=f"install job not found: {job_id}")
+
+        def _iter():
+            for chunk in stream_install_chunks(job):
+                yield f"event: chunk\ndata: {json.dumps(chunk)}\n\n"
+            payload = {
+                "status": job.status,
+                "error": job.error,
+                "result": job.result,
+            }
             yield f"event: done\ndata: {json.dumps(payload)}\n\n"
 
         return StreamingResponse(

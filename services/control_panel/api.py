@@ -474,6 +474,16 @@ def create_api_router() -> APIRouter:
             "kinds": [k.value for k in registry.kinds()],
         }
 
+    @router.get("/features/install/{job_id}")
+    def features_install_status(job_id: str):
+        """Read the current state of an install job started via POST install."""
+        from .features.install_jobs import get_job, job_to_dict
+
+        job = get_job(job_id)
+        if job is None:
+            raise HTTPException(status_code=404, detail=f"install job not found: {job_id}")
+        return job_to_dict(job)
+
     @router.get("/features/{kind}/{feature_id}")
     def features_get(request: Request, kind: str, feature_id: str):
         k = _kind_or_404(kind)
@@ -488,6 +498,12 @@ def create_api_router() -> APIRouter:
 
     @router.post("/features/{kind}/{feature_id}/install")
     async def features_install(request: Request, kind: str, feature_id: str):
+        """Start an async install job. Returns `{job_id}` immediately; the
+        dialog watches `/features/install/{job_id}/stream` for live logs and
+        the terminal `done` event for the final result."""
+        from pathlib import Path
+        from .features.install_jobs import start_install_job
+
         k = _kind_or_404(kind)
         try:
             body = await request.json()
@@ -495,8 +511,16 @@ def create_api_router() -> APIRouter:
             body = {}
         if not isinstance(body, dict):
             raise HTTPException(status_code=400, detail="body must be a JSON object")
+        cfg = _cfg(request)
         registry = _registry(request)
-        return registry.install(k, feature_id, body)
+        job = start_install_job(
+            registry,
+            k,
+            feature_id,
+            body,
+            env_path=Path(cfg.workspace_root) / ".env",
+        )
+        return {"ok": True, "job_id": job.id}
 
     @router.post("/features/{kind}/{feature_id}/uninstall")
     def features_uninstall(request: Request, kind: str, feature_id: str):

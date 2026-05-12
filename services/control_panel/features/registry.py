@@ -96,6 +96,7 @@ class FeatureRegistry:
         kind: FeatureKind,
         feature_id: str,
         inputs: dict[str, Any] | None = None,
+        log_sink=None,
     ) -> dict[str, Any]:
         """Gated install: refuses when prereqs are unmet."""
         h = self._handlers.get(kind)
@@ -113,7 +114,7 @@ class FeatureRegistry:
                 "unmet_prereqs": unmet,
                 "feature": feature.to_dict(),
             }
-        return h.install(feature_id, inputs)
+        return h.install(feature_id, inputs, log_sink=log_sink)
 
     def uninstall(self, kind: FeatureKind, feature_id: str) -> dict[str, Any]:
         h = self._handlers.get(kind)

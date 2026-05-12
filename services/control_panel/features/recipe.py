@@ -187,12 +187,18 @@ class RecipeFeatureHandler:
             return None
         return self._build(feature_id, source)
 
-    def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+    def install(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+        log_sink=None,
+    ) -> dict[str, Any]:
         """Run both sync scripts so this recipe (and all others) are projected
         into the provider dirs. Sync scripts are idempotent and prune stale
         files, which is the right behaviour for a "make it match source" install.
         """
         del inputs  # nothing per-install
+        log = log_sink or (lambda _s: None)
         source = self._source_for(feature_id)
         if source is None:
             return {
@@ -203,7 +209,11 @@ class RecipeFeatureHandler:
         errors = []
         for script in self.SYNC_SCRIPTS:
             argv = ["python3", str(self._root / script)]
+            log(f"$ python3 {script.as_posix()}")
             out, rc = self._run(argv)
+            for line in (out or "").rstrip().splitlines():
+                log(line)
+            log(f"{script.name} exit code: {rc}")
             if rc != 0:
                 errors.append(f"{script.name} failed (rc={rc}): {out[-500:]}")
 

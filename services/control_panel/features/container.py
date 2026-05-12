@@ -185,21 +185,35 @@ class ContainerFeatureHandler:
         argv.append(decl["compose_service"])
         return argv
 
-    def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+    def install(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+        log_sink=None,
+    ) -> dict[str, Any]:
         """Bring the service up via `podman compose up -d`."""
         del inputs  # T2 has no per-install user inputs
+        log = log_sink or (lambda _s: None)
         decl = self._declarations().get(feature_id)
         if decl is None:
             return {"ok": False, "error": f"unknown container feature {feature_id!r}"}
 
         feature = self._build(feature_id, decl)
         if feature.status == FeatureStatus.UNAVAILABLE:
+            log(f"compose file missing: {feature.detail.get('error')}")
             return {"ok": False, "error": feature.detail.get("error"), "feature": feature.to_dict()}
         if feature.status == FeatureStatus.INSTALLED:
+            log("already running and healthy; no-op")
             return {"ok": True, "noop": True, "feature": feature.to_dict()}
 
         argv = self._compose_argv(decl, ["up", "-d"])
+        log(f"$ {' '.join(argv)}")
         out, rc = self._run(argv)
+        # Tee subprocess output to the sink so the user can read pull progress
+        # or compose errors live in the dialog.
+        for line in (out or "").rstrip().splitlines():
+            log(line)
+        log(f"exit code: {rc}")
         if rc != 0:
             return {
                 "ok": False,

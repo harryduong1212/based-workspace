@@ -152,21 +152,31 @@ class SystemFeatureHandler:
             return None
         return self._build(feature_id, decl)
 
-    def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+    def install(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+        log_sink=None,
+    ) -> dict[str, Any]:
         """Print-only — never sudo. Returns the command the user should run."""
         del inputs  # T1 has no per-install user inputs
+        log = log_sink or (lambda _s: None)
         feature = self.get(feature_id)
         if feature is None:
             return {"ok": False, "error": f"unknown system feature {feature_id!r}"}
         if feature.status == FeatureStatus.INSTALLED:
+            log(f"already installed (version {feature.detail.get('version', '?')}); no-op")
             return {"ok": True, "noop": True, "feature": feature.to_dict()}
         cmd = feature.detail.get("install_command")
         if not cmd:
+            log(f"no install hint for distro {self._distro!r}")
             return {
                 "ok": False,
                 "error": f"no install hint for distro {self._distro!r}; install {feature.name} manually",
                 "feature": feature.to_dict(),
             }
+        log(f"system features are detect-only; copy the command and run it yourself:")
+        log(f"  {cmd}")
         return {
             "ok": True,
             "kind": "print_command",

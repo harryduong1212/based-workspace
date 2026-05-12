@@ -168,8 +168,14 @@ class MCPFeatureHandler:
             json.dumps(doc, indent=2) + "\n", encoding="utf-8"
         )
 
-    def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+    def install(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+        log_sink=None,
+    ) -> dict[str, Any]:
         """Copy example entry → .mcp.json (or override via inputs.config)."""
+        log = log_sink or (lambda _s: None)
         example = self._example_servers().get(feature_id)
         if example is None and (not inputs or not inputs.get("config")):
             return {
@@ -179,9 +185,11 @@ class MCPFeatureHandler:
 
         config: dict[str, Any]
         if inputs and isinstance(inputs.get("config"), dict):
+            log("using custom config from inputs.config")
             config = inputs["config"]
         else:
             assert example is not None
+            log(f"using example entry from .mcp.json.example")
             config = dict(example)
 
         # Resolve relative cwd against workspace_root for stability — the user's
@@ -189,14 +197,21 @@ class MCPFeatureHandler:
         if config.get("cwd") in (None, "", "."):
             config["cwd"] = str(self._root.resolve())
 
+        log(f"writing mcpServers.{feature_id} to .mcp.json")
         doc = _load_json(self._installed_path) or {}
         servers = dict(doc.get("mcpServers") or {})
         servers[feature_id] = config
         doc["mcpServers"] = servers
         self._write_installed(doc)
 
+        log("running spawn-test (list_tools)...")
         feature = self.get(feature_id)
-        return {"ok": feature is not None and feature.status == FeatureStatus.INSTALLED, "feature": feature.to_dict() if feature else None}
+        ok = feature is not None and feature.status == FeatureStatus.INSTALLED
+        if ok:
+            log("spawn-test ok")
+        elif feature is not None:
+            log(f"spawn-test failed: {feature.detail.get('probe_error', '?')}")
+        return {"ok": ok, "feature": feature.to_dict() if feature else None}
 
     def uninstall(self, feature_id: str) -> dict[str, Any]:
         doc = _load_json(self._installed_path)

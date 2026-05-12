@@ -145,13 +145,19 @@ class ConnectorFeatureHandler:
 
     # ---- install / uninstall -----------------------------------------
 
-    def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+    def install(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+        log_sink=None,
+    ) -> dict[str, Any]:
         """Write the supplied env values into .env.
 
         `inputs.env` is a `{KEY: value}` dict — write-only, values are never
         echoed back in any response. The handler refuses unknown keys to
         prevent typos from polluting .env.
         """
+        log = log_sink or (lambda _s: None)
         feature = self.get(feature_id)
         if feature is None:
             return {"ok": False, "error": f"unknown connector {feature_id!r}"}
@@ -165,6 +171,7 @@ class ConnectorFeatureHandler:
         accepted = {k: str(v) for k, v in proposed.items() if k in allowed and v != ""}
 
         if not accepted and rejected:
+            log(f"rejected unknown keys: {', '.join(rejected)}")
             return {
                 "ok": False,
                 "error": f"none of the supplied keys are part of this connector's requires_env",
@@ -175,7 +182,13 @@ class ConnectorFeatureHandler:
             from services.control_panel.env_writer import update_env_file
 
             self._env_path.touch(exist_ok=True)
+            log(f"writing {len(accepted)} key(s) to .env: {', '.join(sorted(accepted.keys()))}")
             update_env_file(self._env_path, accepted)
+        else:
+            log("no env values supplied; nothing to write")
+
+        if rejected:
+            log(f"rejected unknown keys: {', '.join(rejected)}")
 
         return {
             "ok": True,

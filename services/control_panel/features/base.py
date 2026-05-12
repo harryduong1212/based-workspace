@@ -18,7 +18,12 @@ from __future__ import annotations
 import dataclasses
 from enum import Enum
 from pathlib import Path
-from typing import Any, Protocol, runtime_checkable
+from typing import Any, Callable, Protocol, runtime_checkable
+
+
+# Optional callback handlers invoke to stream progress lines during install.
+# `None` means "no live logging" — handler runs as before.
+LogSink = Callable[[str], None]
 
 
 class FeatureKind(str, Enum):
@@ -89,7 +94,12 @@ class FeatureHandler(Protocol):
 
     def list(self) -> list[Feature]: ...
     def get(self, feature_id: str) -> Feature | None: ...
-    def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]: ...
+    def install(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+        log_sink: LogSink | None = None,
+    ) -> dict[str, Any]: ...
     def uninstall(self, feature_id: str) -> dict[str, Any]: ...
     def verify(self, feature_id: str) -> dict[str, Any]: ...
     def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
