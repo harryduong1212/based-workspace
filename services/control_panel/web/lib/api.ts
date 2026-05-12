@@ -100,12 +100,6 @@ export type ConnectorTestResult = {
   probe_registered: boolean;
 };
 
-export type EnvSaveResult = {
-  ok: boolean;
-  saved_keys: string[];
-  message: string;
-};
-
 export type HealthStatus = { name: string; ok: boolean; detail: string };
 
 export type RunSummary = {
@@ -247,12 +241,6 @@ export const api = {
   connector: (id: string) => getJson<ConnectorDetail>(`/api/v1/connectors/${id}`),
   testConnector: (id: string) =>
     getJson<ConnectorTestResult>(`/api/v1/connectors/${id}/test`, { method: "POST" }),
-  saveConnectorEnv: (id: string, values: Record<string, string>) =>
-    getJson<EnvSaveResult>(`/api/v1/connectors/${id}/env`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ values }),
-    }),
   runs: (params?: { limit?: number; recipe_id?: string }) => {
     const q = new URLSearchParams();
     if (params?.limit) q.set("limit", String(params.limit));

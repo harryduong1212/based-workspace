@@ -99,7 +99,7 @@ export default async function RecipeOverviewPage({
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 <ListRow label="skills" items={recipe.requires_skills} />
-                <ListRow label="connectors" items={recipe.requires_connectors} linkPrefix="/connectors/" />
+                <ListRow label="connectors" items={recipe.requires_connectors} linkPrefix="/features/connector/" />
                 <ListRow label="workflows" items={recipe.requires_workflows} />
                 <ListRow label="mcp" items={recipe.requires_mcp} />
                 <ListRow label="env" items={recipe.requires_env} mono />
