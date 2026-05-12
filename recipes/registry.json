@@ -123,6 +123,18 @@
       "path": "recipes/release-notes.md"
     },
     {
+      "id": "smoke-echo",
+      "name": "Smoke Echo",
+      "description": "End-to-end smoke test for the workflow-dispatch path. Webhook \u2192 callback round-trip with no external creds.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "smoke",
+        "dispatcher"
+      ],
+      "path": "recipes/smoke-echo.md"
+    },
+    {
       "id": "test-env-prep",
       "name": "Test Environment Prep",
       "description": "Scaffold a test environment for a feature \u2014 mock data fixtures, environment-config docs, and empty test files matching the framework already in use.",
