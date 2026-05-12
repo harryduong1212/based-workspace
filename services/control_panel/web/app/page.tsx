@@ -4,6 +4,7 @@ import { ArrowRight, Boxes, Network, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { InfraStatusWidget } from "@/components/infra-status-widget";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +23,12 @@ function statusBadge(status: string) {
 }
 
 export default async function OverviewPage() {
-  const [dash, runs] = await Promise.all([api.dashboard(), api.runs({ limit: 8 }).catch(() => [])]);
+  const [dash, runs, features] = await Promise.all([
+    api.dashboard(),
+    api.runs({ limit: 8 }).catch(() => []),
+    api.features().catch(() => ({ features: [], kinds: [] })),
+  ]);
+  const containers = features.features.filter((f) => f.kind === "container");
 
   return (
     <div className="space-y-10">
@@ -51,6 +57,10 @@ export default async function OverviewPage() {
           </div>
         </div>
       </div>
+
+      {/* Infrastructure quick controls — sits above stats because "is my stack ready?"
+          is the most actionable question at start-of-day. */}
+      <InfraStatusWidget initial={containers} />
 
       {/* Stats */}
       <div className="grid sm:grid-cols-3 gap-4">
