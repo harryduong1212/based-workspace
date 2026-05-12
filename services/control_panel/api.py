@@ -510,4 +510,23 @@ def create_api_router() -> APIRouter:
         registry = _registry(request)
         return registry.verify(k, feature_id)
 
+    @router.post("/features/{kind}/{feature_id}/preview")
+    async def features_preview(request: Request, kind: str, feature_id: str):
+        """Describe what install(inputs) would do, without side effects.
+
+        Drives the pre-install confirmation dialog: the UI calls preview with
+        the exact inputs it would POST to /install, renders the returned
+        side_effects + warnings, then either confirms (→ POST /install) or
+        cancels (no-op).
+        """
+        k = _kind_or_404(kind)
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        if not isinstance(body, dict):
+            raise HTTPException(status_code=400, detail="body must be a JSON object")
+        registry = _registry(request)
+        return registry.preview(k, feature_id, body)
+
     return router

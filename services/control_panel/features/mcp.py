@@ -221,5 +221,54 @@ class MCPFeatureHandler:
             return {"ok": False, "error": f"unknown MCP feature {feature_id!r}"}
         return {"ok": feature.status == FeatureStatus.INSTALLED, "feature": feature.to_dict()}
 
+    def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+        example = self._example_servers().get(feature_id)
+        installed = self._installed_servers().get(feature_id)
+        if example is None and installed is None and not (inputs and inputs.get("config")):
+            return {"ok": False, "error": f"no example or installed entry for {feature_id!r}"}
+
+        if inputs and isinstance(inputs.get("config"), dict):
+            config = inputs["config"]
+        else:
+            config = dict(installed or example or {})
+
+        # Probe-free Feature snapshot — preview must be fast and side-effect free.
+        feature = self._build(feature_id, example, installed, probe=False)
+
+        cmd = config.get("command") or "?"
+        args = list(config.get("args") or [])
+        env_keys = sorted((config.get("env") or {}).keys()) if isinstance(config.get("env"), dict) else []
+        spawn_line = " ".join([str(cmd), *[str(a) for a in args]])
+
+        side_effects: list[dict[str, Any]] = [{
+            "kind": "config_write",
+            "summary": "Write entry into .mcp.json",
+            "detail": f"mcpServers.{feature_id}",
+        }, {
+            "kind": "mcp_spawn",
+            "summary": "Spawn-test the server (list_tools)",
+            "detail": spawn_line,
+        }]
+        if env_keys:
+            side_effects.append({
+                "kind": "env_read",
+                "summary": "Read env vars at spawn time (keys only)",
+                "detail": ", ".join(env_keys),
+            })
+
+        warnings: list[str] = []
+        if installed is not None and example is None:
+            warnings.append("Already installed and no example template — install will refresh from .mcp.json.")
+        if feature.status == FeatureStatus.INSTALLED:
+            warnings.append("Already configured — install will overwrite the entry and re-run the spawn-test.")
+
+        return {
+            "ok": True,
+            "feature": feature.to_dict(),
+            "would_be_noop": False,  # mcp install always rewrites + reprobes
+            "side_effects": side_effects,
+            "warnings": warnings,
+        }
+
 
 __all__ = ["MCPFeatureHandler", "SpawnProbe", "AsyncExitStack"]

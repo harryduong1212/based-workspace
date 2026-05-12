@@ -126,3 +126,28 @@ class FeatureRegistry:
         if h is None:
             return {"ok": False, "error": f"unknown kind {kind.value!r}"}
         return h.verify(feature_id)
+
+    def preview(
+        self,
+        kind: FeatureKind,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        """Compose handler.preview + unmet_prereqs into one dialog-ready payload."""
+        h = self._handlers.get(kind)
+        if h is None:
+            return {"ok": False, "error": f"unknown kind {kind.value!r}"}
+        feature = self.get(kind, feature_id)
+        if feature is None:
+            return {"ok": False, "error": f"unknown feature {feature_id!r} (kind={kind.value})"}
+        payload = h.preview(feature_id, inputs)
+        if not payload.get("ok"):
+            return payload
+        payload["unmet_prereqs"] = self.unmet_prereqs(feature)
+        payload.setdefault("warnings", [])
+        if payload["unmet_prereqs"]:
+            payload["warnings"].insert(
+                0,
+                f"Install is blocked until prereqs are installed: {', '.join(payload['unmet_prereqs'])}",
+            )
+        return payload

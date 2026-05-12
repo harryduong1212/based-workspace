@@ -39,6 +39,18 @@ def _fake_handler(kind, features_by_id, install_result=None):
             from services.control_panel.features import FeatureStatus
             return {"ok": feat is not None and feat.status == FeatureStatus.INSTALLED}
 
+        def preview(self, fid, inputs=None):
+            feat = features_by_id.get(fid)
+            if feat is None:
+                return {"ok": False, "error": f"unknown {fid!r}"}
+            return {
+                "ok": True,
+                "feature": feat.to_dict(),
+                "would_be_noop": False,
+                "side_effects": [{"kind": "stub", "summary": "x", "detail": "y"}],
+                "warnings": [],
+            }
+
     return _Fake()
 
 
@@ -187,6 +199,47 @@ class FeatureRegistryTest(unittest.TestCase):
         # Use CONTAINER kind, not registered → kind unknown.
         result = reg.install(FeatureKind.CONTAINER, "anything")
         self.assertFalse(result["ok"])
+
+    def test_preview_attaches_unmet_prereqs(self):
+        """Registry.preview must surface unmet prereqs alongside the handler's
+        side-effects so the dialog can warn before the user confirms — without
+        the handler having to walk the dep graph itself."""
+        from services.control_panel.features import FeatureKind
+
+        h_sys = _fake_handler(
+            FeatureKind.SYSTEM, {"podman": self._feat("system", "podman", "available")}
+        )
+        h_con = _fake_handler(
+            FeatureKind.CONTAINER,
+            {"postgres": self._feat("container", "postgres", "available", requires=["podman"])},
+        )
+        reg = self._make({FeatureKind.SYSTEM: h_sys, FeatureKind.CONTAINER: h_con})
+
+        r = reg.preview(FeatureKind.CONTAINER, "postgres")
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["unmet_prereqs"], ["podman"])
+        # The first warning must call out the prereq so the dialog leads with it.
+        self.assertIn("podman", r["warnings"][0])
+        self.assertIn("blocked", r["warnings"][0])
+
+    def test_preview_no_prereqs_unblocked(self):
+        from services.control_panel.features import FeatureKind
+
+        h = _fake_handler(
+            FeatureKind.SYSTEM, {"podman": self._feat("system", "podman", "available")}
+        )
+        reg = self._make({FeatureKind.SYSTEM: h})
+        r = reg.preview(FeatureKind.SYSTEM, "podman")
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["unmet_prereqs"], [])
+
+    def test_preview_unknown_feature_errors(self):
+        from services.control_panel.features import FeatureKind
+
+        h = _fake_handler(FeatureKind.SYSTEM, {})
+        reg = self._make({FeatureKind.SYSTEM: h})
+        r = reg.preview(FeatureKind.SYSTEM, "does-not-exist")
+        self.assertFalse(r["ok"])
 
 
 if __name__ == "__main__":

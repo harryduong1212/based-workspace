@@ -197,6 +197,41 @@ class ConnectorHandlerTest(unittest.TestCase):
         result = self._handler().verify("jira")
         self.assertTrue(result["ok"])
 
+    def test_preview_with_accepted_inputs_describes_env_write(self):
+        r = self._handler().preview(
+            "jira", inputs={"env": {"JIRA_BASE_URL": "https://x", "JIRA_API_TOKEN": "secret"}}
+        )
+        self.assertTrue(r["ok"])
+        self.assertFalse(r["would_be_noop"])
+        kinds = [s["kind"] for s in r["side_effects"]]
+        self.assertIn("env_write", kinds)
+        env_write = next(s for s in r["side_effects"] if s["kind"] == "env_write")
+        # Detail enumerates KEYS only — values must never be echoed back.
+        self.assertIn("JIRA_BASE_URL", env_write["detail"])
+        self.assertIn("JIRA_API_TOKEN", env_write["detail"])
+        self.assertNotIn("secret", json.dumps(r))
+
+    def test_preview_no_inputs_is_noop(self):
+        r = self._handler().preview("jira", inputs={"env": {}})
+        self.assertTrue(r["ok"])
+        self.assertTrue(r["would_be_noop"])
+        self.assertEqual([s["kind"] for s in r["side_effects"]], ["noop"])
+
+    def test_preview_rejects_unknown_keys_in_warnings(self):
+        r = self._handler().preview(
+            "jira", inputs={"env": {"BOGUS_KEY": "x"}}
+        )
+        self.assertTrue(r["ok"])
+        self.assertTrue(any("BOGUS_KEY" in w for w in r["warnings"]))
+
+    def test_preview_warns_about_still_missing_keys(self):
+        r = self._handler().preview(
+            "jira", inputs={"env": {"JIRA_BASE_URL": "https://x"}}  # only one of two
+        )
+        self.assertTrue(r["ok"])
+        # JIRA_API_TOKEN is still missing after this install — must be flagged.
+        self.assertTrue(any("JIRA_API_TOKEN" in w and "still" in w for w in r["warnings"]))
+
 
 if __name__ == "__main__":
     unittest.main()

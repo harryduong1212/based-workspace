@@ -244,3 +244,47 @@ class RecipeFeatureHandler:
         if feature is None:
             return {"ok": False, "error": f"unknown recipe {feature_id!r}"}
         return {"ok": feature.status == FeatureStatus.INSTALLED, "feature": feature.to_dict()}
+
+    def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+        del inputs
+        source = self._source_for(feature_id)
+        if source is None:
+            return {"ok": False, "error": f"unknown recipe {feature_id!r}"}
+        feature = self._build(feature_id, source)
+
+        side_effects: list[dict[str, Any]] = [
+            {"kind": "run_script", "summary": "Run scripts/sync_claude_code.py",
+             "detail": "Project all recipes into .claude/commands/"},
+            {"kind": "run_script", "summary": "Run scripts/sync_antigravity.py",
+             "detail": "Project all recipes into .agents/workflows/"},
+            {"kind": "file_write", "summary": "Write provider files for this recipe",
+             "detail": f".claude/commands/{feature_id}.md, .agents/workflows/{feature_id}.md"},
+        ]
+
+        warnings: list[str] = [
+            "Sync is global: it touches all recipes, not just this one. "
+            "Stale provider files (recipes that no longer exist in source) will be pruned."
+        ]
+        if feature.status == FeatureStatus.INSTALLED:
+            warnings.append("Already installed — install will re-sync (no change unless source diverged).")
+
+        requires_mcp = feature.detail.get("requires_mcp") or []
+        requires_conn = feature.detail.get("requires_connectors") or []
+        if requires_mcp:
+            warnings.append(
+                f"Recipe declares requires_mcp: {', '.join(requires_mcp)}. "
+                "Install does not auto-install these — verify they're ready or the recipe will fail at run time."
+            )
+        if requires_conn:
+            warnings.append(
+                f"Recipe declares requires_connectors: {', '.join(requires_conn)}. "
+                "Make sure their env vars are set."
+            )
+
+        return {
+            "ok": True,
+            "feature": feature.to_dict(),
+            "would_be_noop": False,  # sync runs each time; idempotent but not noop
+            "side_effects": side_effects,
+            "warnings": warnings,
+        }

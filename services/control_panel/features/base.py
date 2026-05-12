@@ -92,6 +92,16 @@ class FeatureHandler(Protocol):
     def install(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]: ...
     def uninstall(self, feature_id: str) -> dict[str, Any]: ...
     def verify(self, feature_id: str) -> dict[str, Any]: ...
+    def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+        """Describe what `install(feature_id, inputs)` would do without side effects.
+
+        Returns: `{ok, feature, would_be_noop, side_effects, warnings}`. Each
+        `side_effects` entry is `{kind, summary, detail}` so the UI can render
+        a typed list (no kind-specific frontend coupling). The registry
+        composes `unmet_prereqs` on top so the dialog can warn about gating
+        before the user confirms.
+        """
+        ...
 
 
 # ---- catalog ---------------------------------------------------------------

@@ -195,3 +195,40 @@ class SystemFeatureHandler:
             "ok": feature.status == FeatureStatus.INSTALLED,
             "feature": feature.to_dict(),
         }
+
+    def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+        del inputs
+        feature = self.get(feature_id)
+        if feature is None:
+            return {"ok": False, "error": f"unknown system feature {feature_id!r}"}
+
+        already_installed = feature.status == FeatureStatus.INSTALLED
+        side_effects: list[dict[str, Any]] = []
+        warnings: list[str] = []
+        cmd = feature.detail.get("install_command")
+
+        if already_installed:
+            ver = feature.detail.get("version") or "?"
+            warnings.append(f"Already installed (version {ver}). Install will be a no-op.")
+        elif cmd:
+            side_effects.append({
+                "kind": "print_command",
+                "summary": f"Print install command for distro '{self._distro}'",
+                "detail": cmd,
+            })
+            warnings.append(
+                "System features are detect-only — Control Panel never runs sudo. "
+                "Copy the printed command, run it yourself, then click Verify."
+            )
+        else:
+            warnings.append(
+                f"No install hint for distro '{self._distro}'. Install {feature.name} manually."
+            )
+
+        return {
+            "ok": True,
+            "feature": feature.to_dict(),
+            "would_be_noop": already_installed,
+            "side_effects": side_effects,
+            "warnings": warnings,
+        }

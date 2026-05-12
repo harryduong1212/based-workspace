@@ -187,6 +187,36 @@ class SystemHandlerTest(unittest.TestCase):
         self.assertFalse(handler.install("does-not-exist")["ok"])
         self.assertFalse(handler.uninstall("does-not-exist")["ok"])
         self.assertFalse(handler.verify("does-not-exist")["ok"])
+        self.assertFalse(handler.preview("does-not-exist")["ok"])
+
+    def test_preview_absent_shows_print_command_side_effect(self):
+        from services.control_panel.features.system import SystemFeatureHandler
+
+        cat = self._basic_catalog()
+        with patch("shutil.which", return_value=None):
+            r = SystemFeatureHandler(catalog_path=cat, distro="debian").preview("podman")
+
+        self.assertTrue(r["ok"])
+        self.assertFalse(r["would_be_noop"])
+        kinds = [s["kind"] for s in r["side_effects"]]
+        self.assertIn("print_command", kinds)
+        # The detail must carry the actual command so the dialog can show it.
+        cmd = next(s for s in r["side_effects"] if s["kind"] == "print_command")
+        self.assertIn("apt install", cmd["detail"])
+        # The "never sudo" promise must be communicated to the user.
+        self.assertTrue(any("never runs sudo" in w for w in r["warnings"]))
+
+    def test_preview_already_installed_is_noop(self):
+        from services.control_panel.features.system import SystemFeatureHandler
+
+        cat = self._basic_catalog()
+        with patch("shutil.which", return_value="/usr/bin/bare"):
+            r = SystemFeatureHandler(catalog_path=cat, distro="fedora").preview("barebinary")
+
+        self.assertTrue(r["ok"])
+        self.assertTrue(r["would_be_noop"])
+        # No print_command in side_effects when already installed — nothing to do.
+        self.assertEqual(r["side_effects"], [])
 
 
 @unittest.skipUnless(_HAS_YAML, "PyYAML not installed; skipping features tests")

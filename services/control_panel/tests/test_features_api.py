@@ -112,6 +112,24 @@ class FeaturesApiTest(unittest.TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertIn("ok", resp.json())
 
+    def test_preview_returns_shape(self):
+        body = self.client.get("/api/v1/features").json()
+        sys_feature = next(f for f in body["features"] if f["kind"] == "system")
+        resp = self.client.post(
+            f"/api/v1/features/system/{sys_feature['id']}/preview", json={}
+        )
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        for key in ("ok", "feature", "would_be_noop", "side_effects", "warnings", "unmet_prereqs"):
+            self.assertIn(key, data, f"preview payload missing key {key!r}")
+        self.assertIsInstance(data["side_effects"], list)
+        self.assertIsInstance(data["warnings"], list)
+        self.assertIsInstance(data["unmet_prereqs"], list)
+
+    def test_preview_unknown_kind_returns_404(self):
+        resp = self.client.post("/api/v1/features/martian/foo/preview", json={})
+        self.assertEqual(resp.status_code, 404)
+
 
 if __name__ == "__main__":
     unittest.main()

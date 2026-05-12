@@ -216,6 +216,52 @@ class ContainerHandlerTest(unittest.TestCase):
         self.assertFalse(h.install("does-not-exist")["ok"])
         self.assertFalse(h.uninstall("does-not-exist")["ok"])
         self.assertFalse(h.verify("does-not-exist")["ok"])
+        self.assertFalse(h.preview("does-not-exist")["ok"])
+
+    def test_preview_extracts_image_ports_volumes_from_compose(self):
+        # Overwrite compose with a real service spec the preview must parse.
+        compose_path = self.workspace / "infrastructure" / "core" / "docker-compose.yaml"
+        compose_path.write_text(textwrap.dedent(
+            """\
+            services:
+              based-workspace-postgres:
+                image: pgvector/pgvector:pg16
+                ports:
+                  - "5432:5432"
+                volumes:
+                  - based-workspace-postgres-data:/var/lib/postgresql/data
+            """
+        ))
+        runner = _make_runner({("podman", "inspect"): ("[]", 1)})
+        r = self._handler(runner).preview("postgres")
+
+        self.assertTrue(r["ok"])
+        kinds = [s["kind"] for s in r["side_effects"]]
+        self.assertIn("run_command", kinds)
+        self.assertIn("container_image", kinds)
+        self.assertIn("port_bind", kinds)
+        self.assertIn("volume_use", kinds)
+        # Confirm we pulled the actual image string out.
+        img = next(s for s in r["side_effects"] if s["kind"] == "container_image")
+        self.assertEqual(img["detail"], "pgvector/pgvector:pg16")
+
+    def test_preview_warns_about_profile(self):
+        compose_path = self.workspace / "infrastructure" / "core" / "docker-compose.yaml"
+        compose_path.write_text("services: {}\n")  # n8n service body irrelevant for the warning test
+        runner = _make_runner({("podman", "inspect"): ("[]", 1)})
+        r = self._handler(runner).preview("n8n")
+        self.assertTrue(r["ok"])
+        self.assertTrue(any("profile 'n8n-atom'" in w for w in r["warnings"]))
+
+    def test_preview_already_running_is_noop(self):
+        runner = _make_runner({
+            ("podman", "inspect"): (_inspect_payload(True), 0),
+            ("podman", "exec"): ("ok", 0),
+        })
+        r = self._handler(runner).preview("postgres")
+        self.assertTrue(r["ok"])
+        self.assertTrue(r["would_be_noop"])
+        self.assertTrue(any("no-op" in w for w in r["warnings"]))
 
 
 if __name__ == "__main__":

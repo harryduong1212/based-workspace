@@ -239,3 +239,50 @@ class ConnectorFeatureHandler:
         if feature is None:
             return {"ok": False, "error": f"unknown connector {feature_id!r}"}
         return {"ok": feature.status == FeatureStatus.INSTALLED, "feature": feature.to_dict()}
+
+    def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+        feature = self.get(feature_id)
+        if feature is None:
+            return {"ok": False, "error": f"unknown connector {feature_id!r}"}
+
+        allowed = set(feature.detail.get("requires_env") or [])
+        proposed = (inputs or {}).get("env") or {}
+        if not isinstance(proposed, dict):
+            proposed = {}
+        accepted_keys = sorted(k for k, v in proposed.items() if k in allowed and v not in (None, ""))
+        rejected_keys = sorted(k for k in proposed.keys() if k not in allowed)
+
+        side_effects: list[dict[str, Any]] = []
+        if accepted_keys:
+            side_effects.append({
+                "kind": "env_write",
+                "summary": "Write keys to .env (values never echoed back)",
+                "detail": ", ".join(accepted_keys),
+            })
+        else:
+            side_effects.append({
+                "kind": "noop",
+                "summary": "Nothing to write",
+                "detail": "No env values supplied — install would be a no-op.",
+            })
+
+        warnings: list[str] = []
+        if rejected_keys:
+            warnings.append(
+                f"Unknown keys will be rejected (not in requires_env): {', '.join(rejected_keys)}"
+            )
+        env_missing = feature.detail.get("env_missing") or []
+        if env_missing:
+            still_missing = sorted(k for k in env_missing if k not in accepted_keys)
+            if still_missing:
+                warnings.append(
+                    f"After this install, the connector will still be missing: {', '.join(still_missing)}"
+                )
+
+        return {
+            "ok": True,
+            "feature": feature.to_dict(),
+            "would_be_noop": not accepted_keys,
+            "side_effects": side_effects,
+            "warnings": warnings,
+        }

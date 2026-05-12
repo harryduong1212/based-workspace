@@ -246,3 +246,81 @@ class ContainerFeatureHandler:
         if feature is None:
             return {"ok": False, "error": f"unknown container feature {feature_id!r}"}
         return {"ok": feature.status == FeatureStatus.INSTALLED, "feature": feature.to_dict()}
+
+    def _read_compose_service(self, decl: dict[str, Any]) -> dict[str, Any] | None:
+        """Best-effort YAML parse of `services.<compose_service>`. None on failure
+        — preview falls back to showing the command without details in that case."""
+        import yaml
+
+        compose_path = self._root / decl["compose_file"]
+        try:
+            doc = yaml.safe_load(compose_path.read_text(encoding="utf-8")) or {}
+        except (OSError, yaml.YAMLError):
+            return None
+        services = (doc.get("services") or {}) if isinstance(doc, dict) else {}
+        svc = services.get(decl["compose_service"])
+        return svc if isinstance(svc, dict) else None
+
+    def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
+        del inputs
+        decl = self._declarations().get(feature_id)
+        if decl is None:
+            return {"ok": False, "error": f"unknown container feature {feature_id!r}"}
+        feature = self._build(feature_id, decl)
+
+        if feature.status == FeatureStatus.UNAVAILABLE:
+            return {
+                "ok": False,
+                "error": feature.detail.get("error"),
+                "feature": feature.to_dict(),
+            }
+
+        argv = self._compose_argv(decl, ["up", "-d"])
+        side_effects: list[dict[str, Any]] = [{
+            "kind": "run_command",
+            "summary": "Run compose up",
+            "detail": " ".join(argv),
+        }]
+        warnings: list[str] = []
+
+        svc = self._read_compose_service(decl)
+        if svc is not None:
+            image = svc.get("image")
+            if image:
+                side_effects.append({
+                    "kind": "container_image",
+                    "summary": "Pull image if not already present",
+                    "detail": str(image),
+                })
+            for port in (svc.get("ports") or []):
+                side_effects.append({
+                    "kind": "port_bind",
+                    "summary": "Bind host port",
+                    "detail": str(port),
+                })
+            for vol in (svc.get("volumes") or []):
+                side_effects.append({
+                    "kind": "volume_use",
+                    "summary": "Mount volume",
+                    "detail": str(vol),
+                })
+
+        if decl.get("profile"):
+            warnings.append(
+                f"Service runs under compose profile '{decl['profile']}' — start passes --profile."
+            )
+        if feature.status == FeatureStatus.INSTALLED:
+            warnings.append("Already running and healthy — install will be a no-op.")
+        elif feature.status == FeatureStatus.ERROR:
+            warnings.append(
+                f"Container exists but is in state '{feature.detail.get('state', 'unknown')}'. "
+                "Install will attempt to bring it back up."
+            )
+
+        return {
+            "ok": True,
+            "feature": feature.to_dict(),
+            "would_be_noop": feature.status == FeatureStatus.INSTALLED,
+            "side_effects": side_effects,
+            "warnings": warnings,
+        }

@@ -194,6 +194,36 @@ class RecipeHandlerTest(unittest.TestCase):
         result = self._handler().verify("smoke")
         self.assertTrue(result["ok"])
 
+    def test_preview_lists_sync_scripts_and_target_files(self):
+        r = self._handler().preview("smoke")
+        self.assertTrue(r["ok"])
+        kinds = [s["kind"] for s in r["side_effects"]]
+        # Both scripts + the provider file write must be enumerated.
+        self.assertEqual(kinds.count("run_script"), 2)
+        self.assertIn("file_write", kinds)
+        # Global-sync warning is the load-bearing safety message — must be present.
+        self.assertTrue(any("touches all recipes" in w for w in r["warnings"]))
+
+    def test_preview_warns_about_unmet_requires_mcp(self):
+        recipe = _write_recipe(self.root, "wired")
+        recipe.write_text(textwrap.dedent("""\
+            ---
+            id: wired
+            name: Wired
+            description: connected
+            audience: tech
+            status: experimental
+            tags: []
+            requires_mcp: [memory]
+            execution:
+              type: agent
+              model: anthropic/claude-haiku-4-5-20251001
+            ---
+            """))
+        r = self._handler().preview("wired")
+        self.assertTrue(r["ok"])
+        self.assertTrue(any("requires_mcp" in w and "memory" in w for w in r["warnings"]))
+
 
 if __name__ == "__main__":
     unittest.main()

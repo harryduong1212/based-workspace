@@ -103,6 +103,7 @@ class FeatureHandlerProtocolTest(unittest.TestCase):
             def install(self, fid, inputs=None): return {"ok": True}
             def uninstall(self, fid): return {"ok": True}
             def verify(self, fid): return {"ok": True}
+            def preview(self, fid, inputs=None): return {"ok": True, "side_effects": [], "warnings": []}
 
         self.assertIsInstance(_FakeHandler(), FeatureHandler)
 

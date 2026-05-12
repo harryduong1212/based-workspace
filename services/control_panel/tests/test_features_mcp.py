@@ -139,6 +139,31 @@ class MCPHandlerTest(unittest.TestCase):
         self.assertEqual(d["kind"], "mcp")
         self.assertEqual(d["status"], "available")
 
+    def test_preview_describes_config_write_and_spawn(self):
+        r = self._handler().preview("memory")
+        self.assertTrue(r["ok"])
+        kinds = [s["kind"] for s in r["side_effects"]]
+        self.assertIn("config_write", kinds)
+        self.assertIn("mcp_spawn", kinds)
+        spawn = next(s for s in r["side_effects"] if s["kind"] == "mcp_spawn")
+        # Detail must contain the command we'd actually spawn.
+        self.assertIn("with-env.sh", spawn["detail"])
+
+    def test_preview_unknown_errors(self):
+        r = self._handler().preview("does-not-exist")
+        self.assertFalse(r["ok"])
+
+    def test_preview_already_installed_warns_of_overwrite(self):
+        # Installed AND probe-passes → status will be INSTALLED in preview's snapshot
+        # (but preview itself runs probe=False, so we test via the warning instead).
+        (self.root / ".mcp.json").write_text(
+            json.dumps({"mcpServers": {"memory": {"command": "x"}}})
+        )
+        r = self._handler().preview("memory")
+        self.assertTrue(r["ok"])
+        # An installed-but-being-reinstalled entry must produce a "will overwrite" hint.
+        self.assertTrue(any("overwrite" in w for w in r["warnings"]))
+
 
 if __name__ == "__main__":
     unittest.main()
