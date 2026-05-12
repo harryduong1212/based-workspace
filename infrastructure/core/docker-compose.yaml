@@ -9,7 +9,7 @@ services:
     env_file:
       - ../../.env
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - based-workspace-postgres-data:/var/lib/postgresql/data
     networks:
@@ -20,12 +20,11 @@ services:
       timeout: 5s
       retries: 5
 
-  # Optional Automation Layer (Runs only when the n8n-atom profile is active)
+  # Optional Automation Layer (Runs only when the n8n-atom profile is active).
+  # Uses the upstream pre-built fork image (atom8n/n8n:fork) — the local build
+  # path via external/n8n-atom/build_context was removed (see PROJECT_CONTEXT.md).
   n8n-atom:
-    image: based-workspace/n8n-atom:latest
-    build:
-      context: ../../external/n8n-atom/build_context
-      dockerfile: ../../../infrastructure/core/Dockerfile.n8n-atom
+    image: docker.io/atom8n/n8n:fork
     container_name: n8n-atom-dev
     restart: unless-stopped
     profiles:
@@ -41,18 +40,31 @@ services:
       - N8N_PROTOCOL=http
       - NODE_ENV=production
       - WEBHOOK_URL=${N8N_WEBHOOK_URL:-http://localhost:5678/}
-      # Enhanced: Configure n8n to use the core Postgres instance instead of SQLite
+      # Configure n8n to use the shared Postgres (internal port — host port is
+      # set by POSTGRES_PORT on the Postgres service).
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_DATABASE=${POSTGRES_DB:-n8n}
       - DB_POSTGRESDB_HOST=based-workspace-postgres
       - DB_POSTGRESDB_PORT=5432
       - DB_POSTGRESDB_USER=${POSTGRES_USER:-n8n}
       - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD:-n8n}
+      # Encryption key for stored credentials in the n8n UI. Set explicitly so
+      # it survives `podman volume rm`; without this, n8n auto-generates one
+      # inside the volume and `nuke` would orphan every stored credential.
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      # JWT secret used to sign user-issued API keys. If unset, n8n generates a
+      # fresh one each boot — invalidating every existing API key on restart.
+      - N8N_USER_MANAGEMENT_JWT_SECRET=${N8N_USER_MANAGEMENT_JWT_SECRET}
       - NODE_FUNCTION_ALLOW_EXTERNAL=axios,lodash
       - EXECUTIONS_DATA_SAVE_ON_ERROR=all
       - EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
       - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_SECURE_COOKIE=false
+    extra_hosts:
+      # Required so n8n workflows can POST back to the Control Panel callback
+      # at http://host.docker.internal:8765/api/v1/n8n/callback/{run_id}
+      - "host.docker.internal:host-gateway"
     ports:
       - "5678:5678"
     volumes:
@@ -60,14 +72,17 @@ services:
     networks:
       - based-workspace-net
 
+  # Optional: MCP Inspector diagnostics UI for n8n workflows.
+  # Separate profile so it doesn't activate with the n8n-atom profile by default.
+  # Bring up with `--profile mcp-inspector` (and ensure external/mcp-inspector-atom8n exists).
   mcp-inspector:
     image: based-workspace/mcp-inspector:latest
-    build: 
+    build:
       context: ../../external/mcp-inspector-atom8n
       dockerfile: Dockerfile
     container_name: mcp-inspector-dev
     profiles:
-      - "n8n-atom"
+      - "mcp-inspector"
     ports:
       - "6274:6274"
       - "6277:6277"
