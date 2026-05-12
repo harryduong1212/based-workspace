@@ -98,6 +98,7 @@ container:
     description: Backing database for n8n workflows.
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: based-workspace-postgres
+    container_name: based-workspace-postgres
     health:
       type: exec
       command: ["pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
@@ -109,6 +110,7 @@ container:
     description: Workflow automation engine. Powers workflow-type recipes.
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: n8n-atom
+    container_name: n8n-atom-dev
     profile: n8n-atom
     health:
       type: http
@@ -122,6 +124,7 @@ container:
     description: Vector store for the memory MCP (mem0 backend). Added by the mem0 migration.
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: qdrant
+    container_name: based-workspace-qdrant
     profile: qdrant
     health:
       type: http
@@ -134,19 +137,9 @@ container:
     description: Local OpenAI-compatible LLM endpoint (Gemma + bge-small).
     compose_file: infrastructure/llm/docker-compose.yaml
     compose_service: llama-swap
+    container_name: based-workspace-llama-swap
     health:
       type: http
       url: "http://localhost:8083/v1/models"
     requires:
       - podman
-
-  mcp-inspector:
-    name: MCP Inspector
-    description: Optional dev tool — host-native via the repo's helper script (not a podman service).
-    compose_file: ""
-    compose_service: ""
-    health:
-      type: http
-      url: "http://localhost:5273"
-    requires:
-      - node
