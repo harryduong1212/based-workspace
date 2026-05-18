@@ -233,7 +233,12 @@ class ContainerFeatureHandler:
             log("already running and healthy; no-op")
             return {"ok": True, "noop": True, "feature": feature.to_dict()}
 
-        argv = self._compose_argv(decl, ["up", "-d"])
+        # --no-recreate: `podman compose up -d` otherwise replaces an existing
+        # healthy container with a new one (same image + volume, new ID). That
+        # silently destroys long-running state — e.g. installing the memory MCP
+        # would walk into qdrant as a prereq and recreate it. Volumes survive,
+        # but the user sees their container "disappear and come back."
+        argv = self._compose_argv(decl, ["up", "-d", "--no-recreate"])
         log(f"$ {' '.join(argv)}")
         out, rc = self._run(argv)
         # Tee subprocess output to the sink so the user can read pull progress
@@ -321,7 +326,12 @@ class ContainerFeatureHandler:
                 "feature": feature.to_dict(),
             }
 
-        argv = self._compose_argv(decl, ["up", "-d"])
+        # --no-recreate: `podman compose up -d` otherwise replaces an existing
+        # healthy container with a new one (same image + volume, new ID). That
+        # silently destroys long-running state — e.g. installing the memory MCP
+        # would walk into qdrant as a prereq and recreate it. Volumes survive,
+        # but the user sees their container "disappear and come back."
+        argv = self._compose_argv(decl, ["up", "-d", "--no-recreate"])
         side_effects: list[dict[str, Any]] = [{
             "kind": "run_command",
             "summary": "Run compose up",

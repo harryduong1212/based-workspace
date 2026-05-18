@@ -170,7 +170,7 @@ class ContainerHandlerTest(unittest.TestCase):
         cmd = result["command"]
         self.assertIn("podman compose -f", cmd)
         self.assertIn("--profile n8n-atom", cmd)
-        self.assertIn("up -d n8n-atom", cmd)
+        self.assertIn("up -d --no-recreate n8n-atom", cmd)
 
     def test_install_idempotent_when_already_installed(self):
         runner = _make_runner({
