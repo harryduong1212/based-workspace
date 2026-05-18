@@ -14,6 +14,25 @@ requires_env:
 n8n_workflow: n8n-workflows/connectors/github.n8n
 embed_collection: github
 tags: [github, scm, code-review]
+docs: https://docs.github.com/en/rest
+about: >-
+  GitHub.com connector — reads PRs, issues, repositories, and your review
+  request queue via the GitHub REST API. Reuses the `gh` CLI's auth chain
+  when GITHUB_TOKEN is present, so the same PAT works for both. Install writes
+  GITHUB_TOKEN to `.env` (write-only). Advanced: a fine-grained PAT scoped to
+  `repo:read` and `pull_request:read` is enough for every recipe that talks
+  to GitHub — you don't need write access. Uninstall clears the token (unless
+  another installed connector also depends on it).
+highlights:
+  - Provides pull_requests, issues, repositories, and review_requests
+  - Reuses the `gh` CLI's auth so the PAT works in both places
+  - Read-only fine-grained PAT is sufficient
+  - Live-check probe hits /user to validate the token
+examples:
+  - label: Smoke-test (uses the env you just wrote)
+    code: "curl -s -H \"Authorization: Bearer $GITHUB_TOKEN\" https://api.github.com/user | jq '.login'"
+  - label: List your open review requests
+    code: "gh pr list --search 'is:open is:pr review-requested:@me'"
 ---
 
 ## What this is

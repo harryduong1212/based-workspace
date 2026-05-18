@@ -1,12 +1,51 @@
 {
-  "_comment": "Copy to .mcp.json and adjust paths. .mcp.json is gitignored. Secrets come from .env via scripts/with-env.sh; do NOT add inline `env:` blocks here. Keys prefixed with `_` are UI metadata for the Features page (_description, _docs, _requires) and are stripped before the server is spawned.",
+  "_comment": "Copy to .mcp.json and adjust paths. .mcp.json is gitignored. Secrets come from .env via scripts/with-env.sh; do NOT add inline `env:` blocks here. Keys prefixed with `_` are UI metadata for the Components page (_description, _docs, _about, _requires, _highlights, _examples) and are stripped before the server is spawned.",
   "mcpServers": {
     "notebooklm": {
       "command": "/home/harry/.local/bin/notebooklm-mcp",
       "args": [],
       "_description": "Bridge to Google NotebookLM — query notebooks, manage sources, generate audio/video studio artifacts. Tools surface under the notebooklm__ prefix.",
       "_docs": "https://notebooklm.google.com",
-      "_about": "Wraps a local notebooklm-mcp binary so recipes/agents can query your Google NotebookLM notebooks, add sources, and generate studio artifacts (audio overviews, video, slides). Install copies this entry into .mcp.json and runs a spawn-test (list_tools). Advanced: the binary handles Google auth out-of-band — run `nlm login` in a terminal if you hit auth errors; switch accounts with `nlm login switch <profile>`. No backing container needed."
+      "_about": "Wraps a local notebooklm-mcp binary so recipes/agents can query your Google NotebookLM notebooks, add sources, and generate studio artifacts (audio overviews, video, slides). Install copies this entry into .mcp.json and runs a spawn-test (list_tools). Advanced: the binary handles Google auth out-of-band — run `nlm login` in a terminal if you hit auth errors; switch accounts with `nlm login switch <profile>`. No backing container needed.",
+      "_highlights": [
+        "Query, add, and rename sources across all your NotebookLM notebooks",
+        "Generate audio overviews, video, slides, and infographics from MCP tools",
+        "Google auth handled out-of-band by the `nlm` CLI — no tokens in .env",
+        "No container or local LLM needed — talks to notebooklm.google.com directly"
+      ],
+      "_examples": [
+        {
+          "label": "Sanity-check after install (lists your notebooks)",
+          "code": "claude mcp call notebooklm__notebook_list"
+        },
+        {
+          "label": "Switch Google account",
+          "code": "nlm login switch <profile>"
+        }
+      ]
+    },
+    "grep_app": {
+      "command": "uvx",
+      "args": ["grep-mcp"],
+      "_description": "Search code across millions of public GitHub repos via grep.app. One tool: `grep_query` (query + optional language/repo/path filters).",
+      "_docs": "https://github.com/galprz/grep-mcp",
+      "_about": "Thin MCP wrapper around the grep.app public search API. Lets agents/recipes look up real-world usage patterns (\"how do other projects do X?\") without leaving the editor. Zero local setup — `uvx grep-mcp` fetches from PyPI on demand. RECOMMENDED to install in **global** scope (~/.claude.json) — no project-specific config, useful everywhere. The Install dialog's scope toggle picks for you.",
+      "_highlights": [
+        "Searches all public GitHub via the grep.app API — millions of repos",
+        "Zero install — `uvx grep-mcp` resolves from PyPI on first run",
+        "Single `grep_query` tool with filters: language, repo, path",
+        "Best installed in global scope — no project coupling"
+      ],
+      "_examples": [
+        {
+          "label": "Find Python usages of a function",
+          "code": "claude mcp call grep_app__grep_query --query 'def build_tool_runtime' --language python"
+        },
+        {
+          "label": "Look up an obscure import pattern",
+          "code": "claude mcp call grep_app__grep_query --query 'from fastmcp import FastMCP'"
+        }
+      ]
     },
     "memory": {
       "command": "./scripts/with-env.sh",
@@ -15,7 +54,27 @@
       "_description": "Persistent semantic memory via mem0 (LLM fact-extraction + vector recall). Backed by Qdrant for storage and local Gemma + bge-small through llama-swap. Tools: search_memory, add_memory.",
       "_docs": "https://github.com/mem0ai/mem0",
       "_requires": ["qdrant", "llama-swap"],
-      "_about": "A thin FastMCP wrapper around mem0. add_memory extracts durable facts from text via a local LLM and stores their embeddings; search_memory does semantic recall. The whole stack runs offline: Qdrant holds the vectors (collection based_memory), Gemma 3 4B does fact extraction, bge-small does embeddings — Gemma + bge served by llama-swap. Install copies this entry into .mcp.json and runs a spawn-test. IMPORTANT: it requires the qdrant and llama-swap containers running first — the install dialog blocks and tells you so, rather than failing with a cryptic spawn error. This replaced the old Context Bridge / pgvector memory."
+      "_about": "A thin FastMCP wrapper around mem0. add_memory extracts durable facts from text via a local LLM and stores their embeddings; search_memory does semantic recall. The whole stack runs offline: Qdrant holds the vectors (collection based_memory), Gemma 3 4B does fact extraction, bge-small does embeddings — Gemma + bge served by llama-swap. Install copies this entry into .mcp.json and runs a spawn-test. IMPORTANT: it requires the qdrant and llama-swap containers running first — the install dialog blocks and tells you so, rather than failing with a cryptic spawn error. This replaced the old Context Bridge / pgvector memory.",
+      "_highlights": [
+        "100% offline — embeddings (bge-small) + fact extraction (Gemma 3 4B) run locally",
+        "Two tools: `add_memory` (LLM-distilled facts) and `search_memory` (semantic recall)",
+        "Backed by Qdrant collection `based_memory` — survives container restarts",
+        "Replaced the old Context Bridge / pgvector stack (2026-05-12 migration)"
+      ],
+      "_examples": [
+        {
+          "label": "Store a fact",
+          "code": "claude mcp call memory__add_memory --text 'I prefer 4-space Python indent'"
+        },
+        {
+          "label": "Recall by query",
+          "code": "claude mcp call memory__search_memory --query 'python style'"
+        },
+        {
+          "label": "Inspect stored count",
+          "code": "curl -s http://localhost:6333/collections/based_memory | jq '.result.points_count'"
+        }
+      ]
     }
   }
 }

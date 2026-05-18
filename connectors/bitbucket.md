@@ -15,6 +15,25 @@ requires_env:
 n8n_workflow: n8n-workflows/connectors/bitbucket.n8n
 embed_collection: bitbucket
 tags: [atlassian, scm, code-review]
+docs: https://developer.atlassian.com/cloud/bitbucket/rest/intro/
+about: >-
+  Bitbucket Cloud connector — reads pull requests, repositories, and commits
+  via Atlassian's REST API. Used by pr-review-prep to pull the PR body, diff,
+  and inline comments. Install writes BITBUCKET_WORKSPACE, BITBUCKET_USERNAME,
+  and BITBUCKET_APP_PASSWORD to `.env` via env_writer (values write-only,
+  never echoed back). Advanced: the "app password" is Bitbucket's PAT-equivalent
+  — scope it to read-only repository + PR access. Uninstall clears the env
+  vars but only those NOT shared with another installed connector.
+highlights:
+  - Provides pull_requests, repositories, and commits to recipes
+  - Powers pr-review-prep — without this connector that recipe is unavailable
+  - Auth via Bitbucket "app password" (PAT-equivalent) — read-only is enough
+  - Live-check probe exercises the API with your real creds
+examples:
+  - label: Smoke-test (uses the env you just wrote)
+    code: "curl -s -u $BITBUCKET_USERNAME:$BITBUCKET_APP_PASSWORD https://api.bitbucket.org/2.0/repositories/$BITBUCKET_WORKSPACE | jq '.values[].name'"
+  - label: List your open PRs
+    code: "curl -s -u $BITBUCKET_USERNAME:$BITBUCKET_APP_PASSWORD 'https://api.bitbucket.org/2.0/pullrequests/'$BITBUCKET_USERNAME | jq '.values[] | {title, link: .links.html.href}'"
 ---
 
 ## What this is

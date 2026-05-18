@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-05-11T08:25:42.255Z",
+  "createdAt": "2026-05-11T08:25:41.743Z",
+  "id": "e2J0NPLIBOQ1AdDA",
   "name": "MCP Curl GET",
+  "description": null,
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -12,7 +18,10 @@
       "name": "Webhook Trigger",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [260, 300],
+      "position": [
+        260,
+        300
+      ],
       "webhookId": "mcp-curl-get-webhook"
     },
     {
@@ -25,7 +34,10 @@
       "name": "Parse Input",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [480, 300]
+      "position": [
+        480,
+        300
+      ]
     },
     {
       "parameters": {
@@ -54,7 +66,10 @@
       "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [700, 300]
+      "position": [
+        700,
+        300
+      ]
     },
     {
       "parameters": {
@@ -66,7 +81,10 @@
       "name": "Format Response",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [920, 300]
+      "position": [
+        920,
+        300
+      ]
     }
   ],
   "connections": {
@@ -105,7 +123,74 @@
     }
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
-  "pinData": {}
+  "staticData": null,
+  "meta": null,
+  "pinData": null,
+  "versionId": "f92e37cc-b9cb-4556-9bba-d6a4a58f6ef2",
+  "activeVersionId": null,
+  "versionCounter": 2,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-05-11T08:25:41.743Z",
+      "createdAt": "2026-05-11T08:25:41.743Z",
+      "role": "workflow:owner",
+      "workflowId": "e2J0NPLIBOQ1AdDA",
+      "projectId": "QSjMomL4b9bQVthj",
+      "project": {
+        "updatedAt": "2026-04-03T07:31:17.484Z",
+        "createdAt": "2026-04-03T07:31:17.484Z",
+        "id": "QSjMomL4b9bQVthj",
+        "name": "Unnamed Project",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "59f7fcf6-ccf3-4bdb-b24a-39d8d59b1a43",
+        "projectRelations": [
+          {
+            "updatedAt": "2026-04-03T07:31:17.484Z",
+            "createdAt": "2026-04-03T07:31:17.484Z",
+            "userId": "59f7fcf6-ccf3-4bdb-b24a-39d8d59b1a43",
+            "projectId": "QSjMomL4b9bQVthj",
+            "user": {
+              "updatedAt": "2026-05-11T08:09:59.872Z",
+              "createdAt": "2026-04-03T07:31:16.287Z",
+              "id": "59f7fcf6-ccf3-4bdb-b24a-39d8d59b1a43",
+              "email": null,
+              "firstName": null,
+              "lastName": null,
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2026-05-11T06:54:50.420Z",
+                "personalization_survey_n8n_version": "2.4.7",
+                "automationGoalDevops": [
+                  "other",
+                  "ci-cd",
+                  "monitoring-alerting",
+                  "data-syncing"
+                ],
+                "companySize": "personalUser",
+                "companyType": "saas",
+                "role": "engineering",
+                "reportedSource": "google"
+              },
+              "settings": {
+                "userActivated": false
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2026-05-11",
+              "isPending": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": null
 }

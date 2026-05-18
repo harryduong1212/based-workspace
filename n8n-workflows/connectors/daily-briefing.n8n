@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-05-11T08:25:54.558Z",
+  "createdAt": "2026-05-11T08:25:54.402Z",
+  "id": "CxmhhFiJeYOHt5mk",
   "name": "Daily Briefing Workflow",
+  "description": null,
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -12,7 +18,10 @@
       "name": "Webhook Trigger",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [200, 300]
+      "position": [
+        200,
+        300
+      ]
     },
     {
       "parameters": {
@@ -24,7 +33,10 @@
       "name": "Jira",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [400, 100]
+      "position": [
+        400,
+        100
+      ]
     },
     {
       "parameters": {
@@ -36,7 +48,10 @@
       "name": "Bitbucket",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [400, 300]
+      "position": [
+        400,
+        300
+      ]
     },
     {
       "parameters": {
@@ -48,7 +63,10 @@
       "name": "Gmail",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [400, 500]
+      "position": [
+        400,
+        500
+      ]
     },
     {
       "parameters": {
@@ -59,7 +77,10 @@
       "name": "Aggregator",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
-      "position": [650, 300]
+      "position": [
+        650,
+        300
+      ]
     },
     {
       "parameters": {
@@ -76,7 +97,10 @@
       "name": "Anthropic",
       "type": "n8n-nodes-base.anthropic",
       "typeVersion": 1,
-      "position": [850, 300]
+      "position": [
+        850,
+        300
+      ]
     },
     {
       "parameters": {
@@ -96,47 +120,159 @@
       "name": "HTTP Response",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1050, 300]
+      "position": [
+        1050,
+        300
+      ]
     }
   ],
   "connections": {
     "Webhook Trigger": {
       "main": [
         [
-          { "node": "Jira", "type": "main", "index": 0 },
-          { "node": "Bitbucket", "type": "main", "index": 0 },
-          { "node": "Gmail", "type": "main", "index": 0 }
+          {
+            "node": "Jira",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Bitbucket",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Jira": {
       "main": [
-        [ { "node": "Aggregator", "type": "main", "index": 0 } ]
+        [
+          {
+            "node": "Aggregator",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Bitbucket": {
       "main": [
-        [ { "node": "Aggregator", "type": "main", "index": 1 } ]
+        [
+          {
+            "node": "Aggregator",
+            "type": "main",
+            "index": 1
+          }
+        ]
       ]
     },
     "Gmail": {
       "main": [
-        [ { "node": "Aggregator", "type": "main", "index": 2 } ]
+        [
+          {
+            "node": "Aggregator",
+            "type": "main",
+            "index": 2
+          }
+        ]
       ]
     },
     "Aggregator": {
       "main": [
-        [ { "node": "Anthropic", "type": "main", "index": 0 } ]
+        [
+          {
+            "node": "Anthropic",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Anthropic": {
       "main": [
-        [ { "node": "HTTP Response", "type": "main", "index": 0 } ]
+        [
+          {
+            "node": "HTTP Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
-  "pinData": {}
+  "staticData": null,
+  "meta": null,
+  "pinData": null,
+  "versionId": "df3eacb9-7b7d-4ed0-ae35-cce6fe467307",
+  "activeVersionId": null,
+  "versionCounter": 2,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-05-11T08:25:54.402Z",
+      "createdAt": "2026-05-11T08:25:54.402Z",
+      "role": "workflow:owner",
+      "workflowId": "CxmhhFiJeYOHt5mk",
+      "projectId": "QSjMomL4b9bQVthj",
+      "project": {
+        "updatedAt": "2026-04-03T07:31:17.484Z",
+        "createdAt": "2026-04-03T07:31:17.484Z",
+        "id": "QSjMomL4b9bQVthj",
+        "name": "Unnamed Project",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "59f7fcf6-ccf3-4bdb-b24a-39d8d59b1a43",
+        "projectRelations": [
+          {
+            "updatedAt": "2026-04-03T07:31:17.484Z",
+            "createdAt": "2026-04-03T07:31:17.484Z",
+            "userId": "59f7fcf6-ccf3-4bdb-b24a-39d8d59b1a43",
+            "projectId": "QSjMomL4b9bQVthj",
+            "user": {
+              "updatedAt": "2026-05-11T08:09:59.872Z",
+              "createdAt": "2026-04-03T07:31:16.287Z",
+              "id": "59f7fcf6-ccf3-4bdb-b24a-39d8d59b1a43",
+              "email": null,
+              "firstName": null,
+              "lastName": null,
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2026-05-11T06:54:50.420Z",
+                "personalization_survey_n8n_version": "2.4.7",
+                "automationGoalDevops": [
+                  "other",
+                  "ci-cd",
+                  "monitoring-alerting",
+                  "data-syncing"
+                ],
+                "companySize": "personalUser",
+                "companyType": "saas",
+                "role": "engineering",
+                "reportedSource": "google"
+              },
+              "settings": {
+                "userActivated": false
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2026-05-11",
+              "isPending": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": null
 }

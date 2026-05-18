@@ -15,6 +15,27 @@ requires_env:
 n8n_workflow: n8n-workflows/connectors/jira.n8n
 embed_collection: jira
 tags: [atlassian, ticketing, issue-tracking]
+docs: https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/
+about: >-
+  Jira Cloud connector — reads issues, projects, and comments via Atlassian's
+  REST API v3. Powers ticket-to-feature (turns a Jira ticket into a feature
+  spec) and daily-briefing's "your tickets today" section. Install writes
+  JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN to `.env` via env_writer.
+  Advanced: JIRA_BASE_URL is your site root (e.g. `https://acme.atlassian.net`).
+  Create the API token at id.atlassian.com — read-only is enough for every
+  recipe that uses this.
+highlights:
+  - Provides issues, projects, and comments via Jira's REST v3 API
+  - Powers ticket-to-feature and daily-briefing's ticket summary
+  - Read-only token is sufficient — write access not needed
+  - Live-check probe hits /rest/api/3/myself with your creds
+examples:
+  - label: Generate the API token
+    code: "xdg-open https://id.atlassian.com/manage-profile/security/api-tokens"
+  - label: Smoke-test against your site
+    code: "curl -s -u $JIRA_EMAIL:$JIRA_API_TOKEN $JIRA_BASE_URL/rest/api/3/myself | jq '.displayName'"
+  - label: List issues assigned to you
+    code: "curl -s -u $JIRA_EMAIL:$JIRA_API_TOKEN \"$JIRA_BASE_URL/rest/api/3/search?jql=assignee=currentUser()&fields=summary,status\" | jq '.issues[] | {key, summary: .fields.summary}'"
 ---
 
 ## What this is

@@ -17,7 +17,25 @@
         "scm",
         "code-review"
       ],
-      "path": "connectors/bitbucket.md"
+      "path": "connectors/bitbucket.md",
+      "about": "Bitbucket Cloud connector \u2014 reads pull requests, repositories, and commits via Atlassian's REST API. Used by pr-review-prep to pull the PR body, diff, and inline comments. Install writes BITBUCKET_WORKSPACE, BITBUCKET_USERNAME, and BITBUCKET_APP_PASSWORD to `.env` via env_writer (values write-only, never echoed back). Advanced: the \"app password\" is Bitbucket's PAT-equivalent \u2014 scope it to read-only repository + PR access. Uninstall clears the env vars but only those NOT shared with another installed connector.",
+      "highlights": [
+        "Provides pull_requests, repositories, and commits to recipes",
+        "Powers pr-review-prep \u2014 without this connector that recipe is unavailable",
+        "Auth via Bitbucket \"app password\" (PAT-equivalent) \u2014 read-only is enough",
+        "Live-check probe exercises the API with your real creds"
+      ],
+      "examples": [
+        {
+          "label": "Smoke-test (uses the env you just wrote)",
+          "code": "curl -s -u $BITBUCKET_USERNAME:$BITBUCKET_APP_PASSWORD https://api.bitbucket.org/2.0/repositories/$BITBUCKET_WORKSPACE | jq '.values[].name'"
+        },
+        {
+          "label": "List your open PRs",
+          "code": "curl -s -u $BITBUCKET_USERNAME:$BITBUCKET_APP_PASSWORD 'https://api.bitbucket.org/2.0/pullrequests/'$BITBUCKET_USERNAME | jq '.values[] | {title, link: .links.html.href}'"
+        }
+      ],
+      "docs": "https://developer.atlassian.com/cloud/bitbucket/rest/intro/"
     },
     {
       "id": "github",
@@ -35,7 +53,25 @@
         "scm",
         "code-review"
       ],
-      "path": "connectors/github.md"
+      "path": "connectors/github.md",
+      "about": "GitHub.com connector \u2014 reads PRs, issues, repositories, and your review request queue via the GitHub REST API. Reuses the `gh` CLI's auth chain when GITHUB_TOKEN is present, so the same PAT works for both. Install writes GITHUB_TOKEN to `.env` (write-only). Advanced: a fine-grained PAT scoped to `repo:read` and `pull_request:read` is enough for every recipe that talks to GitHub \u2014 you don't need write access. Uninstall clears the token (unless another installed connector also depends on it).",
+      "highlights": [
+        "Provides pull_requests, issues, repositories, and review_requests",
+        "Reuses the `gh` CLI's auth so the PAT works in both places",
+        "Read-only fine-grained PAT is sufficient",
+        "Live-check probe hits /user to validate the token"
+      ],
+      "examples": [
+        {
+          "label": "Smoke-test (uses the env you just wrote)",
+          "code": "curl -s -H \"Authorization: Bearer $GITHUB_TOKEN\" https://api.github.com/user | jq '.login'"
+        },
+        {
+          "label": "List your open review requests",
+          "code": "gh pr list --search 'is:open is:pr review-requested:@me'"
+        }
+      ],
+      "docs": "https://docs.github.com/en/rest"
     },
     {
       "id": "gmail",
@@ -52,7 +88,25 @@
         "email",
         "inbox"
       ],
-      "path": "connectors/gmail.md"
+      "path": "connectors/gmail.md",
+      "about": "Gmail mailbox connector \u2014 reads messages, threads, and labels via IMAP using a Google App Password. Powers daily-briefing's \"what's in your inbox?\" section and any inbox-aware recipe. Install writes GMAIL_ADDRESS + GMAIL_APP_PASSWORD to `.env`. Advanced: App Passwords require 2FA enabled on the Google account, and you should generate one specifically for this workspace so it's revocable independently. The IMAP path is read-only \u2014 nothing sends mail.",
+      "highlights": [
+        "IMAP read-only \u2014 never sends mail, only fetches",
+        "Auth via Google App Password (2FA must be on; generate per-workspace)",
+        "Used by daily-briefing's inbox summary",
+        "Live-check probe attempts an IMAP login with your stored creds"
+      ],
+      "examples": [
+        {
+          "label": "Generate an App Password",
+          "code": "xdg-open https://myaccount.google.com/apppasswords"
+        },
+        {
+          "label": "Sanity-check IMAP login (no Python deps needed)",
+          "code": "python3 -c 'import imaplib,os; m=imaplib.IMAP4_SSL(\"imap.gmail.com\"); m.login(os.environ[\"GMAIL_ADDRESS\"], os.environ[\"GMAIL_APP_PASSWORD\"]); print(m.list()[0])'"
+        }
+      ],
+      "docs": "https://support.google.com/mail/answer/185833"
     },
     {
       "id": "jira",
@@ -69,7 +123,29 @@
         "ticketing",
         "issue-tracking"
       ],
-      "path": "connectors/jira.md"
+      "path": "connectors/jira.md",
+      "about": "Jira Cloud connector \u2014 reads issues, projects, and comments via Atlassian's REST API v3. Powers ticket-to-feature (turns a Jira ticket into a feature spec) and daily-briefing's \"your tickets today\" section. Install writes JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN to `.env` via env_writer. Advanced: JIRA_BASE_URL is your site root (e.g. `https://acme.atlassian.net`). Create the API token at id.atlassian.com \u2014 read-only is enough for every recipe that uses this.",
+      "highlights": [
+        "Provides issues, projects, and comments via Jira's REST v3 API",
+        "Powers ticket-to-feature and daily-briefing's ticket summary",
+        "Read-only token is sufficient \u2014 write access not needed",
+        "Live-check probe hits /rest/api/3/myself with your creds"
+      ],
+      "examples": [
+        {
+          "label": "Generate the API token",
+          "code": "xdg-open https://id.atlassian.com/manage-profile/security/api-tokens"
+        },
+        {
+          "label": "Smoke-test against your site",
+          "code": "curl -s -u $JIRA_EMAIL:$JIRA_API_TOKEN $JIRA_BASE_URL/rest/api/3/myself | jq '.displayName'"
+        },
+        {
+          "label": "List issues assigned to you",
+          "code": "curl -s -u $JIRA_EMAIL:$JIRA_API_TOKEN \"$JIRA_BASE_URL/rest/api/3/search?jql=assignee=currentUser()&fields=summary,status\" | jq '.issues[] | {key, summary: .fields.summary}'"
+        }
+      ],
+      "docs": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"
     },
     {
       "id": "n8n",
@@ -84,7 +160,27 @@
         "automation",
         "n8n"
       ],
-      "path": "connectors/n8n.md"
+      "path": "connectors/n8n.md",
+      "about": "Bridge to the local n8n workflow engine. Every recipe declared as `execution.type: workflow` reaches n8n through this connector \u2014 the dispatcher POSTs to a webhook URL, n8n runs the flow, then calls back to the Control Panel with the result. Install writes N8N_WEBHOOK_BASE + N8N_API_KEY to `.env`. N8N_WEBHOOK_BASE points at the editor (e.g. http://localhost:5678). Advanced: this connector is only useful once the **n8n** container is also installed and running \u2014 the n8n container provides the engine; this connector provides the workflow-trigger contract.",
+      "highlights": [
+        "Triggers n8n workflows via webhook URLs; webhook callbacks return results",
+        {
+          "Required by every `execution.type": "workflow` recipe (e.g. daily-briefing)"
+        },
+        "Pairs with the n8n container \u2014 install both to use workflow-type recipes",
+        "Live-check probe hits n8n's `/healthz` endpoint"
+      ],
+      "examples": [
+        {
+          "label": "Health check",
+          "code": "curl -s $N8N_WEBHOOK_BASE/healthz"
+        },
+        {
+          "label": "Trigger a workflow by webhook (replace UUID)",
+          "code": "curl -X POST -H \"X-N8N-API-KEY: $N8N_API_KEY\" $N8N_WEBHOOK_BASE/webhook/<uuid> -d '{}'"
+        }
+      ],
+      "docs": "https://docs.n8n.io/api/"
     }
   ]
 }
