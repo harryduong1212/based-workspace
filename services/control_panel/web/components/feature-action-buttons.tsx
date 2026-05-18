@@ -29,6 +29,17 @@ export function FeatureActionButtons({
 
   const blockedByPrereqs = unmetPrereqs.length > 0;
 
+  // Status-aware action visibility:
+  //  - not installed (available/unavailable): Install only — Uninstall is moot.
+  //  - fully installed: Uninstall only — Install would be a confusing no-op.
+  //  - needs-action (partial/stopped/error/unknown): both — Install repairs/
+  //    starts, Uninstall tears down.
+  // Verify is always available (it never changes anything).
+  const notInstalled = feature.status === "available" || feature.status === "unavailable";
+  const fullyInstalled = feature.status === "installed";
+  const showInstall = !fullyInstalled;
+  const showUninstall = allowUninstall && !notInstalled;
+
   const runAction = (action: () => Promise<FeatureActionResult>) => {
     setErrorMessage(null);
     startTransition(async () => {
@@ -50,18 +61,20 @@ export function FeatureActionButtons({
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
-        <InstallConfirmDialog
-          feature={feature}
-          installInputs={installInputs}
-          onInstalled={handleInstalled}
-          trigger={
-            <Button disabled={pending || blockedByPrereqs}>
-              {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
-              Install
-            </Button>
-          }
-        />
-        {allowUninstall && (
+        {showInstall && (
+          <InstallConfirmDialog
+            feature={feature}
+            installInputs={installInputs}
+            onInstalled={handleInstalled}
+            trigger={
+              <Button disabled={pending || blockedByPrereqs}>
+                {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
+                Install
+              </Button>
+            }
+          />
+        )}
+        {showUninstall && (
           <Button
             variant="outline"
             onClick={() => runAction(() => api.uninstallFeature(feature.kind, feature.id))}
