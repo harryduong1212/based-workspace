@@ -46,7 +46,13 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         return StreamingResponse(
             _iter(),
             media_type="text/event-stream",
-            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+            # no-transform: stop proxies (Next.js dev, nginx) from gzip'ing the
+            # stream — gzip buffers it and EventSource never sees a flushed
+            # event, so a `-f` follow hangs at "connecting" forever.
+            headers={
+                "Cache-Control": "no-cache, no-transform",
+                "X-Accel-Buffering": "no",
+            },
         )
 
     @app.get("/api/v1/features/install/{job_id}/stream")
@@ -71,7 +77,13 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         return StreamingResponse(
             _iter(),
             media_type="text/event-stream",
-            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+            # no-transform: stop proxies (Next.js dev, nginx) from gzip'ing the
+            # stream — gzip buffers it and EventSource never sees a flushed
+            # event, so a `-f` follow hangs at "connecting" forever.
+            headers={
+                "Cache-Control": "no-cache, no-transform",
+                "X-Accel-Buffering": "no",
+            },
         )
 
     @app.get("/api/v1/features/container/{feature_id}/logs/stream")
@@ -123,7 +135,13 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         return StreamingResponse(
             _iter(),
             media_type="text/event-stream",
-            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+            # no-transform: stop proxies (Next.js dev, nginx) from gzip'ing the
+            # stream — gzip buffers it and EventSource never sees a flushed
+            # event, so a `-f` follow hangs at "connecting" forever.
+            headers={
+                "Cache-Control": "no-cache, no-transform",
+                "X-Accel-Buffering": "no",
+            },
         )
 
     return app
