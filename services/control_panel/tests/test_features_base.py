@@ -109,7 +109,7 @@ class FeatureHandlerProtocolTest(unittest.TestCase):
             def list(self): return []
             def get(self, fid): return None
             def install(self, fid, inputs=None, log_sink=None): return {"ok": True}
-            def uninstall(self, fid): return {"ok": True}
+            def uninstall(self, fid, inputs=None): return {"ok": True}
             def verify(self, fid): return {"ok": True}
             def preview(self, fid, inputs=None): return {"ok": True, "side_effects": [], "warnings": []}
 

@@ -140,6 +140,13 @@ class SystemFeatureHandler:
             requires=list(decl.get("requires") or []),
             detail=detail,
             about=(decl.get("about") or "").strip(),
+            highlights=[str(h) for h in (decl.get("highlights") or [])],
+            examples=[
+                {"label": str(e.get("label", "")), "code": str(e.get("code", ""))}
+                for e in (decl.get("examples") or [])
+                if isinstance(e, dict)
+            ],
+            docs=str(decl.get("docs") or "").strip(),
         )
 
     # ---- handler protocol ----------------------------------------------
@@ -187,8 +194,13 @@ class SystemFeatureHandler:
             "message": f"Run this command, then click Verify: {cmd}",
         }
 
-    def uninstall(self, feature_id: str) -> dict[str, Any]:
+    def uninstall(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """Refuses — we don't yank host binaries. UI should hide the button for T1."""
+        del inputs  # no scope concept for T1
         feature = self.get(feature_id)
         if feature is None:
             return {"ok": False, "error": f"unknown system feature {feature_id!r}"}
