@@ -29,6 +29,7 @@ export default async function FeatureDetailPage(props: {
   }
 
   const { feature, unmet_prereqs } = data;
+  const unmetPrereqsDetail = data.unmet_prereqs_detail ?? [];
 
   // For connectors, also fetch the rich legacy detail (rendered markdown body,
   // frontmatter metadata, live-probe registration) so we can absorb the old
@@ -95,6 +96,7 @@ export default async function FeatureDetailPage(props: {
           <FeatureActionButtons
             feature={feature}
             unmetPrereqs={unmet_prereqs}
+            unmetPrereqsDetail={unmetPrereqsDetail}
             allowUninstall={feature.kind !== "system"}
           />
         </CardContent>

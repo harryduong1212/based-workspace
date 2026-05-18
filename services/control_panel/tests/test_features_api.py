@@ -141,11 +141,25 @@ class FeaturesApiTest(unittest.TestCase):
         )
         self.assertEqual(resp.status_code, 200)
         data = resp.json()
-        for key in ("ok", "feature", "would_be_noop", "side_effects", "warnings", "unmet_prereqs"):
+        for key in (
+            "ok", "feature", "would_be_noop", "side_effects", "warnings",
+            "unmet_prereqs", "unmet_prereqs_detail", "install_plan",
+        ):
             self.assertIn(key, data, f"preview payload missing key {key!r}")
         self.assertIsInstance(data["side_effects"], list)
         self.assertIsInstance(data["warnings"], list)
         self.assertIsInstance(data["unmet_prereqs"], list)
+        self.assertIsInstance(data["unmet_prereqs_detail"], list)
+        # The plan always ends with the target itself as the final step.
+        self.assertTrue(data["install_plan"])
+        self.assertEqual(data["install_plan"][-1]["id"], sys_feature["id"])
+
+    def test_get_includes_unmet_prereqs_detail(self):
+        body = self.client.get("/api/v1/features").json()
+        sys_feature = next(f for f in body["features"] if f["kind"] == "system")
+        data = self.client.get(f"/api/v1/features/system/{sys_feature['id']}").json()
+        self.assertIn("unmet_prereqs_detail", data)
+        self.assertIsInstance(data["unmet_prereqs_detail"], list)
 
     def test_preview_unknown_kind_returns_404(self):
         resp = self.client.post("/api/v1/features/martian/foo/preview", json={})

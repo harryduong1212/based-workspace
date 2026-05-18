@@ -158,7 +158,27 @@ export type Feature = {
 
 export type FeaturesList = { features: Feature[]; kinds: FeatureKind[] };
 
-export type FeatureDetail = { feature: Feature; unmet_prereqs: string[] };
+// A prerequisite that isn't satisfied yet. `status` lets the UI say the
+// right thing — a STOPPED container is "installed but not started", not
+// "not installed". `kind` is null when the id isn't in any catalog.
+export type PrereqDetail = {
+  id: string;
+  kind: FeatureKind | null;
+  status: FeatureStatus | "missing";
+};
+
+// One step in the auto-install cascade (prereqs deps-first, then target).
+export type InstallStep = {
+  id: string;
+  kind: FeatureKind | null;
+  status: FeatureStatus | "missing" | "unknown";
+};
+
+export type FeatureDetail = {
+  feature: Feature;
+  unmet_prereqs: string[];
+  unmet_prereqs_detail?: PrereqDetail[];
+};
 
 export type FeatureActionResult = {
   ok: boolean;
@@ -193,6 +213,8 @@ export type FeaturePreview = {
   side_effects?: FeatureSideEffect[];
   warnings?: string[];
   unmet_prereqs?: string[];
+  unmet_prereqs_detail?: PrereqDetail[];
+  install_plan?: InstallStep[];
 };
 
 export type InstallJobStart = {

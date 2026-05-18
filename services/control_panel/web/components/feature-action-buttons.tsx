@@ -6,11 +6,13 @@ import { CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { InstallConfirmDialog } from "@/components/install-confirm-dialog";
-import { api, type Feature, type FeatureActionResult } from "@/lib/api";
+import { api, type Feature, type FeatureActionResult, type PrereqDetail } from "@/lib/api";
+import { prereqLabel } from "@/lib/prereq";
 
 type Props = {
   feature: Feature;
   unmetPrereqs: string[];
+  unmetPrereqsDetail?: PrereqDetail[];
   installInputs?: Record<string, unknown>;
   // Whether the system uninstall button is shown (defaults to false for T1).
   allowUninstall?: boolean;
@@ -19,6 +21,7 @@ type Props = {
 export function FeatureActionButtons({
   feature,
   unmetPrereqs,
+  unmetPrereqsDetail,
   installInputs,
   allowUninstall = true,
 }: Props) {
@@ -27,7 +30,12 @@ export function FeatureActionButtons({
   const [lastResult, setLastResult] = useState<FeatureActionResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const blockedByPrereqs = unmetPrereqs.length > 0;
+  // Unmet prereqs no longer block — they trigger an auto-cascade the dialog
+  // explains step by step. We only use this to surface an informational note.
+  const hasUnmetPrereqs = unmetPrereqs.length > 0;
+  const prereqDetail: PrereqDetail[] =
+    unmetPrereqsDetail ??
+    unmetPrereqs.map((id) => ({ id, kind: null, status: "missing" as const }));
 
   // Status-aware action visibility:
   //  - not installed (available/unavailable): Install only — Uninstall is moot.
@@ -74,7 +82,7 @@ export function FeatureActionButtons({
             installInputs={installInputs}
             onInstalled={handleInstalled}
             trigger={
-              <Button disabled={pending || blockedByPrereqs}>
+              <Button disabled={pending}>
                 {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
                 Install
               </Button>
@@ -99,16 +107,20 @@ export function FeatureActionButtons({
         </Button>
       </div>
 
-      {blockedByPrereqs && (
+      {hasUnmetPrereqs && showInstall && (
         <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
           <div className="flex items-center gap-2 font-medium">
             <AlertTriangle className="h-4 w-4" />
-            Install gated by prerequisites
+            Prerequisites will be set up first
           </div>
-          <ul className="mt-1 text-xs text-muted-foreground list-disc list-inside">
-            {unmetPrereqs.map((p) => (
-              <li key={p}>
-                <code className="font-mono">{p}</code> not installed
+          <p className="mt-1 text-xs text-muted-foreground">
+            Install isn&apos;t blocked — clicking it walks you through a plan
+            that installs these in order, then {feature.name}:
+          </p>
+          <ul className="mt-1.5 text-xs text-muted-foreground list-disc list-inside space-y-0.5">
+            {prereqDetail.map((p) => (
+              <li key={p.id}>
+                <code className="font-mono">{p.id}</code> — {prereqLabel(p).split(" — ")[1]}
               </li>
             ))}
           </ul>

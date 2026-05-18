@@ -89,6 +89,59 @@ class FeatureRegistry:
                 unmet.append(req_id)
         return unmet
 
+    def unmet_prereqs_detail(self, feature: Feature) -> list[dict[str, Any]]:
+        """Like `unmet_prereqs` but each entry carries the prereq's kind and
+        status so the UI can say the *right* thing — e.g. a STOPPED container
+        is "installed but not started", not "not installed"."""
+        index = self._index_by_id()
+        out: list[dict[str, Any]] = []
+        for req_id in feature.requires:
+            req = index.get(req_id)
+            if req is None:
+                out.append({"id": req_id, "kind": None, "status": "missing"})
+            elif req.status != FeatureStatus.INSTALLED:
+                out.append({"id": req_id, "kind": req.kind.value, "status": req.status.value})
+        return out
+
+    def resolve_install_plan(
+        self, kind: FeatureKind, feature_id: str
+    ) -> list[dict[str, Any]]:
+        """Topologically ordered steps to install `feature_id`: every
+        not-yet-INSTALLED prerequisite (recursive, deps first) followed by the
+        target itself. Each step is `{id, kind, status}`.
+
+        The runner installs these in order, so a target's prereqs are all
+        INSTALLED by the time it runs — no gate failure, no cryptic spawn
+        error. Unknown prereq ids surface as a `kind: None` step so the
+        runner can report them instead of silently skipping.
+        """
+        index = self._index_by_id()
+        target = self.get(kind, feature_id)
+        if target is None:
+            return []
+
+        plan: list[dict[str, Any]] = []
+        seen: set[str] = {target.id}  # guard against requires-cycles back to target
+
+        def visit(fid: str) -> None:
+            if fid in seen:
+                return
+            seen.add(fid)
+            feat = index.get(fid)
+            if feat is None:
+                plan.append({"id": fid, "kind": None, "status": "missing"})
+                return
+            for req in feat.requires:
+                visit(req)
+            if feat.status != FeatureStatus.INSTALLED:
+                plan.append({"id": fid, "kind": feat.kind.value, "status": feat.status.value})
+
+        for req in target.requires:
+            visit(req)
+        # Target is always the final step (handler no-ops if already installed).
+        plan.append({"id": target.id, "kind": target.kind.value, "status": target.status.value})
+        return plan
+
     # ---- actions ------------------------------------------------------
 
     def install(
@@ -97,8 +150,13 @@ class FeatureRegistry:
         feature_id: str,
         inputs: dict[str, Any] | None = None,
         log_sink=None,
+        skip_prereq_check: bool = False,
     ) -> dict[str, Any]:
-        """Gated install: refuses when prereqs are unmet."""
+        """Install one feature. Refuses when prereqs are unmet *unless*
+        `skip_prereq_check` — the cascade runner passes that because it has
+        already topo-ordered the steps and installed prereqs first, so the
+        per-call gate would be a redundant (and race-prone) re-check.
+        """
         h = self._handlers.get(kind)
         if h is None:
             return {"ok": False, "error": f"unknown kind {kind.value!r}"}
@@ -106,14 +164,15 @@ class FeatureRegistry:
         if feature is None:
             return {"ok": False, "error": f"unknown feature {feature_id!r} (kind={kind.value})"}
 
-        unmet = self.unmet_prereqs(feature)
-        if unmet:
-            return {
-                "ok": False,
-                "error": "prerequisites not satisfied",
-                "unmet_prereqs": unmet,
-                "feature": feature.to_dict(),
-            }
+        if not skip_prereq_check:
+            unmet = self.unmet_prereqs(feature)
+            if unmet:
+                return {
+                    "ok": False,
+                    "error": "prerequisites not satisfied",
+                    "unmet_prereqs": unmet,
+                    "feature": feature.to_dict(),
+                }
         return h.install(feature_id, inputs, log_sink=log_sink)
 
     def uninstall(self, kind: FeatureKind, feature_id: str) -> dict[str, Any]:
@@ -144,11 +203,23 @@ class FeatureRegistry:
         payload = h.preview(feature_id, inputs)
         if not payload.get("ok"):
             return payload
+
         payload["unmet_prereqs"] = self.unmet_prereqs(feature)
+        payload["unmet_prereqs_detail"] = self.unmet_prereqs_detail(feature)
+
+        # The full cascade the runner will execute (prereqs deps-first, then
+        # the target). Prereq steps = everything except the trailing target.
+        plan = self.resolve_install_plan(kind, feature_id)
+        payload["install_plan"] = plan
+        prereq_steps = plan[:-1] if plan else []
+
         payload.setdefault("warnings", [])
-        if payload["unmet_prereqs"]:
+        if prereq_steps:
+            # Not a blocker any more — an explanation of the auto-cascade.
+            names = ", ".join(s["id"] for s in prereq_steps)
             payload["warnings"].insert(
                 0,
-                f"Install is blocked until prereqs are installed: {', '.join(payload['unmet_prereqs'])}",
+                f"This will also set up {len(prereq_steps)} prerequisite(s) first, "
+                f"in order: {names} — then {feature_id}.",
             )
         return payload

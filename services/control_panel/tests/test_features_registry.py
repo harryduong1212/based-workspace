@@ -202,10 +202,10 @@ class FeatureRegistryTest(unittest.TestCase):
         result = reg.install(FeatureKind.CONTAINER, "anything")
         self.assertFalse(result["ok"])
 
-    def test_preview_attaches_unmet_prereqs(self):
-        """Registry.preview must surface unmet prereqs alongside the handler's
-        side-effects so the dialog can warn before the user confirms — without
-        the handler having to walk the dep graph itself."""
+    def test_preview_attaches_cascade_plan_not_a_block(self):
+        """Unmet prereqs are no longer a hard block — preview surfaces the
+        auto-cascade plan + status-aware detail so the dialog can explain
+        what will be installed first, then let the user confirm."""
         from services.control_panel.features import FeatureKind
 
         h_sys = _fake_handler(
@@ -219,10 +219,19 @@ class FeatureRegistryTest(unittest.TestCase):
 
         r = reg.preview(FeatureKind.CONTAINER, "postgres")
         self.assertTrue(r["ok"])
+        # Back-compat ids list still present.
         self.assertEqual(r["unmet_prereqs"], ["podman"])
-        # The first warning must call out the prereq so the dialog leads with it.
+        # Status-aware detail so the UI says the right thing.
+        self.assertEqual(
+            r["unmet_prereqs_detail"],
+            [{"id": "podman", "kind": "system", "status": "available"}],
+        )
+        # Full cascade: prereq(s) deps-first, then the target.
+        self.assertEqual([s["id"] for s in r["install_plan"]], ["podman", "postgres"])
+        # The leading warning explains the cascade — and is NOT a "blocked".
         self.assertIn("podman", r["warnings"][0])
-        self.assertIn("blocked", r["warnings"][0])
+        self.assertNotIn("blocked", r["warnings"][0].lower())
+        self.assertIn("then postgres", r["warnings"][0])
 
     def test_preview_no_prereqs_unblocked(self):
         from services.control_panel.features import FeatureKind

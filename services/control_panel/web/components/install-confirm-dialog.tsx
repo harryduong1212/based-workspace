@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   FileText,
   KeyRound,
+  ListOrdered,
   Loader2,
   Network,
   Plug,
@@ -29,7 +30,9 @@ import {
   type FeatureActionResult,
   type FeaturePreview,
   type FeatureSideEffect,
+  type InstallStep,
 } from "@/lib/api";
+import { prereqHint } from "@/lib/prereq";
 
 type Props = {
   feature: Feature;
@@ -122,8 +125,12 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
     };
   }, [open, phase, feature.kind, feature.id, installInputs]);
 
-  const blocked = (preview?.unmet_prereqs?.length ?? 0) > 0;
-  const wouldBeNoop = preview?.would_be_noop === true;
+  // The cascade plan = prereqs (deps-first) + the target as the final step.
+  // Everything but the last entry is an auto-pulled prerequisite. This is
+  // informational now — never a block.
+  const plan = preview?.install_plan ?? [];
+  const prereqSteps = plan.length > 1 ? plan.slice(0, -1) : [];
+  const wouldBeNoop = preview?.would_be_noop === true && prereqSteps.length === 0;
 
   const onConfirm = async () => {
     try {
@@ -205,7 +212,8 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
             previewing={previewing}
             preview={preview}
             previewError={previewError}
-            blocked={blocked}
+            prereqSteps={prereqSteps}
+            targetName={feature.name}
             wouldBeNoop={wouldBeNoop}
           />
         )}
@@ -222,9 +230,13 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
               </Button>
               <Button
                 onClick={onConfirm}
-                disabled={previewing || blocked || !preview?.ok}
+                disabled={previewing || !preview?.ok}
               >
-                {wouldBeNoop ? "Re-run anyway" : blocked ? "Install (blocked)" : "Confirm install"}
+                {wouldBeNoop
+                  ? "Re-run anyway"
+                  : prereqSteps.length > 0
+                    ? `Confirm — set up ${prereqSteps.length} prereq${prereqSteps.length > 1 ? "s" : ""} + ${feature.name}`
+                    : "Confirm install"}
               </Button>
             </>
           )}
@@ -246,13 +258,15 @@ function PreviewBody({
   previewing,
   preview,
   previewError,
-  blocked,
+  prereqSteps,
+  targetName,
   wouldBeNoop,
 }: {
   previewing: boolean;
   preview: FeaturePreview | null;
   previewError: string | null;
-  blocked: boolean;
+  prereqSteps: InstallStep[];
+  targetName: string;
   wouldBeNoop: boolean;
 }) {
   return (
@@ -281,8 +295,11 @@ function PreviewBody({
 
       {preview?.ok && (
         <>
+          {prereqSteps.length > 0 && (
+            <InstallPlanList steps={prereqSteps} targetName={targetName} />
+          )}
           <SideEffectsList items={preview.side_effects ?? []} noop={wouldBeNoop} />
-          <WarningsList items={preview.warnings ?? []} blocked={blocked} />
+          <WarningsList items={preview.warnings ?? []} />
         </>
       )}
     </div>
@@ -368,21 +385,14 @@ function SideEffectsList({ items, noop }: { items: FeatureSideEffect[]; noop: bo
   );
 }
 
-function WarningsList({ items, blocked }: { items: string[]; blocked: boolean }) {
+function WarningsList({ items }: { items: string[] }) {
   if (items.length === 0) return null;
   return (
     <div className="space-y-1.5">
       <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         Heads up
       </div>
-      <ul
-        className={
-          "rounded-md border p-3 space-y-1.5 text-sm " +
-          (blocked
-            ? "border-destructive/40 bg-destructive/10"
-            : "border-amber-500/40 bg-amber-500/10")
-        }
-      >
+      <ul className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 space-y-1.5 text-sm">
         {items.map((w, i) => (
           <li key={i} className="flex items-start gap-2">
             <AlertTriangle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
@@ -390,6 +400,44 @@ function WarningsList({ items, blocked }: { items: string[]; blocked: boolean })
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function InstallPlanList({
+  steps,
+  targetName,
+}: {
+  steps: InstallStep[];
+  targetName: string;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        Install plan
+      </div>
+      <div className="rounded-md border border-indigo-500/40 bg-indigo-500/10 p-3 text-sm space-y-2">
+        <div className="flex items-start gap-2">
+          <ListOrdered className="h-4 w-4 mt-0.5 shrink-0" />
+          <span>
+            {targetName} needs {steps.length} prerequisite
+            {steps.length > 1 ? "s" : ""}. They&apos;ll be set up first, in
+            order, then {targetName} — all in one run with live logs.
+          </span>
+        </div>
+        <ol className="list-decimal list-inside space-y-1 text-xs">
+          {steps.map((s) => (
+            <li key={s.id}>
+              <code className="font-mono">{s.id}</code>{" "}
+              <span className="text-muted-foreground">— {prereqHint(s.status)}</span>
+            </li>
+          ))}
+          <li>
+            <code className="font-mono">{targetName}</code>{" "}
+            <span className="text-muted-foreground">— installed last</span>
+          </li>
+        </ol>
+      </div>
     </div>
   );
 }

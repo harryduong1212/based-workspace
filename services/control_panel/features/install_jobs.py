@@ -104,15 +104,61 @@ def start_install_job(
     def _worker() -> None:
         try:
             sink(f"[install] starting {job.kind}/{job.feature_id}")
-            result = registry.install(kind, feature_id, inputs, log_sink=sink)
+
+            # Resolve the cascade: every not-yet-installed prerequisite
+            # (deps-first) then the target. Falls back to a single step if the
+            # registry can't plan (e.g. a fake registry in tests).
+            try:
+                plan = registry.resolve_install_plan(kind, feature_id)
+            except AttributeError:
+                plan = [{"id": feature_id, "kind": job.kind, "status": "unknown"}]
+            if not plan:
+                plan = [{"id": feature_id, "kind": job.kind, "status": "unknown"}]
+
+            from .base import FeatureKind  # local import keeps __init__ light
+
+            total = len(plan)
+            if total > 1:
+                ordered = " -> ".join(s["id"] for s in plan)
+                sink(f"[install] plan ({total} steps): {ordered}")
+
+            result: dict = {"ok": False, "error": "empty plan"}
+            failed = False
+            for i, step in enumerate(plan, 1):
+                sid = step["id"]
+                skind_raw = step.get("kind")
+                sink(f"=== Step {i}/{total}: {skind_raw or '?'}/{sid} ===")
+                if skind_raw is None:
+                    job.error = f"unknown prerequisite {sid!r} — install it manually first"
+                    sink(f"[install] failed: {job.error}")
+                    result = {"ok": False, "error": job.error}
+                    failed = True
+                    break
+
+                step_kind = FeatureKind(skind_raw)
+                # Only the target receives the user's inputs (e.g. connector
+                # env); auto-pulled prereqs take none.
+                step_inputs = inputs if sid == feature_id else {}
+                # skip_prereq_check: the plan already ordered deps-first, so
+                # the per-call gate would just race the just-started service.
+                result = registry.install(
+                    step_kind, sid, step_inputs, log_sink=sink, skip_prereq_check=True
+                )
+                if not result.get("ok"):
+                    job.error = result.get("error") or f"step {sid} reported ok=false"
+                    sink(
+                        f"[install] failed: step {i}/{total} ({sid}) — "
+                        f"{job.error}; aborting cascade"
+                    )
+                    failed = True
+                    break
+
             job.result = result
-            if result.get("ok"):
-                job.status = "done"
-                sink("[install] done")
-            else:
+            if failed:
                 job.status = "error"
-                job.error = result.get("error") or "install reported ok=false"
-                sink(f"[install] failed: {job.error}")
+            else:
+                job.status = "done"
+                sink(f"[install] done — all steps done ({total} step(s) completed)")
         except Exception as e:  # noqa: BLE001 — surface to UI
             job.status = "error"
             job.error = f"{type(e).__name__}: {e}"

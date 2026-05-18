@@ -494,6 +494,7 @@ def create_api_router() -> APIRouter:
         return {
             "feature": feature.to_dict(),
             "unmet_prereqs": registry.unmet_prereqs(feature),
+            "unmet_prereqs_detail": registry.unmet_prereqs_detail(feature),
         }
 
     @router.post("/features/{kind}/{feature_id}/install")
