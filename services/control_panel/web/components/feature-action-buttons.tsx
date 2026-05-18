@@ -35,9 +35,16 @@ export function FeatureActionButtons({
   //  - needs-action (partial/stopped/error/unknown): both — Install repairs/
   //    starts, Uninstall tears down.
   // Verify is always available (it never changes anything).
+  //
+  // Connector exception: a connector install means writing env vars, which
+  // requires per-feature inputs the generic button can't supply — that path
+  // lives in ConnectorFeatureEnvForm (rendered separately on the detail
+  // page). So the generic Install is suppressed for connectors to avoid a
+  // guaranteed no-op; Uninstall (clear env) + Verify still apply.
+  const isConnector = feature.kind === "connector";
   const notInstalled = feature.status === "available" || feature.status === "unavailable";
   const fullyInstalled = feature.status === "installed";
-  const showInstall = !fullyInstalled;
+  const showInstall = !fullyInstalled && !isConnector;
   const showUninstall = allowUninstall && !notInstalled;
 
   const runAction = (action: () => Promise<FeatureActionResult>) => {
