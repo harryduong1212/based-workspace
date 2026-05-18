@@ -112,11 +112,6 @@ The canonical setup uses [`infrastructure/core/docker-compose.yaml`](infrastruct
 **Podman:**
 ```bash
 podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
-
-# MCP Inspector runs host-native (see below). The `mcp-inspector` compose profile
-# is preserved for the containerized fallback only:
-#   podman compose --env-file .env -f infrastructure/core/docker-compose.yaml \
-#                  --profile n8n-atom --profile mcp-inspector up -d
 ```
 
 **Docker:**
@@ -136,6 +131,17 @@ The optional MCP Inspector runs **host-native** (not via compose) per the [upstr
 ```
 
 Running on host (rather than in a container) lets the inspector read your IDE's MCP profiles at `~/.cursor/mcp.json`, `~/.gemini/antigravity/mcp_config.json`, etc.
+
+#### Control Panel (UI for installs, logs, runs)
+
+A FastAPI + Next.js app at `services/control_panel/` exposes the workspace as a browsable "package manager" — install/start/uninstall containers, MCP servers, recipes, and connectors from a UI; tail container logs live; trigger recipe runs. It calls the same install primitives as the CLI, so the UI and `podman compose` paths are kept in sync.
+
+```bash
+./scripts/dev.sh                       # backend on :8765, frontend on :3000
+# then open http://localhost:3000
+```
+
+`scripts/dev.sh --no-backend` / `--no-frontend` runs just one side. The backend has no hot-reload; restart it after editing `services/control_panel/*.py`.
 
 > [!TIP]
 > If your `.env` rotates `POSTGRES_PASSWORD` **after** Postgres has been initialized once, the password in the volume is already baked in — n8n will fail to connect with the new one. Either delete the volume (`down -v`) or `ALTER USER` inside the running container.
@@ -302,12 +308,15 @@ based-workspace/
 │   └── ai/
 │       └── docker-compose.yaml   ← 🤖 Local AI inference + automatic model pull
 │
+├── services/
+│   └── control_panel/               ← 🖥️ FastAPI + Next.js UI for install/start/verify, container logs, recipe runs (see `./scripts/dev.sh`)
+│
 ├── scripts/
+│   ├── dev.sh                    ← 🖥️ Run Control Panel backend (:8765) + frontend (:3000)
 │   ├── gen_secrets.sh            ← 🔐 Print fresh randoms for .env (POSTGRES_PASSWORD, N8N_ENCRYPTION_KEY)
 │   ├── with-env.sh               ← 🔐 Source .env then exec — used by .mcp.json wrappers
 │   ├── install-git-hooks.sh      ← 🔐 Install gitleaks + pre-commit hook
 │   ├── mcp-inspector.sh          ← 🔍 Host-native MCP Inspector lifecycle (start/stop/status)
-│   ├── build_n8n_atom.py         ← 🐳 Build MCP Inspector from external/ submodule
 │   ├── recipe_manager.py         ← 🧾 Recipe lifecycle (list/show/lint/sync/run)
 │   ├── docs_generator.py         ← 📚 Generate docs/recipes/, docs/connectors/
 │   ├── sync_antigravity.py       ← 🔌 Render recipes → .agents/workflows/

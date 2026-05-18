@@ -403,8 +403,9 @@ podman search ghcr.io/harryduong1212/n8n-atom --list-tags
 ### Step 2: Add the workflow file to n8n-atom
 
 ```bash
-# In your local n8n-atom fork
-cd external/n8n-atom
+# In your local n8n-atom fork (clone it wherever you keep forks —
+# it is no longer a submodule of based-workspace).
+cd /path/to/your/n8n-atom
 
 # Create the workflow directory
 mkdir -p .github/workflows

@@ -45,30 +45,19 @@ podman compose -f infrastructure/n8n-quickstart/docker-compose.quickstart.yaml d
 
 ## Mode 2: Developer Mode
 
-This mode is for **developers** who want to build the ecosystem from source using our Ephemeral Git-Archive Builder pipeline.
+This mode is for **developers** who want to manage secrets, lifecycle hooks, and the host-native MCP Inspector themselves.
 
-### 1. Advanced Prerequisites
-In addition to a container engine, you need **Python 3.8+** to orchestrate the builds and **Git** to package the source code. Make sure you allocate **8GB+ RAM** to your container engine to handle native Node module compilation.
+### 1. Prerequisites
+A container engine, **Python 3.8+**, and **Git**. Allocate **8GB+ RAM** to your container engine.
 
-### 2. Build Pipeline
-We use an isolated Linux container to compile the source code, eliminating Windows NTFS file path issues and cross-platform native compilation errors.
+### 2. Building from source (currently unsupported in-repo)
 
-```bash
-# Build everything (n8n-atom + MCP Inspector)
-python scripts/build_n8n_atom.py --all
+The `infrastructure/core/` compose pulls the upstream `docker.io/atom8n/n8n:fork` image directly — **no local n8n build step is needed**. The legacy `scripts/build_n8n_atom.py` pipeline used to compile both n8n-atom and the MCP Inspector from `external/*` submodules; those submodules have been removed, so the script and the `mcp-inspector` compose profile are non-functional. If you need to build either image from source, clone the upstream repos manually and follow their READMEs:
 
-# Clean rebuild (wipes everything including persistent volumes)
-python scripts/build_n8n_atom.py --clean --all
-```
-
-**Verify the build via:**
-```bash
-python scripts/build_n8n_atom.py --check
-```
+- `n8n-atom` — <https://github.com/harryduong1212/n8n-atom>
+- `mcp-inspector-atom8n` — <https://github.com/khanh-atom/mcp-inspector-atom8n>
 
 ### 3. Launching
-
-The `infrastructure/core/` compose now pulls the upstream `docker.io/atom8n/n8n:fork` image directly — no local n8n build step is needed. (Mode 2's `build_n8n_atom.py --all` is still useful for compiling the MCP Inspector from the submodule; see "Optional: MCP Inspector" below.)
 
 ```bash
 # 1. Set up secrets (one-time). The script PRINTS to stdout — paste into .env yourself.
@@ -141,7 +130,7 @@ This section serves as a step-by-step tutorial to validating the full developmen
 
 ### Stage 2: Clone & Init
 ```bash
-git clone --recurse-submodules https://github.com/harryduong1212/based-workspace.git
+git clone https://github.com/harryduong1212/based-workspace.git
 cd based-workspace
 cp .env.example .env
 ./scripts/gen_secrets.sh          # prints randoms — paste into .env
@@ -151,8 +140,8 @@ cp .env.example .env
 ### Stage 3: Launch
 ```bash
 podman compose --env-file .env -f infrastructure/core/docker-compose.yaml --profile n8n-atom up -d
-# Optional: build + start the MCP Inspector (host-native, not via compose)
-python scripts/build_n8n_atom.py --mcp
+# Optional: start the MCP Inspector (host-native, not via compose)
+./scripts/mcp-inspector.sh start
 ./scripts/mcp-inspector.sh start
 ```
 

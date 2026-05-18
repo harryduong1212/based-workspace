@@ -50,7 +50,7 @@ If you did not download the GitHub repository and are running n8n purely via sta
 ```
 
 ### Method B: Local Script (Best for Developers)
-If you cloned the `n8n-atom` repository and want to run/modify the CLI bridge locally from the source files.
+If you cloned the `n8n-atom` repository and want to run/modify the CLI bridge locally from the source files. Clone it wherever you keep your forks (e.g. `~/code/n8n-atom`) and substitute that path below — `external/n8n-atom/` is no longer a submodule of this workspace.
 
 ```json
 {
@@ -58,10 +58,10 @@ If you cloned the `n8n-atom` repository and want to run/modify the CLI bridge lo
     "atom8n": {
       "command": "node",
       "args": [
-        "external/n8n-atom/packages/n8n-atom-cli/bin/n8n.mjs",
+        "/absolute/path/to/n8n-atom/packages/n8n-atom-cli/bin/n8n.mjs",
         "mcp",
-        "external/n8n-atom/mcp-curl-get.n8n",
-        "external/n8n-atom/mcp-logger.n8n"
+        "/absolute/path/to/n8n-atom/mcp-curl-get.n8n",
+        "/absolute/path/to/n8n-atom/mcp-logger.n8n"
       ],
       "env": {
         "N8N_PORT": "5678"
