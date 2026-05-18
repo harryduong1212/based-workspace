@@ -12,10 +12,10 @@ import {
   Network,
   Plug,
   Terminal,
-  XCircle,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { LogViewer } from "@/components/log-viewer";
 import {
   Dialog,
   DialogContent,
@@ -31,6 +31,7 @@ import {
   type FeaturePreview,
   type FeatureSideEffect,
   type InstallStep,
+  type McpScope,
 } from "@/lib/api";
 import { prereqHint } from "@/lib/prereq";
 
@@ -72,6 +73,25 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
   const [preview, setPreview] = useState<FeaturePreview | null>(null);
   const [previewError, setPreviewError] = useState<string | null>(null);
   const [previewing, setPreviewing] = useState(false);
+  // Scope toggle: only meaningful for MCP. The handler defaults to workspace
+  // server-side, but we mirror that here so the toggle starts on a real value.
+  // Caller-supplied `installInputs.scope` wins (e.g. a future deep-link).
+  const isMcp = feature.kind === "mcp";
+  // A stopped container isn't a fresh install — `compose up` just brings the
+  // existing container (image + volume) back. Same backend path, but the
+  // user clicked "Start" and expects Start wording, not Install wording.
+  const isStart = feature.kind === "container" && feature.status === "stopped";
+  const verbDone = isStart ? "Started" : "Install complete";
+  const verbFailed = isStart ? "Start failed" : "Install failed";
+  const initialScope: McpScope =
+    typeof installInputs?.scope === "string" && installInputs.scope === "global"
+      ? "global"
+      : "workspace";
+  const [scope, setScope] = useState<McpScope>(initialScope);
+  // "Other location" mode: backend scope stays "workspace" but we send a
+  // `path` so the entry lands in <path>/.mcp.json instead of this project's.
+  const [useCustom, setUseCustom] = useState(false);
+  const [customPath, setCustomPath] = useState("");
 
   const [log, setLog] = useState<string>("");
   const [finalStatus, setFinalStatus] = useState<"done" | "error" | null>(null);
@@ -93,6 +113,8 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
       setFinalStatus(null);
       setFinalResult(null);
       setFinalError(null);
+      setUseCustom(false);
+      setCustomPath("");
     }, 200);
     return () => clearTimeout(t);
   }, [open]);
@@ -104,13 +126,26 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
     if (el) el.scrollTop = el.scrollHeight;
   }, [log, phase]);
 
-  // Fetch preview when entering the preview phase.
+  // Compose inputs for preview/install: caller's inputs + scope (MCP only).
+  // For non-MCP kinds the handler ignores scope, so passing it is harmless,
+  // but we omit it to keep the network payload honest.
+  const trimmedPath = customPath.trim();
+  const effectiveInputs = isMcp
+    ? {
+        ...(installInputs ?? {}),
+        scope,
+        ...(useCustom && trimmedPath ? { path: trimmedPath } : {}),
+      }
+    : installInputs;
+
+  // Fetch preview when entering the preview phase OR when scope changes.
   useEffect(() => {
     if (!open || phase !== "preview") return;
     let cancelled = false;
     setPreviewing(true);
+    setPreviewError(null);
     api
-      .previewFeature(feature.kind, feature.id, installInputs)
+      .previewFeature(feature.kind, feature.id, effectiveInputs)
       .then((p) => {
         if (!cancelled) setPreview(p);
       })
@@ -123,7 +158,11 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
     return () => {
       cancelled = true;
     };
-  }, [open, phase, feature.kind, feature.id, installInputs]);
+    // effectiveInputs changes whenever scope changes, which is exactly when we want
+    // to re-preview. We intentionally don't depend on installInputs/scope directly
+    // because effectiveInputs already captures both.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, phase, feature.kind, feature.id, scope, useCustom, trimmedPath, installInputs]);
 
   // The cascade plan = prereqs (deps-first) + the target as the final step.
   // Everything but the last entry is an auto-pulled prerequisite. This is
@@ -134,7 +173,7 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
 
   const onConfirm = async () => {
     try {
-      const start = await api.installFeature(feature.kind, feature.id, installInputs);
+      const start = await api.installFeature(feature.kind, feature.id, effectiveInputs);
       setPhase("streaming");
       // Open SSE stream against the job_id.
       const url = `/api/v1/features/install/${start.job_id}/stream`;
@@ -192,18 +231,21 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>
-            {phase === "preview" && `Install ${feature.name}`}
-            {phase === "streaming" && `Installing ${feature.name}…`}
-            {phase === "done" && (finalStatus === "done" ? "Install complete" : "Install failed")}
+            {phase === "preview" && `${isStart ? "Start" : "Install"} ${feature.name}`}
+            {phase === "streaming" && `${isStart ? "Starting" : "Installing"} ${feature.name}…`}
+            {phase === "done" && (finalStatus === "done" ? verbDone : verbFailed)}
           </DialogTitle>
           <DialogDescription>
             {phase === "preview" &&
-              "Review what this install will do before confirming. Nothing has changed yet."}
-            {phase === "streaming" && "Live log from the install job. Closing the dialog does not abort the job."}
+              (isStart
+                ? "Review what starting this container will do before confirming. Nothing has changed yet."
+                : "Review what this install will do before confirming. Nothing has changed yet.")}
+            {phase === "streaming" &&
+              `Live log from the ${isStart ? "start" : "install"} job. Closing the dialog does not abort the job.`}
             {phase === "done" &&
               (finalStatus === "done"
                 ? "All done. You can close this dialog."
-                : "Install reported an error. Check the log below for details.")}
+                : `${isStart ? "Start" : "Install"} reported an error. Check the log below for details.`)}
           </DialogDescription>
         </DialogHeader>
 
@@ -215,6 +257,14 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
             prereqSteps={prereqSteps}
             targetName={feature.name}
             wouldBeNoop={wouldBeNoop}
+            isMcp={isMcp}
+            scope={scope}
+            onScopeChange={setScope}
+            useCustom={useCustom}
+            onUseCustomChange={setUseCustom}
+            customPath={customPath}
+            onCustomPathChange={setCustomPath}
+            feature={feature}
           />
         )}
 
@@ -230,13 +280,15 @@ export function InstallConfirmDialog({ feature, installInputs, trigger, onInstal
               </Button>
               <Button
                 onClick={onConfirm}
-                disabled={previewing || !preview?.ok}
+                disabled={previewing || !preview?.ok || (useCustom && !trimmedPath)}
               >
                 {wouldBeNoop
                   ? "Re-run anyway"
                   : prereqSteps.length > 0
                     ? `Confirm — set up ${prereqSteps.length} prereq${prereqSteps.length > 1 ? "s" : ""} + ${feature.name}`
-                    : "Confirm install"}
+                    : isStart
+                      ? "Confirm start"
+                      : "Confirm install"}
               </Button>
             </>
           )}
@@ -261,6 +313,14 @@ function PreviewBody({
   prereqSteps,
   targetName,
   wouldBeNoop,
+  isMcp,
+  scope,
+  onScopeChange,
+  useCustom,
+  onUseCustomChange,
+  customPath,
+  onCustomPathChange,
+  feature,
 }: {
   previewing: boolean;
   preview: FeaturePreview | null;
@@ -268,9 +328,29 @@ function PreviewBody({
   prereqSteps: InstallStep[];
   targetName: string;
   wouldBeNoop: boolean;
+  isMcp: boolean;
+  scope: McpScope;
+  onScopeChange: (s: McpScope) => void;
+  useCustom: boolean;
+  onUseCustomChange: (v: boolean) => void;
+  customPath: string;
+  onCustomPathChange: (v: string) => void;
+  feature: Feature;
 }) {
   return (
     <div className="space-y-4">
+      {isMcp && (
+        <ScopeToggle
+          scope={scope}
+          onChange={onScopeChange}
+          useCustom={useCustom}
+          onUseCustomChange={onUseCustomChange}
+          customPath={customPath}
+          onCustomPathChange={onCustomPathChange}
+          feature={feature}
+        />
+      )}
+
       {previewing && (
         <div className="flex items-center gap-2 text-sm text-muted-foreground py-4">
           <Loader2 className="h-4 w-4 animate-spin" /> Generating preview…
@@ -306,41 +386,174 @@ function PreviewBody({
   );
 }
 
-const LogViewer = ({
-  ref,
-  log,
-  status,
-  error,
+function ScopeToggle({
+  scope,
+  onChange,
+  useCustom,
+  onUseCustomChange,
+  customPath,
+  onCustomPathChange,
+  feature,
 }: {
-  ref: React.Ref<HTMLPreElement>;
-  log: string;
-  status: "done" | "error" | null;
-  error: string | null;
-}) => (
-  <div className="space-y-3">
-    <pre
-      ref={ref}
-      className="rounded-md border bg-black/80 text-green-300 p-3 text-[11px] font-mono max-h-80 overflow-auto whitespace-pre-wrap break-all leading-relaxed"
-    >
-      {log || "(waiting for first chunk…)"}
-    </pre>
-    {status === "done" && (
-      <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-3 text-sm flex items-start gap-2">
-        <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" />
-        <span>Install finished successfully.</span>
+  scope: McpScope;
+  onChange: (s: McpScope) => void;
+  useCustom: boolean;
+  onUseCustomChange: (v: boolean) => void;
+  customPath: string;
+  onCustomPathChange: (v: string) => void;
+  feature: Feature;
+}) {
+  const installedScopes = Array.isArray(feature.detail?.installed_scopes)
+    ? (feature.detail.installed_scopes as string[])
+    : [];
+  const wsName =
+    (typeof feature.detail?.workspace_name === "string" &&
+      feature.detail.workspace_name) ||
+    "Workspace";
+  const knownLocations = Array.isArray(feature.detail?.known_locations)
+    ? (feature.detail.known_locations as string[])
+    : [];
+
+  // Three modes: this project's workspace, machine-global, or a custom dir.
+  // Custom maps to backend scope "workspace" + a `path`.
+  const mode: "workspace" | "global" | "custom" = useCustom
+    ? "custom"
+    : scope;
+  const here = !useCustom && installedScopes.includes(scope);
+
+  return (
+    <div className="rounded-md border bg-card/40 p-3 space-y-2">
+      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        Install scope
       </div>
-    )}
-    {status === "error" && (
-      <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm flex items-start gap-2">
-        <XCircle className="h-4 w-4 mt-0.5 shrink-0" />
-        <div className="space-y-1">
-          <div className="font-medium">Install failed</div>
-          {error && <pre className="text-xs whitespace-pre-wrap break-all">{error}</pre>}
+      <div className="flex gap-2">
+        <ScopePill
+          active={mode === "workspace"}
+          installed={installedScopes.includes("workspace")}
+          onClick={() => {
+            onUseCustomChange(false);
+            onChange("workspace");
+          }}
+          label={wsName}
+          sub="./.mcp.json"
+        />
+        <ScopePill
+          active={mode === "global"}
+          installed={installedScopes.includes("global")}
+          onClick={() => {
+            onUseCustomChange(false);
+            onChange("global");
+          }}
+          label="Global"
+          sub="~/.claude.json"
+        />
+        <ScopePill
+          active={mode === "custom"}
+          installed={false}
+          onClick={() => {
+            onChange("workspace");
+            onUseCustomChange(true);
+          }}
+          label="Other location…"
+          sub="<dir>/.mcp.json"
+        />
+      </div>
+
+      {mode === "custom" ? (
+        <div className="space-y-2 pt-1">
+          <input
+            type="text"
+            value={customPath}
+            onChange={(e) => onCustomPathChange(e.target.value)}
+            placeholder="/abs/path/to/another/project"
+            spellCheck={false}
+            className="w-full rounded-md border bg-background px-2.5 py-1.5 text-sm font-mono outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary/40"
+          />
+          {knownLocations.length > 0 && (
+            <div className="space-y-1">
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                Used before
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {knownLocations.map((loc) => (
+                  <button
+                    key={loc}
+                    type="button"
+                    onClick={() => onCustomPathChange(loc)}
+                    className={
+                      "rounded border px-2 py-1 text-[11px] font-mono transition-colors " +
+                      (customPath === loc
+                        ? "border-primary bg-primary/10"
+                        : "border-input bg-background hover:bg-accent")
+                    }
+                  >
+                    {loc}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Writes <code className="font-mono">{customPath.trim() || "<dir>"}/.mcp.json</code>.
+            The directory must already exist. Its status won&apos;t show on this
+            card (detection scans only this project + global), but the path is
+            remembered for next time.
+          </p>
         </div>
+      ) : (
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          {scope === "workspace"
+            ? `Only ${wsName} sees this MCP. Best for project-specific servers (cwd, env, requires_services).`
+            : "Every Claude Code session on this machine sees this MCP. Best for project-agnostic tools (e.g. public-API wrappers). `cwd` is dropped on install."}
+          {here && (
+            <>
+              {" "}
+              <span className="font-medium text-foreground/80">Currently installed here.</span>
+            </>
+          )}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function ScopePill({
+  active,
+  installed,
+  onClick,
+  label,
+  sub,
+}: {
+  active: boolean;
+  installed: boolean;
+  onClick: () => void;
+  label: string;
+  sub: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={
+        "flex-1 rounded-md border px-3 py-2 text-left transition-colors " +
+        (active
+          ? "border-primary bg-primary/10"
+          : "border-input bg-background hover:bg-accent")
+      }
+    >
+      <div className="flex items-center gap-2 text-sm font-medium">
+        {label}
+        {installed && (
+          <span className="text-[10px] uppercase tracking-wider rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 px-1.5 py-0.5">
+            installed
+          </span>
+        )}
       </div>
-    )}
-  </div>
-);
+      <div className="text-[11px] font-mono text-muted-foreground mt-0.5">{sub}</div>
+    </button>
+  );
+}
+
 
 function SideEffectsList({ items, noop }: { items: FeatureSideEffect[]; noop: boolean }) {
   if (noop) {
