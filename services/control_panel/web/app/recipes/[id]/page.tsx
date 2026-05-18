@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Sparkles } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FeatureActionButtons } from "@/components/feature-action-buttons";
+import { FeatureStatusBadge } from "@/components/feature-status-badge";
 import { RecipeActions } from "@/components/recipe-actions";
-import { api } from "@/lib/api";
+import { api, type Feature, type FeatureDetail } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
@@ -23,6 +25,22 @@ export default async function RecipeOverviewPage({
     throw e;
   }
 
+  // The recipe content (frontmatter + body) comes from /api/v1/recipes/<id>.
+  // The install-side state (synced to .claude/ + .agents/, status, plus the
+  // editorial about/highlights/examples we author in frontmatter) lives on
+  // the feature endpoint. We fetch both — the feature lookup is cheap and
+  // lets us merge the two views into one page. If it 404s we soldier on
+  // without the install controls (older recipes without a registry entry).
+  let featureDetail: FeatureDetail | null = null;
+  try {
+    featureDetail = await api.feature("recipe", id);
+  } catch {
+    featureDetail = null;
+  }
+  const feature: Feature | null = featureDetail?.feature ?? null;
+  const unmetPrereqs = featureDetail?.unmet_prereqs ?? [];
+  const unmetPrereqsDetail = featureDetail?.unmet_prereqs_detail;
+
   return (
     <div className="space-y-6">
       <div>
@@ -32,13 +50,18 @@ export default async function RecipeOverviewPage({
         >
           <ChevronLeft className="h-3 w-3" /> Recipes
         </Link>
-        <div className="mt-2 flex items-baseline gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight">{recipe.name}</h1>
-          <span className="text-sm text-muted-foreground">recipe</span>
+        <div className="mt-2 flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <div className="flex items-baseline gap-2">
+              <h1 className="text-2xl font-semibold tracking-tight">{recipe.name}</h1>
+              <span className="text-sm text-muted-foreground">recipe</span>
+            </div>
+            <p className="text-sm text-muted-foreground mt-1">
+              {recipe.description || "(no description)"}
+            </p>
+          </div>
+          {feature && <FeatureStatusBadge status={feature.status} />}
         </div>
-        <p className="text-sm text-muted-foreground mt-1">
-          {recipe.description || "(no description)"}
-        </p>
         <div className="flex flex-wrap gap-1.5 mt-3">
           <Badge variant={recipe.status === "stable" ? "success" : "warn"}>
             {recipe.status || "n/a"}
@@ -57,11 +80,91 @@ export default async function RecipeOverviewPage({
         <RecipeActions recipeId={recipe.id} />
       </div>
 
+      {/* Install / Uninstall / Verify lives next to Run/Edit so the page
+        * carries both flows. Hidden when the feature lookup failed (e.g. a
+        * recipe present on disk but not registered yet). */}
+      {feature && (
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base">Install state</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <FeatureActionButtons
+              feature={feature}
+              unmetPrereqs={unmetPrereqs}
+              unmetPrereqsDetail={unmetPrereqsDetail}
+              allowUninstall={true}
+            />
+          </CardContent>
+        </Card>
+      )}
+
       <div className="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] gap-6">
-        <article
-          className="min-w-0 prose-body"
-          dangerouslySetInnerHTML={{ __html: recipe.rendered_body }}
-        />
+        <article className="min-w-0 space-y-6">
+          {/* Editorial cards — about / highlights / examples — sit ABOVE
+            * the rendered recipe body so a reader gets the "what / why /
+            * how" before the long prompt-style instructions. */}
+          {feature?.about && (
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base">About</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm leading-relaxed text-foreground/90 whitespace-pre-line">
+                  {feature.about}
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
+          {feature && feature.highlights.length > 0 && (
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-primary/80" />
+                  Highlights
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-1.5 text-sm leading-relaxed">
+                  {feature.highlights.map((h, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-primary/70 mt-0.5">•</span>
+                      <span className="text-foreground/90">{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
+
+          {feature && feature.examples.length > 0 && (
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base">Examples</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {feature.examples.map((ex, i) => (
+                  <div key={i} className="space-y-1.5">
+                    {ex.label && (
+                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {ex.label}
+                      </div>
+                    )}
+                    <pre className="rounded-md border bg-muted/30 p-2.5 text-xs overflow-x-auto leading-relaxed">
+                      {ex.code}
+                    </pre>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
+          <article
+            className="min-w-0 prose-body"
+            dangerouslySetInnerHTML={{ __html: recipe.rendered_body }}
+          />
+        </article>
 
         <aside className="space-y-4">
           <Card>
@@ -86,6 +189,34 @@ export default async function RecipeOverviewPage({
             </CardContent>
           </Card>
 
+          {/* Sync state moved from the old Components/Recipe page — surfaces
+            * which provider directories the recipe is installed into. */}
+          {feature && (
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Sync targets
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-1.5 text-sm">
+                <Row label=".claude/">
+                  {feature.detail?.in_claude ? (
+                    <Badge variant="success">synced</Badge>
+                  ) : (
+                    <Badge variant="secondary">not synced</Badge>
+                  )}
+                </Row>
+                <Row label=".agents/">
+                  {feature.detail?.in_agents ? (
+                    <Badge variant="success">synced</Badge>
+                  ) : (
+                    <Badge variant="secondary">not synced</Badge>
+                  )}
+                </Row>
+              </CardContent>
+            </Card>
+          )}
+
           {(recipe.requires_skills.length > 0 ||
             recipe.requires_connectors.length > 0 ||
             recipe.requires_workflows.length > 0 ||
@@ -99,9 +230,9 @@ export default async function RecipeOverviewPage({
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 <ListRow label="skills" items={recipe.requires_skills} />
-                <ListRow label="connectors" items={recipe.requires_connectors} linkPrefix="/features/connector/" />
+                <ListRow label="connectors" items={recipe.requires_connectors} linkPrefix="/components/connector/" />
                 <ListRow label="workflows" items={recipe.requires_workflows} />
-                <ListRow label="mcp" items={recipe.requires_mcp} />
+                <ListRow label="mcp" items={recipe.requires_mcp} linkPrefix="/components/mcp/" />
                 <ListRow label="env" items={recipe.requires_env} mono />
               </CardContent>
             </Card>

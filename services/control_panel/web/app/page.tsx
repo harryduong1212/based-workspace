@@ -50,8 +50,8 @@ export default async function OverviewPage() {
               </Link>
             </Button>
             <Button asChild size="sm" variant="outline">
-              <Link href="/features">
-                <Network className="h-4 w-4" /> Connectors & features
+              <Link href="/components">
+                <Network className="h-4 w-4" /> Browse components
               </Link>
             </Button>
           </div>
@@ -65,7 +65,7 @@ export default async function OverviewPage() {
       {/* Stats */}
       <div className="grid sm:grid-cols-3 gap-4">
         <StatCard icon={Boxes} label="Recipes" value={dash.recipes.length} href="/recipes" />
-        <StatCard icon={Network} label="Connectors" value={dash.connectors.length} href="/features" />
+        <StatCard icon={Network} label="Connectors" value={dash.connectors.length} href="/components" />
         <StatCard icon={Play} label="Runs" value={runs.length} href="/runs" />
       </div>
 

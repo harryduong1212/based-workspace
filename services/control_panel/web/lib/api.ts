@@ -145,6 +145,8 @@ export type FeatureStatus =
   | "unavailable"
   | "unknown";
 
+export type FeatureExample = { label: string; code: string };
+
 export type Feature = {
   id: string;
   kind: FeatureKind;
@@ -154,6 +156,9 @@ export type Feature = {
   requires: string[];
   detail: Record<string, unknown>;
   about: string;
+  highlights: string[];
+  examples: FeatureExample[];
+  docs: string;
 };
 
 export type FeaturesList = { features: Feature[]; kinds: FeatureKind[] };
@@ -188,6 +193,8 @@ export type FeatureActionResult = {
   message?: string;
   feature?: Feature;
   unmet_prereqs?: string[];
+  // MCP-specific: which scope the action wrote to (install) or removed from (uninstall).
+  scope?: McpScope | null;
   // Connector-specific
   wrote_keys?: string[];
   rejected?: string[];
@@ -205,10 +212,15 @@ export type FeatureSideEffect = {
   detail: string;
 };
 
+// Scope of an MCP feature install — workspace (.mcp.json) vs global (~/.claude.json).
+// Other feature kinds ignore this entirely.
+export type McpScope = "workspace" | "global";
+
 export type FeaturePreview = {
   ok: boolean;
   error?: string;
   feature?: Feature;
+  scope?: McpScope;
   would_be_noop?: boolean;
   side_effects?: FeatureSideEffect[];
   warnings?: string[];
@@ -320,9 +332,15 @@ export const api = {
     }),
   installJobStatus: (job_id: string) =>
     getJson<InstallJobStatus>(`/api/v1/features/install/${job_id}`),
-  uninstallFeature: (kind: FeatureKind, id: string) =>
+  uninstallFeature: (
+    kind: FeatureKind,
+    id: string,
+    inputs?: Record<string, unknown>,
+  ) =>
     getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/uninstall`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(inputs ?? {}),
     }),
   verifyFeature: (kind: FeatureKind, id: string) =>
     getJson<FeatureActionResult>(`/api/v1/features/${kind}/${id}/verify`, {
