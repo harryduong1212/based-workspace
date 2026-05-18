@@ -148,8 +148,14 @@ class ContainerFeatureHandler:
             state = (inspected.get("State") or {})
             is_running = bool(state.get("Running"))
             if not is_running:
-                status = FeatureStatus.ERROR
-                detail["state"] = state.get("Status", "unknown")
+                # The container exists (image pulled, volume bound) — it's just
+                # not running. That's STOPPED, not an error: one Start click
+                # fixes it. Only podman's terminal 'dead' state is a real fault.
+                raw_state = (state.get("Status") or "unknown").lower()
+                status = (
+                    FeatureStatus.ERROR if raw_state == "dead" else FeatureStatus.STOPPED
+                )
+                detail["state"] = raw_state
             else:
                 healthy, reason = self._check_health(decl, container_name)
                 status = FeatureStatus.INSTALLED if healthy else FeatureStatus.PARTIAL
@@ -325,10 +331,15 @@ class ContainerFeatureHandler:
             )
         if feature.status == FeatureStatus.INSTALLED:
             warnings.append("Already running and healthy — install will be a no-op.")
+        elif feature.status == FeatureStatus.STOPPED:
+            warnings.append(
+                f"Container is already set up but stopped (state '{feature.detail.get('state', 'unknown')}'). "
+                "Install just starts it — image and volume are reused, no data loss."
+            )
         elif feature.status == FeatureStatus.ERROR:
             warnings.append(
-                f"Container exists but is in state '{feature.detail.get('state', 'unknown')}'. "
-                "Install will attempt to bring it back up."
+                f"Container is in a broken state ('{feature.detail.get('state', 'unknown')}'). "
+                "Install will attempt to bring it back up; you may need to uninstall first."
             )
 
         return {

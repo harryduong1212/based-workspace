@@ -140,6 +140,7 @@ export type FeatureStatus =
   | "available"
   | "installed"
   | "partial"
+  | "stopped"
   | "error"
   | "unavailable"
   | "unknown";

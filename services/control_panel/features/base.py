@@ -38,7 +38,8 @@ class FeatureStatus(str, Enum):
     AVAILABLE = "available"      # known, not installed, can be installed
     INSTALLED = "installed"      # installed and verified working
     PARTIAL = "partial"          # some pieces installed (e.g. recipe present but not synced)
-    ERROR = "error"              # install attempted but in a bad state
+    STOPPED = "stopped"          # set up but not running — recoverable with one Start click
+    ERROR = "error"              # genuinely broken (e.g. container in 'dead' state)
     UNAVAILABLE = "unavailable"  # cannot be installed on this system (e.g. wrong platform)
     UNKNOWN = "unknown"          # status check failed; treat as actionable but not gating
 

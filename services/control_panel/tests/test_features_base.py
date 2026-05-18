@@ -38,10 +38,10 @@ class FeatureShapeTest(unittest.TestCase):
         from services.control_panel.features import FeatureStatus
 
         values = {s.value for s in FeatureStatus}
-        # Six statuses defined; if we add/remove, this test forces a conscious update.
+        # Seven statuses defined; if we add/remove, this test forces a conscious update.
         self.assertEqual(
             values,
-            {"available", "installed", "partial", "error", "unavailable", "unknown"},
+            {"available", "installed", "partial", "stopped", "error", "unavailable", "unknown"},
         )
 
     def test_kind_enum_values(self):

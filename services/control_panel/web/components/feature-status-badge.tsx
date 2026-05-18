@@ -4,6 +4,7 @@ import type { FeatureStatus } from "@/lib/api";
 const VARIANT: Record<FeatureStatus, "success" | "warn" | "destructive" | "secondary" | "info"> = {
   installed: "success",
   partial: "warn",
+  stopped: "info",
   available: "secondary",
   unavailable: "secondary",
   error: "destructive",
@@ -13,6 +14,7 @@ const VARIANT: Record<FeatureStatus, "success" | "warn" | "destructive" | "secon
 const LABEL: Record<FeatureStatus, string> = {
   installed: "installed",
   partial: "partial",
+  stopped: "stopped",
   available: "not installed",
   unavailable: "unavailable",
   error: "error",

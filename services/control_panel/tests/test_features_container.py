@@ -30,10 +30,12 @@ def _make_runner(routes):
     return _runner
 
 
-def _inspect_payload(running: bool, status: str = "running") -> str:
-    return json.dumps(
-        [{"State": {"Running": running, "Status": status if running else "exited"}}]
-    )
+def _inspect_payload(running: bool, status: str | None = None) -> str:
+    # When running, podman reports Status="running"; when not, the caller's
+    # status (exited/created/dead/...) must be honored so STOPPED-vs-ERROR
+    # classification can be tested.
+    resolved = "running" if running else (status or "exited")
+    return json.dumps([{"State": {"Running": running, "Status": resolved}}])
 
 
 @unittest.skipUnless(_HAS_YAML, "PyYAML not installed; skipping features tests")
@@ -111,15 +113,29 @@ class ContainerHandlerTest(unittest.TestCase):
         self.assertEqual(f.status, FeatureStatus.PARTIAL)
         self.assertIn("exec returned 1", f.detail["health_error"])
 
-    def test_stopped_container_is_error(self):
+    def test_stopped_container_is_stopped_not_error(self):
+        """An exited/created container is set up but off — STOPPED, not ERROR.
+        A red 'error' badge for a one-click-fixable state was misleading."""
+        from services.control_panel.features import FeatureStatus
+
+        for raw in ("exited", "created", "paused", "configured"):
+            runner = _make_runner({
+                ("podman", "inspect"): (_inspect_payload(False, raw), 0),
+            })
+            f = self._handler(runner).get("postgres")
+            self.assertEqual(f.status, FeatureStatus.STOPPED, f"state={raw}")
+            self.assertEqual(f.detail["state"], raw)
+
+    def test_dead_container_is_error(self):
+        """Only podman's terminal 'dead' state is a genuine fault."""
         from services.control_panel.features import FeatureStatus
 
         runner = _make_runner({
-            ("podman", "inspect"): (_inspect_payload(False, "exited"), 0),
+            ("podman", "inspect"): (_inspect_payload(False, "dead"), 0),
         })
         f = self._handler(runner).get("postgres")
         self.assertEqual(f.status, FeatureStatus.ERROR)
-        self.assertEqual(f.detail["state"], "exited")
+        self.assertEqual(f.detail["state"], "dead")
 
     def test_http_health_uses_prober(self):
         from services.control_panel.features import FeatureStatus
