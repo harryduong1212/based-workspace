@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, Loader2, XCircle, AlertCircle } from "lucide-react";
 
 import { api, type RunSummary } from "@/lib/api";
+import { useSidebarCollapsed } from "@/components/sidebar-context";
 
 export function SidebarRecentRuns() {
   const [runs, setRuns] = useState<RunSummary[] | null>(null);
+  const collapsed = useSidebarCollapsed();
 
   useEffect(() => {
     let cancelled = false;
@@ -27,6 +29,9 @@ export function SidebarRecentRuns() {
     };
   }, []);
 
+  // Recent runs is a label/time list — meaningless as icon-only. Drop it
+  // entirely when the rail is collapsed.
+  if (collapsed) return null;
   if (runs === null) return null;
   if (runs.length === 0) {
     return (
