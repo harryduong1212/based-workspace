@@ -9,6 +9,24 @@ cost: low
 requires_human_review: false
 tags: [release, changelog, git]
 
+about: >-
+  Reads `git log` for a tag-to-tag (or tag-to-HEAD) range and classifies each
+  commit into Features / Fixes / Breaking changes / Other based on the
+  Conventional Commits prefix and diff signal. Output is GitHub/GitLab-ready
+  Markdown with optional contributor section. Pure local execution.
+  Advanced: passes through `BREAKING CHANGE:` footers verbatim — make sure
+  your commits actually flag them.
+highlights:
+  - Classifies via Conventional Commits prefix + diff signal (not just message text)
+  - Output is paste-ready Markdown for GitHub/GitLab releases
+  - Handles tag-to-tag, tag-to-HEAD, or a custom range
+  - Surfaces `BREAKING CHANGE:` footers prominently
+examples:
+  - label: Notes from last tag to HEAD
+    code: "claude /release-notes from=$(git describe --tags --abbrev=0) to=HEAD"
+  - label: Pipe into a draft release
+    code: "claude /release-notes from=v1.2.0 to=v1.3.0 | gh release create v1.3.0 --notes-file -"
+
 requires_skills:
   - wiki-changelog
 requires_workflows: []

@@ -133,6 +133,13 @@ class ConnectorFeatureHandler:
             # Connectors also render their full markdown docs on the detail
             # page; `about` is the short editorial blurb for the card + index.
             about=str(entry.get("about") or "").strip(),
+            highlights=[str(h) for h in (entry.get("highlights") or [])],
+            examples=[
+                {"label": str(e.get("label", "")), "code": str(e.get("code", ""))}
+                for e in (entry.get("examples") or [])
+                if isinstance(e, dict)
+            ],
+            docs=str(entry.get("docs") or "").strip(),
         )
 
     # ---- handler protocol --------------------------------------------
@@ -219,9 +226,14 @@ class ConnectorFeatureHandler:
                 return True
         return False
 
-    def uninstall(self, feature_id: str) -> dict[str, Any]:
+    def uninstall(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """Clear the connector's env vars from .env, skipping any var that
         another installed connector still depends on."""
+        del inputs  # connectors have no scope concept
         feature = self.get(feature_id)
         if feature is None:
             return {"ok": False, "error": f"unknown connector {feature_id!r}"}

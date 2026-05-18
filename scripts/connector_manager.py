@@ -228,6 +228,11 @@ def cmd_sync(args):
             "provides": fm.get("provides") or [],
             "tags": fm.get("tags") or [],
             "path": f"connectors/{path.name}",
+            # Editorial / discoverability fields rendered on the Features page.
+            "about": (fm.get("about") or "").strip(),
+            "highlights": fm.get("highlights") or [],
+            "examples": fm.get("examples") or [],
+            "docs": (fm.get("docs") or "").strip(),
         })
     entries.sort(key=lambda e: e["id"] or "")
 

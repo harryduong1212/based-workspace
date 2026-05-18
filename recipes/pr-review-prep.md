@@ -9,6 +9,23 @@ cost: low
 requires_human_review: false
 tags: [bitbucket, jira, code-review, pr]
 
+about: >-
+  Given a Bitbucket PR id, produces a structured review brief: PR body + diff
+  summary, linked Jira ticket (if mentioned in the branch/title), past
+  reviewer feedback on the author's recent PRs, and an explicit
+  "questions to ask" section. Requires the bitbucket + jira connectors.
+  Advanced: works best when the branch name follows `<TICKET>-…` or the
+  PR description links the ticket — that's how the recipe finds the Jira
+  thread.
+highlights:
+  - Pulls PR body, diff, AND linked Jira context into one brief
+  - Surfaces this author's prior reviewer feedback (looks for repeated patterns)
+  - Generates a "questions to ask" section, not just a summary
+  - Output is reviewer-ready Markdown
+examples:
+  - label: Prep review for a PR
+    code: "claude /pr-review-prep pr=42"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors:

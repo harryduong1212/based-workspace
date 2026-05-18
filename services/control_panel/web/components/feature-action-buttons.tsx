@@ -6,6 +6,8 @@ import { CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { InstallConfirmDialog } from "@/components/install-confirm-dialog";
+import { VerifyIconButton } from "@/components/verify-icon-button";
+import { ContainerLogsDialog } from "@/components/container-logs-dialog";
 import { api, type Feature, type FeatureActionResult, type PrereqDetail } from "@/lib/api";
 import { prereqLabel } from "@/lib/prereq";
 
@@ -50,9 +52,25 @@ export function FeatureActionButtons({
   // page). So the generic Install is suppressed for connectors to avoid a
   // guaranteed no-op; Uninstall (clear env) + Verify still apply.
   const isConnector = feature.kind === "connector";
+  const isMcp = feature.kind === "mcp";
+  // MCP scope wrinkle: an MCP feature can be installed in two scopes.
+  // We always show Install (you may want to add it to the *other* scope)
+  // and we offer per-scope Uninstall buttons when both hold the entry.
+  const installedScopes: string[] =
+    isMcp && Array.isArray(feature.detail?.installed_scopes)
+      ? (feature.detail.installed_scopes as string[])
+      : [];
+  const installedInBothScopes = isMcp && installedScopes.length === 2;
+  // A running container (up — health passing OR failing) has logs worth
+  // tailing. stopped/available/unavailable have nothing to follow.
+  const canShowLogs =
+    feature.kind === "container" &&
+    (feature.status === "installed" || feature.status === "partial");
   const notInstalled = feature.status === "available" || feature.status === "unavailable";
   const fullyInstalled = feature.status === "installed";
-  const showInstall = !fullyInstalled && !isConnector;
+  // For MCP, keep Install visible even when "fully installed" so the user can
+  // add the entry to the *other* scope. For non-MCP that'd be a no-op.
+  const showInstall = (!fullyInstalled || isMcp) && !isConnector;
   const showUninstall = allowUninstall && !notInstalled;
 
   const runAction = (action: () => Promise<FeatureActionResult>) => {
@@ -84,27 +102,57 @@ export function FeatureActionButtons({
             trigger={
               <Button disabled={pending}>
                 {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
-                Install
+                {feature.kind === "container" && feature.status === "stopped" ? "Start" : "Install"}
               </Button>
             }
           />
         )}
-        {showUninstall && (
+        {showUninstall && !installedInBothScopes && (
           <Button
             variant="outline"
             onClick={() => runAction(() => api.uninstallFeature(feature.kind, feature.id))}
             disabled={pending}
           >
             Uninstall
+            {isMcp && installedScopes.length === 1 && (
+              <span className="ml-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                ({installedScopes[0]})
+              </span>
+            )}
           </Button>
         )}
-        <Button
-          variant="ghost"
-          onClick={() => runAction(() => api.verifyFeature(feature.kind, feature.id))}
-          disabled={pending}
-        >
-          Verify
-        </Button>
+        {showUninstall && installedInBothScopes && (
+          <>
+            <Button
+              variant="outline"
+              onClick={() =>
+                runAction(() =>
+                  api.uninstallFeature(feature.kind, feature.id, { scope: "workspace" }),
+                )
+              }
+              disabled={pending}
+            >
+              Uninstall (workspace)
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() =>
+                runAction(() =>
+                  api.uninstallFeature(feature.kind, feature.id, { scope: "global" }),
+                )
+              }
+              disabled={pending}
+            >
+              Uninstall (global)
+            </Button>
+          </>
+        )}
+        {canShowLogs && <ContainerLogsDialog feature={feature} />}
+        <VerifyIconButton
+          featureKind={feature.kind}
+          featureId={feature.id}
+          onVerified={() => router.refresh()}
+        />
       </div>
 
       {hasUnmetPrereqs && showInstall && (

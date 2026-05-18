@@ -175,11 +175,16 @@ class FeatureRegistry:
                 }
         return h.install(feature_id, inputs, log_sink=log_sink)
 
-    def uninstall(self, kind: FeatureKind, feature_id: str) -> dict[str, Any]:
+    def uninstall(
+        self,
+        kind: FeatureKind,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         h = self._handlers.get(kind)
         if h is None:
             return {"ok": False, "error": f"unknown kind {kind.value!r}"}
-        return h.uninstall(feature_id)
+        return h.uninstall(feature_id, inputs)
 
     def verify(self, kind: FeatureKind, feature_id: str) -> dict[str, Any]:
         h = self._handlers.get(kind)

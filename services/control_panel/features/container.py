@@ -31,6 +31,22 @@ from typing import Any, Callable
 from .base import Feature, FeatureKind, FeatureStatus, load_catalog
 
 
+def _editorial_fields(decl: dict[str, Any]) -> dict[str, Any]:
+    """Pull the editorial/discoverability bits (about / highlights / examples /
+    docs URL) out of a catalog declaration into Feature-constructor kwargs.
+    Centralised so the two `return Feature(...)` paths can't drift."""
+    return {
+        "about": (decl.get("about") or "").strip(),
+        "highlights": [str(h) for h in (decl.get("highlights") or [])],
+        "examples": [
+            {"label": str(e.get("label", "")), "code": str(e.get("code", ""))}
+            for e in (decl.get("examples") or [])
+            if isinstance(e, dict)
+        ],
+        "docs": str(decl.get("docs") or "").strip(),
+    }
+
+
 # (command_argv) → (stdout, returncode)
 CommandRunner = Callable[[list[str]], tuple[str, int]]
 
@@ -130,6 +146,9 @@ class ContainerFeatureHandler:
             "health": dict(decl.get("health") or {}),
         }
 
+        # Shared editorial / metadata bits both return paths pick up.
+        meta = _editorial_fields(decl)
+
         if compose_path is not None and not compose_path.exists():
             return Feature(
                 id=feature_id,
@@ -139,7 +158,7 @@ class ContainerFeatureHandler:
                 status=FeatureStatus.UNAVAILABLE,
                 requires=list(decl.get("requires") or []),
                 detail={**detail, "error": f"compose file not found: {compose_path}"},
-                about=(decl.get("about") or "").strip(),
+                **meta,
             )
 
         inspected = self._inspect_container(container_name)
@@ -171,7 +190,7 @@ class ContainerFeatureHandler:
             status=status,
             requires=list(decl.get("requires") or []),
             detail=detail,
-            about=(decl.get("about") or "").strip(),
+            **meta,
         )
 
     # ---- handler protocol ----------------------------------------------
@@ -214,7 +233,12 @@ class ContainerFeatureHandler:
             log("already running and healthy; no-op")
             return {"ok": True, "noop": True, "feature": feature.to_dict()}
 
-        argv = self._compose_argv(decl, ["up", "-d"])
+        # --no-recreate: `podman compose up -d` otherwise replaces an existing
+        # healthy container with a new one (same image + volume, new ID). That
+        # silently destroys long-running state — e.g. installing the memory MCP
+        # would walk into qdrant as a prereq and recreate it. Volumes survive,
+        # but the user sees their container "disappear and come back."
+        argv = self._compose_argv(decl, ["up", "-d", "--no-recreate"])
         log(f"$ {' '.join(argv)}")
         out, rc = self._run(argv)
         # Tee subprocess output to the sink so the user can read pull progress
@@ -235,8 +259,13 @@ class ContainerFeatureHandler:
             "feature": self._build(feature_id, decl).to_dict(),
         }
 
-    def uninstall(self, feature_id: str) -> dict[str, Any]:
+    def uninstall(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """Stop + remove the container. Volumes preserved (data safety)."""
+        del inputs  # containers have no scope concept
         decl = self._declarations().get(feature_id)
         if decl is None:
             return {"ok": False, "error": f"unknown container feature {feature_id!r}"}
@@ -297,7 +326,12 @@ class ContainerFeatureHandler:
                 "feature": feature.to_dict(),
             }
 
-        argv = self._compose_argv(decl, ["up", "-d"])
+        # --no-recreate: `podman compose up -d` otherwise replaces an existing
+        # healthy container with a new one (same image + volume, new ID). That
+        # silently destroys long-running state — e.g. installing the memory MCP
+        # would walk into qdrant as a prereq and recreate it. Volumes survive,
+        # but the user sees their container "disappear and come back."
+        argv = self._compose_argv(decl, ["up", "-d", "--no-recreate"])
         side_effects: list[dict[str, Any]] = [{
             "kind": "run_command",
             "summary": "Run compose up",

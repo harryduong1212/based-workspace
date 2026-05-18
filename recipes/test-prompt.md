@@ -9,6 +9,19 @@ cost: low
 requires_human_review: false
 tags: [test, infra]
 
+about: >-
+  Minimal prompt recipe — its job is to detect whether the dispatcher is
+  still returning a `[STUB]` (i.e. recipe-runtime isn't wired) or hitting
+  a real model. Used by validate.py's "Recipe dispatcher dry-run smoke"
+  check. The cheapest possible probe of the prompt-dispatch path.
+highlights:
+  - The canary for whether dispatch_prompt is wired (no `[STUB]` returned)
+  - Validates the local LLM endpoint reachability when run with `local/*` model
+  - Run automatically by validate.py — green here = prompt path alive
+examples:
+  - label: Run via the dispatcher CLI
+    code: "python3 -m services.recipe_runtime.cli test-prompt"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []

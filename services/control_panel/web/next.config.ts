@@ -20,6 +20,22 @@ const config: NextConfig = {
       fallback: [],
     };
   },
+  // Page route was renamed /features → /components. Keep old bookmarks
+  // working with a permanent redirect. Backend API path stays /api/v1/features.
+  async redirects() {
+    return [
+      { source: "/features", destination: "/components", permanent: true },
+      { source: "/features/:path*", destination: "/components/:path*", permanent: true },
+      // Recipe detail is canonical at /recipes/:id (the run-flavoured page).
+      // The Components/Recipe subtree was merged in; this keeps inbound links
+      // working and the Components page's recipe-kind cards land where the
+      // full content lives. Order matters — this must come AFTER the broader
+      // /features/:path* rule, but Next evaluates these top-to-bottom so the
+      // /features/recipe path will still be matched by the broader rule.
+      // We also redirect from the new /components/recipe/:id path explicitly.
+      { source: "/components/recipe/:id", destination: "/recipes/:id", permanent: true },
+    ];
+  },
 };
 
 export default config;

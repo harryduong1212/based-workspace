@@ -9,6 +9,24 @@ cost: low
 requires_human_review: false
 tags: [git, pr, code-review]
 
+about: >-
+  Drafts a PR title + description from the branch's commits and full diff
+  against the target branch (default `main`). Output covers "what changed",
+  "why", testing/migration notes, and a checkbox checklist. Pure prompt
+  recipe — no GitHub/Bitbucket API calls. Advanced: pair with the GitHub
+  or Bitbucket connector + `gh pr create` / Bitbucket CLI to publish in one
+  step.
+highlights:
+  - Drafts from your real commits + diff, not a template
+  - Includes the "why" + test-plan checklist sections most reviewers want
+  - Provider-neutral — works on GitHub, Bitbucket, GitLab
+  - Pairs with `gh pr create` / Bitbucket CLI for one-step publishing
+examples:
+  - label: Draft a PR against main
+    code: "claude /git-pr"
+  - label: Draft + publish on GitHub
+    code: "claude /git-pr | gh pr create --body-file -"
+
 requires_skills:
   - wiki-changelog
 requires_workflows: []

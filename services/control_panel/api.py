@@ -524,10 +524,19 @@ def create_api_router() -> APIRouter:
         return {"ok": True, "job_id": job.id}
 
     @router.post("/features/{kind}/{feature_id}/uninstall")
-    def features_uninstall(request: Request, kind: str, feature_id: str):
+    async def features_uninstall(request: Request, kind: str, feature_id: str):
+        """Body is optional. MCP features accept `{"scope": "workspace"|"global"}`
+        to pick which config file to remove the entry from; other kinds ignore it.
+        """
         k = _kind_or_404(kind)
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        if not isinstance(body, dict):
+            body = {}
         registry = _registry(request)
-        return registry.uninstall(k, feature_id)
+        return registry.uninstall(k, feature_id, body or None)
 
     @router.post("/features/{kind}/{feature_id}/verify")
     def features_verify(request: Request, kind: str, feature_id: str):

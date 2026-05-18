@@ -48,7 +48,14 @@ class MCPHandlerTest(unittest.TestCase):
     def _handler(self, probe=_good_probe):
         from services.control_panel.features.mcp import MCPFeatureHandler
 
-        return MCPFeatureHandler(workspace_root=self.root, spawn_probe=probe)
+        # Pin the global config path to a tmp file so tests never touch the
+        # real ~/.claude.json on this machine.
+        return MCPFeatureHandler(
+            workspace_root=self.root,
+            spawn_probe=probe,
+            global_config_path=self.root / "fake-home-claude.json",
+            locations_config_path=self.root / "fake-mcp-locations.json",
+        )
 
     def test_list_lists_example_and_installed(self):
         # Example has two; installed has one extra.
@@ -99,6 +106,81 @@ class MCPHandlerTest(unittest.TestCase):
         self._handler().install("memory")
         doc = json.loads((self.root / ".mcp.json").read_text())
         self.assertEqual(set(doc["mcpServers"].keys()), {"already-there", "memory"})
+
+    def test_global_install_refuses_to_clobber_corrupt_claude_json(self):
+        # ~/.claude.json holds unrelated Claude Code state. If it's present
+        # but unparseable we must NOT overwrite it with just mcpServers.
+        fake_home = self.root / "fake-home-claude.json"
+        fake_home.write_text('{"userID": "abc", this is not json')
+        result = self._handler().install("memory", inputs={"scope": "global"})
+        self.assertFalse(result["ok"])
+        self.assertIn("not valid JSON", result["error"])
+        # The corrupt file is left exactly as-is — nothing destroyed.
+        self.assertEqual(fake_home.read_text(), '{"userID": "abc", this is not json')
+
+    def test_global_install_preserves_unrelated_claude_json_keys(self):
+        fake_home = self.root / "fake-home-claude.json"
+        fake_home.write_text(json.dumps({"userID": "abc", "oauth": {"t": 1}}))
+        result = self._handler().install("memory", inputs={"scope": "global"})
+        self.assertTrue(result["ok"])
+        doc = json.loads(fake_home.read_text())
+        self.assertEqual(doc["userID"], "abc")
+        self.assertEqual(doc["oauth"], {"t": 1})
+        self.assertIn("memory", doc["mcpServers"])
+
+    def test_global_uninstall_refuses_to_clobber_corrupt_claude_json(self):
+        fake_home = self.root / "fake-home-claude.json"
+        fake_home.write_text("definitely not json")
+        result = self._handler().uninstall("memory", inputs={"scope": "global"})
+        self.assertFalse(result["ok"])
+        self.assertEqual(fake_home.read_text(), "definitely not json")
+
+    def test_custom_location_install_writes_there_and_remembers(self):
+        import json as _json
+
+        other = self.root / "other-project"
+        other.mkdir()
+        result = self._handler().install("memory", inputs={"path": str(other)})
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(result["path"], str(other.resolve()))
+        # Wrote into the *custom* dir, not this project's .mcp.json.
+        self.assertFalse((self.root / ".mcp.json").exists())
+        doc = _json.loads((other / ".mcp.json").read_text())
+        self.assertIn("memory", doc["mcpServers"])
+        # cwd defaulted to the custom dir, not workspace_root.
+        self.assertEqual(doc["mcpServers"]["memory"]["cwd"], str(other.resolve()))
+        # Location remembered for next time.
+        loc = _json.loads((self.root / "fake-mcp-locations.json").read_text())
+        self.assertEqual(loc["locations"], [str(other.resolve())])
+
+    def test_custom_location_nonexistent_dir_is_rejected(self):
+        result = self._handler().install(
+            "memory", inputs={"path": str(self.root / "nope")}
+        )
+        self.assertFalse(result["ok"])
+        self.assertIn("does not exist", result["error"])
+        self.assertFalse((self.root / "nope").exists())  # never created
+
+    def test_custom_location_uninstall_removes_entry(self):
+        import json as _json
+
+        other = self.root / "proj2"
+        other.mkdir()
+        h = self._handler()
+        h.install("memory", inputs={"path": str(other)})
+        result = h.uninstall("memory", inputs={"scope": "workspace", "path": str(other)})
+        self.assertTrue(result["ok"])
+        doc = _json.loads((other / ".mcp.json").read_text())
+        self.assertNotIn("memory", doc.get("mcpServers", {}))
+
+    def test_known_locations_surface_in_detail(self):
+        other = self.root / "proj3"
+        other.mkdir()
+        h = self._handler()
+        h.install("memory", inputs={"path": str(other)})
+        f = h.get("memory")
+        self.assertIn(str(other.resolve()), f.detail["known_locations"])
+        self.assertEqual(f.detail["workspace_name"], self.root.resolve().name)
 
     def test_install_with_custom_config_uses_it(self):
         custom = {"command": "/opt/custom-mcp", "args": ["--flag"]}
@@ -221,6 +303,147 @@ class MCPHandlerTest(unittest.TestCase):
         self.assertNotIn("_requires", written)
         self.assertEqual(written["command"], "x")
         self.assertEqual(written["args"], ["y"])
+
+
+@unittest.skipUnless(_HAS_YAML, "PyYAML not installed; skipping features tests")
+class MCPHandlerScopeTest(unittest.TestCase):
+    """Scope-aware install/uninstall: workspace vs global."""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        self.global_path = self.root / "fake-home-claude.json"
+        (self.root / ".mcp.json.example").write_text(
+            json.dumps({
+                "mcpServers": {
+                    "memory": {
+                        "command": "./scripts/with-env.sh",
+                        "args": ["python3", "-m", "services.memory_mcp"],
+                        "cwd": ".",
+                    },
+                    "grep_app": {"command": "uvx", "args": ["grep-mcp"]},
+                }
+            })
+        )
+
+    def _handler(self, probe=_good_probe):
+        from services.control_panel.features.mcp import MCPFeatureHandler
+
+        return MCPFeatureHandler(
+            workspace_root=self.root,
+            spawn_probe=probe,
+            global_config_path=self.global_path,
+        )
+
+    def test_install_workspace_writes_mcp_json_not_global(self):
+        self._handler().install("memory", inputs={"scope": "workspace"})
+        ws = json.loads((self.root / ".mcp.json").read_text())["mcpServers"]
+        self.assertIn("memory", ws)
+        self.assertFalse(self.global_path.exists())
+
+    def test_install_global_writes_user_file_not_workspace(self):
+        self._handler().install("grep_app", inputs={"scope": "global"})
+        self.assertFalse((self.root / ".mcp.json").exists())
+        gl = json.loads(self.global_path.read_text())["mcpServers"]
+        self.assertIn("grep_app", gl)
+
+    def test_install_global_drops_cwd_from_entry(self):
+        """A machine-wide MCP shouldn't be pinned to one project dir —
+        the handler must strip `cwd` when scope=global."""
+        self._handler().install("memory", inputs={"scope": "global"})
+        entry = json.loads(self.global_path.read_text())["mcpServers"]["memory"]
+        self.assertNotIn("cwd", entry)
+
+    def test_install_global_preserves_existing_non_mcp_keys(self):
+        """~/.claude.json holds unrelated Claude Code state (userID, growth-book
+        flags). Install must merge into mcpServers, not clobber the rest."""
+        self.global_path.write_text(json.dumps({"userID": "abc-123", "mcpServers": {}}))
+        self._handler().install("grep_app", inputs={"scope": "global"})
+        doc = json.loads(self.global_path.read_text())
+        self.assertEqual(doc["userID"], "abc-123")
+        self.assertIn("grep_app", doc["mcpServers"])
+
+    def test_install_default_scope_is_workspace(self):
+        self._handler().install("memory", inputs={})  # no scope key
+        self.assertTrue((self.root / ".mcp.json").exists())
+        self.assertFalse(self.global_path.exists())
+
+    def test_install_unknown_scope_falls_back_to_workspace(self):
+        """Defensive: garbage scope from a future client shouldn't write
+        somewhere unexpected — fall back to the safe default."""
+        self._handler().install("memory", inputs={"scope": "martian"})
+        self.assertTrue((self.root / ".mcp.json").exists())
+
+    def test_install_can_live_in_both_scopes(self):
+        h = self._handler()
+        h.install("memory", inputs={"scope": "workspace"})
+        h.install("memory", inputs={"scope": "global"})
+        feature = h.get("memory")
+        self.assertIn("workspace", feature.detail["installed_scopes"])
+        self.assertIn("global", feature.detail["installed_scopes"])
+
+    def test_get_reports_installed_scopes(self):
+        h = self._handler()
+        h.install("grep_app", inputs={"scope": "global"})
+        feature = h.get("grep_app")
+        self.assertEqual(feature.detail["installed_scopes"], ["global"])
+        self.assertTrue(feature.detail["in_global"])
+        self.assertFalse(feature.detail["in_workspace"])
+
+    def test_uninstall_default_picks_existing_scope(self):
+        """When scope isn't given, uninstall removes from whichever scope
+        currently has the entry (workspace first if both)."""
+        h = self._handler()
+        h.install("grep_app", inputs={"scope": "global"})
+        # No scope passed — should remove from global since that's the only one.
+        result = h.uninstall("grep_app")
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["scope"], "global")
+        feature = h.get("grep_app")
+        # `grep_app` is still in .mcp.json.example so it remains available.
+        self.assertEqual(feature.detail["installed_scopes"], [])
+
+    def test_uninstall_specific_scope_leaves_other_intact(self):
+        h = self._handler()
+        h.install("memory", inputs={"scope": "workspace"})
+        h.install("memory", inputs={"scope": "global"})
+        h.uninstall("memory", inputs={"scope": "workspace"})
+        feature = h.get("memory")
+        self.assertEqual(feature.detail["installed_scopes"], ["global"])
+
+    def test_uninstall_removes_mcpservers_key_when_emptied_globally(self):
+        """If the user's global file only had mcpServers because we added it,
+        leave a clean file when we remove the last entry — don't litter the
+        user's home config with an empty mcpServers object."""
+        self.global_path.write_text(json.dumps({"userID": "abc-123"}))
+        h = self._handler()
+        h.install("grep_app", inputs={"scope": "global"})
+        h.uninstall("grep_app", inputs={"scope": "global"})
+        doc = json.loads(self.global_path.read_text())
+        self.assertEqual(doc.get("userID"), "abc-123")
+        self.assertNotIn("mcpServers", doc)
+
+    def test_preview_global_warns_about_dropping_cwd(self):
+        r = self._handler().preview("memory", inputs={"scope": "global"})
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["scope"], "global")
+        self.assertTrue(any("drops `cwd`" in w for w in r["warnings"]))
+
+    def test_preview_warns_about_other_scope(self):
+        """Helps the user see they're about to end up with a copy in both
+        scopes — easy to do by accident."""
+        h = self._handler()
+        h.install("grep_app", inputs={"scope": "global"})
+        r = h.preview("grep_app", inputs={"scope": "workspace"})
+        self.assertTrue(r["ok"])
+        self.assertTrue(any("also configured in global" in w for w in r["warnings"]))
+
+    def test_preview_side_effects_name_the_target_file(self):
+        ws = self._handler().preview("memory", inputs={"scope": "workspace"})
+        gl = self._handler().preview("memory", inputs={"scope": "global"})
+        ws_write = next(s for s in ws["side_effects"] if s["kind"] == "config_write")
+        gl_write = next(s for s in gl["side_effects"] if s["kind"] == "config_write")
+        self.assertIn(".mcp.json", ws_write["summary"])
+        self.assertIn("~/.claude.json", gl_write["summary"])
 
 
 if __name__ == "__main__":

@@ -9,6 +9,22 @@ cost: low
 requires_human_review: true
 tags: [testing, scaffolding, fixtures]
 
+about: >-
+  Given a feature directory, generates the scaffolding for its test setup:
+  mock fixtures, env-config docs, and empty test files matching whichever
+  framework the codebase already uses (pytest / vitest / etc — detected
+  from existing imports). `requires_human_review: true` because file
+  creation is gated. Advanced: it inspects neighbouring tests for
+  conventions (naming, fixture style) so the new files fit in.
+highlights:
+  - Detects test framework from existing imports — fits in
+  - Creates fixtures + empty test stubs (you fill in assertions)
+  - Surfaces required env vars for the feature
+  - Gated by human-review by design
+examples:
+  - label: Prep tests for a new service
+    code: "claude /test-env-prep path=services/foo_bar"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []

@@ -31,7 +31,7 @@ def _fake_handler(kind, features_by_id, install_result=None):
                 log_sink(f"installing {fid}")
             return install_result or {"ok": True, "feature": (features_by_id.get(fid).to_dict() if fid in features_by_id else None)}
 
-        def uninstall(self, fid):
+        def uninstall(self, fid, inputs=None):
             self.uninstalled.append(fid)
             return {"ok": True}
 
@@ -183,7 +183,7 @@ class FeatureRegistryTest(unittest.TestCase):
             def list(self): raise RuntimeError("boom")
             def get(self, fid): raise RuntimeError("boom")
             def install(self, fid, inputs=None, log_sink=None): return {"ok": False}
-            def uninstall(self, fid): return {"ok": False}
+            def uninstall(self, fid, inputs=None): return {"ok": False}
             def verify(self, fid): return {"ok": False}
 
         h = _fake_handler(FeatureKind.CONTAINER, {"postgres": self._feat("container", "postgres", "installed")})

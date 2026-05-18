@@ -9,6 +9,21 @@ cost: low
 requires_human_review: false
 tags: [git, commit, conventional-commits]
 
+about: >-
+  Reads `git status` + the staged diff and proposes one or more logical
+  commits — each with a Conventional Commits message ready to paste. Doesn't
+  apply anything; the actual `git commit` stays your call. Advanced: if the
+  staged changes span multiple concerns, the recipe suggests splitting them
+  into separate commits with concrete `git add -p` hunks.
+highlights:
+  - Drafts Conventional Commits messages from your real diff (not generic)
+  - Splits multi-concern changes into focused commits, with hunk-level plans
+  - Output-only — nothing is committed without you running the command
+  - Plays nice with the gitleaks pre-commit hook
+examples:
+  - label: Draft a message for staged changes
+    code: "claude /git-commit"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []

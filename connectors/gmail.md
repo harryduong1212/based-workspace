@@ -14,6 +14,25 @@ requires_env:
 n8n_workflow: n8n-workflows/connectors/gmail.n8n
 embed_collection: gmail
 tags: [google, email, inbox]
+docs: https://support.google.com/mail/answer/185833
+about: >-
+  Gmail mailbox connector — reads messages, threads, and labels via IMAP using
+  a Google App Password. Powers daily-briefing's "what's in your inbox?"
+  section and any inbox-aware recipe. Install writes GMAIL_ADDRESS +
+  GMAIL_APP_PASSWORD to `.env`. Advanced: App Passwords require 2FA enabled
+  on the Google account, and you should generate one specifically for this
+  workspace so it's revocable independently. The IMAP path is read-only —
+  nothing sends mail.
+highlights:
+  - IMAP read-only — never sends mail, only fetches
+  - Auth via Google App Password (2FA must be on; generate per-workspace)
+  - Used by daily-briefing's inbox summary
+  - Live-check probe attempts an IMAP login with your stored creds
+examples:
+  - label: Generate an App Password
+    code: "xdg-open https://myaccount.google.com/apppasswords"
+  - label: Sanity-check IMAP login (no Python deps needed)
+    code: "python3 -c 'import imaplib,os; m=imaplib.IMAP4_SSL(\"imap.gmail.com\"); m.login(os.environ[\"GMAIL_ADDRESS\"], os.environ[\"GMAIL_APP_PASSWORD\"]); print(m.list()[0])'"
 ---
 
 ## What this is

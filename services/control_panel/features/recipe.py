@@ -169,6 +169,13 @@ class RecipeFeatureHandler:
                 "requires_env": list(fm.get("requires_env") or []),
             },
             about=str(fm.get("about") or "").strip(),
+            highlights=[str(h) for h in (fm.get("highlights") or [])],
+            examples=[
+                {"label": str(e.get("label", "")), "code": str(e.get("code", ""))}
+                for e in (fm.get("examples") or [])
+                if isinstance(e, dict)
+            ],
+            docs=str(fm.get("docs") or "").strip(),
         )
 
     # ---- handler protocol ---------------------------------------------
@@ -223,12 +230,17 @@ class RecipeFeatureHandler:
             return {"ok": False, "error": "; ".join(errors), "feature": feature.to_dict()}
         return {"ok": feature.status == FeatureStatus.INSTALLED, "feature": feature.to_dict()}
 
-    def uninstall(self, feature_id: str) -> dict[str, Any]:
+    def uninstall(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """Default: deactivate (remove provider files only). Source stays.
 
         Pass inputs not supported here intentionally — destructive recipe-file
         deletion goes through the separate `delete-recipe` flow in the UI.
         """
+        del inputs
         source = self._source_for(feature_id)
         if source is None:
             return {"ok": False, "error": f"unknown recipe {feature_id!r}"}

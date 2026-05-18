@@ -9,6 +9,22 @@ cost: low
 requires_human_review: true
 tags: [git, merge, conflict]
 
+about: >-
+  When you're mid-merge with conflicts, this recipe walks each conflicted file:
+  explains what each side intended, names the actual semantic clash, and
+  proposes a resolution — but stops short of applying it. You confirm
+  file-by-file. `requires_human_review: true` so reviews are gated. Advanced:
+  works on rebase conflicts too; the recipe inspects `.git/MERGE_HEAD` vs
+  `.git/REBASE_HEAD` to frame the explanation.
+highlights:
+  - Per-file walkthrough — no surprise rewrites
+  - Explains BOTH sides' intent before proposing a resolution
+  - Handles merge AND rebase conflict states
+  - Gated by human-review by design (you say go, file by file)
+examples:
+  - label: Help me through the current conflict
+    code: "claude /git-conflict"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []

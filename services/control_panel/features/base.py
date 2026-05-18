@@ -68,6 +68,14 @@ class Feature:
     # advanced notes/gotchas. Rendered as an "About" card on the detail
     # page. Empty string = card hidden (no editorial content authored yet).
     about: str = ""
+    # Short bullets ("what makes this useful" / "key properties"). Empty list
+    # = card hidden. Three to five lines reads best in the UI.
+    highlights: list[str] = dataclasses.field(default_factory=list)
+    # Concrete usage snippets. Each `{"label": "...", "code": "..."}`; UI
+    # renders label as a section header and code in a mono block.
+    examples: list[dict[str, str]] = dataclasses.field(default_factory=list)
+    # Upstream/canonical documentation URL. Empty string = no link rendered.
+    docs: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -79,6 +87,9 @@ class Feature:
             "requires": list(self.requires),
             "detail": dict(self.detail),
             "about": self.about,
+            "highlights": list(self.highlights),
+            "examples": [dict(e) for e in self.examples],
+            "docs": self.docs,
         }
 
 
@@ -106,7 +117,11 @@ class FeatureHandler(Protocol):
         inputs: dict[str, Any] | None = None,
         log_sink: LogSink | None = None,
     ) -> dict[str, Any]: ...
-    def uninstall(self, feature_id: str) -> dict[str, Any]: ...
+    def uninstall(
+        self,
+        feature_id: str,
+        inputs: dict[str, Any] | None = None,
+    ) -> dict[str, Any]: ...
     def verify(self, feature_id: str) -> dict[str, Any]: ...
     def preview(self, feature_id: str, inputs: dict[str, Any] | None = None) -> dict[str, Any]:
         """Describe what `install(feature_id, inputs)` would do without side effects.

@@ -46,7 +46,13 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         return StreamingResponse(
             _iter(),
             media_type="text/event-stream",
-            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+            # no-transform: stop proxies (Next.js dev, nginx) from gzip'ing the
+            # stream — gzip buffers it and EventSource never sees a flushed
+            # event, so a `-f` follow hangs at "connecting" forever.
+            headers={
+                "Cache-Control": "no-cache, no-transform",
+                "X-Accel-Buffering": "no",
+            },
         )
 
     @app.get("/api/v1/features/install/{job_id}/stream")
@@ -71,7 +77,71 @@ def create_app(cfg: Config | None = None) -> FastAPI:
         return StreamingResponse(
             _iter(),
             media_type="text/event-stream",
-            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+            # no-transform: stop proxies (Next.js dev, nginx) from gzip'ing the
+            # stream — gzip buffers it and EventSource never sees a flushed
+            # event, so a `-f` follow hangs at "connecting" forever.
+            headers={
+                "Cache-Control": "no-cache, no-transform",
+                "X-Accel-Buffering": "no",
+            },
+        )
+
+    @app.get("/api/v1/features/container/{feature_id}/logs/stream")
+    def container_logs_stream(feature_id: str, tail: int = 200) -> StreamingResponse:
+        """Live `podman logs -f` for a container feature, framed exactly like
+        the install stream (`chunk` events + a terminal `done`) so the UI can
+        reuse the same LogViewer. The follow process is killed when the client
+        disconnects, with a 10-minute hard cap so a forgotten tab can't leak a
+        worker forever."""
+        import subprocess
+        import time
+
+        from .features import FeatureKind, FeatureRegistry
+
+        reg = FeatureRegistry(cfg.workspace_root)
+        feat = reg.get(FeatureKind.CONTAINER, feature_id)
+        if feat is None:
+            raise HTTPException(
+                status_code=404, detail=f"container feature not found: {feature_id}"
+            )
+        name = str(feat.detail.get("container_name") or feature_id)
+
+        def _iter():
+            proc = subprocess.Popen(
+                ["podman", "logs", "--tail", str(tail), "-f", name],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+            )
+            deadline = time.time() + 600
+            try:
+                assert proc.stdout is not None
+                for line in proc.stdout:
+                    yield f"event: chunk\ndata: {json.dumps(line)}\n\n"
+                    if time.time() > deadline:
+                        break
+                yield (
+                    "event: done\n"
+                    f"data: {json.dumps({'status': 'done', 'error': None, 'result': None})}\n\n"
+                )
+            finally:
+                proc.terminate()
+                try:
+                    proc.wait(timeout=3)
+                except Exception:  # noqa: BLE001
+                    proc.kill()
+
+        return StreamingResponse(
+            _iter(),
+            media_type="text/event-stream",
+            # no-transform: stop proxies (Next.js dev, nginx) from gzip'ing the
+            # stream — gzip buffers it and EventSource never sees a flushed
+            # event, so a `-f` follow hangs at "connecting" forever.
+            headers={
+                "Cache-Control": "no-cache, no-transform",
+                "X-Accel-Buffering": "no",
+            },
         )
 
     return app

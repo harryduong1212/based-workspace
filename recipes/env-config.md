@@ -9,6 +9,23 @@ cost: low
 requires_human_review: false
 tags: [env, secrets, configuration]
 
+about: >-
+  Walks the project's environment-variable surface end to end — `.env`
+  vs `.env.example` drift, missing validation on startup, secrets that
+  leak into logs, and how CI/CD passes them. Returns a punch-list of
+  fixes ordered by risk. Local execution, no connectors needed.
+  Advanced: pair with the gitleaks pre-commit hook (the git-hooks
+  component) for ongoing protection — this recipe is the one-time
+  audit; the hook is the daily defence.
+highlights:
+  - Compares `.env` vs `.env.example` and flags drift
+  - Surfaces startup-validation gaps (missing required vars at boot)
+  - Spots CI/CD secret-handling smells
+  - Pairs naturally with the git-hooks (gitleaks) component for ongoing safety
+examples:
+  - label: Run an audit
+    code: "claude /env-config"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []

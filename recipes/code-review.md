@@ -9,6 +9,28 @@ cost: low
 requires_human_review: false
 tags: [code-review, quality, security]
 
+about: >-
+  Reviews the current branch's diff (or a scoped path set) along six axes —
+  security, bugs, architecture, tests, readability, and performance — and
+  returns severity-tagged findings with `file:line` citations and concrete
+  fix suggestions. Local execution (no external API). Pair with the
+  `comprehensive-review-full-review` skill to get the structured output
+  schema the recipe targets. Advanced: pass `focus` to tilt weight toward
+  one dimension; pass `--input-file diff=...` to review a saved patch
+  instead of the live branch.
+highlights:
+  - Six review axes — finds beyond just "does it work?"
+  - Severity-tagged output with file:line citations
+  - Scope-flexible — branch diff, path set, or pre-saved patch
+  - Provider-neutral; runs against your default dispatcher model
+examples:
+  - label: Review current branch vs main
+    code: "claude /code-review"
+  - label: Review a saved patch from CI
+    code: "claude /code-review --input-file diff=/tmp/ci.patch"
+  - label: Security-focused pass
+    code: "claude /code-review focus=security"
+
 requires_skills:
   - comprehensive-review-full-review
 requires_workflows: []

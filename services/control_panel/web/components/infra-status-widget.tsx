@@ -182,7 +182,7 @@ export function InfraStatusWidget({ initial }: { initial: Feature[] }) {
                   />
                 )}
                 <Button asChild size="sm" variant="ghost" className="h-7 text-xs px-2">
-                  <Link href={`/features/container/${f.id}`}>Details</Link>
+                  <Link href={`/components/container/${f.id}`}>Details</Link>
                 </Button>
               </div>
             </div>
