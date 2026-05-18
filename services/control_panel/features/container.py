@@ -139,6 +139,7 @@ class ContainerFeatureHandler:
                 status=FeatureStatus.UNAVAILABLE,
                 requires=list(decl.get("requires") or []),
                 detail={**detail, "error": f"compose file not found: {compose_path}"},
+                about=(decl.get("about") or "").strip(),
             )
 
         inspected = self._inspect_container(container_name)
@@ -170,6 +171,7 @@ class ContainerFeatureHandler:
             status=status,
             requires=list(decl.get("requires") or []),
             detail=detail,
+            about=(decl.get("about") or "").strip(),
         )
 
     # ---- handler protocol ----------------------------------------------

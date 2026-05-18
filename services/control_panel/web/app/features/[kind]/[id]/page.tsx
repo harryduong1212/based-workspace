@@ -67,6 +67,22 @@ export default async function FeatureDetailPage(props: {
         </div>
       </div>
 
+      {feature.about && (
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base">About</CardTitle>
+            <CardDescription>
+              What this is, what installing does, and the advanced bits worth knowing.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm leading-relaxed text-foreground/90 whitespace-pre-line">
+              {feature.about}
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Actions</CardTitle>

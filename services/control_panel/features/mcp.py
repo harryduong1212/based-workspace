@@ -150,6 +150,7 @@ class MCPFeatureHandler:
             # the spawn-probe fail cryptically.
             requires=requires,
             detail=detail,
+            about=(meta.get("_about") or "").strip(),
         )
 
     # ---- handler protocol --------------------------------------------

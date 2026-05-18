@@ -168,6 +168,7 @@ class RecipeFeatureHandler:
                 "requires_mcp": list(fm.get("requires_mcp") or []),
                 "requires_env": list(fm.get("requires_env") or []),
             },
+            about=str(fm.get("about") or "").strip(),
         )
 
     # ---- handler protocol ---------------------------------------------

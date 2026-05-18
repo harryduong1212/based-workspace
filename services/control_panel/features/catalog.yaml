@@ -7,7 +7,9 @@
 # ------
 # system.<id>:
 #   name        — UI label
-#   description — one-line explanation
+#   description — one-line explanation (shown under the title)
+#   about       — optional multi-line prose: what it is, what installing
+#                 does, advanced notes. Rendered as an "About" card.
 #   detect:
 #     command       — binary to look up on PATH (`command -v`)
 #     version_flag  — flag printing version, e.g. "--version" (optional)
@@ -33,6 +35,16 @@ system:
   podman:
     name: Podman
     description: Rootless OCI container runtime — runs every infrastructure service.
+    about: >-
+      Podman is a daemonless, rootless container engine — the drop-in Docker
+      alternative this workspace standardises on. Every Tier-2 service
+      (Postgres, n8n, Qdrant, llama-swap) is brought up via `podman compose`.
+      Installing it is print-only: the Control Panel never runs sudo — it
+      shows you the exact distro command to paste, then you click Verify.
+      Advanced: you also need `podman-compose` (bundled in the hint command).
+      Rootless networking means published ports bind on localhost only; if a
+      container can't reach the host, use `host.docker.internal` (already
+      wired for the n8n callback).
     detect:
       command: podman
       version_flag: --version
@@ -45,6 +57,13 @@ system:
   python:
     name: Python 3.11+
     description: Required runtime for Control Panel and the recipe dispatcher.
+    about: >-
+      The Control Panel backend (FastAPI), the recipe dispatcher, the MCP
+      servers, and every script under `scripts/` run on Python 3.11+. 3.11 is
+      the floor because the codebase uses `tomllib`, exception groups, and
+      modern typing syntax. Print-only install. Advanced: use a virtualenv
+      (`python3 -m venv .venv`) — `scripts/bootstrap.sh` creates one and
+      installs the per-service requirements.txt files into it.
     detect:
       command: python3
       version_flag: --version
@@ -57,6 +76,12 @@ system:
   node:
     name: Node.js 20+
     description: Required for the Next.js Control Panel UI and the MCP Inspector.
+    about: >-
+      Powers the Control Panel frontend (`services/control_panel/web/`, Next.js
+      15 App Router) and the optional MCP Inspector diagnostics UI. Node 20+ is
+      required by Next 15's build toolchain. Print-only install. Advanced: only
+      needed if you run the UI from source — a built/static deploy doesn't need
+      Node at runtime. `npm install` is handled by `scripts/bootstrap.sh`.
     detect:
       command: node
       version_flag: --version
@@ -69,6 +94,12 @@ system:
   git:
     name: Git
     description: Version control. Usually pre-installed.
+    about: >-
+      Version control for the workspace. Almost always already present on a
+      dev machine, which is why this usually shows as "installed" with no
+      action needed. It's listed because the **git-hooks** feature (gitleaks
+      secret-scanning pre-commit) depends on it — that dependency is enforced
+      by the feature graph. Print-only install.
     detect:
       command: git
       version_flag: --version
@@ -81,6 +112,15 @@ system:
   git-hooks:
     name: Git hooks (gitleaks pre-commit)
     description: Blocks commits containing secrets. Installed via the repo's helper script.
+    about: >-
+      Installs a pre-commit hook that runs gitleaks against the staged diff
+      and aborts the commit if it finds anything that looks like a secret
+      (API keys, tokens, private keys). This is defence layer against the
+      single worst failure mode here — committing a credential. The install
+      command is `bash scripts/install-git-hooks.sh` (it wires the hook into
+      `.git/hooks/`). Advanced: a real false-positive can be bypassed with
+      `git commit --no-verify`, but treat that as a last resort and re-scan
+      after. Requires Git to be present.
     detect:
       command: gitleaks
       version_flag: version
@@ -96,6 +136,15 @@ container:
   postgres:
     name: PostgreSQL (based-workspace)
     description: Backing database for n8n workflows.
+    about: >-
+      A PostgreSQL instance (pgvector image — Postgres + the `vector`
+      extension) that backs n8n's workflow/credential storage. Install brings
+      the container up via `podman compose up -d`; uninstall stops and removes
+      the container but **preserves the named volume**, so your data survives.
+      Advanced: the host port is set by `POSTGRES_PORT` in `.env` (container
+      port is always 5432). Health is an in-container `pg_isready` exec. n8n
+      depends on this — the feature graph blocks n8n install until Postgres is
+      running and healthy.
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: based-workspace-postgres
     container_name: based-workspace-postgres
@@ -108,6 +157,16 @@ container:
   n8n:
     name: n8n (atom8n fork)
     description: Workflow automation engine. Powers workflow-type recipes.
+    about: >-
+      The workflow engine behind every `execution.type: workflow` recipe
+      (e.g. daily-briefing). This is the upstream `atom8n/n8n:fork` image, run
+      under the `n8n-atom` compose profile so it doesn't start unless you
+      explicitly install it. Advanced: it stores data in its own named volume
+      and uses the shared Postgres for persistence — so it requires both
+      `podman` and `postgres` (enforced by the graph). The encryption key and
+      JWT secret come from `.env`; set them once or stored credentials/API
+      keys are invalidated on restart. Webhooks call back to the Control Panel
+      via `host.docker.internal:8765`.
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: n8n-atom
     container_name: n8n-atom-dev
@@ -122,6 +181,15 @@ container:
   qdrant:
     name: Qdrant
     description: Vector store for the memory MCP (mem0 backend). Added by the mem0 migration.
+    about: >-
+      Qdrant is the vector database that stores embeddings for the **memory**
+      MCP (mem0 backend) — collection `based_memory`. Runs under the `qdrant`
+      compose profile, so users who never install the memory feature pay zero
+      container cost. Install = `podman compose up -d`; uninstall preserves
+      the volume so stored memories survive. Advanced: ports 6333 (HTTP/REST)
+      and 6334 (gRPC), overridable via `QDRANT_PORT`/`QDRANT_GRPC_PORT`. The
+      future Skill-Discovery MCP will share this same Qdrant via a separate
+      collection. The `memory` MCP requires this be running first.
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: qdrant
     container_name: based-workspace-qdrant
@@ -135,6 +203,15 @@ container:
   llama-swap:
     name: llama-swap
     description: Local OpenAI-compatible LLM endpoint (Gemma + bge-small).
+    about: >-
+      A local, OpenAI-compatible inference endpoint (:8083) that hot-swaps
+      models on demand. Serves the chat model (Gemma 3 4B) and the embedding
+      model (bge-small-en-v1.5) the **memory** MCP uses for mem0 fact
+      extraction + vector embedding — and is the `local/*` provider for the
+      recipe dispatcher. Install = `podman compose up -d` (separate compose
+      file under `infrastructure/llm/`). Advanced: keeps everything offline —
+      no tokens leave the machine. First call after a model swap is slow while
+      weights load. The `memory` MCP requires this be running first.
     compose_file: infrastructure/llm/docker-compose.yaml
     compose_service: llama-swap
     container_name: based-workspace-llama-swap

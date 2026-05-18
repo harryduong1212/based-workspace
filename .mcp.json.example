@@ -5,7 +5,8 @@
       "command": "/home/harry/.local/bin/notebooklm-mcp",
       "args": [],
       "_description": "Bridge to Google NotebookLM — query notebooks, manage sources, generate audio/video studio artifacts. Tools surface under the notebooklm__ prefix.",
-      "_docs": "https://notebooklm.google.com"
+      "_docs": "https://notebooklm.google.com",
+      "_about": "Wraps a local notebooklm-mcp binary so recipes/agents can query your Google NotebookLM notebooks, add sources, and generate studio artifacts (audio overviews, video, slides). Install copies this entry into .mcp.json and runs a spawn-test (list_tools). Advanced: the binary handles Google auth out-of-band — run `nlm login` in a terminal if you hit auth errors; switch accounts with `nlm login switch <profile>`. No backing container needed."
     },
     "memory": {
       "command": "./scripts/with-env.sh",
@@ -13,7 +14,8 @@
       "cwd": "/home/harry/Workspace/Personal/Vibe/based-workspace",
       "_description": "Persistent semantic memory via mem0 (LLM fact-extraction + vector recall). Backed by Qdrant for storage and local Gemma + bge-small through llama-swap. Tools: search_memory, add_memory.",
       "_docs": "https://github.com/mem0ai/mem0",
-      "_requires": ["qdrant", "llama-swap"]
+      "_requires": ["qdrant", "llama-swap"],
+      "_about": "A thin FastMCP wrapper around mem0. add_memory extracts durable facts from text via a local LLM and stores their embeddings; search_memory does semantic recall. The whole stack runs offline: Qdrant holds the vectors (collection based_memory), Gemma 3 4B does fact extraction, bge-small does embeddings — Gemma + bge served by llama-swap. Install copies this entry into .mcp.json and runs a spawn-test. IMPORTANT: it requires the qdrant and llama-swap containers running first — the install dialog blocks and tells you so, rather than failing with a cryptic spawn error. This replaced the old Context Bridge / pgvector memory."
     }
   }
 }

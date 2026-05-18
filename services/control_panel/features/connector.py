@@ -130,6 +130,9 @@ class ConnectorFeatureHandler:
                 "env_present": present,
                 "env_missing": missing,
             },
+            # Connectors also render their full markdown docs on the detail
+            # page; `about` is the short editorial blurb for the card + index.
+            about=str(entry.get("about") or "").strip(),
         )
 
     # ---- handler protocol --------------------------------------------

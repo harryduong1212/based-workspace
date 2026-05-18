@@ -139,6 +139,7 @@ class SystemFeatureHandler:
             status=status,
             requires=list(decl.get("requires") or []),
             detail=detail,
+            about=(decl.get("about") or "").strip(),
         )
 
     # ---- handler protocol ----------------------------------------------

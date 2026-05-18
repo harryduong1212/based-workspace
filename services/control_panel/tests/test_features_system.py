@@ -206,6 +206,27 @@ class SystemHandlerTest(unittest.TestCase):
         # The "never sudo" promise must be communicated to the user.
         self.assertTrue(any("never runs sudo" in w for w in r["warnings"]))
 
+    def test_about_from_catalog_surfaces_on_feature(self):
+        from services.control_panel.features.system import SystemFeatureHandler
+
+        cat = self._write_catalog(textwrap.dedent(
+            """\
+            system:
+              podman:
+                name: Podman
+                description: runtime
+                about: >-
+                  Long prose explaining what podman is
+                  and what installing does.
+                detect:
+                  command: podman
+            """
+        ))
+        with patch("shutil.which", return_value=None):
+            f = SystemFeatureHandler(catalog_path=cat, distro="fedora").get("podman")
+        self.assertIn("Long prose explaining", f.about)
+        self.assertIn("what installing does", f.about)
+
     def test_preview_already_installed_is_noop(self):
         from services.control_panel.features.system import SystemFeatureHandler
 

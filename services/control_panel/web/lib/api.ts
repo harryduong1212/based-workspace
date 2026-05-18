@@ -153,6 +153,7 @@ export type Feature = {
   status: FeatureStatus;
   requires: string[];
   detail: Record<string, unknown>;
+  about: string;
 };
 
 export type FeaturesList = { features: Feature[]; kinds: FeatureKind[] };

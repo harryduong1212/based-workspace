@@ -185,6 +185,21 @@ class MCPHandlerTest(unittest.TestCase):
         # The dep graph must see these so the install dialog can gate + explain.
         self.assertEqual(f.requires, ["qdrant", "llama-swap"])
 
+    def test_about_metadata_surfaces_and_is_stripped_on_install(self):
+        (self.root / ".mcp.json.example").write_text(json.dumps({
+            "mcpServers": {
+                "memory": {
+                    "command": "x",
+                    "_about": "Full explanation of the memory server.",
+                }
+            }
+        }))
+        f = self._handler().get("memory")
+        self.assertEqual(f.about, "Full explanation of the memory server.")
+        self._handler().install("memory")
+        written = json.loads((self.root / ".mcp.json").read_text())["mcpServers"]["memory"]
+        self.assertNotIn("_about", written)
+
     def test_install_strips_underscore_metadata_from_mcp_json(self):
         """Metadata keys must never reach .mcp.json (and thus the spawned
         server's config) — only real MCP fields get written."""

@@ -64,6 +64,10 @@ class Feature:
     status: FeatureStatus
     requires: list[str] = dataclasses.field(default_factory=list)
     detail: dict[str, Any] = dataclasses.field(default_factory=dict)
+    # Longer prose: what this is, what installing actually does, and any
+    # advanced notes/gotchas. Rendered as an "About" card on the detail
+    # page. Empty string = card hidden (no editorial content authored yet).
+    about: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -74,6 +78,7 @@ class Feature:
             "status": self.status.value,
             "requires": list(self.requires),
             "detail": dict(self.detail),
+            "about": self.about,
         }
 
 

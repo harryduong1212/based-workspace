@@ -33,6 +33,14 @@ class FeatureShapeTest(unittest.TestCase):
         self.assertEqual(d["status"], "installed")
         self.assertEqual(d["requires"], ["x"])
         self.assertEqual(d["detail"], {"foo": "bar"})
+        # `about` defaults to "" and always serializes (card hidden when empty).
+        self.assertEqual(d["about"], "")
+
+        f2 = Feature(
+            id="x", kind=FeatureKind.MCP, name="x", description="d",
+            status=FeatureStatus.AVAILABLE, about="long prose here",
+        )
+        self.assertEqual(f2.to_dict()["about"], "long prose here")
 
     def test_status_enum_values(self):
         from services.control_panel.features import FeatureStatus
