@@ -110,6 +110,12 @@ class MCPFeatureHandler:
         and reports configured presence only — used by `list()` so loading
         the page doesn't fork an MCP server per installed entry."""
         config = installed or example or {}
+        # Underscore-prefixed keys are UI metadata, not MCP server config —
+        # they describe the server for the Features page and never reach the
+        # spawned process (install() strips them before writing .mcp.json).
+        meta = example or installed or {}
+        docs = meta.get("_docs")
+        requires = [str(r) for r in (meta.get("_requires") or [])]
         detail: dict[str, Any] = {
             "command": config.get("command"),
             "args": list(config.get("args") or []),
@@ -117,6 +123,8 @@ class MCPFeatureHandler:
             "in_example": example is not None,
             "in_installed": installed is not None,
             "probed": probe,
+            "docs": docs,
+            "requires_services": requires,
         }
         if installed is None:
             status = FeatureStatus.AVAILABLE
@@ -135,10 +143,12 @@ class MCPFeatureHandler:
             id=server_id,
             kind=FeatureKind.MCP,
             name=server_id,
-            description=(example or installed or {}).get("_description")
-            or f"MCP server {server_id}",
+            description=meta.get("_description") or f"MCP server {server_id}",
             status=status,
-            requires=[],  # MCP-level requires (e.g. on Qdrant) live in a future enhancement
+            # `_requires` (e.g. memory → qdrant + llama-swap) feeds the dep
+            # graph so the install dialog blocks + explains instead of letting
+            # the spawn-probe fail cryptically.
+            requires=requires,
             detail=detail,
         )
 
@@ -191,6 +201,13 @@ class MCPFeatureHandler:
             assert example is not None
             log(f"using example entry from .mcp.json.example")
             config = dict(example)
+
+        # Drop UI-only metadata (_description/_docs/_requires) — it must not
+        # land in .mcp.json or reach the spawned server's config.
+        stripped = sorted(k for k in config if k.startswith("_"))
+        config = {k: v for k, v in config.items() if not k.startswith("_")}
+        if stripped:
+            log(f"stripped UI metadata keys: {', '.join(stripped)}")
 
         # Resolve relative cwd against workspace_root for stability — the user's
         # shell may not be in this dir when the server is spawned.

@@ -1,14 +1,19 @@
 {
-  "_comment": "Copy to .mcp.json and adjust paths. .mcp.json is gitignored. Secrets come from .env via scripts/with-env.sh; do NOT add inline `env:` blocks here.",
+  "_comment": "Copy to .mcp.json and adjust paths. .mcp.json is gitignored. Secrets come from .env via scripts/with-env.sh; do NOT add inline `env:` blocks here. Keys prefixed with `_` are UI metadata for the Features page (_description, _docs, _requires) and are stripped before the server is spawned.",
   "mcpServers": {
     "notebooklm": {
       "command": "/home/harry/.local/bin/notebooklm-mcp",
-      "args": []
+      "args": [],
+      "_description": "Bridge to Google NotebookLM — query notebooks, manage sources, generate audio/video studio artifacts. Tools surface under the notebooklm__ prefix.",
+      "_docs": "https://notebooklm.google.com"
     },
     "memory": {
       "command": "./scripts/with-env.sh",
       "args": ["python3", "-m", "services.memory_mcp"],
-      "cwd": "/home/harry/Workspace/Personal/Vibe/based-workspace"
+      "cwd": "/home/harry/Workspace/Personal/Vibe/based-workspace",
+      "_description": "Persistent semantic memory via mem0 (LLM fact-extraction + vector recall). Backed by Qdrant for storage and local Gemma + bge-small through llama-swap. Tools: search_memory, add_memory.",
+      "_docs": "https://github.com/mem0ai/mem0",
+      "_requires": ["qdrant", "llama-swap"]
     }
   }
 }

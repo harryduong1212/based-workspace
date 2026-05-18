@@ -164,6 +164,49 @@ class MCPHandlerTest(unittest.TestCase):
         # An installed-but-being-reinstalled entry must produce a "will overwrite" hint.
         self.assertTrue(any("overwrite" in w for w in r["warnings"]))
 
+    def test_underscore_metadata_drives_feature_fields(self):
+        """_description/_docs/_requires from the example surface on the Feature
+        and feed the dep graph — without leaking into spawned config."""
+        (self.root / ".mcp.json.example").write_text(json.dumps({
+            "mcpServers": {
+                "memory": {
+                    "command": "./scripts/with-env.sh",
+                    "args": ["python3", "-m", "services.memory_mcp"],
+                    "_description": "Persistent semantic memory via mem0.",
+                    "_docs": "https://github.com/mem0ai/mem0",
+                    "_requires": ["qdrant", "llama-swap"],
+                }
+            }
+        }))
+        f = self._handler().get("memory")
+        self.assertEqual(f.description, "Persistent semantic memory via mem0.")
+        self.assertEqual(f.detail["docs"], "https://github.com/mem0ai/mem0")
+        self.assertEqual(f.detail["requires_services"], ["qdrant", "llama-swap"])
+        # The dep graph must see these so the install dialog can gate + explain.
+        self.assertEqual(f.requires, ["qdrant", "llama-swap"])
+
+    def test_install_strips_underscore_metadata_from_mcp_json(self):
+        """Metadata keys must never reach .mcp.json (and thus the spawned
+        server's config) — only real MCP fields get written."""
+        (self.root / ".mcp.json.example").write_text(json.dumps({
+            "mcpServers": {
+                "memory": {
+                    "command": "x",
+                    "args": ["y"],
+                    "_description": "desc",
+                    "_docs": "url",
+                    "_requires": ["qdrant"],
+                }
+            }
+        }))
+        self._handler().install("memory")
+        written = json.loads((self.root / ".mcp.json").read_text())["mcpServers"]["memory"]
+        self.assertNotIn("_description", written)
+        self.assertNotIn("_docs", written)
+        self.assertNotIn("_requires", written)
+        self.assertEqual(written["command"], "x")
+        self.assertEqual(written["args"], ["y"])
+
 
 if __name__ == "__main__":
     unittest.main()

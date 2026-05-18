@@ -148,11 +148,32 @@ function KindDetailBlock({ feature }: { feature: { kind: FeatureKind; detail: Re
     );
   }
   if (feature.kind === "mcp") {
+    const services = Array.isArray(d.requires_services)
+      ? (d.requires_services as string[])
+      : [];
     return (
       <div className="space-y-2 text-sm">
         <Row label="Command" value={String(d.command ?? "—")} mono />
         <Row label="Args" value={Array.isArray(d.args) ? d.args.join(" ") : "—"} mono />
         {d.cwd != null && <Row label="Working dir" value={String(d.cwd)} mono />}
+        {typeof d.docs === "string" && d.docs && (
+          <div className="flex gap-3 items-baseline">
+            <div className="w-40 shrink-0 text-xs uppercase tracking-wider text-muted-foreground">
+              Source / docs
+            </div>
+            <a
+              href={d.docs}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-primary hover:underline break-all"
+            >
+              {d.docs}
+            </a>
+          </div>
+        )}
+        {services.length > 0 && (
+          <Row label="Needs services" value={services.join(", ")} mono />
+        )}
         <Row label="In example" value={d.in_example ? "yes" : "no"} />
         <Row label="In .mcp.json" value={d.in_installed ? "yes" : "no"} />
         <Row label="Spawn-probed" value={d.probed ? "yes" : "no (list view)"} />
