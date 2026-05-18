@@ -33,21 +33,16 @@ export function ContainerLogsDialog({
   const logRef = useRef<HTMLPreElement | null>(null);
 
   useEffect(() => {
-    if (!open) {
-      sseRef.current?.close();
-      sseRef.current = null;
-      const t = setTimeout(() => {
-        setLog("");
-        setEnded(false);
-      }, 200);
-      return () => clearTimeout(t);
-    }
+    if (!open) return;
+    // Fresh stream each time the dialog opens.
     setLog("");
     setEnded(false);
+
     const es = new EventSource(
       `/api/v1/features/container/${feature.id}/logs/stream`,
     );
     sseRef.current = es;
+
     es.addEventListener("chunk", (ev) => {
       try {
         const text = JSON.parse((ev as MessageEvent).data) as string;
@@ -62,10 +57,15 @@ export function ContainerLogsDialog({
       sseRef.current = null;
     });
     es.addEventListener("error", () => {
-      setEnded(true);
-      es.close();
-      sseRef.current = null;
+      // EventSource fires `error` on transient blips too, then reconnects on
+      // its own (readyState CONNECTING). Only finalize once it's genuinely
+      // CLOSED — otherwise a single hiccup would kill a healthy tail.
+      if (es.readyState === EventSource.CLOSED) {
+        setEnded(true);
+        sseRef.current = null;
+      }
     });
+
     return () => {
       es.close();
       sseRef.current = null;

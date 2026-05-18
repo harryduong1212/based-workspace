@@ -47,7 +47,7 @@ export function Sidebar() {
     <SidebarCollapsedContext.Provider value={isCollapsed}>
       <aside
         className={cn(
-          "hidden md:flex md:flex-col shrink-0 border-r bg-muted/30 transition-[width] duration-200",
+          "relative hidden md:flex md:flex-col shrink-0 border-r bg-muted/30 transition-[width] duration-200",
           isCollapsed ? "w-16" : "w-64",
         )}
       >
@@ -78,23 +78,19 @@ export function Sidebar() {
           </Link>
         </div>
 
+        {/* Floating pill on the right divider, vertically centered. Sits half
+         * outside the aside (-right-3) so the border line runs through it. */}
         <button
           type="button"
           onClick={toggle}
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className={cn(
-            "flex items-center text-xs text-muted-foreground hover:text-foreground hover:bg-accent transition-colors py-2 border-b border-border/50",
-            isCollapsed ? "justify-center px-0" : "gap-2 px-5",
-          )}
+          className="absolute top-1/2 -right-3 -translate-y-1/2 z-20 flex h-6 w-6 items-center justify-center rounded-full border bg-background text-muted-foreground hover:text-foreground hover:bg-accent shadow-sm transition-colors"
         >
           {isCollapsed ? (
-            <PanelLeftOpen className="h-4 w-4" />
+            <PanelLeftOpen className="h-3.5 w-3.5" />
           ) : (
-            <>
-              <PanelLeftClose className="h-4 w-4" />
-              <span>Collapse</span>
-            </>
+            <PanelLeftClose className="h-3.5 w-3.5" />
           )}
         </button>
 
