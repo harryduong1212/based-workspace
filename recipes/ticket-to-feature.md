@@ -9,6 +9,22 @@ cost: medium
 requires_human_review: true
 tags: [jira, bitbucket, feature-kickoff, planning]
 
+about: >-
+  Reads a Jira ticket plus related past tickets + PRs (via the bitbucket
+  connector) and produces a feature spec: problem statement, API sketch,
+  data model touches, open-questions list. `requires_human_review: true` —
+  the goal is a draft to react to, not a plan to execute. Uses the
+  backend-architect + plan-writing skills for shape. Higher cost than
+  others because it walks ticket history.
+highlights:
+  - Pulls related historical context (past tickets + PRs from same area)
+  - Output is a draft spec — problem, API sketch, open questions
+  - Pairs with backend-architect + plan-writing skills for structure
+  - Higher cost (`cost: medium`) — runs more retrieval than other recipes
+examples:
+  - label: Spec a feature from a ticket
+    code: "claude /ticket-to-feature ticket=ENG-4242"
+
 requires_skills:
   - backend-architect
   - plan-writing

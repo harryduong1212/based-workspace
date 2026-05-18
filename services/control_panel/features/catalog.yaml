@@ -45,6 +45,19 @@ system:
       Rootless networking means published ports bind on localhost only; if a
       container can't reach the host, use `host.docker.internal` (already
       wired for the n8n callback).
+    docs: https://podman.io
+    highlights:
+      - Daemonless and rootless — no privileged background process
+      - "`podman compose` is a drop-in for the `docker compose` you already know"
+      - Bundled `podman-compose` brings up every Tier-2 service in this repo
+      - Containers expose ports on localhost only (rootless networking)
+    examples:
+      - label: Verify install
+        code: "podman --version && podman-compose --version"
+      - label: Bring up infrastructure
+        code: "podman compose -f infrastructure/core/docker-compose.yaml up -d"
+      - label: See what's running
+        code: "podman ps"
     detect:
       command: podman
       version_flag: --version
@@ -64,6 +77,18 @@ system:
       modern typing syntax. Print-only install. Advanced: use a virtualenv
       (`python3 -m venv .venv`) — `scripts/bootstrap.sh` creates one and
       installs the per-service requirements.txt files into it.
+    docs: https://www.python.org
+    highlights:
+      - Minimum 3.11 — `tomllib`, exception groups, modern typing
+      - Used by Control Panel, recipe dispatcher, every script, and the MCPs
+      - No extra deps installed system-wide — virtualenv is recommended
+    examples:
+      - label: Verify version
+        code: "python3 --version"
+      - label: Bootstrap repo (creates venv + installs deps)
+        code: "bash scripts/bootstrap.sh"
+      - label: Run a script with the workspace env
+        code: "./scripts/with-env.sh python3 -m services.control_panel"
     detect:
       command: python3
       version_flag: --version
@@ -82,6 +107,18 @@ system:
       required by Next 15's build toolchain. Print-only install. Advanced: only
       needed if you run the UI from source — a built/static deploy doesn't need
       Node at runtime. `npm install` is handled by `scripts/bootstrap.sh`.
+    docs: https://nodejs.org
+    highlights:
+      - Minimum 20 — Next 15 won't build below this
+      - Only needed when running the Control Panel UI from source
+      - "`npm` ships with Node — bootstrap.sh installs the lockfile's exact deps"
+    examples:
+      - label: Verify version
+        code: "node --version && npm --version"
+      - label: Start the Control Panel UI in dev mode
+        code: "cd services/control_panel/web && npm run dev"
+      - label: Type-check the UI (don't `npm run build` in dev)
+        code: "cd services/control_panel/web && npx tsc --noEmit"
     detect:
       command: node
       version_flag: --version
@@ -100,6 +137,15 @@ system:
       action needed. It's listed because the **git-hooks** feature (gitleaks
       secret-scanning pre-commit) depends on it — that dependency is enforced
       by the feature graph. Print-only install.
+    docs: https://git-scm.com
+    highlights:
+      - Listed here mostly so the git-hooks feature can declare it as a prereq
+      - Minimum 2.30 — modern hook semantics + safe directory handling
+    examples:
+      - label: Verify version
+        code: "git --version"
+      - label: See workspace state
+        code: "git status && git log --oneline -5"
     detect:
       command: git
       version_flag: --version
@@ -121,6 +167,18 @@ system:
       `.git/hooks/`). Advanced: a real false-positive can be bypassed with
       `git commit --no-verify`, but treat that as a last resort and re-scan
       after. Requires Git to be present.
+    docs: https://github.com/gitleaks/gitleaks
+    highlights:
+      - Blocks commits containing API keys / tokens / private keys
+      - Runs only against the staged diff — fast, no full-repo scan per commit
+      - Bypassable with `--no-verify` for true false-positives (use sparingly)
+    examples:
+      - label: Verify install
+        code: "gitleaks version && ls -l .git/hooks/pre-commit"
+      - label: Scan the whole repo on demand
+        code: "gitleaks detect --source ."
+      - label: Bypass once after re-verifying (treat as last resort)
+        code: "git commit --no-verify -m 'reason: false positive in foo.md'"
     detect:
       command: gitleaks
       version_flag: version
@@ -145,6 +203,19 @@ container:
       port is always 5432). Health is an in-container `pg_isready` exec. n8n
       depends on this — the feature graph blocks n8n install until Postgres is
       running and healthy.
+    docs: https://www.postgresql.org
+    highlights:
+      - pgvector-flavoured image — `vector` extension available out of the box
+      - Uninstall stops the container but **preserves the volume** (no data loss)
+      - Host port set by `POSTGRES_PORT` in `.env` — container port is always 5432
+      - Required prereq for n8n (feature graph enforces order)
+    examples:
+      - label: Connect with psql
+        code: "podman exec -it based-workspace-postgres psql -U $POSTGRES_USER -d $POSTGRES_DB"
+      - label: Check it's alive
+        code: "podman exec based-workspace-postgres pg_isready -U $POSTGRES_USER"
+      - label: Tail logs
+        code: "podman logs -f based-workspace-postgres"
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: based-workspace-postgres
     container_name: based-workspace-postgres
@@ -167,6 +238,19 @@ container:
       JWT secret come from `.env`; set them once or stored credentials/API
       keys are invalidated on restart. Webhooks call back to the Control Panel
       via `host.docker.internal:8765`.
+    docs: https://n8n.io
+    highlights:
+      - Backs every `execution.type: workflow` recipe (e.g. daily-briefing)
+      - Runs under the `n8n-atom` profile — opt-in, won't start unless installed
+      - Uses Postgres for persistence and its own named volume for files
+      - Calls back to Control Panel via `host.docker.internal:8765`
+    examples:
+      - label: Open the n8n editor
+        code: "xdg-open http://localhost:5678"
+      - label: Tail webhook traffic
+        code: "podman logs -f n8n-atom-dev | grep -i webhook"
+      - label: Re-pull the image after a fork update
+        code: "podman compose -f infrastructure/core/docker-compose.yaml --profile n8n-atom pull n8n-atom"
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: n8n-atom
     container_name: n8n-atom-dev
@@ -190,6 +274,19 @@ container:
       and 6334 (gRPC), overridable via `QDRANT_PORT`/`QDRANT_GRPC_PORT`. The
       future Skill-Discovery MCP will share this same Qdrant via a separate
       collection. The `memory` MCP requires this be running first.
+    docs: https://qdrant.tech
+    highlights:
+      - Backs the `memory` MCP — collection `based_memory`
+      - Runs under the `qdrant` profile — opt-in only (zero cost otherwise)
+      - REST :6333 + gRPC :6334 — both overridable via env
+      - Will also host the future Skill-Discovery MCP's collection
+    examples:
+      - label: Browse collections
+        code: "curl -s http://localhost:6333/collections | jq"
+      - label: Show stored memory count
+        code: "curl -s http://localhost:6333/collections/based_memory | jq '.result.points_count'"
+      - label: Tail logs
+        code: "podman logs -f based-workspace-qdrant"
     compose_file: infrastructure/core/docker-compose.yaml
     compose_service: qdrant
     container_name: based-workspace-qdrant
@@ -204,7 +301,7 @@ container:
     name: llama-swap
     description: Local OpenAI-compatible LLM endpoint (Gemma + bge-small).
     about: >-
-      A local, OpenAI-compatible inference endpoint (:8083) that hot-swaps
+      A local, OpenAI-compatible inference endpoint (:11434) that hot-swaps
       models on demand. Serves the chat model (Gemma 3 4B) and the embedding
       model (bge-small-en-v1.5) the **memory** MCP uses for mem0 fact
       extraction + vector embedding — and is the `local/*` provider for the
@@ -212,11 +309,30 @@ container:
       file under `infrastructure/llm/`). Advanced: keeps everything offline —
       no tokens leave the machine. First call after a model swap is slow while
       weights load. The `memory` MCP requires this be running first.
+    docs: https://github.com/mostlygeek/llama-swap
+    highlights:
+      - OpenAI-compatible endpoint on :11434 — drop-in for `OPENAI_BASE_URL`
+      - Hot-swaps between chat (Gemma 3 4B) and embedding (bge-small) on demand
+      - 100% offline — no tokens leave the machine
+      - Powers the `local/*` provider for the recipe dispatcher AND the memory MCP
+    examples:
+      - label: List loaded models
+        code: "curl -s http://localhost:11434/v1/models | jq '.data[].id'"
+      - label: One-off chat completion
+        code: |
+          curl -s http://localhost:11434/v1/chat/completions \
+            -H 'Content-Type: application/json' \
+            -d '{"model":"gemma-3-4b","messages":[{"role":"user","content":"ping"}]}'
+      - label: Compute an embedding
+        code: |
+          curl -s http://localhost:11434/v1/embeddings \
+            -H 'Content-Type: application/json' \
+            -d '{"model":"bge-small-en-v1.5","input":"hello"}'
     compose_file: infrastructure/llm/docker-compose.yaml
     compose_service: llama-swap
     container_name: based-workspace-llama-swap
     health:
       type: http
-      url: "http://localhost:8083/v1/models"
+      url: "http://localhost:11434/v1/models"
     requires:
       - podman

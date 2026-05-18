@@ -9,6 +9,24 @@ cost: low
 requires_human_review: false
 tags: [briefing, jira, bitbucket, gmail, daily]
 
+about: >-
+  Workflow-type recipe that fans out to Jira (your tickets), Bitbucket (your
+  open PRs + review requests), and Gmail (recent unread). Each connector
+  contributes a section; the recipe condenses the lot into a one-page brief
+  for your morning. Runs through n8n (so requires the n8n container) and uses
+  the memory MCP to track yesterday's brief for delta-aware framing.
+  Advanced: schedule it as a routine to land in your inbox at 7am.
+highlights:
+  - Three connectors, one consolidated morning brief
+  - Workflow-type — n8n fans out the per-connector pulls in parallel
+  - Memory-aware — flags "still open from yesterday" items
+  - Schedulable as a routine via the Control Panel
+examples:
+  - label: Run it now
+    code: "claude /daily-briefing"
+  - label: Schedule as a 7am routine
+    code: "claude /schedule '0 7 * * *' /daily-briefing"
+
 requires_skills:
   - debrief-teacher
 requires_workflows: []

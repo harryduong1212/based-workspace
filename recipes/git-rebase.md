@@ -9,6 +9,22 @@ cost: low
 requires_human_review: true
 tags: [git, rebase, history]
 
+about: >-
+  Plans an interactive rebase: reads `git log` across the target range,
+  proposes a pick/squash/reword/drop sequence, and prints the exact commands
+  — starting with `git branch <backup>` so you have an undo. Nothing is
+  applied automatically. `requires_human_review: true`. Advanced: the recipe
+  refuses to rewrite history that's already pushed unless you confirm —
+  it's a footgun mitigator, not a footgun replicator.
+highlights:
+  - Always proposes a backup branch first — undo is one command away
+  - Refuses to silently rewrite pushed history (asks before suggesting)
+  - Prints exact `git rebase -i` todo list, not just a plan in prose
+  - Gated by human-review by design
+examples:
+  - label: Plan a rebase of the last 5 commits onto main
+    code: "claude /git-rebase target=main range=HEAD~5"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []

@@ -7,6 +7,23 @@ version: 1
 audience: tech
 cost: low
 tags: [smoke, dispatcher, agent]
+
+about: >-
+  Smoke test for the `dispatch_agent` path: spins up an agent, invokes one
+  built-in tool (current_time), and returns a one-liner. Used by validate.py
+  to confirm the agent runtime + tool wiring is alive — if this fails, no
+  agent-type recipe will work. Cheapest end-to-end check in the codebase.
+  Costs one Anthropic API call.
+highlights:
+  - One built-in tool call, one short response — minimum-viable agent path
+  - Run by validate.py — if green here, every agent-type recipe can boot
+  - Used as the canary when bumping model versions or SDK
+examples:
+  - label: Run directly
+    code: "claude /smoke-agent"
+  - label: From validate.py
+    code: "python3 scripts/validate.py 2>&1 | grep smoke"
+
 requires_skills: []
 requires_workflows: []
 requires_connectors: []
