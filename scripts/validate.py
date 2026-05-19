@@ -70,6 +70,7 @@ def main():
             "services.recipe_runtime.tests.test_assembler",
             "services.recipe_runtime.tests.test_dispatcher",
             "services.recipe_runtime.tests.test_providers",
+            "services.recipe_runtime.tests.test_agent",
         ],
         results,
     )

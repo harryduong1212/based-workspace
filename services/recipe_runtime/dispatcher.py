@@ -235,19 +235,22 @@ def dispatch_agent(
     out=None,
     http_post=None,
 ) -> str:
-    """Multi-turn agent loop against Anthropic's Messages API.
+    """Multi-turn tool-use agent loop.
 
-    Loop: send (system + history + tool catalog) → if response carries
-    tool_use blocks, invoke each, append tool_results to history, continue.
-    Stops on `stop_reason == "end_turn"`, no tool_use blocks, or
-    MAX_AGENT_ITERATIONS — whichever comes first.
+    Two wire dialects, selected by the resolved provider:
+      - `anthropic` → native Messages API (tool_use / tool_result blocks).
+      - `local` / `gemini` → OpenAI-compatible /chat/completions
+        (`tools:[{type:function}]`, `message.tool_calls`, `{role:tool}`
+        results). Gemini already rides the OpenAI shim, so local and
+        gemini share one loop.
 
-    Anthropic-only for now. Provider abstraction will come when a second
-    tool-use-capable provider matters (Gemini tool_calls have different
-    semantics; not worth the layer until needed).
+    Loop: send (system + history + tool catalog) → if the model requests
+    tools, invoke each, append the results, continue. Stops when the model
+    returns no tool calls / signals end, or after MAX_AGENT_ITERATIONS.
 
     `http_post` is an injection seam for tests: when supplied it replaces
-    the urllib call and receives `(url, headers, payload) -> response_dict`.
+    the urllib call and receives `(payload) -> response_dict` in whichever
+    wire dialect the resolved provider uses.
     """
     import sys as _sys
     out = _sys.stdout if out is None else out
@@ -258,14 +261,33 @@ def dispatch_agent(
     if not raw_model:
         raise ValueError("no model resolvable for agent dispatch")
     provider_name, model_id = parse_model_ref(raw_model)
-    if provider_name != "anthropic":
-        raise NotImplementedError(
-            f"dispatch_agent currently supports anthropic only; got provider {provider_name!r}"
-        )
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key and http_post is None:
-        raise RuntimeError("ANTHROPIC_API_KEY not set in environment")
+    # Resolve the wire dialect + transport endpoint/auth per provider. Any
+    # provider can be exercised key-free in tests via `http_post`.
+    if provider_name == "anthropic":
+        wire = "anthropic"
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        base_url = ANTHROPIC_BASE_URL
+        if not api_key and http_post is None:
+            raise RuntimeError("ANTHROPIC_API_KEY not set in environment")
+    elif provider_name == "local":
+        from .providers.local import _resolve_api_key, _resolve_base_url
+
+        wire = "openai"
+        api_key = _resolve_api_key()
+        base_url = _resolve_base_url()
+    elif provider_name == "gemini":
+        from .providers.gemini import GEMINI_BASE_URL
+
+        wire = "openai"
+        api_key = os.environ.get("GEMINI_API_KEY")
+        base_url = GEMINI_BASE_URL
+        if not api_key and http_post is None:
+            raise RuntimeError("GEMINI_API_KEY not set in environment")
+    else:
+        raise NotImplementedError(
+            f"dispatch_agent: no agent loop for provider {provider_name!r}"
+        )
 
     from .prompt_assembler import substitute_inputs
     from .agent_tools import build_tool_runtime
@@ -279,69 +301,195 @@ def dispatch_agent(
     with build_tool_runtime(fm, workspace_root=workspace_root) as runtime:
         tools = runtime.definitions
 
-        for _ in range(MAX_AGENT_ITERATIONS):
-            payload = {
-                "model": model_id,
-                "max_tokens": max_tokens,
-                # Snapshot the history so the captured payload doesn't reflect
-                # later mutations from the same iteration (matters for testing
-                # and for any http_post that retains the request).
-                "messages": list(messages),
-            }
-            if system_parts:
-                payload["system"] = "\n\n".join(system_parts)
-            if tools:
-                payload["tools"] = tools
+        if wire == "anthropic":
+            for _ in range(MAX_AGENT_ITERATIONS):
+                payload = {
+                    "model": model_id,
+                    "max_tokens": max_tokens,
+                    # Snapshot the history so the captured payload doesn't
+                    # reflect later mutations from the same iteration
+                    # (matters for testing and any http_post that retains
+                    # the request).
+                    "messages": list(messages),
+                }
+                if system_parts:
+                    payload["system"] = "\n\n".join(system_parts)
+                if tools:
+                    payload["tools"] = tools
 
-            response = _anthropic_messages(
-                api_key=api_key,
-                payload=payload,
-                http_post=http_post,
-            )
-
-            # Mirror the full assistant message back into history (tool_use
-            # blocks included) — Anthropic requires this for tool_result
-            # correlation.
-            messages.append(
-                {"role": "assistant", "content": response.get("content") or []}
-            )
-
-            tool_uses: list[dict] = []
-            for block in response.get("content") or []:
-                btype = block.get("type")
-                if btype == "text":
-                    text = block.get("text") or ""
-                    if text:
-                        accumulated.append(text)
-                        try:
-                            out.write(text)
-                            out.flush()
-                        except Exception:
-                            pass
-                elif btype == "tool_use":
-                    tool_uses.append(block)
-
-            if response.get("stop_reason") == "end_turn" or not tool_uses:
-                break
-
-            tool_results = []
-            for tu in tool_uses:
-                try:
-                    result = runtime.invoke(
-                        tu.get("name") or "", tu.get("input") or {}
-                    )
-                except Exception as e:  # noqa: BLE001 — surface error to the agent
-                    result = f"error: {type(e).__name__}: {e}"
-                tool_results.append(
-                    {
-                        "type": "tool_result",
-                        "tool_use_id": tu.get("id"),
-                        "content": result,
-                    }
+                response = _anthropic_messages(
+                    api_key=api_key,
+                    payload=payload,
+                    http_post=http_post,
                 )
-            messages.append({"role": "user", "content": tool_results})
+
+                # Mirror the full assistant message back into history
+                # (tool_use blocks included) — Anthropic requires this
+                # for tool_result correlation.
+                messages.append(
+                    {"role": "assistant", "content": response.get("content") or []}
+                )
+
+                tool_uses: list[dict] = []
+                for block in response.get("content") or []:
+                    btype = block.get("type")
+                    if btype == "text":
+                        text = block.get("text") or ""
+                        if text:
+                            accumulated.append(text)
+                            try:
+                                out.write(text)
+                                out.flush()
+                            except Exception:
+                                pass
+                    elif btype == "tool_use":
+                        tool_uses.append(block)
+
+                if response.get("stop_reason") == "end_turn" or not tool_uses:
+                    break
+
+                tool_results = []
+                for tu in tool_uses:
+                    try:
+                        result = runtime.invoke(
+                            tu.get("name") or "", tu.get("input") or {}
+                        )
+                    except Exception as e:  # noqa: BLE001 — surface to agent
+                        result = f"error: {type(e).__name__}: {e}"
+                    tool_results.append(
+                        {
+                            "type": "tool_result",
+                            "tool_use_id": tu.get("id"),
+                            "content": result,
+                        }
+                    )
+                messages.append({"role": "user", "content": tool_results})
+
+        else:
+            # OpenAI-compatible tool-use loop (covers `local` + `gemini`).
+            # Wire shape: messages are a flat [{role,content}] list;
+            # `system` is the first message; tool calls live on the
+            # assistant message as `tool_calls[{id,type,function:{name,
+            # arguments(json-string)}}]`; tool results come back as
+            # `{role:"tool",tool_call_id,content}`.
+            openai_messages: list[dict] = []
+            if system_parts:
+                openai_messages.append(
+                    {"role": "system", "content": "\n\n".join(system_parts)}
+                )
+            openai_messages.append({"role": "user", "content": user_message})
+
+            openai_tools = [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": t["name"],
+                        "description": t.get("description") or "",
+                        "parameters": t.get("input_schema")
+                        or {"type": "object", "properties": {}},
+                    },
+                }
+                for t in tools
+            ]
+
+            for _ in range(MAX_AGENT_ITERATIONS):
+                payload = {
+                    "model": model_id,
+                    "max_tokens": max_tokens,
+                    "messages": list(openai_messages),
+                    "stream": False,
+                }
+                if openai_tools:
+                    payload["tools"] = openai_tools
+
+                response = _openai_agent_post(
+                    base_url=base_url,
+                    api_key=api_key,
+                    payload=payload,
+                    http_post=http_post,
+                )
+
+                choice = (response.get("choices") or [{}])[0]
+                msg = choice.get("message") or {}
+                text = msg.get("content") or ""
+                tool_calls = msg.get("tool_calls") or []
+
+                if text:
+                    accumulated.append(text)
+                    try:
+                        out.write(text)
+                        out.flush()
+                    except Exception:
+                        pass
+
+                # Mirror the full assistant turn — content can be None when
+                # only tool_calls are returned; OpenAI requires it included
+                # for tool_call_id correlation on the next turn.
+                assistant_turn: dict = {"role": "assistant", "content": text or None}
+                if tool_calls:
+                    assistant_turn["tool_calls"] = tool_calls
+                openai_messages.append(assistant_turn)
+
+                if not tool_calls or choice.get("finish_reason") == "stop":
+                    break
+
+                for tc in tool_calls:
+                    fn = tc.get("function") or {}
+                    name = fn.get("name") or ""
+                    raw_args = fn.get("arguments")
+                    if isinstance(raw_args, str):
+                        try:
+                            args = json.loads(raw_args) if raw_args.strip() else {}
+                        except json.JSONDecodeError:
+                            args = {}
+                    elif isinstance(raw_args, dict):
+                        args = raw_args
+                    else:
+                        args = {}
+                    try:
+                        result = runtime.invoke(name, args)
+                    except Exception as e:  # noqa: BLE001 — surface to agent
+                        result = f"error: {type(e).__name__}: {e}"
+                    openai_messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tc.get("id") or "",
+                            "content": result,
+                        }
+                    )
 
     return "".join(accumulated)
+
+
+def _openai_agent_post(
+    *,
+    base_url: str,
+    api_key: str | None,
+    payload: dict,
+    http_post=None,
+) -> dict:
+    """POST one turn of the agent loop to an OpenAI-compatible
+    /chat/completions endpoint. Returns the parsed JSON response.
+
+    Used for `local` (llama-swap, Ollama, …) and `gemini` (Google's
+    OpenAI-compatible shim). `http_post` is the test seam — when given,
+    skip the network entirely and let the test supply the response shape.
+    """
+    if http_post is not None:
+        return http_post(payload)
+
+    url = base_url.rstrip("/") + "/chat/completions"
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=body, method="POST")
+    req.add_header("content-type", "application/json")
+    if api_key:
+        req.add_header("authorization", f"Bearer {api_key}")
+    try:
+        with urllib.request.urlopen(req, timeout=600) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", errors="replace")[:500]
+        raise RuntimeError(f"agent endpoint returned {e.code}: {detail}") from e
 
 
 def _anthropic_messages(*, api_key: str | None, payload: dict, http_post=None) -> dict:

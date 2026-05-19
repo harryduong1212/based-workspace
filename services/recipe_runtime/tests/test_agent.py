@@ -122,13 +122,13 @@ class DispatchAgentTest(unittest.TestCase):
         dispatch_agent(FM_BASIC, "Loop forever.", {}, http_post=http)
         self.assertLessEqual(len(captured), 10)
 
-    def test_non_anthropic_model_raises(self):
+    def test_unknown_provider_raises(self):
         with self.assertRaises(NotImplementedError):
             dispatch_agent(
-                {"execution": {"type": "agent", "model": "gemini/gemini-2.0-flash"}},
+                {"execution": {"type": "agent", "model": "imaginaryprov/x"}},
                 "hi",
                 {},
-                http_post=lambda p: _msg_text("ok"),
+                http_post=lambda p: {},
             )
 
     def test_skill_bodies_become_system_message(self):
@@ -165,6 +165,148 @@ class DispatchAgentTest(unittest.TestCase):
         )
         user_msg = captured[0]["messages"][0]["content"]
         self.assertEqual(user_msg, "Echo: hello world")
+
+
+def _openai_text(text: str, finish: str = "stop") -> dict:
+    """Build an OpenAI-shape single-message response."""
+    return {
+        "choices": [
+            {"finish_reason": finish, "message": {"role": "assistant", "content": text}}
+        ]
+    }
+
+
+def _openai_tool_call(name: str, args: dict, call_id: str = "call_1") -> dict:
+    """Build an OpenAI-shape response with a tool_call and no content."""
+    import json as _json
+    return {
+        "choices": [
+            {
+                "finish_reason": "tool_calls",
+                "message": {
+                    "role": "assistant",
+                    "content": None,
+                    "tool_calls": [
+                        {
+                            "id": call_id,
+                            "type": "function",
+                            "function": {"name": name, "arguments": _json.dumps(args)},
+                        }
+                    ],
+                },
+            }
+        ]
+    }
+
+
+FM_LOCAL = {"execution": {"type": "agent", "model": "local/gemma-3-12b"}}
+FM_GEMINI = {"execution": {"type": "agent", "model": "gemini/gemini-2.0-flash"}}
+
+
+class DispatchAgentOpenAIPathTest(unittest.TestCase):
+    """The OpenAI-compatible wire covers local (llama-swap) + gemini."""
+
+    def test_local_single_turn_text(self):
+        out = io.StringIO()
+        replies = [_openai_text("hello local")]
+
+        def http(payload):
+            return replies.pop(0)
+
+        result = dispatch_agent(FM_LOCAL, "Say hi.", {}, out=out, http_post=http)
+        self.assertEqual(result, "hello local")
+        self.assertEqual(out.getvalue(), "hello local")
+        self.assertEqual(len(replies), 0)
+
+    def test_local_tool_call_round_trip(self):
+        replies = [
+            _openai_tool_call("get_current_time", {}, call_id="call_xyz"),
+            _openai_text("done"),
+        ]
+        captured: list[dict] = []
+
+        def http(payload):
+            captured.append(payload)
+            return replies.pop(0)
+
+        result = dispatch_agent(FM_LOCAL, "Time?", {}, http_post=http)
+
+        self.assertEqual(len(captured), 2, "expected one round-trip for tool_call → tool result")
+        # First request advertises tools in OpenAI shape.
+        self.assertIn("tools", captured[0])
+        self.assertEqual(captured[0]["tools"][0]["type"], "function")
+        # Second request includes assistant tool_calls and a {role:"tool"} result.
+        second = captured[1]["messages"]
+        roles = [m["role"] for m in second]
+        self.assertEqual(roles[-2:], ["assistant", "tool"])
+        self.assertEqual(second[-1]["tool_call_id"], "call_xyz")
+        self.assertIn("T", second[-1]["content"])  # ISO 8601 separator
+        self.assertEqual(result, "done")
+
+    def test_local_unknown_tool_returns_error_to_model(self):
+        replies = [
+            _openai_tool_call("does_not_exist", {"foo": "bar"}),
+            _openai_text("ok"),
+        ]
+        captured: list[dict] = []
+
+        def http(payload):
+            captured.append(payload)
+            return replies.pop(0)
+
+        dispatch_agent(FM_LOCAL, "Try bad tool.", {}, http_post=http)
+        tool_msg = captured[1]["messages"][-1]
+        self.assertEqual(tool_msg["role"], "tool")
+        self.assertIn("unknown tool", tool_msg["content"])
+
+    def test_max_iterations_caps_openai_loop(self):
+        replies = [_openai_tool_call("get_current_time", {}) for _ in range(20)]
+        captured: list[dict] = []
+
+        def http(payload):
+            captured.append(payload)
+            return replies.pop(0)
+
+        dispatch_agent(FM_LOCAL, "Loop.", {}, http_post=http)
+        self.assertLessEqual(len(captured), 10)
+
+    def test_local_skill_bodies_become_system_message(self):
+        captured: list[dict] = []
+
+        def http(payload):
+            captured.append(payload)
+            return _openai_text("ack")
+
+        dispatch_agent(
+            FM_LOCAL,
+            "Hi.",
+            {},
+            skill_bodies=["You are concise.", "Never apologize."],
+            http_post=http,
+        )
+
+        # OpenAI wire: system is the first message, not a top-level field.
+        msgs = captured[0]["messages"]
+        self.assertEqual(msgs[0]["role"], "system")
+        self.assertIn("You are concise.", msgs[0]["content"])
+        self.assertIn("Never apologize.", msgs[0]["content"])
+
+    def test_gemini_uses_openai_wire(self):
+        # Gemini's OpenAI-compat shim → identical payload shape as local.
+        replies = [_openai_text("hello gemini")]
+
+        def http(payload):
+            return replies.pop(0)
+
+        result = dispatch_agent(FM_GEMINI, "Hi.", {}, http_post=http)
+        self.assertEqual(result, "hello gemini")
+
+    def test_gemini_without_key_or_http_post_raises(self):
+        # Real network attempt must require GEMINI_API_KEY.
+        with patch.dict("os.environ", {}, clear=True):
+            with self.assertRaises(RuntimeError) as ctx:
+                dispatch_agent(FM_GEMINI, "Hi.", {})
+            self.assertIn("GEMINI_API_KEY", str(ctx.exception))
 
 
 if __name__ == "__main__":
