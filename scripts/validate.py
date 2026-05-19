@@ -120,6 +120,7 @@ def main():
             "scripts.tests.test_recipe_manager",
             "scripts.tests.test_connector_manager",
             "scripts.tests.test_cross_link",
+            "scripts.tests.test_recipe_replay",
         ],
         results,
     )
