@@ -1,7 +1,8 @@
 # Design: `assess-workspace` recipe + `workspace-state-assessment` skill
 
 - **Date:** 2026-05-19
-- **Status:** Approved design — ready for implementation planning
+- **Status:** Revised — pending re-approval (per-doc templates + hybrid
+  deep mode added 2026-05-19, superseding the prior lean-only approval)
 - **Author:** brainstormed with the workspace owner
 
 ## Problem
@@ -28,13 +29,14 @@ mutation of the codebase. The recipe surfaces; the human acts.
 
 ## Components & boundaries
 
-Three units, each with one clear purpose:
+Units, each with one clear purpose (the last is conditionally active):
 
 | Unit | Purpose | Depends on |
 |---|---|---|
-| `recipes/assess-workspace.md` | Executable orchestration shell. Dispatches the agent, declares inputs/outputs, pulls in the skills. No judgement logic of its own. | the two skills below |
+| `recipes/assess-workspace.md` | Executable orchestration shell. Dispatches the agent, declares inputs/outputs, pulls in the skills. No judgement logic of its own. | the skills below |
 | `workspace-state-assessment` skill (new) | The methodology: the four-phase protocol, the detection heuristic catalog, the doc/ownership/drift contract, the gap taxonomy + severity rubric, the optional goal-lens. | nothing (self-contained prose) |
 | `env-config` skill (existing, reused) | Supplies the security-axis rubric (.env hygiene, `.env.example` completeness, secret-handling, CI secret exposure) so the security doc does not restate it. | nothing |
+| `codebase-cleanup-deps-audit` + `security-audit` skills (existing, reused; **deep mode only**) | Supply the real vulnerability / supply-chain / tech-debt pass that `security.md` + `next-steps.md` perform when `depth: deep`. Inert in `lean` mode (loaded into context but the new skill's prose forbids invoking their methodology). | nothing |
 
 **Recipe frontmatter (shape, not final wording):**
 
@@ -50,7 +52,8 @@ status: experimental
 cost: low
 requires_human_review: false
 tags: [assessment, documentation, planning, security]
-requires_skills: [workspace-state-assessment, env-config]
+requires_skills: [workspace-state-assessment, env-config,
+  codebase-cleanup-deps-audit, security-audit]
 requires_workflows: []
 requires_connectors: []
 requires_mcp: []
@@ -68,6 +71,15 @@ inputs:
     type: string
     required: false
     description: Output directory for the doc set. Defaults to docs/workspace-state/.
+  - name: depth
+    type: string
+    required: false
+    description: >-
+      "lean" (default) or "deep". lean = single-pass heuristic assessment.
+      deep = additionally run codebase-cleanup-deps-audit + security-audit
+      against security.md and next-steps.md for a real vulnerability /
+      supply-chain / tech-debt pass. Any value other than "deep" is treated
+      as "lean".
 outputs:
   - name: docs
     type: markdown
@@ -132,6 +144,35 @@ exhaust its iteration budget on a large, unfamiliar repo.
    because the thin synthesis depends on the finished content docs and the
    top next-steps items.
 
+## Depth modes (`depth` input)
+
+One recipe, two cost tiers — chosen over two near-duplicate recipes.
+
+- **`lean` (default).** The four-phase protocol exactly as above. Pure
+  heuristic inspection. `security.md` uses only the `env-config` rubric.
+  `next-steps.md` is gap-driven from the taxonomy. Fast; safe to schedule
+  as a recurring Routine.
+- **`deep`.** Adds a vulnerability/supply-chain/tech-debt pass *after*
+  Phase 2 and feeding Phase 4: the agent applies `codebase-cleanup-deps-audit`
+  (dependency CVEs, license/supply-chain risk) and `security-audit` (broader
+  exposure) to enrich `security.md` and to add evidence-backed items to
+  `next-steps.md`. Slower and more token-intensive; run on demand.
+
+**Gating mechanism.** `requires_skills` loads all four skill bodies into
+the agent context on *every* run — the runtime has no conditional
+skill-loading. So the gate is **prose-level, in the new skill**: the
+`workspace-state-assessment` skill states that `codebase-cleanup-deps-audit`
+and `security-audit` are to be invoked *only* when `depth == "deep"`, and in
+`lean` mode their presence in context must be ignored. Determinism of the
+gate therefore rests on prompt adherence, not on the runtime — called out
+again under Open risks.
+
+**Mode echo.** Both `security.md` and `next-steps.md` record which mode
+produced them (e.g. a `mode: deep` line inside the owned section) so a
+reader can never mistake a lean pass for a deep one, and so the drift
+section can flag a lean→deep or deep→lean transition rather than
+misreporting it as content drift.
+
 ## Doc ownership contract (the "nothing is off" mechanism)
 
 Every doc has the same skeleton:
@@ -158,6 +199,42 @@ Agent contract, enforced by the skill prose:
   `## Pre-existing (unmanaged)` heading and add a fresh managed block above
   it. This non-destructive rule is the core safety guarantee.
 
+### Per-doc owned-section templates
+
+The owned/drift/notes wrapper above is identical for all six docs. What
+differs is the **inner shape of the owned section**, which is *prescribed
+per doc by the new skill's prose* — not shipped as template files (a
+portable recipe must not litter skeleton files into arbitrary target
+repos; embedding the templates in the skill also versions them with the
+methodology that reads them back for drift).
+
+A fixed inner shape per doc is not cosmetic — it is what makes Phase-3
+drift detection reliable: diffing two runs of a known table/section
+structure isolates *substantive* change, whereas diffing free prose
+mostly surfaces rewording noise.
+
+Prescribed inner shapes (authored in the skill, summarized here):
+
+- **`overview.md`** — one-paragraph "what this is" · maturity read ·
+  "top 3 that matter" list · index table linking the other five docs.
+  Hard length cap restated (≤ ~40 lines / ~300 words).
+- **`features.md`** — capability table grouped by area; columns:
+  capability · kind (user-facing/internal) · evidence (entrypoint/route/
+  command/module).
+- **`tech-stack.md`** — fixed subsections: Languages · Frameworks &
+  libraries · Build & tooling · Structure note (top-level layout). No
+  architecture subsection (axis deliberately cut).
+- **`infrastructure.md`** — fixed subsections: Runtime · Containers/IaC ·
+  CI/CD · Services & data stores · Deployment surface.
+- **`security.md`** — `env-config` rubric headings verbatim, plus a
+  `mode:` line and (in deep mode) a "Vulnerability & supply-chain" block.
+- **`next-steps.md`** — `mode:` line · severity-ordered list rendered per
+  the taxonomy below · optional "Toward your goal" section.
+
+The skill states these as canonical examples the agent fills in; an
+absent doc is created from its template, an existing one has only its
+owned block rewritten to match.
+
 ## next-steps.md gap taxonomy
 
 Severity words intentionally match the `comprehensive-review` vocabulary for
@@ -173,6 +250,22 @@ cross-artifact consistency, **without** importing that skill.
 Each item renders as:
 `[severity] title — evidence: <fact or file> — suggested action`,
 ordered by severity descending, then by domain.
+
+## Considered and rejected reuse
+
+The catalog was surveyed for skills covering the same axes. Recorded here
+so this is not re-litigated:
+
+| Skill(s) | Why not reused |
+|---|---|
+| `wiki-architect`, `wiki-onboarding`, `c4-architecture` / `c4-context` / `c4-code` | Each imposes its **own** output structure (wiki catalogue, C4 diagram set). That fights the fixed per-doc owned-section shape the drift contract depends on. `c4-*` would also reintroduce the standalone architecture artifact deliberately cut as low-signal for a portable heuristic scan. |
+| `plan-writing` | Produces a dependency-ordered task plan; `next-steps.md` is a flat severity-ranked gap list. Wrong shape; would distort the artifact. |
+| `comprehensive-review-full-review` | Severity **vocabulary** is matched intentionally for cross-artifact consistency, but the skill itself is not imported — pulling it in would drag a full code-review methodology into a state-assessment task. |
+| `production-code-audit`, `codebase-audit-pre-push`, `codebase-cleanup-tech-debt` | Overlap the `deep` pass but are heavier/slower than needed; `codebase-cleanup-deps-audit` + `security-audit` were chosen as the leanest pair that still yields evidence-backed vulnerability/tech-debt findings. The others remain a future "deeper tier" option, not now (YAGNI). |
+
+Reused: `env-config` (all modes); `codebase-cleanup-deps-audit` +
+`security-audit` (`deep` only). Net new: the `workspace-state-assessment`
+skill + the `assess-workspace` recipe.
 
 ## Error handling & boundaries
 
@@ -202,7 +295,11 @@ otherwise.
   self-contained, provider-neutral, second-person/imperative, no first
   person, within the body-size norms other skills follow.
 - A `python scripts/recipe_manager.py run assess-workspace --dry-run`
-  smoke confirms the envelope assembles and both skills load.
+  smoke confirms the envelope assembles and **all four** skills load
+  (`workspace-state-assessment`, `env-config`, `codebase-cleanup-deps-audit`,
+  `security-audit`).
+- Functional confidence additionally requires one live `depth: deep` run
+  reviewed by hand — `lean` correctness does not exercise the gated path.
 - `validate.py` stays at its current check count — **no new code-test row**
   is added, because there is no new code module to test.
 - Functional confidence comes from one live agent run against this
@@ -218,3 +315,14 @@ otherwise.
 - `documentation-planning` is the chosen skill category; if a reviewer
   prefers `quality-documentation`, that is a cheap relocation, not a design
   change.
+- **Deep-skill context cost on lean runs.** `requires_skills` is static, so
+  `codebase-cleanup-deps-audit` + `security-audit` bodies occupy context on
+  every `lean` run even though unused. Accepted: the UX of one recipe with a
+  `depth` switch beats two near-duplicate recipes, and the bodies are
+  bounded by the existing skill body-size norm.
+- **Prose-only deep-mode gate.** The `lean`/`deep` boundary is enforced by
+  skill prompt instructions, not the runtime. A model could in principle
+  invoke the deep skills on a `lean` run. Mitigation: the new skill states
+  the gate as a hard precondition and `security.md`/`next-steps.md` echo the
+  `mode:` they ran under, so a mis-gated run is at least visible in the
+  artifact rather than silent.
