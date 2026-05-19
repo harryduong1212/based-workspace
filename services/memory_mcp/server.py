@@ -13,7 +13,7 @@ running yet — useful for `validate.py` and tests.
 Environment knobs (all optional; sensible local defaults):
   QDRANT_HOST      default localhost
   QDRANT_PORT      default 6333
-  MEMORY_LLM_BASE  default http://localhost:8083/v1  (llama-swap)
+  MEMORY_LLM_BASE  default http://localhost:11434/v1  (llama-swap)
   MEMORY_LLM_MODEL default gemma-3-4b
   MEMORY_EMBED_MODEL default bge-small-en-v1.5
   MEMORY_USER_ID   default "default"  — single-user; ignored if caller supplies
@@ -50,7 +50,7 @@ def _default_config() -> dict[str, Any]:
             "config": {
                 "model": os.environ.get("MEMORY_LLM_MODEL", "gemma-3-4b"),
                 "openai_base_url": os.environ.get(
-                    "MEMORY_LLM_BASE", "http://localhost:8083/v1"
+                    "MEMORY_LLM_BASE", "http://localhost:11434/v1"
                 ),
                 "api_key": os.environ.get("MEMORY_LLM_KEY", "local-no-auth"),
             },
@@ -60,7 +60,7 @@ def _default_config() -> dict[str, Any]:
             "config": {
                 "model": os.environ.get("MEMORY_EMBED_MODEL", "bge-small-en-v1.5"),
                 "openai_base_url": os.environ.get(
-                    "MEMORY_EMBED_BASE", "http://localhost:8083/v1"
+                    "MEMORY_EMBED_BASE", "http://localhost:11434/v1"
                 ),
                 "api_key": os.environ.get("MEMORY_EMBED_KEY", "local-no-auth"),
             },
