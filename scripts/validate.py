@@ -103,6 +103,17 @@ def main():
         results,
     )
     _run_check(
+        "Skill Discovery MCP tests",
+        [
+            py, "-m", "unittest",
+            "services.skill_discovery_mcp.tests.test_indexer",
+            "services.skill_discovery_mcp.tests.test_embedder",
+            "services.skill_discovery_mcp.tests.test_store",
+            "services.skill_discovery_mcp.tests.test_server",
+        ],
+        results,
+    )
+    _run_check(
         "Scripts package tests",
         [
             py, "-m", "unittest",

@@ -47,6 +47,35 @@
         }
       ]
     },
+    "skill-discovery": {
+      "command": "./scripts/with-env.sh",
+      "args": ["python3", "-m", "services.skill_discovery_mcp"],
+      "cwd": "/home/harry/Workspace/Personal/Vibe/based-workspace",
+      "_description": "Semantic search over `.archived/skills/<cat>/<skill>/SKILL.md`. Tools: find_skills (top-k nearest), skill_index_stats (collection size). Run `python3 -m services.skill_discovery_mcp reindex` once after install to populate the Qdrant collection.",
+      "_docs": "https://github.com/harryduong1212/based-workspace/blob/master/services/skill_discovery_mcp/",
+      "_requires": ["qdrant", "llama-swap"],
+      "_about": "Embeds every SKILL.md in the workspace's skill library (~130 entries) into a Qdrant collection (`based_skills`) using bge-small-en-v1.5 via llama-swap. Agents call `find_skills(query, k=5)` to pull the most relevant skill bodies for the current task — replaces hand-curated `requires_skills` lists in recipes. Shares the same Qdrant container as `memory` but a separate collection. Brute-force search (no ivfflat) because 130 points is well under the threshold where indexes help. Install copies this entry into `.mcp.json` and runs a spawn-test; the agent must run `reindex` once before the first search returns anything.",
+      "_highlights": [
+        "Discovers skills semantically — no manual `requires_skills` curation needed",
+        "Shares Qdrant + llama-swap with the `memory` MCP — no extra containers",
+        "Brute-force nearest-neighbor over ~130 SKILL.md files (collection `based_skills`)",
+        "Two tools: `find_skills(query, k=5)` and `skill_index_stats()`"
+      ],
+      "_examples": [
+        {
+          "label": "Populate the index (one-time after install)",
+          "code": "python3 -m services.skill_discovery_mcp reindex"
+        },
+        {
+          "label": "Search from CLI",
+          "code": "claude mcp call skill-discovery__find_skills --query 'how do I write a FastAPI endpoint with auth' --k 5"
+        },
+        {
+          "label": "Inspect collection size",
+          "code": "claude mcp call skill-discovery__skill_index_stats"
+        }
+      ]
+    },
     "memory": {
       "command": "./scripts/with-env.sh",
       "args": ["python3", "-m", "services.memory_mcp"],
