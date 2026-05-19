@@ -72,33 +72,6 @@ services:
     networks:
       - based-workspace-net
 
-  # Optional: MCP Inspector diagnostics UI for n8n workflows.
-  # Separate profile so it doesn't activate with the n8n-atom profile by default.
-  # Bring up with `--profile mcp-inspector` (and ensure external/mcp-inspector-atom8n exists).
-  mcp-inspector:
-    image: based-workspace/mcp-inspector:latest
-    build:
-      context: ../../external/mcp-inspector-atom8n
-      dockerfile: Dockerfile
-    container_name: mcp-inspector-dev
-    profiles:
-      - "mcp-inspector"
-    ports:
-      - "6274:6274"
-      - "6277:6277"
-    environment:
-      - HOST=0.0.0.0
-      - CLIENT_PORT=6274
-      - SERVER_PORT=6277
-      - N8N_API_URL=http://n8n-atom:5678
-      - N8N_API_KEY=${N8N_API_KEY:-}
-    env_file:
-      - ../../.env
-    depends_on:
-      - n8n-atom
-    networks:
-      - based-workspace-net
-
   # Vector store for the `memory` MCP (mem0 backend). Activates under the
   # `qdrant` profile so users who never install the memory feature don't
   # pay the container cost.

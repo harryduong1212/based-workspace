@@ -50,9 +50,9 @@ This mode is for **developers** who want to manage secrets, lifecycle hooks, and
 ### 1. Prerequisites
 A container engine, **Python 3.8+**, and **Git**. Allocate **8GB+ RAM** to your container engine.
 
-### 2. Building from source (currently unsupported in-repo)
+### 2. Building from source (out of repo)
 
-The `infrastructure/core/` compose pulls the upstream `docker.io/atom8n/n8n:fork` image directly — **no local n8n build step is needed**. The legacy `scripts/build_n8n_atom.py` pipeline used to compile both n8n-atom and the MCP Inspector from `external/*` submodules; those submodules have been removed, so the script and the `mcp-inspector` compose profile are non-functional. If you need to build either image from source, clone the upstream repos manually and follow their READMEs:
+The `infrastructure/core/` compose pulls the upstream `docker.io/atom8n/n8n:fork` image directly — **no in-repo build step is needed**. If you need to build either image from source, clone the upstream repos and follow their READMEs:
 
 - `n8n-atom` — <https://github.com/harryduong1212/n8n-atom>
 - `mcp-inspector-atom8n` — <https://github.com/khanh-atom/mcp-inspector-atom8n>

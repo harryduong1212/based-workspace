@@ -176,9 +176,9 @@ jobs:
           echo "console.log('Prepare skipped (CI build)')" > scripts/prepare.mjs
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm run build:n8n
-        # ↑ This is the SAME build process as your local script
-        # (build_n8n_atom.py), but running directly on the GitHub
-        # runner instead of inside a container.
+        # ↑ Same build process as the n8n-atom repo's own local build,
+        # but running directly on the GitHub runner instead of inside
+        # a container.
         #
         # The runner already has Node.js installed, so we don't
         # need a container-in-a-container.
