@@ -50,6 +50,10 @@ first person, within the body-size norm of other skills:
    owned-section templates").
 5. The **gap taxonomy + severity rubric** (critical/high/medium/low
    triggers; `[severity] title — evidence — action` render; ordering).
+5b. The **inlined lean-mode security rubric** (secret/env hygiene ·
+   `.env.example` completeness · secret-handling · CI secret exposure) —
+   `env-config` is a recipe, not a loadable skill, so its rubric lives
+   here, not in `requires_skills`.
 6. The **depth gate**: `codebase-cleanup-deps-audit` + `security-audit` are
    invoked **only** when `depth == "deep"`; in `lean` their presence in
    context must be ignored; `security.md`/`next-steps.md` echo a `mode:`
@@ -73,8 +77,9 @@ Add an entry to `.archived/skills/documentation-planning/registry.json`
 **File:** `recipes/assess-workspace.md`
 
 Frontmatter exactly as the spec's "Recipe frontmatter" block, including:
-`requires_skills: [workspace-state-assessment, env-config,
-codebase-cleanup-deps-audit, security-audit]`, the four inputs (`scope`,
+`requires_skills: [workspace-state-assessment,
+codebase-cleanup-deps-audit, security-audit]` (NOT env-config — it is a
+recipe, not a skill; would fail lint), the four inputs (`scope`,
 `goal`, `out_dir`, `depth`), the `docs` output, `execution.type: agent`
 with **no `model:`** (portability), `requires_human_review: false`.
 
@@ -96,11 +101,11 @@ In order:
 
 ## Step 5 — Lint + validate
 
-1. `python scripts/recipe_manager.py lint` (expect clean — the four
-   `requires_skills` must all resolve; this is the first place a typo'd
+1. `python scripts/recipe_manager.py lint` (expect clean — all three
+   `requires_skills` must resolve; this is the first place a typo'd
    skill id or unregistered skill surfaces).
 2. `python scripts/recipe_manager.py run assess-workspace --dry-run` —
-   confirms the envelope assembles and **all four** skill bodies load.
+   confirms the envelope assembles and **all three** skill bodies load.
 3. `python scripts/validate.py` — full suite. Expectation: **16/16, check
    count unchanged** (no new code-test row; spec is explicit about this).
    Any FAIL here is a sync step missed in Step 4 or a lint issue in Step 5.1.

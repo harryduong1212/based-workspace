@@ -2,7 +2,8 @@
 
 - **Date:** 2026-05-19
 - **Status:** Approved (2026-05-19, incl. per-doc templates + hybrid deep
-  mode) — implementation plan at
+  mode; `env-config` corrected skill→recipe, its rubric inlined) —
+  implementation plan at
   `docs/superpowers/plans/2026-05-19-assess-workspace-plan.md`
 - **Author:** brainstormed with the workspace owner
 
@@ -35,8 +36,7 @@ Units, each with one clear purpose (the last is conditionally active):
 | Unit | Purpose | Depends on |
 |---|---|---|
 | `recipes/assess-workspace.md` | Executable orchestration shell. Dispatches the agent, declares inputs/outputs, pulls in the skills. No judgement logic of its own. | the skills below |
-| `workspace-state-assessment` skill (new) | The methodology: the four-phase protocol, the detection heuristic catalog, the doc/ownership/drift contract, the gap taxonomy + severity rubric, the optional goal-lens. | nothing (self-contained prose) |
-| `env-config` skill (existing, reused) | Supplies the security-axis rubric (.env hygiene, `.env.example` completeness, secret-handling, CI secret exposure) so the security doc does not restate it. | nothing |
+| `workspace-state-assessment` skill (new) | The methodology: the four-phase protocol, the detection heuristic catalog, the doc/ownership/drift contract, the gap taxonomy + severity rubric, **the lean-mode security/env-hygiene rubric** (inlined — `env-config` is a *recipe*, not a loadable skill), the optional goal-lens. | nothing (self-contained prose) |
 | `codebase-cleanup-deps-audit` + `security-audit` skills (existing, reused; **deep mode only**) | Supply the real vulnerability / supply-chain / tech-debt pass that `security.md` + `next-steps.md` perform when `depth: deep`. Inert in `lean` mode (loaded into context but the new skill's prose forbids invoking their methodology). | nothing |
 
 **Recipe frontmatter (shape, not final wording):**
@@ -53,7 +53,7 @@ status: experimental
 cost: low
 requires_human_review: false
 tags: [assessment, documentation, planning, security]
-requires_skills: [workspace-state-assessment, env-config,
+requires_skills: [workspace-state-assessment,
   codebase-cleanup-deps-audit, security-audit]
 requires_workflows: []
 requires_connectors: []
@@ -115,7 +115,7 @@ Written under `out_dir` (default `docs/workspace-state/`):
    heuristic scan.
 4. **`infrastructure.md`** — runtime, containers, IaC, CI/CD, services, data
    stores, deployment surface.
-5. **`security.md`** — produced via the `env-config` rubric: secret/env
+5. **`security.md`** — produced via the skill's inlined security rubric: secret/env
    hygiene, `.env.example` completeness, dependency risk, exposure.
 6. **`next-steps.md`** — gap-driven, severity-ranked action list (taxonomy
    below), plus an optional "Toward your goal" section when `goal` is given.
@@ -134,7 +134,7 @@ exhaust its iteration budget on a large, unfamiliar repo.
    manifest — the doc set is the only output).
 2. **Classify.** Map the inventory into the four content domains and draft
    the owned-section content for `features.md`, `tech-stack.md`,
-   `infrastructure.md`, `security.md` (security via the `env-config` rubric).
+   `infrastructure.md`, `security.md` (security via the skill's inlined rubric).
 3. **Reconcile / drift.** For each content doc that already exists, read its
    current owned section, diff against the Phase-2 draft, and produce a
    dated "Drift since last run" entry describing what changed in reality.
@@ -150,7 +150,7 @@ exhaust its iteration budget on a large, unfamiliar repo.
 One recipe, two cost tiers — chosen over two near-duplicate recipes.
 
 - **`lean` (default).** The four-phase protocol exactly as above. Pure
-  heuristic inspection. `security.md` uses only the `env-config` rubric.
+  heuristic inspection. `security.md` uses only the skill's inlined rubric.
   `next-steps.md` is gap-driven from the taxonomy. Fast; safe to schedule
   as a recurring Routine.
 - **`deep`.** Adds a vulnerability/supply-chain/tech-debt pass *after*
@@ -159,7 +159,7 @@ One recipe, two cost tiers — chosen over two near-duplicate recipes.
   exposure) to enrich `security.md` and to add evidence-backed items to
   `next-steps.md`. Slower and more token-intensive; run on demand.
 
-**Gating mechanism.** `requires_skills` loads all four skill bodies into
+**Gating mechanism.** `requires_skills` loads all three skill bodies into
 the agent context on *every* run — the runtime has no conditional
 skill-loading. So the gate is **prose-level, in the new skill**: the
 `workspace-state-assessment` skill states that `codebase-cleanup-deps-audit`
@@ -227,8 +227,10 @@ Prescribed inner shapes (authored in the skill, summarized here):
   architecture subsection (axis deliberately cut).
 - **`infrastructure.md`** — fixed subsections: Runtime · Containers/IaC ·
   CI/CD · Services & data stores · Deployment surface.
-- **`security.md`** — `env-config` rubric headings verbatim, plus a
-  `mode:` line and (in deep mode) a "Vulnerability & supply-chain" block.
+- **`security.md`** — the skill's inlined security-rubric headings
+  (secret/env hygiene · `.env.example` completeness · secret-handling ·
+  CI secret exposure), plus a `mode:` line and (in deep mode) a
+  "Vulnerability & supply-chain" block.
 - **`next-steps.md`** — `mode:` line · severity-ordered list rendered per
   the taxonomy below · optional "Toward your goal" section.
 
@@ -264,9 +266,12 @@ so this is not re-litigated:
 | `comprehensive-review-full-review` | Severity **vocabulary** is matched intentionally for cross-artifact consistency, but the skill itself is not imported — pulling it in would drag a full code-review methodology into a state-assessment task. |
 | `production-code-audit`, `codebase-audit-pre-push`, `codebase-cleanup-tech-debt` | Overlap the `deep` pass but are heavier/slower than needed; `codebase-cleanup-deps-audit` + `security-audit` were chosen as the leanest pair that still yields evidence-backed vulnerability/tech-debt findings. The others remain a future "deeper tier" option, not now (YAGNI). |
 
-Reused: `env-config` (all modes); `codebase-cleanup-deps-audit` +
-`security-audit` (`deep` only). Net new: the `workspace-state-assessment`
-skill + the `assess-workspace` recipe.
+Reused: `codebase-cleanup-deps-audit` + `security-audit` (`deep` only).
+**Not reused — `env-config`:** it is a *recipe*, not a loadable skill, so
+it cannot appear in `requires_skills`; its lean security/env-hygiene
+rubric is inlined into the new skill instead (the standalone `env-config`
+recipe remains for users wanting a dedicated env audit). Net new: the
+`workspace-state-assessment` skill + the `assess-workspace` recipe.
 
 ## Error handling & boundaries
 
@@ -296,8 +301,8 @@ otherwise.
   self-contained, provider-neutral, second-person/imperative, no first
   person, within the body-size norms other skills follow.
 - A `python scripts/recipe_manager.py run assess-workspace --dry-run`
-  smoke confirms the envelope assembles and **all four** skills load
-  (`workspace-state-assessment`, `env-config`, `codebase-cleanup-deps-audit`,
+  smoke confirms the envelope assembles and **all three** skills load
+  (`workspace-state-assessment`, `codebase-cleanup-deps-audit`,
   `security-audit`).
 - Functional confidence additionally requires one live `depth: deep` run
   reviewed by hand — `lean` correctness does not exercise the gated path.
