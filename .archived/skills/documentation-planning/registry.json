@@ -51,6 +51,29 @@
         "curl"
       ],
       "mcp_tools": []
+    },
+    {
+      "id": "workspace-state-assessment",
+      "description": "Heuristically assess any repository — features, tech stack, infrastructure, security — into a maintained six-doc set plus a prioritized next-steps list, with drift surfaced on re-run.",
+      "path": "workspace-state-assessment/SKILL.md",
+      "tags": [
+        "assessment",
+        "documentation",
+        "planning",
+        "security",
+        "drift"
+      ],
+      "trigger_conditions": [
+        "Assess the current state of a workspace or repository",
+        "Produce a maintained overview / features / tech-stack / infrastructure / security doc set",
+        "Determine prioritized next steps for a project"
+      ],
+      "anti_triggers": [
+        "Mutating the codebase",
+        "Single-file review"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
     }
   ]
 }

@@ -215,3 +215,6 @@ Use @security-scanning-security-hardening to harden application security
 - `wordpress` - WordPress security
 - `cloud-devops` - Cloud security
 - `testing-qa` - Security testing
+
+## Used by recipes
+- `assess-workspace`

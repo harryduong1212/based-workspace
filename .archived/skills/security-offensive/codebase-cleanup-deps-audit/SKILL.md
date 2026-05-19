@@ -52,3 +52,6 @@ $ARGUMENTS
 ## Resources
 
 - `resources/implementation-playbook.md` for detailed tooling and templates.
+
+## Used by recipes
+- `assess-workspace`

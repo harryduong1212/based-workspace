@@ -26,6 +26,7 @@ See the [Recipe Spec](../RECIPE_SPEC.md) for how recipes are written.
 
 | Recipe | Description | Status | Tags |
 |---|---|---|---|
+| [Assess Workspace State](assess-workspace.md) | Heuristically assess any repository — features, tech stack, infrastructure, security — into a maintained six-doc set plus a prioritized next-steps list, with drift surfaced on re-run. | experimental | assessment, documentation, planning, security |
 | [Code Review](code-review.md) | Run a multi-dimensional code review (security, bugs, architecture, tests, readability, performance) over the current branch's diff or a specified file set. | experimental | code-review, quality, security |
 | [Environment Config Audit](env-config.md) | Audit and tighten the project's environment-variable setup — .env hygiene, .env.example completeness, validation on startup, and CI/CD secret handling. | experimental | env, secrets, configuration |
 | [Git Commit](git-commit.md) | Group staged changes into logical commits and draft Conventional Commits messages, ready to apply. | experimental | git, commit, conventional-commits |

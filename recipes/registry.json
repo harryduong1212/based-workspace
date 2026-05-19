@@ -3,6 +3,20 @@
   "type": "recipe_registry",
   "recipes": [
     {
+      "id": "assess-workspace",
+      "name": "Assess Workspace State",
+      "description": "Heuristically assess any repository \u2014 features, tech stack, infrastructure, security \u2014 into a maintained six-doc set plus a prioritized next-steps list, with drift surfaced on re-run.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "assessment",
+        "documentation",
+        "planning",
+        "security"
+      ],
+      "path": "recipes/assess-workspace.md"
+    },
+    {
       "id": "code-review",
       "name": "Code Review",
       "description": "Run a multi-dimensional code review (security, bugs, architecture, tests, readability, performance) over the current branch's diff or a specified file set.",
