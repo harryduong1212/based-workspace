@@ -1,8 +1,9 @@
 # Design: `assess-workspace` recipe + `workspace-state-assessment` skill
 
 - **Date:** 2026-05-19
-- **Status:** Revised — pending re-approval (per-doc templates + hybrid
-  deep mode added 2026-05-19, superseding the prior lean-only approval)
+- **Status:** Approved (2026-05-19, incl. per-doc templates + hybrid deep
+  mode) — implementation plan at
+  `docs/superpowers/plans/2026-05-19-assess-workspace-plan.md`
 - **Author:** brainstormed with the workspace owner
 
 ## Problem
