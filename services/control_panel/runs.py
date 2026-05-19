@@ -186,10 +186,14 @@ def start_run(
                 skill_ids = list(fm.get("requires_skills") or [])
                 skill_bodies = rm._load_skill_bodies(skill_ids)
                 # Honor model_ref override from the UI/Routine layer.
+                # NB: bind a new name — assigning to `fm` here would make it
+                # a `_worker` local, so the prompt branch's earlier read of
+                # the closed-over `fm` would raise UnboundLocalError.
+                fm_eff = fm
                 if model_ref:
-                    fm = {**fm, "execution": {**(fm.get("execution") or {}), "model": model_ref}}
+                    fm_eff = {**fm, "execution": {**(fm.get("execution") or {}), "model": model_ref}}
                 dispatch_agent(
-                    fm,
+                    fm_eff,
                     agent_section,
                     inputs,
                     workspace_root=str(cfg.workspace_root),
