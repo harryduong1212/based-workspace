@@ -1,0 +1,21 @@
+version: 1
+cases:
+- name: test-prompt-9565fd163d5d
+  recipe_id: test-prompt
+  model: null
+  source_run_id: 9565fd163d5d
+  inputs:
+    phrase: regression-canary
+  thresholds:
+    min_jaccard: 0.5
+  reference:
+    output: '<regression-canary>
+
+      '
+    metrics:
+      char_len: 20
+      line_count: 1
+      word_count: 2
+      headings: []
+      code_blocks: 0
+      errored: false
