@@ -100,21 +100,36 @@ export function ComponentsView({ features }: { features: Feature[] }) {
   const q = query.trim().toLowerCase();
   const searching = q.length > 0;
 
+  // Smoke recipes are dispatcher fixtures, not user-facing tasks — always
+  // hide them on this page. The Recipes page has an opt-in toggle for
+  // intentional browsing.
+  const visible = useMemo(
+    () =>
+      features.filter(
+        (f) =>
+          !(
+            f.kind === "recipe" &&
+            ((f.detail?.tags as string[] | undefined) ?? []).includes("smoke")
+          ),
+      ),
+    [features],
+  );
+
   const filtered = useMemo(
     () =>
       searching
-        ? features.filter((f) =>
+        ? visible.filter((f) =>
             `${f.id} ${f.name} ${f.description} ${f.kind}`
               .toLowerCase()
               .includes(q),
           )
-        : features,
-    [features, q, searching],
+        : visible,
+    [visible, q, searching],
   );
 
   const grouped = groupByKind(filtered);
-  const totalInstalled = features.filter((f) => f.status === "installed").length;
-  const totalCount = features.length;
+  const totalInstalled = visible.filter((f) => f.status === "installed").length;
+  const totalCount = visible.length;
 
   return (
     <div className="space-y-6">
