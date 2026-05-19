@@ -89,6 +89,7 @@ def main():
             "services.control_panel.tests.test_features_install_jobs",
             "services.control_panel.tests.test_bootstrap_script",
             "services.control_panel.tests.test_runs_redaction",
+            "services.control_panel.tests.test_recipes_cache",
         ],
         results,
     )
