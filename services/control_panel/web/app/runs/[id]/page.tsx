@@ -61,7 +61,7 @@ export default function RunViewPage({ params }: { params: Promise<{ id: string }
   return (
     <div className="space-y-6">
       <nav className="text-sm">
-        <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-300">Recipes</Link>
+        <Link href="/recipes" className="hover:text-zinc-700 dark:hover:text-zinc-300">Recipes</Link>
         <span className="mx-1.5 text-zinc-400">/</span>
         <Link href={`/recipes/${run.recipe_id}`} className="hover:text-zinc-700 dark:hover:text-zinc-300">
           {run.recipe_id}
