@@ -1,7 +1,7 @@
 # Design: `plan-application` recipe + `application-blueprint` skill
 
 - **Date:** 2026-05-21
-- **Status:** Approved design — pending implementation plan
+- **Status:** Approved — implemented 2026-05-21
 - **Author:** brainstormed with the workspace owner
 
 ## Problem

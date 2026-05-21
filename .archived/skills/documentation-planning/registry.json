@@ -74,6 +74,29 @@
       ],
       "dependencies": [],
       "mcp_tools": []
+    },
+    {
+      "id": "application-blueprint",
+      "description": "Turn a raw application idea into a complete design dossier — vision, architecture, core domain, tech stack, infrastructure, security, feature roadmap, test strategy, and ADRs — ready to hand off to a per-feature pipeline.",
+      "path": "application-blueprint/SKILL.md",
+      "tags": [
+        "planning",
+        "architecture",
+        "design",
+        "application",
+        "adr"
+      ],
+      "trigger_conditions": [
+        "Plan or design a brand-new application from a raw idea",
+        "Produce app-level architecture / core-domain / roadmap artifacts",
+        "Generate an application design dossier before per-feature work"
+      ],
+      "anti_triggers": [
+        "Designing a single feature within an existing app",
+        "Writing application or scaffold code"
+      ],
+      "dependencies": [],
+      "mcp_tools": []
     }
   ]
 }

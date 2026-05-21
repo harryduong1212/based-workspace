@@ -110,6 +110,20 @@
       "path": "recipes/git-rebase.md"
     },
     {
+      "id": "plan-application",
+      "name": "Plan a New Application",
+      "description": "Turn a raw application idea into a complete, reviewable design dossier \u2014 vision, architecture, core domain, tech stack, infrastructure, security, feature roadmap, test strategy, and ADRs \u2014 ready to hand off to the per-feature pipeline.",
+      "audience": "tech",
+      "status": "experimental",
+      "tags": [
+        "planning",
+        "architecture",
+        "design",
+        "application"
+      ],
+      "path": "recipes/plan-application.md"
+    },
+    {
       "id": "pr-review-prep",
       "name": "PR Review Prep",
       "description": "Generate a structured review brief for a Bitbucket pull request, with the linked ticket context and past reviewer feedback already pulled in.",
