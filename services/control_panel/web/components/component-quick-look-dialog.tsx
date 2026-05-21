@@ -116,7 +116,16 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
                 featureKind={feature.kind}
                 featureId={feature.id}
                 onVerified={(ok, message) => {
-                  setActionError(!ok && message ? message : null);
+                  // Same de-stack rule as FeatureActionButtons: success
+                  // shows a green result, failure shows the red error,
+                  // and each branch clears the other.
+                  if (ok) {
+                    setActionError(null);
+                    setActionResult({ ok: true, message: "Verification passed" });
+                  } else {
+                    setActionResult(null);
+                    setActionError(message ?? "Verification failed");
+                  }
                   router.refresh();
                 }}
                 size="sm"

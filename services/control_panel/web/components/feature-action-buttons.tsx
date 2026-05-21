@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import { CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { ConfirmButton } from "@/components/confirm-button";
 import { InstallConfirmDialog } from "@/components/install-confirm-dialog";
 import { VerifyIconButton } from "@/components/verify-icon-button";
 import { ContainerLogsDialog } from "@/components/container-logs-dialog";
@@ -74,7 +75,11 @@ export function FeatureActionButtons({
   const showUninstall = allowUninstall && !notInstalled;
 
   const runAction = (action: () => Promise<FeatureActionResult>) => {
+    // De-stack: any new action wipes the prior log boxes (error + result)
+    // before it starts, so old verify failures and old success messages
+    // don't pile up under fresh clicks.
     setErrorMessage(null);
+    setLastResult(null);
     startTransition(async () => {
       try {
         const result = await action();
@@ -108,11 +113,12 @@ export function FeatureActionButtons({
           />
         )}
         {showUninstall && !installedInBothScopes && (
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => runAction(() => api.uninstallFeature(feature.kind, feature.id))}
+          <ConfirmButton
+            title={`Uninstall ${feature.name}?`}
+            description="This removes the component from your setup. You can reinstall it later from the same page."
+            confirmLabel="Uninstall"
             disabled={pending}
+            onConfirm={() => runAction(() => api.uninstallFeature(feature.kind, feature.id))}
           >
             Uninstall
             {isMcp && installedScopes.length === 1 && (
@@ -120,34 +126,36 @@ export function FeatureActionButtons({
                 ({installedScopes[0]})
               </span>
             )}
-          </Button>
+          </ConfirmButton>
         )}
         {showUninstall && installedInBothScopes && (
           <>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() =>
+            <ConfirmButton
+              title={`Uninstall ${feature.name} (workspace)?`}
+              description="Removes only the workspace-scoped entry. The global entry stays in place."
+              confirmLabel="Uninstall"
+              disabled={pending}
+              onConfirm={() =>
                 runAction(() =>
                   api.uninstallFeature(feature.kind, feature.id, { scope: "workspace" }),
                 )
               }
-              disabled={pending}
             >
               Uninstall (workspace)
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() =>
+            </ConfirmButton>
+            <ConfirmButton
+              title={`Uninstall ${feature.name} (global)?`}
+              description="Removes only the global entry. The workspace entry stays in place."
+              confirmLabel="Uninstall"
+              disabled={pending}
+              onConfirm={() =>
                 runAction(() =>
                   api.uninstallFeature(feature.kind, feature.id, { scope: "global" }),
                 )
               }
-              disabled={pending}
             >
               Uninstall (global)
-            </Button>
+            </ConfirmButton>
           </>
         )}
         {canShowLogs && <ContainerLogsDialog feature={feature} size="sm" />}
@@ -156,9 +164,16 @@ export function FeatureActionButtons({
           featureId={feature.id}
           size="sm"
           onVerified={(ok, message) => {
-            // Surface a failed Verify inline, in the same error block as
-            // Install/Uninstall failures — the button alone only tooltips.
-            setErrorMessage(!ok && message ? message : null);
+            // Same inline area as Install/Uninstall results: success shows
+            // a green ActionResult box, failure the red error block. Each
+            // branch clears the other so logs never stack.
+            if (ok) {
+              setErrorMessage(null);
+              setLastResult({ ok: true, message: "Verification passed" });
+            } else {
+              setLastResult(null);
+              setErrorMessage(message ?? "Verification failed");
+            }
             router.refresh();
           }}
         />
