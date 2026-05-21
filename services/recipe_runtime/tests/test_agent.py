@@ -167,6 +167,88 @@ class DispatchAgentTest(unittest.TestCase):
         self.assertEqual(user_msg, "Echo: hello world")
 
 
+class GemmaToolCodeShimTest(unittest.TestCase):
+    """Unit tests for the Gemma `tool_code` markdown → tool_calls shim."""
+
+    def setUp(self):
+        from services.recipe_runtime.dispatcher import _extract_gemma_tool_code
+        self.extract = _extract_gemma_tool_code
+
+    def test_no_fence_is_noop(self):
+        cleaned, calls = self.extract("just text, no code blocks")
+        self.assertEqual(cleaned, "just text, no code blocks")
+        self.assertEqual(calls, [])
+
+    def test_bare_call_no_args(self):
+        cleaned, calls = self.extract("Sure, calling:\n```tool_code\nget_current_time()\n```")
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0]["function"]["name"], "get_current_time")
+        import json as _j
+        self.assertEqual(_j.loads(calls[0]["function"]["arguments"]), {})
+        self.assertNotIn("```", cleaned)
+
+    def test_kwargs_call(self):
+        body = "```tool_code\nread_workspace_file(path='README.md')\n```"
+        _, calls = self.extract(body)
+        import json as _j
+        args = _j.loads(calls[0]["function"]["arguments"])
+        self.assertEqual(calls[0]["function"]["name"], "read_workspace_file")
+        self.assertEqual(args, {"path": "README.md"})
+
+    def test_python_fence_also_recognized(self):
+        _, calls = self.extract("```python\nget_current_time()\n```")
+        self.assertEqual(len(calls), 1)
+
+    def test_multiple_blocks(self):
+        text = ("First:\n```tool_code\nget_current_time()\n```\n"
+                "Second:\n```tool_code\nread_workspace_file(path='a.md')\n```")
+        _, calls = self.extract(text)
+        self.assertEqual([c["function"]["name"] for c in calls],
+                         ["get_current_time", "read_workspace_file"])
+
+    def test_non_call_code_block_is_left_alone(self):
+        # A code block that's not a single function call (e.g. real code
+        # the user asked the model to write) must NOT be lifted.
+        cleaned, calls = self.extract("```python\nx = 1\nprint(x)\n```")
+        self.assertEqual(calls, [])
+        self.assertIn("x = 1", cleaned)
+
+
+class DispatchAgentGemmaShimIntegrationTest(unittest.TestCase):
+    """End-to-end: assistant emits tool_code text → loop runs the tool."""
+
+    def test_gemma_text_tool_code_triggers_tool_invocation(self):
+        # Turn 1: model returns text with a tool_code block (no structured
+        # tool_calls). Turn 2: model returns a final text answer.
+        replies = [
+            {"choices": [{"finish_reason": "stop", "message": {
+                "role": "assistant",
+                "content": "Calling now:\n```tool_code\nget_current_time()\n```",
+            }}]},
+            _openai_text("answered"),
+        ]
+        captured: list[dict] = []
+
+        def http(payload):
+            captured.append(payload)
+            return replies.pop(0)
+
+        result = dispatch_agent(FM_LOCAL, "Time?", {}, http_post=http)
+
+        self.assertEqual(len(captured), 2, "shim should trigger a follow-up turn")
+        second = captured[1]["messages"]
+        # The synthesized assistant turn carries tool_calls; the tool result
+        # comes back as {role:"tool"}.
+        self.assertEqual(second[-2]["role"], "assistant")
+        self.assertIn("tool_calls", second[-2])
+        self.assertEqual(second[-1]["role"], "tool")
+        self.assertIn("T", second[-1]["content"])  # ISO 8601 result
+        # Surrounding prose is preserved; only the fenced block is stripped.
+        self.assertIn("answered", result)
+        self.assertIn("Calling now", result)
+        self.assertNotIn("```", result)
+
+
 def _openai_text(text: str, finish: str = "stop") -> dict:
     """Build an OpenAI-shape single-message response."""
     return {

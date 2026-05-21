@@ -14,8 +14,10 @@ provider) or a `provider/model_id` ref (`anthropic/claude-opus-4-7`,
 """
 from __future__ import annotations
 
+import ast
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -414,6 +416,16 @@ def dispatch_agent(
                 text = msg.get("content") or ""
                 tool_calls = msg.get("tool_calls") or []
 
+                # Gemma compat: Gemma-3 (and llama.cpp's serving of it) emits
+                # tool invocations as a ```tool_code\nname(args)\n``` markdown
+                # block in the assistant text rather than structured
+                # tool_calls JSON. When no structured calls are present, try
+                # to lift any tool_code block(s) into synthesized tool_calls
+                # and strip them from the displayed text — so the agent loop
+                # behaves identically to a proper function-calling model.
+                if not tool_calls and text:
+                    text, tool_calls = _extract_gemma_tool_code(text)
+
                 if text:
                     accumulated.append(text)
                     try:
@@ -430,7 +442,11 @@ def dispatch_agent(
                     assistant_turn["tool_calls"] = tool_calls
                 openai_messages.append(assistant_turn)
 
-                if not tool_calls or choice.get("finish_reason") == "stop":
+                if not tool_calls:
+                    # No tool requests — model is done. `finish_reason` is
+                    # advisory; the absence of tool_calls is what stops us
+                    # (otherwise a Gemma turn with shim-lifted calls but
+                    # finish_reason="stop" would terminate prematurely).
                     break
 
                 for tc in tool_calls:
@@ -459,6 +475,77 @@ def dispatch_agent(
                     )
 
     return "".join(accumulated)
+
+
+# Gemma-style tool invocation that the OpenAI shim doesn't normalize into
+# `tool_calls`. Matches both ```tool_code and ```python fences (Gemma uses
+# both depending on the prompt). The captured group is the inner code.
+_GEMMA_TOOL_CODE_RE = re.compile(
+    r"```(?:tool_code|python)?\s*\n(.+?)\n```",
+    re.DOTALL,
+)
+
+
+def _extract_gemma_tool_code(text: str) -> tuple[str, list[dict]]:
+    """Lift Gemma-style ```tool_code\\nname(args)\\n``` blocks from `text`
+    into synthesized OpenAI-shape tool_calls; return (text_with_blocks_stripped,
+    tool_calls).
+
+    Parses the call body with `ast` to extract the function name + keyword
+    arguments safely (no exec). Positional args are accepted but stored as
+    `_args_<i>` keys — tool registries that only use kwargs ignore them.
+    Blocks that don't parse as a single function call are left in place
+    (probably actual code shown to the user, not a tool invocation).
+    """
+    if "```" not in text:
+        return text, []
+
+    tool_calls: list[dict] = []
+    spans: list[tuple[int, int]] = []
+    for idx, m in enumerate(_GEMMA_TOOL_CODE_RE.finditer(text)):
+        body = m.group(1).strip()
+        try:
+            node = ast.parse(body, mode="eval")
+        except SyntaxError:
+            continue
+        if not isinstance(node.body, ast.Call) or not isinstance(node.body.func, ast.Name):
+            continue
+        call = node.body
+        name = call.func.id
+        args: dict[str, object] = {}
+        for kw in call.keywords:
+            if kw.arg is None:
+                continue
+            try:
+                args[kw.arg] = ast.literal_eval(kw.value)
+            except (ValueError, SyntaxError):
+                args[kw.arg] = ast.unparse(kw.value)
+        for i, pos in enumerate(call.args):
+            try:
+                args[f"_args_{i}"] = ast.literal_eval(pos)
+            except (ValueError, SyntaxError):
+                args[f"_args_{i}"] = ast.unparse(pos)
+        tool_calls.append(
+            {
+                "id": f"gemma_call_{idx}",
+                "type": "function",
+                "function": {"name": name, "arguments": json.dumps(args)},
+            }
+        )
+        spans.append(m.span())
+
+    if not tool_calls:
+        return text, []
+
+    # Strip the matched blocks, leaving any surrounding prose intact.
+    out_parts: list[str] = []
+    cursor = 0
+    for start, end in spans:
+        out_parts.append(text[cursor:start])
+        cursor = end
+    out_parts.append(text[cursor:])
+    cleaned = "".join(out_parts).strip()
+    return cleaned, tool_calls
 
 
 def _openai_agent_post(
