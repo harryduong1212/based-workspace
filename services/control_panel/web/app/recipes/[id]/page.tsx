@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FeatureActionButtons } from "@/components/feature-action-buttons";
 import { FeatureStatusBadge } from "@/components/feature-status-badge";
+import { InstallStateNotice } from "@/components/install-state-notice";
 import { RecipeActions } from "@/components/recipe-actions";
 import { api, type Feature, type FeatureDetail } from "@/lib/api";
 
@@ -89,6 +90,7 @@ export default async function RecipeOverviewPage({
             <CardTitle className="text-base">Install state</CardTitle>
           </CardHeader>
           <CardContent>
+            <InstallStateNotice status={feature.status} />
             <FeatureActionButtons
               feature={feature}
               unmetPrereqs={unmetPrereqs}

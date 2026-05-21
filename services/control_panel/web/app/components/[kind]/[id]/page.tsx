@@ -9,6 +9,7 @@ import { ConnectorFeatureEnvForm } from "@/components/connector-feature-env-form
 import { ConnectorTestButton } from "@/components/connector-test-button";
 import { FeatureActionButtons } from "@/components/feature-action-buttons";
 import { FeatureStatusBadge } from "@/components/feature-status-badge";
+import { InstallStateNotice } from "@/components/install-state-notice";
 import { api, type ConnectorDetail, type Feature, type FeatureKind } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -69,17 +70,14 @@ export default async function ComponentDetailPage(props: {
         <HeaderTagBadges feature={feature} connectorDetail={connectorDetail} />
       </div>
 
-      {/* Install state card */}
+      {/* Install state card — just the actions. A notice banner appears
+       * above them only when the status is noteworthy (error/partial/...). */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Install state</CardTitle>
-          <CardDescription>
-            {feature.kind === "container"
-              ? "Start/Stop manages the container; Uninstall tears it down entirely."
-              : "Install adds this component to your setup; Uninstall reverses it. Verify re-runs the detection check without changing anything."}
-          </CardDescription>
         </CardHeader>
         <CardContent>
+          <InstallStateNotice status={feature.status} />
           <FeatureActionButtons
             feature={feature}
             unmetPrereqs={unmet_prereqs}
