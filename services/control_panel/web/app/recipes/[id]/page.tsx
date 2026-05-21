@@ -77,29 +77,26 @@ export default async function RecipeOverviewPage({
         </div>
       </div>
 
-      <div className="mt-6">
-        <RecipeActions recipeId={recipe.id} />
-      </div>
-
-      {/* Install / Uninstall / Verify lives next to Run/Edit so the page
-        * carries both flows. Hidden when the feature lookup failed (e.g. a
-        * recipe present on disk but not registered yet). */}
-      {feature && (
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base">Install state</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <InstallStateNotice status={feature.status} />
+      {/* One action row: Run / Edit sit alongside Install / Uninstall /
+        * Verify — there is no separate "Install state" card. Any action
+        * error and the status-notice banner render directly under the row
+        * (FeatureActionButtons owns the error block; InstallStateNotice the
+        * status hint). Feature lookup can fail for a recipe present on disk
+        * but not yet registered — then only Run/Edit show. */}
+      <div className="mt-6 border-b border-border pb-4">
+        <div className="flex flex-wrap items-start gap-x-4 gap-y-2">
+          <RecipeActions recipeId={recipe.id} />
+          {feature && (
             <FeatureActionButtons
               feature={feature}
               unmetPrereqs={unmetPrereqs}
               unmetPrereqsDetail={unmetPrereqsDetail}
               allowUninstall={true}
             />
-          </CardContent>
-        </Card>
-      )}
+          )}
+        </div>
+        {feature && <InstallStateNotice status={feature.status} />}
+      </div>
 
       <div className="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] gap-6">
         <article className="min-w-0 space-y-6">

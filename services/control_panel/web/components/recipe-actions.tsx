@@ -19,8 +19,10 @@ import {
 } from "@/components/ui/dialog";
 
 export function RecipeActions({ recipeId }: { recipeId: string }) {
+  // No divider/spacing of its own — the detail page composes this into a
+  // shared action row alongside the Install/Uninstall/Verify buttons.
   return (
-    <div className="flex items-center gap-3 border-b border-border pb-4 mb-4">
+    <div className="flex items-center gap-3">
       <RunSheet recipeId={recipeId} />
       <EditSheet recipeId={recipeId} />
     </div>

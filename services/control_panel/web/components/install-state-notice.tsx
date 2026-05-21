@@ -40,7 +40,7 @@ export function InstallStateNotice({ status }: { status: FeatureStatus }) {
   return (
     <div
       className={cn(
-        "mb-3 flex items-start gap-2 rounded-md border px-3 py-2 text-xs",
+        "mt-3 flex items-start gap-2 rounded-md border px-3 py-2 text-xs",
         notice.tone === "warn"
           ? "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300"
           : "border-border bg-muted/40 text-muted-foreground",

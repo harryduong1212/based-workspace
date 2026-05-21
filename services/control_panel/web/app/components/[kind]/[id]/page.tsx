@@ -70,22 +70,17 @@ export default async function ComponentDetailPage(props: {
         <HeaderTagBadges feature={feature} connectorDetail={connectorDetail} />
       </div>
 
-      {/* Install state card — just the actions. A notice banner appears
-       * above them only when the status is noteworthy (error/partial/...). */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">Install state</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <InstallStateNotice status={feature.status} />
-          <FeatureActionButtons
-            feature={feature}
-            unmetPrereqs={unmet_prereqs}
-            unmetPrereqsDetail={unmetPrereqsDetail}
-            allowUninstall={feature.kind !== "system"}
-          />
-        </CardContent>
-      </Card>
+      {/* Action row — no "Install state" card. Any action error and the
+        * status-notice banner render directly under the buttons. */}
+      <div className="border-b border-border pb-4">
+        <FeatureActionButtons
+          feature={feature}
+          unmetPrereqs={unmet_prereqs}
+          unmetPrereqsDetail={unmetPrereqsDetail}
+          allowUninstall={feature.kind !== "system"}
+        />
+        <InstallStateNotice status={feature.status} />
+      </div>
 
       <div className="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] gap-6">
         <article className="min-w-0 space-y-6">
