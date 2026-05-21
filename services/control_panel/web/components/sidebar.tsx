@@ -78,14 +78,22 @@ export function Sidebar() {
           </Link>
         </div>
 
-        {/* Floating pill on the right divider, vertically centered. Sits half
-         * outside the aside (-right-3) so the border line runs through it. */}
+        {/* Floating pill on the right divider, centered. `fixed` (not
+         * `absolute`) so it tracks the viewport, not the aside — on a long
+         * page an absolutely-positioned `top-1/2` would land at the middle
+         * of the whole scrolled page. `left` matches the sidebar width so
+         * the pill sits on the seam; it animates with the collapse. The
+         * pill stays hidden on mobile because its `hidden md:flex` parent
+         * is `display:none` there. */}
         <button
           type="button"
           onClick={toggle}
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="absolute top-1/2 -right-3 -translate-y-1/2 z-20 flex h-6 w-6 items-center justify-center rounded-full border bg-background text-muted-foreground hover:text-foreground hover:bg-accent shadow-sm transition-colors"
+          className={cn(
+            "fixed top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full border bg-background text-muted-foreground shadow-sm transition-all duration-200 hover:bg-accent hover:text-foreground",
+            isCollapsed ? "left-16" : "left-64",
+          )}
         >
           {isCollapsed ? (
             <PanelLeftOpen className="h-3.5 w-3.5" />
