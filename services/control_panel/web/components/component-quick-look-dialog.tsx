@@ -115,7 +115,10 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
               <VerifyIconButton
                 featureKind={feature.kind}
                 featureId={feature.id}
-                onVerified={() => router.refresh()}
+                onVerified={(ok, message) => {
+                  setActionError(!ok && message ? message : null);
+                  router.refresh();
+                }}
                 size="sm"
               />
             </div>

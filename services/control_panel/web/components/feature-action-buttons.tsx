@@ -100,7 +100,7 @@ export function FeatureActionButtons({
             installInputs={installInputs}
             onInstalled={handleInstalled}
             trigger={
-              <Button disabled={pending}>
+              <Button size="sm" disabled={pending}>
                 {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : null}
                 {feature.kind === "container" && feature.status === "stopped" ? "Start" : "Install"}
               </Button>
@@ -109,6 +109,7 @@ export function FeatureActionButtons({
         )}
         {showUninstall && !installedInBothScopes && (
           <Button
+            size="sm"
             variant="outline"
             onClick={() => runAction(() => api.uninstallFeature(feature.kind, feature.id))}
             disabled={pending}
@@ -124,6 +125,7 @@ export function FeatureActionButtons({
         {showUninstall && installedInBothScopes && (
           <>
             <Button
+              size="sm"
               variant="outline"
               onClick={() =>
                 runAction(() =>
@@ -135,6 +137,7 @@ export function FeatureActionButtons({
               Uninstall (workspace)
             </Button>
             <Button
+              size="sm"
               variant="outline"
               onClick={() =>
                 runAction(() =>
@@ -147,11 +150,17 @@ export function FeatureActionButtons({
             </Button>
           </>
         )}
-        {canShowLogs && <ContainerLogsDialog feature={feature} />}
+        {canShowLogs && <ContainerLogsDialog feature={feature} size="sm" />}
         <VerifyIconButton
           featureKind={feature.kind}
           featureId={feature.id}
-          onVerified={() => router.refresh()}
+          size="sm"
+          onVerified={(ok, message) => {
+            // Surface a failed Verify inline, in the same error block as
+            // Install/Uninstall failures — the button alone only tooltips.
+            setErrorMessage(!ok && message ? message : null);
+            router.refresh();
+          }}
         />
       </div>
 

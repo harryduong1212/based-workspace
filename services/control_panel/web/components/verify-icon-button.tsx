@@ -12,7 +12,9 @@ type VerifyState = "idle" | "running" | "ok" | "fail";
 type Props = {
   featureKind: FeatureKind;
   featureId: string;
-  onVerified?: (ok: boolean) => void;
+  // `message` carries the failure text on a failed verify (null on success)
+  // so the caller can surface it inline — the button only shows a tooltip.
+  onVerified?: (ok: boolean, message: string | null) => void;
   size?: "default" | "sm";
 };
 
@@ -41,12 +43,15 @@ export function VerifyIconButton({ featureKind, featureId, onVerified, size = "d
     try {
       const result = await api.verifyFeature(featureKind, featureId);
       const ok = !!result.ok;
+      const failMsg = result.error ?? "Verification failed";
       setState(ok ? "ok" : "fail");
-      setMessage(ok ? "Verified" : result.error ?? "Verification failed");
-      onVerified?.(ok);
+      setMessage(ok ? "Verified" : failMsg);
+      onVerified?.(ok, ok ? null : failMsg);
     } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
       setState("fail");
-      setMessage(e instanceof Error ? e.message : String(e));
+      setMessage(msg);
+      onVerified?.(false, msg);
     } finally {
       clearTimer.current = setTimeout(() => {
         setState("idle");
