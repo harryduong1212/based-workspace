@@ -96,8 +96,18 @@ export function FeatureActionButtons({
     router.refresh();
   };
 
+  // The outer wrapper uses `display: contents` so the button-row and the
+  // logs panel become direct siblings in whatever layout the parent
+  // imposes. On the recipe page action row (a flex-wrap), this lets the
+  // logs (basis-full) wrap to a new full-width line BELOW the buttons —
+  // left-aligned with Run Recipe instead of crammed under the right side
+  // of the row. In block-flow parents (components page, quick-look) the
+  // logs simply stack below the buttons as normal block children.
+  const hasLogs =
+    (hasUnmetPrereqs && showInstall) || !!errorMessage || !!lastResult;
+
   return (
-    <div className="space-y-3">
+    <div className="contents">
       <div className="flex flex-wrap gap-2">
         {showInstall && (
           <InstallConfirmDialog
@@ -179,34 +189,43 @@ export function FeatureActionButtons({
         />
       </div>
 
-      {hasUnmetPrereqs && showInstall && (
-        <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
-          <div className="flex items-center gap-2 font-medium">
-            <AlertTriangle className="h-4 w-4" />
-            Prerequisites will be set up first
-          </div>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Install isn&apos;t blocked — clicking it walks you through a plan
-            that installs these in order, then {feature.name}:
-          </p>
-          <ul className="mt-1.5 text-xs text-muted-foreground list-disc list-inside space-y-0.5">
-            {prereqDetail.map((p) => (
-              <li key={p.id}>
-                <code className="font-mono">{p.id}</code> — {prereqLabel(p).split(" — ")[1]}
-              </li>
-            ))}
-          </ul>
+      {hasLogs && (
+        /* basis-full makes this panel claim its own line and span full
+         * width when the parent is a flex-wrap (the recipe page action
+         * row) — so logs sit under Run Recipe on the left, not crammed
+         * under the right side. In block-flow parents the basis-full is
+         * a harmless no-op. */
+        <div className="basis-full mt-2 space-y-3">
+          {hasUnmetPrereqs && showInstall && (
+            <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
+              <div className="flex items-center gap-2 font-medium">
+                <AlertTriangle className="h-4 w-4" />
+                Prerequisites will be set up first
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Install isn&apos;t blocked — clicking it walks you through a plan
+                that installs these in order, then {feature.name}:
+              </p>
+              <ul className="mt-1.5 text-xs text-muted-foreground list-disc list-inside space-y-0.5">
+                {prereqDetail.map((p) => (
+                  <li key={p.id}>
+                    <code className="font-mono">{p.id}</code> — {prereqLabel(p).split(" — ")[1]}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {errorMessage && (
+            <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
+              <div className="font-medium">Action failed</div>
+              <pre className="text-xs mt-1 whitespace-pre-wrap break-all">{errorMessage}</pre>
+            </div>
+          )}
+
+          {lastResult && <ActionResult result={lastResult} />}
         </div>
       )}
-
-      {errorMessage && (
-        <div className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm">
-          <div className="font-medium">Action failed</div>
-          <pre className="text-xs mt-1 whitespace-pre-wrap break-all">{errorMessage}</pre>
-        </div>
-      )}
-
-      {lastResult && <ActionResult result={lastResult} />}
     </div>
   );
 }
