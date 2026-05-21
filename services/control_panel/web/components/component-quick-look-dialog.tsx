@@ -32,6 +32,16 @@ const STATUS_HINT: Record<FeatureStatus, string> = {
   unknown: "Status couldn't be determined — try Verify.",
 };
 
+// The `installed` hint is kind-aware: a recipe or connector is not a running
+// process, so the service-flavoured "Up and running." reads wrong for them.
+function statusHint(feature: Feature): string {
+  if (feature.status === "installed") {
+    if (feature.kind === "recipe") return "Ready to run.";
+    if (feature.kind === "connector") return "Configured and ready to use.";
+  }
+  return STATUS_HINT[feature.status];
+}
+
 // Recipe-kind detail lives at /recipes/:id (the canonical, run-flavoured
 // page). All other kinds keep their detail under /components/:kind/:id.
 function detailHref(feature: Feature): string {
@@ -82,15 +92,18 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
     });
   };
 
-  const firstExample = feature.examples[0];
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg overflow-hidden">
+      {/* max-h + overflow-y-auto lets the dialog grow with its content
+       * (all examples, highlights) and only scroll once it would exceed
+       * the viewport — instead of clipping. */}
+      <DialogContent className="sm:max-w-lg max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           {/* pr-8 keeps the title clear of the absolute close ✕ (right-4).
            * The status badge sits on its own line so it never collides with
-           * the ✕ and never wraps mid-label ("not installed"). */}
+           * the ✕ and never wraps mid-label ("not installed"). The Verify
+           * (sync) button sits right after the badge — re-probing status is
+           * conceptually "refresh this badge". */}
           <div className="min-w-0 pr-8">
             <div className="flex items-center gap-2">
               <div className="text-[10px] font-semibold uppercase tracking-wider text-primary/70">
@@ -99,6 +112,12 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
               <span className="shrink-0 whitespace-nowrap">
                 <FeatureStatusBadge status={feature.status} />
               </span>
+              <VerifyIconButton
+                featureKind={feature.kind}
+                featureId={feature.id}
+                onVerified={() => router.refresh()}
+                size="sm"
+              />
             </div>
             <DialogTitle className="text-lg mt-1">{feature.name}</DialogTitle>
             <DialogDescription className="mt-1">
@@ -109,8 +128,26 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
 
         <div className="min-w-0 space-y-4">
           <div className="rounded-md border bg-card/40 px-3 py-2.5 text-sm">
-            <span className="text-muted-foreground">{STATUS_HINT[feature.status]}</span>
+            <span className="text-muted-foreground">{statusHint(feature)}</span>
           </div>
+
+          {/* Highlights — the component's selling-point bullets, from its
+           * frontmatter / catalog entry. Hidden when the kind has none. */}
+          {feature.highlights.length > 0 && (
+            <div className="min-w-0 space-y-1.5">
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Highlights
+              </div>
+              <ul className="space-y-1 text-sm">
+                {feature.highlights.map((h, i) => (
+                  <li key={i} className="flex gap-2 text-muted-foreground">
+                    <span className="shrink-0 text-primary/60">·</span>
+                    <span className="min-w-0">{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Quick actions row — Install / Uninstall / Verify. Mirrors the
            * detail page's action buttons but condensed for the dialog. */}
@@ -148,12 +185,6 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
               </Button>
             )}
             {canShowLogs && <ContainerLogsDialog feature={feature} size="sm" />}
-            <VerifyIconButton
-              featureKind={feature.kind}
-              featureId={feature.id}
-              onVerified={() => router.refresh()}
-              size="sm"
-            />
           </div>
 
           {actionResult && <ActionResultLine result={actionResult} />}
@@ -163,23 +194,27 @@ export function ComponentQuickLookDialog({ feature, open, onOpenChange }: Props)
             </div>
           )}
 
-          {/* First example only — the dialog stays scannable. The full
-           * Examples list lives on the detail page. */}
-          {firstExample && (
-            <div className="min-w-0 space-y-1.5">
-              <div className="flex items-baseline justify-between gap-3">
-                <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground shrink-0">
-                  Example {feature.examples.length > 1 ? `1 of ${feature.examples.length}` : ""}
-                </div>
-                {firstExample.label && (
-                  <div className="text-[11px] text-muted-foreground italic truncate min-w-0">
-                    {firstExample.label}
-                  </div>
-                )}
+          {/* All examples — the dialog auto-scales (max-h on DialogContent)
+           * and scrolls if the list is long. */}
+          {feature.examples.length > 0 && (
+            <div className="min-w-0 space-y-2">
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                {feature.examples.length > 1
+                  ? `Examples (${feature.examples.length})`
+                  : "Example"}
               </div>
-              <pre className="max-w-full rounded-md border bg-muted/30 p-2.5 text-[11px] overflow-x-auto leading-relaxed">
-                {firstExample.code}
-              </pre>
+              {feature.examples.map((ex, i) => (
+                <div key={i} className="min-w-0 space-y-1">
+                  {ex.label && (
+                    <div className="text-[11px] text-muted-foreground italic">
+                      {ex.label}
+                    </div>
+                  )}
+                  <pre className="max-w-full rounded-md border bg-muted/30 p-2.5 text-[11px] overflow-x-auto leading-relaxed">
+                    {ex.code}
+                  </pre>
+                </div>
+              ))}
             </div>
           )}
 
