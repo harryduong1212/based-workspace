@@ -44,9 +44,14 @@ dist/
 # tmp and external
 tmp/
 
+# Personal Obsidian study vault — Syncthing-synced, lives on disk only.
+# Not project documentation; kept out of the project repo deliberately.
+other-docs/ai_orchestrator_study_materials/
+
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # Claude Code per-user settings (project-level settings.json is committed)
 .claude/settings.local.json
