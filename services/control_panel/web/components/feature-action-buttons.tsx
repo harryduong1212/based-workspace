@@ -195,7 +195,7 @@ export function FeatureActionButtons({
          * row) — so logs sit under Run Recipe on the left, not crammed
          * under the right side. In block-flow parents the basis-full is
          * a harmless no-op. */
-        <div className="basis-full mt-2 space-y-3">
+        <div className="basis-full w-full mt-2 space-y-3">
           {hasUnmetPrereqs && showInstall && (
             <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
               <div className="flex items-center gap-2 font-medium">
